@@ -1,0 +1,970 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+
+\setlength{\parindent}{1em}
+
+\numberwithin{equation}{section}
+\begin{document}
+	
+		%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{Title Page}
+	\begin{center}
+		\LARGE NUMERICAL SOLUTIONS OF POPULATION GROWTH MODEL WITH CEILING USING SIMPSON'S RULE,TRAPEZOIDAL RULE AND ROMBERG'S METHOD
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\Large \textbf{Alesinloye}, Tunde Solomon
+	\end{center}
+
+	\hspace{5cm} \\
+	
+	\begin{center}
+		MATRIC NO:16/56EB043
+	\end{center}
+
+	\hspace{9cm} \\
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+	
+	\hspace{8cm} \\ \\
+	
+	\begin{center}
+		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE \textit{(B.Sc.)} DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ \\
+	\begin{center}
+		\textbf{April, 2021}
+	\end{center}
+	
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{Table of Contents}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	
+\newpage
+
+\begin{abstract}
+During the last decades models have been created to achieve the description and the representation of phenomena and biological populations. These models are often ordinary differential equations. This project aims to introduce a comparison of some certain members of the Newton-cotes closed quadrature formulae, viz: Trapezoidal rule,simpson's $\frac{1}{3}$ rule and Romberg's method for the solution of some mathematical population growth models.
+\end{abstract}
+
+\tableofcontents
+\pagestyle{empty}
+\cleardoublepage
+
+\setcounter{page}{1}
+\chapter{}
+\section{GENERAL INTRODUCTION}
+\subsection{INTRODUCTION}
+\indent A population is a group of organisms of the same species$($fishes,birds etc.$)$ that live in a particular area. Population of organisms tends to increase as far as their environment will allow. As a result, most populations are in a dynamic state of equilibrium. Their numbers increase in a delicate balance that is influenced by limiting factors. The number of organisms in a population changes over time because of births, deaths, emigration, immigration and some outside factors. Of course, births and immigraion increase the size of the population, on the other hand deaths and emigration for example decrease its size. The increase in the number of organisms in a population is mentioned as population growth. For most populations, there are growth-limiting factors that reduce the theoretically possible population. A limiting factor restricts organisms from occupying their fundamental niche and results instead in the fulfillment of their actual or realized niche.\\
+
+\textbf{Types of Limiting Factor}
+\begin{itemize}
+	\item Density Dependent Factors
+	\item Density Independent Factors
+	\item Physical and Biological Limiting Factors
+	\item Resources
+	\item Carrying capacity
+	\item Environmental conditions
+	\item Migration
+	\item Natural Death Rate
+	\item Human Limiting Factors
+\end{itemize}
+
+
+\textbf{Population Model}\\
+\indent A model is simply a system of organisms, information or things presented as a mathematical description of an entity. Thus population models are approximations of reality described by mathematical formulae $($differential equation for example$)$. Population models are usually created and developed to predict the behaviour of ecological systems and biological populations. As it can be observed, population model can be very useful and interesting, because they represent reality and some specific data and because they are capable, in many occasions, to give accurate and precise estimates that can help human mind to predict the future of a population and to compare the results gained with similar results from other models or from differential populations.
+
+
+\indent A population growth model tries to predict the population of an organism that reduces according to fixed rules. Depending on how many times an organism reproduces, how many new organisms it produces each time and how often it reproduces, the model can predict what the population will be at a given time.\\
+\indent The trapezoidal rule, simpson's $\frac{1}{3}$ rule and romberg's method are implemented for solving the population growth models whose yield equation or system of equations involving differential and integral.\\
+
+
+\textbf{Exponential growth}\\
+\indent Bacteria grown in the lab provides an excellent example of exponential growth. In exponential growth, the population rate increases over time, in proportion to the size of the population.\\
+\indent let's take a look at how this works. Bacteria reproduce by binary fission $($splitting in half$)$, and the time between divisions is about an hour for many bacterial species. To see how this exponential growth, let's start by placing $1000$ bacteria in a flask with an unlimited supply of nutrients:
+\begin{itemize}
+\item After $1hour$: Each bacteria will divide, yielding $2000$ bacteria $($an increase of 1000 bacteria$)$ 
+\item After $2hours$: Each of the $2000$ bacteria will divide, producing $4000$ $($an increase of 2000 bacteria$)$   
+\item After $3hours$: Each of the $4000$ bacteria will divide, producing $8000$ $($an increase of 4000 bacteria$)$ 
+\end{itemize}
+
+The key concept of exponential growth is the population growth rate - the number organism added in each generation increases as the population gets larger. And the results can be dramatic: after $1day$ $($24 cycles of division$)$, the bacteria population would have grown from $1000$ to over $16billion!$. When population size \textbf{N}, is plotted over time, a j-shaped growth curve is made.\\
+fed in each generation increases as the population gets larger. And the results can be dramatic: after $1day$ $($24 cycles of division$)$, the bacteria population would have grown from $1000$ to over $16billion!$. When population size \textbf{N}, is plotted over time, a j-shaped growth curve is made.\\
+
+\begin{center}
+%\includegraphics{graph.png}
+\end{center}
+\newpage
+\begin{center}
+How do we model the exponential growth of a population?\\
+\end{center}
+
+As mentioned briefly above, we get exponential growth where \textbf{r} (the per capita rate of increase) for our population is positive and constant. Exponential growth is represented with an $r$ or $r_{max}$.\\ 
+$r_{max}$ is the maximum per capita rate of increase  for a particular species under ideal conditions, and varies from species to species. For instance, bacteria can reproduce more faster than humans, and would have a higher maximum per capita rate of increase. The maximum population growth rate for a species, sometimes called its \textbf{biotic potential}, is expressed in the following equation:\\
+
+\begin{center}
+$\frac{dN}{dT}=r_{max}N$
+\end{center}
+
+\textbf{Logistic Growth}
+
+\indent Exponential growth is not a very sustainable state of affairs, since it depends on infinite amounts of resources.
+
+\indent Exponential may happens for a while, if there are few individuals and many resources. But when the number of individuals gets large enough, resources start to get used up, slowing the growth rate. Eventually, the growth rate will plateau, or level off, making an s-shaped curve. The population size at which it levels off, which represent the maximum population size a particular environment can support, is called the \textbf{capacity carrying or k}
+
+\begin{center}
+%\includegraphics{graphic.png}
+\end{center}
+
+We can mathematically model logistic growth by modifying our equation for exponential growth, using an \textbf{r} (per capita growth rate) that depends on the population size$(N)$ and how close it is to carrying capacity$(K)$. Assuming that the population has a  base growth $r_{max}$ when it is very small, we can write the following equation:\\
+
+\begin{center}
+$\frac{dN}{dT}=r_{max}\frac{(K-N)}{K}N$
+\end{center}
+
+\indent Let's take a minute to dissect this equation and see why it makes sense. At any given point in time during a population's growth, the expression \textbf{K-N} tells us how many more individuals can be added to the population before it hits carrying capacity. $\frac{(K-N)}{K}$, then, is the fraction of the carrying capacity that has not yet been $"used up"$. The more carrying capacity that has been used up, the more the $\frac{(K-N)}{K}$ term will reduce the growth rate.
+
+\indent when the population is tiny, \textbf{N} is very small compared to \textbf{K}. The $\frac{(K-N)}{K}$ term becomes approximately$(K/K)$ or $1$, giving us back the exponential equation. This fits with the graph above: the population grows near-exponentially at first, but levels off more and more as it approaches K.\\
+
+\begin{center}
+\textbf{What factors determine carrying capacity?}
+\end{center}
+
+\indent Basically, any kind of resources important to a species' survival can acts as a limit.For plants, the water, sunlight,nutrients, and the space to grow are some key resources. For animals, important resources include food, water, shelter and nesting place. Limited quantities of these resources results in competition between members of the same population, or \textbf{intra-specific competition} $($intra-=within; -specific=species$)$.
+
+\indent Intraspecific competition for resources may not affect populations that are well below  their carrying capacity-resources are plentiful and all individuals can obtain what they need. However, as population size increases, competition intensifies. In addition, the accumulation of waste products can reduce an environment's carrying capacity.\\								
+
+\textbf{Predator-Prey Models}\\
+\indent The logistic growth model focused on a single population. Moving beyond that on e-dimensional model,we now consider the growth of two interdependent populations. Given two species of animals, interdependence might arise because one species $($the \textbf{prey}$)$ serves as a food sources for the other species $($the \textbf{predator}$)$. Models of this type are thus called the \textbf{predator-prey model}. While social scientist are primarily interested in human populations$($in which interdependence hopefully takes other forms$)$,there are severals reasons for studying predator-prey models.
+
+Mathematically, some versions of this model generate limit cycles, an interesting type of equilibrum sometimes observed in dynamical system with two $($or more$)$ dimensions.
+
+
+
+\textbf{Logistic growth with a predator}\\
+\indent We can by introducing a predator population into the logistic growth model. Now that there are two species, we let \textbf{P} denote the size of the prey population and \textbf{Q} denote the size of predator population. The growth rate of the prey population is determined by the equation:\\
+
+\begin{center}
+$\frac{\Delta P}{P}= r(1-\frac{P}{K})-SQ$
+\end{center}
+Where r,S and K are parameters. In the absence of predator $($when Q=0$)$, when the growth of the prey population thus follows the logistic model $($with k again interpreted as the carrying capacity of the environment$)$. However, as indicated by the second term on the right-hand side of the equation, the prey growth rate falls as the predator population becomes larger. In turn, the growth rate of the predator population is determined by the equation:\\
+
+\begin{center}
+$\frac{\Delta Q}{Q}=-U+VP$
+\end{center}
+
+where U and V are parameters. In the absence of prey$($when P=0$)$, the predator population would shrink at rate U. However, as indicated by the second term, the predator growth rate rises as the prey population becomes larger. We thus obtain the two-equation system:\\
+
+\begin{center}
+$\Delta P=[r(1-P/K)-SQ]Ph$
+\end{center}
+\begin{center}
+$\Delta Q=(-U+VP)Qh$
+\end{center}
+where h denotes period length
+
+         
+\subsection{SCOPE OF STUDY}
+\indent This study focuses on population growth models. In order to solving system of equations of the population growth models, we shall introduce the application of some numerical methods such as trapezoidal rule,simpson's rule and romberg's methods and also to find out the most suitable numerical methods for solving problems of the population growth models.
+ 
+\subsection{AIM AND OBJECTIVES}
+\indent The aim of this study is to use Newton-cotes closed quadrature formula $($Trapezoidal and Simpson's$\frac{1}{3}$ rule$)$ and Romberg's method to solve numerical integral problems involving population growth models.\\
+
+The objectives of this study are as follows:
+\begin{enumerate}
+	\item To discuss the basic population growth models\\
+	
+	\item To derive the trapezoidal rule,simpson's $\frac{1}{3}$ rule and romberg's method\\
+	
+	\item To solve integral problems involving population growth model using the trapezoidal rule,simpson's $\frac{1}{3}$ rule and romberg's method; and\\
+ 
+	
+	\item To determine which of the rules when implemented gives the best approximation of the population growth models.
+\end{enumerate}
+
+\subsection{DEFINITION OF RELEVANT TERMS}
+\subsubsection{BASIC POPULATION GROWTH MODEL}
+\indent Population growth can be described with three basic models, based on the size of the population and necessary resources. These three types of growth are known as exponential growth,logistic growth and predator-prey growth.
+
+
+\subsubsection{EXPONENTIAL GROWTH}
+\indent Exponential growth occurs as a population grows larger, dramatically increasing the growth rate. If a population is given unlimited amounts of food, moisture and oxygen,and othe environmental factors, it will show exponential growth.
+
+
+\subsubsection{LOGISTIC GROWTH}
+\indent Populations first grow exponentially while resources are abundant. But as populations increase and resources become less available, rates of growth slow and reaching the carrying capacity. The carrying capacity is the upper limit of the population size that the environment can support. This type of growth is called Logistic growth.
+
+\subsubsection{PREDATOR-PREY}
+The predator prey relationship consists of the interactions between two species and their consequent effects on each other. In the predator prey relationship, one species is feeding on the other species. The prey species is the animal being fed on, and the predator is the animal being fed.
+ 
+
+\subsubsection{LIMITING FACTOR}
+\indent A limiting factor is a resource or environmental condition which limits the growth, distribution or abundance of an organism or population within an ecosystem.
+
+\subsubsection{DENSITY DEPENDENT FACTORS}
+\indent Density dependent factors are those factors whose effect on a population is determined by the total size of the population. Predation and diseases, as well as resource availability, are all examples of density dependent factors. As an example, disease is likely to spread quicker through a larger,denser population, impacting the number of individuals within the population more than it would in a smaller, more widely dispersed population.
+
+\subsubsection{DENSITY INDEPENDENT FACTORS}
+\indent A density independent limiting factor is one which limits the size of a population, but whose effect is not dependent on the size of the population. Examples include environmentally stressful events such as earthquakes,tsunamis,and volcanic eruptions, as well as sudden climate changes such as drought or flood, and destructive occurences, such as the input of extreme environmental pollutants.
+
+\subsubsection{PHYSICAL AND BIOLOGICAL FACTORS}
+\indent Physical factors or abiotic factors include temperature, water availability, oxygen, salinity, light, food and nutrients; biological factors or biotic factors, involve interactions between organisms such as predation, competition, parasitism and herbivory.
+
+\subsubsection{RESOURCES}
+Resources such as food, water, light, space, shelter and access to mates are all limiting factors. If an organism, group or population does not have enough resources to sustain it, individuals will die through starvation, desiccation and stress, or they will fail to produce offspring.
+
+\subsubsection{CARRYING CAPACITY}
+The limiting resource within an ecosystem determines the carrying capacity$($indicated in ecology by the letter K$)$, which is the maximum number of individuals in a population that an habitat can support without environmental degradation.
+
+
+\subsubsection{BIRTH AND DEATH RATE}
+\indent Population growth rate depends on birth rates and death rates, as well as migration. You can predict the growth rate by using this simple equation:
+
+\begin{center}
+growth rate = birth rate - death rate.
+\end{center}
+ 
+\begin{itemize}
+	\item If the birth rate is larger than death rate, then the population grows
+	\item If the death rate is larger than the birth rate, the population size will decrease
+	\item If the birth and death rates are equal then the population size will not change
+\end{itemize}
+   
+\subsubsection{MIGRATION}
+\indent Migration is the movement of individual organisms into or out of a population. Migration affects population growth rate. There are two type of migration:
+\begin{itemize}
+	\item Immigration: is the movement of individuals into a population from other areas
+	\item Emigration: is the movement of individuals out of a population. This decreases the population size. The earlier growth rate equation can be modified to account for migration:
+\end{itemize}
+	\begin{center}
+	growth rate = $($birthrate + immigration rate$)$ - $($death rate + emigration rate$)$
+	\end{center}
+
+\subsubsection{HUMAN LIMITING FACTORS}
+The increase in human population is the responsible for placing many limiting factors on species that did not historically exist
+
+\subsubsection{FUNDAMENTAL NICHE}
+The total range of environmental conditions that is suitable in order for an organism to exist, in the absence of limiting factors.
+
+\subsubsection{REALIZED NICHE}
+The actual amount of resources or environmental conditions that an organism is able to utilize within an ecosystem.
+
+\subsubsection{TRAPEZOIDAL RULE}
+\indent Trapezoidal rule is a technique for approximating the definite integral.
+ 
+\subsubsection{SIMPSON'S RULE}
+\indent This is a method for numerical approximation of definite integrals. It is a weighted average that results in an even more accurate approximation.
+
+\subsubsection{ROMBERG'S METHOD}
+\indent This is used to estimate the definite integrals by applying richardson extrapolation repeatedly on the trapezium rule.
+
+\subsubsection{EXACT SOLUTION}
+\indent The exact solution of an integral equation is the solution obtained using analytical method.
+
+\subsubsection{APPROXIMATE SOLUTION}
+\indent The approximate solution of an integral equation is the solution obtained using numerical method.
+
+
+
+\newpage
+
+\chapter{}
+\section{LITERATURE REVIEW}
+
+\indent Late 18th-century biologists began to develop techniques in population growth modeling in order to understand the dynamics of growing and shrinking of all populations of living organisms. Thomas Malthus was one of the first to note that populations grew with a geometric pattern, in his $(1798)$ book an essay on the principle of population, Malthus observed that an increase in a nation's food production improved the well-being of the populace, but the improvement was temporary because it led to population growth,which in turn restored the original per capital production level. One of the most basic and milestone models of population growth was the logistic model of population growth formulated by Pierre Francois Verhulst in $(1838)$. The logistic model takes the shape of a sigmoid curve and describes the growth of a population as exponential, followed by a decrease in growth, and bound by a carrying capacity due to environmental pressures.\\
+
+\indent Population modeling became of particular interest to biologists in the $20th$ century as pressure on limited means of sustenance due to increasing human populations in parts of Europe were noticed by biologist like Raymond Pearl. in $(1921)$ Pearl invited physicist Alfred J.Lotka to assit him in his lab. Lotka developed paired differential equations that showed the effect of a parasite on its prey. 
+The Lotka-Volterra predator-prey model was initially proposed by Alfred J.Lotka in the theory of autocatalytic chemical reactions in $(1910)$. This was effectively the logistic equation, originally derived by Pierre francois verhulst. In $(1920)$ Lotka extended the model, via Andrey Kolmogorov, to    'organic systems' using a plant species and a herbivorous animal species as an example and in $(1925)$ he used the equations to analyse predator-prey interactions in his book on biomathematics. The same set of equations was published in $(1926)$ by Vito Volterra, a mathematician and physicist who had become interested in mathematical biology. The model was later extended to include density-dependent prey growth and a functional response of the form developed by C.S Holling; a model known as the Rosenzweig-MacArthur model. Both the Lotka-Volterra and Rosenzweig-MacArthur models have been used to explain the dynamics of natural populations of predators and prey.\\
+
+\newpage
+\textbf{LOGISTIC POPULATION MODEL}\\
+The logistic function was developed as a model of population growth and named \textbf{logistic} by Pierre Francois verhulst in the (1830s and 1840s) under the guidance of Adolphe Quetelet. The logistic function was independently developed in chemistry as a model of autocatalysis $($Wilhelm Ostwald, 1883$)$. An autocatalysis reaction is one in which one of the products is itself a catalyst for the same reaction, while the supply of one of the reactants is fixed. This naturally gives rise to the logistic equation for the same reason as population growth.
+
+The logistic function was independently rediscovered as a model of population growth in $(1920)$ by Raymond Pearl and Lowell Reed, published as Pearl \& Reed $(1920)$, which led to its use in modern statistics.  They were initially unaware of Verhulst's work and presumably learned about it from L. Gustave du Pasquier, but they gave him little credit and did not adopt his terminology. Verhulst's priority was acknowledged and the term "logistic" revived by Udny Yule in $(1925)$ and has been followed since. Pearl and Reed first applied the model to the population of the United States, and also initially fitted the curve by making it pass through three points; as with Verhulst, this again yielded poor results.
+
+In the $(1930s)$, the probit model was developed and systematized by Chester Ittner Bliss, who coined the term "probit" in Bliss (1934), and by John Gaddum in Gaddum (1933), and the model fit by maximum likelihood estimation by Ronald A. Fisher in Fisher (1935), as an addendum to Bliss's work. The probit model was principally used in bioassay, and had been preceded by earlier work dating to (1860). The probit model influenced the subsequent development of the logit model and these models competed with each other.
+
+The logistic model was likely first used as an alternative to the probit model in bioassay by Edwin Bidwell Wilson and his student Jane Worcester in Wilson \& Worcester (1943). However, the development of the logistic model as a general alternative to the probit model was principally due to the work of Joseph Berkson over many decades, beginning in Berkson (1944), where he coined "logit", by analogy with "probit", and continuing through Berkson (1951) and following years. The logit model was initially dismissed as inferior to the probit model, but gradually achieved an equal footing with the logit, particularly between (1960 and 1970). By (1970), the logit model achieved parity with the probit model in use in statistics journals and thereafter surpassed it. This relative popularity was due to the adoption of the logit outside of bioassay, rather than displacing the probit within bioassay, and its informal use in practice; the logit's popularity is credited to the logit model's computational simplicity, mathematical properties, and generality, allowing its use in varied fields.\\
+
+
+\textbf{PREDATOR-PREY POPULATION MODEL}\\
+The Lotka–Volterra predator–prey model was initially proposed by Alfred J. Lotka in the theory of autocatalytic chemical reactions in (1910). This was effectively the logistic equation, originally derived by Pierre François Verhulst. In (1920) Lotka extended the model, via Andrey Kolmogorov, to "organic systems" using a plant species and a herbivorous animal species as an example and in (1925) he used the equations to analyse predator–prey interactions in his book on biomathematics. The same set of equations was published in (1926) by Vito Volterra, a mathematician and physicist, who had become interested in mathematical biology. Volterra's enquiry was inspired through his interactions with the marine biologist Umberto D'Ancona, who was courting his daughter at the time and later was to become his son-in-law. D'Ancona studied the fish catches in the Adriatic Sea and had noticed that the percentage of predatory fish caught had increased during the years of World War I (1914–18). This puzzled him, as the fishing effort had been very much reduced during the war years. Volterra developed his model independently from Lotka and used it to explain d'Ancona's observation.
+
+The model was later extended to include density-dependent prey growth and a functional response of the form developed by C. S. Holling; a model that has become known as the Rosenzweig–MacArthur model. Both the Lotka–Volterra and Rosenzweig–MacArthur models have been used to explain the dynamics of natural populations of predators and prey, such as the lynx and snowshoe hare data of the Hudson's Bay Company and the moose and wolf populations in Isle Royale National Park.
+
+In the late (1980s), an alternative to the Lotka–Volterra predator–prey model $($and its common-prey-dependent generalizations$)$ emerged, the ratio dependent or Arditi–Ginzburg model. The validity of prey- or ratio-dependent models has been much debated.
+
+The Lotka–Volterra equations have a long history of use in economic theory; their initial application is commonly credited to Richard Goodwin in (1965 or 1967).\\
+
+
+\textbf{NUMERICAL INTEGRATION}\\
+
+In analysis, numerical integration comprises a broad family of algorithms for calculating the numerical value of a definite integral, and by extension, the term is also sometimes used to describe the numerical solution of differential equations. The term numerical quadrature (often abbreviated to quadrature) is more or less a synonym for numerical integration, especially as applied to one-dimensional integrals. Some authors refer to numerical integration over more than one dimension as cubature; others take quadrature to include higher-dimensional integration.
+
+The basic problem in numerical integration is to compute an approximate solution to a definite integral
+
+$\int _{a}^{b}f(x)dx$\\
+to a given degree of accuracy. If f(x) is a smooth function integrated over a small number of dimensions, and the domain of integration is bounded, there are many methods for approximating the integral to the desired precision.\\
+
+The term "numerical integration" first appears in (1915) in the publication A Course in Interpolation and Numeric Integration for the Mathematical Laboratory by David Gibb.\\
+
+\textbf{Quadrature} is a historical mathematical term that means calculating area. Quadrature problems have served as one of the main sources of mathematical analysis. Mathematicians of Ancient Greece, according to the Pythagorean doctrine, understood calculation of area as the process of constructing geometrically a square having the same area (squaring). That is why the process was named quadrature. For example, a quadrature of the circle, Lune of Hippocrates, The Quadrature of the Parabola. This construction must be performed only by means of compass and straightedge.
+
+The ancient Babylonians used the trapezoidal rule to integrate the motion of Jupiter along the ecliptic.
+
+For a quadrature of a rectangle with the sides a and b it is necessary to construct a square with the side ${\displaystyle x={\sqrt {ab}}} x={\sqrt {ab}}$ $($the Geometric mean of a and b$)$. For this purpose it is possible to use the following fact: if we draw the circle with the sum of a and b as the diameter, then the height BH $($from a point of their connection to crossing with a circle$)$ equals their geometric mean. The similar geometrical construction solves a problem of a quadrature for a parallelogram and a triangle.
+
+Problems of quadrature for curvilinear figures are much more difficult. The quadrature of the circle with compass and straightedge had been proved in the 19th century to be impossible. Nevertheless, for some figures $($for example the Lune of Hippocrates$)$ a quadrature can be performed. The quadratures of a sphere surface and a parabola segment done by Archimedes became the highest achievement of the antique analysis.
+\begin{itemize}
+	\item The area of the surface of a sphere is equal to quadruple the area of a great circle of this sphere.
+  \item The area of a segment of the parabola cut from it by a straight line is $\frac{4}{3}$ the area of the triangle inscribed in this segment.
+\end{itemize}
+For the proof of the results Archimedes used the Method of exhaustion of Eudoxus.
+
+In medieval Europe the quadrature meant calculation of area by any method. More often the Method of indivisibles was used; it was less rigorous, but more simple and powerful. With its help Galileo Galilei and Gilles de Roberval found the area of a cycloid arch, Grégoire de Saint-Vincent investigated the area under a hyperbola (Opus Geometricum, 1647), and Alphonse Antonio de Sarasa, de Saint-Vincent's pupil and commentator, noted the relation of this area to logarithms.
+
+John Wallis algebrised this method: he wrote in his Arithmetica Infinitorum (1656) series that we now call the definite integral, and he calculated their values. Isaac Barrow and James Gregory made further progress: quadratures for some algebraic curves and spirals. Christiaan Huygens successfully performed a quadrature of some Solids of revolution.
+
+The quadrature of the hyperbola by Saint-Vincent and de Sarasa provided a new function, the natural logarithm, of critical importance.
+
+With the invention of integral calculus came a universal method for area calculation. In response, the term quadrature has become traditional, and instead the modern phrase "computation of a univariate definite integral" is more common.
+
+
+
+
+
+
+
+
+
+\newpage
+
+\chapter{}
+\section{METHODOLOGY}
+\subsection{MODEL FORMULATION}
+\textbf{Modeling Population Growth}\\
+\indent To understand the different models that are used to represent population dynamics, let's by looking at a general equation for the \textbf{population growth rate}[change in numbers of individuals in a population over time]:\\
+                
+								\begin{center}
+								$\frac{dN}{dT}= {rN}$
+								\end{center}
+\indent in this equation, $\frac{dN}{dT}$ is the growth rate of a population in a given instant, \textbf{N} is population size, \textbf{T} is time, and \textbf{r} is the per capita rate of increase -that is, how quickly the population grows per individual already in the population.\\
+
+\indent The equation above is very general, and we can make more specific form of it to describe two different kinds of growth models: exponential and logistic\\
+\begin{itemize}
+\item when the per capita rate of increase $(r)$ takes the same positive value regardless of the population size, then we get \textbf{exponential growth}
+\item when the per capita rate of increase $(r)$ decreases as the population increases towards a maximum limit, then we get \textbf{logistic growth} 
+\end{itemize} 								
+
+\subsubsection{DERIVATION OF CONTINOUS MODELS}
+\indent We derive a continous model from discrete model for population prediction. A simple model for change in population N(t), during a short period of time interval $\Delta{t}$ is:\\
+
+\fbox{\parbox[b][1.5\baselineskip]{0.3\linewidth}{Increase in population during time $\Delta{t}$}} 
+=
+\fbox{\parbox[b][1.2\baselineskip]{0.3\linewidth}{birth during time $\Delta{t}$}}
+-
+\fbox{\parbox[b][1.2\baselineskip]{0.3\linewidth}{death during time $\Delta{t}$}}
+\\
+
++
+\fbox{\parbox[b][1.2\baselineskip]{0.35\linewidth}{immigratithton during \symup\Delta{t}}}
+-
+\fbox{\parbox[b][1.2\baselineskip]{0.3\linewidth}{emigration during \symup\Delta{t}}}
+\\
+
+
+\Rightarrow
+\fbox{\parbox[b][1.5\baselineskip]{0.3\linewidth}{Increase in population during time \symup\Delta{t}}} 
+=
+\fbox{\parbox[b][1.2\baselineskip]{0.3\linewidth}{birth during time \symup\Delta{t}}}
+-
+\fbox{\parbox[b][1.2\baselineskip]{0.3\linewidth}{death during time \symup\Delta{t}}}
+\\
+
+neglecting immigration and emigration
+
+\\
+
+Note that the birth rate and the death rate are proprotional to the population N(t).\\
+i.e $\frac{\symup\Delta b}{\symup\Delta t} \alpha$N(t) and $\frac{\symup\Delta{d}}{\symup\Delta{t}} \alpha$N(t).\\
+The number of birth and death are bN(t)$\symup\Delta{t}$ and dN(t)$\symup\Delta{t}$ respectively. In a small time period $\symup\Delta{t}$, a percentage b of the population is born, and a percentage d of the population dies.\\
+Thus the change of the population size during the time period $\symup\Delta{t}$ is:\\
+\begin{center}
+N(t+$\symup\Delta{t}$) - N(t) = bN(t)$\symup\Delta{t}$ - dN(t)$\symup\Delta{t}$
+\end{center}
+
+Note that b and d have the unit per time, and they are called growth and death rates. Divide both sides by $\symup\Delta{t}$ to obtain\\
+
+\begin{center}
+$\frac{N(t+\symup\Delta t) - N(t)}{\symup\Delta t}$ = (b-d)N(t).
+\end{center}
+\\
+
+\begin{flushleft}
+$$\lim_{\symup\Delta t\to\o} \frac{N(t+\symup\Delta t) - N(t)}{\symup\Delta t} = \lim_{\symup\Delta t\to\o} (b-d)N(t)$$
+\end{flushleft}
+
+\begin{align*}
+\frac{dN(t)}{dt} = (b-d)N(t)
+\end{align*}
+\\
+using the definition of derivative. Let $\alpha = (b-d)$, then the model becomes\\
+
+
+\begin{center}
+$\frac{dN(t)}{dt} = \alpha N$
+\end{center}
+
+\\
+   Given the initial condition $N(t_0) = N_0$, the continous time model $\frac{dN(t)}{dt} = \alpha N$ is defined for $t \geq t_0$.
+\\
+Solution: We apply separation of variables to obtain \\
+
+  
+	\begin{center}
+	$\int \frac{dN}{N} = \int \alpha$ d(t)
+	\end{center}
+\\
+Which leads to\\
+
+\begin{center}
+$Log_e(N) = \alpha t + C$
+\end{center}
+\\
+Applying the initial condition $N(t_0) = N_0$\\
+\begin{center}
+$Log_e N_0 = \alpha t_0 + C$
+\end{center}
+
+\begin{center}
+\Longrightarrow $C = Log_e N_0 - \alpha t_0$
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{THE PREDATOR-PREY GROWTH DIFFERENTIAL EQUATION}
+\subsection{NEWTON-COTES FORMULA}
+The Newton-cotes formulas are an extremely useful and straightforward family of numerical integration techniques.
+
+\subsubsection{NEWTON-COTES CLOSED QUADRATURE FORMULAE}
+In numerical integration, the range of integration$($b-a$)$ given is divided into a finite number of intervals. The integration techniques consisting of equally spaced interval are based on the Newton-cotes closed quadrature formulae. The Newton-cotes closed quadrature formulae named after isaac Newton and Roger-cotes are extremely useful and straight forward family of numerical quadrature $($integration$)$ techniques. The integration technique is called closed because the function values at the two end points of any given integral are used to find the integral.
+
+
+
+
+
+\subsubsection{DERIVATION OF NEWTON-COTES CLOSED QUADRATURE FORMULAE}
+In numerical analysis, the general form of numerical quadrature problems is stated as follows.\\
+Given a set of data point $(x_i,y_i)$, $i=0,1,2,...,n$ of a function y=f$($x$)$, where f$($x$)$ is not explicitly known. Here, we are required to evalute the definite integral.\\
+
+
+\begin{equation}
+I=\int_{a}^{b}ydx
+\end{equation}
+
+
+ Numerical integration method uses an interpolating polynomial $P_n(x)$ in place of f$(x)$=y which can be integrated analytically.\\
+Thus,
+
+\begin{align}
+I=\int_{a}^{b}ydx = \int_{a}^{b}P_n(x)dx
+\end{align}\\
+ 
+
+A general formula for the numerical integration is derived using Newton's forward difference formula. 
+Here, we assume that the interval $(a,b)$ is divided into n-equal subintervals such that:\\
+
+\begin{equation}
+h=\frac{b-a}{n}
+\end{equation}
+\\
+where       $a=x_0<x_1<x_2<x_3<...<x_n=b$, with    $x=x_0+nh$\\
+and\\
+h=the interval size or the step size\\
+n=the number of subintervals\\
+a and b are limits of integration with $a<b$\\
+Hence, the integral in $(3.1)$ can be written as 
+
+\begin{center}
+
+I=\int_{x_0}^{x_n}ydx    
+
+\end{center}
+\\
+Using Newton's forward interpolation formula, we have\\
+
+\begin{equation}
+\begin{split}
+I=&\int_{x_0}^{x_n}\Big[y_0+P\symup\Delta y_0+\frac{P(P-1)}{2!}\symup\Delta^2y_0+\frac{P(P-1)(P-2)}{3!}\symup\Delta^3y_0+\frac{P(P-1)(P-2)(P-3)}{4!}\symup\Delta^4y_0\\
+&+\frac{P(P-1)(P-2)(P-3)(P-4)}{5!}\symup\Delta^5y_0+...\Big]dx
+\end{split}
+\end{equation}
+
+
+
+where\\
+$x=x_0+ph$ and $\frac{dx}{dp}$=h$\Rightarrow$ dx=hdp. \\
+Now substituting dx=hdp into Equation$(3.4)$, we have
+
+\begin{equation}
+\begin{split}
+I=&h\int_{x_0}^{x_n}\Big[y_0+P\symup\Delta y_0+\frac{P^2-P}{2}\symup\Delta^2y_0+\frac{P^3-3P^2+2P}{6}\symup\Delta^3y_0\\
+&+\frac{P^4-6P^3+11P^2-6P}{24}\symup\Delta^4y_0+\frac{P^5-10P^4+35P^3-50P^2+24P}{120}\symup\Delta^5y_0...\Big]dp
+\end{split}
+\end{equation}
+
+\\on integrating,
+
+\begin{equation}
+\begin{split}
+I=&h\Bigg[Py_0+\frac{P^2}{2}\symup\Delta{y_0}+\frac{2P^3-3P^2}{12}\symup\Delta^2y_0+\frac{P^4-4P^3+4P^2}{24}\symup\Delta^3y_0\\ 
+&+\frac{6P^5-45P^4+110P^3-90P^2}{720}\symup\Delta^4y_0\\
+&+\frac{2P^6-24P^5+105P^4-200P^3+144P^2}{1440}\symup\Delta^5y_0+...\Bigg]_{0}^{n}
+\end{split}
+\end{equation}
+
+\\Hence,
+
+\begin{equation}
+\begin{split}
+I=&h\Bigg[ny_0+\frac{n^2}{2}\symup\Delta{y_0}+\frac{2n^3-3n^2}{12}\symup\Delta^2y_0+\frac{n^4-4n^3+4n^2}{24}\symup\Delta^3y_0\\ 
+&+\frac{6n^5-45n^4+110n^3-90n^2}{720}\symup\Delta^4y_0\\
+&+\frac{2n^6-24n^5+105n^4-200n^3+144n^2}{1440}\symup\Delta^5y_0+...\Bigg]
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+I=&h\Bigg[ny_0+\frac{n^2}{2}\symup\Delta{y_0}+\frac{n^2(2n-3)}{12}\symup\Delta^2y_0+\frac{n^2(n^2-4n+4)}{24}\symup\Delta^3y_0\\ 
+&+\frac{n^2(6n^3-45n^2+110n-90)}{720}\symup\Delta^4y_0\\
+&+\frac{n^2(2n^4-24n^3+105n^2-200n+144)}{1440}\symup\Delta^5y_0+...\Bigg]
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+I=&nh\Bigg[y_0+\frac{n}{2}\symup\Delta{y_0}+\frac{n(2n-3)}{12}\symup\Delta^2y_0+\frac{n(n^2-4n+4)}{24}\symup\Delta^3y_0\\ 
+&+\frac{n(6n^3-45n^2+110n-90)}{720}\symup\Delta^4y_0\\
+&+\frac{n(2n^4-24n^3+105n^2-200n+144)}{1440}\symup\Delta^5y_0+...\Bigg]
+\end{split}
+\end{equation}
+
+The above formula given by Equation(3.9) is known as Newton-cotes closed quadrature formulae.
+
+
+
+
+
+
+
+\subsubsection{TRAPEZOIDAL RULE}
+In mathematics, and more specifically in numerical analysis, the trapezoidal rule is a technique for approximating the definite integral :
+
+\begin{equation*}
+I=\int_{a}^{b}ydx
+\end{equation*}
+Trapezoidal rule can be derived by substituting n=1 into the general Newton-cotes closed quadrature formula, and considering the function y=f(x) over the interval $(x_0,x_n)$. n=1 implies that f(x) can be derived by a polynomial of the first degree, so that the differences higher than the first vanish.\\
+Recall the Newton-cotes formula:
+\begin{equation*}
+\begin{split}
+I=\int_{x_0}^{x_n}ydx=&nh\Bigg[y_0+\frac{n}{2}\symup\Delta{y_0}+\frac{n(2n-3)}{12}\symup\Delta^2y_0+\frac{n(n^2-4n+4)}{24}\symup\Delta^3y_0\\ 
+&+\frac{n(6n^3-45n^2+110n-90)}{720}\symup\Delta^4y_0\\
+&+\frac{n(2n^4-24n^3+105n^2-200n+144)}{1440}\symup\Delta^5y_0+...\Bigg]
+\end{split}
+\end{equation*}
+
+Now substituting n=1, we have
+\begin{equation*}
+I=h\Big[y_0+\frac{1}{2}\symup\Delta{y_0}\Big]
+\end{equation*}
+
+but, \symup\Delta{y_0}=y_1-y_0\\
+
+\begin{equation*}
+I=h\Big[y_0+\frac{1}{2}(y_1-y_0)\Big]
+\end{equation*}
+
+\begin{equation*}
+I=h\Big[y_0+\frac{1}{2}y_1-\frac{1}{2}y_0\Big]
+\end{equation*}
+
+\begin{equation*}
+I=h\Big[\frac{1}{2}y_0+\frac{1}{2}y_1\Big]
+\end{equation*}
+
+\begin{equation*}
+I_1=\int_{x_0}^{x_1}ydx=\frac{h}{2}[y_0+y_1]
+\end{equation*}
+
+
+Similarly, for other subintervals, we have\\
+\begin{equation*}
+I_2=\int_{x_1}^{x_2}ydx=h\Big[y_1+\frac{1}{2}\symup\Delta{y_1}\Big]
+\end{equation*}
+
+but, \symup\Delta{y_1}=y_2-y_1\\
+
+\begin{equation*}
+I_2=h\Big[y_1+\frac{1}{2}(y_2-y_1)\Big]
+\end{equation*}
+
+\begin{equation*}
+I_2=h\Big[\frac{1}{2}y_1+\frac{1}{2}y_2\Big]
+\end{equation*}
+
+\begin{equation*}
+I_2=\int_{x_1}^{x_2}ydx=\frac{h}{2}[y_1+y_2]
+\end{equation*}
+
+similarly,\\
+
+\begin{equation*}
+I_3=\int_{x_2}^{x_3}ydx=h\Big[y_2+\frac{1}{2}\symup\Delta{y_2}\Big]
+\end{equation*}
+
+\begin{align*}
+I_3=&\frac{h}{2}[y_2+y_3]\\
+ &\vdots\\
+\end{align*}
+\begin{align*}
+I_n=\int_{x_n-1}^{x_n}ydx=h\Big[y_{n-1}+\frac{1}{2}\symup\Delta{y_{n-1}}\Big]
+\end{align*}
+
+\begin{align*}
+=h\Big[y_{n-1}+\frac{1}{2}(y_n-y_{n-1})\Big]
+\end{align*}
+
+\begin{align*}
+=h\Big[y_{n-1}+\frac{1}{2}y_n-\frac{1}{2}y_{n-1}\Big]
+\end{align*}
+
+\begin{align*}
+=h\Big[\frac{1}{2}y_{n-1}+\frac{1}{2}y_n\Big]
+\end{align*}
+
+\begin{align*}
+I_n=\frac{h}{2}[y_{n-1}+y_n]
+\end{align*}
+
+Combining all these expression, we have\\
+
+\begin{align*}
+I=I_1+I_2+\cdots+I_n
+\end{align*}
+
+\begin{align*}
+I=\int_{x_0}^{x_1}ydx+\int_{x_1}^{x_2}ydx+\cdots+\int_{x_n-1}^{x_n}ydx
+\end{align*}
+
+\begin{align*}
+I=\frac{h}{2}[y_0+y_1+y_2+y_3+y_4\cdots+y_{n-1}+y_n]
+\end{align*}
+Thus,
+\begin{align}
+I=\frac{h}{2}[(y_0+y_n)+2(y_1+y_2+y_3+\cdots+y_{n-1})]
+\end{align}
+
+Equation(3.10) implies the trapezoidal rule.  
+
+
+
+\subsubsection{SIMPSON'S $\frac{1}{3}$ RULE}
+The trapezoidal rule was based on approximating the integrand by a first order polynomial, and then integrating the polynomial over interval of integration. Simpson's $\frac{1}{3}$ rule is an extension of trapezoidal rule where the integrand is approximated by a second order polynomial. Simpson's $\frac{1}{3}$rule is the approximation to the integral of the function f(x) over the interval $[x_0,x_2]$. It is derived by putting n=2 in the general Newton-cotes formula. n=2 means f(x) can be derived by a polynomial of degree two such that other differences higher than the second vanish from the general Newton-cotes formula.\\
+  From equation(3.9)
+\begin{equation*}
+\begin{split}
+I=\int_{x_0}^{x_n}ydx=&nh\Bigg[y_0+\frac{n}{2}\symup\Delta{y_0}+\frac{n(2n-3)}{12}\symup\Delta^2y_0+\frac{n(n^2-4n+4)}{24}\symup\Delta^3y_0\\ 
+&+\frac{n(6n^3-45n^2+110n-90)}{720}\symup\Delta^4y_0\\
+&+\frac{n(2n^4-24n^3+105n^2-200n+144)}{1440}\symup\Delta^5y_0+...\Bigg]
+\end{split}
+\end{equation*}
+
+Putting n=2, and all the difference higher than the second will become zero\\
+
+\begin{equation*}
+\int_{x_0}^{x_2}ydx=2h\Big[y_0+\symup\Delta{y_0}+\frac{2(4-3)}{12}\symup\Delta^2{y_0}\Big]
+\end{equation*}
+
+\begin{equation*}
+=2h\Big[y_0+\symup\Delta{y_0}+\frac{2(1)}{12}\symup\Delta^2{y_0}\Big]
+\end{equation*}
+
+\begin{equation*}
+=2h\Big[y_0+\symup\Delta{y_0}+\frac{1}{6}\symup\Delta^2{y_0}\Big]
+\end{equation*}
+
+\begin{equation*}
+=\frac{2h}{6}\Big[6y_0+6\symup\Delta{y_0}+\symup\Delta^2{y_0}\Big]
+\end{equation*}
+
+\begin{equation*}
+=\frac{h}{3}\Big[6y_0+6\symup\Delta{y_0}+\symup\Delta^2{y_0}\Big]
+\end{equation*}
+
+\begin{equation*}
+I_1=\int_{x_0}^{x_2}ydx=\frac{h}{3}\Big[6y_0+6\symup\Delta{y_0}+\symup\Delta^2{y_0}\Big]
+\end{equation*}
+
+but, \symup\Delta{y_0}=y_1-y_0\\
+and \symup\Delta^2{y_0}=\symup\Delta(y_1-y_0)=y_2-2y_1+y_0\\
+
+\begin{equation*}
+I_1=\frac{h}{3}[6y_0+6(y_1-y_0)+(y_2-2y_1+y_0)]
+\end{equation*}
+
+\begin{equation*}
+I_1=\frac{h}{3}[6y_0+6y_1-6y_0+y_2-2y_1+y_0]
+\end{equation*}
+
+\begin{equation*}
+I_1=\int_{x_0}^{x_2}ydx=\frac{h}{3}[y_0+4y_1+y_2]
+\end{equation*}
+
+Similarly,
+\begin{equation*}
+I_2=\int_{x_2}^{x_4}ydx=\frac{h}{3}[6y_2+6\symup\Delta{y_2}+\symup\Delta^2{y_2}]
+\end{equation*}
+
+but, \symup\Delta{y_2}=y_3-y_2\\
+ \symup\Delta^2{y_2}=\symup\Delta(y_3-y_2)=y_4-2y_3+y_2\\
+
+\begin{equation*}
+I_2=\frac{h}{3}[6y_2+6(y_3-y_2)+(y_4-2y_3+y_2)]
+\end{equation*}
+
+\begin{equation*}
+I_2=\frac{h}{3}[6y_2+6y_3-6y_2+y_4-2y_3+y_2]
+\end{equation*}
+
+\begin{equation*}
+I_2=\int_{x_2}^{x_4}ydx=\frac{h}{3}[y_2+4y_3+y_4]
+\end{equation*}
+
+For $[x_4,x_6]$ we deduce similarly
+
+\begin{equation*}
+I_3=\int_{x_4}^{x_6}ydx=\frac{h}{3}[6y_4+6\symup\Delta{y_4}+\symup\Delta^2{y_4}]
+\end{equation*}
+
+but, \symup\Delta{y_4}=y_5-y_4\\
+ \symup\Delta^2{y_4}=\symup\Delta(y_5-y_4)=y_6-2y_5+y_4\\
+
+\begin{equation*}
+I_3=\frac{h}{3}[6y_4+6(y_5-y_4)+(y_6-2y_5+y_4)]
+\end{equation*}
+
+\begin{equation*}
+I_3=\frac{h}{3}[6y_4+6y_5-6y_4+y_6-2y_5+y_4]
+\end{equation*}
+
+\newpage
+\begin{align*}
+I_3=\int_{x_4}^{x_6}ydx=&\frac{h}{3}[y_4+4y_5+y_6]\\
+ &\vdots
+\end{align*}
+
+\begin{equation*}
+I_n=\int_{x_{n-2}}^{x_n}ydx=\frac{h}{3}[6y_{n-2}+6\symup\Delta{y_{n-2}}+\symup\Delta^2{y_{n-2}}]
+\end{equation*}
+
+but, \symup\Delta{y_{n-2}}=y_{n-1}-y_{n-2}\\
+ \symup\Delta^2{y_{n-2}}=\symup\Delta(y_{n-1}-y_{n-2})=y_n-2y_{n-1}+y_{n-2}\\
+
+\begin{equation*}
+I_n=\frac{h}{3}[6y_{n-2}+6(y_{n-1}-y_{n-2})+(y_n-2y_{n-1}+y_{n-2})]
+\end{equation*}
+
+\begin{equation*}
+I_n=\frac{h}{3}[6y_{n-2}+6y_{n-1}-6y_{n-2})+y_n-2y_{n-1}+y_{n-2}]
+\end{equation*}
+
+\begin{align*}
+I_n=\int_{x_{n-2}}^{x_n}ydx=&\frac{h}{3}[y_{n-2}+4y_{n-1}+y_n]
+\end{align*}
+
+Adding all the intervals from x_0 to x_n, we have
+
+\begin{align*}
+I=I_1+I_2+I_3+\cdots+I_n
+\end{align*}
+
+\begin{align*}
+I=\int_{x_0}^{x_2}ydx+\int_{x_2}^{x_4}ydx+\int_{x_4}^{x_6}ydx+\cdots+\int_{x_{n-2}}^{x_n}ydx
+\end{align*}
+
+\begin{equation*}
+I=\frac{h}{3}\Big[(y_0+4y_1+y_2)+(y_2+4y_3+y_4)+(y_4+4y_5+y_6)+(y_6+4y_7+y_8)+\cdots+(y_{n-2}+4y_{n-1}+y_n)\Big]
+\end{equation*}
+
+\begin{equation*}
+I=\frac{h}{3}\Big[y_0+4y_1+y_2+y_2+4y_3+y_4+y_4+4y_5+y_6+y_6+4y_7+y_8+\cdots+y_{n-2}+4y_{n-1}+y_n\Big]
+\end{equation*}
+
+\begin{equation}
+I=\frac{h}{3}\Big[(y_0+y_n)+4(y_1+y_3+y_5+y_7+\cdots+y_{n-1})+2(y_2+y_4+y_6+y_8+\cdots+y_{n-2})+y_n\Big]
+\end{equation}
+
+Equation (3.11) implies Simpson's $\frac{1}{3}$ rule.
+
+
+
+
+
+\subsection{ROMBERG INTEGRATION}
+\indent Richardson extrapolation is not only used to compute more accurate approximations of derivatives, but is also used as the foundation of a numerical integration scheme called Romberg integration. 
+
+\indent This method can often be used to the approximate result obtained by finite difference method. Here extrapolation is applied to approximation generated using composite trapezoidal rule. The composite trapezoidal rule for approximating the integral of a function f(x) on an interval (a,b) using M sub-interval is given as\\
+I=\int_{a}^{b}f(x)dx=\frac{h}{2}\Bigg[f(a)+2 $\sum\limits_{i=1}^{n-1} f(x_i)$+f(b)\bigg] - $\frac{b-a}{12}h^2f''(\mu)$\\
+where $a<\mu<b$, $\mu\in(a,b)$ and h=$\frac{b-a}{n}$\\
+$x_i=a+ih$ for $i=0,1,2,...m$\\
+
+Let n be a positive integer (natural number),the first term in the romberg process obtained in the composite trapezoidal rule with $M_1=1, M_2=2, M_3=4$ and $M_n=2^{n-1}$.\\
+\indent The stepsize $h_k$ corresponding to $h_k$=$\frac{b-a}{n_k}$ = $\frac{b-a}{2^k-1}$, where n_k=$2^{k-1}$ and $x_i=a+ih_k$\\
+
+Hence, with these notations the composite trapezoidal rule implies,\\
+
+\int_{a}^{b}f(x)dx=\frac{h_k}{2}\bigg[f(a)+2 $\sum\limits_{i=1}^{2^{k-1} - 1} f(a+ih_k)$+f(b)\bigg] - $\frac{b-a}{12}h_k^2f''(\mu_k)$\\
+
+
+
+If the notation $R_{k,1}$ is introduced to denote the position of this equation that is used for the composite trapezoidal approximation then\\
+
+$h_k$= $\frac{b-a}{2^{k-1}}$ \Rightarrow $h_1$= $\frac{b-a}{2^0}$ = b-a\\
+And\\
+$R_{1,1}$= $\frac{h_1}{2}[f(a)+f(b)]$\\
+
+$R_{1,1}$= $\frac{b-a}{2}[f(a)+f(b)] \\
+
+$h_2$= $\frac{b-a}{2^{2-1}}$ = $\frac{b-a}{2}$ \Rightarrow $h_2$=$\frac{h_1}{2}$ (since h_1=b-a) \\
+
+$R_{2,1}$=$\frac{h_2}{2}\Big[f(a)+2 $\sum\limits_{i=1}^{1} f(a+ih_2)$+f(b)\Big]$\\
+
+but $h_2$=$\frac{h_1}{2}$\\
+
+$R_{2,1}$=$\frac{h_1}{4}[f(a)+2f(a+h_2)$+f(b)]$\\
+
+$h_3$= $\frac{b-a}{2^{3-1}}$ = $\frac{b-a}{4}$ \Rightarrow $h_3$=$\frac{h_1}{4}$ (since h_1=b-a) \\
+
+$R_{3,1}$=$\frac{h_3}{2}\Big[f(a)+2 $\sum\limits_{i=1}^{3} f(a+ih_3)$+f(b)\Big]$\\
+
+but $h_3$=$\frac{h_1}{4}$\\
+
+$R_{3,1}$=$\frac{h_1}{8}[f(a)+2f(a+h_3)+2f(a+2h_3)+2f(a+3h_3)+f(b)]$\\
+
+$h_4$= $\frac{b-a}{2^{4-1}}$ = $\frac{b-a}{8}$ \Rightarrow $h_4$=$\frac{h_1}{8}$ (since h_1=b-a) \\
+
+$R_{4,1}$=$\frac{h_4}{2}\Big[f(a)+2 $\sum\limits_{i=1}^{7} f(a+ih_4)$+f(b)\Big]$\\
+
+but $h_4$=$\frac{h_1}{8}$\\
+\begin{equation*}
+\begin{split}
+$R_{4,1}$=&\frac{h_1}{16}$\Big[f(a)+2f(a+h_4)+2f(a+2h_4)+2f(a+3h_4)+2f(a+4h_4)\\
+&+2f(a+5h_4)+2f(a+6h_4)+2f(a+7h_4)+f(b)\Big]$
+\end{split}
+\end{equation*}
+\\
+$h_5$= $\frac{b-a}{2^{5-1}}$ = $\frac{b-a}{16}$ \Rightarrow $h_5$=$\frac{h_1}{16}$ (since h_1=b-a) \\
+
+$R_{5,1}$=$\frac{h_5}{2}\Big[f(a)+2 $\sum\limits_{i=1}^{15} f(a+ih_5)$+f(b)\Big]$\\
+
+but $h_5$=$\frac{h_1}{16}$\\
+\begin{equation*}
+\begin{split}
+$R_{5,1}$=&\frac{h_1}{32}$\Big[f(a)+2f(a+h_5)+2f(a+2h_5)+2f(a+3h_5)+2f(a+4h_5)+2f(a+5h_5)\\
+&+2f(a+6h_5)+2f(a+7h_5)+2f(a+8h_5)+2f(a+9h_5)+2f(a+10h_5)+2f(a+11h_5)\\
+&+2f(a+12h_5)+2f(a+13h_5)+2f(a+14h_5)+2f(a+15h_5)+f(b)\Big]$
+\end{split}
+\end{equation*}
+\\
+For futher improvement of approximation, we compute\\
+
+R_{k,2}=R_{k,1} + \frac{R_{k,1}-R_{k-1,1}}{3}\\
+
+\Rightarrow R_{2,2}=R_{2,1} + \frac{R_{2,1}-R_{1,1}}{3}\\
+
+\Rightarrow R_{3,2}=R_{3,1} + \frac{R_{3,1}-R_{2,1}}{3}\\
+
+\Rightarrow R_{4,2}=R_{4,1} + \frac{R_{4,1}-R_{3,1}}{3}\\
+
+\Rightarrow R_{5,2}=R_{5,1} + \frac{R_{5,1}-R_{4,1}}{3}\\
+
+Also,\\
+
+R_{k,3}=R_{k,2} + \frac{R_{k,2}-R_{k-1,2}}{15}\\
+
+\Rightarrow R_{3,3}=R_{3,2} + \frac{R_{3,2}-R_{2,2}}{15}\\
+
+\Rightarrow R_{4,3}=R_{4,2} + \frac{R_{4,2}-R_{3,2}}{15}\\
+ 
+\Rightarrow R_{5,3}=R_{5,2} + \frac{R_{5,2}-R_{4,2}}{15}\\
+
+Also,\\
+
+R_{k,4}=R_{k,3} + \frac{R_{k,3}-R_{k-1,3}}{63}\\
+
+\Rightarrow R_{4,4}=R_{4,3} + \frac{R_{4,3}-R_{3,3}}{63}\\
+
+\Rightarrow R_{5,4}=R_{5,3} + \frac{R_{5,3}-R_{4,3}}{63}\\
+
+Also,\\
+
+R_{k,5}=R_{k,4} + \frac{R_{k,4}-R_{k-1,4}}{255}\\
+
+\Rightarrow R_{5,5}=R_{5,4} + \frac{R_{5,4}-R_{4,4}}{255}\\
+
+A general expression for Romberg integration can be written as,\\
+\begin{equation}
+R_{k,j}=R_{k,j-1} + \frac{R_{k,j-1}-R_{k-1,j-1}}{4^{j-1}-1}
+\end{equation}
+\\
+The index k represents the order of extrapolation. $k=1$ represents the values obtained from the regular Trapezoidal rule,$k=2$ represents values obtained using the true estimate as $O(h^2)$. The index j represents the more accurate estimate of the integral.\\
+We have the Romberg table below\\
+\begin{center}
+\includegraphics{Rom.png}
+\end{center}
+
+
+
+
+
+Equation (3.12) implies the Romberg integration rule.
+
+
+
+
+\end{document}

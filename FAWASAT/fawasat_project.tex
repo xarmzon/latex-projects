@@ -1,0 +1,1029 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+\newcommand{\real}{ \mathbb{R}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\Laplace}{\mathcal{L}}
+\newcommand{\ft}{f(t)}
+\newcommand{\ftn}[1]{f(#1)}
+\newcommand{\ftp}[1]{f^{#1}(t)}
+\newcommand{\Fs}{F(s)}
+\newcommand{\Fsp}[1]{F^{#1}(s)}
+\newcommand{\LaplaceIntegral}{\int_{0}^{\infty}e^{-st}\ft\text{dt}}
+\newcommand{\LFn}[1]{\Laplace \sbracket{#1}}
+\newcommand{\LFt}{\Laplace \sbracket{\ft}}
+\newcommand{\sbracket}[1]{\left[#1\right]}
+\newcommand{\example}[1]{\section*{\ubt{Example #1}}}
+\newcommand{\property}{\subsubsection{\ubt{Property}}}
+\newcommand{\properties}{\subsubsection{\ubt{Properties}}}
+\newcommand{\solution}{\subsubsection{\ubt{Solution}}}
+\newcommand{\proposition}[1]{\section*{\ubt{Proposition #1}}}
+
+%\newcommand{\real}{\mathbbm{R}}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\labelenumi}{\roman{enumi}.}
+
+
+%\setlength{\parindent}{1em}
+
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\Large \bt{THE GAMMA FUNCTION AND ITS ANALYTICAL APPLICATIONS}
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{MONINUADE, FAWASAT OLABISI
+			\\
+			17/56EB066}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ 
+	\begin{center}
+		\textbf{February, 2021}
+	\end{center}
+
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project was carried out by \textbf{MONINUADE, Fawasat Olabisi} with Matriculation Number  17/56EB066 in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Prof.   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof.o \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner 
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	All praises, adoration and glorification are for Almighty Allah, the most beneficent, the most merciful, and the sustainer of the world. I pray may the peace of Allah and His blessings be upon the Noble Prophet(the last of all prophets), his companions, household and the entire Muslims. I give gratitude to Allah for His mercies and grace bestowed on me over the years vis-a-vis sparing my life from the beginning to the end of my course in the "Better by Far" University.\\
+	
+	\NI i
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	I would like to dedicate the project to God, for the grace and faithfulness of God thus far. For His mercies, guidance and protection throughout my years of study.
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	This project deals with 
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{GENERAL INTRODUCTION}
+		
+	\section{Background to the study}
+	\subsection*{Introduction to Complex Analysis}
+	Complex analysis conventionally known as the study of functions of a complex variable as a branch of mathematical analysis with roots in the 18th century and prior, studies complex numbers and their derivatives, applications and other properties.\\
+	
+	Important mathematicians associated with complex numbers include Euler, Gauss, Riemann, Cauchy, Weierstrass, and many more in the 20th centery. Complex analysis has many physical application and is also used throughout analytic number theory.\\
+	
+	Complex number is an element of a number system that contains the real numbers and a specific element denoted by ``$\mbf{i}$", called the imaginary unit and satisfy the equation $\dsp \mbf{i^2 = -1}$. Moreover, every complex number can be expressed in the form $\mathbf{a+bi}$, where $\mbf{a}$ and $\mbf{b}$ are real numbers. Because no real number satisfies the above equation, $\mbf{i}$ was called an imaginary number by \bt{Ren\'{e} Descartes}. For the complex number $\dsp \mbf{a+bi}$, $\mbf{a}$ is called the real number part and $\mbf{b}$ is called the imaginary part. The set of complex numbers is denoted by $\complex$.\\
+	
+	In complex analysis, we also make use of some special functions such as the Gamma and Beta functions, Legendre's equations and functions, Bessel functions. Special functions are particularly mathematical functions that have more or less established names and notations due to their importance in mathematical analysis, functional analysis, geometry, physics, or other applications. Many special functions appear as solutions of differential equations or integrals of elementary functions. Special functions such as the Gamma functions on which this study is based behaves like a factorial for natural numbers (a discrete set), it extension to the positive real numbers (a continuous set) makes it useful for modelling situations involving continuous change, with important applications to calculus, differential equations, complex analysis and statistics.
+	
+	\section{Why do we study Complex Analysis?}
+	The study of complex analysis is important for students in physical sciences and also in the engineering field. It is a central subject in mathematics which provide extremely powerful tools for solving problems that are either very difficult or virtually impossible to solve in any other way.
+	
+	\section{Scope of Study}
+	This study focuses on Gamma functions, we shall introduce the analytical application of Gamma functions in the solution of some integrals. 
+	
+	
+	\section{Aim and Objectives of the Study}
+	The aim of this study is to show the Analytical application of the Gamma functions in the evaluation of some integrals. For this purpose, the objectives are applying the Gamma function:
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi})}
+		\item in the proof of the legitimacy of the standard normal distribution as a probability density function (PDF)
+		
+		\item in finding the Laplace transform of a continuous function on $[0,\infty)$
+		
+		\item in finding the Fourier transform of a continuous function on $[0,\infty)$
+	\end{enumerate}
+	
+	\section{Significance of the Study}
+	The Gamma function is a powerful tool in solving mathematical problems. It has been studied and presented with illustrative examples to demonstrate its usefulness. Those in Sciences and Engineering will benefit from the application of the Gamma function as shown in this study, as it will make solutions easier to get and equation easier to work with.
+	
+	\section{Purpose of the Study}
+	The purpose of this study is to trace a brief history of the development of the Gamma function and illustrate its application in the proofs of some useful properties and identities in mathematics and statistics.
+	
+	\section{Definition of Relevant Terms}
+	\subsection{The Gamma Function}
+	For $s>0$, the gamma function, $\dsp \Gamma(s)$ commonly known as Euler's integral is defined as
+	\begin{eqnarray}
+		\Gamma(s) = \int_0^\infty e^{-t}t^{s-1}dt\label{eq:1_1}
+	\end{eqnarray}
+	The central relation is given by
+	\begin{eqnarray}
+		\Gamma(s+1) = s\Gamma(s) = s!,~~ s>0 \label{eq:1_2}
+	\end{eqnarray}
+	
+	\subsection{Standard Normal Distribution}
+	This also another very important subject considered in this study. A normal random variable is said to be Standard Normal Distributed, if its mean is zero and variance is one. The standard normal random variable $Z$ is denoted by $Z\sim N(0,1)$.\\
+	\ubt{Definition:} A continuous random variable $Z$ is said to be a standard normal random variable $Z\sim N(0,1)$, if its PDF is given by:
+	\begin{eqnarray}
+		f_z(z) = \frac{1}{\sqrt{2\pi}} \exp\left\{-\frac{z^2}{2}\right\}~;~~ \forall~~ -\infty < z < \infty, ~ z \in \real\label{eq:1_3}
+	\end{eqnarray}
+	\ubt{NOTE:} The $\dsp \frac{1}{\sqrt{2\pi}}$ is there to make sure that the area under the PDF (Probability Density Function) is one. Thus, by \refx{1_3}, we have
+	\begin{eqnarray}
+		\int_{-\infty}^\infty f(z)dz =  \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \exp\left\{-\frac{z^2}{2}\right\}dz = 1\label{eq:1_4}
+	\end{eqnarray}
+	Hence, the integral \refx{1_4} is the total area bounded by the curve of the standard normal distribution and the horizontal axis which is equal to 1.
+	
+	\subsection{Moment Generating Function(M.G.F)}
+	\label{sec:1_7_3}
+	This is another topic that needs to be discussed in relation to the Standard Normal Distribution.
+	
+	The moment generating function is a real valued function from which one can generate all the moments of a given random variable.\\
+	\ubt{Definition:} Let $z$ be a standard normal variable whose probability density function is $f(z)$. The moment generating function of $z$ for all $t\in \real$ is given as
+	\begin{eqnarray}
+		M_z(t) = E\left(e^{tz}\right) = e^{\frac{t^2}{2}}\label{eq:1_5}
+	\end{eqnarray}
+	
+	\subsection{The Laplace Transform}
+	\label{sec:1_7_4}
+	Suppose that $f$ is a real-valued or complex-valued function of the variable $t>0$ and $s$ is a real or complex parameter. The Laplace transform of $f$ is given as:
+	\begin{eqnarray}
+		F(s) = \LFt = \LaplaceIntegral = \lim\limits_{A\rightarrow \infty}\int_0^A e^{-st}f(t)\text{dt}\label{eq:1_6}
+	\end{eqnarray}
+	Whenever the limit exists (as a finite number). If the limit exists, the integral \refx{1_6} is said to converge. If the limit does not exist, the integral is said to diverge and there is no Laplace transform defined for $f$. The Laplace transform of $f$ is denoted as $\Laplace(f)$.
+	
+	\subsection{Fourier Transform as Integrals}
+		\label{sec:1_7_5}
+	Let $\dsp f:\real\rightarrow\complex$. The Fourier transform of $f\in L'(\real)$, denoted by $\dsp F[f](t)$, is defined by
+	\begin{eqnarray}
+		F[f](t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)e^{(ixt)}\text{dx}\label{eq:1_7}
+	\end{eqnarray}
+	for $t\in\real$, for which the integral exist.
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{SPECIAL FUNCTIONS}
+	\section{Introduction}
+	Many special functions arise in the consideration of solutions of several differential equations. Special functions are some essential functions that are important enough to be given their own name. These include the well-known Logarithmic, exponential and trigonometric functions, and extend to cover the Gamma, Beta and Zeta functions, spherical and parabolic cylinder functions, and the class of orthogonal polynomials, among many others.\\
+	
+	The vast field of these functions contains many formulae and identities used by mathematicians, engineers and physicists. Special functions have extensive applications in pure mathematics, as well as in applied areas such as acoustic, electrical current, fluid dynamics, heat conduction, solution of wave equations, moments of inertia and quantum mechanics.
+	
+	\section{Evaluation of Special Functions}
+	Most Special functions are considered as a function of a complex variable. They are analytic; the singularities and the cuts are described; the differential and integral representations are known and the expansion to the Taylor Series or Asymptotic Series are available. In addition, sometimes there exist relations with other special functions; a complicated special function can be expressed in terms of simpler functions. Various representations can be used for evaluation; the simplest way to evaluate a function is to expand it into Taylor Series. However, such representation may converge slowly or not at all. In algorithmic languages, rational approximations are typically used, although they may behave badly in the case of complex argument(s).\sps
+	Examples of Special functions includes:\\
+	Gamma function, Beta function, Error function and complementary Error function, Unit Step function, Bessel's function, Sinusoidal Pulse function, Gate function, Rectangle function, Signum function, Periodic function to mention but a few.
+	
+	\subsection{The Gamma Function}
+	If $s>0$, then Gamma function is defined by the integral $\dsp\int_0^\infty e^{-st}t^{s-1}dt$ and is denoted by $\dsp \Gamma(s)$ i.e
+	\begin{eqnarray}
+		\Gamma(s) = \int_0^\infty e^{-t}t^{s-1}dt\label{eq:2_1}
+	\end{eqnarray}
+	
+	\properties
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi}.}
+		\item Reduction formula for Gamma function $\Gamma(s+1)=s\Gamma(s)$; where $s>0$.
+		
+		\item If $s$ is a positive integer, then $\Gamma(s+1)=s!$.
+		
+		\item Second form of Gamma function $\dsp\int_0^\infty e^{-t^2}t^{2m-1} dt = \frac{1}{2}\Gamma(m)$.
+		
+		\item Relationship between Beta and Gamma function, $\dsp\beta(m,n)=\frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}$
+		
+		\item $\dsp\int_0^{\frac{\pi}{2}}\sin^p\theta\cos^q\theta d\theta = \frac{1}{2}\frac{\Gamma\left(\frac{p+1}{2}\right)\Gamma\left(\frac{q+1}{2}\right)}{\Gamma\left(\frac{p+q+2}{2}\right)}$
+		
+		\item $\dsp\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$
+		
+		\item $\dsp\Gamma\left(\frac{s+1}{2}\right) = \frac{(2s)!\sqrt{\pi}}{s!4^s}$ for $s=0,1,2,3,\ldots$
+	\end{enumerate}
+	
+	\subsubsection{Special Cases}
+		\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi}.}
+		\item For $s=0$, $\dsp\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$
+		
+		\item For $s=1$, $\dsp \Gamma\left(\frac{3}{2}\right) = \frac{\sqrt{\pi}}{2}$
+		
+		\item For $s=2$, $\dsp \Gamma\left(\frac{5}{2}\right) = \frac{3\sqrt{\pi}}{4}$
+	\end{enumerate}
+	
+	\subsection{Beta Function}
+	If $m>0, ~ n>0$, then Beta function is defined by the integral $\dsp\int_0^1t^{m-1}(1-t)^{n-1}dt$ and is denoted by $\beta(m,n)$ i.e
+	\begin{eqnarray}
+		\beta(m,n) = \int_0^1t^{m-1}(1-t)^{n-1}dt \label{eq:2_2}
+	\end{eqnarray}
+
+	\properties
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi}.}
+		\item Beta function is symmetric function. i.e $\beta(m,n) = \beta(n,m)$, where $m>0~ n>0$.
+		
+		\item $\dsp\beta(m,n) = 2\int_0^{\frac{\pi}{2}}\sin^{2m-1}\theta\cos^{2n-1}\theta d\theta$
+		
+		\item $\dsp\int_0^{\frac{\pi}{2}}\sin^{p}\theta\cos^{q}\theta d\theta = \frac{1}{2}\beta\left(\frac{p+1}{2}, \frac{q+1}{2}\right) $
+	\end{enumerate}
+	
+	
+	\subsection{Error Function and Complementary Error Function}
+	The Error function of $x$ is defined by the integral $\dsp\frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}dt$, where $x$ may be real or complex variable and is denoted by $erf(x)$ i.e
+	\begin{eqnarray}
+		erf(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}dt \label{eq:2_3}
+	\end{eqnarray}
+	The complementary error function is denoted by $erf_c(x)$ and defined as
+	\begin{eqnarray}
+		erf_c(x) = \frac{2}{\sqrt{\pi}}\int_x^\infty e^{-t^2}dt \label{eq:2_4}
+	\end{eqnarray}
+	
+	\properties
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi}.}
+		\item $erf(0) = 0$
+		\item $erf(\infty) = 1$
+		\item $erf(x) + erf_c(x) = 1$
+		\item $erf(-x) = -erf(x)$
+	\end{enumerate}
+	
+	\subsection{Unit Step Function}
+	The Unit Step Function is defined by
+	\begin{eqnarray}
+		U(x-a) = \left\{
+			\begin{array}{l}
+				1, \text{ for } x \geq a\\
+				0, \text{ for } x < a
+			\end{array}\right., \text{ where } a \geq 0 \label{eq:2_5}
+	\end{eqnarray}
+	
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\draw[thick, <->] (0,-1)--(0,4);
+			\node at (0,4.2){$U(x-a)$};
+			\draw[thick, <->] (-1,0)--(4,0);
+			\node at (4.2,0){$x$};
+			\node at (-0.3, -0.3){0};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\draw[dashed] (0,1.7)--(1.7,1.7)--(1.7,0);
+			\draw[->] (1.76,1.7)--(3,1.7);
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\node at (-0.3, 1.7){1};
+			\node at (1.7,-0.3){$a$};
+		\end{tikzpicture}\caption{Unit Step Function}\label{fig:2_1}
+	\end{figure}
+
+	\subsection{Bessel's Function}
+	A Bessel's function of order $n$ is defined by
+	\begin{eqnarray}
+		J_n(x) &=& \frac{x^n}{2^n\Gamma(n+1)}\left[1 - \frac{x^2}{2(n+2)} + \frac{x^4}{2\cdot 4 (2n+2)(2n+4)} - \cdots \right]\notag\sps 
+		&=& \sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(n+k+1)}\left(\frac{x}{2}\right)^{n+2k} \label{eq:2_6}
+	\end{eqnarray}
+	
+	\properties
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi}.}
+		\item $\dsp J_{-n}(x) = (-1)^n J_n(x)$, if $n$ is a positive integer
+		
+		\item $\dsp J_{n+1}(x) = \frac{2n}{x}J_n(x) - J_{n-1}(x)$
+		
+		\item $\dsp \frac{d}{dx}\left(x^nJ_n(x)\right) = x^nJ_{n-1}(x)$
+	\end{enumerate}
+	
+	\subsection{Sinusoidal Pulse Function}
+	The Sinusoidal Pulse function is defined by
+	\begin{eqnarray}
+		f(x) = \left\{
+		\begin{array}{lll}
+			\sin ax &,&\text{ for } 0 \leq x \leq \dsp\frac{\pi}{a}\sps
+			0 &,& \text{ for } x > \dsp\frac{\pi}{a}
+		\end{array}\right. \label{eq:2_7}
+	\end{eqnarray}
+	
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\draw[thick, <->] (0,-1)--(0,4);
+			\node at (0,4.2){$f(x)$};
+			\draw[thick, <->] (-1,0)--(4,0);
+			\node at (4.2,0){$x$};
+			\node at (-0.3, -0.3){0};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\draw (0,0) .. controls(1.1,2.3) .. (1.7,0);
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\node at (1.7,-0.5){$\dsp\frac{\pi}{a}$};
+		\end{tikzpicture}\caption{Sinusoidal Pulse Function}\label{fig:2_2}
+	\end{figure}
+	
+	\subsection{Gate Function}
+	A Gate function $f_a(x)$ defined on $\real$ as
+	\begin{eqnarray}
+		f_a(x) = \left\{
+		\begin{array}{l}
+			1, \text{ for } |x| \leq a\\
+			0, \text{ for } |x| > a
+		\end{array}\right.
+	\end{eqnarray}
+	
+	\subsubsection{NOTES}
+	The gate function is symmetric about axis of co-domain. Gate function is also a rectangle function.
+	
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\draw[thick, <->] (0,-1.5)--(0,4);
+			\node at (0,4.2){$f(x)$};
+			\draw[thick, <->] (-4,0)--(4,0);
+			\node at (4.2,0){$x$};
+			\node at (-0.3, -0.3){0};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\draw (-2.8,2) -- (2.8,2);
+			\draw[dashed] (-2.8,0)--(-2.8,2);
+			\draw[dashed] (2.8,0)--(2.8,2);
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\node at (-0.3, 2.15){1};
+			\node at (-2.8,-0.3){$-a$};
+			\node at (2.8,-0.3){$a$};
+		\end{tikzpicture}\caption{Gate Function}\label{fig:2_3}
+	\end{figure}
+	
+	\subsection{Rectangle Function}
+	A Rectangle function $f(x)$ defined on $\real$ as
+	\begin{eqnarray}
+		f(x) = \left\{
+		\begin{array}{l}
+			1, \text{ for } a \leq x \leq b\\
+			0, \text{ otherwise } 
+		\end{array}\right.\label{eq:2_9}
+	\end{eqnarray}
+	
+	\begin{figure}[!h]
+		\centering
+		\begin{tikzpicture}
+			\draw[thick, <->] (0,-1)--(0,4);
+			\node at (0,4.2){$f(x)$};
+			\draw[thick, <->] (-4,0)--(4,0);
+			\node at (4.2,0){$x$};
+			\node at (-0.3, -0.3){0};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\draw (-2.8,2) -- (2.8,2);
+			\draw[dashed] (-2.8,0)--(-2.8,2);
+			\draw[dashed] (2.8,0)--(2.8,2);
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\node at (-0.3, 2.15){1};
+			\node at (-2.8,-0.3){$a$};
+			\node at (2.8,-0.3){$b$};
+		\end{tikzpicture}\caption{Rectangle Function}\label{fig:2_4}
+	\end{figure}
+	
+	
+	\subsection{Signum Function}
+	The Signum function is defined by
+	\begin{eqnarray}
+		f(x) = \left\{
+		\begin{array}{l}
+			1, \text{ for } x > 0 \\
+			-1, \text{ for } x < 0 
+		\end{array}\right.\label{eq:2_10}
+	\end{eqnarray}
+	
+	\begin{figure}[!h]
+		\centering
+		\begin{tikzpicture}
+			\draw[thick, <->] (0,-2.5)--(0,3);
+			\node at (0,3.2){$f(x)$};
+			\draw[thick, <->] (-4,0)--(4,0);
+			\node at (4.2,0){$x$};
+			\node at (-0.3, -0.3){0};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\node at (-0.3, 1.5){1};
+			\draw[->] (0,1.5)--(3,1.5);
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\node at (-0.3,-1.4){-1};
+			\draw[->] (0,-1.55) -- (-3,-1.55);
+		\end{tikzpicture}\caption{Signum Function}\label{fig:2_5}
+	\end{figure}
+	
+	\subsection{Periodic Function}
+	A function $f$ is said to be periodic, if $f(x+p)=f(x)$ for all $x$, if smallest positive number of set of all such $p$ exists, then that number is called the Fundamental Period of $f(x)$.
+	
+	\subsubsection{NOTE}
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi}.}
+		\item Constant function is periodic without fundamental period.
+		
+		\item Sine and Cosine are  periodic functions with Fundamental period $2\pi$.
+	\end{enumerate}
+	
+	\subsection{The Hypergeometric Function}
+	The hypergeometric function is defined for $|z| < 1$ by the power series
+	\begin{eqnarray}
+		{}_2F_1(a;b;c;z) = \sum_{n=0}^{\infty} \frac{(a)_n(b)_n}{(c)_n}\frac{z^n}{n!} = 1 + \frac{ab}{c}\frac{z}{1!} + \frac{a(a+1)b(b+1)}{c(c+1)}\frac{z^2}{2!}+ \cdots\label{eq:2_11}
+	\end{eqnarray}
+	
+	\properties
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi}.}
+		\item It is undefined (or infinite) if $c$ equals a non-positive integer.
+		
+		\item The series terminates if either $a$ or $b$ is a non-positive integer.
+		
+		\item For complete arguments $z$ with $|z|\geq 1$ is can be analytically continued along any path in the complex plan that avoids the branch points 1 and infinity.
+	\end{enumerate}
+
+	
+	\section{The Theory of Special Functions}
+	
+	In the broad sense, a set of several classes of functions that arise in one solution of both theoretical and applied problems in various branches of mathematics.\\
+	
+	In the narrow sense, the special functions of mathematical physics, which arise when solving partial differential equations by the method of separation of variables.\\
+	
+	Special function can be defined by means of power series, generating functions, infinite products, repeated differentiation, integral presentations, differential, difference, integral and functional equations, trigonometric series, or other series in orthogonal functions.\\
+	
+	The most important classes of special functions are the following: the gamma function, and the beta functions; hypergeometric functions and confluent hypergeometric functions; Bessel's functions; Legendre functions; parabolic cylinder functions; incomplete gamma functions and incomplete beta function; various classes of orthogonal polynomials in one or several variables; the Riemann Zeta function; integral sine and integral cosine functions; probability integral; elliptic functions and elliptic integral; Lame functions and Mathieu functions; automorphic functions; and some special functions of a discrete argument.\\
+	
+	The theory of special functions is connected with group representations, with methods of integral representations based on the generalization of the Rodrigues formula for classical orthogonal polynomials, and with methods in probability theory.
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{THE GAMMA FUNCTION}
+	
+	\section{Introduction}
+	During the years 1729 and 1730, Euler introduced an analytic function which has the property to interpolate the factorial whenever the argument of the function is an integer. The Gamma function is an extension of the factorial function, with its argument shifted down by 1, to real and complex numbers. The Gamma function is defined by an improper integral that converges for all real numbers except the non-positive integers and converges for all complex numbers with non-zero imaginary part. The factorial is extended by analytic continuation to all complex numbers except the non-positive integers(where the integral function has simple poles), yielding the metromophic function we know as the Gamma Function.\\
+	
+	At the heat of the theory of Special function lies the Gamma function, in that nearly almost all of the classical special functions can be evaluated by this powerful function. Gamma functions have explicit series and integral functional representations, and this provide ideal tools for establishing useful products and transformation formulae. In addition, applied problems frequently require solutions of a function in terms of parameters, rather than merely in terms of a variable, and such a solution is perfectly provided for by the parametric nature of the Gamma function. As a result, the Gamma function can be used to evaluate physical problems in diverse areas of applied mathematics. While the Gamma functions original intent was to model and interpolate the factorial function, mathematicians and geometers have discovered and developed many other interesting applications thus playing a particularly useful role in applied mathematics. Equations involving Gamma functions are of great interest to mathematicians and scientists, and newly proven identities for these functions assist in finding solutions for many differential and integral equations.\\
+	
+	There exist a vast number of such identities, representations and transformations for the Gamma function, the comprehensive text providing over 400 integral and series representations for these functions. Gamma functions thus provide a rich field for ongoing research, which continue to produce new results. In 1959, it was made known that ``of the so-called `higher mathematical functions', the Gamma function is undoubtedly the most fundamental". For instance, the rising factorial provides a direct link between the Gamma and hyper-geometric functions, and most hyper-geometric identities can be more elegantly expressed in terms of the Gamma function.\\
+	
+	It is also known that, ``the Gamma functions and Beta integral are essential to understanding hyper-geometric functions". It is thus enlightening and rewarding to explore the various representations and relations of the Gamma function. The definite integral $\dsp\int_0^\infty e^{-t}t^{n-1}dt$ for $n>0$ is referred to as the Gamma function and it is denoted by $\dsp \Gamma(n)$. Thus
+	\begin{eqnarray}
+		\Gamma(s) = \int_0^\infty e^{-t}t^{s-1}dt~,~~ s>0\label{eq:3_1}
+	\end{eqnarray}
+	
+	\section{Properties of Gamma Functions}
+	\begin{enumerate}
+		\item $\dsp \Gamma(1) = 1$
+		\item $\dsp\Gamma(s+1) = s\Gamma(s), ~~ s>0$
+		\item If $n$ is a non-negative integer, then $\dsp\Gamma(s+1)=s!$
+	\end{enumerate}
+
+	\subsection{Proofs of the Properties}
+	\begin{enumerate}
+		\item $\dsp \Gamma(1) = 1$\\
+			\ubt{Proof}
+			\begin{eqnarray*}
+				\Gamma(s) &=& \int_0^\infty e^{-t}t^{s-1}dt~,~~ s>0~~~~ \text{ by definition}\sps
+				\Gamma(1) &=& \int_0^\infty e^{-t}t^{1-1}dt\sps
+				&=& \int_0^\infty e^{-t}dt\sps
+				&=& -e^{-t}\Big|_0^\infty\sps
+				&=& -\left[\frac{1}{e^t}\right]_0^\infty\sps
+				&=& -\left[\frac{1}{e^\infty} - \frac{1}{e^0}\right]\sps
+				&=& - \Big[0-1\Big] = 1\sps
+			\end{eqnarray*}
+		
+		\item $\dsp\Gamma(n+1) = n\Gamma(n), ~~ n>0$\\
+			\ubt{Proof}
+			\begin{eqnarray*}
+				\Gamma(n) &=& \int_0^\infty e^{-t}t^{n-1}dt~,~~ n>0~~~~ \text{ by definition}\sps
+				\Gamma(n+1) &=& \int_0^\infty e^{-t}t^{n+1-1}dt\sps
+				&=& \int_0^\infty e^{-t}t^ndt\sps
+				&=& -\frac{t^n}{e^t}\Bigg|_0^\infty + n\int_0^\infty e^{-t}t^{n-1}dt\sps
+				&=& 0 + n\Gamma(n)\sps
+				\Gamma(n+1) &=& n\Gamma(n)\sps
+			\end{eqnarray*}
+		
+		\item $\dsp\Gamma(n+1) = n!$\\
+			\ubt{Proof}\\
+			From ii above,\\
+			\begin{gather}
+				\Gamma(n+1) = n\Gamma(n)\tag{1}\label{t:1}
+			\end{gather}
+			If $n$ is replaced with $n-1$, we have
+			\begin{gather}
+				\Gamma(n-1+1) = (n-1)\Gamma(n-1)\notag\sps
+				\Gamma(n) = (n-1)\Gamma(n-1)\tag{2}\label{t:2}
+			\end{gather}
+			Replacing $n$ with $n-1$ again, we get
+			\begin{gather}
+				\Gamma(n-1) = (n-1-1)\Gamma(n-1-1)\notag\sps
+				= (n-2)\Gamma(n-2)\tag{3}\label{t:3}
+			\end{gather}
+			Putting \refn{t:2} and \refn{t:3} in \refn{t:1}, we get
+			\begin{gather}
+				\Gamma(n+1)=n(n-1)(n-2)\Gamma(n-2)\tag{4}\label{t:4}
+			\end{gather}
+			Continuing with the process yields
+			\begin{gather*}
+				\Gamma(n+1) = n(n-1)(n-2)(n-3)\cdots\times 2\Gamma(1)
+			\end{gather*}
+			But $\Gamma(1)=1$
+			\begin{gather*}
+				\therefore \quad\Gamma(n+1) = n(n-1)(n-2)(n-3)\cdots\times 2 \times 1
+			\end{gather*}
+	\end{enumerate}
+	
+	
+	\section{Extension of Definition of Gamma Function $\mbf{\Gamma(n)}$ for $\mbf{n<0}$}
+	
+	When $n>0$, we known that $\Gamma(n+1) = n\Gamma(n)$\\
+	So that: $\dsp \Gamma(n) = \frac{\Gamma(n+1)}{n}$
+	
+	\property
+	To show that $\Gamma(n) = \infty$ if $n=0$ or a negative integer.\sps
+	Putting $n=0$
+	\begin{gather}
+		\Gamma(n) = \frac{\Gamma(n+1)}{n}\tag{1}\label{t:3_3_1}\sps
+		\Gamma(0) = \frac{\Gamma(0+1)}{0}\notag\sps
+		\Gamma(0) = \frac{\Gamma(1)}{0} = \frac{1}{0} = \infty\notag
+	\end{gather}
+	Also, putting $n=-1$ in \refn{t:3_3_1}
+	\begin{eqnarray*}
+		\Gamma(-1) &=& \frac{\Gamma(-1+1)}{-1}\sps
+		\Gamma(-1) &=& \frac{\Gamma(0)}{-1} = \frac{\infty}{-1}\sps
+		\Gamma(-1) &=& \infty
+	\end{eqnarray*}
+	Also, putting $n=-2$ in \refn{t:3_3_1}
+	\begin{eqnarray*}
+		\Gamma(-2) &=& \frac{\Gamma(-2+1)}{-2}\sps
+		\Gamma(-2) &=& \frac{\Gamma(-1)}{-2}\sps
+		\Gamma(-2) &=& \frac{\infty}{-2} = \infty\\
+	\end{eqnarray*}
+	Thus, we find that $\Gamma(n) = \infty$ if $n=0$ or negative integer.
+	
+	
+	\example{3.1}
+	Evaluate $\dsp\int_0^\infty t^4e^{-t}dt$
+	
+	\solution
+	Recall that
+	\begin{eqnarray*}
+		\Gamma(n) = \int_0^\infty e^{-t}t^{n-1}dt\qquad \text{ by definition}
+	\end{eqnarray*}
+	So by comparison
+	\begin{eqnarray*}
+		\int_0^\infty e^{-t}t^{5-1}dt &=& \Gamma(5)\sps
+		&=&\Gamma(4+1)\sps
+		\text{ Recall } \Gamma(n+1) &=& n!\sps
+		\Gamma(4+1) &=& 4!\sps
+		&=& 24
+	\end{eqnarray*}
+	
+	\example{3.2}
+	Evaluate $\dsp\int_0^\infty t^6e^{-2t}dt$
+	
+	\solution
+	Recall
+	\begin{eqnarray*}
+		\int_0^\infty e^{-t}t^{n-1}dt = \Gamma(n)
+	\end{eqnarray*}
+	Let $\dsp 2t = u\qquad\qquad t = \frac{u}{2}$\sps
+	$\dsp\frac{dt}{du}=\frac{1}{2}\quad ; \qquad \quad dt = \frac{du}{2}$\sps
+	Taking the limit\\
+	When $t=0, u=0$\\
+	When $t=\infty, u=\infty$
+	
+	\begin{eqnarray*}
+		\int_0^\infty t^6 e^{-2t} dt &=& \int_0^\infty\left(\frac{u}{2}\right)^6 e^{-u}\frac{du}{2}\sps
+		&=& \int_0^\infty \frac{u6}{128}e^{-u}du\sps
+		&=&\frac{1}{128}\int_0^\infty e^{-u}u^6 du\sps
+		&=&\frac{1}{128}\int_0^\infty e^{-u}u^{7-1}du\sps
+		&=&\frac{1}{128}\Gamma(7)\sps
+		&=&\frac{1}{128}\Gamma(6+1)\sps
+		&=&\frac{1}{128}\cdot 6!\sps
+		&=&\frac{1}{128}\times 720\sps
+		&=&\frac{45}{8}
+	\end{eqnarray*}
+	
+	
+	\section{Beta Function}
+	The integral in the definition of the Gamma function is known as Euler's second integral. Now, Euler's first integral (1730) is an integral related to the Gamma function which he also proposed.\\
+	
+	The definite integral $\dsp\int_0^1 t^{m-1}(1-t)^{n-1}dt$, for $m>0, n>0$ is known as the Beta function and it is denoted by $\beta(m,n)$. The Beta function is called Eulerian Integral of the first kind. Thus, 
+	\begin{eqnarray}
+		\beta(m,n) = \int_0^1 t^{m-1}(1-t)^{n-1}dt~~~, m>0, n>0 \label{eq:3_2}
+	\end{eqnarray}
+	
+	
+	\section{Relationship Between the Gamma and Beta Function}
+	Recall that the gamma function is defined, for $n>0$, as
+	\begin{eqnarray*}
+		\Gamma(n) = \int_0 t^{n-1}e^{-t}dt
+	\end{eqnarray*}
+	Recall that the beta function is defined, for $m,n>0$ as 
+	\begin{eqnarray*}
+		\beta(m,n) = \int_0^1 t^{m-1}(1-t)^{n-1}dt
+	\end{eqnarray*}
+	
+	\NI \bt{Claim:} The gamma and beta functions are related as
+	\begin{eqnarray}
+		\beta(m,n) = \frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}
+	\end{eqnarray}
+	
+	\NI\bt{Proof}\\
+	\begin{eqnarray*}
+		\Gamma(m)\Gamma(n) &=& \left(\int_0^\infty t^{m-1}e^{-t}dt\right)\left(\int_0^\infty x^{n-1}e^{-x}dx\right)\sps
+		&=&\int_0^\infty\int_0^\infty t^{m-1}x^{n-1}e^{-(t+x)}dxdt
+	\end{eqnarray*}
+	Now make the substitution $t=uv, x = u(1-v)$. Note that the Jacobian of this transformation is
+	\begin{eqnarray*}
+		J = \left|
+		\begin{array}{cc}
+			\dfrac{\partial t}{\partial u} & \dfrac{\partial t}{\partial v}\sps
+			\dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}
+		\end{array}\right| = 
+		\left|
+		\begin{array}{cc}
+			v & u\sps
+			1-v & -u
+		\end{array}\right| = -u
+	\end{eqnarray*}
+	
+	\NI Also, since $u=t+x$ and $v=\dfrac{t}{t+x}$, we have that the limits of integration for $u$ are 0 to $\infty$ and the limits of integration for v are 0 to 1.\\
+	
+	\NI Thus,
+	\begin{eqnarray*}
+		\Gamma(m)\Gamma(n) &=& \int_0^\infty\int_0^\infty t^{m-1}x^{n-1}e^{-(t+x)}dxdt\sps
+		&=&\int_0^1\int_0^\infty (uv)^{m-1}[u(1-v)]^{n-1} e^{-[uv + u(1-v)]} |-v|dudv\sps
+		&=&\int_0^1\int_0^\infty u^{m+n-1}v^{m-1}(1-v)^{n-1}e^{-u}dudv\sps
+		&=&\left(\int_0^1v^{m-1}(1-v)^{n-1}dv\right)\left(\int_0^\infty u^{m+n-1}e^{-u}du\right)\sps
+		&=& \beta(m,n)\cdot \Gamma(m+n)
+	\end{eqnarray*}
+	as desired.
+	
+	
+	\section{Examples on Gamma Function}
+	
+	\example{3.5.1}
+	Prove that $\dsp\int_0^\infty e^{-t^2}t^2 dt = \frac{\sqrt{\pi}}{4}$
+	
+	\solution
+	\begin{eqnarray*}
+		\int_0^\infty e^{-t^2}t^2 dt
+	\end{eqnarray*}
+	Let $\dsp t^2 = u \quad\implies\quad t = u^{1/2}$\\
+	{~ \qquad\qquad ~}$\dsp dt = \frac{1}{2} u^{-1/2}du$
+	\begin{eqnarray*}
+		\int_0^\infty e^{-t^2}t^2 dt &=& \int_0^\infty e^{-u}\left(u^{1/2}\right)^2 \cdot \frac{1}{2} u^{-1/2}du\sps
+		&=& \frac{1}{2}\int_0^\infty e^{-u} u^{1-\frac{1}{2}}du\sps
+		&=&\frac{1}{2}\int_0^\infty u^{\frac{1}{2}} du\sps
+		&=&\frac{1}{2}\int_0^\infty e^{-u} u^{\frac{3}{2}-1}du\sps
+		&=&\frac{1}{2}\Gamma\left(\frac{3}{2}\right) \implies \Gamma\left(\frac{3}{2}\right) = \Gamma\left(\frac{1}{2}+1\right)=\frac{1}{2}\Gamma\left(\frac{1}{2}\right)\sps
+		&=& \frac{1}{2}\cdot \frac{1}{2}\Gamma\left(\frac{1}{2}\right)\sps
+		&=&\frac{\sqrt{\pi}}{4} \qquad \text{where } \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}
+	\end{eqnarray*}
+	
+	\example{3.5.2}
+	Show that $\dsp\Gamma\left(-\frac{15}{2}\right) = \frac{2^8\sqrt{\pi}}{1\cdot 3 \cdot 5 \cdot 7 \cdot 9 \cdot 11 \cdot 13 \cdot 15}$
+	
+	\solution
+	\begin{eqnarray*}
+		\Gamma\left(-\frac{15}{2}\right)
+	\end{eqnarray*}
+	Recall $\Gamma(n+1)=n\Gamma(n)$
+	\begin{eqnarray*}
+		\Gamma(n) &=& \frac{\Gamma(n+1)}{n}\sps
+		\Gamma\left(-\frac{1}{2}\right) &=& \frac{\Gamma\left(-\frac{1}{2} + 1\right)}{-\frac{1}{2}} = \frac{\Gamma\left(\frac{1}{2}\right)}{-\frac{1}{2}} = -2\sqrt{\pi}\sps
+		\Gamma\left(-\frac{3}{2}\right) &=& \frac{\Gamma\left(-\frac{3}{2} + 1\right)}{-\frac{3}{2}} = \frac{\Gamma\left(\frac{-1}{2}\right)}{-\frac{3}{2}} = \frac{4\sqrt{\pi}}{3}\sps
+		\Gamma\left(-\frac{5}{2}\right) &=& \frac{\Gamma\left(-\frac{5}{2} + 1\right)}{-\frac{5}{2}} = \frac{\Gamma\left(\frac{-3}{2}\right)}{-\frac{5}{2}} = \frac{-8\sqrt{\pi}}{15}\sps
+		\Gamma\left(-\frac{7}{2}\right) &=& \frac{\Gamma\left(-\frac{7}{2} + 1\right)}{-\frac{7}{2}} = \frac{\Gamma\left(\frac{-5}{2}\right)}{-\frac{7}{2}} = \frac{16\sqrt{\pi}}{15 \cdot 7}\sps
+		\Gamma\left(-\frac{9}{2}\right) &=& \frac{\Gamma\left(-\frac{9}{2} + 1\right)}{-\frac{9}{2}} = \frac{\Gamma\left(\frac{-7}{2}\right)}{-\frac{9}{2}} = \frac{-32\sqrt{\pi}}{15 \cdot 9 \cdot 7}\sps
+		\Gamma\left(-\frac{11}{2}\right) &=& \frac{\Gamma\left(-\frac{11}{2} + 1\right)}{-\frac{11}{2}} = \frac{\Gamma\left(\frac{-9}{2}\right)}{-\frac{11}{2}} = \frac{64\sqrt{\pi}}{15 \cdot 11 \cdot 9 \cdot 7}\sps
+		\Gamma\left(-\frac{13}{2}\right) &=& \frac{\Gamma\left(-\frac{13}{2} + 1\right)}{-\frac{13}{2}} = \frac{\Gamma\left(\frac{-11}{2}\right)}{-\frac{13}{2}} = \frac{-128\sqrt{\pi}}{15 \cdot 13 \cdot 11 \cdot 9 \cdot 7}\sps
+		\Gamma\left(-\frac{15}{2}\right) &=& \frac{\Gamma\left(-\frac{15}{2} + 1\right)}{-\frac{15}{2}} = \frac{\Gamma\left(\frac{-13}{2}\right)}{-\frac{15}{2}} = \frac{256\sqrt{\pi}}{15 \cdot 13 \cdot 11 \cdot 9 \cdot 7 \cdot 5 \cdot 3 \cdot 1}\sps
+		\Gamma\left(-\frac{15}{2}\right) &=&  \frac{2^8\sqrt{\pi}}{15 \cdot 13 \cdot 11 \cdot 9 \cdot 7 \cdot 5 \cdot 3 \cdot 1}\sps
+	\end{eqnarray*}
+	
+	
+	\example{3.5.3}
+	Evaluate $\dsp\int_0^1 t^4(1-t)^2dt$
+	
+	\solution
+	\begin{eqnarray*}
+		\int_0^1 t^4(1-t)^2dt
+	\end{eqnarray*}
+	Recall that:
+	\begin{eqnarray*}
+		\int_0^1 t^{m-1}(1-t)^{n-1}dt &=& \beta(m,n) = \frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}\sps
+		\int_0^1 t^4(1-t)^2dt &=& \int_0^1 t^{5-1}(1-t)^{3-1}dt\sps
+		&=& \beta(5,3)\sps
+		&=& \frac{\Gamma(5)\Gamma(3)}{\Gamma(5+3)} = \frac{\Gamma(5)\Gamma(3)}{\Gamma(8)}
+	\end{eqnarray*}
+	Recall that $\dsp \Gamma(n+1)=n!, ~~~~ \Gamma(n)=(n-1)!$
+	\begin{eqnarray*}
+		=\frac{4!2!}{7!} = \frac{1}{105}
+	\end{eqnarray*}
+	
+	
+	\example{3.5.4}
+	Evaluate $\dsp\int_0^2\frac{t^2}{\sqrt{2-t}}dt$
+	
+	\solution
+	\begin{eqnarray*}
+		\int_0^2\frac{t^2}{\sqrt{2-t}}dt = \int_0^2 t^2(2-t)^{-1/2}dt
+	\end{eqnarray*}
+	\begin{gather*}
+		\text{Let } t = 2u \qquad dt = 2du\\
+		\text{when } t=0\quad , \quad u =0\\
+		\text{when } t= 2\quad , \quad u=1
+	\end{gather*}
+	\begin{eqnarray*}
+		\int_0^2 t^2(2-t)^{-1/2}dt &=& \int_0^1 (2u)^2 (2-2u)^{-1/2}2du\sps
+		&=& \int_01 4u^2\left[2(1-u)\right]^{-1/2}2du\sps
+		&=& \int_0^1 4u^2 2^{-1/2}(1-u)^{-1/2}2du\sps
+		&=& 4\sqrt{2}\int_0^1 u^2(1-u)^{-1/2}du\sps
+		&=& 4\sqrt{2}\int_0^1 u^{3-1}(1-u)^{1/2 - 1}du\sps
+		&=& 4\sqrt{2}~\beta(3,1/2)\sps
+		&=&\frac{4\sqrt{2}~\Gamma(3)\Gamma\left(1/2\right)}{\Gamma(3+1/2)}\sps
+		&=&\frac{4\sqrt{2}\cdot 2! \cdot \sqrt{\pi}}{5/2 \cdot 3/2 \cdot 1/2 \cdot \sqrt{\pi}}\sps
+		&=& \frac{64\sqrt{2}}{15}
+	\end{eqnarray*}
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{ANALYTICAL APPLICATIONS OF THE GAMMA FUNCTION}
+	\section{Introduction}
+	In this chapter, we shall discuss the Analytical Applications of the Gamma function in the proofs of some properties.\\
+	
+	The Gamma function arises naturally in a variety of application involving certain representation for $\Gamma(s)$ by appropriate changes of variable, as well as in more novel applications like those involving  fractional derivatives. It is no longer news that the Gamma functions has wide applications in mathematics, statistics, physics and engineering. Hence, we have picked some useful properties and identities to prove its application.\\
+	
+	We shall illustrate its application in the proof of the legitimacy of the Standard Normal Distribution as a PDF; in finding the Laplace transform of a continuous function on $[0,\infty)$, in finding the Fourier transform of a continuous function on $[0,\infty)$.
+	
+	
+	\section{The Standard Normal Distribution}
+	This section give a clear proof of a special property of the normal distribution called the legitimacy of the standard normal distribution in which the concept of the Gamma function is applied. Consequently, a step by step approach is used to write the standard normal distribution in the form of the Gamma function. We begin the proof of \refx{1_4} as follows:\sps
+	Let the probability density function by
+	\begin{equation}
+		f_z(z) = \frac{1}{\sqrt{2\pi}}\exp\left\{-\frac{z^2}{2}\right\}, \text{ where } -\infty < z <\infty~~ \forall z \in \real \tag{1}\label{t:4_2_1}
+	\end{equation}
+	Thus, we have
+	\begin{eqnarray*}
+		\int_{-\infty}^\infty f(z) dz &=& \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \exp\left\{-\frac{z^2}{2}\right\}dz\sps
+		&=& \frac{1}{\sqrt{2\pi}}\left(\int_{-\infty}^{0} \exp\left\{-\frac{z^2}{2}\right\}dz + \int_{0}^{\infty} \exp\left\{-\frac{z^2}{2}\right\}dz \right)\sps
+		&=& \frac{1}{\sqrt{2\pi}}\left(-\int_{0}^{-\infty} \exp\left\{-\frac{z^2}{2}\right\}dz + \int_{0}^{\infty} \exp\left\{-\frac{z^2}{2}\right\}dz \right)\sps
+		&=& \frac{1}{\sqrt{2\pi}}\left(\int_{0}^{\infty} \exp\left\{-\frac{z^2}{2}\right\}dz + \int_{0}^{\infty} \exp\left\{-\frac{z^2}{2}\right\}dz \right)\sps
+		&=& \frac{1}{\sqrt{2\pi}}\left(2\int_{0}^{\infty} \exp\left\{-\frac{z^2}{2}\right\}dz \right)\sps
+	\end{eqnarray*}
+	\begin{equation}
+		=  \frac{\sqrt{2}}{\sqrt{\pi}}\left(\int_{0}^{\infty} \exp\left\{-\frac{z^2}{2}\right\}dz \right)\qquad\qquad\qquad~\tag{2}\label{t:4_2_2}
+	\end{equation}
+	
+	\NI To evaluate the integral \refn{t:4_2_2}, apply change of variables and substitute for the Gamma function.\\
+	
+	\NI Let $\dsp u=\frac{z^2}{2}$ \quad Then $\dsp z=\sqrt{2u}\qquad dz=\frac{u^{-1/2}}{\sqrt{2}}du$\\
+	
+	\NI Now, when $z=0, u=0$\\
+	When $z=\infty, u=\infty$\\
+	
+	\NI This transforms \refn{t:4_2_2} to 
+	\begin{eqnarray*}
+		\int_{-\infty}^\infty f(z) dz &=& \frac{\sqrt{2}}{\sqrt{\pi}}\left(\int_{0}^{\infty} e^{-u} \frac{u^{-1/2}}{\sqrt{2}}du\right)\sps
+		&=& \frac{1}{\sqrt{\pi}}\left(\int_0^\infty e^{-u}u^{-1/2}du\right)\sps
+		&=& \frac{1}{\sqrt{\pi}}\int_0^\infty e^{-u}u^{1/2 - 1}du
+	\end{eqnarray*}
+	\begin{equation}
+		=~ \frac{1}{\sqrt{\pi}}\Gamma\left(1/2\right)~\tag{3}\label{t:4_2_3}
+	\end{equation}
+	
+	\NI Equation \refn{t:4_2_3} is obtained through the application of the Gamma function \refx{1_1}.\sps
+	
+	\NI Since $\dsp\Gamma(1/2) = \sqrt{\pi}$, hence,
+	\begin{eqnarray*}
+		\int_0^\infty f(z)dz = \frac{1}{\sqrt{\pi}} \cdot \sqrt{\pi} = 1 \qquad\qquad\text{ as required.}
+	\end{eqnarray*}
+	
+
+	\section{Moment Generating Function}
+	The moment generating function is one of the important properties of the standard normal distribution. Again, we apply the Gamma function to obtained the moment generating function of the standard normal distribution.\\
+	
+	As given in the definition under \refn{sec:1_7_3} in chapter 1, the moment generating function of a standard normal random variable $z~~\forall~~ t\in \real$ is given as :
+	\begin{equation}
+		M_z(t) = E\left(e^{tz}\right) = e^{\frac{t^2}{2}}\tag{1}\label{t:4_3_1}
+	\end{equation}
+
+	\NI By application of the Gamma function, the proof of the result \refn{t:4_3_1} is as follows:\sps
+	
+	\NI By definition:\\
+	\begin{equation}
+		E\left(e^{tz}\right) = \int_{-\infty}^{\infty}e^{tz}f(z)dz = M_z(t)\tag{2}\label{t:4_3_2}
+	\end{equation}
+	Then,
+	\begin{eqnarray*}
+		M_z(t) = E\left(e^{tz}\right) &=& \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{tz}e^{-\frac{z^2}{2}}dz\sps
+		&=& \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{(tz-\frac{z^2}{2})}dz\sps
+		&=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{1}{2}(z^2 - 2tz)}dz\sps
+		&=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{1}{2}\left[(z-t)^2 - t^2\right]}dz\sps
+		&=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{1}{2}(z-t)^2} e^{\frac{1}{2}t^2}dz
+	\end{eqnarray*}
+	\begin{equation}
+		{~\qquad\qquad~~~~}=~~ \frac{e^{\frac{1}{2}t^2}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{1}{2}(z-t)^2} dz\tag{3}\label{t:4_3_3}
+	\end{equation}
+
+	\NI To evaluate the integral \refn{t:4_3_3}, apply change of variables.\\
+	Let $u=z-t \implies du = dz$\\
+	As $z\rightarrow -\infty, u\rightarrow -\infty$\\
+	And as $z\rightarrow\infty, u \to \infty$\\
+	Thus \refn{t:4_3_4} becomes:
+	\begin{equation}
+		M_z(t) = \frac{e^{\frac{t^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{u^2}{2}} du\tag{4}\label{t:4_3_4}
+	\end{equation}
+	
+	\NI Since the normal distribution is symmetric about the origin, integrating under the entire curve is the same as integrating from zero to positive infinity and multiplying by 2. Thus \refn{t:4_3_4} yields
+	\begin{equation}
+		M_z(t) = \frac{2e^{\frac{t^2}{2}}}{\sqrt{2\pi}}\int_{0}^\infty e^{-\frac{u^2}{2}} du\tag{5}\label{t:4_3_5}
+	\end{equation}
+	
+	\NI Applying change of variables again and substitute for the Gamma function;\\
+	Let $x = \frac{1}{2}u^2$\\
+	Then, $u=\sqrt{2x}$\\
+	$du=\frac{\sqrt{2}}{2}x^{-1/2}dx$\\
+	Now as $u=0, x = 0$\\
+	And as $u=\infty, x = \infty$\\
+	Thus \refn{t:4_3_5} becomes
+	\begin{eqnarray*}
+		M_z(t) &=& \frac{2e^{\frac{t^2}{2}}}{\sqrt{2\pi}}\int_{0}^\infty\frac{\sqrt{2}}{2}x^{-1/2}e^{-x}dx\sps
+		&=&\frac{e^{\frac{t^2}{2}}}{\sqrt{\pi}}\int_{0}^\infty x^{-1/2}e^{-x}dx
+	\end{eqnarray*}
+	Hence,
+	\begin{eqnarray*}
+		M_z(t) &=& \frac{e^{\frac{t^2}{2}}}{\sqrt{\pi}}\Gamma(1/2)\qquad\qquad\qquad\quad
+	\end{eqnarray*}
+	Where $\dsp \Gamma(1/2) = \sqrt{\pi}$
+	\begin{eqnarray*}
+		\implies M_z(t) = \frac{e^{\frac{t^2}{2}}}{\sqrt{\pi}} \cdot \sqrt{\pi} = e^{\frac{t^2}{2}} \qquad\quad \text{ as required.}
+	\end{eqnarray*}
+
+
+
+	\section{Laplace Transforms}
+	Pierre-Simon Laplace (1749-1827) who invented the Laplace transform was a French Scholar and Polymath whose work was important to the description of nature using mathematics. Laplace transform is an integral used to simplify equation (or system of equations) by transforming a function of real variable $t$ to a function of a complex variable $s$, thus making it easier to solve. The transform has many applications in science and engineering because it is a tool for solving differential equations.\\
+	
+	We will use the Gamma functions to find the Laplace transforms of some functions which are very useful for solving problems in science and engineering. The application for three different functions with be shown, and this idea can be employed for many other cases. 
+	
+	\proposition{1}
+	Let $f$ be a continuous on $\real$. The following are the Laplace transform of the given function
+	\begin{enumerate}
+		\item $\dsp f(t) = t^ne^{at}~~,\qquad \LFt = \frac{n!}{(s-a)^{n+1}}~~, \qquad s > a $
+		
+		\item $\dsp f(t) = e^{at}\sin \omega t~~, \qquad \LFt = \frac{\omega}{(s-a)^2 + \omega^2}~~, \qquad s > a $
+		
+		\item $\dsp \ft = e^{at}\cos\omega t~~, \qquad \LFt = \frac{s-a}{(s-a)^2 + \omega^2}~~, \qquad s > a $
+	\end{enumerate}
+	where $a \in \real$
+	
+	\section*{\ubt{Proof}}
+	\begin{enumerate}
+		\item By definition \refn{sec:1_7_4}, we have
+			\begin{eqnarray*}
+				\LFn{t^ne^{at}} = F(s) = \int_0^\infty t^n e^{at} e^{-st}dt
+			\end{eqnarray*}
+			\begin{equation}
+				{\qquad\qquad}F(s) = \int_0^\infty t^n e^{-(s-a)t}dt 	\tag{1}\label{t:4_4_p1_i_1}
+			\end{equation}
+			Apply change of variable\\
+			Let $u=(s-a)t \qquad ; \qquad  t=\frac{1}{s-a}u$\\
+			Then $dt = \frac{1}{s-a}du$\\
+			Now $t=0, u= 0$\\
+			And as $t\to \infty u \to \infty$
+			So \refn{t:4_4_p1_i_1} becomes
+			\begin{eqnarray*}
+				F(s) &=& \int_0^\infty\left(\frac{u}{s-a}\right)^n e^{-u} \frac{1}{s-a}du
+			\end{eqnarray*}
+			\begin{equation}
+				F(s) \quad= \quad\frac{1}{(s-a)^{n+1}}\int_0^\infty u^n e^{-u}du\tag{2}\label{t:4_4_p1_i_2}
+			\end{equation}
+			We then re-arrange \refn{t:4_4_p1_i_2} in a way that we can apply the Gamma function. We have:
+	
+	
+	\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY AND CONCLUSION}
+	\section{Summary}
+	In this project research, we have discussed some special functions, Gamma functions and its properties, the proof of the properties of Gamma functions, the applications of Gamma function, some relevant terms were also defined and discussed. Gamma function was applied in the evaluation of some integrals and we were able to
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\roman{enumi})}
+		\item Proof the legitimacy of the standard normal distribution as a PDF
+		
+		\item derive the moment generating function of a standard normal distribution
+		
+		\item find the Laplace transform of a continuous function on $[0,\infty)$
+		
+		\item find the Fourier transform of a continuous function on $[0,\infty)$
+	\end{enumerate}
+	
+	\section{Conclusion}
+	The Gamma function has been studied and presented with illustrative examples to demonstrate its usefulness. It was applied in establishing the legitimacy of the PDF of a standard normal distribution and also used to derive the moment generating function of a standard normal distribution. The Laplace and Fourier transform of some common functions were obtained with the application of the Gamma functions.
+	
+	This project justifies that the Gamma function is a powerful tool in solving some mathematical problems and can evaluate nearly almost all of the classical special functions. 
+	
+
+	
+	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	
+	\begin{description}
+		\item James Bonnar 2017: The Gamma function
+		
+		\item Aisyah Amirah Binti Ahmad Senusi \& En. Che Lokman Jaafar; Gamma function and its Applications
+		
+		\item Bohr H, Mollerup J. Loerbog I matematisk analyse. Kopenhagen; 1922
+		
+		\item Andrews GE, Askey R, Roy R. Special Functions. Cambridge University Press, Cambridge; 1999.
+		
+		\item Sahoo P. Probability and Mathematical Statistics. University of Louisville, Louisville: 2013.
+		
+		\item Bell WW. Special functions for scientists and engineers. D, Van Nostrand Company Ltd, Reinhold, New York; 1968.
+		
+		\item Schiff JL. The Laplace transform: Theory and applications. Springer-Verlag New York, Inc.; 1999.
+		
+		\item Abramowitz MI, Stegun A. Handbook of Mathematical functions. Dover Publications, New York; 1965.
+		
+		\item Prudnikov AP, Brychkov Yu. A, Marichev OI. Integrals and Series. Gordon and Breach, New York. 1990; 3.
+		
+		\item Carlson B. Special functions of applied mathematics. Academic Press, New York; 1977.
+		
+		\item Barnes EW. The theory of Gamma function, Messenger Math. 1900.
+		
+		\item Pascal Sebah and Xavier Gourdon. Introduction to the Gamma function.
+
+		
+	\end{description}
+	
+\end{document}

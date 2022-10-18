@@ -1,0 +1,323 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+%\newcommand{\real}{ \mathbb{R}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\Laplace}{\mathcal{L}}
+\newcommand{\ft}{f(t)}
+\newcommand{\ftn}[1]{f(#1)}
+\newcommand{\ftp}[1]{f^{#1}(t)}
+\newcommand{\Fs}{F(s)}
+\newcommand{\Fsp}[1]{F^{#1}(s)}
+\newcommand{\LaplaceIntegral}{\int_{0}^{\infty}e^{-st}\ft\text{dt}}
+\newcommand{\LFn}[1]{\Laplace \sbracket{#1}}
+\newcommand{\LFt}{\Laplace \sbracket{\ft}}
+\newcommand{\sbracket}[1]{\left[#1\right]}
+\newcommand{\example}[1]{\section*{\ubt{Example #1}}}
+\newcommand{\property}{\subsubsection{\ubt{Property}}}
+\newcommand{\properties}{\subsubsection{\ubt{Properties}}}
+\newcommand{\solution}{\subsubsection{\ubt{Solution}}}
+\newcommand{\proposition}[1]{\section*{\ubt{Proposition #1}}}
+
+\newcommand{\real}{\mathbbm{R}}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+
+
+%\setlength{\parindent}{1em}
+
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\Large \bt{XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+	\end{center}
+	
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{XXXXXXX
+			\\
+			17/56EB0XX}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+	
+	\hspace{7cm}
+	
+	\begin{center}
+		IN PARTIAL FULFILMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ 
+	\begin{center}
+		\textbf{February, 2022}
+	\end{center}
+	
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project was carried out by \textbf{XXXXXXXXXXXXXXXXXXXXXX} with Matriculation Number  17/56EB0XX in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Dr. E.O. Titiloye   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof.o \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner 
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	All praises\\
+	
+	\NI i
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	I would like to dedicate the project to God
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	In this project
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{}
+
+	
+	
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{}
+	
+	
+	
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{}
+	
+	
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{WORKED EXAMPLES}
+	
+	\section{Non-linear Volterra Integral Equation using the Adomian Decomposition Method}
+	
+	\example{1}
+	$\dsp y(x) = x + \int_0^x y^4(t) dt$
+	
+	\solution
+		\begin{eqnarray*}
+			\sum_{n=0}^{\infty} y_n(x) = x+ \int_0^x \sum_{n=0}^{\infty} A_n(t)dt
+		\end{eqnarray*}
+		The Adomian polynomial for $y^4$
+		\begin{eqnarray*}
+			A_0 = y_0^4,\quad A_1 = 4y_1y_0^3,\quad A_2 = 4y_2y_0^3 + 6y_1^2y_0^2,\quad A_3 = 4y_3y_0^3 + 12y_2y_1y_0^2 + 4y_1^3y_0
+		\end{eqnarray*}
+		where
+		\begin{eqnarray*}
+				y_0(x) = x,\quad y_{k+1}(x) = \int_0^x A_k(t)dt, k\geq 0
+		\end{eqnarray*}
+		\begin{eqnarray*}
+			y_1(x) &=& \int_0^x y_0^4(t)dt = \int_0^x t^4 dt = \frac{t^5}{5}\Bigg|_0^x = \frac{1}{5}x^5\sps
+			y_2(x) &=& \int_0^x(4y_1y_0^3)dt = \int_0^x\left(\frac{4}{5}t^5 \cdot t^3\right)dt\sps
+			&=& \frac{4}{5}\int_0^x t^8 dt = \frac{4}{5}\frac{t^9}{9}\Bigg|_0^x = \frac{4}{45}x^9\sps
+			y_3(x) &=& \int_0^x \left(4y_2y_0^3 + 6y_1^2y_0^2\right)dt\sps
+			&=& \int_0^x 4\left(\frac{4}{45}t^9\right)\left(t^3\right) + 6\left(\frac{1}{5}t^5\right)^2\left(t^2\right)dt\sps
+			&=& \int_0^x\left(\frac{16}{45}t^{12} + \frac{6}{5}t^{12}\right)dt\sps
+			&=& \frac{14}{9}\int_0^x t^{12} dt = \frac{14}{9}\frac{t^{13}}{13}\Bigg|_0^x = \frac{14}{117}x^{13}\sps
+			\therefore y(x) &=& x + \frac{1}{5}x^5 + \frac{4}{45}x^9 + \frac{14}{117}x^{13} + \cdots
+		\end{eqnarray*}
+		
+		\example{2}
+		$\dsp y(x) = x + \int_0^x (t-x) y^2(t)dt$
+		
+		\solution
+		\begin{eqnarray*}
+			\sum_{n=0}^\infty y_n(x) = x + \int_0^x (t-x)\sum_{n=0}^\infty A_n(t) dt
+		\end{eqnarray*}
+		the Adomian polynomial of $y^2$
+		\begin{gather*}
+			A_0 = y_0^2,\quad A_1=2y_0y_1,\quad A_2=2y_2y_0 + y_1^2,\quad A_3=2y_0y_3 + 2y_1y_2,\sps 
+			y_0(x)=x,\quad y_{k+1}(x) = \int_0^x(t-x)A_k(t)dt
+		\end{gather*}
+		\begin{eqnarray*}
+			y_1(x) &=&\int_0^x(t-x)t^2dt = \int_0^x(t^3-xt^2)dt = \frac{t^4}{4} - \frac{xt^3}{3}\Bigg|_0^x\sps
+			&=& \frac{x^4}{4} - \frac{x^4}{3} = - \frac{1}{12}x^4\sps
+			y_2(x) &=&\int_0^\infty(t-x)(2t)\left(-\frac{1}{12}t^4\right)dt = \int_0^x(t-x)\left(-\frac{1}{6}t^5\right)dt\sps
+			&=& -\frac{1}{6}\int_0^x(t^6 - xt^5)dt = -\frac{1}{6}\left[\frac{t^7}{7} - \frac{xt^6}{6}\right]_0^x\sps
+			&=& - \frac{1}{6}\left[\frac{x^7}{7} - \frac{x^7}{6}\right] = -\frac{1}{6}\left[-\frac{1}{42}x^7\right]= \frac{1}{180}x^7\sps
+			y_3(x) &=&\int_0^x(t-x)\left[\left(\frac{2}{180}t^7\right)(t) + \left(-\frac{1}{12}t^4\right)^2\right] dt\sps
+			&=&\int_0^x(t-x)\left(\frac{1}{90}t^8 + \frac{1}{12}t^8\right) dt = \int_0^x(t-x)\left(\frac{17}{180}t^8\right)dt\sps
+			&=& \frac{17}{180}\int_0^x(t^9 - xt^8)dt = \frac{17}{180}\left[\frac{t^10}{10} - \frac{xt^9}{9}\right]_0^x\sps
+			&=&\frac{17}{180}\left[\frac{x^{10}}{10} - \frac{x^{10}}{9}\right] = \frac{17}{180}\left[-\frac{1}{90}x^{10}\right] = -\frac{17}{16200}x^{10}\sps
+			\therefore y(x) &=& x - \frac{1}{12}x^4 + \frac{1}{180}x^7 - \frac{17}{16200}x^{10}
+		\end{eqnarray*}
+		
+		\example{3}
+		$\dsp y(x) = x + \int_0^x (x^2 t - xt^2) y^2(t)dt$
+		
+		\solution
+		\begin{eqnarray*}
+			\sum_{n=0}^\infty y_n(x) = x +\int_0^x (x^2 t - xt^2) \sum_{n=0}^\infty A_n(t) dt
+		\end{eqnarray*}
+		\begin{eqnarray*}
+			y_0(x) = x,\quad y_{k+1}(x) = \int_0^\infty (x^2t-xt^2)A_k(t)dt
+		\end{eqnarray*}
+		\begin{eqnarray*}
+			y_1(x) &=& \int_0^x (x^2t-xt^2)(t^2)dt = \int_0^x(x^2t^3-xt^4)dt\sps
+			&=& \frac{x^2t^4}{4} - \frac{xt^5}{5}\Bigg|_0^x = \frac{x^6}{4} - \frac{x^6}{5} = \frac{1}{20}x^6\sps
+			y_2(x) &=& \int_0^x(x^2t - xt^2)(2y_0y_1)dt\sps
+			&=&\int_0^x(x^2t-xt^2)\left(\frac{2}{10}t^7\right)dt = \frac{1}{10}\int_0^x(x^2t^8-xt^9)dt\sps
+			&=&\frac{1}{10}\left[ \frac{x^2t^9}{9} - \frac{xt^{10}}{10} \right]_0^x = \frac{1}{10}\left[\frac{x^{11}}{9} - \frac{x^{11}}{10}\right]= \frac{1}{900}x^{11}\sps
+			y_3(x) &=& \int_0^x(x^2 t -xt^2)(2y_2y_0 + y_1^2)dt\sps
+			&=&\int_0^x(x^2t -xt^2)\left[\left(\frac{2}{900}t^{11}\right)(t) + \left(\frac{1}{20}t^6\right)^2\right] dt\sps
+			&=&\int_0^x\left(x^2 t - xt^2\right)\left(\frac{1}{450}t^{12} + \frac{1}{400}t^{12}\right)dt\sps
+			&=&\int_0^x(x^2t -xt^2)\left(\frac{17}{3600}t^{12}\right)dt\sps
+			&=& \frac{17}{3600}\int_0^x(x^2t^{13} - xt^{14})dt\sps
+			&=& \frac{17}{3600}\left[\frac{x^2t^{14}}{14} - \frac{xt^{15}}{15}\right]_0^x = \frac{17}{3600}\left[ \frac{x^{16}}{14} - \frac{x^{16}}{15}\right]\sps
+			&=&\frac{17}{3600}\left[ \frac{1}{210}x^{16}\right] = \frac{17}{756000}x^{16}\sps
+			y(x) &=& x+ \frac{1}{20}x^6 + \frac{1}{900}x^{11} + \frac{17}{756000}x^{16} + \cdots
+		\end{eqnarray*}
+	
+	\section{Non-linear Fredholm Integral Equation using the Adomian Decomposition Method}
+	\example{1}
+	$\dsp y(x) = 3 + \lambda\int_0^1 ty^2(t)dt$
+	\solution
+	\begin{eqnarray*}
+		y_0(x) = 3,\quad y_{k+1}(x) = \lambda\int_0^1 y^2(t)dt
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		y_1(x)&=& \lambda\int_0^1 ty_0^2(t)dt\sps
+		&=& \lambda\int_0^19t dt = \frac{9\lambda t^2}{2}\Bigg|_0^1 = \frac{9\lambda}{2}\sps
+		y_2(x) &=& \lambda\int_0^1(2y_0y_1)tdt\sps
+		&=& \lambda\int_0^1 (6)\left(\frac{9\lambda}{2}\right)tdt = \frac{27\lambda^2 t^2}{2}\Bigg|_0^1 = \frac{27\lambda^2}{2} \sps
+		y_3(x) &=& \lambda\int_0^1\left(81\lambda^2 + \frac{81\lambda^2}{2}\right)t dt = \lambda\int_0^1\left(\frac{243\lambda^2}{2}\right)t dt\sps
+		&=& \frac{243\lambda^3t^2}{4}\Bigg|_0^1 = \frac{243\lambda^3}{4}\sps
+		y_4(x) &=& \lambda\int_0^1 (2y_0y_3 + 2y_1y_2)t dt\sps
+		&=& \lambda\int_0^1\left(\frac{729}{2}\lambda^3 + \frac{243}{2}\lambda^3\right)t dt
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		&=&\lambda\int_0^1(486\lambda^3)t dt = \frac{486\lambda^4}{2}\Bigg|_0^1\sps
+		&=& 243\lambda^4\sps
+		y(x) &=& y_0(x) + y_1(x) + y_2(x) + y_3(x) + y_4(x) + \cdots\sps
+		y(x) &=& 3 + \frac{9\lambda}{2} + \frac{27\lambda^2}{2} + \frac{243\lambda^3}{4} + 243\lambda^4 + \cdots
+	\end{eqnarray*}
+
+	\example{2}
+	$\dsp y(x) = 4 + \lambda\int_0^1 t^2y^2(t)dt$
+	\solution
+	The Adomian polynomial for $y^2(x)$
+	\begin{gather*}
+		A_0(x) = y_0^2,\quad A_1(x)=2y_0y_1,\sps
+		 A_2(x) =2y_0y_2 + y_1^2,\quad
+		A_3 = 2y_0y_3 + 2y_1y_2
+	\end{gather*}
+	\begin{eqnarray*}
+		y_0(x) &=& 4\sps
+		y_1(x) &=& \lambda\int_0^1y^2(t)t^2dt = \lambda\int_0^1 16t^2 dt = \frac{16}{3}t^3\lambda\Bigg|_0^1 = \frac{16}{3}\lambda\sps
+		y_2(x) &=& \lambda\int_0^1(2y_0y_1)t^2 dt = \lambda\int_0^1 \frac{128}{3}\lambda t^2 dt = \frac{\lambda^2 128}{9}t^3\Bigg|_0^1 = \frac{128}{9}\lambda^2\sps
+		y_3 (x) &=& \lambda\int_0^1 (2y_0y_2 + y_1^2)t^2 dt = \lambda\int_0^1\left(\frac{1024\lambda^2}{9} + \frac{256\lambda^2}{9}\right)t^2 dt\sps
+		&=& \lambda\int_0^1 \frac{1280\lambda^2}{9}t^2 dt = \frac{1280}{27}\lambda^3 t^3\Bigg|_0^1 = \frac{1280}{27}\lambda^3
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		y_4(x) &=& \lambda\int_0^1(2y_0y_3 + 2y_1y_2)t^2 dt = \lambda\int_0^1\left(\frac{5120}{27}\lambda^3 + \frac{4096}{27}\lambda^3\right)t^2 dt\sps
+		&=& \lambda\int_0^1\left(\frac{9216}{27}\lambda^3\right)t^3 dt = \frac{9216}{81}\lambda^4 t^4\Bigg|_0^1 = \frac{9216}{81}\lambda^4\sps
+		y(x) &=& 4 + \frac{16}{3}\lambda + \frac{128}{9}\lambda^2 + \frac{1280}{27}\lambda^3 + \frac{9216}{81}\lambda^4 + \cdots
+	\end{eqnarray*}
+	
+	\example{3}
+	$\dsp y(x) = 1 + \lambda\int_0^1 y^4(t)dt$
+	\solution
+	The Adomian polynomials of $y^4(t)$ are 
+	\begin{gather*}
+		A_0(x) = y_0^4,\quad A_1(x) = 4y_1y_0^3,\quad A_2(x) = 4y_2y_0^3 + 6y_1^2y_0^2\sps
+		A_3(x) = 4y_3y_0^3 + 12y_2y_1y_0^2 + 4y_1^3y_0
+	\end{gather*}
+	\begin{eqnarray*}
+		y_0(x) &=& 1\sps
+		y_1(x) &=& \lambda\int_0^1y_0^4(t)dt = \lambda\int_0^1(1^4)dt = \lambda t\Bigg|_0^1 = \lambda\sps
+		y_2(x) &=& \lambda\int_0^14y_1y_0^3(t) dt = \lambda\int_0^1 4\lambda dt = 4\lambda^2 t\Bigg|_0^1 = 4\lambda^2\sps
+		y_3(x) &=& \lambda\int_0^1 4y_2y_0^3 + 6y_1^2y_0^2(t)dt =\lambda\int_0^1(16\lambda^2 + 6\lambda^2)dt\sps
+		&=& \lambda\int_0^1 22\lambda^2 dt = 22\lambda^3\Bigg|_0^1 = 22\lambda^3\sps
+		y_4(x) &=& \lambda\int_0^1(4y_3y_0^3+12y_2y_1y_0^2 + 4y_1^3y_0)dt
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		&=& \lambda\int_0^1(88\lambda^3 + 48\lambda^3 + 4\lambda^3)dt = \lambda\int_0^1 140\lambda^3 dt\sps
+		&=& 140\lambda^4 t\Bigg|_0^1 = 140\lambda^4\sps
+		y(x) &=& 1 + \lambda + 4\lambda^2 + 22\lambda^3 + 140\lambda^4 + \cdots
+	\end{eqnarray*}
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY AND CONCLUSION}
+	\section{Summary}
+	
+	
+	\section{Conclusion}
+	
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	
+	\begin{description}
+		\item 
+	\end{description}
+	
+\end{document}

@@ -1,0 +1,486 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+%\usepackage{tikz}
+
+\newcommand{\url}[1]{\textit{#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{\textbf{(\ref{#1})}}
+\newcommand{\NI}{\noindent}
+\newcommand{\beq}{\NI$\displaystyle}
+\newcommand{\eeq}{$}
+\newcommand{\eeqn}{$\\[0.3cm]}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\bp}{\Big|}
+
+\begin{document}
+	Using the Gaussian Elimination method,\spn{0.6}
+	$\dsp
+		\left(
+			\begin{array}{cccccc}
+				16 & 16 & -4 & -24 & \bp & 0\\
+				16 & 32 & -12 & -24 & \bp & 16\\
+				-4 & -12 & 30 & 1 & \bp & -63\\
+				-24 & -24 & 1 & 46 &\bp & 20 \\
+			\end{array}
+		\right)
+	$\spn{0.8}
+	%%%%%
+	$\dsp
+		\begin{array}{clr}
+			R'_1 =& \frac{R_1}{16} &\implies \sps
+			R'_2 =& R_2 - R_1 &\implies \sps
+			R'_3 =& 4R_3 + R_1 &\implies \sps
+			R'_4 =& 2R_4 + 3R_1 &\implies \\
+		\end{array}
+		\left(
+			\begin{array}{cccccc}
+				1 & 1 & -\frac{1}{4} & - \frac{3}{2} & \bp & 0\\
+				0 & 16 & -8 & 0 & \bp & 16\\
+				0 & -32 & 116 & -20 & \bp & -252\\
+				0 & 0 & -10 & 20 & \bp & 40\\
+			\end{array}
+		\right)
+	$\spn{0.7}
+	%%%%%
+	$\dsp
+	\begin{array}{clr}
+		R'_2 =& \frac{R_2}{8} & \sps
+		R'_3 =& \frac{R_3}{4} &\implies \sps
+		R'_4 =& \frac{R_4}{10} & \sps
+	\end{array}
+	\left(
+	\begin{array}{cccccc}
+		1 & 1 & -\frac{1}{4} & - \frac{3}{2} & \bp & 0\\
+		0 & 2 & -1 & 0 & \bp & 2 \\
+		0 & -8 & 29 & -5 & \bp & -63 \\
+		0 & 0 & -1 & 2 & \bp & 4
+	\end{array}
+	\right)
+	$\spn{0.7}
+	%%%%%
+	$\dsp
+	\begin{array}{clr}
+		R'_3 =& R_3 + R_4 &\implies \sps
+		&&\\
+		&&\\
+	\end{array}
+	\left(
+	\begin{array}{cccccc}
+		1 & 1 & -\frac{1}{4} & -\frac{3}{4} & \bp & 0\\
+		0 & 2 & -1 & 0 & \bp & 2 \\
+		0 & 0 & 25 & -5 & \bp & -55 \\
+		0 & 0 & -1 & 2 & \bp & 4 \\
+	\end{array}
+	\right)
+	$\spn{0.7}
+	%%%%%
+	$\dsp
+	\begin{array}{clr}
+		R'_3 =& \frac{R_3}{5} &\implies \sps
+		&&\\
+		&&\\
+	\end{array}
+	\left(
+	\begin{array}{cccccc}
+		1 & 1 & -\frac{1}{4} & -\frac{3}{4} & \bp & 0\\
+		0 & 2 & -1 & 0 & \bp & 2 \\
+		0 & 0 & 5 & -1 & \bp & -11 \\
+		0 & 0 & -1 & 2 & \bp & 4 \\
+	\end{array}
+	\right)
+	$\spn{0.7}
+	%%%%%
+	$\dsp
+	\begin{array}{clr}
+		R'_4 =& 5R_4 + R_3 &\implies \sps
+		&&\\
+		&&\\
+	\end{array}
+	\left(
+	\begin{array}{cccccc}
+		1 & 1 & -\frac{1}{4} & -\frac{3}{4} & \bp & 0\\
+		0 & 2 & -1 & 0 & \bp & 2 \\
+		0 & 0 & 5 & -1 & \bp & -11 \\
+		0 & 0 & 0 & 9 & \bp & 9 \\
+	\end{array}
+	\right)
+	$\spn{0.5}
+	This implies:
+	\begin{enumerate}
+		\item[(i)] $\dsp 9x_4 = 9 \implies x_4 = 1$
+		
+		\item[(ii)] $\dsp
+						5x_3 - x_4 = -11\\
+						5x_3 - 1 = -11\\
+						5x_3 = -11 + 1\\
+						x_3 = -\frac{10}{5} = -2
+					$
+		
+		\item[(iii)] $\dsp
+						2x_2 - x_3 = 2\\
+						2x_2 - (-2) = 2\\
+						2x_2 + 2 = 2 \\
+						2x_2 = 2-2=0\\
+						x_2 = \frac{0}{2} = 0
+					 $
+		
+		\item[(iv)] $\dsp
+						x_1  + x_2 - \frac{x_3}{4} - \frac{3x_4}{2} = 0\sps
+						x_1 + \frac{2}{4} - \frac{3}{2} = 0\sps
+						x_1 + \frac{2-6}{4} = 0\sps
+						x_1 + \left(-\frac{4}{4}\right) = 0\sps
+						x_1 - 1 = 0 \implies x_1 = 1\\
+					 $
+	\end{enumerate}
+	Hence, $x_1 =1, x_2=0, x_3=-2,$ and $x_4=1$\sps
+	$\dsp
+	\begin{array}{c}
+		x =\\
+		\left.\right.\\
+		\left.\right.\\
+	\end{array}
+	\left(
+	\begin{array}{c}
+		1\\0\\-2\\1
+	\end{array}
+	\right)
+	$\spn{0.5}
+	
+	\NI \ubt{Example 2:} Solve the Linear System of equations below\sps
+	$
+		6x + 15y + 55z = 76\\
+		15x + 55y + 225z = 295\\
+		55x + 255y + 979z = 1259\\
+	$\sps
+	\ubt{Solution}\sps
+	(i) Using Cholesky decomposition method\sps
+	$\dsp
+		\left(
+			\begin{array}{ccc}
+				6 & 15 & 55\\
+				15 & 55 & 225\\
+				55 & 225 & 979\\
+			\end{array}
+		\right)
+		\left(
+			\begin{array}{c}
+				x\\y\\z\\
+			\end{array}
+		\right)
+		\begin{array}{c}
+			~\\=\\~\\
+		\end{array}
+		\left(
+			\begin{array}{c}
+				76\\295\\1259\\
+			\end{array}
+		\right)
+	$\sps
+	Cholesky decomposition: $A=L\cdot L^T$, Every symmetric positive definite matrix $A$ can be decomposed into a product of a unique lower triangular matrix $L$ and its transpose. Here, the matrix is symmetric positive definite.\sps
+	
+	\NI Formula $\dsp l_{ki} = \frac{a_{ki} - \sum\limits_{j=1}^{i-1} l_{ij} - l_{kj}}{l_{ii}} $ and $\dsp l_{kk} = \sqrt{a_{kk} - \sum\limits_{j=1}^{k-1}l_{kj}^2}$
+	\begin{eqnarray}
+		l_{11} &=& \sqrt{a_{11}} = \sqrt{6} = 2.44495 \notag\sps
+		%%%
+		l_{21} &=& \frac{a_{21}}{l_{11}} = \frac{15}{2.4495} = 6.1237 \notag \sps
+		%%%
+		l_{22} &=& \sqrt{a_{22} - l_{21}^2} = \sqrt{55 - (6.1237)^2} = \sqrt{55-37.5} = 4.1833 \notag \sps
+		%%%
+		l_{31} &=& \frac{a_{31}}{l_{11}} = \frac{55}{2.4495} = 22.4537 \notag \sps
+		%%%
+		l_{32} &=& \frac{a_{32} - l_{31} \times l_{21}}{l_{22}} = \frac{225 - (22.4537) \times (6.1237)}{4.1833} = \frac{225-137.5}{4.1833} = 20.9165 \notag \sps
+		%%%
+		l_{33} &=& \sqrt{a_{33} - l_{31}^2 - l_{32}^2} = \sqrt{979 - (22.4537)^2 - (20.9165)^2} = \sqrt{979 - 941.6667} = 6.1101 \notag \sps
+	\end{eqnarray}
+	So, 
+	$\dsp
+		~~L = 
+			\left(
+				\begin{array}{ccc}
+					l_{11} & 0 & 0 \\
+					l_{21} & l_{22} & 0 \\
+					l_{31} & l_{32} & l_{33}\\
+				\end{array}
+			\right) ~~ = ~~
+			\left(
+				\begin{array}{ccc}
+					2.4495 & 0 & 0 \\
+					6.1237 & 4.1833 & 0\\
+					22.4537 & 20.9165 & 6.1101\\
+				\end{array}
+			\right)
+			\spn{0.9}
+		%%%
+		L\times L^T ~=~ 
+		\left( 
+			\begin{array}{ccc}
+				2.4495 & 0 & 0 \\
+				6.1237 & 4.1833 & 0\\
+				22.4537 & 20.9165 & 6.1101\\
+			\end{array}
+		\right)
+		\left(
+			\begin{array}{ccc}
+				2.4495 & 6.1237 & 22.4537\\
+				0 & 4.1833 & 20.9165 \\
+				0 & 0 & 6.117\\
+			\end{array}
+		\right)
+		\spn{0.9}
+		~~~~~~~~~~~~~~~~~~= 
+		\left(
+			\begin{array}{cccc}
+				6 & 15 & 55\\
+				15 & 55 & 225\\
+				55 & 225 & 979\\
+			\end{array}
+		\right)
+	$\sps
+	
+	\NI Now, $Ax = B,$ and $A=LL^T \implies LL^Tx=B$\sps
+	Let $L^Tx = y,$ then $Ly=B$\sps
+	$
+		\implies ~~
+			\begin{bmatrix}
+				2.4495 & 0 & 0 \\
+				6.1237 & 4.1833 & 0 \\
+				22.4537 & 20.9165 & 6.1101 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				y_1\\y_2\\y_3
+			\end{bmatrix}
+			\begin{array}{c}
+				~\\
+				=\\
+				~\\
+			\end{array}
+			\begin{bmatrix}
+				76\\295\\1259
+			\end{bmatrix}
+		\spn{0.6}
+		%%%
+		2.4495y_1 = 76 \implies y_1 = 31.0269\sps
+		6.1237y_1 + 4.1833y_2 = 295 \sps
+		6.1237(31.0269) + 4.1833y_2 = 295 \sps
+		4.1833y_2 = 295 - 190 = 105 \sps
+		y_2 = 25.0998\sps
+		22.4537y_1 = 20.9165y_2 + 6.1101y_3 = 1259\sps
+		22.4537(31.0269) + 20.9165(25.0998) + 6.1101y_3 = 1259\sps
+		y_3 = \frac{37.3333}{6.1101} = 6.1101		
+	$\spn{0.5}
+	
+	\NI Now, $L^Tx=y$\sps 
+	$\dsp
+		\begin{bmatrix}
+			2.4495 & 6.1237 & 22.4537\\
+			0 & 4.1833 & 20.9165 \\
+			0 & 0 & 6.1101 \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			x\\y\\z\\
+		\end{bmatrix}
+		\begin{array}{c}
+			~\\
+			=\\
+			~\\
+		\end{array}
+		\begin{bmatrix}
+			31.0269\\
+			25.0998\\
+			6.1101\\
+		\end{bmatrix}
+	$\sps
+	
+	\NI Using back substitution method\sps
+	$\dsp 
+		~~~~~~6.1101z = 6.1101 \implies z=1\sps
+		4.1833y + 20.9165x = 25.0998\sps
+		4.1833y + 20.9165(1) = 25.0998\sps
+		4.1833y = 25.0998 - 20.9165 = 4.1833\sps
+		y = 1\spn{0.8}
+		%%%
+		2.4495x + 6.1237y + 22.4537z = 31.0269\sps
+		2.4495x + 6.1237(1) + 22.4537(1) = 31.0269\sps
+		2.4495x = 31.0269 - 28.5774 = 2.4495\sps
+		x = \frac{2.4495}{2.4495} = 1
+	$\sps
+	Hence, $x=1, y=1$ and $z=1$\sps 
+	$\dsp
+	\begin{array}{c}
+		x =\\
+		\left.\right.\\
+		\left.\right.\\
+	\end{array}
+	\left(
+	\begin{array}{c}
+		1\\1\\1\\
+	\end{array}
+	\right)
+	$\spn{0.5}
+	
+	
+	\NI(ii)Using Gaussian Elimination Method\sps
+	$\dsp
+		\begin{bmatrix}
+			6 & 15 & 55 & \bp & 76\\
+			15 & 55 & 225 & \bp & 295\\
+			55 & 225 & 979 & \bp & 1259\\
+		\end{bmatrix}
+	$\sps
+	$\dsp
+	\begin{array}{clr}
+		R'_1 =& \frac{R_1}{6} &\sps
+		R'_2 =& \frac{R_2}{5}&\implies \sps
+		R'_3 =& \frac{R_3}{5} & \sps
+	\end{array}
+	\left(
+	\begin{array}{cccccc}
+		1 & \frac{5}{2} & \frac{55}{6} & \bp & \frac{38}{3}\\
+		3 & 11 & 45 & \bp & 59\\
+		11 & 45 & \frac{979}{5} & \bp & \frac{1259}{5}\\
+	\end{array}
+	\right)
+	$\spn{0.7}
+	%%%%
+	$\dsp
+	\begin{array}{clr}
+		R'_2 =& R_2 - 3R_1&\\
+		& & \implies \\
+		R'_3 =& R_3 - 11R_1 & \sps
+	\end{array}
+	\left(
+	\begin{array}{cccccc}
+		1 & \frac{5}{2} & \frac{55}{6} & \bp & \frac{38}{3}\\
+		0 & \frac{7}{2} & \frac{35}{2} & \bp & 21\\
+		0 &\frac{35}{2} &\frac{2849}{30} & \bp & \frac{1687}{15}\\
+	\end{array}
+	\right)
+	$\spn{0.7}
+	%%%
+	$\dsp
+	\begin{array}{clr}
+		R'_3 =& 7R_3 - 35R_2& \implies \\
+	\end{array}
+	\left(
+	\begin{array}{cccccc}
+		1 & \frac{5}{2} & \frac{55}{6} & \bp & \frac{38}{3}\\
+		0 & \frac{7}{2} & \frac{35}{2} & \bp & 21\\
+		0 &0 &\frac{784}{15} & \bp & \frac{784}{15}\\
+	\end{array}
+	\right)
+	$\spn{0.7}
+	Using backward substitution method,\\
+	$\dsp
+		\frac{784}{15}z = \frac{784}{15} \implies z = 1\sps
+		\frac{7}{2}y + \frac{35}{2}z = 21 \sps
+		\frac{7}{2}y + \frac{35}{2} = 21 \implies \frac{7}{2}y = 21 - \frac{35}{2}\sps
+		~~~~~~~~~~~~~~ \frac{7}{2}y = \frac{7}{2} \implies y=1\sps
+		x + \frac{5}{2}y + \frac{55}{6}z = \frac{38}{3}\sps
+		x + \frac{5}{2} + \frac{55}{6} = \frac{38}{3}\sps
+		x + \frac{35}{3} = \frac{38}{3}\sps
+		x = \frac{38}{3} - \frac{35}{3} = \frac{3}{3} = 1\sps
+	$\sps
+	Hence, $x=1,~y=1,$ and $z=1$\sps
+	$\dsp
+	\begin{array}{c}
+		x =\\
+		\left.\right.\\
+		\left.\right.\\
+	\end{array}
+	\left(
+	\begin{array}{c}
+		1\\1\\1\\
+	\end{array}
+	\right)
+	$\spn{0.5}
+	
+	\NI(3) Solve;\\
+	$\dsp
+		~~~~~~~~~~~~~~~7x+10y+5z=42\\
+		~~~~~~~~~~~~~~~11x + 6y + 2z = 31\\
+		~~~~~~~~~~~~~~~11x + 14y + 8z = 63\\
+	$\spn{0.5}
+	\newpage
+	\ubt{Solution}\sps
+	(1)Using the Gaussian Elimination Method.\\
+	The linear equation given can be written in matrix form:\sps
+	$\dsp
+		\begin{bmatrix}
+			7 & 10 & 5\\
+			11 & 6 & 2 \\
+			11 & 14 & 8 \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			x\\y\\z\\
+		\end{bmatrix}
+		\begin{array}{c}
+			~\\=\\~\\
+		\end{array}
+		\begin{bmatrix}
+			42\\31\\63
+		\end{bmatrix}
+	$\spn{0.5}
+	The Augmented matrix is given by:\sps
+	$\dsp
+		\begin{bmatrix}
+			7 & 10 & 5 & \bp & 42\sps
+			11 & 6 & 2 & \bp & 31\sps
+			11 & 14 & 8 & \bp & 63\sps
+		\end{bmatrix}
+		\begin{array}{c}
+			R'_2 \rightarrow R_2 - \frac{11}{7}R_1\sps
+			R'_3 \rightarrow R_3 - \frac{11}{7}R_1
+		\end{array}
+		\begin{bmatrix}
+			7 & 10 & 15 & \bp & 42\sps
+			0 & - \frac{88}{7} & - \frac{51}{7} & \bp & -47\sps
+			0 & - \frac{12}{7} & \frac{1}{7} & \bp & -3\sps
+		\end{bmatrix}
+	$\spn{0.6}
+	%%%%
+	$\dsp
+		\begin{bmatrix}
+			7 & 10 & 15 & \bp & 42\sps
+			0 & - \frac{88}{7} & - \frac{51}{7} & \bp & -47\sps
+			0 & - \frac{12}{7} & \frac{1}{7} & \bp & -3\sps
+		\end{bmatrix}
+		\begin{array}{c}
+			R'_3 \rightarrow R_3 - \frac{12}{88}R_2
+		\end{array}
+		\begin{bmatrix}
+			7 & 10 & 15 & \bp & 42\sps
+			0 & - \frac{88}{7} & - \frac{51}{7} & \bp & -47\sps
+			0 & 0 & \frac{25}{22} & \bp & \frac{75}{22}\sps
+		\end{bmatrix}
+	$\spn{0.6}
+	Using back substitution method\sps
+	$\dsp
+		\frac{25}{22}z = \frac{75}{22} \implies z = \frac{75}{25} = 3\sps
+		- \frac{88}{7}y - \frac{51}{7}z = -47\sps
+		-\frac{88}{7}y - \frac{153}{7} = - 47 \implies \frac{88}{7}y = 47 - \frac{153}{7}\sps
+		~~~~~~~~~~~~~~~~~~~~~~~~ y = \frac{176}{7} \times \frac{7}{88} \implies y = 2\sps
+		7x + 10y + 5z = 42\sps
+		7x + 10(2) + 5(3) = 42 \implies 7x = 42-35 = 7\sps
+	$
+	Hence, $x=1,~y=2,$ and $z=3$.\sps
+	
+	\NI(2)Using Cholesky decomposition method\sps
+	\ubt{Note:} The matrix is not symmetric; thereby not a symmetric positive definite matrix.\sps
+	
+	\NI Using $\dsp l_{ki} = \frac{a_{ki} - \sum\limits_{j=1}^{i-1} l_{ij} - l_{kj}}{l_{ii}} $ and $\dsp l_{kk} = \sqrt{a_{kk} - \sum\limits_{j=1}^{k-1}l_{kj}^2}$\sps
+	
+	\NI$\dsp
+		l_{11} = \sqrt{a_{11}} = \sqrt{7} = 2.6458\sps
+		l_{21} = \frac{a_{21}}{l_{11}} = \frac{11}{2.6458} = 4.1575 \sps
+		l_{22} = \sqrt{a_{22} - l_{21}^2} = \sqrt{6 - (4.1575)^2} = \sqrt{6-17.2848} = \Big[ \text{No real answer} \Big]
+	$\sps
+	
+	\NI This implies, Cholesky decomposition method fails for a non-symmetric positive definite matrix.
+	
+\end{document}
+

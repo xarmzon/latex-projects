@@ -1,0 +1,175 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{tikz}
+
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\NI}{\noindent}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\tti}[1]{\textit{#1}}
+
+
+\renewcommand*\contentsname{Table of Contents}
+\renewcommand{\baselinestretch}{1.4}
+
+\begin{document}
+	%%remove the numbering from the first page 
+	\clearpage
+	\thispagestyle{empty}
+	%%TITLE%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\begin{center}
+		\textbf{\itshape SUMMARY ON}
+	\end{center} 
+	\begin{center}
+		{\bf \Large THE FLOW BEHAVIOUR OF BLOOD IN AN ARTERY WITH STENOSIS USING POWER LAW FLUID (2016)}
+	\end{center}
+	$$$$
+	\vspace{3cm}
+	\begin{center}
+		\textbf{\itshape BY}
+	\end{center} 
+	$$$$
+	\vspace{2cm}
+	\begin{center}
+		{\bf KODJO, Elizabeth\\
+			17/56EB062}
+	\end{center}
+	$$$$
+	\\ \\
+	%\newpage
+	%\pagenumbering{roman} 
+	%%TABLE OF CONTENTS%%
+	%\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	%\tableofcontents
+	\newpage
+	
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION}
+	\section{Background to the study}
+	Most death are cause by circulatory disease and atherosclerosis the most frequent. One major type of flow disorder result from the stenosis. The nature of blood flow change due to the present of stenosis.
+	
+	
+	\section{Statement of problem}
+	When blood is in motion through an artery, a series of event related with the movement of the human corpuscles and surrounding plasma take place. Due to this the artery undergoes elastic strain which make it elastic in nature and deforms. This statement is made to study the effect of stenosis on vasuar deformability and flow of blood in an artery with the use of mathematical model.
+	
+	
+	\section{Aim and objective}
+	The aim of the project was to study the behaviour of blood flow in an artery, investigate the velocity of the blood flow.
+	
+	\section{Methodology of Study}
+	The Governing equation was obtained and serve with finite different method when the model of artery with stenosis was formulated.
+	
+	\section{Definition of Term}
+	\begin{enumerate}
+		\item CARDIOVASCULAR SYSTEM:  is an organ that allows blood to circulate and allow nutrient, oxygen and so on to and fro the cell in the body to help fight disease and maintain the body temperature. 
+		
+		\item ARTERIES are elastic blood vessels that delivers oxygen from the heart to other parts of the body. We have the pulmonony and System arteries.
+		
+		\item Atherosclerosis: Is a disease in which plague build up inside the arteries.
+		
+		\item Stenosis of artery: This is caused when there is blockage of the flow of blood which is usually caused by Atherosclerosis
+		
+		\item Coronary heart disease: Occur when plague build up in the coronary heart disease supplying oxygen and blood to the heart.
+		
+		\item Corotial Artery Disease: is called if plague builds up in the two side of the neck which reduces the flow of blood to the brain.
+		
+		\item Peripherical Dirtery Disease: Is caused if plagues build up in the arteries the supply bllod to the legs, arm which reduces blood flow and cause numbness and other pain
+		
+		
+		\item Chronic kidney disease: is caused if plagues builds up in the renal artery which reduce the flow of blood to the kidney
+		
+		\item Newtonian Fluid is a fluid in which the viscous stress is proportional to the local strain rate $\dsp T = \mu \frac{du}{dy}$
+		
+		\item Non-Newtonian fluids: is a fluid in which it viscosity is dependent in the shear gas are compressible, liquid are incompressible stress.
+		
+		\item Incompressible fluid: is a fluid if it does not experience change in its volume over time.
+		
+		\item elasticity: A substance is said to be elastic if it returns back to it normal shape after force has been applied.
+		
+		\item Viscosity: It is the measure of the fluid resistance to flow because of the cohesive force.
+		
+		\item Fluid statics: It is a branch of fluid that studies incompressible fluid at rest (hydrostatics)
+		
+		\item Fluid dynamics: is the study of fluid in motion
+		
+		\item Reynoid Numbers: is a range of values which shows the type of flow a fluid experience $\dsp NR_e = \frac{\rho ud}{\mu}$
+		
+		\item Shear stress: This is a force acting on the are of material
+		
+		\item Power law Fluid: is a fluid in which he shear stress is proportional to the shear rate to a power of n $\dsp T = K\Big(\frac{\partial u}{\partial y}\Big)^n$
+	\end{enumerate}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{LITERATURE REVIEW}
+	\section{Introduction}
+	Sometimes the deposit turn atherosclerotic plagues and thereby the arterial diameter great reduced. It is evident from clinical and subclinical examination that such a condition can lead to haemorrhage and local thrombosis. So here we shall review some of the works carried out on this field.
+	
+	\section{The Flow-Behaviour of Blood in an Artery with Sterosis using Power Law Fluid}
+	According to experimental observation it has been found that initially blood cell are damaged or their surface changes in a high or their surfaces changes in a high shear field and then the particle stuck to the wall.\sps
+	Liepscn (1986) carried out experiments to study the influence of haemo-dynamics in bends and bifurcations.\sps
+	
+	\NI In this project, the effect of stenosis on the flow behaviour of blood in a an artery by considering blood as a non-Newtonian viscous incompressible fluid and the artery as an innally stressed elastic cylindrical tube was reviewed.
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{MATHEMATICAL FORMULATION}
+	A circular cylindrical arterial segment with stenosis was considered by treating the vascular wall as linear and elastic material while the flow of blood through it is incompressible and Non-Newtonian fluid.\sps
+	
+	The geometric of the stenosis is assumed to be unsymmetrical  \begin{equation}
+		\frac{R(z)}{a} = 1 - \frac{\partial S}{2a}\Big[1 + \cos \frac{2a}{L_0}(z - d - \frac{L_0}{2})\Big] = 1 
+	\end{equation}
+	$R(z)$ = radius of the arterial segment\sps
+	$a$ = the radius of the segment outside the region
+	$L_0$ = length of the stenosis\sps
+	$\partial s$ = the maximum height of the stenosis
+	
+	
+	\NI The base equation of motion governing such type of flow si
+	\begin{equation}
+		\frac{1}{r}\frac{\partial}{\partial r}\Big(r T_{r_z}\Big) = - \frac{\partial \rho}{\partial z}
+	\end{equation}
+	$Tr_2$ is for the Power Law Fluid\sps
+	\begin{equation*}
+		T_{rz} = - \mu / \frac{dw}{dr}\Big|^{n-1} \frac{dw}{dr} = \mu(1)\Big(-\frac{\partial w}{\partial r}\Big)^n
+	\end{equation*}
+	$w$ = arial velocity\sps
+	$\rho$ = fluid pressure\sps
+	
+	\begin{eqnarray}
+		-T_0\frac{dR}{dz} + \frac{\partial}{\partial z}\Big(RT_t\Big) - R\Big[M_O\frac{\partial^2\epsilon}{\partial t^2}\Big] + c + \frac{\partial \epsilon}{\partial t} + K_t \epsilon + \Big[M_0\frac{\partial^2 n}{\partial t^2} + G\frac{\partial n}{\partial t} + K_r n\frac{\partial R}{\partial z}\Big]\notag\\
+		+ \frac{R}{1 + \Big(\frac{\partial R}{\partial z}\Big)^2}\Big[T_{ze} - T_{rr}\frac{\partial R}{\partial z} + T_R \Big[\Big(\frac{\partial R}{\partial z}\Big)^2 - 1\Big]^2\Big] = 0 \notag
+	\end{eqnarray}
+
+	\begin{equation}
+		\text{Constitutive relations } = T_0 - T_{\phi_0} = B_{11}\frac{n}{a} + B_{12}\frac{\partial \epsilon}{\partial z}
+	\end{equation}
+	\begin{eqnarray}
+		B_{11} = \frac{E_\phi b}{1-\sigma_\theta\sigma_t}, ~~~ B_{12}=\frac{E_\theta h \sigma_t}{1-\sigma_\theta\sigma_t}, ~~~~ B_{22}=\frac{E_\theta h}{1-\sigma_\theta\sigma_t} \notag
+	\end{eqnarray}
+	$E_\theta, E_t, \sigma_t$ is the material paramters for artenal segment. $T_{t_\theta}$ and $T_{\theta_0}$ are initial stresses.\sps
+	
+	
+	\NI Boundary conditions. the situation on stenotic regim is $w\frac{\partial \epsilon}{\partial dt}$ on $r =R(z)$ 
+	
+
+
+
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\chapter{}
+	
+\end{document}
+

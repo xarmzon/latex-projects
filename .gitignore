@@ -1,0 +1,15 @@
+packages/
+docs/
+*.gz
+*.synctex
+*.aux
+*.rar
+*.zip
+*.toc
+*/**/*.gz
+*/**/*.synctex
+*/**/*.aux
+*/**/*.log
+*/**/*.zip
+*/**/*.rar
+*/**/*.toc

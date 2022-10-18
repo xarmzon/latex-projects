@@ -1,0 +1,386 @@
+\documentclass[12pt]{report}
+
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\NI}{\noindent}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\tti}[1]{\textit{#1}}
+\newcommand{\laplace}[1]{\mathcal{L}[#1]}
+\newcommand{\inverseLaplace}[1]{\mathcal{L}^{-1}[#1]}
+
+\renewcommand{\baselinestretch}{1.4}
+
+\begin{document}
+	\begin{titlepage}
+		\centering
+		\includegraphics[width=3cm]{unilorin_logo}\spn{.8}
+		{\LARGE \bt{UNIVERSITY OF ILORIN, KWARA STATE NIGERIA}}\spn{0.5}
+		
+		\vspace{1cm}
+		
+		{\LARGE \bt{Department of Mathematics}}\spn{0.8}
+		
+		\vspace{1.3cm}
+		
+		{\Huge Project Proposal}\sps 
+		\vspace{1cm}
+		
+		\tti{BY:}\sps
+		\vspace{1cm}
+		{\Large \bt{ABUBAKAR, Jamal Adeola}}
+				\sps 
+			\bt{Matric Number:} 17/56GA010
+		
+		\vspace{2.5cm}
+		
+		\bt{JUNE, 2021}
+	\end{titlepage}
+
+	%%%%%%%%%%%%%%% FIRST TOPIC %%%%%%%%%%%%%%%%%%%%%
+	\section*{TOPIC:}
+	{\LARGE \bt{Solutions of Systems of First Order Ordinary Differential Equations and Applications to Real Life Problems}}
+	
+	\section*{INTRODUCTION}
+	\subsection*{Background of the study}
+	A system of $n$ linear first order differential equations in $n$ unknowns has the general form
+	\begin{equation}
+		\begin{array}{ccccccccccc}
+			x_1\sprime &=& a_{11}x_1 &+ &a_{12}x_2 &+& \cdots &+& a_{1n}x_n &+& g_1 \sps
+			x_2\sprime &=& a_{21}x_1 &+ &a_{22}x_2 &+& \cdots &+& a_{2n}x_n &+& g_2 \sps
+			x_3\sprime &=& a_{31}x_1 &+ &a_{32}x_2 &+& \cdots &+& a_{3n}x_n &+& g_3 \sps
+			 & & \vdots & & \vdots & &  & & \vdots & & \vdots \sps
+			 x_n\sprime &=& a_{n1}x_1 &+ &a_{n2}x_2 &+& \cdots &+& a_{nn}x_n &+& g_n
+		\end{array}
+		\tag{*}
+		\label{eq:astk_1}
+	\end{equation}
+	where $a_{ij}$'s and $g_i$'s are arbitrary function of $t$.\sps
+	If ever term $g_i$ is constant zero, then the system is staid to be \bt{homogeneous}. Otherwise, it is a \bt{non-homogeneous} system if even one of the $g$'s is non-zero.\\
+	
+	\NI The System \refx{astk_1} is most often given in a shorthand format as a matrix vector equation in the form
+	\begin{equation*}
+		x\sprime = Ax + g
+	\end{equation*}
+	
+	\begin{equation*}
+		\begin{bmatrix}
+		x_1\sprime \\
+		x_2\sprime \\
+		x_3\sprime \\
+		\vdots\\
+		x_n\sprime
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			a_{11} & a_{12} & \cdots & a_{1n}\\
+			a_{21} & a_{22} & \cdots & a_{2n}\\
+			a_{31} & a_{32} & \cdots & a_{3n}\\
+			\vdots & \vdots & \vdots & \vdots \\
+			a_{n1} & a_{n2} & \cdots & a_{nn}\\
+		\end{bmatrix}
+		\begin{bmatrix}
+			x_1 \\
+			x_2 \\
+			x_3 \\
+			\vdots\\
+			x_n
+		\end{bmatrix}
+		+
+		\begin{bmatrix}
+			g_1 \\
+			g_2 \\
+			g_3 \\
+			\vdots\\
+			g_n
+		\end{bmatrix}\sps
+	\end{equation*}
+	
+	\NI For a homogeneous system, $g$ is the zero vector. Hence it has the form
+	\begin{equation*}
+		x\sprime = Ax
+	\end{equation*}
+	
+	\section*{AIMS AND OBJECTIVES OF THE PROJECT}
+	The main aim of the research work is to examine the solutions of systems of first order ordinary differential equations and its applications to real life problems.\sps
+	The objectives of the study includes
+	\begin{enumerate}
+		\item To reduce higher order system value problem to the equivalent first system.
+		
+		\item to use matrix methods involving eigenvalues and eigenvectors
+		
+		\item to rewrite linear D.E into a system of two equations
+		
+		\item to use Laplace Transform method to solve system of linear equations.
+		
+		\item to solve application problems using first order linear D.E
+	\end{enumerate}
+	
+	\section*{METHODOLOGY}
+	\subsection*{1.1 Reduction of higher order to system of first order O.D.E}
+	Every $n\mbox{-}th$ order linear equation is equivalent to a system of $n$ first order linear equation.\sps
+	
+	\NI\bt{Example 1:} Reduce $y\tprime - 3y\dprime + 2y\sprime - 6y = 0$
+	From the equation above is equivalent to:
+	\begin{eqnarray}
+		x\sprime_1 &=& x_2\notag\sps
+		x\sprime_2 &=& x_3\notag\sps
+		x\sprime_3 &=& 6x_1 - 2x_2 + 3x_3\notag
+	\end{eqnarray}
+	
+	\NI\bt{Example 2:}\sps
+	$y\dprime + 5y\sprime - 6y = 0$\sps
+	\bt{Solution}\sps
+	$y\dprime + 5y\sprime - 6y = 0$
+	\begin{eqnarray}
+		y\sprime_1 &=& y_2\notag\sps
+		y\sprime_2 &=& -5y_2 + 6y_1 \notag
+	\end{eqnarray}
+	
+	
+	\subsection*{1.2 Using Matrix method involving Eigenvalues and Eigenvectors}
+	This method involves using determinant of the form: 
+	\begin{equation*}
+		\mathrm{det}(A-\lambda I)
+	\end{equation*}
+	where $\lambda$ is the eigenvalues and $A$ is a matrix, $I$ is the identity element.\sps
+	
+	\NI\bt{Example 3:} Find te eigen values and corresponding eigenvectors.\sps
+	Let
+	\begin{equation*}
+		A = \begin{bmatrix}
+			1 & 2\\
+			2 & 1
+		\end{bmatrix}
+	\end{equation*}
+	\bt{Solution:}\sps
+	Recall, $A - \lambda I$\sps
+	\begin{eqnarray}
+		&=& \begin{bmatrix}
+			1 & 2\\
+			2 & 1
+		\end{bmatrix} - \lambda
+		\begin{bmatrix}
+			1 & 0\\
+			0 & 1
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			1 - \lambda & 2\\
+			2 & 1 - \lambda
+		\end{bmatrix}\notag\spn{1.2}
+		\mathrm{det}(A-\lambda I) &=& (1-\lambda)(1-\lambda) - 2 \times 2 = 0\notag\sps
+		& & (\lambda - 1)^2 - 4 = 0\notag \sps
+		& & (\lambda - 1)^2 = 4\notag\sps
+		\lambda &=& 1 \pm 2\notag\sps
+		&& \lambda_+ = 3 \quad \mathrm{or}\quad \lambda_- = -1\notag
+	\end{eqnarray}
+	Therefore the eigenvalues are $\lambda_1=3,$ and $\lambda_2=-1$.\sps
+	To find the eigenvectors\sps
+	When $\lambda = 3$
+	\begin{eqnarray}
+		(A - 3I) &=& 0\notag\sps
+		\vec{V_1} &=&  \begin{bmatrix}
+			1-3 & 2\\
+			2 & 1 - (-1)
+		\end{bmatrix}
+		\begin{bmatrix}
+			x_1 \\
+			x_2
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			0\\
+			0
+		\end{bmatrix}\notag\sps
+		&=& \begin{bmatrix}
+			-2 & 2\\
+			2 & 2
+		\end{bmatrix}
+		\begin{bmatrix}
+			x_1 \\
+			x_2
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			0\\
+			0
+		\end{bmatrix}\notag
+	\end{eqnarray}
+	
+	$$-2x_1 + 2x_2 = 0$$
+	$$x_1 = x_2\sps$$
+	\begin{eqnarray}
+		\vec{V_1} &=& \begin{bmatrix}
+			x_1\\
+			x_2
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			1\\
+			1
+		\end{bmatrix}\notag
+	\end{eqnarray}
+	
+	\NI When $\lambda = -1$
+	\begin{eqnarray}
+		(A + I) &=& 0\notag\sps
+		\vec{V_2} &=&  \begin{bmatrix}
+			1-(-1) & 2\\
+			2 & 1 - (-1)
+		\end{bmatrix}
+		\begin{bmatrix}
+			x_1 \\
+			x_2
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			0\\
+			0
+		\end{bmatrix}\notag\sps
+		&=& \begin{bmatrix}
+			2 & 2\\
+			2 & 2
+		\end{bmatrix}
+		\begin{bmatrix}
+			x_1 \\
+			x_2
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			0\\
+			0
+		\end{bmatrix}\notag
+	\end{eqnarray}
+	
+	$$2x_1 + 2x_2 = 0$$
+	$$2x_1 = -x_2 \implies x_1 = -x_2\sps$$
+	\begin{eqnarray}
+		\vec{V_2} &=& \begin{bmatrix}
+			x_1\\
+			x_2
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			-1\\
+			1
+		\end{bmatrix}\notag
+	\end{eqnarray}
+	
+	\subsection*{1.3 Laplace Transform methods of solving system of linear equations}
+	To solve a differential equation of the form:
+	\begin{equation*}
+		af\sprime(t) + bf(t) = g(t)
+	\end{equation*}
+	given than $f(0)=k$ where $a,b$ and $k$ are constants and $g(t)$ is a known expression in $y$.
+	
+	\vspace{2cm}
+	\section*{REFERENCES}
+	\begin{description}
+		\item Gabriel Nagy, January 18, 2021, Background of the study, Example 3.
+		
+		\item Prof. Gbamigbola: Lecture notes (2019) example 2 eqn (B)
+		
+		\item K.A Stroud (2001) 7th Edition
+	\end{description}
+	
+	
+	
+	\newpage
+	%%%%%%%%%%%%%%% SECOND TOPIC %%%%%%%%%%%%%%%%%%%%%
+	\section*{TOPIC:}
+	{\LARGE \bt{Laplace Transform: Theory, Problems and Solutions}}
+	\section*{INTRODUCTION}
+	\subsubsection*{Background of the study}
+	Laplace transform is yet another operational tool for solving constant coefficients linear differential equations.\sps
+	The process of solution consists of three main steps:
+	\begin{itemize}
+		\item The given "hard" problem is transformed into a "simple" equation
+		
+		\item This simple equation is solved by purely algebraic manipulations
+		
+		\item The solution is transformed back to obtain the solution of te given problem
+	\end{itemize}
+	
+	\section*{AIMS AND OBJECTIVES}
+	The main aim of the research work is to examine the Laplace Transform theory, problems and solutions.\sps
+	The objective of the study are:
+	\begin{enumerate}
+		\item To determine Laplace Transform
+		
+		\item To solve te algebraic equation
+		
+		\item To determine the inverse transform
+		
+		\item To determine the Laplace Transform a polynomial
+		
+		\item Solving initial value problem using Laplace Transform
+		
+		\item To examine the Laplace Transform and of partial fractions
+	\end{enumerate}
+	
+	\section*{Definition}
+	The Laplace Transform is defined in the following way:\sps
+	Let $f(t)$ be defined for $t \geq 0$. Then the Laplace transform of $f$, which is denoted $\laplace{f(t)}$ or $F(s)$, is defined by te following equation
+	\begin{eqnarray}
+		\laplace{f(t)} = F(s) &=& \lim\limits_{T\rightarrow \infty}\int_0^T f(t)e^{-st}\mathrm{d}t\notag\sps
+		&=&\int_0^\infty f(t)e^{-st}\mathrm{d}t\notag\sps
+		&& \qquad \mathrm{for } \; s > 0\notag
+	\end{eqnarray}
+	
+	\section*{METHODOLOGY}
+	\subsubsection*{1.0 Finding Laplace Transform}
+	We have methods to find $F(s)$ for a given $f(t)$:\sps
+	From the definition:
+	\begin{equation*}
+		\laplace{f(t)} = F(s) \int_0^\infty f(t)e^{-st}\mathrm{d}t
+	\end{equation*}
+	For
+	\begin{eqnarray}
+		f(t) = 1 \implies \laplace{1} &=& \int_0^\infty e^{-st}\mathrm{d}t\notag\sps
+		&=&\left[-\frac{1}{s}e^{-st}\right]_0^\infty = \frac{1}{s}\notag
+	\end{eqnarray}
+	For
+	\begin{eqnarray}
+		f(t) = t, \laplace{t} &=& \int_0^\infty e^{-st}t\mathrm{d}t\notag\sps
+		&=&\left[-\frac{1}{s}e^{-st}\right]_0^\infty + \int_0^\infty \frac{1}{s}e^{-st}\mathrm{d}t = \frac{1}{s}\notag
+	\end{eqnarray}
+	
+	\subsection*{1.1 Finding the Inverse Transform Using Partial Fractions}
+	Given a function $f(t)$, we denote its Laplace Transform by $\laplace{f} = F$, the Inverse process is written as
+	\begin{equation*}
+		\inverseLaplace{F} = f
+	\end{equation*}
+	\vspace{1cm}
+	\subsection*{1.2 Solving ODEs and ODE Systems}
+	The application of Laplace Transform method is effective for linear ODEs with constant coefficients and for Systems of such ODEs\sps
+	\bt{Example 1.0}\sps
+	Solve $f\sprime(t) - f(t) = 2 ----- (a)$ where $f(0)=0$\sps
+	$\dsp 2\frac{\mathrm{d}y}{\mathrm{d}x} - y = \sin t ----- (b), \quad y(0) = 1$\sps
+	
+	\vspace{3cm}
+	\section*{REFERENCES}
+	\begin{description}
+		\item C.T.J Dodson, School of Mathematics Manchester University
+		
+		\item Marcel B. Finan Arkansas Tech University
+		
+		\item K.A. Stroud, Dexter J. Booth (2001) 7th Edition(example 1.0 (a) )
+	\end{description}
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}

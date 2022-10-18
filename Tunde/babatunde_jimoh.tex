@@ -1,0 +1,549 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\linespread{1.5}
+\newcommand\Laplace{\mathlarger{\mathlarger{\mathscr}}}
+\usepackage[utf8]{inputenc}
+\begin{document}
+\newpage
+\pagenumbering{roman}
+\newcommand{\np}{\newpage}
+
+\begin{titlepage}
+\addcontentsline{toc}{section}{\numberline{}Title page}
+		\begin{center} 
+		\textbf{\Large DISSIPATION AND HEAT SOURCE EFFECT ON AN ELECTRONICALLY CONDUCTING FLUID FLOW THROUGH A SHRINKING SHEET} 
+		\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center}	                    \textbf{\emph\large BY}		                               \end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}    				
+\textbf{\large SULAIMAN, Habeeb Adekunle}               \end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center} 		           \textbf{\upshape MATRIC NO: 18/56EB125}															             \end{center}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center}      \textbf{A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, NIGERIA, IN PARTIAL FULFILMENT OF THE  REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.}
+		\end{center}
+		
+		
+		
+\begin{center}       
+\vspace{2in}\date \textbf{\today}
+\end{center}
+\end{titlepage}
+ 
+\section*{\begin{center}	\textbf{\Large Certification}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Certification}
+ This is to certify that this project work was carried out by \textbf{SULAIMAN, Habeeb Adekunle} with matriculation number \textbf{18/56EB125} and approved as meeting the requirement for the award of the Bachelor of Science (B. Sc.) degree of the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria.
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+\textbf{Dr. T.L. Oyekunle}$\qquad\qquad\qquad\quad\qquad\qquad\qquad\qquad\qquad$Date\\
+{\small Supervisor}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+\textbf{Prof. K. A. Rauf} $\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad$Date\\
+{\small Head of Department}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+{\small \textbf{Prof. T. O. Oluyo} $\quad\qquad\quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad$Date\\
+External ExaminerD
+
+\np
+\section*{\begin{center}\textbf{\large Acknowledgment}	             \end{center}}
+\addcontentsline{toc}{section}
+{\numberline{}Acknowledgment}
+All praise and might is due to Allah (s.w.t), the most Merciful for His infinite mercy and blessings bestowed upon me during course of my program.\\
+I am grateful to my supervisor, Dr. T.L. Oyekunle for his unfailing non stop monitoring and encouragement during the course of this project. May Allah bless you and your family infinitely.\\
+I will also love to acknowledge my H. O. D., Prof. K. Rauf, for his fatherly love and care, and my level adviser, Dr. K.A Bello who made the department and the campus as a whole a home for me. My profound gratitude goes to all the lecturers in the Department. These includes  Prof. T. O. Opoola, Prof. O. M. Bamigbola, Prof. M. O. Ibrahim, Prof. O. A. Taiwo, Prof. R. B. Adeniyi, Prof. K. O. Babalola, Prof. M. S. Dada, Prof. A. S. Idowu, Doctors E. O. Titiloye, (Mrs) O. A. Fadipe Joseph, (Mrs) Y. O. Aderinto,  (Mrs) C. N. Ejieji, J. U. Abubakar, K. A. Bello, G. N. Bakare, B. M. Ahmed, O. T. Olotu, I. F. Usamot, O. A. Umaheren, O. Odetunde,Yisa, and A. A. Yeketi. The efforts of the non-academic staff of the department are equally appreciated.\\
+My profound gratitude goes to my adorable parents Mr Sulaiman \& Mrs. Sulaiman for their care, moral and support from my birth till date, may almighty Allah (SWT) continue to bless them more than they've cared for me. I also appreciate my siblings: Mrs. Aziz Suliyat, Sulaiman Habeebat, Sulaiman Fathiat ans Sulaiman Abdullahi for their supports towards me, they have been wonderful, may God's love between us never grow less. I am greatly indebted to my dear teacher, mentor and friend, Mr. M. A. Atolani, for his fatherly support and care throughout my academic career. Forever, his love and care will always linger my heart. My appreciation also goes to my tutors throughout my stay in this varsity, Bakare Afis, Mufutau Majeed, and Oduola Idrees, who has given their best to safe me from academic challenges. May Allah reward you in manifolds. Worthy of mention is my cabal: Saidu Hussein, Anifowose Abdulkabir, Salaudeen Jamiu, Odebunmi Muhammed, Muhammed Yusuf, Abdulsalam Ayman, Saidu Muhammed, Lawal Abdulbaki, Ajala Rashidat, Abdulganiyu Aminat and Isiaka Shukurah, for their unending support towards me in attaining this academic pursuit. May God be with us all in our endeavours. I am grateful to my uncle and his wife, Mr and Mrs. Oyinloye, as well as his children. They've been really amazing. May God continue to bless him and his family. I am also grateful to Mrs. N. Abdul Quadri, Mr. Hassan Nurudeen, Mr. Kayode Ahmed, Miss. Nafisat Olatoyan as well as all the entire staff of Mahrifan Keystone Private School. I say thank you for everything. May God bless you all. I also appreciate my best friend the person of Akanni Balikis, for her support, patience and encouragements. May God set all your affairs in order.
+
+
+\np 						\section*{\begin{center}	\textbf{\Large Dedication}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Dedication}
+I dedicate this project to my beloved late Grandfather Sheikh Ibrahim Oyebowale, My parent Mr. and Mrs. Sulaiman and my unforgettable lovers. %you may decide to change this anytime
+\np
+		         \section*{\begin{center}	\textbf{\Large Abstract}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Abstract}
+This project is based on the examination of the influences of thermophoresis and non linear convection parameters on a porous viscous fluid flow over a shrinking sheet in two dimensional. The result gotten from the formulated equations was compared with the past researchers' and was seen reliable and valid.
+
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+
+
+\chapter{GENERAL INTRODUCTION}
+\section{Introduction}
+\subsection{Background of the study}
+The air we breathe, the water we drink,the blood and other liquids that flow in our bodies demonstrate the close dependence of our lives on various fluids. Not only must these fluids, as well as many others, be present when we need them, it is important that they are present where we need them with not only satisfactory quality;but also sufficient quantity. Man’s desire for knowledge of fluid phenomena began with his problems of water supply, irrigation, navigation, and waterpower. Matter exists in two states; the solid and the fluid, the fluid state being commonly divided into the liquid and gaseous states. Solids differ from liquids and liquids from gases in the spacing and latitude of motion of their molecules, these variables being large in a gas, smaller in a liquid, and extremely small in a solid. Thus it follows that intermolecular cohesive forces are large in a solid, smaller in a liquid, and extremely small in a gas.
+Solids, liquids and gases are all composed of molecules in continuous motion. However, the arrangement of these molecules, and the spaces between them, differ, giving rise to the characteristics properties of the three states of matter. In solids, the molecules are densely and regularly packed and movement is slight, each molecule being strained by its neighbors. In liquids, the structure is loser; individual molecules have greater freedom of movement and, although restrained to some degree by the surrounding molecules, can break away from the restraint, causing a change of structure. In gases, there is no formal structure, the spaces between molecules are large and the molecules can move freely.
+\subsection{Statement of the problem}
+A variety of industrial manufacturing processes need the creation of sheeting material, which includes both metal and polymer sheets. The fluid flow caused by a shrinking surface is useful in a variety of engineering operations. Many writers have recently conducted research on viscous fluid boundary layer flows caused by a uniformly decreasing sheet. Heat transmission on a moving surface has a wide range of uses in industrial manufacturing. The flow of fluids through porous medium in a rotating system is of interest to petroleum engineers interested in the movement of oil and gas through reservoirs, as well as hydrologists interested in the study of subsurface water migration. The use of saturated porous materials for insulation in storage tanks to regulate the rate of heat transmission has received a lot of interest in the field of energy conservation.During the winter, insulating underground water pipes keeps the water from freezing. The influence of a magnetic field on the flow of an electrically conducting viscous fluid has applications in crude oil purification, glass manufacture, paper production, polymer sheets, MHD electrical power generation, magnetic material processing, and so on. Furthermore, the final result is dependent on the rate of cooling, which is determined by the boundary layer arrangement near the stretching/shrinking sheet. However, in viscous fluid flows with heat transfer, the influence of linear density on temperature, i.e. free convection, has been proven to be quite significant in applications linked to industrial production processes and thus cannot be overlooked. However, when the temperature difference between the surface and the ambient fluid is significant, nonlinear density temperature (NDT) fluctuations in the buoyancy force term have a significant impact on flow and heat transfer characteristics. Now, in terms of the Darcy dissipation, it's vital to remember that viscous dissipative heat in natural convective flow is important when the flow field is large, the temperature is low, or the gravity field is high. When considering flow through a porous material, the Darcy dissipation term, which is of the same order of magnitude as the viscous dissipation term, cannot be ignored in the energy calculation. Many researchers are still studying the flow dynamics of shrinking surfaces, and many of their properties have yet to be researched. The goal is to target the influence of heat source and dissipation on an electrically conducting fluid flow through a shrinking sheet.
+\subsection{Objective of the study}
+The main objectives of the study are as follows;
+
+1. Derive governing equations for hydro magnetic boundary layer flow with slip over a shrinking sheet.
+
+2. Solve the equations numerically by method of legendre polynomial using Mathematica software.
+
+3. Determine the effects of dissipation,magneticity,heat source on flow characteristics like velocity and temperature profiles.
+\subsection{Definition of terms}
+\begin{itemize}
+	\item HEAT: This is the internal energy possess by substance which can transfer from one form to another
+	\item HEAT TRANSFER: This is the transfer of heat energy from lower point to another. Heat transfer tells the models and rate of flow
+	\item MAGNETOHYDRODYNAMICS (MHD): It is  seen as the study of the flow of electrically conducting fluids in the presence of magnetic fields Examples of such magneto-fluids include plasmas, liquid metals, and salt water or electrolytes.
+	\item Boundary Layers: Boundary layers are the thin fluid layers adjacent to the surface of a body in which strong viscous effects exists.
+	\item Shrinking Sheet: Is a surface which decreases in size to a certain area due to an imposed suction or external heat. Shrinking film is one of the common applications of shrinking problem in industries.
+	\item Dissipation : Heat which is lost to environment due to unwanted action like friction is termed dissipation. This heat is lost and cannot be recovered or we can say that it is converted to lower grade energy.  
+\end{itemize}
+\section{General concept of a fluid}
+What is a fluid?
+
+
+A fluid is a substance that deforms continuously under the action of a shear force. It means that a fluid deforms under very small shear stress, but a solid may not deform under that magnitude of the shear stress.By contrast a solid deforms when a constant shear stress is applied, but its deformation does not continue with increasing time.A fluid may be a liquid or a gas; it offers resistance to a change of shape and is capable of flowing. Liquid and gas are distinguished as follows: 
+1. A gas completely fills the space in which it is contained; a liquid usually has a free surface. 
+2. A gas is a fluid which can be compressed relatively easily and is often treated as such; a liquid can be compressed only with difficulty.\\
+\textbf{FLUID AS A CONTINUUM} 
+
+
+A continuum is a phase or a continuous distribution of matter with no voids. A fluid is said to be a continuum because the formulation of the basic relationships is based on a hypothetical continuous fluid; a fluid that can be continually subdivided without thought of a molecular structure. This approach avoids the difficulty of dealing with the complexity of molecular motion itself. Although, certain fluid properties are explained on the basis of molecular considerations.
+\subsection{TYPES OF FLUID} 
+Fluids can be classified according to their behaviours under stress as Newtonian fluids or non-Newtonian fluids. 
+\begin{itemize}
+\item Newtonian Fluids ;These are fluids which obey Newton’s law viscosity which says the shear stress is linearly related to the rate of shear strain or velocity gradient. Most common fluids such as water, gasoline, ethanol, fall into this category.
+\item Non-Newtonian Fluids; These are fluids which do not obey Newton’s law of viscosity. The group includes: Plastic, pseudo plastic,dilatant substances,viscoelastic material,thioxotrophic substances.
+\end{itemize}
+\subsection{PHYSICAL PROPERTIES OF FLUID} 
+The following properties of fluid are of great importance to the study of fluid mechanics.
+\begin{itemize}
+\item Density: The density of a substance is its mass per unit volume. In fluid mechanic it is expressed in three different ways:
+\subitem i) Mass density,$\rho$ , is the mass of the fluid per unit volume
+                        $$\rho = \frac{m}{v}$$
+Units: kilogram per cubic meter $(kg/m^{3})$.Dimensions: $ML^{3}$
+\subitem ii) Specific weight, W , ( sometimes known as specific gravity) can be defined similarly as its weight per unit volume. 
+$$W = \rho g$$
+Units: Newton per cubic meter $(N/m^3)$. Dimensions: $ML^2T^2$
+\subitem iii) Relative density (Specific gravity), S, is the ratio of fluid density (specific weight) to the fluid density (specific weight) of a standard reference fluid.
+$$S = \frac{specific weight}{some standard specificweight}$$
+It has no unit while its dimension is 1.
+\item Pressure (P) –Pressure is the stress at a point in a static fluid. The gradient in pressure often drives a fluid flow, especially in ducts.Fluids have pressure, and fluids flow because of pressure differences. An understanding of what pressure is and how it relates to fluids is key to understanding the subject of fluid flow. A key equation is:
+$$\Delta P = \rho g\Delta h$$
+where $\Delta P$ is a pressure difference, $\rho$ is the density, g is the acceleration due to gravity $(9.81 m/s^2)$, and $\Delta h$ is the height over which the pressure difference is being measured. The SI unit is $N/m^2$
+\item Vapour Pressure (p) – Liquids exhibit a vapour pressure, which contributes to the total pressure above the liquid.
+\item Viscosity ( $\mu$ ) – This is the fluid property responsible for resistance to applied forces.Honey has high viscosity, water has much lower viscosity, and air has an even lower viscosity.The situation is similar when a fluid moves relative to a solid or when two fluids move relative to each other.The property that represents the internal resistance of a fluid to motion(i.e.fluidity)is called as viscosity.The fluids for which the rate of deformation is proportional to the shear stress are called Newtonian fluids and the linear relationship for a one-dimensional system is seen below.The shear stress($\tau$)is then expressed as:
+$$\tau=\mu\frac{du}{dy}$$
+where, $\frac{du}{dy}$ is the shear strain rate and $\mu$ is the dynamic(or absolute) viscosity of the fluid.\\
+In general,the viscosity of a fluid mainly depends on temperature.For liquids,the viscosity decreases with temperature and for gases,it increases with temperature. Its SI units are $kgm^{-1}s^{-1}$ or $Pas$.
+\item Surface Tension ($\sigma$) – Liquids in contact with gases (e.g. water in contact with air) form an interface. The liquid molecules at the interface are attracted to each other more than to the gas molecules, so they tend to pull sideways.It is seen as the force that is present on the surface of a liquid which makes it behave as if it is covered by an elastic skin.Surface tension is expressed mathematically as the ratio of force to cross sectional area.
+$$ Surface Tension = \frac{F}{A}$$
+It is measured in $N/M^2$
+\item Thermal Conductivity(k): It relates the rate of heat flow per unit area (q) to the temperature gradient [$\frac{dT}{dx}$] and is governed by Fourier Law of heat conduction i.e. 
+ $q=-k \dfrac{dT}{dx}$.
+ In SI system the unit and dimension of thermal conductivity can be written as,$W/m.K$ and $MLT^{-3}\theta^{-1}$, respectively. Thermal conductivity varies with temperature for liquids as well as gases in the same manner as that of viscosity. The reference value of thermal conductivity ($k_0$) for water and air at reference temperature is taken as $0.6 W/m.K$ and $0.025 W/m.K$, respectively. 
+ \item Coefficient of compressibility /Bulk modulus($E_v$) : It is the property of that fluid that represents the variation of density with pressure at constant temperature.
+\item Specific heats: It is the amount of energy required for a unit mass of a fluid for unit rise in temperature. Since the pressure, temperature and density of a gas are interrelated, the amount of heat required to raise the temperature from $T_1$ to $T_2$ depends on whether the gas is allowed to expand during the process so that the energy supplied is used in doing the work instead of raising the temperature. For a given gas, two specific heats are defined corresponding to the two extreme conditions of constant volume and constant pressure.\\
+(a) Specific heat at constant volume ($c_v$)\\
+(b) Specific heat at constant pressure ($c_p$)
+\item Vapour pressure ($p_v$) : It is defined as the pressure exerted by its vapour in phase equilibrium with its liquid at a given temperature. For a pure substance, it is same as the saturation pressure. In a fluid motion, if the pressure at some location is lower than the vapour pressure, bubbles start forming. This phenomenon is called as cavitation because they form cavities in the liquid.
+\end{itemize}
+\subsection{Classifications of Fluid Flows}
+\textbf{What is flow?}\\
+The movement of liquids and gases is generally referred to as "flow," a concept that describes how fluids behave and how they interact with their surrounding environment — for example, water moving through a channel or pipe, or over a surface.\\
+Some of the general categories of fluid flow problems are as follows;
+\begin{itemize}
+\item Viscous and Inviscid flow: The fluid flow in which frictional effects become signification, are treated as viscous flow. When two fluid layers move relatively to each other, frictional force develops between them which is quantified by the fluid property ‘viscosity’. Boundary layer flows are the example viscous flow. Neglecting the viscous terms in the governing equation, the flow can be treated as inviscid flow. 
+\item Internal and External flow: The flow of an unbounded fluid over a surface is treated as ‘external flow’ and if the fluid is completely bounded by the surface, then it is called as ‘internal flow’. For example, flow over a flat plate is considered as external flow and flow through a pipe/duct is internal flow. However, in special cases, if the duct is partially filled and there is free surface, then it is called as open channel flow. Internal flows are dominated by viscosity whereas the viscous effects are limited to boundary layers in the solid surface for external flows. 
+\item Compressible and Incompressible flow: The flow is said to be ‘incompressible’ if  the density remains nearly constant throughout. When the density variation during a  flow is more than then it is treated as ‘compressible’. This corresponds to a flow  Mach number of 0.3 at room temperature.  
+\item Laminar and Turbulent flow: The highly ordered fluid motion characterized by  smooth layers of fluid is called ‘Laminar Flow’, e.g. flow of highly viscous fluids at  low velocities. The fluid motion that typically occurs at high velocities is  characterized by velocity fluctuations are called as ‘turbulent.’ The flow that alternates between being laminar \& turbulent is called ‘transitional’. The dimensionless number i.e. Reynolds number is the key parameter that determines whether the flow is laminar or turbulent.  
+\item Steady and Unsteady flow: When there is no change in fluid property at point with  time, then it implies as steady flow. However, the fluid property at a point can also  vary with time which means the flow is unsteady/transient. The term ‘periodic’ refers  to the kind of unsteady flows in which the flow oscillates about a steady mean. 
+\item Natural and Forced flow: In a forced flow, the fluid is forced to flow over a surface by external means such as a pump or a fan. In other case (natural flow), density difference is the driving factor of the fluid flow. Here, the buoyancy plays an important role. For example, a warmer fluid rises in a container due to density difference. 
+\item One/Two/Three dimensional flow: A flow field is best characterized by the velocity distribution, and thus can be treated as one/two/three dimensional flow if velocity varies in the respective directions.
+\end{itemize}
+\subsection{BOUNDARY LAYER FLOWS}
+A boundary layer is a layer of fluid in the immediate vicinity of a bounding surface where the effects of viscosity are significant. Boundary layer region is the region where the viscous effects and the velocity changes are significant, and the viscid region is the region in which the frictional effects are negligible and the velocity remains essentially constant (i.e. the free stream).In the Earth’s atmosphere, the atmospheric boundary layer is the air layer near the ground affected by diurnal heat, moisture or momentum transfer to or from the surface. On a craft wing, the boundary layer is the part of the flow close to the wing, where viscous forces distort the surrounding non-viscous flow. Laminar boundary layers can be loosely classified according to their structure and the circumstances under which they are created. The thin shear layer which develops on an oscillating body is an example of a Stokes boundary layer, while the Blasius boundary layer refers to the well-known similarity solution near an attached flat plate held in an oncoming unidirectional flow. In the theory of heat transfer, a thermal boundary layer occurs. A surface can have multiple types of boundary layers simultaneously. The viscous nature of airflow reduces the local velocities on a surface and is responsible for skin friction. The layer of air over the wing’s surface that is slowed down or stopped by viscosity is the boundary layer. Boundary layer flows can be laminar or turbulent in nature.
+\begin{itemize}
+	\item Laminar Boundary Layer Flow: The laminar boundary is a very smooth flow, while the turbulent boundary layer contains swirls or eddies. The laminar flow creates less skin friction drag than the turbulent flow but is less stable. Boundary layer flow over a wing surface begins as a smooth laminar flow. The laminar boundary layer increases in thickness as the flow continues back from the leading edge. In laminar flow, any exchange of mass or momentum takes place between adjacent layers in microscopic scale which may not be easily observed and consequently, laminar boundary layers are formed for a very small Reynolds number.
+	\item Turbulent Boundary Layer Flow: A turbulent boundary layer, on the other hand, is marked by mixing across several layers of it. The mixing is now on a macroscopic scale. Packets of fluid may be seen moving across. Thus there is an exchange of mass, momentum, and energy on a much bigger scale compared to a laminar boundary layer. A turbulent boundary layer forms only at larger Reynolds numbers. The scale of mixing cannot be handled by molecular viscosity alone. Those calculating turbulent flow rely on what is called Turbulence Viscosity or Eddy Viscosity, which has no exact expression. It has to be modeled. Several models have been developed for this purpose.
+\end{itemize}
+\section{FLUID MECHANICS}
+Fluid mechanics is the application of the fundamental principles of mechanics and thermodynamics – such as conservation of mass, conservation of energy and Newton’s laws of motion – to the study of liquids and gases, in order to explain observed phenomena and to be able to predict behaviour. Fluid mechanics can be sub-divided into:\\
+a) Fluid Statics (or Hydrostatics) – the study of fluids at rest\\ 
+b) Fluid Dynamics (or Hydrodynamics) - the study of fluids in motion.\\
+\textbf{FLUID STATICS}
+This is defined as the study of fluids ( liquid or gas) at rest.Fluid statics is called hydrostatics when the fluid that is dealt with is a liquid and it is called aerostatics when the fluid that is being dealt with is a gas.The only stress we find in fluid statics is the normal stress, which is pressure, and the variation of pressure is because of the weight of the fluid. That is why, the topic of fluid statics has importance only in gravity fields, and the force relations developed naturally involve the gravitational acceleration (g).The force exerted on a surface by a fluid at rest is normal to the surface at the point of contact since there are no shear forces due to the absence of relative motion between the fluid and the solid surface.Fluid statics include the calculation of forces acting on floating or submerged bodies and the forces generated by devices like hydraulic presses and car jacks.\\ 
+\textbf{FLUID DYNAMICS}
+Fluid dynamics is the branch of applied science that is concerned with the movement of liquids and gases. It is one of two branches of fluid mechanics, which is the study of fluids and how forces affect them.
+\subsection{Conservation of Mass}
+The concept of mass conservation is widely used in many fields such as chemistry, mechanics, and fluid dynamics.In physics and chemistry, the law of conservation of mass or principle of mass conservation states that for any system closed to all transfers of matter and energy, the mass of the system must remain constant over time, as the system's mass cannot change, so quantity can neither be added nor be removed.The inflows, outflows and change in storage of mass in a system must be in balance.The mass flow in and out of a control volume (through a physical or virtual boundary) can for an limited increment of time be expressed as:
+$$dM = \rho_i v_i A_i dt - \rho_o v_o A_o dt$$                            
+where\\
+$dM$ = change of storage mass in the system (kg)\\
+$\rho$ = density (kg/m3)\\
+v = speed (m/s)\\
+A = area ($m^2$)\\
+$dt$ = an increment of time (s)
+
+If the outflow is higher than the inflow; the change of mass dM is negative ,the mass of the system decreases.And obvious, the mass in a system increase if the inflow is higher than the outflow.The Law of Mass Conservation is fundamental in fluid mechanics and a basis for the Equation of Continuity and the Bernoulli Equation.\\
+\textbf{Equation of Continuity}
+Using the Mass Conservation Law on a steady flow process , flow where the flow rate do not change over time , through a control volume where the stored mass in the control volume do not change; implements that inflow equals outflow.This statement is called the Equation of Continuity. Common application where the Equation of Continuity are used are pipes, tubes and ducts with flowing fluids or gases, rivers, overall processes as power plants, diaries, logistics in general, roads, computer networks and semiconductor technology and more.
+The Equation of Continuity and can be expressed as:
+$$m=\rho_{i1}v_{i1}A_{i1}+\rho_{i2}v_{i2}A_{i2}+....+\rho_{in}v_{in}A{in}=\rho_{o1}v_{o1}A_{o1}+\rho_{o2}v_{o2}Ao2+....+\rho_{om}v_{om}A_{om}$$
+where
+m = mass flow rate (kg/s)\\
+$\rho$ = density (kg/m3)\\
+v = speed (m/s)\\
+A = area ($m^2$)
+With uniform density this equation can be modified to
+$$q=v_{i1}A_{i1}+v_{i2}A_{i2}+....+v_{in}A_{in}=v_{o1}A_{o1}+v_{o2}A_{o2}+....+v_{om}A_{om}$$\\               where\\
+q = flow rate ($m^3/s$)\\
+$$\rho_{i1} = \rho_{i2} = ..... = \rho_{in} = \rho_{o1} = \rho_{o2} = .... = \rho_{om}$$
+For a simple reduction (or expansion),the equation of continuity for uniform density can be transformed to
+$$v_{in} A_{in} = v_{out} A_{out}$$                             or
+$$vout = v_{in} A_{in} / A_{out}$$ 
+\subsection{Conservation of Energy}
+In physics and chemistry, the law of conservation of energy states that the total energy of an isolated system remains constant; it is said to be conserved over time.Classically, conservation of energy was distinct from conservation of mass; however, special relativity showed that mass is related to energy and vice versa by $E = mc^2$, and science now takes the view that mass-energy as a whole is conserved.Conservation of energy can be rigorously proven by Noether's theorem as a consequence of continuous time translation symmetry; that is, from the fact that the laws of physics do not change over time.\\
+\textbf{Bernoulli Equation}\\
+The statement of conservation of energy is useful when solving problems involving fluids.Bernoulli’s equation can be considered a statement of the conservation of energy principle appropriate for flowing fluids. It is one of the most important/useful equations in fluid mechanics. It puts into a relation pressure and velocity in an inviscid incompressible flow. The general energy equation is simplified to:
+$$p_1 + \frac{1}{2}\rho v_{1}^{2} + \rho gh_1 = p_2 + \frac{1}{2}\rho v_{2}^{2} + \rho gh_2$$
+\subsection{Newton's second law of motion(Conservation of motion)}
+The momentum equation is used in open channel flow problems to determine unknown forces (F) acting on the walls or bed in a control volume. In comparison to the energy equation that deals with scalar quantities such as mass (m), pressure (P), and velocity magnitude (V), the momentum equation deals with vector quantities such as velocity vector and forces (F). Therefore it is critical to write a momentum equation in a known direction and use the component of the forces within the defined direction. Using Newton’s second law of motion, which equates the rate of change of momentum (M=mV) with the algebraic sum of all external forces, the momentum equation can be written as:
+$$\frac{dM}{dt} = \sum F \frac{dM}{dt}= \sum F$$
+Further, the rate of change of momentum can be divided into two terms as:
+$$\frac{dM}{dt} =m\frac{dV}{dt} +V\frac{dm}{dt}$$
+\chapter{LITERATURE REVIEW}
+\section{Nomenclature}
+\begin{itemize}
+\item \textbf{$\psi$}   \hspace{0.5cm} Stream function.
+\item \textbf{$\lambda$}   \hspace{0.5cm} Convection parameter.
+\item \textbf{$E_c$}   \hspace{0.5cm} Eckert number.
+\item \textbf{$\alpha$}   \hspace{0.5cm} Thermal diffusivity.
+\item \textbf{$Q$}   \hspace{0.5cm} Volumetric rate of internal heat generation / absorption.
+\item \textbf{$C_p$}   \hspace{0.5cm} Specific heat at constant temperature.
+\item \textbf{$\partial$}   \hspace{0.5cm} Partial derivative.
+\item \textbf{$\rho$}   \hspace{0.5cm} Density of the fluid.
+\item \textbf{$B_o$}   \hspace{0.5cm} Uniform transverse magnetic field.
+\item \textbf{$\beta$}   \hspace{0.5cm} Coefficient of volume expansion for temperature.
+\item \textbf{$g$}   \hspace{0.5cm} Acceleration due to gravity.
+\item \textbf{$\sigma$}   \hspace{0.5cm} Electrical conductivity.
+\item \textbf{$b$}   \hspace{0.5cm} parameter of temperature distribution.
+\item \textbf{$\Theta$}   \hspace{0.5cm} Non dimensional temperature.
+\item \textbf{$T_\infty$}   \hspace{0.5cm} Ambient temperature.
+\item \textbf{$T_\omega$}   \hspace{0.5cm} Temperature at the wall of the medium.
+\item \textbf{$T$}   \hspace{0.5cm} Temperature of the fluid.
+\item \textbf{$v$}   \hspace{0.5cm} Velocity component along y axis.
+\item \textbf{$u$}   \hspace{0.5cm} Velocity component along x axis.
+\item \textbf{$(x,y)$}   \hspace{0.5cm} Flow directional coordinate.
+\item \textbf{$U_e$}   \hspace{0.5cm} free steam dimensional velocity.
+\item \textbf{$\eta$}   \hspace{0.5cm} Similarity variable.
+\item \textbf{$f$}   \hspace{0.5cm} function.
+\item \textbf{$\upsilon$}   \hspace{0.5cm} Kinematic viscosity.
+\item \textbf{$H$}   \hspace{0.5cm} Magneticity.
+\item \textbf{$B$}   \hspace{0.5cm} Porosity.
+\item \textbf{$Gr_x$}   \hspace{0.5cm} Grashof number.
+\item \textbf{$Re_x$}   \hspace{0.5cm} Reynolds number.
+\item \textbf{$Q_1$}   \hspace{0.5cm}  Heat source.
+\item \textbf{$Pr$}   \hspace{0.5cm} Prandtl number
+\item \textbf{$k$}   \hspace{0.5cm} thermal conductivity.
+\item \textbf{$a,b$}   \hspace{0.5cm} Constants.
+\end{itemize}
+\section{Literature Review}
+At present and for the coming days, the boundary layer flow of an incompressible fluid over shrinking sheet plays an important role in researches due to its applications in polymeric material process.A non-Newtonian fluid such as Casson has also been frequently investigated due to its outspread request in pharmaceutical,chemical,and cosmetic industries which can be seen in the manufacturing of chemicals,china clay,paints,syrup,gas,cleanser,juice,among others(Jawad et al.(2016)and Chaoyang et al.(1989)). Uddin et al. (2012) highlighted the effect of Newtonian nanofluid on free convective and MHD boundary layer flow subjected to convective heating boundary conditions, they discovered that temperature and velocity profiles rise with Newtonian heating parameter.Rajagopal et al. (1984) first examined the flow behavior of a second order fluid over a stretching sheet and obtained a numerical solution of the boundary layer equations. They further extended the problem by introducing uniform free stream velocity in the problem formulation Rajagopal et al. (1987).Dandapat and Gupta (1989) studied heat transfer of the problem considered by Rajagopal et al. (1984). Rollins and Vajravelu (1991) solved the heat transfer problem in a second orderfluid over a continuous stretching surface. Heat transfer in the viscoelastic fluid over a stretching sheet with different contexts were further studied by Lorence and Rao (1992), Andersson (1992), Char (1994), Cortell (1994), Abel et al. (2007), Prasad et al. (2010) and others.However, the flow over a shrinking sheet is completely different from the stretching out case and it is now an emerging field of research one. This field of research has begun its journey after the observations made by Wang (1990) when he was working on the flow of a liquid film over an unsteady stretching sheet.The unsteady heat transfer problems over a stretching surface, which is stretched with a velocity that depends on time are considered by Anderson et al. (2000), and a new similarity solution for the temperature field is devised, which transfers the time dependent thermal energy equation to an ordinary differential equation. Elbashbeshy and Bazid (2004)studied the heat transfer over an unsteady stretching surface while Ishak et al. (2009) also investigated the unsteady laminar boundary layer over a continuously stretching permeable surface.The first condition for which a sufficient suction on the boundary is forced upon as considered by Wang and Miklavcic (2006).The second condition for which a stagnation flow is considered as analysed by Wang (2008).The boundary layer flow over a shrinking sheet with an important law of velocity has been examined by Fang (2009). The MHD boundary layer theory has a very important contribution in progressing of Magnetohydrodynamic theory. Due to the effects of Magnetic field on the boundary layer.Fang and Zhang (2010) analysed the heat transfer characteristic of the declining sheet problem with linear velocity. After Noor et al (2010) examined the MHD viscous flow due to shrinking sheet using ADM (Adomain decomposition Method) and the generating series solution. Sajid and Hayat (2009) applied the homotopy analysis method for the MHD viscous flow due to a shrinking sheet. Midya (2012) analysed the MHD viscous flow and heat transfer over a linearly shrinking porous medium. Effect of chemical reaction, heat and mass transfer on non-linear boundary layer past a porous shrinking sheet in the presence of suction was examined numerically by Mahaimin et al (2010). Maidya (2012) obtained a closed form of analytical solution for the distribution of reactant solute in an MHD boundary layer flow over a shrinking sheet. Bhattacharyya (2011) studied the flow over the exponential declining sheet and found the thermal boundary layer thickness becomes thinner due to the enhancing prandtl number.
+Kumar (2017)investigated the fow of fuid over stretched variable thickness surface of natural convective MHD Casson fuid in the presence of thermal radiation. Te problem was solved numerically, and it was observed that temperature profles are enhanced by radiation parameter. The impacts of slip conditions and radiation on stagnation point MHD fow via a stretching sheet were examined by Sumalatha et al. (2018).
+
+Reddy et  al. (2020) examined Soret and Dufour efects on MHD fow via exponentially stretching sheet in the presence of viscous dissipation and thermal radiation. The result revealed that both the fuid temperature and concentration increased with a slowdown in Soret and speed-up in Dufour. Studies on efects of Soret and Dufour on Micropolar fluid were considered by Babu et al. (2018). According to their results, the slip parameter has the tendency of declining the velocity of the fuid.Akolade, et al.(2021) and Idowu, et al. (2021) investigated the nonlinear thermal and solutal convection impact on the magnetized motion of Casson fluid, the first on variable shrinking sheet and the latter through an annular medium. They concluded that the temperature and velocity increase with quadratic convection parameter while a decrease is observed in the concentration fields.Bachok et al (2010) explained that there are two possible conditions where the flow towards the shrinking sheet is likely to exist, by which the velocity of the shrinking sheet can be confined in the boundary layer. Jat and Rajotia [2019] analysed effect of variable thermal conductivity and variable prandtl number on the three dimensional MHD viscous flow and heat transfer due to a permeable axis symmetric shrinking sheet.  The research on shrinking sheet has got a pace after the appearance of Miklavcic and Wang’s (2006) analytical solution for steady viscous hydrodynamic flow over a permeable shrinking sheet. The problem of MHD viscous flow due to a shrinking sheet is solved by Sajid and Hayat (2009), Fang and Zhang (2009), and others. The viscous flow over an unsteady shrinking sheet with mass transfer is examined by Fang and Zhang (2009). Hayat et al. (2008) analyzed the MHD flow and mass transfer of an upper-convected Maxwell fluid past a porous shrinking sheet with chemical reaction using the Homotopy Analysis Method (HAM). Fang and Zhang (2010) obtained an analytical solution for the heat transfer of the boundary layer flow over a shrinking sheet. The heat transfer in MHD boundary layer flow over a permeable shrinking surface was studied by Midya (2012a). The effect of magnetic field on electrically conducting second-grade fluid over a shrinking sheet is investigated by Hayat et al.(2007). They derived both exact and series solution using Homotopy Analysis Method (HAM).The effect of temperature dependent viscosity on thin film flow of a second-grade fluid over a shrinking sheet was studied recently by Nadeem and Faraz (2010). Recently, Van Gorder and Vajravelu (2011) obtained multiple solutions for hydromagnetic flow of a second-grade fluid over a stretching or shrinking sheet with suction / injection. They derived the solution for fluid flow analytically. Recently, Midya (2012b) obtained exact solution of the viscoelastic fluid flow and mass transfer over a shrinking sheet in the presence of chemical reaction and magnetic field.In this work, the heat transfer of an electrically conducting viscoelastic fluid flow over a linearly shrinking sheet in the presence of a magnetic field is investigated analytically. The viscous dissipation, radiation and heat sink are taken into account. Both prescribed power-law surface temperature(PST) and power-law wall heat flux(PHF) cases are considered as surface boundary conditions. With the use of similarity solution, the governing highly nonlinear partial differential equations are transformed into a set of nonlinear self-similar ordinary differential equations which are then solved analytically. The obtained closed form exact solutions are presented graphically for various parameters.Muhaimin et al. (2009) studied the effect of chemical reaction, heat and mass transfer on a nonlinear MHD boundary layer past a porous shrinking sheet in the Presence of suction. Vajravelu and Hadjinicolaou (1999) studied the heat transfer characteristics in the laminar boundary layer of a viscous fluid over a stretching sheet with viscous dissipation or frictional heating and internal heat generation. Cortell (2008) studied the effects of viscous dissipation and radiation on the thermal boundary layer over a nonlinearly stretching sheet.
+
+The study over an inclined plate, non-Newtonian nano fluid and double-diffusive effects, numerical investigation of the flow are carried out by Rafique et al. (2019) via the Keller Box method, while Idowu et al.(2020) combined the double-diffusive effect with thermophoresis influence on the flow of MHD Casson fluid rheology. It is reported that an increase in the Casson nanofluid parameter gave rise to the skin friction and slow down the energy and concentration profiles accordingly.Akolade et al. (2020) studied the squeezing flow in vertical channel. Gbadeyan et al. (2020) looked into the effect of variable thermal conductivity and viscosity on casson nanofluid flow with velocity slip.Soret-Dufor influence had been looked into between two rectangular plane walls with heat source by Ali. A. et al. (2019) in a nanofluid with non uniform heat flux and by Akolade et al. (2021) on non-linear convective flow of MHD Dissipative casson fluid over a slendering stretching sheet with modified heat flux phenomenon.
+Timothy et al. (2021) examined the combined effects of dissipation and chemical reaction in casson nanofluid motion, through a vertical porous plate subjected to the magnetic field effect placed perpendicularly to the flow channel. There in, they submitted that by raising the casson parameter close to infinity, the behaviour of casson fluids obeys the law of viscosity and that the conversion of energy via the work done by the fluid molecule dimensionless velocity and temperature profiles substantially. They importantly noted that the heat generated by the intermolecular reaction of fluid particles resulted in a large amount of heat produced in the flow field. 
+
+Inspired by all these, our aim is to investigate the effect of dissipation and heat source on the an electronically conducting fluid flow through a shrinking sheet. 
+%CHAPTER 3
+\chapter{MATHEMATICAL FORMULATION OF THE PROBLEM}
+\section{Preamble}
+Consider a two-dimensional mixed convection flow over a shrinking sheet of an incompressible, electrically conducting and viscous fluid. Here, a Cartesian coordinate system with a fixed origin, with the $x-axis$ parallel to the shrinking surface and the $y-axis$ perpendicular to the sheet. A homogeneous $B_0$ magnetic field is applied normal to the shrinking sheet, and the magnetic Reynolds number is assumed to be modest in order to ignore the induced magnetic field. External fluid velocity is assumed to be $U_e(x)=ax$, where $a>0$ is the stagnation flow strength and sheet velocity is assumed to be $U_\omega(x) = cx$ where $c<0$ indicates sheet shrinking and $c>0$ represents sheet stretching. Also, assumed that fluid has an ambient temperature $T_\infty$ and $T=T_\omega(x)$ as temperature of the sheet.
+\section{Formulation of Problem}
+The governing equations for the problem can be written as\\
+\textbf{Equation of continuity}
+\begin{equation}
+	\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0
+\end{equation}  
+\textbf{Equation of Momentum}
+\begin{equation}
+U\frac{\partial u}{\partial x}+V\frac{\partial u}{\partial y} = u_e\frac{\partial u_e}{\partial x}+\upsilon\frac{\partial^2 u}{\partial y^2}+(\frac{\sigma B_0^2}{\rho}+\frac{\upsilon}{k})(U_e-u)+g\beta(T-T_\infty)
+\end{equation}
+\textbf{Equation of Energy}
+\begin{equation}
+U\frac{\partial T}{\partial x}+V\frac{\partial T}{\partial y} = \alpha\frac{\partial^2 T}{\partial y^2}+\frac{\upsilon}{C_p}(\frac{\partial u}{\partial y})^2+\frac{Q_1}{\rho C_p}(T-T_\infty)
+\end{equation}
+The above equations (3.1),(3.2),(3.3) are subjected to these boundary conditions \\
+at y=0
+\begin{equation}
+\begin{aligned}
+		v = 0; \\
+	u = U_\omega(x) = cx; \\
+	T = T_\omega = bx
+\end{aligned}
+\end{equation}
+at y$\longrightarrow$$\infty$
+\begin{equation}
+\begin{aligned}
+	u = U_e(x) = ax; \\
+	T = T_\infty
+\end{aligned}
+\end{equation}
+\section{Transformation of Equations}
+In order to reduce the above set of non-linear partial differential equations (3.1),(3.2) and (3.3) subjected to given boundary conditions (3.4) - (3.5) into a set of ordinary differential equations, the following similarity transformations will be used:
+\begin{equation}
+	\begin{aligned}[center]
+		\psi = \sqrt{a\upsilon}xf(\eta);\\
+		\eta = \sqrt{\frac{U_e}{\upsilon x}}y;\\
+		u = \frac{\partial\psi}{\partial y};\\
+		v = \frac{-\partial\psi}{\partial x};\\
+		U_e = ax\\
+		T = T_\omega = T_\infty + bx;\\
+		\theta(\eta) = \frac{T - T_\infty}{T_\omega - T_\infty}
+	\end{aligned}
+\end{equation}
+Using the similarity parameter
+\begin{equation}
+	\begin{aligned}[center]
+		u = \frac{\partial\psi}{\partial y}\\
+		v=\frac{-\partial\psi}{\partial x}
+	\end{aligned}
+\end{equation}
+on equation (3.1), it yields
+\begin{equation}
+	\frac{\partial^2\psi}{\partial x\partial y} - \frac{\partial^2\psi}{\partial x\partial y}
+\end{equation}
+which clearly implies that the similarity parameter(3.7) satisfies equation(3.1)\\
+Also, using the parameters
+\begin{equation}
+	\begin{aligned}[center]
+		\psi = \sqrt{a\upsilon}xf(\eta);\\
+		\eta = \sqrt{\frac{U_e}{\upsilon x}}y;\\
+		u = \frac{\partial\psi}{\partial y};\\
+		v = \frac{-\partial\psi}{\partial x};\\
+		U_e = ax\\
+		\theta(\eta) = \frac{T - T_\infty}{T_\omega - T_\infty}
+	\end{aligned}
+\end{equation}
+on equation(3.2) and simplifying to get
+\begin{equation}
+	\begin{split}
+\frac{\partial[\sqrt{a\upsilon}xf(\eta)]}{\partial\big[\eta\sqrt{\frac{\upsilon x}{U_e}}]}.\frac{\partial^2[\sqrt{a\upsilon}xf(\eta)]}{\partial x . \partial\big[\sqrt{\frac{\upsilon x}{U_e}}\eta]} - \frac{\partial[\sqrt{a\upsilon}xf(\eta)]}{\partial x} . \frac{\partial^2[\sqrt{a\upsilon}x f(\eta)]}{\partial[(\sqrt{\frac{\upsilon x}{U_e}})^2\eta]} = a^2x + \upsilon\frac{\partial^3[\sqrt{a\upsilon}xf(\eta)]}{\partial[\eta^3\frac{\upsilon x}{U_e}\sqrt{\frac{\upsilon x}{U_e}}]}\\ + ax(\frac{\sigma B_0^2}{\rho}+\frac{\upsilon}{k})[1 - \partial[\frac{\sqrt{a\upsilon xf(\eta)}}{\partial[\eta\sqrt{\frac{\upsilon x}{ax}}]}]] + g\beta bx\theta(\eta)
+\end{split}
+\end{equation}
+on evaluating the derivatives in (3.10) and simplifying gives
+\begin{equation}
+\begin{split}
+a^2x(f'(\eta))^2 - a^2x f(\eta)f''(\eta) = a^2x + a^2x f'''(\eta) + ax\big(\sigma\frac{B_0^2}{\rho} + \frac{\upsilon}{k})[1 - f'(\eta)] +g\beta bx \theta(\eta)
+\end{split}
+\end{equation} 
+Dividing (3.11) by $a^2x$ will yield
+\begin{equation}
+	f''(\eta)' + ff''(\eta) - (f')^2(\eta) + 1 + (H + B)(1 - f'(\eta)) + \lambda \theta(\eta) = 0
+\end{equation}
+where $B = \frac{\upsilon}{ak}$; $H = \frac{\sigma B_0^2}{a\rho}$; 	 $Gr_x = \frac{g\beta(T_\omega - T_\infty)}{\upsilon^2}$; $\lambda = \frac{Gr_x}{Re_x^2}$; $Re_x^2 = \big[\frac{xU_e}{\upsilon}]^2 $\\
+Similarly,using the similarity parameters(3.7) and (3.9) on equation (3.3) and simplifying we get
+ \begin{equation}
+ \begin{split}
+ \frac{\partial[a\upsilon]x f(\eta)}{\partial[\eta \sqrt{\frac{\upsilon x}{ax}}]}.b\theta(\eta) - \frac{\partial[\sqrt{a\upsilon}x f(\eta)]}{\partial x}.\frac{bx}{\sqrt{\frac{\upsilon}{a}}}\theta'(\eta) = \alpha\frac{\partial^2[bx\theta(\eta) + T_\infty]}{\partial[\eta^2\frac{\upsilon x}{ax}]} + \frac{a^3 x^2}{C_p}\frac{\partial^2 f(\eta)}{\partial (\eta)^2} + \frac{Q_1}{\rho C_p}bx\theta(\eta)
+ \end{split}
+ \end{equation}
+ On evaluating the derivatives of equation(3.13) and simplifying we get
+\begin{equation}
+	axb\theta f' - abxf\theta' = \alpha\frac{abx}{\upsilon}\theta'' + \frac{a^3x^2}{C_p}(f'')^2 + \frac{Q_1}{\rho C_p}bx\theta
+\end{equation}
+Dividing equation(3.4) through by $\frac{\alpha abx}{\upsilon}$ and simplifying to yield
+\begin{equation}
+\theta'' + Pr[(f\theta' - f'\theta) + Ec (f'')^2 + Q\theta]
+\end{equation} 
+where $Pr=\dfrac{\upsilon}{\alpha}$ ; $Ec=\dfrac{(ax)^2}{C_p(T_\omega - T_\infty)}$ and $Q=\dfrac{Q_1}{a\rho C_p}$
+
+\section{Transformation of the boundary condition}
+Similarly, implementing the equation(3.9) on the boundary conditions (3.5) and (3.6 ) to yield\\
+at $\eta \longrightarrow 0$
+\begin{equation}
+	\begin{aligned}[center]
+		f'(\eta) = \dfrac{c}{a} =s\\
+		\theta(\eta) = 1\\
+	\end{aligned}
+\end{equation}
+at $\eta \longrightarrow \infty$
+\begin{equation}
+	\begin{aligned}[center]
+		f'(\eta) = 1\\
+		\theta(\eta) = 0\\
+	\end{aligned}
+\end{equation}
+where $\frac{c}{a}$ is the velocity ratio parameter
+\section{Solution Approach}
+The set of non-linear Ordinary Differential Equations(3.12) and (3.15) with the boundary conditions (3.16) and (3.17) are solved through collocation technique with Legendre polynomial as the foundation function. Using the domain truncation method, the interval $[0,\infty]$ is transformed to $[0,L]$. The Legendre polynomial defined on $[-1,1]$ is transformed to $[0,L]$ using the transformation
+\begin{equation}
+	y=\frac{2\eta}{L}-1,  y\in[-1,+1] 
+\end{equation}
+Thus,solution to the boundary value problem is found within the interval $[0,L]$, where L(scaling parameter) is taken to be sufficiently big enough to account for boundary layer thickness (Olagunju et al ) .Hence, the Legendre polynomial is expressed as
+\begin{equation}
+f(\eta) = \sum_{j=0}^{N}a_j\big(\frac{2\eta}{L} - 1)P_j(y)
+\end{equation}
+\begin{equation}
+\theta(\eta) = \sum_{j=0}^{N}b_j\big(\frac{2\eta}{L} - 1)P_j for j = 0,1,2,...,N
+\end{equation}
+$f(\eta), \theta(\eta)$ are approximate functions at N distinct points ;$a_j, b_j$ are the yet to be determined unknown constants.The generated equations of 3N + 3 algebraic systems with 3N + 3 unknown coefficient is solved via a MATHEMATICA 11.3 symbolic package with newton iteration technique to simulate the system of derived algebraic equations to obtain the required constants coefficients $( a_i ,b_i)$. Hence, solutions are obtained for the flow distributions and characteristics (see Oyekunle T.L. et al (2021)).
+
+\textbf{Note} :\\
+The skin friction coefficients, the local Nusselt number and the sherwood number can be expressed as
+\[
+C_f = \frac{\tau_W}{\rho U_e}, \qquad  Nu_x = \frac{L q_W}{k(T_W - T_{\infty})}, \qquad  Sh_x = \frac{L p_W}{k(C_W - C_{\infty})}
+\]
+where the shear stress $\tau_W$, the surface heat flux $q_W$ are given as
+\[
+\tau_W = \mu \left(  \frac{\partial u}{\partial y}  \right)_{y = 0}, \quad q_W = -k \left( \frac{\partial T}{\partial y} \right)_{y = 0}\quad\\
+\]
+where $\mu$ and $k$ are the coefficient of viscosity and thermal conductivity, respectively. Using the similarity variables given above, we have
+
+\begin{eqnarray}
+	2 C_f  {Re_x}^{\frac{1}{2}} = f^{\prime \prime}(0)\\
+	\sqrt{2}\frac{Nu_x}{{Re_x}^{\frac{1}{2}}}  =  - \theta^\prime (0)
+\end{eqnarray}
+
+\chapter{RESULT AND DISCUSSION}
+ 
+
+\section{Discussion of Research Findings}
+\quad
+The system of diferential equations 3.14 and 3.15 was solved numerically using the symbolic computation software MATHEMATICA 11.3. The effect of pertinent parameters on the stagnation point flow over an exponentially shrinking sheet is obtained.\\
+
+
+For a check of compatibility, the obtained results are compared with the analysis of interaction of magnetic field and nonlinear convection in the stagnation point flow over a shrinking sheet described by Rakesh Kumar and Shilpa Sood(2016), dual solutions in magnetohydrodynamic stagnation-point flow and heat transfer over a shrinking surface with partial slip by Mahapatral et al. (2014) and Stagnation flow towards a shrinking sheet by Wang et al. (2008). The results are then found to be in good agreement to the previous papers. This comparison is shown in the table below.\\
+Evaluating $f''(0)$ with $B = 0$, $Pr = 0$, $H = 0$, $\lambda = 0$ and $Ec =0$, $Q = 0$ with varying suction parameter $Z$ value
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | }
+\hline
+Z & present result & Rakesh Kumar et al. & Mahapatra et al. & Wang\\
+\hline
+-0.25 & 1.40224 & 1.402253 & 1.402242 & 1.40224 \\
+\hline
+-0.50 & 1.49567 & 1.495685 & 1.495672 &  1.49567 \\
+\hline
+-0.75 & 1.4893 & 1.489316 & 1.489296 & 1.48932 \\
+\hline
+-1.0 & 1.32882 & 1.328840 & 1.328819 & 1.32882 \\
+\hline
+0.2 & 1.05113 & 1.0511379 & 1.051131 & 1.051130\\
+\hline
+5.0 & -10.2647 & -10.26479 & -10.26475 & -10.26475\\
+\hline 
+\end{tabular}
+\end{center}
+
+
+This comparison confirmed the validity of the result which in turn strengthen the wish and desire to continue with the aim of this project.
+
+In this project, many more effort has been made to examine the dissipation and heat source effect on an electrically conducting fluid flow through a shrinking sheet. These effects are represented with graphs as in figure \ref{Figure 4.1: Effect of H on Fluid Flow} to figure \ref{Figure 4.1: Effect of Z on Fluid Flow}
+
+Figure \ref{Figure 4.1: Effect of H on Fluid Flow} shows the effect of magnetic parameter on fluid flow (both on the momentum and energy profiles). Figure \ref{Hh} describes the influence of magnetic parameter on the velocity of fluid flow. It shows that the velocity of the fluid appreciates as the magnetic parameter increases and then a convergence is observed. This same  properties is observed in  porosity parameter effect on the velocity profile of the fluid in figure \ref{Bh}, the prandtle number effect on the momentum of the fluid in figure \ref{Prh} and also for the heat source parametr effect on the velocity profile as in figure \ref{Qh}. While the Eckert number has negligible effect on the momentum of the fluid flow.
+
+The influences of magnetic parameter, Eckert number and porosity parameter on the energy profile of the fluid flow are shown by figure \ref{Hn}, \ref{Figure 4.1: Effect of Ec on Fluid Flow} and \ref{Bn}. It's observed that the temperature of the fluid retards as the value of these afformentioned parameters accelerates. This properties continues for a while before convergence occurs.
+
+Figures \ref{Qn} and \ref{Zn} show appreciation of the temperature of the fluid in response to the increase in the values of the heat source parameter and the suction parameters respectively. While an increase in the suction parameter brings about a fall in the velocity of the fluid up to a certain point before it converges as seen in figure \ref{Zh}  
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Hth.jpg}
+  \caption{Effect of H on Momentum}
+  \label{Hh}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Hn.jpg}
+  \caption{Effect of H on Energy}
+  \label{Hn}
+\end{subfigure}% 
+\caption{Effect of H on Fluid Flow}
+\label{Figure 4.1: Effect of H on Fluid Flow}
+\end{figure}
+\begin{figure}[h]
+\centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Ecn.jpg}
+\caption{Effect of Ec on Energy}
+\label{Figure 4.1: Effect of Ec on Fluid Flow}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Bh.jpg}
+  \caption{Effect of B on Momentum}
+  \label{Bh}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Bn.jpg}
+  \caption{Effect of B on Energy}
+  \label{Bn}
+\end{subfigure}% 
+\caption{Effect of B on Fluid Flow}
+\label{Figure 4.1: Effect of B on Fluid Flow}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Qh.jpg}
+  \caption{Effect of Q on Momentum}
+  \label{Qh}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Qn.jpg}
+  \caption{Effect of Q on Energy}
+  \label{Qn}
+\end{subfigure}% 
+\caption{Effect of Q on Fluid Flow}
+\label{Figure 4.1: Effect of Q on Fluid Flow}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Prh.jpg}
+  \caption{Effect of Pr on Momentum}
+  \label{Prh}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Pr-n.jpg}
+  \caption{Effect of Pr on Energy}
+  \label{Pr-n}
+\end{subfigure}% 
+\caption{Effect of Pr on Fluid Flow}
+\label{Figure 4.1: Effect of Pr on Fluid Flow}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Zh.jpg}
+  \caption{Effect of Z on Momentum}
+  \label{Zh}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=\textwidth]{Zn.jpg}
+  \caption{Effect of Z on Energy}
+  \label{Zn}
+\end{subfigure}% 
+\caption{Effect of Z on Fluid Flow}
+\label{Figure 4.1: Effect of Z on Fluid Flow}
+\end{figure}
+
+\end{document}

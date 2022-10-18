@@ -1,0 +1,105 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+
+
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+\newcommand{\real}{\mathbb{R}}
+\begin{document}
+	\chapter*{\begin{center}Application of Fixed Point in Economics\end{center}}
+	\section*{Some Relatives terms and Definition \& Examples}
+	\subsection*{Metric Space:} 
+	A Metric is a pair $(X,d)$ where $X$ is a non-empty set and $d$ is a metric on $X$ or a distant function on $X$, that is a function defined on $x+x$ such that $\forall x,y,z \in X$.\sps
+	
+	\NI The following properties are defined for a Metric Space.\sps
+	$\mathbf{M1:\rightarrow}$ $d$ is a real value function and non-negative i.e $d(x,y)\geq 0$\sps
+	$\mathbf{M2:\rightarrow}$ $d(x,y) = 0$ if and only if $x=y$\sps
+	$\mathbf{M3:\rightarrow}$ $d(x,y) = d(y,x)$(symmetric)\sps
+	$\mathbf{M4:\rightarrow}$ $d(x,y) \leq d(x,z) + d(z,y)$ (triangle inequality)\sps
+	
+	\NI\bt{Examples}
+	\begin{enumerate}
+		\item \bt{Real Line} $\mathbb{R}$: This is the set of all real numbers taking with the usual Metric defined by $d(x,y) = |x-y|$\sps
+		$d(5,2) = |5-2| = |3|=3$ or $d(2,5) = |2-5| = |-3|=3\sps$
+		
+		\item \bt{Euclidean Plane} $\mathbb{R}^2$: The Metric Space $\real^2$ called the Euclidean Plane is obtained if we take the set of other pairs of real numbers written as $u(x_1,x_2),~~ v=(y_1,y_2)$ and the euclidean metric defined by $d(u,v) = d(x,y):$\\
+		$d(x,y) = \sqrt{(x_1-y_1)^2 + (x_2-y_2)^2} \geq 0$\sps
+		$\therefore u=(2,5), v=(6,10)$\sps
+		$d(u,v)=\sqrt{(2-6)^2 + (5-10)^2} = \sqrt{(-4)^2 + (-6)^2} = \sqrt{16+36}\geq 0\sps \therefore \sqrt{52}\geq 0$\sps
+		%%%%%%%%%%%%%%%%%%%%%%%%%%5555
+		\item The Three dimensional Euclidean Space $\real^3$: This consists of three sets of ordered triple of real numbers $X=(\xi_1, \xi_2, x_3), Y=(z_1,z_2,z_3)$ such that\sps
+		$d(x,y) = \sqrt{(\xi_1 - z_1)^2 + (\xi_2 - z_2)^2 + (\xi_3 - z_3)^2}$
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\item Other examples include Euclidean Space $\real^n$, Unitary Space $C^n$, and complex plane $\mathbb{C}$. Let $X=(\xi_1,x_2, \xi_3,\ldots,\xi_n)$ and $Y=(z_1,z_2,z_3,\ldots,z_n)$. For Euclidean Space $\dsp\real^n:\rightarrow d(x,y)=\sqrt{(\xi_1-z_1)^2+\cdots + (\xi_n - z_n)^2}\geq 0$\sps
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\item Sequence Space $L^\infty$: This is also Metric Space defined by $d(x,y)=\underset{x\in N}{\text{Sup}}|\xi_j - z_j|$ where $X=(\xi_1, \xi_2) = \xi_j \in X$ and $Y=(z_1,x_2)=z_j \in X$
+	\end{enumerate}
+	
+	\subsection*{Fixed Point}
+	Let $X$ be a non-empty set and $T:x\rightarrow x$ we say that $x\in X$ is a fixed point of $T$ if $T_x = X$ and denote the set of all fixed point of $T$ by $F_T = [x\in X | T_x = X]$ such that $F(x)=T_x - x$ or $F_T = T_x - x$.\sps
+	
+	\NI\bt{Example}
+	\begin{enumerate}
+		\item If $x=\real$ and $T_x = x^2 + 5x + 4$\sps
+		$T(-2)$ where $x=-2~ \therefore T(-2) = (-2)^2 + 5(-2) + 4 = 4-10 + 4 = -2$\\
+		$F_T=-2$\\
+		Or $T_x = x + f(x) \Rightarrow f(x) = T_x - x$. Where $T_x=x^2 + 5x + 4\sps\therefore f(x)=x^2 + 5x + 4 - x = x^2 + 4x + 4 = 0$\sps
+		$\implies (x+2)^2 = 0\quad x=-2 \Rightarrow F_T = [-2]$\sps
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\item $T_x = x^2 - x$ and $x=\real$, then $F_T$\\
+		$T_x = f(x) + x \Rightarrow f(x) = T_x -x = 0$\sps
+		$f(x) = x^2 - x -x = 0$\\
+		${~}~~\quad=x^2 - 2x = 0$\\
+		$x(x-2) = 0 \Rightarrow x = 0$ or $x=2$\sps
+		$T(2)=2~~~~~~~~~ F_T = [2]$
+	\end{enumerate}
+	
+	\subsection*{Set}
+	Set is a collection of objects, things or element which are clearly defined. The term non-empty set is the set that is not empty. In the sense that it has some element in it that are clearly defined.\sps
+	
+	\NI\bt{Examples}
+	\begin{enumerate}
+		\item Collection of mathematics students in Unilorin
+		\item Prime Number
+		\item Integers
+		\item Set of Rational Numbers
+	\end{enumerate}
+	
+	\subsection*{Mapping}
+	A mapping is a relation between two non-empty sets $A$ and $B$, then the relation $f:A\rightarrow B$ such that the image of domain is found in the co-domain.\\
+	\begin{center}
+		\includegraphics[width=0.25\textheight]{mapping}
+	\end{center}
+	$\\\therefore f(A) \implies f(0) = \text{even}, f(2)=\text{even}, f(3)=\text{odd}$
+	
+	\subsection*{Economics}
+	Economics is the Social Science that studies the production, distribution and consumption of goods and services\sps
+	
+	\NI\bt{Types of Economics}
+	\begin{enumerate}
+		\item \bt{Micro-Economics:} This focuses on basic elements in economy which includes individual agents, firms and markets, their interaction and outcome of interactions. Individual agent may include households, buyers \& sellers.
+		\item \bt{Macro-Economics:} This analyses the economics as a system where production, consumption, savings, investment interaction and factors affecting its (employment of resources of labour, capital and land currency inflation, economy group and public policies that have impact on production of goods and services).
+	\end{enumerate}
+	\newpage
+	\NI\bt{Examples of Economics}
+	\begin{enumerate}
+		\item \bt{Opportunity Cost:} This refers to the hidden cost associated with not taking alternative course of action, this is also the potential benefit an individual, investor or business would miss out when choosing one alternative over other in Business.
+		\\Example: The cost of a movie and the enjoyment in seeing it.\\
+		
+		\item \bt{Sunk Cost:} This is a cost that has already been incurred and cannot be recovered. In economics decision making, Sunk Costs are treated as bygone and are not taken into consideration when deciding whether to continue an investment project.\\
+		Example: The cost of producing a product and the loss of not making the profit of the cost of production.\\
+		
+		\item \bt{The trade war}- This is an economic conflict resulting from extreme protectionism or favourism in which states raise or create tariffs or other trade barrier against each other.\\
+		Example:- Exchange rate between Naira and Dollar\\
+		
+		\item \bt{Demand and Supply:} This is the relationship between that quantity of a commodity that producers wish to sell at various prices and the quantity that consumers wish to buy.\\
+		Example:- Price of New Jean in market.
+	\end{enumerate}
+\end{document}

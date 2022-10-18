@@ -1,0 +1,83 @@
+%Author: RastaXarm
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath,amssymb}
+
+
+\begin{document}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\renewcommand{\tabcolsep}{8mm}
+	\begin{tabular}{llcccc}
+		\multicolumn{6}{c}{LAPLACE TRANSFORM} \\
+		\hline 
+		\multicolumn{2}{l}{$f(t)$} &  \multicolumn{2}{c}{$F(s) = \mathcal{L}\{f(t)\}$} & \multicolumn{2}{c}{Conditions on s} \\ 
+		\hline
+		
+ 		\multicolumn{2}{l}{$\displaystyle1$} & \multicolumn{2}{c}{$\displaystyle \frac{1}{s}$} & \multicolumn{2}{c}{$s > 0$} \\
+		
+		\multicolumn{2}{l}{$\displaystyle t$} & \multicolumn{2}{c}{$\displaystyle \frac{1}{s^2}$} & \multicolumn{2}{c}{$s > 0$} \\
+
+		\multicolumn{2}{l}{$\displaystyle t^n (n=1,2,\ldots)$} & \multicolumn{2}{c}{$\displaystyle \frac{n!}{s^{n+1}}$} & \multicolumn{2}{c}{$s > 0$} \\
+
+
+		\multicolumn{2}{l}{$\displaystyle t^a (a > -1)$} & \multicolumn{2}{c}{$\displaystyle \frac{\Gamma(a+1)}{s^{a+1}}$} & \multicolumn{2}{c}{$s > a$} \\
+
+
+
+		\multicolumn{2}{l}{$\displaystyle e^{at}$} & \multicolumn{2}{c}{$\displaystyle \frac{1}{(s-a)}$} & \multicolumn{2}{c}{$s > a$} \\
+
+		\multicolumn{2}{l}{$\displaystyle t^n e^{at} (n= 1, 2,\ldots)$} & \multicolumn{2}{c}{$\displaystyle \frac{n!}{(s-a)^{n+1}}$} & \multicolumn{2}{c}{$s > a$} \\
+
+
+		\multicolumn{2}{l}{$\displaystyle \sin at$} & \multicolumn{2}{c}{$\displaystyle \frac{a}{(s^2 + a^2)}$} & \multicolumn{2}{c}{$s > 0$} \\
+
+		\multicolumn{2}{l}{$\displaystyle \cos at$} & \multicolumn{2}{c}{$\displaystyle \frac{s}{(s^2 + a^2)}$} & \multicolumn{2}{c}{$s > 0$} \\
+
+
+		\multicolumn{2}{l}{$\displaystyle t \sin at$} & \multicolumn{2}{c}{$\displaystyle \frac{2as}{(s^2 + a^2)^2}$} & \multicolumn{2}{c}{$s > 0$} \\
+
+		\multicolumn{2}{l}{$\displaystyle t \cos at$} & \multicolumn{2}{c}{$\displaystyle \frac{(s^2 - a^2)}{(s^2 + a^2)^2}$} & \multicolumn{2}{c}{$s > 0$} \\
+
+
+		\multicolumn{2}{l}{$\displaystyle e^{at} \sin bt$} & \multicolumn{2}{c}{$\displaystyle \frac{b}{(s - a)^2 + b^2}$} & \multicolumn{2}{c}{$s > a$} \\
+
+
+
+		\multicolumn{2}{l}{$\displaystyle e^{at} \cos bt$} & \multicolumn{2}{c}{$\displaystyle \frac{(s-a)}{(s - a)^2 + b^2}$} & \multicolumn{2}{c}{$s > a$} \\
+
+		
+		\multicolumn{2}{l}{$\displaystyle \frac{1}{2a^3} \sin at - \frac{1}{2a^2} t \cos at$} & \multicolumn{2}{c}{$\displaystyle \frac{1}{(s^2 + a^2)^2 }$} & \multicolumn{2}{c}{$s > 0$} \\
+
+		\multicolumn{2}{l}{$\displaystyle \frac{1}{2a} \sin at + \frac{1}{2} t \cos at$} & \multicolumn{2}{c}{$\displaystyle \frac{s^2}{(s^2 + a^2)^2 }$} & \multicolumn{2}{c}{$s > 0$} \\
+		\multicolumn{2}{l}{$\displaystyle 1 - \cos at$} & \multicolumn{2}{c}{$\displaystyle \frac{a^2}{s(s^2 + a^2) }$} & \multicolumn{2}{c}{$s > 0$} \\
+
+		\multicolumn{2}{l}{$\displaystyle at - \sin at$} & \multicolumn{2}{c}{$\displaystyle \frac{a^3}{s^{2}(s^2 + a^2) }$} & \multicolumn{2}{c}{$s > 0$} \\
+
+		\multicolumn{2}{l}{$\displaystyle \sinh at $} & \multicolumn{2}{c}{$\displaystyle \frac{a}{(s^2 - a^2) }$} & \multicolumn{2}{c}{$s > |a|$} \\
+		
+		\multicolumn{2}{l}{$\displaystyle \cosh at $} & \multicolumn{2}{c}{$\displaystyle \frac{s}{(s^2 - a^2) }$} & \multicolumn{2}{c}{$s > |a|$} \\
+		
+
+		\multicolumn{2}{l}{$\displaystyle \frac{1}{2a} \sinh at + \frac{1}{2} t \cosh at$} & \multicolumn{2}{c}{$\displaystyle \frac{s^2}{(s^2 - a^2)^2 }$} & \multicolumn{2}{c}{$s > |a|$} \\
+
+		\multicolumn{2}{l}{$\displaystyle \frac{1}{2a^3} \sinh at + \frac{1}{2a^2} t \cosh at$} & \multicolumn{2}{c}{$\displaystyle \frac{1}{(s^2 - a^2)^2 }$} & \multicolumn{2}{c}{$s > |a|$} \\
+
+		\multicolumn{2}{l}{$\displaystyle \frac{1}{2a}t \sinh at$} & \multicolumn{2}{c}{$\displaystyle \frac{s}{(s^2 - a^2)^2 }$} & \multicolumn{2}{c}{$s > |a|$} \\
+
+
+		\multicolumn{2}{l}{$\displaystyle \sinh at - \sin at $} & \multicolumn{2}{c}{$\displaystyle \frac{2a^3}{(s^4 - a^4) }$} & \multicolumn{2}{c}{$s > |a|$} \\
+
+
+\multicolumn{2}{l}{$\displaystyle \cosh at - \cos at $} & \multicolumn{2}{c}{$\displaystyle \frac{2a^{2}s}{(s^4 - a^4) }$} & \multicolumn{2}{c}{$s > |a|$} \\
+
+
+%		\multicolumn{2}{l}{$\displaystyle H(t-a)$} & \multicolumn{2}{c}{$\displaystyle \frac{e^{-as}}{s}$} & \multicolumn{2}{c}{$s \geq a$} \\
+
+%		\multicolumn{2}{l}{$\displaystyle \delta(t-a)$} & \multicolumn{2}{c}{$\displaystyle e^{-as}$} & \multicolumn{2}{c}{$s > 0, a >0$} \\
+	\end{tabular}
+	
+\end{center}
+
+\end{document}

@@ -1,0 +1,263 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{keyval}
+\usepackage{graphicx}
+%\usepackage{tikz}
+
+\newcommand{\url}[1]{\textit{#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{\textbf{(\ref{#1})}}
+\newcommand{\NI}{\noindent}
+\newcommand{\beq}{\NI$\displaystyle}
+\newcommand{\eeq}{$}
+\newcommand{\eeqn}{$\\[0.3cm]}
+\newcommand{\dsp}{\displaystyle}
+
+\renewcommand*\contentsname{Table of Contents}
+\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION}
+
+	%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%%
+	\chapter{LITERATURE REVIEW}
+	
+	%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%%
+	\chapter{METHODOLOGY}
+	
+	%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%%
+	\chapter{CONVERSION OF EQUATION OF MOTION FROM CARTESIAN COORDINATE TO SPHERICAL}
+	\section{INTRODUCTION}
+	We shall be dealing with the conversion process of the continuity equation and the Navier-Stokes equation from cartesian coordinate to spherical coordinate, that is from $(X,Y,Z)$ into $(r,\theta, \phi)$.
+	
+	\section{CONVERSION OF THE CONTINUITY EQUATION FROM CARTESIAN TO SPHERICAL COORDINATE}
+	The continuity equation in cartesian coordinate can be expressed as\sps $\dsp \frac{\partial U}{\partial x} + \frac{\partial V}{\partial y} + \frac{\partial W}{\partial z} = 0$\\
+	
+	\NI Conventionally, the equation of continuity can be converted from the cartesian coordinate to the spherical coordinate by expressing $(X,Y,Z)$ as $(r, \theta, \phi)$\sps
+	Then\sps
+	$\dsp 
+		X = r\sin\theta\cos\phi ~~~~ r = \sqrt{x^2 + y^2 + z^2}\sps
+		Y = r\sin\theta\sin\phi ~~~~ r = ar\cos(\frac{z}{r})\sps
+		Z = r\cos \theta \qquad\quad~ \phi = \arctan(\frac{y}{z})\sps
+		P = r\sin \theta
+	$\sps 
+	Now the position unit vector in the spherical coordinate is given as \\
+	$r = Z\cos\theta + v\sin\theta$\sps
+	Where $v = x\cos\phi + y\sin\phi$
+	\begin{eqnarray}
+		\frac{dr}{d\theta} &=& -Z\sin\theta + v\cos\theta\label{eq:4_1}\spn{0.5}
+		%%%
+		\frac{dv}{d\phi} &=& x\sin\phi + y\cos\phi\label{eq:4_2} \spn{0.5}
+		%%%
+		V_r &=& V_z\cos\theta + V_z\sin\theta\cos\phi + V_y\sin\theta\sin\phi \label{eq:4_3}\spn{0.5}
+		%%%
+		V_\theta &=& \frac{d\theta}{dt} = - \frac{dz}{dt}\sin\theta + \frac{dx}{dt}\cos\phi\cos\theta + \frac{dy}{dt}\sin\phi\cos\theta \label{eq:4_4} \spn{0.5}
+		%%%
+		V_\theta &=& -V_z\sin\theta + V_x\cos\phi\cos\theta + V_y\sin\phi\sin\theta \label{eq:4_5}
+	\end{eqnarray}
+	$dsp \frac{d\phi}{dt} = -\frac{dx}{dt}\sin\phi + \frac{dy}{dt}\cos\phi$\spn{0.5}
+	\begin{equation}
+		V_\phi = -V_x\sin\phi + V_y\cos\phi \label{eq:4_6}
+	\end{equation}
+	
+	\NI From \refn{eq:4_3} and \refn{eq:4_4} above we have
+	\begin{eqnarray}
+		V_r &=& V_z\cos\theta + \sin\theta(V_x\cos\phi + V_y\sin\phi) \label{eq:4_7} \spn{0.1}
+		%%%
+		V_\theta &=& -V_{\sin\theta} + \cos\theta(V_z\cos\phi + V_y\sin\phi) \label{eq:4_8} \spn{0.1}
+		%%%
+		V_\phi &=& -V_x\sin\theta + V_y\cos\phi \label{eq:4_9}
+	\end{eqnarray}
+	Multiplying equation \refn{eq:4_7} and \refn{eq:4_8} through by $\cos\theta$ and $\sin\theta$ respectively, then we have
+	\begin{eqnarray}
+		V_r\cos\theta &=& V_z\cos^2\theta + \cos\theta\sin\theta(V_x\cos\phi + V_y\sin\phi)\notag \sps
+		%%%
+		V_\theta\sin\theta &=& -V_z\sin^2\theta + \sin\theta\cos\theta(V_x\cos\phi + V_y\sin\phi)\notag
+	\end{eqnarray}
+	Now,
+	\begin{eqnarray}
+		V_r\cos\theta - V_\theta\sin\theta &=& V_z\cos^2\theta + V_z\sin^2\theta \notag \sps
+		%%%
+		\implies V_r\cos\theta - V_\theta\sin\theta &=&V_z(\cos^2\theta + \sin^2\theta)\notag \sps
+		%%%
+		\implies V_z &=& V_r\cos\theta + V_\theta\sin\theta \notag
+	\end{eqnarray}
+	Multiplying equation \refn{eq:4_3} and \refn{eq:4_4} by $\sin\theta$ respectively, to have $V_r\sin\theta = V_z\cos\theta\sin\theta + \sin^2\theta(V_z\cos\phi + V_y\sin\phi)$\\
+	$V_\theta\cos\theta = -V_z\sin\theta\cos\theta+\sin^2\theta(V_x\cos\phi + V_y\sin\phi)$\\
+	
+	\NI Now,
+	\begin{equation}
+		V_r\sin\theta + V_\theta\cos\theta = 2\sin^2\theta(V_x\cos\phi + V_y\sin\phi) \label{eq:4_10}
+	\end{equation}
+	 $\dsp
+	 	\implies V_r\sin\theta + V_\theta\cos\theta = V_x\cos\phi + V_y\sin\phi
+	 $\sps
+	 Multiplying equation \refn{eq:4_10} and \refn{eq:4_6} by $\sin\phi$ and $\cos\phi$ respectively then we have\sps
+	 $\dsp
+	 	V_r\sin\theta\sin\phi + V_\theta\sin\phi\cos\theta = V_x\sin\theta\cos\phi + V_y\sin^2\phi \sps
+	 	%%%
+	 	V_\phi\cos\phi = -V_x\sin\theta\cos\phi + V_y\cos^2\phi \sps
+	 	%%%
+	 	= V_r\sin\theta\sin\phi + V_\theta\cos\phi\cos\theta = V_y(\sin^2\phi + \cos^2\phi)\sps
+	 $
+	 \begin{equation}
+	 	\implies V_y = V_r\sin\theta\sin\phi + V_\theta\cos\phi + V_\theta\sin\phi\cos\theta \label{eq:4_11}
+	 \end{equation}
+ 	 Multiplying equation \refn{eq:4_10} and \refn{eq:4_6} by $\cos\phi$ and $\sin\phi$ respectively then we have\sps
+ 	 $\dsp
+ 	 	V_r\sin\theta\cos\phi + V_\theta\cos\theta\cos\phi = V_x\cos^2\theta + V_y\sin\phi\cos\phi \sps
+ 	 	%%%
+ 	 	V_\phi\cos\phi = - V_x\sin^2\phi + V_y\cos\phi\sin\phi
+ 	 $
+ 	 \begin{equation}
+ 	 	\implies V_x = V_r\sin\theta\cos\phi + V_\theta\cos\phi\sin\theta - V_\phi\sin\phi \label{eq:4_12}
+ 	 \end{equation}
+ 	 
+ 	 \NI By the general orthogonal curvilinear coordinates $(U_1,U_2,U_3)$\\
+ 	 $\dsp
+ 	 	\nabla \cdot A = \frac{1}{h_1h_2h_3}\left[\frac{\partial}{\partial U_1}(h_1h_2A_1) + \frac{\partial}{\partial U_2}(h_1h_2A_2) + \frac{\partial}{\partial U_3}(h_1h_2A-3)\right]
+ 	 $\sps
+ 	 Where the scalar factors are given as\sps
+ 	 $\dsp
+ 	 	h_1=1, h_2=r, h_3=r\sin\theta \sps
+ 	 	U_1=r, U_2=0, U_3=\phi \sps 
+ 	 	A=V = V_rx + V_\theta y+ V_\phi
+ 	 $\sps
+ 	 Where,\\
+ 	 $\dsp
+ 	 	\nabla \cdot V = \frac{1}{r^2\sin\theta}\left[\frac{\partial}{\partial r}(r^2\sin\theta V_r) + \frac{\partial}{\partial \theta}(r\sin\theta V_\theta) + \frac{\partial}{\partial \phi}(rV_\phi)\right]\sps
+ 	 	%%%
+ 	 	= \frac{1}{r^2\sin\theta}\left[2r\sin\theta V_r + r^2\frac{\partial}{\partial r}\sin\theta V_r + r\cos\theta V_\theta + \frac{\partial}{\partial \theta}r\sin\theta V_\theta + \frac{\partial}{\partial \phi}rV_\phi\right]\sps
+ 	 	%%%
+ 	 	=\frac{2}{r}V_r + \frac{\partial}{\partial r}V_r + \frac{\cos\theta}{r\sin\theta}V_\theta + \frac{1}{r}(2V_r + \cot\theta V_\theta)\sps
+ 	 	%%%
+ 	 	=\frac{\partial}{\partial r}V_r + \frac{1}{r}\frac{\partial}{\partial\theta}V_\theta + \frac{1}{r\sin\theta}\frac{\partial}{\partial\theta} + \frac{1}{r}(2V_r + \cot\theta V_\theta)
+ 	 $\sps
+ 	 Here the continuity equation in spherical coordinate is expressed as
+ 	 \begin{equation*}
+ 	 	\nabla \cdot V = \frac{\partial}{\partial r}V_r + \frac{1}{r}\frac{\partial}{r\partial\theta} + \frac{\partial}{\partial \phi} + \frac{1}{r}(2V_r + \cot\theta V_\theta)
+ 	 \end{equation*}
+ 
+ 	\section{CONVERSION OF NAVIER-STOKES EQUATION FROM CARTESIAN TO SPHERICAL COORDINATE}
+ 	The Navier-stokes equation can be in cartesian form generally as
+ 	\begin{equation}
+ 		\rho\left[\frac{\partial V_i}{\partial t} + V_i\frac{\partial V_j}{\partial x_i}\right] = \rho F_1 - \frac{\partial\rho}{\partial x_i} + \frac{\partial\tau_{ij}}{\partial x_j} \label{eq:4_13}
+ 	\end{equation}
+ 	or $\dsp \rho\left[\frac{\partial V_i}{\partial t} \nabla \cdot V_jV_i\right] = \rho F_i - \nabla P + \mu\nabla^2V_i$
+ 	\begin{equation}
+ 		\frac{\partial V_i}{\partial t} + \nabla \cdot VV_i = F_i - \frac{\nabla P}{\rho} + \upsilon\nabla^2 \Omega \label{eq:4_14}
+ 	\end{equation}
+ 	since $\upsilon = \frac{\mu}{\rho}$ By the general orthogonal coordinate $(U_1,U_2,U_3)$
+ 	\begin{equation}
+ 		\nabla^2 = \frac{1}{h_1,h_2,h_3} \left[\frac{\partial}{\partial U_1}\left(\frac{h_1h_2}{h_1} \frac{\partial}{\partial U_2}\right) + \frac{\partial}{\partial U_2}\left(\frac{h_1h_3}{h_2}\frac{\partial}{\partial U_2}\right) + \frac{\partial}{\partial U_3}\left(\frac{h_1h_2}{h_3} \frac{\partial}{\partial U_3}\right)\right]\label{eq:4_15}
+ 	\end{equation}
+ 	Where the scalar factors are\\
+ 	$\dsp
+ 		h_1=1, h_2=r, h_3=r\sin\theta \sps
+ 		U_1=r, U_2=\theta, U_3=\phi \sps
+ 	$
+ 	\begin{equation}
+ 		\nabla^2 = \frac{1}{r^2\sin\theta}\left[\frac{\partial}{\partial r}+ \frac{\partial}{\partial \theta}\left(\frac{r\sin\theta}{r}\frac{\partial}{\partial \theta}\right) + \frac{\partial}{\partial \pi}\left(\frac{r}{r\sin\theta}\frac{\partial}{\partial \phi}\right) \right] \label{eq:4_16}
+ 	\end{equation}
+ 	$\spn{0.7}\dsp
+ 		= \frac{1}{r^2\sin\theta}\left[2r\sin\theta\frac{\partial}{\partial r} + r^2\sin\theta \frac{\partial}{\partial r^2} + \frac{r\cos\theta}{r}\frac{\partial}{\partial \theta} + \frac{r\sin\theta}{r}\frac{\partial^2}{\partial \theta^2} + \frac{r}{r\sin\theta}\frac{\partial^2}{\partial\theta^2} \right]\sps
+ 		%%%
+ 		=\frac{2}{r}\frac{\partial}{\partial r} + \frac{\partial^2}{\partial r^2} + \frac{1}{r^2}\cos\theta\frac{\partial}{\partial\theta} +\frac{1}{r^2}\frac{\partial^2}{\partial\theta^2} + \frac{1}{r^2}\sin^2\theta\frac{\partial^2}{\partial\theta^2}
+ 	$
+ 	\newpage
+ 	$\dsp
+ 		= \frac{\partial^2}{\partial r^2} + \frac{1}{r^2}\frac{\partial^2}{\partial\theta^2} + \frac{1}{r^2\sin^2\theta}\frac{\partial}{\partial\phi^2} + \frac{1}{r}\left[2\frac{\partial}{\partial r} + \frac{1}{r}\cos\theta\frac{\partial}{\partial\theta}\right]\sps
+ 		%%%
+ 		\nabla \cdot V = \frac{2}{r}V_r + \frac{\partial}{\partial r}V_r + \frac{1}{r}\cot\theta V_\theta + \frac{1}{r}\frac{\partial}{\partial\theta}V_\theta + \frac{1}{r\sin\theta}\frac{\partial}{\partial\phi}V_\theta\sps
+ 		%%%
+ 		\nabla \cdot P = \left[\frac{2}{r} + \frac{\partial}{\partial r} + \frac{1}{r}\frac{\partial}{\partial\theta} + \frac{1}{r\sin\theta}\frac{\partial}{\partial\phi}\right]\cdot P
+ 	$\sps
+ 	Substituting $\dsp \nabla^2, \nabla \cdot P, \nabla \cdot V$ into the equation \refn{eq:4_14} where $V_i$ has its velocity component as $V_r, V_\theta, V_\phi$ of spherical coordinate.\sps
+ 	
+ 	\NI In the r component\sps
+ 	$\dsp
+ 		\frac{\partial V_r}{\partial r} +V_r\frac{2V_r}{r} + V_r\frac{\partial V_r}{\partial r} + \frac{V_r}{r}\cot\theta V_\theta + \frac{V_r}{r} + \frac{\partial}{\partial\theta}V_\theta + \frac{V_r}{r\sin\theta}\frac{\partial}{\partial\phi}V_\phi\sps
+ 	$
+ 	\begin{equation}
+ 		= g_r - \frac{1}{\rho}\left(\frac{2}{r} + \frac{\partial}{\partial r}\right)P_r + \upsilon\left[\frac{\partial^2V}{\partial r^2} + \frac{1}{r^2\sin^2\theta}\frac{\partial^2V}{\partial\phi^2} + \frac{V_r}{r}\left(\frac{2\partial}{\partial r} + \frac{1}{r}\cot\theta\frac{\partial}{\partial\theta}\right)\right] + g_r \label{eq:4_17}
+ 	\end{equation}
+ 	
+ 	\NI In the $\theta$ component
+ 	\sps
+ 	$\dsp
+ 		\frac{\partial V_\theta}{\partial t} + V_\theta \frac{2V_r}{r} + V_\theta \frac{\partial V_r}{\partial r} + \frac{V_\theta}{\partial r}\cot\theta V_\theta + \frac{V_\theta}{r}\frac{\partial V_\theta}{\partial\theta} + \frac{V_\theta}{r\sin\theta}\frac{\partial}{\partial\theta}V_\phi
+ 	$
+ 	\begin{equation}
+ 		= - \frac{1}{\rho}\left(\frac{1}{r}\cot\theta + \frac{1}{r}\frac{\partial}{\partial \theta}\right)P_\theta + \upsilon \left[\frac{\partial^2V_\theta}{\partial r^2} + \frac{1}{r^2}\frac{\partial^2V_\theta}{\partial\theta^2} + \frac{1}{r\sin\theta}\frac{\partial^2V_\theta}{\partial\phi^2} + \frac{V_\theta}{r}\left(\frac{2\partial}{\partial r} + \frac{1}{r}\cot\theta\frac{\partial}{\partial\theta}\right)\right] + g_\theta
+ 	\end{equation}
+ 
+ 	\NI In the $\phi$ component
+ 	\sps
+ 	$\dsp
+ 	\frac{\partial V_\phi}{\partial t} + V_\theta \frac{2}{r}V_r + V_\phi \frac{\partial}{\partial r} + \frac{V_\phi}{\partial r}\cot\theta V_\theta + \frac{V_\phi}{r}\frac{\partial V_\theta}{\partial\theta} + \frac{V_\phi}{r\sin\theta}\frac{\partial}{\partial\phi}V_\phi
+ 	$
+ 	\begin{equation}
+ 		= - \frac{1}{\rho}\left(\frac{1}{r}\cot\theta + \frac{1}{r}\frac{\partial}{\partial \theta}\right)P_\theta + \upsilon \left[\frac{\partial^2V_\phi}{\partial r^2} + \frac{1}{r^2}\frac{\partial^2V_\phi}{\partial\theta^2} + \frac{1}{r\sin\theta}\frac{\partial^2V_\phi}{\partial\phi^2} + \frac{V_\phi}{r}\left(\frac{2\partial}{\partial r} + \frac{1}{r}\cot\theta\frac{\partial}{\partial\theta}\right)\right] + g_\phi
+ 	\end{equation}
+ 
+ 
+
+	%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
+	
+	\section{SUMMARY}
+	From the study of this project, equation of motion have been converted from its cartesian to spherical coordinate in three dimensional coordinate. Considering the Navier-stokes equation and the Continuity equation which were derived from the conservation of momentum and the conservation of mass respectively.\sps
+	
+	\NI These equations can be expressed as\sps
+	$\dsp
+		\frac{\Delta \rho}{\Delta t} + \rho V \cdot \overrightarrow{V} = 0 \sps
+	$
+	Which is the continuity equation and\sps
+	$\dsp
+		\rho\left(\frac{\Delta\overrightarrow{v}}{\Delta t}\right) = \rho \overrightarrow{F_i} - \nabla \overrightarrow{P} + \mu \nabla^2\overrightarrow{V}
+	$
+	respectively
+	
+	
+	\section{CONCLUSION}
+	The fundamental equations of motion were converted from cartesian coordinate to spherical coordinate and this was possible by applying the general orthogonal curvilinear coordinate, which has quite shown the relationship between cartesian and spherical coordinate in three dimension flow.
+	
+	
+	\section{RECOMMENDATION}
+	In this study, we have employed the general orthogonal curvillinear coordinate systems to be able to convert the continuity equation and Navier-Stokes equation from cartesian coordinate to spherical coordinate. It is hereby recommended that further study should be focused on how to use the general orthogonal curvillinear coordinate to solve the conversion process of the continuity and Navier-Stokes equation from cartesian coordinate to cyclindrical coordinate, that is from $(X, Y, Z)$ into $(r,\theta,z)$.
+	
+	
+	\newpage
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{\numberline{}REFERENCES}
+	\begin{enumerate}
+		\item Egon Krause (2005), Fluid Mechanics Springer-Verlag Berlin Heidelberg.
+		
+		\item J.N Hunt (1964). Incompressible Fluid Dynamics
+		
+		\item Andras Alexandrou (2001), Principles of Fluid Mechanics, Prentice Hall Upper Saddle River New Jersey.
+		
+		\item Douglas, Gasiorek, Swaffield First Published in (1996) Fluid Mechanics, United Nations Educational, Kenya.
+		
+		\item K.A. Stroud (2003) Advanced Engineering Mathematics.
+		
+		\item Reuben M. Oslon (1996) and (1961) Fluid Mechanics by International Text Book Company. Printed in U.S.A (Second Edition).
+		
+		\item Hugh D. Young, and Roger A. Freedman (2008) University Physics, Pearsons Education Inc.
+	\end{enumerate}
+	
+	
+	|
+	
+	
+	
+	
+	
+\end{document}
+

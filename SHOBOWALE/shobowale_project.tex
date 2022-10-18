@@ -1,0 +1,1197 @@
+\documentclass[12pt]{report}
+%\usepackage[a4paper, margin=1.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\newcommand{\cosec}{\text{ cosec}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\IDE}{Integro Differential Equation}
+\newcommand{\IDEs}{Integro Differential Equations}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+
+%\setlength{\parindent}{1em}
+
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\Large \bt{STANDARD AND PERTURBED COLLOCATION METHODS FOR SOLVING SECOND ORDER FREDHOLM INTEGRO-DIFFERENTIAL EQUATIONS}
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{SHOBOWALE, WASIU OLAMILEKAN 
+			\\
+			16/56EB154}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ 
+	\begin{center}
+		\textbf{JUNE, 2021}
+	\end{center}
+
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project was carried out by \textbf{SHOBOWALE, Wasiu Olamilekan} with Matriculation Number  16/56EB154 in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Prof. O.A. Taiwo   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof. T. O. Oluyo \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner 
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	All praises, adoration and glorification are for Almighty Allah, the most beneficent, the most merciful, and the sustainer of the world. I pray may the peace of Allah and His blessings be upon the Noble Prophet(the last of all prophets), his companions, household and the entire Muslims. I give gratitude to Allah for His mercies and grace bestowed on me over the years vis-a-vis sparing my life from the beginning to the end of my course in the "Better by Far" University.\\
+	
+	\NI My profound gratitude and appreciation goes to my versatile and persevering supervisor, Prof. O.A. Taiwo for his kind-hearted, and for his candid advice, encouragement and useful guidelines towards the success of this work. I pray Almighty God be with him and his family.\\
+	
+	\NI I as well acknowledge my level adviser Dr. Idayat F. Usamot for her motherly love, support and help when needed, i am really grateful.\\
+	
+	\NI I also extend my sincere gratitude to all the lecturers in the Department starting from Prof. K. Rauf(HOD), Professors J.A. Gbadeyan, T.O. Opoola, O.M. Bamigbola, M.O. Ibrahim, R.B. Adeniyi, M.S. Dada, A.S. Idowu and Doctors E.O. Titiloye, Mrs. Olubunmi A. Fadipe-Joseph, Mrs. Yidiat O. Aderinto, Mrs. Catherine N. Ejieji, J.U. Abubakar, K.A. Bello, Mrs. G.N. Bakare, B.N. Ahmed, O.T. Olotu, O.A. Uwaheren, O. Odetunde, T.L. Oyekunle, A.A. Yekiti and all other members of staff of the department.
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	I would like to dedicate the project to God, for the grace and faithfulness of God thus far. For His mercies, guidance and protection throughout my years of study.
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	This project deals with standard and perturbed collocation methods for solving second order Fredholm \IDE ~using Power Series and Chebyshev Polynomials as basis functions.\\
+	
+	\NI The methods assumed an approximate solution of degree $N$ which is then substituted into the Second Order Fredholm \IDEs considered. After evaluating the Integrals involved and collecting like terms of the unknown coefficients, the resulting equation is now collocated at equally spaced interior points, thus resulting into algebraic linear system of equation which are then solved using Gaussian Elimination Method to obtain the unknown constants which are then substituted back into the assumed approximate solution to obtain the required approximate solutions. Some examples are solved and the results obtained are tabulated.
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{GENERAL INTRODUCTION}
+	
+	\section{Introduction}
+	There has been a rising interest in the \IDE (IDEs).\\
+	
+	\NI Many mathematical formulation of physical events contains \IDEs, these equations are in many field like physics, potential theory, biological models and chemical kinetics.\\
+	
+	\NI It is observed that analytic solution of some linear \IDEs ~are different. Indeed, few of these equations can be solved explicitly. So it is required to device an efficient approximation scheme for solving these equations. Recently, several numerical methods to solve \IDEs~ have been given such as Variation Iteration Method (VIM), Homotopy Perturbation Methods, Wavelet-Galerkin Method, Adamian Decomposition Method, Spline Function Expansion and Collocation Point Method.\\
+	
+	\NI Based on much observation, it was noticed that using both Standard and Perturbed Collocation Method gives better results.\\
+	
+	\section{Definition of Some Relevant Terms} 
+	
+	\subsection{Differential Equation}
+	A differential equation is an equation which relating one or more unknown functions and its derivative of which the variable involved are dependent and independent. For example
+	\begin{equation}
+		3\frac{d^2y}{dx^2} + 2y = 0
+	\end{equation}
+	
+	\subsection{Linear and Non-linear Differential Equation}
+	A differential equation is said to be linear if there exist no product of the dependent variable and/or its derivatives.
+	\begin{equation}
+		a_n\frac{d^ny}{dx^n} + a_{n-1}\frac{d^{n-1}y}{dx^{n-1}} + \cdots + a_1\frac{dy}{dx} + a_0(x)y = F(x)
+	\end{equation}
+	Otherwise, it is Non-linear.\\
+	Example
+	\begin{enumerate}
+		\item $\dsp \frac{dy}{dx} = x+2$ ~~~~~~~~Linear\\
+		
+		\item $\dsp \left(\frac{d^3y}{dx^3}\right)^3 + 3x\left(\frac{dy}{dx}\right)^5 + 2y = 0$ ~~~~~~~~Non-Linear
+	\end{enumerate}
+	
+	\subsection{Power Series}
+	A power series is an infinite series of the form 
+	\begin{equation}
+		f(x) = \sum_{j=0}^{\infty} a_n(x-C)^n = a_0 + a_1(x-C) + a_2(x-C)^2 + \cdots j
+	\end{equation}
+	Where $a_n$ represents coefficients of $nth$ term, $C$ is a constant and $x$ varies around $C$. Power Series takes a simpler form of
+	\begin{equation}
+		y(x) = \sum_{j=0}^{\infty}a_jx^j = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots
+	\end{equation}
+	
+	\subsection{Homogeneous and Non-Homogeneous Linear Equation}
+	A Linear Differential Equation is homogeneous if it is homogeneous linear equation in the unknown function and its derivatives.\\
+	
+	\NI The general form of a linear homogeneous differential equation
+	\begin{equation}
+		\mathcal{L}\{y\} = 0
+	\end{equation}
+	where $\mathcal{L}$ is a differential operator, a sum derivative each multiplied by function $f_i$ of $x$.
+	\begin{equation}
+		\mathcal{L} = \sum_{i=0}^{n} f_i(x)\frac{d^i}{dx^i}
+	\end{equation}
+	where $f_i$ may be constants, but not all $f_i$ may be zero.\\
+	
+	\NI Otherwise, it is a Non-Homogeneous Linear Differential Equation.
+	
+	\subsection{Integral Equation}
+	An Integral Equation is an equation in which an unknown function appears under the integral sign.
+	\begin{equation}
+		F(x) = \int_{a}^{b}H(x,t)y(t)dt
+	\end{equation}
+	where $a$ and $b$ are limit if integration, $H(x,t)$ is a function of the variable $x$ and $t$ called kernel or nucleus of the integral sign. The function $f(x)$ is to be determined.
+	
+	\subsection{Integro Differential Equation}
+	An Integro Differential Equation is an equation in which the unknown function $U(x)$ appears under the integral sign and contain an ordinary derivative $U^n(x)$ as well.\\
+	
+	\NI A Standard Integro Differential Equation is of the form 
+	\begin{equation}
+		P_n(x)U^{(n)}(x)+P_{n-1}(x) U^{(n-1)}(x) + \cdots + P_1U'(x)+P_0U(x) = f(x) +\lambda\int_{g(x)}^{h(x)}k(x,t)U(t)dt
+	\end{equation}
+	Subject to the boundary conditions\\
+	$\dsp
+		y(x)=A\sps
+		y^{(k)}(a) = B_j, ~~~ k=1,2,3,\ldots,n\sps
+	$
+	where $g(x)$ and $h(x)$ are limit of integration, $\lambda$ is a constant parameter, $k(x,t)$ is a function of two variables $x$ and $t$ called the kernel or nucleus of the integral sign. The function $f(x)$ and $k(x,t)$ are given in advance. It is to be noted that the limits of Integration $h(x)$ and $g(x)$ are not fixed (i.e. variable), fixed (constants) are mixed (variable and constants) and 
+	\begin{equation}
+		U^{(n)}(x) = \frac{d^nU}{dx^n}
+	\end{equation}
+	
+	\subsection{Absolute Error}
+	Error is the difference between the exact solution and the approximate solution when evaluated at any given point in the interval under consideration.
+	\begin{center}
+		Absolute Error = $\big|$Exact Solution $-$ Approximate Solution$\big|$
+	\end{center}
+	
+	\subsection{Boundary Value Problem}
+	A Boundary Value Problem is a differential equation that has a set of additional constants known as the boundary conditions.\\
+	e.g:\\ 
+	$\left.\right.~~~~~~~~~~~~y(a) = A$ \\
+	and \\
+	$\left.\right.~~~~~~~~~~~y(b) = B$.
+	
+	\subsection{Standard Collocation Method}
+	A Standard Method is a method employed to obtain numerical solution of special higher Orders Linear Fredholm Volterra \IDE~ by using Power Series, Chebyshev and Legendre Polynomials etc as basis. Approximates are used as basis functions.
+	
+	\subsection{Collocation}
+	This is the evaluation of an equation at some equally spaced interior points.
+	
+	\subsection{Collocation Points}
+	A projection method of solving integral and differential equations in which the approximate solution is determined from the conditions that the equation be satisfied at certain given points.\\
+	
+	\NI Collocation point is the idea of choosing a dimensional space of candidate solutions(usually polynomials up to a certain degree) and a number of points in the domain(called collocation points) and to select the solution which satisfies the given equation at the collocation points.
+	
+	\section{Aim and Objectives}
+	The aim of this project is to solve Second Order Linear \IDE~ by Standard and Perturbed Collocation Methods.\\
+	
+	\NI The objectives are;
+	\begin{enumerate}
+		\item discuss both Standard and Perturbed Collocation methods on the \IDEs;
+		
+		\item apply the two methods on some test problems; and 
+		
+		\item to investigate the accuracy and efficiency of the two methods on some numerical examples.
+	\end{enumerate}
+
+	\section{Project Outline}
+	Chapter one gives a general introduction of the project, relevant definition of terms, aim and objectives of the work.\\
+	
+	\NI Chapter two discuss as the literature review of some previous work on Fredholm \IDE.\\
+	
+	\NI Chapter three and four describe the applications of the methods on the general Second Order \IDE~ and also on some numerical examples for various values of $N$.\\
+	
+	\NI Finally, chapter five shows the tables of results for various values of $N$ considered to confirm the effectiveness and accuracy of the two methods used, Summary, Conclusion and recommendation for further work.
+	
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{LITERATURE REVIEW}
+	There are different approaches, and varieties of numerical method that are used to solve Fredholm \IDEs~, naemly, Taylor's Series by Yalcinbas and Seze(2000) compact finite difference method by Zhao(2006), method of integral regularization and an extrapolation method. Some others(not strictly numerical methods) but rather semi-analytic in nature were reported in the literature which include Modified Adomian Decomposition method by Wazwaz (1999), Variational Iteration Method by He(1999), Adomian Decomposition method by Adomian (1994), etc. Apart from the method mentioned above, another prominent one was proposed by Taiwo and Gegele(2014) for the solution of certain class of \IDEs.\\
+	
+	\NI In the work, numerical methods of solutions were considered for Linear Fredholm \IDEs. A great deal of interest has been focused on the application of homotopy perturbation which was introduced by He(1999). In the method, the solution was generates as infinite series which converges rapidly to the exact solutions whenever such exist in a closed form. A new Homotopy Perturbation method (NHPM) was introduced by Aminikhah and Biazar (2009) for solving higher Order \IDEs.
+	
+	
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{STANDARD COLLOCATION METHOD}
+	
+	\section{Introduction}
+	In this chapter, we consider the general second order \IDEs~ using standard collocation method.
+	\begin{equation}
+		P_0y(x) + P_1y\sprime(x) + P_2y\dprime(x) + \int_a^b k(x,t)y(t)dt=f(x)~~ a \leq x \leq b \label{eq:3_1}
+	\end{equation}
+	with the boundary conditions
+	\begin{equation}
+		\left.
+		\begin{array}{c}
+			y(a) + y\sprime(a) = A\\
+			y(b) + y\sprime(b) = B
+		\end{array}\right\}
+		\label{eq:3_2}
+	\end{equation}
+	where $P_0, P_1$ and $P_2$ are constants, $k(x,t)$ and $f(x)$ are given smooth functions and $y(x)$ is to be determined (Wazwaz, 1999).
+	
+	\section{Description of the Standard Collocation Method on the Problem considered}
+	We assumed an approximate solution of the form
+	\begin{equation}
+		y_N(x) = \sum_{k=0}^{N}a_kx^k \label{eq:3_3}
+	\end{equation}
+	where $a_k (k\geq 0)$ are the unknown constants to be determined.\\
+	Replacing, $x$ by $t$ in \refn{eq:3_3}, we have
+	\begin{equation}
+		y_N(t) = \sum_{k=0}^{N}a_kt^k \label{eq:3_4}
+	\end{equation}
+	Now, differentiating \refn{eq:3_3} with respect to $x$ twice in succession, we have 
+	\begin{equation}
+		\left.\begin{array}{ccl}
+			y\sprime_N(x) &=& \sum_{k=0}^{N}ka_kx^{(k-1)}\sps
+			y\dprime_N(x) &=& \sum_{k=0}^{N}k(k-1)a_kx^{(k-2)}
+		\end{array}\right\}
+		\label{eq:3_5}
+	\end{equation}
+	Substitution of \refn{eq:3_3}, \refn{eq:3_4} and \refn{eq:3_5} into \refn{eq:3_1}, we have
+	\begin{eqnarray}
+		P_0\sum_{k=0}^{N}a_kx^k + P_1\sum_{k=0}^{N}ka_kx^{k-1} + P_2\sum_{k=0}^{N}k(k-1)a_kx^{k-2}\notag\sps
+		+ \int_{a}^{b}k(x,t)\sum_{k=0}^{N}a_kx^kdt=f(x)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \label{eq:3_6}
+	\end{eqnarray}
+	Hence, further simplification of \refn{eq:3_6}, we obtained
+	\begin{eqnarray}
+		\sum_{k=0}^{N}\left[P_0a_k + P_1(k+1)a_{k+1}+P_2(k+1)(k+2)a_{k+2}\right]x^k \notag \spn{0.1}
+		+ \int_{a}^{b}k(x,t)\sum_{k=0}^{N}a_kt^kdt=f(x)~~~~~~~~~~~~~~ \label{eq:3_7}
+	\end{eqnarray}
+	Evaluating the integral and the left over is then collected at the point $x=x_k$,, we obtained
+	\begin{eqnarray}
+		\sum_{k=0}^{N}\left[P_0a_k + P_1(k+1)a_{k+1}+P_2(k+1)(k+2)a_{k+2}\right]x^k \notag \spn{0.1}
+		+ \int_{a}^{b}k(x,t)\sum_{k=0}^{N}a_kt^kdt=f(x_k)~~~~~~~~~~~~ \label{eq:3_8}
+	\end{eqnarray}
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N-n+2}, ~~~ k=1,2,\ldots,N-n+2 \label{eq:3_9}
+	\end{equation}	
+	where $a$ is the lower bound and $b$ is the upper bound. \refn{eq:3_9} gives rise to $(N-n+2)$ algebraic linear equations in $(N+1)$ unknown constants. Thus, \refn{eq:3_2} gives rise to additional $n$ algebraic equations. Altogether, we have $(N+1)$  algebraic equation in $(N+1)$ unknown constants. These $(N+1)$ algebraic equations are then solved using Gaussian elimination method to obtain the unknown constants which are then substituted back to the assume solution to obtain the required approximate solution for various values of $N$ (Aminikhan, H., J., 2009).
+	
+	\NI\ubt{Example 3.1}\sps
+	Consider the linear second order Fredholm \IDE 
+	\begin{equation}
+		\frac{d^2y}{dx^2} = y(x) - x + \int_0^1 xty(t)dt \label{eq:3_10}
+	\end{equation}
+	Subject to the conditions
+	\begin{eqnarray}
+		y(0)=1 \sps \label{eq:3_11}
+		y\sprime(0)=1, \label{eq:3_12}
+	\end{eqnarray}
+	The exact solution is given by (Yalcinbas, S., \& Sezer, M., 1999);
+	\begin{equation}
+		y(x) = e^x \label{eq:3_13}
+	\end{equation}
+	We solved \refn{eq:3_10} for case $N = 2$\\
+	Thus, we assumed the approximate solution of the form 
+	\begin{equation}
+		y_2(x) = \sum_{k=0}^{2}a_kx^k \label{eq:3_14}
+	\end{equation}
+	Also, \refn{eq:3_14} is equally expressed as
+	\begin{equation}
+		y_2(x) = \sum_{k=0}^{2}a_kx^k = a_0 +a_1x+a_2x^2 \label{eq:3_15}
+	\end{equation}
+	Differentiating \refn{eq:3_14} with respect to $x$ twice in succession, we have
+	\begin{eqnarray}
+		y_2\sprime(x) &=& a_1 + 2a_2x \label{eq:3_16}\sps
+		y_2\dprime(x) &=& 2a_2 \label{eq:3_17}
+	\end{eqnarray}
+	Replacing $x$ by $t$ in \refn{eq:3_14}
+	\begin{equation}
+		y_2(t) = a_0 + a_1t+a_2t^2 \label{eq:3_18}
+	\end{equation}
+	Substitution of \refn{eq:3_15}, \refn{eq:3_17} and \refn{eq:3_18} into \refn{eq:3_10} leads to 
+	\begin{equation}
+		2a_2 = a_2x^2 + 4/3a_1x+a_0-x+1/4xa_2+1/2xa_0 \label{eq:3_19}
+	\end{equation}
+	From \refn{eq:3_11} and \refn{eq:3_12}, we have
+	\begin{eqnarray}
+		y(0)= a_0 = 1 \label{eq:3_20}\sps 
+		y\sprime(0)= a_1 = 1, \label{eq:3_21}
+	\end{eqnarray}
+	Thus, \refn{eq:3_19} is collocated at point $x=x_k$ to obtain
+	\begin{eqnarray}
+		2a_2 = a_2x_k^2 + 4/3a_1x_k + a_0 - 1/4x_ka_2+1/2x_ka_0 \label{eq:3_22}
+	\end{eqnarray}
+	where,
+	\begin{equation}
+		x_k = a+ \frac{(b-a)k}{N-n+2}, ~~~ k=1,2,\ldots,N-n+1 \label{eq:3_23}
+	\end{equation}
+	Here, $a_0=0, b_1=1, N=2, n=2$.
+	\begin{equation*}
+		x_k = \frac{k}{2}; ~~~ k = 1
+	\end{equation*}
+	Putting $x_1 = \frac{1}{2}$ in \refn{eq:3_22} and then simplify leads to
+	\begin{equation}
+		2a_2 = 0.375000000a_2 + 0.666666666a_1 + 1.2500000000a_0 - 0.500000000 \label{eq:3_24}
+	\end{equation}
+	Solving \refn{eq:3_20}, \refn{eq:3_21} and \refn{eq:3_24} using Gaussian elimination method, we have
+	\begin{equation}
+		\left. 
+			\begin{array}{rcl}
+				a_0 &=&1\sps
+				a_1 &=&1 \sps
+				a_2 &=&0.8717948718
+			\end{array}
+		\right\}
+		\label{eq:3_25}
+	\end{equation}
+	Thus the approximate solution for case $N=2$ is 
+	\begin{equation}
+		y_2(x) = 0.8717948718x^2 + 1.0x+1.0 \label{eq:2_26}
+	\end{equation}
+	\begin{center}
+		\large \bt{CASE} $N=3$
+	\end{center}
+	Thus, we assumes the approximate solution of the form
+	\begin{equation}
+		y_3(x) = \sum_{k=0}^{3}a_kx^k = a_0 +a_1x+a_2x^2+a_3x^3 \label{eq:3_27}
+	\end{equation}
+	Replacing $x$ by $t$ in \refn{eq:3_27}
+	\begin{equation}
+		y_3(t) = a_0 +a_1t+a_2t^2+a_3t^3 \label{eq:3_28}
+	\end{equation}
+	Differentiating \refn{eq:3_27} with respect to $x$ twice in succession, we have
+	\begin{eqnarray}
+		y_3\sprime(x) &=& a_1 + 2a_2x + 3a_3x^2 \label{eq:3_29}\sps
+		y_3\dprime(x) &=& 2a_2 + 6a_3x \label{eq:3_30}
+	\end{eqnarray}
+	Substitution of \refn{eq:3_27}, \refn{eq:3_28} and \refn{eq:3_30} into \refn{eq:3_10} leads to
+	\begin{equation}
+		\frac{29xa_3}{5} + 2a_2 - a_3x^3 - a_2x^2 - 4/3a_1x - a_0 + x-1/4xa_2 -  1/2xa_0 = 0 \label{eq:3_31}
+	\end{equation}
+	From \refn{eq:3_11} and \refn{eq:3_12}, we have
+	\begin{eqnarray}
+		y_3(0) &=& a_0 = 1 \label{eq:3_32}\sps
+		y_3\sprime(0) &=& a_1 = 1 \label{eq:3_33}
+	\end{eqnarray}
+	Thus, \refn{eq:3_31} is collocated at point $x=x_k$ to obtain
+	\begin{equation}
+		\frac{29x_ka_3}{5} + 2a_2 - a_3x_k^3 - a_2x_k^2 - 4/3a_1x_k - a_0 + x_k - 1/4x_ka_2 -  1/2x_ka_0 = 0 \label{eq:3_34}
+	\end{equation}
+	where,
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N-n+2}, ~~~ k=1,2 \label{eq:3_35}
+	\end{equation}
+	
+	\begin{equation*}
+		x_k = \frac{k}{3}; ~~~ k=1,2
+	\end{equation*}
+	Here, $a_0=0, b=1, N=3, n=2$\sps
+	For $k=1, x_1 = \frac{1}{3}$\sps
+	Putting $x_1 = \frac{1}{3}$ in \refn{eq:3_34} and then simplifying leads to 
+	\begin{equation}
+		\frac{256a_3}{135} + \frac{65a_2}{36} - 4/9a_1 - 7/6a_0 + 1/3 \label{eq:3_36}
+	\end{equation}
+	For $k=2, x_2 = \frac{2}{3}$\sps
+	Putting $x_2 = \frac{2}{3}$ in \refn{eq:3_34} and then simplify leads to 
+	\begin{equation}
+		\frac{482a_3}{135} + \frac{25a_1}{18} - \frac{8a_0}{9} = -\frac{2}{3} \label{eq:3_37}
+	\end{equation}
+	Solving \refn{eq:3_32}, \refn{eq:3_33}, \refn{eq:3_36} and \refn{eq:3_37} are then solve using Gaussian elimination method. We obtain,
+	\begin{equation}
+		\left. 
+			\begin{array}{rcl}
+				a_0 &=& 1\sps
+				a_1 &=& 1 \sps
+				a_2 &=& 0.4228818133\sps
+				a_3 &=& 0.2711818672
+			\end{array}
+		\right\}
+		\label{eq:3_38}
+	\end{equation}
+	Thus, the approximate solution for case $N=3$ becomes (Zhao, 2006)
+	\begin{equation}
+		y_3(x) = 0.2711818672x^3 + 0.4228818133x^2 + 1.0x + 1.0 \label{eq:3_39}
+	\end{equation}
+	\sps
+	\NI\ubt{Example 3.2}\sps
+	Consider the linear second order Fredholm \IDE
+	\begin{equation}
+		y\dprime(x) - xy(x) + \int_{0}^{1}xty(t)dt = x + e^x - xe^x, ~~~ 0 \leq x \leq 1 \label{eq:3_40}
+	\end{equation}
+	subject to the condition
+	\begin{eqnarray}
+		y(0) &=& 1 \label{eq:3_41}\sps
+		y\sprime(0) &=& 1 \label{eq:3_42}
+	\end{eqnarray}
+	The exact solution is given by:
+	\begin{equation}
+		y(x) = e^x \label{eq:3_43}
+	\end{equation}
+	We solved \refn{eq:3_40} for case $N=2$.\\
+	Thus, we assumed the approximate solution of the form 
+	\begin{equation}
+		y_2(x) = \sum_{k=0}^{2}a_kx^k \label{eq:3_44}
+	\end{equation}
+	Differentiating \refn{eq:3_44} with respect to $x$ twice in succession, we have
+	\begin{eqnarray}
+		y_2\sprime(x) = a_1 + 2a_2x \label{eq:3_45}\sps
+		y_2\dprime(x) = 2a_2 \label{eq:3_46}
+	\end{eqnarray}
+	Also, \refn{eq:3_44} is equally expressed as
+	\begin{eqnarray}
+		y_2(x) = \sum_{k=0}^{2}a_kx^k = a_0 + a_1x+a_2x^2 \label{eq:3_47}
+	\end{eqnarray}
+	Replacing $x$ by $t$ in \refn{eq:3_47}
+	\begin{equation}
+		y_2(t) = a_0 + a_1t+a_2t^2 \label{eq:3_48}
+	\end{equation}
+	Substitution of \refn{eq:3_45}, \refn{eq:3_46} and \refn{eq:3_48} into \refn{eq:3_40} leads to
+	\begin{equation}
+		2a_2 - x(a_0 + a_1x+a_2x^2) + \int_0^1 xt(a_0 + a_1t+a_2t^2)dt = x+e^x - xe^x \label{eq:3_49}
+	\end{equation}
+	Collecting like terms in \refn{eq:3_49} gives
+	\begin{eqnarray}
+		x\left(-1 + \int_0^1tdt\right)a_0 + x\left(-x + \int_0^1t^2dt\right)a_1 + \left(x\left(-x^2 + \int_0^1t^3dt\right)+2\right)a2\notag \sps
+		= x + e^x - xe^x~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \label{eq:3_50}
+	\end{eqnarray}
+	Thus, \refn{eq:3_50} is then simplify further to obtain
+	\begin{eqnarray}
+		x\left(-\frac{1}{2}\right)a_0 + x\left(-x + \frac{1}{3}\right)a_1 + \left(x\left(-x^2 + \frac{1}{4}\right)+2\right)a_2\notag \sps
+		= x + e^x - xe^x~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \label{eq:3_51}
+	\end{eqnarray}
+	From \refn{eq:3_41} and \refn{eq:3_42}, we have
+	\begin{eqnarray}
+		y_2(0) &=& a_0 = 1 \label{eq:3_52} \sps
+		y_2\sprime(0) &=& a_1 = 1\label{eq:3_53}
+	\end{eqnarray}
+	Thus, \refn{eq:3_51} is collocated at point $x=x_k$ to obtain
+	\begin{eqnarray}
+		x_k\left(-\frac{1}{2}\right)a_0 + x_k\left(-x_k + \frac{1}{3}\right)a_1 + \left(x_k\left(-x_k^2 + \frac{1}{4}\right)+2\right)a_2\notag \sps
+		= x_k + e^{x_k} - xe^{x_k}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \label{eq:3_54}
+	\end{eqnarray}
+	where,
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N-n+2}, ~~ k=1,2,\ldots,N-n+1 \label{eq:3_55}
+	\end{equation}
+	Here, $a=0, b=1, N=3, n=2$.
+	\begin{equation*}
+		x_k = \frac{k}{2}
+	\end{equation*}
+	Putting $x_1 = \frac{1}{2}$ in \refn{eq:3_54} and simplifying leads to
+	\begin{equation}
+		-0.25a_0 - 0.083333333a_1 + 2a_2 = 1.324360636 \label{eq:3_56}
+	\end{equation}
+	Solving \refx{3_52}, \refx{3_53} and \refx{3_56} using Gaussian elimination method, we have
+	\begin{equation}
+		\left. 
+			\begin{array}{rcl}
+				a_0 &=& 1 \sps
+				a_1 &=& 1 \sps
+				a_2 &=& 0.8288469845
+			\end{array}
+		\right\}
+		\label{eq:3_57}
+	\end{equation}
+	Thus, the approximate solution for case $N=2$ is:
+	\begin{equation}
+		y_2(t) = 1 + x + 0.8288469845x^2 \label{eq:3_58}
+	\end{equation}
+	\begin{center}
+		\large \bt{CASE} $N=3$
+	\end{center}
+	\begin{equation}
+		y_3(x) = \sum_{k=0}^{3}a_kx^k = a_0 + a_1x + a_2x^2 + a_3x^3 \label{eq:3_59}
+	\end{equation}
+	Differentiating \refx{3_59} with respect to $x$ twice in succession, we have 
+	\begin{eqnarray}
+		y_3\sprime(x) &=&a_1 + 2a_2x + 3a_3x^2 \label{eq:3_60}\sps
+		y_3\dprime(x) &=&2a_2 + 6a_3x \label{eq:3_61}
+	\end{eqnarray}
+	Substitution of \refx{3_59}, \refx{3_61}, into \refx{3_40} leads to
+	\begin{eqnarray}
+		2a_2 + 6a_3x - x(a_0 + a_1x+a_2x^2+a_3x^3) + \int_0^1 xt(a_0+a_1t + a_2t^2 + a_3t^3)dt\notag \sps
+		= x + e^x - xe^x~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \label{eq:3_62}
+	\end{eqnarray}
+	Collecting like terms in \refx{3_62} gives 
+	\begin{eqnarray}
+		x\left(-1 + \int_0^1 tdt\right)a_0 + x \left(-x+\int_0^1 t^2dt\right)a_1 + \left(x \left(-x^2 + \int_0^1t^3dt\right)+2\right)a_2 \notag \sps
+		+ \left(x\left(-x^3 + \int_0^1 t^4dt\right)+6\right)a_3 = x+e^e-xe^e~~~~~~~~~~~~~ \label{eq:3_63}
+	\end{eqnarray}
+	Thus \refx{3_63} is then simplified further to obtain,
+	\begin{eqnarray}
+		x\left(-\frac{1}{2}\right)a_0 + x\left(-x + \frac{1}{3}\right)a_1 + \left(x \left(-x^2 + \frac{1}{4}\right)+2\right)a_2 \notag \sps
+		+ \left(x\left(-x^3 + \frac{1}{5}\right)+6\right)a_3 = x +e^x - xe^x~~~~~~~ \label{eq:3_64}
+	\end{eqnarray}
+	From \refx{3_41} and \refx{3_42}, we have
+	\begin{eqnarray}
+		y_3(0) &=&a_0  =1\label{eq:3_65}\sps
+		y_3\sprime(0) &=&a_1 = 1 \label{eq:3_66}
+	\end{eqnarray}
+	Thus, \refx{3_64} is collocated at point $x=x_k$ to obtain
+	\begin{eqnarray}
+		x_k\left(-\frac{1}{2}\right)a_0 + x_k\left(-x_k + \frac{1}{3}\right)a_1 + \left(x_k \left(-x_k^2 + \frac{1}{4}\right)+2\right)a_2 \notag \sps
+		+ \left(x_k\left(-x_k^3 + \frac{1}{5}\right)+6\right)a_3 = x_k +e^{x_k} - xe^{x_k}~~~~~~~ \label{eq:3_67}
+	\end{eqnarray}
+	where,
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N-n+2}, ~~ k=1,2 \label{eq:3_68}
+	\end{equation}
+	Here, $a_0=0, b=1, N=3, n=2$\sps
+	For $k=1, x_1=\frac{1}{3}$\sps
+	Putting $x_1=\frac{1}{3}$ in \refx{3_67} and then simplifying leads to 
+	\begin{equation}
+		2.054320988a_3 + 2.046296296a_2 - 0.1666666666a_0 = 1.263741617 \label{eq:3_69}
+	\end{equation}
+	For $k=2, x_2 = \frac{2}{3}$\sps
+	Putting $x_2=\frac{2}{3}$ in \refx{3_67} and then simplifying leads to 
+	\begin{eqnarray}
+		3.9358024469a_3 + 1.1870370370a_2 - 0.2222222222a_1 - 0.3333333333a_0 \notag \sps
+		= 1.315911347 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\label{eq:3_70}
+	\end{eqnarray}
+	\refx{3_65}, \refx{3_66}, \refx{3_69} and \refx{3_70} are then solve using Gaussian elimination method, we obtain,
+	\begin{equation}
+		\left. 
+			\begin{array}{rcl}
+				a_0 &=&1\sps
+				a_1 &=&1\sps
+				a_2 &=& 0.4238918452\sps
+				a_3 &=& 0.2740564760
+			\end{array}
+		\right\}
+		\label{eq:3_71}
+	\end{equation}
+	Thus, the approximate solution for case $N = 3$ becomes
+	\begin{equation}
+		y_3(x) = 1 + x + 0.4238918452x^2 + 0.274056476x^3 \label{eq:3_72}
+	\end{equation}
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{PERTURBED COLLOCATION METHOD}
+	We consider the general second order linear \IDE~ defined as 
+	\begin{equation}
+			P_0y(x) + P_1y\sprime(x) + P_2y\dprime(x) + \int_a^b k(x,t)y(t)dt=f(x) \label{eq:4_1}
+	\end{equation}
+	with the boundary conditions
+	\begin{eqnarray}
+		\left.
+		\begin{array}{c}
+			y(a) + y\sprime(a) = A\\
+			y(b) + y\dprime(b) = B
+		\end{array}\right\}
+		\label{eq:4_2}
+	\end{eqnarray}
+	where $P_0, P_1$ and $P_2$ are constants, $k(x,t)$ and $f(x)$ are given smooth functions and $y(x)$ to be determined (Taiwo O.A., \& Gegele O.A., 2014).
+	
+	
+	\section{Demonstration of Perturbed Collocation Method on General Problems Considered}
+	We assumed an approximate solution of the form 
+	\begin{equation}
+		y_N(x) = \sum_{r=0}^{N}a_rx^r \label{eq:4_3}
+	\end{equation}
+	where $a_r (r\geq 0)$ are the unknown constants to be determined.\sps
+	Now, differentiating \refx{4_3} with respect to $x$ twice in succession, we have
+	\begin{equation}
+		\left. 
+			\begin{array}{rcl}
+				y_N\sprime(x) &=& \sum_{r=0}^{N}ra_rx^{(r-1)} \sps
+				y_N\dprime(x) &=& \sum_{r=0}^{N}r(r-1)a_rx^{(r-2)}
+			\end{array}
+		\right\}
+		\label{eq:4_4}
+	\end{equation}
+	Substitution of \refx{4_3} and \refx{4_4} into a slightly perturbed \refx{4_1}, we have 
+	\begin{eqnarray}
+		P_0y_N(x) + P_1y_N\sprime(x) + P_2y_N\dprime(x) + \int_a^b k(x,t)\sum_{r=0}^{N}a_r t^r dt=f(x)\notag \sps
+		+ \tau_1\tau_N(x) + \tau_2\tau_{N-1}(x)~~~~~~ \label{eq:4_5}
+	\end{eqnarray}
+	where $\tau_1$ and $\tau_2$ are two free tau parameters to be determined along with the constant $a_r (r\geq 0)$ and $\tau_N(x)$ are the Chebyshev polynomials of degree $N$ in $[a,b]$ defined by 
+	\begin{equation}
+		T_{N+1}(x) = 2\left(\frac{2x-a-b}{b-a}\right)T_N(xt) - T_{N-1}(x), ~~ N\geq 0 \label{eq:4_6}
+	\end{equation}	
+	Hence, the first terms of the Chebyshev polynomials valid in $[0,1]$ being the center of our work are given below;
+	\begin{eqnarray}
+		T_0(x) &=& 1 \notag\\
+		T_1(x) &=& 2x - 1\notag\\
+		T_2(x) &=& 8x^2 - 8x + 1\notag\\
+		T_3(x) &=& 32x^3 - 48x^2 + 18x -1\notag\\
+		T_4(x) &=& 128x^4 - 256x^3 + 160x^2 - 32x + 1\notag\\
+		T_5(x) &=& 512x^5 - 1280x^4 + 1120x^3 - 400x^2 + 50x-1\notag\\
+		T_6(x) &=& 2048x^6 - 6144x^5 + 6912x^4 - 3584x^3 + 840x^2 - 72x + 1\notag\\
+		T_7(x) &=& 8192x^7 - 28672x^6 + 39936x^5 - 26880x^4 + 9408x^3 - 156x^2 + 98x - 1\notag\\
+		T_8(x) &=& 32768x^8 -131072x^7 + 215040x^6 - 181248x^5 + 84480x^4 - 2150x^3 \notag\\
+		&+&2688x^2 - 126x + 1\notag
+	\end{eqnarray}
+	By simplification of \refx{4_5}, we have
+	\begin{eqnarray}
+		\sum_{k=0}^{N}[P_0a_r + P_1(r+1)a_{r+1} + P_2(r+1)(r+2)a_{r+2}]x^r \notag \sps
+		\int_{a}^{b}k(x,t)\sum_{r=0}^{N}a_rt^r dt = f(x) + \tau_1\tau_N(x) \tau_2\tau_{N-1}(x) \label{eq:4_7}
+	\end{eqnarray}
+	The integral part of \refx{4_7} is evaluated and the left over is then collected at the point $x=X_k)$, we obtain
+	\begin{eqnarray}
+		\sum_{k=0}^{N}[P_0a_r + P_1(r+1)a_{r+1} + P_2(r+1)(r+2)a_{r+2}]x_k^r \notag \sps
+		\int_{a}^{b}k(x_k,t)\sum_{r=0}^{N}a_rt^r dt = f(x_k) + \tau_1\tau_N(x_k) \tau_2\tau_{N-1}(x_k) \label{eq:4_8}
+	\end{eqnarray}
+	where,
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N+2}, ~~~~ k=1,2,\ldots,N+1 \label{eq:4_9}
+	\end{equation}
+	where $a$ is the lower bound and $b$ is the upper bound. \refx{4_9} gives rise to $(N+1)$ algebraic linear equation in $(N+n+1)$ unknown constants. Thus, \refx{4_2} give rise to $n$ algebraic equations. Altogether, we have $(N+n+1)$ algebraic equations are then solved using Gaussian elimination method to obtain the unknown constants which are then substituted back to the assume solution to obtain the required approximate solution for various values of $N$ (Adomian, 1994).\\
+	
+	\NI\ubt{Example 4.1}\sps
+	Consider the linear second order Fredholm \IDE~
+	\begin{equation}
+		\frac{d^2y}{dx^2}y(x) = y(x) - x + \int_0^1xty(t)dt \label{eq:4_10}
+	\end{equation}
+	Subject to the conditions
+	\begin{eqnarray}
+		y(0)&=&1 \label{eq:4_11} \sps
+		y\sprime(0)&=&1 \label{eq:4_12}
+	\end{eqnarray}
+	The exact solution is given by;
+	\begin{equation}
+		y(x) = e^x \label{eq:4_13}
+	\end{equation}
+	
+	\NI We solve \refx{4_10} for case $N=2$\sps
+	Thus, we assume the approximate solution of the form
+	\begin{equation}
+		y_2(x) = \sum_{k=0}^{2}a_kx^k = a_0 + a_1x + a_2x^2 \label{eq:4_14}
+	\end{equation}
+	Differentiating \refx{4_14} with respect to $x$ twice in succession, we have
+	\begin{eqnarray}
+		y\sprime_2(x) &=& a_1 + 2a_2x \label{eq:4_15} \sps
+		y\dprime_2(x) &=& 2a_2 \label{eq:4_16}
+	\end{eqnarray}
+	Replacing $x$ by $t$ in \refx{4_14}, we have
+	\begin{equation}
+		y_2(t) = a_0 + a_1t + a_2t^2 \label{eq:4_17}
+	\end{equation}
+	Substitution of equations \refx{4_14}, \refx{4_16}, \refx{4_17} into a slightly perturbed of \refx{4_10} and simplifying gives 
+	\begin{eqnarray}
+		2a_2 - a_2x^2 - 4/3a_1x - a_0 + x - 1/4xa_2 - 1/2xa_0 - (8\notag \sps
+		x^2 - 8x + 1)\tau_1 - (2x-1)\tau_2 = 0 \label{eq:4_18}
+	\end{eqnarray}
+	Thus, \refx{4_18} is collocated at point $x=x_k$ to obtain
+	\begin{eqnarray}
+		2a_2 - a_2x_k^2 - 4/3a_1x_k - a_0 + x_k - 1/4x_ka_2 - 1/2x_ka_0 - (8\notag \sps
+		x_k^2 - 8x_k + 1)\tau_1 - (2x_k-1)\tau_2 = 0 \label{eq:4_19}
+	\end{eqnarray}
+	where,
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N+1}, ~~ k=1,2,3 \label{eq:4_20}
+	\end{equation}
+	Here, $a=0, b=1, N=2$
+	\begin{equation*}
+		x_k = \frac{k}{2}
+	\end{equation*}
+	Putting $x_1 = \frac{1}{3}$ in \refx{4_19} and then simplify leads to
+	\begin{eqnarray}
+		1.805555556a_2 - 0.4444444444a_1 - 1.16666667a_0 + 0.3333333333 \notag \sps
+		 + 0.7777777777\tau_1 + 0.333333333\tau_2 = 0.0 ~~~~~~~~~~~~~~~~~~~~~\label{eq:4_21}
+	\end{eqnarray} 
+	For $k=2, x_2 = \frac{2}{3}$\sps
+	Putting $x_2=\frac{2}{3}$ in \refx{4_19} and then simplify leads to
+	\begin{eqnarray}
+		1.388888889a_2 - 0.88888888889a_1 - 1.3333333a_0 + 0.6666666667\notag \sps
+		0.7777777778\tau_1 - 0.33333333333\tau_2 = 0.0~~~~~~~~~~~~ \label{eq:4_22}
+	\end{eqnarray}
+	For $k=3, x_3 = 1$\sps
+	Putting $x_3 =1$ in equation in \refx{4_19} and then simplify leads to
+	\begin{eqnarray}
+		0.7500000000a_2 - 1.3333333333a_1 - 1.5000000000a_0 + 1.0-1.0\tau_1 \notag\sps
+		- 1.0\tau_2 = 0.0~~~~~~~~~~~~~~~~~~~~~~~~~~ \label{eq:4_23}
+	\end{eqnarray}
+	Using the boundary conditions in \refx{4_11} and \refx{4_12}
+	\begin{eqnarray}
+		y_2(0) &=& a_0 = 1\label{eq:4_24}\sps
+		y\sprime_2(0) &=& a_1 =1 \label{eq:4_25}
+	\end{eqnarray}
+	Solving \refx{4_21}, \refx{4_22}, \refx{4_23}, \refx{4_24} and \refx{4_25} using Gaussian elimination method, we have
+	\begin{equation*}
+		a_0=1, a_1=1, a_2=0.9444444444, \tau_1=-0.1180555556, \tau_2=-1.006944444
+	\end{equation*}
+	Substituting the values of $a_0, a_1, a_2, \tau_1, \tau_2$ in \refx{4_14}, we have
+	\begin{equation*}
+		y_2(x) = 0.9444444444x^2 + 1.0x + 1.0
+	\end{equation*}
+	\newpage
+	\begin{center}
+		\large \bt{CASE} $N=3$
+	\end{center}
+	Thus, we assume the approximate solution of the form
+	\begin{equation}
+		y_3(x) = \sum_{k=0}^{3}a_kx^k = a_0 + a_1x + a_2x^2 + a_3x^3 \label{eq:4_26}
+	\end{equation}
+	Differentiating \refx{4_26} with respect to $x$ twice in succession, we have
+	\begin{eqnarray}
+		y\sprime_3(x) &=& 3x^2a_3 + 2xa_2 + a_1 \label{eq:4_27}\sps
+		y\dprime_3(x) &=& 6xa_3 + 2a_2 \label{eq:4_28}
+	\end{eqnarray}	
+	Replacing $x$ by $t$ in \refx{4_26}, we have
+	\begin{equation}
+		y_2(t) = a_0 + a_1t +a_2t^2 + a_3t^3 \label{eq:4_29}
+	\end{equation}
+	Substitution of \refx{4_26}, \refx{4_27} and \refx{4_28} into a slightly perturbed of \refx{4_10} and simplifying gives
+	\begin{equation}
+		\begin{array}{l}
+			\dsp \frac{31xa_3}{5} + 2a_2 -x(x^3a_3 + x^2a_2 + xa_1 + a_0)\\
+			+\frac{1}{4}xa_2 + \frac{1}{3}xa_1 + \frac{1}{2}xa_0 - x - e^x + xe^x-(32x^3\\
+			-48x^2 + 18x - 1)\tau_1 - (8x^2 - 8x + 1)\tau_2 = 0
+		\end{array}
+		\label{eq:4_30}
+	\end{equation}
+	Thus, \refx{4_30} is collocated at point $x=x_k$ to obtain
+	\begin{equation}
+		\begin{array}{l}
+			\dsp \frac{31x_ka_3}{5} + 2a_2 -x_k(x_k^3a_3 + x_k^2a_2 + x_ka_1 + a_0)\\
+			+\frac{1}{4}x_ka_2 + \frac{1}{3}x_ka_1 + \frac{1}{2}x_ka_0 - x_k - e^{x_k} + x_ke^{x_k}-(32x_k^3\\
+			-48x_k^2 + 18x_k - 1)\tau_1 - (8x_k^2 - 8x_k + 1)\tau_2 = 0
+		\end{array}
+		\label{eq:4_31}
+	\end{equation}
+	where,
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N+1}, ~~~ k=1,2,3,4 \label{eq:4_32}
+	\end{equation}
+	Here, $a=0, b=1, N=3$\sps
+	\begin{equation*}
+		x_k = \frac{k}{4}
+	\end{equation*}
+	Putting $x_1=\frac{1}{4}$ in equation \refx{4_31} and then simplify leads to
+	\begin{eqnarray}
+		1.534375000a_3 + 2.0a_2 - 0.1666666667a_1 - 0.8750000000a_0\notag\\
+		+ 0.25000000000 - 1.0\tau_1 + 0.50000000000\tau_2 = 0.0~~~~~~~~ \label{eq:4_33}
+	\end{eqnarray}
+	For $k=2, x_2 = \frac{1}{2}$\sps
+	Putting $x_2 = \frac{1}{2}$ in equation \refx{4_31} and then simplify leads to 
+	\begin{eqnarray}
+		2.9750000000a_3 + 1.8750000000a_2 - 0.3333333333a_1 - 0.7500000000\notag\\
+		+ 0.50000000000 + \tau_2 = 0.0~~~~~~~~~~~~~~~~~~~~~~~~~ \label{eq:4_34}
+	\end{eqnarray}
+	For $k=3, x_3 = \frac{3}{4}$\sps
+	Putting $x_3 = \frac{3}{4}$ in equation \refx{4_31} and then simplify leads to 
+	\begin{eqnarray}
+		2.9750000000a_3 + 1.8750000000a_2 - 0.3333333333a_1\notag\\ - 0.7500000000a_0 + 0.50000000000 + \tau_2 = 0.0~~~~~~\label{eq:4_35}
+	\end{eqnarray}
+	For $k=4, x_4 = 1$\sps
+	Putting $x_4 = 1$ in equation \refx{4_31} and then simplify leads to 
+	\begin{eqnarray}
+		5.20000000000a_3 + 1.25000000000a_2 - 0.6666666667a_1\notag\\
+		- 0.50000000000a_0 + 1.0 - 1.0\tau_1 - 1.0\tau_2 = 0.0~~~~~~~~ \label{eq:4_36}
+	\end{eqnarray}
+	Using the conditions in \refx{4_11} and \refx{4_12}
+	\begin{eqnarray}
+		y_3(0) &=& a_0 = 1\label{eq:4_37}\sps
+		y\sprime_3(0) &=& a_1 =1 \label{eq:4_38}
+	\end{eqnarray}
+	Solving \refx{4_33}, \refx{4_34}, \refx{4_35}, \refx{4_36}, \refx{4_37} and \refx{4_38} using Gaussian elimination method, we have
+	\begin{eqnarray}
+		a_0=1,~ a_1=1, ~a_2=0.4772308260, ~a_3=-0.09033923304, \notag\\
+		\tau_1=0.002823101032, ~\tau_2=-0.4271524705e\text{-1}\notag
+	\end{eqnarray}
+	Substituting the values of $a_0, a_1, a_3, \tau_1, \tau_2$ in \refx{4_26}, we have
+	\begin{equation*}
+		y_3(x) = -0.09033923304x^3 + 0.4772308260x^2 + 1.0x + 1.0
+	\end{equation*}
+	$\left.\right.$\spn{0.9}
+	\NI\ubt{Example 4.2}\sps
+	Consider the linear second order Fredholm \IDE
+	\begin{equation}
+		y\dprime(x) - xy(x) + \int_0^1xty(t)dt = x + e^x - xe^x, ~~~~~ 0\leq x \leq 1 \label{eq:4_39}
+	\end{equation}
+	Subject to the conditions
+	\begin{eqnarray}
+		y(0) &=& 1 \label{eq:4_40}\\
+		y\sprime(0) &=& 1 \label{eq:4_41}
+	\end{eqnarray}
+	The exact solution is given by;
+	\begin{equation}
+		y(x) = e^x \label{eq:4_42}
+	\end{equation}
+	\begin{center}
+		\large \bt{CASE} $N=2$
+	\end{center}
+	Thus, we assumed the approximate solution of the form
+	\begin{equation}
+		y_2(x) = \sum_{k=0}^{2}a_kx^k = a_0 + a_1x + a_2x^2 \label{eq:4_43}
+	\end{equation}
+	Differentiating \refx{4_43} with respect to $x$ twice in succession, we have 
+	\begin{eqnarray}
+		y_2\sprime(x) &=& a_1 + 2a_2x \label{eq:4_44}\\
+		y_2\dprime(x) &=& 2a_2 \label{eq:4_45}
+	\end{eqnarray}
+	Replacing $x$ by $t$ in \refx{4_43}, we have
+	\begin{equation}
+		y_2(x) = a_0 + a_1t + a_2t^2 \label{eq:4_46}
+	\end{equation}
+	Substitution of equations \refx{4_44}, \refx{4_45}, \refx{4_46} into a slightly perturbed of \refx{4_39} and evaluating the integral to obtain
+	\begin{eqnarray}
+		\begin{array}{c}
+			2a_2 - x(x^2a_2 + xa_1 +a_0) + \frac{1}{4}xa_2 + \frac{1}{3}xa_1 + \frac{1}{2}xa_1 - x - e^x + xe^x\\
+			- (8-x^2 - 8x + 1)\tau_1 - (2x-1)\tau_2 = 0~~~~~~~~~~~~~~~
+		\end{array}
+		\label{eq:4_47}
+	\end{eqnarray}
+	Thus, \refx{4_47} is collocated at point $x=x_k$ to obtain
+	\begin{eqnarray}
+		\begin{array}{c}
+			2a_2 - x_k(x_k^2a_2 + x_ka_1 +a_0) + \frac{1}{4}x_ka_2 + \frac{1}{3}x_ka_1 + \frac{1}{2}x_ka_1 - x_k - e^{x_k} \\
+			+ x_ke^{x_k}- (8-x_k^2 - 8x_k + 1)\tau_1 - (2x_k-1)\tau_2 = 0~~~~~~~~~~
+		\end{array}
+		\label{eq:4_48}
+	\end{eqnarray}
+	where,
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N+1}, ~~~~ k=1,2,3 \label{eq:4_49}
+	\end{equation}
+	Here, $a=0, b=1, N=2.$\sps
+	\begin{equation*}
+		x_k = \frac{k}{2}
+	\end{equation*}
+	Putting $x_1=\frac{1}{3}$ in \refx{4_48} and simplifying leads to
+	\begin{equation}
+		\begin{array}{c}
+			2.046296296a_2 - 0.1666666667a_0 - 1.263741617 \\
+			+ 0.7777777778\tau_1 - 0.3333333333\tau_2 = 0.0
+		\end{array}
+		\label{eq:4_50}
+	\end{equation}
+	\newpage
+	For $k=2, x_2 = \frac{2}{3}$\sps
+	Putting $x_2=frac{2}{3}$ in \refx{4_48} and simplifying leads to 
+	\begin{equation}
+		\begin{array}{c}
+			1.870370370a_2 - 0.3333333333a_0 - 0.2222222222a_1 - 1.315911347\\
+			 + 0.7777777778\tau_1 - 0.333333333\tau_2 = 0.0
+		\end{array}
+		\label{eq:4_51}
+	\end{equation}
+	For $k=3, x_3 = 1$\sps
+	Putting $x_3=1$ in \refx{4_48} and simplifying leads to 
+	\begin{equation}
+		\begin{array}{c}
+			1.2500000000a_2 - 0.500000000a_0 - 0.666666667a_1 - 1.0\\
+			+ 1.0\tau_1 - 1.0\tau_2 = 0.0
+		\end{array}
+		\label{eq:4_52}
+	\end{equation}
+	Using the conditions in \refx{4_40} and \refx{4_41}
+	\begin{eqnarray}
+		y(0) &=& a_0 = 1 \label{eq:4_53}\\
+		y\sprime(0) &=& = a_1 =  1 \label{eq:4_54}
+	\end{eqnarray}
+	Solving \refx{4_50}, \refx{4_51}, \refx{4_52}, \refx{4_53} and \refx{4_54} using Gaussian elimination method, we have
+	\begin{equation*}
+		a_0 = 1, a_1=1, a_2 = 0.8997870296, \tau_1 = -0.1429011515, \tau_2 = -0.899031728
+	\end{equation*}
+	Substituting the values of $a_0, a_1, a_2, \tau_1, \tau_2$ in \refx{4_43}, we have
+	\begin{equation*}
+		y_2(x) = 0.8997870296x^2 + 1.0x + 1.0
+	\end{equation*}
+	\begin{center}
+		\large \bt{CASE} $N=3$
+	\end{center}
+	Thus, we assume the approximate solution of the form
+	\begin{equation}
+		y_3(x) = \sum_{k=0}^{3}a_kx^k \label{eq:4_55}
+	\end{equation}
+	Differentiating \refx{4_55} with respect to $x$ twice in succession, we have
+	\begin{eqnarray}
+		y_3\sprime(x) &=& 3x^2a_3 + 2xa_2 + a_1 \label{eq:4_56}\\
+		y_3\dprime(x) &=& 6xa_3 + 2a_2\label{eq:4_57}
+	\end{eqnarray}
+	Replacing $x$ by $t$ in \refx{4_55}, we have
+	\begin{equation}
+		y_3(t) = a_0 + a_1t + a_2t^2 + a_3t^3 \label{eq:4_58}
+	\end{equation}
+	Substitution of \refx{4_56}, \refx{4_57} and \refx{4_58} into a slightly perturbed of \refx{4_39} and evaluating the integral to get
+	\begin{equation}
+		\begin{array}{c}
+			\dsp \frac{31xa_3}{5}+ 2a_2 - x(x^3a_3 + x^2a_2 + xa_1 + a_0)+\frac{1}{4}xa_2\sps
+			 \dsp + \frac{1}{3}xa_1 + \frac{1}{2}xa_0 - x - e^x + xe^x - (32x^3 - 48x^2\sps
+			 + 18x - 1)\tau_1 - (8x^2 - 8x+1)\tau_2 = 0
+		\end{array}
+		\label{eq:4_59}
+	\end{equation}
+	Thus, \refx{4_59} is collocated at point $x=x_k$ to obtain
+	\begin{equation}
+		\begin{array}{c}
+			\dsp \frac{31x_ka_3}{5}+ 2a_2 - x_k(x_k^3a_3 + x_k^2a_2 + x_ka_1 + a_0)+\frac{1}{4}x_ka_2\sps
+			\dsp + \frac{1}{3}x_ka_1 + \frac{1}{2}x_ka_0 - x_k - e^{x_k} + x_ke^{x_k} - (32x_k^3 - 48x_k^2\sps
+			+ 18x_k - 1)\tau_1 - (8x_k^2 - 8x_k+1)\tau_2 = 0
+		\end{array}
+		\label{eq:4_60}
+	\end{equation}
+	where,
+	\begin{equation}
+		x_k = a + \frac{(b-a)k}{N+1}, ~~ k=1,2,3,4 \label{eq:4_61}
+	\end{equation}
+	Here, $a=0, b=1, N=3$
+	\begin{equation*}
+		x_k = \frac{k}{4}
+	\end{equation*}
+	Putting $x_1 = \frac{1}{4}$ in \refx{4_59} and simplifying leads to 
+	\begin{equation}
+		\begin{array}{c}
+			1.546093750a_3 + 2.046875000a_2 - 0.125000000a_0\\
+			+ 0.02083000000a_1 - 1.213019063-1.0\tau_1 0.5000000000\tau_2 = 0.0
+		\end{array}
+		\label{eq:4_62}
+	\end{equation}
+	For $k=2, x_2 = \frac{1}{2}$\sps
+	Putting $x_2 = \frac{1}{2}$ in \refx{4_59} and simplifying lead to
+	\begin{equation}
+		\begin{array}{c}
+			3.037500000a_3 + 2.0a_2 - 0.2500000000a_0\\
+			-0.0833333333a_1 - 1.324360636 + \tau_2 = 0.0
+		\end{array}
+		\label{eq:4_63}
+	\end{equation}
+	For $k=3, x_3 = \frac{3}{4}$\sps
+	Putting $x_3 = \frac{3}{4}$ in \refx{4_59} and simplifying lead to
+	\begin{equation}
+		\begin{array}{c}
+			4.333593750a_3 + 1.765625000a_2 - 0.3750000000a_0~~~~~~~~~~~~~~~~~~~~\\
+			-0.3125000000a_1 - 1.279250004 + \tau_1 + 0.5000000000\tau_2 = 0.0
+		\end{array}
+		\label{eq:4_64}
+	\end{equation}
+	For $k=4, x_4 = 1$\sps
+	Putting $x_4 = 1$ in \refx{4_59} and simplifying lead to
+	\begin{equation}
+		\begin{array}{c}
+			4.333593750a_3 + 5.200000000a_3 + 1.2500000000a_2~~~~~~~~~~~~~~~~~~~~\\
+			 - 0.5000000000a_0
+			-0.6666666667a_1 - 1.0-1.0\tau_1 - 1.0\tau_2 = 0.0
+		\end{array}
+		\label{eq:4_65}
+	\end{equation}
+	Using the condition in \refx{4_40} and \refx{4_41}
+	\begin{eqnarray}
+		y(0) &=& a_0 =  1 \label{eq:4_66}\\
+		y\sprime(0) &=& a_1 =  1 \label{eq:4_67}
+	\end{eqnarray}
+	Solving \refx{4_62}, \refx{4_63},\refx{4_64}, \refx{4_65}, \refx{4_66} and \refx{4_67} using Gaussian elimination method, we have
+	\begin{equation*}
+		\begin{array}{c}
+			a_0=1, a_1=1, a_2=0.4490083829, a_3=0.2858411251\\
+			\tau_1 = -0.0104671268, \tau_2 = -0.1085652125
+		\end{array}
+	\end{equation*}
+	Substituting the values of $a_0, a_1, a_2, a_3, \tau_1, \tau_2$ in \refx{4_55}, we have
+	\begin{equation*}
+		y_3(x) = 0.2858411251x^3 + 0.4490083829x^2 + 1.0x + 1.0
+	\end{equation*}
+	
+	\section{Table of Results}
+	
+	%%%table example 3.1 case N=2
+	\begin{table}[!hbt]
+		\caption{Table of Error of Example 3.1 for Case $N=2$}
+		\begin{center}
+			\begin{tabular}{|c||c||c||c||}
+				\hline
+				$x$ & Exact & Approximate & Absolute Error\\ \hline
+				0.0 & 1.0000000000 & 1.0000000000 & 0.0000e+00\\ \hline
+				0.1 & 1.1051709180 & 1.1807179490 & 3.5470e-03\\ \hline
+				0.2 & 1.2214027580 & 1.2348717950 & 1.3469e-02\\ \hline
+				0.3 & 1.3498588080 & 1.3784615380 & 2.8603-02\\ \hline
+				0.4 & 1.4918246980 & 1.5394871800 & 4.7662e-02\\ \hline
+				0.5 & 1.6487212710 & 1.7179487180 & 6.9227e-02\\ \hline
+				0.6 & 1.8221188000 & 1.9138461540 & 9.1727e-02\\ \hline
+				0.7 & 2.0137527070 & 2.1271794870 & 1.1343e-02\\ \hline
+				0.8 & 2.2255409280 & 2.3579487180 & 1.3241e-01\\ \hline
+				0.9 & 2.4596031110 & 2.6061538460 & 1.4655e-01\\ \hline
+				1.0 & 2.7182818280 & 2.8717948720 & 1.5351e-01\\ \hline
+			\end{tabular}
+		\end{center}
+		\label{tb:4_1}
+	\end{table}
+
+	%%%table example 3.1 case N=3
+	\begin{table}[!hbt]
+		\caption{Table of Error of Example 3.1 for Case $N=3$}
+		\begin{center}
+			\begin{tabular}{|c||c||c||c||}
+				\hline
+				$x$ & Exact & Approximate & Absolute Error\\ \hline
+				0.0 & 1.0000000000 & 1.0000000000 & 0.0000e+00\\ \hline
+				0.1 & 1.1051709180 & 1.1045000000 & 6.7092e-04\\ \hline
+				0.2 & 1.2214027580 & 1.2190847280 & 2.3180e-03\\ \hline
+				0.3 & 1.3498588080 & 1.3450167300 & 4.4775e-03\\ \hline
+				0.4 & 1.4918246980 & 1.4850167300 & 6.8080e-03\\ \hline
+				0.5 & 1.6487212710 & 1.6396181870 & 9.1031e-03\\ \hline
+				0.6 & 1.8221188000 & 1.8108127360 & 1.1306e-02\\ \hline
+				0.7 & 2.0137527070 & 2.0002274690 & 1.3525e-02\\ \hline
+				0.8 & 2.2255409280 & 2.2094894760 & 1.6051e-02\\ \hline
+				0.9 & 2.4596031110 & 2.4402258500 & 1.9377e-02\\ \hline
+				1.0 & 2.7182818280 & 2.6940636800 & 2.4218e-02\\ \hline
+			\end{tabular}
+		\end{center}
+		\label{tb:4_2}
+	\end{table}	
+
+	%%%table example 3.2 case N=2
+	\begin{table}[!hbt]
+		\caption{Table of Error of Example 3.2 for Case $N=2$}
+		\begin{center}
+			\begin{tabular}{|c||c||c||c||}
+				\hline
+				$x$ & Exact & Approximate & Absolute Error\\ \hline
+				0.0 & 1.0000000000 & 1.0000000000 & 0.0000e+00\\ \hline
+				0.1 & 0.9950041653 & 0.9960463828 & 1.0422e-03\\ \hline
+				0.2 & 0.9800665778 & 0.9841855312 & 4.1190e-03\\ \hline
+				0.3 & 0.9553364891 & 0.9644174453 & 9.0810e-03\\ \hline
+				0.4 & 0.9210609940 & 0.9367421250 & 1.5681e-02\\ \hline
+				0.5 & 0.8775825619 & 0.9011595702 & 2.3577e-02\\ \hline
+				0.6 & 0.8253356149 & 0.8576697812 & 3.2334e-02\\ \hline
+				0.7 & 0.7648421873 & 0.8062727577 & 4.1431e-02\\ \hline
+				0.8 & 0.6967067093 & 0.7469684998 & 5.0262e-02\\ \hline
+				0.9 & 0.6216099683 & 0.6797570076 & 5.8147e-02\\ \hline
+				1.0 & 0.5403023059 & 0.6046382810 & 6.43363e-02\\ \hline
+			\end{tabular}
+		\end{center}
+		\label{tb:4_3}
+	\end{table}
+	%%%table example 4.1 case N=2
+	\begin{table}[!hbt]
+		\caption{Perturbed Collocation Method Absolute Error of Example 4.1 for Case $N=2$}
+		\begin{center}
+			\begin{tabular}{|c||c||c||c||}
+				\hline
+				$x$ & Exact & Approximate & Absolute Error\\ \hline
+				0.0 & 1.0000000000 & 1.0000000000 & 0.0000e+00\\ \hline
+				0.1 & 1.1051709180 & 1.1094444440 & 4.2735e-03\\ \hline
+				0.2 & 1.2214027580 & 1.2377777780 & 1.6375e-02\\ \hline
+				0.3 & 1.3498588080 & 1.3850000000 & 3.5141e-02\\ \hline
+				0.4 & 1.4918246980 & 1.5511111110 & 5.9286e-02\\ \hline
+				0.5 & 1.6487212710 & 1.7361111110 & 8.7390e-02\\ \hline
+				0.6 & 1.8221188000 & 1.9400000000 & 1.1788e-01\\ \hline
+				0.7 & 2.0137527070 & 2.1627777780 & 1.4903e-01\\ \hline
+				0.8 & 2.2255409280 & 2.4044444440 & 1.7890e-01\\ \hline
+				0.9 & 2.4596031110 & 2.6650000000 & 2.0540e-01\\ \hline
+				1.0 & 2.7182818280 & 2.9444444440 & 2.2616e-01\\ \hline
+			\end{tabular}
+		\end{center}
+		\label{tb:4_4}
+	\end{table}	
+	
+	%%%table example 4.1 case N=3
+	\begin{table}[!hbt]
+		\caption{Perturbed Collocation Method Absolute Error of Example 4.1 for Case $N=3$}
+		\begin{center}
+			\begin{tabular}{|c||c||c||c||}
+				\hline
+				$x$ & Exact & Approximate & Absolute Error\\ \hline
+				0.0 & 1.0000000000 & 1.0000000000 & 0.0000e+00\\ \hline
+				0.1 & 1.1051709180 & 1.1046819690 & 4.8895e-03\\ \hline
+				0.2 & 1.2214027580 & 1.2183665190 & 3.0362e-03\\ \hline
+				0.3 & 1.3498588080 & 1.3405116150 & 9.3472e-03\\ \hline
+				0.4 & 1.4918246980 & 1.4705752210 & 2.1249e-02\\ \hline
+				0.5 & 1.6487212710 & 1.6080153020 & 4.0706e-02\\ \hline
+				0.6 & 1.8221188000 & 1.7522898230 & 6.9829e-02\\ \hline
+				0.7 & 2.0137527070 & 1.9028567480 & 1.1090e-01\\ \hline
+				0.8 & 2.2255409280 & 2.0591740410 & 1.6637e-01\\ \hline
+				0.9 & 2.4596031110 & 2.2206996680 & 2.3890e-01\\ \hline
+				1.0 & 2.7182818280 & 2.3868915930 & 3.3139e-01\\ \hline
+			\end{tabular}
+		\end{center}
+		\label{tb:4_5}
+	\end{table}	
+	
+	%%%table example 4.2 case N=2
+	\begin{table}[!hbt]
+		\caption{Table of Error of Example 4.2 for Case $N=2$}
+		\begin{center}
+			\begin{tabular}{|c||c||c||c||}
+				\hline
+				$x$ & Exact & Approximate & Absolute Error\\ \hline
+				0.0 & 1.0000000000 & 1.0000000000 & 0.0000e+00\\ \hline
+				0.1 & 1.1051709180 & 1.1089978700 & 3.8270e-03\\ \hline
+				0.2 & 1.2214027580 & 1.2359914810 & 1.4589e-02\\ \hline
+				0.3 & 1.3498588080 & 1.3809808330 & 3.1122e-02\\ \hline
+				0.4 & 1.4918246980 & 1.5439659250 & 5.2141e-02\\ \hline
+				0.5 & 1.6487212710 & 1.7249467570 & 7.6225e-02\\ \hline
+				0.6 & 1.8221188000 & 1.9239233310 & 1.0180e-01\\ \hline
+				0.7 & 2.0137527070 & 2.1408956440 & 1.2714e-01\\ \hline
+				0.8 & 2.2255409280 & 2.3758636990 & 1.5032e-01\\ \hline
+				0.9 & 2.4596031110 & 2.6288274940 & 1.6922e-01\\ \hline
+				1.0 & 2.7182818280 & 2.8997870300 & 1.8151e-01\\ \hline
+			\end{tabular}
+		\end{center}
+		\label{tb:4_6}
+	\end{table}	
+	
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{DISCUSSION OF RESULTS AND CONCLUSION}
+	
+	\section{Discussion of Results}
+	Here, from the tables of results presented, as $N$ increases, the results of the proposed methods are compared favourably with the exact.
+	
+	\section{Conclusion}
+	The tables presented in Chapter 4, show that the numerical solutions in terms of absolute errors obtained in the examples for various values of $N$ are getting better when compared with the exact solution. We observed that the results obtained from the second order examples are the same in the two methods.
+	
+	
+	\newpage
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	
+	\begin{description}
+		\item Adomian, G. (1994). \textit{Solving Frontier Problems of Physics: The Decomposition Method}.
+		
+		\item Aminikhan, H., J. (2009). Exact Solution for Higher Order Integro Differential Equations by New Homotopy Perturbation Method. \textit{International Journal of Non-Linear Science}, \textit{7}(4), 496-500.	
+
+		\item Taiwo, O.A., \& Gegele, O.A. (2014). Numerical Solution of Second Order Linear and Non-Linear Integro Differential Equations by Cubic Spline Collocation Method. \textit{Advancement in Scientific and Engineering Re-} \textit{search}, \textit{2}(2), 18-22.
+		
+		\item Wazwaz, A. M. (1999). Approximate Solution to Boundary Value Problems of Higher Order Integro Differential Equations by the Modified Decomposition Method. \textit{Applied Mathematics and Computation, 40}, 679-691.
+		
+		\item Yalcinbas, S., \& Sezer, M. (1999). The Approximate Solution of Higher Order Linear Volterra-Fredholm Integro Differential Equations in terms of Taylor Polynomials. \textit{Applied mathematics and computation, 112}, 291-308.
+		
+		\item Zhao, R. M. (2006). Compact Finite Difference Method for Integro Differential Equations. \textit{Applied Mathematics and Computation, 177}, 271-288.
+	\end{description}
+	
+\end{document}

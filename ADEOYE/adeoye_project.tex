@@ -1,0 +1,640 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{keyval}
+\usepackage{graphicx}
+%\usepackage{tikz}
+
+\newcommand{\url}[1]{\textit{#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{\textbf{(\ref{#1})}}
+\newcommand{\NI}{\noindent}
+\newcommand{\beq}{\NI$\displaystyle}
+\newcommand{\eeq}{$}
+\newcommand{\eeqn}{$\\[0.3cm]}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\IDE}{Integro-Differential Equation}
+\newcommand{\IDEs}{Integro-Differential Equations}
+\newcommand{\Unx}{U^{(n)}(x)}
+\newcommand{\Un}[1]{U^{(#1)}(x)}
+\newcommand{\Unn}[2]{U^{(#1)}(#2)}
+\newcommand{\Uxnprime}[1]{U^{#1}(x)}
+\newcommand{\Uxprime}{U'(x)}
+\newcommand{\Uxdprime}{U''(x)}
+\newcommand{\Uxtprime}{U'''(x)}
+
+\renewcommand*\contentsname{Table of Contents}
+\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+	\pagenumbering{roman} 
+	
+	%%TITLE%%
+	\addcontentsline{toc}{chapter}{\numberline{}TITLE PAGE}
+	\begin{center}
+		{\bf NUMERICAL SOLUTION OF INTEGRO-DIFFERENTIAL EQUATION OF THIRD ORDER BY VARIATION ITERATION METHOD }
+	\end{center}
+	$$$$
+	\begin{center}
+		\textbf{\itshape\large BY}
+	\end{center} 
+	$$$$
+	\begin{center}
+		{\bf ADEOYE LATEEF ABIMBOLA\\
+			16/56EB018}
+	\end{center}
+	$$$$
+	\begin{center}
+		\textbf{A PROJECT SUBMITTED TO THE
+			DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES,
+			UNIVERSITY OF ILORIN, ILORIN, NIGERIA,
+			$$$$
+			IN PARTIAL 
+			FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF
+			BACHELOR OF SCIENCE {\itshape{(B.Sc.)}} DEGREE IN MATHEMATICS.}
+	\end{center}
+	$$ $$ 
+	\\ \\
+	\begin{center}
+		{\bf 	April, 2021}
+	\end{center}
+	\newpage
+	\addcontentsline{toc}{chapter}{\numberline{}CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large Certification}   \end{center}}
+	This is to certify that this project was carried out by \textbf{ADEOYE LATEEF ABIMBOLA} of Matriculation Number  16/56EB018, for the award of Bachelor of Science B.Sc (Hons) degree in the Department of Mathematics, Faculty of Physical sciences, University of Ilorin, Ilorin, Nigeria.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Dr. O.A. Uwahren   \qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	(SUPERVISOR)\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad     Date\\
+	(HEAD OF DEPARTMENT)\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	EXTERNAL EXAMINER \qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}	\textbf{\Large Dedication}   \end{center}}
+	\addcontentsline{toc}{chapter}{\numberline{}DEDICATION}
+	This Project is dedicated to Almighty God who in his infinite mercy saw me through to this very stage of my life and to my beloved parents Mr. and Mrs. Adeoye, who with their love and support have seen me through my education.\\
+	
+	\NI May God be with you and grant you long life.
+	
+	\newpage
+	%%ACKNOLEDGEMENT%%
+	\section*{\begin{center}\textbf{\Large Acknowledgments}\end{center}}
+	\addcontentsline{toc}{chapter}{\numberline{}ACKNOWLEDGMENTS} Foremost, I give all glory and honour to God Almighty, the most merciful and the most beneficent for his undying love for me towards the successful completion of my project.\\
+	
+	\NI I acknowledge the help and support of my project Supervisor, Dr. A.O. Uwaheren, God bless you and your family sir.\\
+	
+	\NI I also want acknowledge my H.O.D. Prof. K. Rauf and my level adviser, Dr. I.F. Usamot for their encouraging words, concern and guidance.\\
+	
+	\NI I also appreciate the lecturers of the department, Prof. J.A. Gbadeyan, Prof. T.O. Opoola, Prof. O.M. Bamigbola, Prof. M.O. Ibrahim, Prof. O.A. Taiwo, Prof. R.B. Adeniyi, Prof. M.S. Dada, Prof. K.O. Babalola, Prof. A.S. Idowu, Dr. E.O. Titiloye, Dr. O.A. Fadipe-Joseph, Dr. Y.O. Aderinto, Dr. C.N. Ejieji, Dr. B.M. Yisa, Dr. J.U. Abubakar, Dr. K.A. Bello, Dr. G.N. Bakare, Dr. B.M. Ahmed, Dr. O.T. Olotu, Dr. I.F. Usamot, Dr. O.A. Owaheren, Dr. O. Odetunde, Dr. T.L. Oyekunle, Dr. A.A. Yekiti. The efforts of the non-academic staff of the department are equally appreciated.\\
+	
+	\NI My Sincere gratitude goes to my parents Mr. A.O. Adeoye and Mrs. A.N. Adeoye, for their unrelenting prayers, encouragements and supports, and to my siblings Adeoye Abdullahi, Adeoye Rofiat, and Adeoye Rodiat for their believe and faith in me.\\
+	
+	\NI I would be ingrate if i fail to say thank you to all my friends; Olagbonsaiye David, Muritala Abdullahi, Hamzat Omogbolahan, Hassan Taiwo, Hassan Kehinde, Sulaimon Rokeeb, Areo Fatimah. It has been a blessing knowing you all and those whose names are not mentioned due to space limit.
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large Abstract}\end{center}}
+	\addcontentsline{toc}{chapter}{\numberline{}ABSTRACT}
+	In this project we discuss the numerical solution of \IDE of third order by Variational Iteration Method. It was also observed from the definition that \IDE can be thought as an equation that involves both integrals and derivatives of an unknown function.
+	
+	%TABLE OF CONTENTs
+	\addcontentsline{toc}{chapter}{\numberline{}TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION}
+	Mathematics is the Science of numbers quantity and space. Under these we have numerical analysis, which brings about \IDE equation.\\
+	
+	\NI Solving \IDE is one of the major problems of numerical analysis. This is because such a wide variety of application leads to \IDE and so few can be solved analytically.
+	
+	\NI In Science, mathematics Methodology is used in analysis data set for solving system of equations but the main goal of numerical analysis is to simplify methods for obtaining solutions to mathematical problems, such mathematics has its basis in applied mathematics, such as engineering, physics and dynamics.\\
+	
+	\NI Numerical analysis according ot Gilat and Amos (American Heritage Dictionary) (2004) is defined as the study of approximation techniques for solving mathematical problems.\\
+	
+	\section{DEFINITION OF SOME RELEVANT TERMS}
+	
+	\subsection{INTEGRO-DIFFERENTIAL EQUATION}
+	An equation that involves both integral and derivatives of an unknown function is known as \bt{\IDE}.
+	
+	\subsection{DIFFERENTIAL EQUATION}
+	A mathematical equation that relates some unknown functions of one or more variables with derivatives is known as \bt{differential equation}.
+	
+	\subsection{EQUATION}
+	In Mathematics, an equation is a formulation of the form $A$ and $B$,  where $A,B$ are expressions that may contains one or more variables called unknown and "=" denotes the equality of binary relation, equation say two thing are equal. Also an equation is a statement of an equality containing one or more variable.\\
+	
+	\NI Solving the equation consists of determining which values of the variables make the equality true. In this situation, variables are also known as unknown and the values which satisfy the equality are known as solutions.
+	
+	\subsection{SOLUTION}
+	In mathematics, a value we can put in place of a variable (such as $x$) that makes the equation true, a solution is the set of values that satisfy a given set of equation or inequalities.
+	
+	\subsection{NUMERICAL SOLUTION}
+	Numerical solution is the study of approximation techniques for solving mathematical problems, taking into account the extent of possible errors. It can also be defined as the branch of mathematics the studies of algorithm for approximating solutions to problems in infinitesimal Calculus. Numerical Methods for \IDEs 
+	
+	\subsection{VARIATIONAL} 
+	This is a method of calculating an upper bound on the lowest energy level of a quantum mechanical system and an approximation for the corresponding wave function. In the integral representing the expectation value of the hamiltonian operator, one substitutes a trial function for the true wave function and varies parameters in the trial function to minimize the integral.
+	
+	\subsection{VARIATIONAL ITERATION}
+	This method is one of the well known semi-analytical methods for solving linear and non-linear ordinary as well as partial differential equation.
+	
+	\subsection{THIRD ORDER EQUATION}
+	This is an equation at which the derivative of $f(x)$ is 3 e.g $f'''(x)$\\
+	Let
+	$\dsp f(x) = x^4$\\
+	$\dsp f'(x) = 4x^3$\\
+	$\dsp f''(x) = 12x^2$\\
+	Therefore the third derivative of $f(x)$ is\\
+	$\dsp f'''(x) = 24x$\\
+	Or using Leibniz notation\\
+	$\dsp \frac{d^3}{dx^3}(x^4) = 24x$\\
+	
+	%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%%
+	\chapter{LITERATURE REVIEW}
+	\section{INTEGRO-DIFFERENTIAL EQUATION}
+	Volterra, in the early 1900, studied the population growth where new type of equations have been developed and was termed as \IDEs. In this type of equations, the unknown function $U(x)$ occurs in one side as an ordinary derivatives and appears in the other side under integral sign.\\
+	
+	\NI In other to discuss the method, we consider the general $n$th order \IDE of the form:
+	\begin{equation}
+		U^n(x) = f(x) + \lambda \int_{0}^{x}K(x,t)U(t)\text{d}t
+	\end{equation}
+	where $\dsp U^n(x) = \frac{\text{d}^n u}{dx^n}, ~ \lambda$ is a parameter and $K(x,t)$ is the kernel of the integral equation.\\
+	
+	\subsection{CLASSIFICATION OF INTEGRO-DIFFERENTIAL EQUATION}
+	\IDE can be classified into two namely;
+	\begin{enumerate}
+		\item [i.] Volterra \IDE and 
+		
+		\item[ii.] Fredholm \IDE
+	\end{enumerate}
+	
+	\subsection{VOLTERRA INTEGRO-DIFFERENTIAL EQUATION}
+	This contains the unknown function $U(x)$ and one of it's derivatives $U^{(n)}(x), ~ n \geq 1$ inside and outside the integral sign. At least one of the limits of integration in this case is a variable as in the Volterra integral equation.\\
+	
+	\NI The Volterra \IDE is given in the form 
+	\begin{equation}
+		U^{n}(x) = f(x) + \lambda \int_{0}^{x}K(x,t)U(t)\text{d}t
+	\end{equation}
+	where $U^{(n)}$ indicates the $n$th derivatives of $U(x)$. Other derivatives of less order may appear with $U^{(n)}$ at the left side 
+	
+	\subsection{FREDHOLM INTEGRO-DIFFERENTIAL EQUATION}
+	This contains the unknown function $U(x)$ and one of it's derivatives $U^{(n)}(x), ~ n \geq 1$ inside and outside  the integral sign respectively. The limits of integration in this case are fixed as in Fredholm integration equations.\\
+	
+	\NI The Fredholm \IDE can be given in the form
+	\begin{equation}
+		\Unx = f(x) + \lambda \int_{a}^{b} K(x,t)U(t) \text{d}t
+	\end{equation}
+	\bt{Examples of \IDEs are}
+	\begin{eqnarray}
+		\text{(i)}~~ \Uxprime &=& -1 + \frac{1}{2} x^2 - xe^x - \int_{0}^{x} tU(t)\text{d}t \label{eq:2_4}\\
+		\text{(ii)}~  \Uxprime &=& 1 - \frac{1}{3}x + \int_{0}^{1} tU(t)\text{d}t, ~ U(0)=0 \label{eq:2_5}\\
+		\text{(iii)}~ \Uxprime &=& 1 + \int_{0}^{x}U(t)\text{d}t, ~ U(0)=0 \label{eq:2_6}
+	\end{eqnarray}
+	
+	\NI equation \refn{eq:2_4} and \refn{eq:2_6} are Volterra \IDE while \refn{eq:2_5} is Fredholm \IDE.
+	
+	\subsection{VARIATIONAL ITERATION METHOD}
+	In this section, numerical method using in this project ot solve \IDE is Variational Iteration Method. In order to apply this method, we assume that the differential equation is of the form 
+	\begin{equation}
+		LU + NU = g(t) \label{eq:2_7}
+	\end{equation}
+	where $L$ and $N$ are linear and non-linear operators respectively and $g(t)$ is the source in homogeneous term.\\
+	
+	\NI The Variational iteration method presents a correction functional
+	\begin{equation}
+		U_{n+1}(x) = U_n(x) + \int_{0}^{x} \lambda(\xi)\left[LU_n(\xi) + N\bar{U}_n (\xi) - g(\xi)\right]\text{d}\xi \label{eq:2_8}
+	\end{equation}
+	where $\lambda$ is a general Lagrange's multiplier, noting that in this method $\lambda$ may be a constant or a function and $\bar{U}_n$ is a restricted value that mean it behaves as a constant, hence if $\delta\bar{U}_n=0$ where $\delta$ is the Variational derivatives.\\
+	
+	\NI For a complete use of the Variational iteration method, we should follow tow steps
+	\begin{enumerate}
+		\item[i.] The determination of the Lagrange multiplier $\lambda(\xi)$ that will be identified optimally and 
+	\end{enumerate}
+	In other words, the correction functional \refn{eq:2_8} will give several approximation and therefore the exact solution is obtained as the limit of the resulting successive approximations.\\
+	
+	\NI The determination of the Lagrange multiplier plays a major role in the determination of the solution of the problem. In what follows, we summarize some iteration formulae that show ODE, its corresponding Lagrange multiplier and its correction functional respectively.\\
+	
+	\begin{flushleft}
+		(i) $\left\{\begin{array}{l}
+			U' + F(U(\xi), U'(\xi)) = 0, ~\lambda = -1 \\
+			U_{n+1} = U_n - \int_{0}^{x}\left[U'_n + F(U_n,U'_n)\right]\text{d}t
+		\end{array}\right.$\spn{0.5}
+		(ii) $\left\{\begin{array}{l}
+			U'' + F(U(\xi), U'(\xi), U''(\xi)) = 0, ~\lambda = (\xi - x) \\
+			U_{n+1} = U_n - \int_{0}^{x}(\xi - x)\left[U''_n + F(U_n,U'_n, U''_n)\right]\text{d}\xi
+		\end{array}\right.$\spn{0.5}
+		(iii) $\left\{\begin{array}{l}
+			U''' + F(U(\xi), U'(\xi), U''(\xi),U'''(\xi)) = 0, ~\lambda = -\frac{1}{2}(\xi - x)^2 \\
+			U_{n+1} = U_n - \int_{0}^{x}-\frac{1}{2}(\xi - x)^2\left[U''_n + F(U(\xi), U'(\xi), U''(\xi),U'''(\xi))\right]\text{d}\xi
+		\end{array}\right.$\spn{0.5}
+	\end{flushleft}
+	For $n \geq 1$\\
+	Therefore for first order
+	\begin{eqnarray*}
+		\lambda(\xi) &=& -1\qquad\\
+		\lambda(\xi) &=& (\xi - x) \text{ For second order}\\
+		\lambda(\xi) &=& - \frac{(\xi - x)^2}{2} \text{ for third order}
+	\end{eqnarray*}
+	and so on.\\
+	\begin{enumerate}
+		\item[ii.] With $\lambda(\xi)$, we substitute the result into \refn{eq:2_8} where the restrictions should be determined.\\
+	\end{enumerate}
+	Taking the variation \refn{eq:2_8} with respect to the independent variables $U_n$ we find
+	\begin{equation}
+		\frac{\delta U_{n+1}}{\delta U_n} = 1 + \frac{\delta}{\delta U_n} \left(\int_{0}^{x} \lambda(\xi) (LU_n(\xi) + N\bar{U}_n(\xi) - g(\xi))\text{d}\xi\right)
+	\end{equation}
+	or equivalently
+	\begin{equation}
+		\delta U_{n+1} = \delta U_n + \delta \left(\int_{0}^{x} \lambda(\xi) (LU_n(\xi))\text{d}\xi\right) \label{eq:2_10}
+	\end{equation}
+	
+	\NI Let $U'_n(\xi) = LU_n(\xi)$ in equation \refn{eq:2_10}\\
+	\newpage
+	\NI Using integration by parts for the determination of Lagrange Multiplier\\
+	\begin{equation}
+		\left.\begin{array}{l}
+			\int_{0}^{x}\lambda(\xi) U'_n(\xi) \text{d}\xi = \lambda(\xi)U_n(\xi) - \int_{0}^{x}\lambda'(\xi) U_n(\xi)\text{d}\xi\spn{0.3}
+			
+			\int_{0}^{x}\lambda(\xi) U''_n(\xi) \text{d}\xi = \lambda(\xi)U'_n(\xi) - \lambda'(\xi)U_n(\xi) + \int_{0}^{x}\lambda''(\xi) U_n(\xi)\text{d}\xi\spn{0.3}
+			
+			\int_{0}^{x}\lambda(\xi) U'''_n(\xi) \text{d}\xi = \lambda(\xi)U''_n(\xi) - \lambda'(\xi)U'_n(\xi) + \lambda''(\xi)U_n(\xi) \spn{0.1}
+			
+			 \qquad\qquad\qquad\qquad- \int_{0}^{x}\lambda'''(\xi) U_n(\xi)\text{d}\xi\spn{0.2}
+		\end{array}\right\}
+		\label{eq:2_11}
+	\end{equation}
+	and so on. These identities are obtained by integrating by parts. Integrating the integral of \refn{eq:2_10} by parts using \refn{eq:2_11} we obtain
+	\begin{equation}
+		\delta U_{n+1} = \delta U_n(\xi)(1 + \lambda |_{\xi = x}) - \int_{0}^{x} \lambda' ~\delta U_n ~\text{d}\xi \label{eq:2_12}
+	\end{equation}
+	or equivalently\\
+	\begin{equation}
+		\delta U_{n+1} = \delta U_n(\xi)(1+\lambda|_{\xi=x}) - \int_{0}^{x} \lambda' ~ \delta U_n ~\delta \xi \label{eq:2_13}
+	\end{equation}
+	The extremum condition of $U_{n+1}$ require that $\delta_{n+1} = 0$. This means that the left hand side of \refn{eq:2_13} is zero and as a result the right hand side should be zero as well. This yield the stationary conditions:
+	\begin{equation}
+		1 + \lambda|_{\xi=x} = 0, \qquad \lambda'|_{\xi=x} = 0 \label{eq:2_14}
+	\end{equation}
+	\begin{equation}
+		\lambda = -1 \label{eq:2_15}
+	\end{equation}
+	As a second example, Let $LU_n(\xi) = U''_n(\xi)$ in \refn{eq:2_10}, integrating the integral of \refn{eq:2_10} by parts using \refn{eq:2_11} we obtain 
+	\begin{equation}
+		\delta U_{n+1} = \delta U_n + \delta \lambda\left((U_n)'\right)_0^x - \left(\lambda' \delta U_n\right)_0^x + \int_{0}^{x} \lambda'' \delta U_n \text{d}\xi \label{eq:2_16}
+	\end{equation}
+	or equivalent
+	\begin{equation}
+		\delta U_{n+1} = \delta U_n(\xi)(1-\lambda'|_{\xi = x}) + \delta \lambda((U_n)'|_{\xi = x}) + \int_{0}^{x}\lambda''U_n\text{d}\xi \label{eq:2_17}
+	\end{equation}
+	The extremum condition of $U_{n+1}$ requires that $\delta U_{n+1} = 0$. This means that the left hand side of \refn{eq:2_17} is zero and as a result the right hand side should be zero as well. This yields the stationary condition 
+	\begin{equation*}
+		\lambda = \xi - x
+	\end{equation*}
+	Having determined the Lagrange multiplier $\lambda(\xi)$, the successive approximation $U_{n+1}, ~ n\geq 0$ of the solution $U(x)$ will be readily obtained upon using selective function $U_0(x)$. However, for fast convergence, the function $U_0(x)$ should be selected by suing the initial condition as follows:
+	\begin{equation}
+		\begin{array}{l}
+			U_0(x) = U(0) \text{ for first order } U'_n \\
+			U_0(x) = U(0) + xU'(0) \text{ for second order } U''_n\\
+			U_0(x) = U(0) + xU'(0) +\frac{1}{2!}x^2U''(0) \text{ for third order } U'''_n
+		\end{array}
+		\label{eq:2_18}
+	\end{equation}
+	and so on consequently, the solution
+	\begin{equation}
+		U(x) = \lim\limits_{n\rightarrow \infty}U_n(x)
+	\end{equation}
+	
+	
+	%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%%
+	\chapter{METHODOLOGY}
+	\bt{\Large NUMERICAL EXAMPLES ON INTEGRO-DIFFERENTIAL EQUATION}
+	
+	\section{EXAMPLES}
+	Here, we consider the third order \IDEs
+	\begin{equation}
+		\text{i)}~~ U'''(x) =  -1 + \int_{0}^{x}U(t)\text{d}t\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \label{eq:3_1}
+	\end{equation}
+	with the initial condition $U(0)=1, ~ U'(0)=1$ and $U''(0)=-1$
+	\begin{equation}
+		\text{ii)}~ U'''(x) =  e^x - 1 + \int_{0}^{1}tU(t)\text{d}t\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \label{eq:3_2}
+	\end{equation}
+	with the initial condition $U(0)=1, ~ U'(0)=1$ and $U''(0)=1$\\
+	
+	\NI Equation \refn{eq:3_1} is Volterra while \refn{eq:3_2} is Fredholm.
+	
+	\subsection{EXAMPLE 1}
+	Consider the third order \IDE 
+	\begin{equation*}
+		U'''(x) = 1 + x + \frac{1}{3!}x^3 + \int_{0}^{x}(x-t)U(t)\mbox{d}t\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+	\end{equation*}
+	with the initial conditions $U(01,~ U'(0)=0 \text{ and } U''(0)=1$
+	\begin{equation}
+		U'''(x) - 1 - x - \frac{1}{3!}x^3 - \int_{0}^{x}(x-t)U(t)\mbox{d}t = 0 \qquad\qquad\qquad\qquad\qquad\qquad\label{eq:3_3}
+	\end{equation}
+	The correction functional for this equation is given by
+	\begin{equation}
+		U_{n+1}(x) = U_n(x) - \frac{1}{2}\int_0^x (\xi - x)^2 \left(U'''_n(x)-1-x-\frac{1}{3!}x^3 - \int_0^x(x-t)U_n(t)\text{d}t\right)\text{d}\xi\label{eq:3_4}
+	\end{equation}
+	where $\dsp\lambda = -\frac{1}{2}(\xi-x)^2$ for third order \IDE\\
+	
+	\NI The zeroth approximation $U_0(x)$ can be selected by using the initial conditions, hence we set
+	\begin{equation}
+		U_0(x) = U(0) + xU'(0) + \frac{1}{2!}x^2U''(0) = 1 + \frac{1}{2!}x^2 \qquad\qquad\qquad\qquad\label{eq:3_5}
+	\end{equation}
+	using this selection into the correction function gives the following successive approximations
+	\begin{equation*}
+		U_0(x) = 1 + \frac{1}{2!}x^2 \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	\end{equation*}
+	For $n=0$
+	\begin{equation*}
+		U_1(x) = U_0(x) - \frac{1}{2}\int_0^x (\xi - x)^2 \left(U'''_0(x)-1-x-\frac{1}{3!}x^3 - \int_0^x(x-t)U_0(t)\text{d}t\right)\text{d}\xi
+	\end{equation*}
+	Hence $\dsp U_0(x) = 1 + \frac{1}{2!}x^2$
+	$$U'_0(x)=x, ~~ U''_0(x)=1 ~\text{ and }~ U'''_0(x)=0$$
+	\begin{eqnarray}
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2)\left[0-1-x-\frac{1}{3!}x^3\right.\notag\\
+		&-& \left. \int_0^x (x-t)\left(1 + \frac{1}{2!} t^2\right)\text{d}t\right]\text{d}\xi \notag\spn{0.5}
+		%%%	
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2)\left[-1-x-\frac{1}{3!}x^3\right.\notag\\
+		&-& \left. \int_0^x \left(x + \frac{1}{2!}xt^2 - t - \frac{1}{2!}t^3\right)\text{d}t\right]\text{d}\xi \notag\spn{0.5}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2)\left[-1-x-\frac{1}{3!}x^3 - \left[xt + \frac{xt^3}{6} - \frac{t^2}{2} - \frac{t^4}{8}\right]_0^x~\right]\text{d}\xi \notag\spn{0.5}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2)\left[-1-x-\frac{1}{3!}x^3 - \left(x^2 + \frac{x^4}{6} - \frac{x^2}{2} - \frac{x^4}{8}\right)\right]\text{d}\xi \notag\spn{0.5}
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2)\left(-1-x-\frac{1}{3!}x^3 - x^2 - \frac{x^4}{6} + \frac{x^2}{2} + \frac{x^4}{8}\right)\text{d}\xi \notag \spn{0.5}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x \left[-\xi^2 - x\xi^2 - \frac{x^3\xi^2}{6} - x^2\xi^2 - \frac{x^4\xi^2}{6} + \frac{x^2\xi^2}{2} + \frac{x^4\xi^2}{8} + 2x\xi\right. \notag \spn{0.2}
+		&+&\left.2x^2\xi + \frac{2x^4\xi}{6} + 2x^3 \xi + \frac{2x^5\xi}{6} - \frac{2x^3\xi}{2} - \frac{2x^5\xi}{8} - x^2 - x^3 - \frac{x^5}{6} - x^4 -\frac{x^6}{6}\right. \notag \spn{0.2}
+		&+& \left. \frac{x^4}{2} + \frac{x^6}{8}\right]\text{d}\xi \notag \spn{0.5}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\left[-\frac{\xi^3}{3} -\frac{x\xi^3}{3} - \frac{x^3\xi^3}{18} - \frac{x^2\xi^3}{3} - \frac{x^4\xi^3}{18} + \frac{x^2\xi^3}{6} + \frac{x^4\xi^3}{24} + \frac{2x\xi^2}{2}\right. \notag \spn{0.2}
+		&+&\left.\frac{2x^2\xi^2}{2} + \frac{2x^4\xi^2}{12} + \frac{2x^3 \xi^2}{2} + \frac{2x^5\xi^2}{12} - \frac{2x^3\xi^2}{4} - \frac{2x^5\xi^2}{16} - x^2\xi - x^3\xi - \frac{x^5\xi}{6}\right. \notag \spn{0.2}
+		&-& \left.x^4\xi -\frac{x^6\xi}{6} +\frac{x^4}{2} + \frac{x^6}{8}\right]_0^x \notag \spn{0.5}
+	\end{eqnarray}
+	\begin{eqnarray}
+		U_1(x) &=&U_0(x) + \frac{x^3}{6} + \frac{x^4}{6} + \frac{x^6}{36} + \frac{x^5}{6} + \frac{x^7}{36} - \frac{x^5}{12} - \frac{x^7}{48} - \frac{x^3}{2} - \frac{x^4}{2} - \frac{x^6}{12} - \frac{x^5}{4}\notag \spn{0.2}
+		%%%
+		&-& \frac{x^7}{12} + \frac{x^5}{4} + \frac{x^7}{16} + x^3 + x^4 + \frac{x^6}{6} + x^5 + \frac{x^7}{6} - \frac{x^7}{6} - \frac{x^5}{4} - \frac{x^7}{8} \notag \spn{0.8}
+		%%%
+		U_1(x) &=& 1 + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \frac{1}{4!}x^4 + \frac{1}{5!}x^5 + \frac{1}{6!}x^6 + \frac{1}{7!}x^7 \notag
+	\end{eqnarray}
+	and so on. The Variational Integration Method admits he use of 
+	\begin{equation*}
+		U(x) = \lim\limits_{n\rightarrow \infty} U_n(x)
+	\end{equation*}
+	that gives the exact solution
+	\begin{equation}
+		U(x) = e^x - x \label{eq:3_7}
+	\end{equation}
+	
+	\subsection{EXAMPLE 2}
+	\begin{equation*}
+		U'''(x) = e^x - 1 + \int_0^1 tU(t)\text{d}t
+	\end{equation*}
+	with initial conditions $U(0)=1, \quad U'(0)=1, \quad U''(0)=1$
+	\begin{equation}
+		U'''(x) - e^x + 1 - \int_0^1 tU(t)\text{d}t \label{eq:3_8}
+	\end{equation}
+	The correction functional for this equation is given by
+	\begin{equation*}
+		U_{n+1}(x) = U_n(x) + \int_0^x \lambda(\xi) \left[U'''_n(x) - e^x + 1 - \int_0^1 tU_n(t)\text{d}t\right]\text{d}\xi
+	\end{equation*}
+	where $\dsp \lambda = - \frac{1}{2}(\xi - x)^2$ for third order \IDE.\\
+	
+	\NI The zeroth approximation $U_0(x)$ can be selected by
+	\begin{eqnarray}
+		U_0(x) &=& U(0) + xU'(0) + \frac{1}{2!}x^2U''(0)\notag \spn{0.1}
+		U_0(x) &=& 1 + x + \frac{1}{2!}x^2 \label{eq:3_9}
+	\end{eqnarray}
+	Using the selection into the correction functional gives the following successive approximations\\
+	$\dsp U_0(x) = 1 + x + \frac{1}{2!}x^2$\\
+	
+	\NI for $n=0$\\
+	\begin{equation*}
+		U_1(x) = U_0(x) - \frac{1}{2}\int_0^x \left(\xi - x\right)^2 \left[U'''_0(x) - e^x + x - \int_0^1 tU_0(x)\text{d}t\right]\text{d}\xi
+	\end{equation*}
+	Since $\dsp U_0(x) = 1 + x + \frac{1}{2!}x^2$ \begin{equation*}
+		U'_0(x)=1+x, \quad U''_0(x)=1 ~\text{ and } ~U'''_0(x)=0
+	\end{equation*}
+	Therefore
+	\begin{eqnarray}
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2) \left[0-e^x + x - \int_0^1 t\left(1 + t + \frac{1}{2!}t^2\right)\text{d}t \right] \text{d}\xi\notag \spn{0.5}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2) \left[-e^x + x - \int_0^1 \left(t + t^2 + \frac{t^3}{2!}\right)\text{d}t \right]\text{d}\xi\notag \spn{0.5}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2) \left[-e^x + x - \left[\frac{t^2}{2} + \frac{t^3}{3} + \frac{t^4}{8}\right]_0^1~ \right]\text{d}\xi\notag \spn{0.5}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x(\xi^2 - 2x\xi + x^2) \left[-e^x + x - \frac{1}{2} + \frac{1}{3} + \frac{1}{8} \right]\text{d}\xi\notag \spn{0.5}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\int_0^x\left[-\xi^2e^x + x\xi - \frac{\xi^2}{2} - \frac{\xi^2}{3} - \frac{\xi^2}{8} + 2x\xi e^x - 2x^2\xi + \frac{2x\xi}{2}+ \frac{2x\xi}{2} \right. \notag \spn{0.2}
+		&+& \left.\frac{2x\xi}{8} - x^2e^x + x^3 - \frac{x^2}{2} - \frac{x^2}{3} - \frac{x^2}{8} \right]\text{d}\xi\notag
+	\end{eqnarray}
+	\begin{eqnarray}
+		U_1(x) &=& U_0(x) - \frac{1}{2}\left[-\frac{\xi^3e^x}{3} + \frac{x\xi^2}{2} - \frac{\xi^3}{6} - \frac{\xi^3}{9} - \frac{\xi^3}{24} + x\xi^2 e^x - x^2\xi + \frac{x\xi^2}{2}+ \frac{x\xi^2}{3} \right. \notag \spn{0.2}
+		&+& \left.\frac{x\xi^2}{8} - x^2\xi e^x + x^3\xi - \frac{x^2\xi}{2} - \frac{x^2\xi}{3} - \frac{x^2\xi}{8} \right]_0^x\notag \spn{0.6}
+		%%%
+		U_1(x) &=& U_0(x) - \frac{1}{2}\left[-\frac{x^3e^x}{3} + \frac{x^3}{2} - \frac{x^3}{6} - \frac{x^3}{9} - \frac{x^3}{24} + x^3 e^x - x^3 + \frac{x^3}{2}+ \frac{x^3}{3} \right. \notag \spn{0.2}
+		&+& \left.\frac{x^3}{8} - x^3 e^x + x^3 - \frac{x^3}{2} - \frac{x^3}{3} - \frac{x^3}{8} \right]\notag \spn{0.8}
+		%%%
+		U_1(x) &=& 1 + x + \frac{1}{2}x^2 + \frac{x^3e^x}{6} - \frac{x^4}{144} \notag
+	\end{eqnarray}
+	and so on. Canceling the noise terms give the exact solution
+	\begin{equation}
+		U(x) = e^x \label{eq:3_10}
+	\end{equation}
+	
+	\subsection{EXAMPLE 3}
+	\begin{equation*}
+		U'''(x) = - 1 + \int_0^x U(t)\text{d}t
+	\end{equation*}
+	with initial conditions $U(0)=1, \quad U'(0)=1, \quad U''(0)=-1$
+	\begin{equation}
+		U'''(x)  + 1 - \int_0^x U(t)\text{d}t = 0 \label{eq:3_11}
+	\end{equation}
+	The correction functional for this equation is given by
+	\begin{equation}
+		U_{n+1}(x) = U_n(x) + \int_0^x \lambda(\xi)\left[U'''(x) + 1 - \int_0^xU(t)\text{d}t\right]
+	\end{equation}
+	where $\dsp \lambda = - \frac{1}{2}(\xi - x)^2$ for third order \IDE.\\
+	\newpage
+	Therefore,\\
+	The zeroth approximation $U_0(x)$ can be selected by using initial condition, hence we set
+	\begin{eqnarray}
+		U_0(x) &=&U(0) + xU'(0) + \frac{1}{2!}x^2U''(0) \notag \spn{0.4}
+		&=& 1 + x(1) + \frac{1}{2!}x^2(-1) \notag \spn{0.4}
+		U_0(x) &=& 1 + x - \frac{1}{2!}x^2 \notag
+	\end{eqnarray}
+	for $n=0$
+	\begin{equation*}
+		U_1(x) = U_0(x) - \frac{1}{2} \int_0^x \left(\xi-x\right)^2 \left[U'''_0(x) + 1 - \int_0^x U_0(t) \text{d}t\right] \text{d}\xi
+	\end{equation*}
+		Since $\dsp U_0(x) = 1 + x - \frac{1}{2!}x^2$ \begin{equation*}
+		U'_0(x)=1-x, \quad U''_0(x)=-1 ~\text{ and } ~U'''_0(x)=0
+	\end{equation*}
+	\begin{eqnarray}
+		U_1(x) &=& 1 + x - \frac{1}{2!}x^2 - \frac{1}{2} \int_0^x \left(\xi^2 - 2x\xi + x^2\right) \left[0 + 1 - \int_0^x \left(1 + t - \frac{1}{2}t^2\right) \text{d}t\right] \text{d}\xi \notag \spn{0.5}
+		%%%
+		U_1(x) &=& 1 + x - \frac{1}{2}x^2 - \frac{1}{2} \int_0^x \left(\xi^2 - 2x\xi + x^2\right) \left[1 - \int_0^x \left(1 + t - \frac{t^2}{2}\right) \text{d}t\right] \text{d}\xi \notag \spn{0.5}
+		%%%
+		U_1(x) &=& 1 + x - \frac{1}{2}x^2 - \frac{1}{2} \int_0^x \left(\xi^2 - 2x\xi + x^2\right) \left[1 - \left[t + \frac{t}{2} - \frac{t^3}{6}\right]_0^x \text{d}t\right] \text{d}\xi \notag \spn{0.5}
+		%%%
+		U_1(x) &=& 1 + x - \frac{1}{2}x^2 - \frac{1}{2} \int_0^x \left(\xi^2 - 2x\xi + x^2\right) \left[1 - x - \frac{x^2}{2} + \frac{x^3}{6}\right] \text{d}\xi \notag \spn{0.5}
+		%%%
+		U_1(x) &=& 1 + x - \frac{1}{2}x^2 - \frac{1}{2} \int_0^x \left[\xi^2 - x\xi^2 - \frac{x^2\xi^2}{2} + \frac{x^2\xi^2}{6} - 2x\xi + 2x^2 \xi + \frac{2x^3\xi}{2}  \right. \notag \spn{0.3}
+		&-& \left. \frac{2x^3\xi}{6} -x^2 - x^3 - \frac{x^4}{2} + \frac{x5}{6}\right] \text{d}\xi \notag \spn{0.5}
+		%%%
+		U_1(x) &=& 1 + x - \frac{1}{2}x^2 - \frac{1}{2} \left[\frac{\xi^3}{3} - \frac{x\xi^3}{3} - \frac{x^2\xi^3}{6} + \frac{x^2\xi^4}{24} - \frac{2x\xi^2}{2} + \frac{2x^2 \xi^2}{2} + \frac{2x^3\xi^2}{2}  \right. \notag \spn{0.3}
+		&-& \left. \frac{2x^3\xi^2}{6} -x^2\xi - x^3\xi - \frac{x^4\xi}{2} + \frac{x^5\xi}{6}\right]_0^x \notag \spn{0.5}
+		%%%
+		U_1(x) &=& 1 + x - \frac{1}{2}x^2 - \frac{1}{2} \left[\frac{x^3}{3} - \frac{x^4}{3} - \frac{x^5}{6} + \frac{x^6}{24} - \frac{2x^3}{2} + \frac{2x^4}{2} + \frac{2x^5}{6}  \right. \notag \spn{0.3}
+		&-& \left. \frac{2x^6}{12} -x^3 - x^4 - \frac{x^5}{2} + \frac{x^6}{6}\right] \notag \spn{0.5}
+		%%%
+		U_1(x) &=& 1 + x - \frac{1}{2!}x^2 - \frac{1}{3!}x^3 + \frac{1}{4!}x^4 + \frac{1}{5!}x^5 - \frac{1}{6!}x^6 \notag \spn{0.7}
+		%%%
+		U_1(x) &=& \left(1- \frac{1}{2!}x^2+ \frac{1}{4!}x^4- \frac{1}{6!}x^6 + \cdots\right) + \left(x- \frac{1}{3!}x^3+ \frac{1}{5!}x^5 + \cdots\right) \notag
+	\end{eqnarray}
+	\newpage
+	and so on. The Variational Iteration Method admits the use of 
+	\begin{equation*}
+		U(x) = \lim\limits_{n\rightarrow \infty}U_n(x)
+	\end{equation*}
+	That gives the exact solution
+	\begin{equation}
+		U(x) = \cos x + \sin x
+	\end{equation}
+	
+	
+	%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%%
+	\chapter{}
+	\section{CONVERTING VOLTERRA INTEGRO-DIFFERENTIAL EQUATIONS TO INITIAL VALUE PROBLEMS}
+	The conversion process is obtained by differentiating both sides of the Volterra \IDE as many times until we get rid of the integral sign. To perform the differentiation, the integral at the right side, the Leibnitz rule should be used. The initial conditions should be determined by using a variety of integral equation that will obtain in the process of differentiation.\\
+	
+	\NI To give the clear overview of this method, we discuss the following illustrative examples.
+	\begin{enumerate}
+		\item Solve the Volterra \IDE by converting it to an initial value problem
+		\begin{equation}
+			U''(x) = -1-x+\int_0^x (x-t)U(t)\text{d}t,~~ U(0)=1,~~~ U'(0)=1
+		\end{equation}
+	\end{enumerate}
+	
+	\subsection{THE NOISE TERMS PHENOMENON}
+	The noise terms is defined as the identical terms with opposite sign that arise in the components $U_0(x)$ and $U_1(x)$. Other noise terms may appear between other components.\\
+	
+	\NI As stated above, these identical terms with opposite sign may exist for some equations and it may not appear for other equation.\\
+	
+	\NI By canceling the noise terms between $U_0(x)$ and $U_1(x)$, even through $U_1(x)$ contains further terms, the remaining non-canceled terms of $U_0(x)$ may gives the exact solution of the integral equation. The appearance of the noise terms between $U_0(x)$ and $U_1(x)$ is not always sufficient to obtain the exact solution by canceling these noise terms. Therefore, it is necessary to show that the non-canceling terms of $U_0(x)$ satisfy the given integral equation. On the other hand, if the non-canceled terms of $U_0(x)$ did not satisfy the given integral equation, or the noise term did not appear between $U_0(x)$ and $U_1(x)$, then it is necessary to determine more components of $U(x)$ to determine the solution in a series form.\\
+	
+	\NI Let assume 
+	\begin{eqnarray}
+		U_0(x) &=& \sin x + \frac{1}{3!}x^3 - \frac{1}{4!}x^4\notag \spn{0.5}
+		U_1(x) &=& -\frac{1}{3!}x^3 + \frac{1}{4!}x^4 + \cdots \notag
+	\end{eqnarray}
+	\newpage
+	Canceling the noise terms $\dsp \frac{1}{3!}x^3 - \frac{1}{4!}x^4$ from $U_0(x)$ gives the exact solution $U(x) = \sin x$
+	
+	\section{SOLUTION OF AN INTEGRAL EQUATION}
+	A solution of a differential or an integral equation arises in any of the following two types:
+	\begin{enumerate}
+		\item \bt{Exact Solution}\\
+		The solution is called exact if it can be expressed in a closed form, such as a polynomial, exponential function, trigonometric function or the combination of two or more of these elementary functions.\\
+		Examples of exact solutions are as follows:
+		\begin{eqnarray}
+			U(x) &=& x + e^x \notag\\
+			U(x) &=& \sin x + e^{2x} \notag\\
+			U(x) &=& 1 + \cosh x + \tan x \notag
+		\end{eqnarray}
+		and many others.\\
+		
+		\item \bt{Series Solution}\\
+		For concrete problems, sometimes we cannot obtain exact solutions. In this case, we determine the solution in a series form that may converge to exact solution. If such a solution exists. Other series can be used for numerical purposes. The more terms that we determine, the higher accuracy level that we can achieve.\\
+	\end{enumerate}
+	A solution of an integral or \IDE of a function $U(x)$ that satisfies the given equation. In other words, the obtained solution $U(x)$ must satisfy both sides of the examined equation. The following examples will be examined to explain the meaning of a solution.\\
+	
+	\NI Show that $U(x) = \sin x$ is a solution of Volterra \IDE
+	\begin{equation}
+		U'(x) = 1 - \int_0^x U(t)\text{d}t \label{eq:4_2}
+	\end{equation}
+	Using $U(x) = \sin x$ into both side of \refn{eq:4_2}, we find
+	\begin{eqnarray}
+		\text{LHS} &=& U'(x) = \cos x \notag \\
+		\text{RHS} &=& 1 - \int_0^x \sin x \text{d}t = 1 - (-\cos t)\Big|_0^x = \cos x \notag
+	\end{eqnarray}
+	
+	\NI \bt{Example 2}\\
+	Show that $U(x) = x + e^x$ is a solution of the Fredholm \IDE
+	\begin{equation}
+		U''(x) = e^x - \frac{4}{3}x + \int_0^1 xtU(t)\text{d}t \label{eq:4_3}
+	\end{equation}
+	Using $U(x) = x + e^x$ into both sides of \refn{eq:4_3}, we find
+	\begin{eqnarray}
+		\text{LHS} &=& U''(x) = e^x \notag \\
+		\text{RHS} &=& e^x - \frac{4}{3}x + x\int_0^1 t(t + e^t)\text{d}t \notag \\
+		&=& e^x - \frac{4}{3}x + x\left(\frac{1}{3}t^3 + te^t - e^t\right)\Big|_0^1 = e^x \notag
+	\end{eqnarray}
+	
+	
+	%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
+	
+	\section{SUMMARY}
+	In this Project, we discuss the numerical solution of \IDE of third order by Variational Iteration Method
+	\begin{itemize}
+		\item The types 
+		\item Method for solving
+		\item Conversion of Volterra \IDE to Initial Value Problem
+		\item The noise term phenomenon
+	\end{itemize}
+
+	\NI It was observed from the definition that \IDE can be thought as an equation that involves both integrals and derivatives of an unknown function.
+	
+	
+	\section{CONCLUSION}
+	It can be shown that \IDE of a function $U(x)$ that satisfies the given equation. It can be proved using the the obtained solution $U(x)$ which must satisfy both sides of the examined equation.
+	
+	
+	\section{RECOMMENDATION}
+	The study of numerical is very important and it's applicable in various fields. It can be used in data analysis sets for solving system equation but the main goal of numerical analysis is to simplify method for obtaining solution to mathematical problems.
+	
+	\newpage
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{\numberline{}REFERENCES}
+	Alao, S. Akinboro, F.S. Akinpelu, F.O. and Oderinu, R.A. (2014).\\
+	Numerical Solution of \IDE Using Adomian Decomposition and Variational Iteration Methods. 10(4), 18-22.\\
+	
+	\NI
+	Darania. P. and Ebadian A. (2007).\\
+	A Method for the Numerical Solution of \IDEs, 188,657-668. \url{https://doi.org//10.11016/j.amc.2006.10.046}.\\
+	
+	\NI
+	Rasheed M.T. (2004).\\
+	Numerical Solution of Functional Differential Integral \IDEs, Applied Mathematics and Computational, Vol. 156, No. 2, PP. 485-492.\\
+	
+	\NI
+	Lane H. and Emden R. (2015).\\
+	The Variational Iteration Method for Solving the Volterra Integro-Differential Forms of the Lane-Emden and the Emden-Fowler Problem with Initial and Boundary Value Conditions 31-41 \url{https://doi.org/10.1515/en-2015-0006}.\\
+	
+	\NI
+	Wazwaz A. (2014).\\
+	The Variational Iteration Method for solving linear and non-linear O.D.Es and Scientific Models with Variable Coefficients, 4(1), 9-16. \url{https://doi.org/10.2478/351-013-0141.6}.\\
+	
+	\NI
+	Shang, X. and Han. D. (2010).\\
+	Journal of Computational and Applied of the Variation Iteration Method for Solving nth-order \IDEs. Journal of Computational and Applied Mathematics. 2.34(5), 1442-1447. \url{https://dio.org/10.1016/j.cam.2010.02.020}.\\
+	
+\end{document}
+

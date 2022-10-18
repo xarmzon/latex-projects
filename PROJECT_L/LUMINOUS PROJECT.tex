@@ -1,0 +1,2744 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\setlength\parindent{0pt}
+
+\newcommand{\url}[1]{\textit{#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{\textbf{(\ref{#1})}}
+\newcommand{\NI}{\noindent}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\bp}{\Big|}
+\begin{document}
+ 
+\newcommand{\np}{\newpage}
+\pagenumbering{roman}
+\begin{titlepage}
+\addcontentsline{toc}{section}{\numberline{}Title page}
+		\begin{center} 
+		\textbf{\Large THE COMPARISON OF GAUSSIAN ELIMINATION AND CHOLESKY DECOMPOSITION METHODS TO LINEAR SYSTEM OF EQUATIONS} 
+		\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center}	                    \textbf{\emph\large BY}		                               \end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}    				
+\textbf{\large ODEBUNMI, Opeyemi Muhammed}               \end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center} 		           \textbf{\upshape  MATRIC NUMBER: 16/56EB110}															             \end{center}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center}      \textbf{A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, NIGERIA.\\
+			$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+IN PARTIAL FULFILLMENT OF  REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B.Sc) DEGREE IN MATHEMATICS.}
+		\end{center}
+		
+		
+		
+\begin{center}       
+\vspace{2in}\textbf{JUNE, 2021}
+\end{center}						 
+\end{titlepage}
+ \np
+\section*{\begin{center}	\textbf{\Large Certification}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Certification}
+ This is to certify that this project work was carried out by \textbf{ODEBUNMI, Opeyemi Muhammed} with matriculation number \textbf{16/56EB110} and approved as meeting the requirement for the Award of Bachelor of Science (B. Sc.) Degree in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria.\\
+
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+\textbf{Dr. O. T. Olotu}$\qquad\qquad\qquad\quad\qquad\qquad\qquad\qquad\qquad$Date\\
+{\small Supervisor}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+\textbf{Prof. K. Rauf} $\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad$Date\\
+{\small Head of Department}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+{\small \textbf{Prof. T. O. Oluyo} $\quad\qquad\quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad$Date\\
+External Examiner
+			
+\np
+\begin{center}      \textbf{\upshape Acknowledgment } 		             \end{center}
+						\addcontentsline{toc}{section}{\numberline{}Acknowledgment}
+To God be the glory, honor and adoration unto unchangeable God for his incomparable love and unspeakable grace upon my life during the period of this project work and for his protection over me throughout my stay on Better By Far campus.
+
+In fact without God assistance, I wouldn't have achieved much, I am indeed very grateful for his providence and sustenance.\\
+
+An adage says "towards every successful man there is an individual or group of individuals who contributes in one way or the other in order to achieve his good intention".\\
+
+My sincere gratitude goes to my amiable supervisor; Dr O. T. Olotu for his assistance, advice and roles played in making this fruit of my educational endeavor a success. I owe him a lot for his patience, understanding and for his invaluable suggestions. May God almighty bless you and your entire family, sir\\
+
+A sincere appreciation goes to my dearest H.O.D., Prof. K. Rauf for his support and counsel. May God almighty continue to bless your ways, sir.\\
+
+I also want to acknowledge my level adviser; Dr (Mrs) I.F. Usamot, for her every-time support and her immeasurable word of encouragement during my stay on Better By Far campus. May God bless you and your home, ma.\\
+
+A well deserving honour and gratitude to my lecturers; Prof. J. A. Gbadeyan, Prof. T. O. Opoola, Prof. O. M. Bamigbola, Prof. M. O. Ibrahim, Prof. O. A. Taiwo, Prof. R. B. Adeniyi, Prof. A. S. Idowu, Prof. M. S. Dada, Prof. K. O. Babalola, Dr E. O. Titiloye, Dr O. A. Fadipe-Joseph, Dr Y. O. Aderinto, Dr. C. N. Ejieji, Dr B. M. Yisa, Dr J. U. Abubakar, Dr K. A. Bello, Dr G. N. Bakare, Dr B. M. Ahmed, Dr O. A. Uwaheren, Dr O. Odetunde, Dr T. L. Oyekunle, Dr A. A. Yeketi and all non-teaching staff of the department of Mathematics, University of Ilorin, for their useful and helpful contribution towards the completion of my academic career. May God Almighty guide you and bless your home all.\\
+
+To my jewel of inestimable value, Mrs A. A. Odebunmi. Even with the absence of my Dad, you still stood firm in that position. I am greatly indebted to you for your sacrifice, care, guidance, advice, spiritual and financial support over me. I beseech Allah to bless you, guide you, answer all your prayers, spare your life for greatness on the right path and let you reap the fruit of your labor.\\ 
+
+My profound gratitude goes to my siblings, Mr Saheed Odebunmi, Mrs, Moridiyah Odebunmi, Miss Wakilah Odebunmi, Mrs kafilah Odebunmi and to the entire Odebunmi's family. Thank you all for your love, care and support so far. I love you all and i pray Almighty Allah pave ways for us where seems no way.\\  
+
+To Ilobu National Students' Union (INSU) where I am currently serving as National President. I appreciate you for giving me the opportunity to be the Chief Servant for the year 2021 and also to NAPHSS Unilorin Chapter where I am as well serving as the Speaker of the House and all other associations that I belong to, I am indebted to you all.\\
+
+To the friends who Better By Far gave me, Salawudeen Jamiu Opeyemi, Ramon Halim Oyebamiji, Anifowowse Abdulkabir Adeola, Adeboye Musa Adisa, Saidu Hussein, Muhammed Yusuff and Olarinoye Temitope David. I'm very grateful to God for giving me friends like you and I as well appreciate you all. May we live to celebrate ourselves in the nearest future.\\ 
+
+Finally, my warmest appreciation goes to everyone who has in one way or the other contributed to the success of my academic pursuit on Better By Far campus. I am very grateful to you all. Thanks to you all.	 
+\np 						\section*{\begin{center}	\textbf{\Large Dedication}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Dedication}
+			This project is dedicated to the King of kings, Lord of lords and God of Universe, the savior and the guidance of all things on earth for sparing my life throughout the period of my course at University of Ilorin.\\
+
+And also to my late Dad Alhaji J. A. Odebunmi, you are still in my heart and I miss your absence. May God forgive all your shortcomings and grant you eternal rest.
+
+\np
+		         \section*{\begin{center}	\textbf{\Large Abstract}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Abstract}
+This research work is concerned with the application of Gaussian elimination to linear system of equations. Cholesky decomposition method is also applied for comparison and establishing which of the two methods is the most accurate. The results reveal that Gaussian elimination method performs better than Cholesky decomposition method.
+
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\chapter{General Introduction}
+\section{Linear System of Equations}
+A wide variety of problems lead ultimately to the need to solve a linear system of equations, linear system of equations are associated with many problems in engineering and sciences as well as with applications of mathematics to the social sciences and the quantitative study of business and economic problems.\\
+Atkinson (1985) emphasized that system of simultaneous equation occur in solving problems in a wide variety of areas with respect to Mathematics, Statistics, physical quantities (examples are temperature, voltage, population management and displacement) Social sciences, Engineering and business. They arise directly in solving real life problems.\\
+The world sometimes reveals itself to us as observable relationships among the relevant variables what it does make it evident are relationship that describe how both the variable and their rate of change affect each other.\\
+   
+Apparently, such life changing problems give rise to system of simultaneous linear equations. In almost every human activities, man seems to be compelled to uncover fundamental relationship that exist among the objects he observes.\\
+   
+Macron (1982) said that in order to make the relationship that exist between variables explicit, we frequently attempt to make a mathematical model that will accurately reflect real life situation. Many mathematical models have the same basic structure although disparity in symbolic rotation may be utilized, which can arise from economics, transportation, which need may arise to make efficient allocation among several points or to solve the growth of population in which units of $X1,X2,...,Xn$ arises from net flow from one point to another or in relationship to population growth, that is, number of individuals in a particular age group at a particular time.\\
+ 
+There are various methods in solving linear systems of simultaneous equations. In numerical analysis the techniques and methods for solving system of linear equations belong to two categories: Direct and Iterative methods. The direct methods obtain the exact solution (in real arithmetic) in finitely many operations, where-as iterative method generate a sequence of approximations that only converge in the limit to the solution. The direct methods fall into two categories or claim, that is, THE GAUSSIAN ELIMINATION METHOD AND CHOLESKY DECOMPOSITION METHOD. Some others are matrix inverse method, LU factorization method and the Cramer's rule method.\\
+     
+The elimination approach reduces the given system of equations to a form from which the solution can be obtained by simple substitution since calculators and computers have some limit to the number of digits for their use, this may lead to round-off errors and produces poorer results.\\
+   
+Generally, the direct method are best for full or bounded matrices where-as iterative methods are best for very large and sparse matrices. The iterative method provide an alternative to the direct methods for solving systems of linear equations. This method involves assumption of some initial values which are then refined repeatedly till they reach some accepted range of accuracy. The Jacobi and Gauss-Siedel methods are good examples of the iterative method.\\
+     
+The system of linear equations are divided into INCONSISTENT and CONSISTENT.\\
+     
+The inconsistent equation is an equation that has numbers that are not all zero. That is, the equation has no solution.\\
+     
+ For example,\\
+     
+ \begin{align}
+ x + 2y -3z&=4\\
+ y + 2z&=5
+ \end{align}
+         
+ The consistent equation is an equation that has numbers that are all zero. That is, the equation has a solution. There are two cases.\\
+         
+         CASE I:\\
+         
+         r=n, that is, there are so many non-zero equations as unknowns. Then we can successfully solve uniquely for the unknowns and there exist a unique solution for the system.\\
+         
+         CASE II:\\
+         
+         $r < n$, m, that is, there are more unknowns that are non-zero equations. Thus, we arbitrarily assign values to the unknowns and then solve uniquely for the unknowns. Accordingly, there exist an infinite number of solutions.\\
+         
+         Since there is no equation of the form $0 = c$ with $c = 0$ the system is consistent. Furthermore, since there are three unknowns and three non-zero equations, the system has a unique solution.\\ 
+         
+         Also, the system
+         \begin{align}
+         x + 2y- 3z+ w&=4\\
+         y + 2z + 3w&=5
+          \end{align}
+          
+          
+          
+          is consistent and since there are more unknowns than non-zero equations, the system has an infinite number of solution. on the other hand, a linear system can be written in matrices form as follows:\\
+          
+          $Ax=b$.\\
+          
+          A linear equation $x_1$, $x_2$, ..., $x_n$ is obtained by requiring the linear combination to assume a prescribed value b, that is such equation arise frequently generally as nxn linear system is.\\
+          
+          However, it will be necessary to introduce the basic fundamental principles of matrices in linear systems because matrices make it possible to describe linear systems in a simple way that makes solving $n x n$ linear systems seems like solving ordinary system of equations.\\
+          
+          Besides, matrices can be used to show how to generalize the Newton-Raphson method to solve non-linear nxn systems.\\
+          
+          The linear system in explicit form $x_1$, $x_2$, $x_3$, ..., $x_n$ are unknowns given $aij$ for each $ij$= 1, 2, ..., n and bi for each i= $1$, $2$, ..., $n$ are scalars.\\
+          
+          According to Macron and Atkinson in 1982 and 1985 respectively, says, that the definition of matrix multiplication makes it possible to write this linear system compactly as a single matrix equation.\\
+          
+          $AX=b$\\
+          
+          Where A is a given $n x n$ matrix assumed to be non-singular, b is a given column vector and $X$ is the solution vector to be determined.
+          
+          \section{Aim and Objectives}
+                    
+          The aim of this research work is to study linear equations and use Gaussian elimination and Cholesky decomposition methods to solve Linear System of equations.\\
+          
+          
+          The objectives of this study are to:
+          \begin{enumerate}
+          	\item[i] study and use different methods of solving linear system of equations;
+          	
+          	\item[ii] study and determine how Gaussian elimination method can be used to solve linear system of equations;
+          	
+          	\item[iii] study and determine how Cholesky decomposition method can be used to solve linear system of equations; and
+          	
+          	\item[iv] practically compare the Gaussian elimination and Cholesky decomposition methods can be used to solve linear system of equations.
+          \end{enumerate}
+  
+        
+          
+          \chapter{Literature Review}  
+         \section{Meaning of Linear Equations} 
+          In Mathematics, a linear equation is an equation that may be put in the form 
+          \begin{equation}
+         	a_1x_1 + a_2x_2 + ... + a_nx_n + b = 0 
+          \end{equation}\\
+           where $x_1, x_2, ..., x_n$ are the variables (or unknowns), and $b, a_1, a_2, ..., a_n$ are the coefficients, which are often real numbers.\\
+           
+           The coefficients may be considered as parameters of the equation and may be arbitrary expressions, provided they do not contain any of the variables. To yield a meaningful equation, the coefficients $a_1, a_2, ..., a_n$ are required to not all be zero.\\
+           Alternatively, a linear equation can be obtained by equating to zero a linear polynomial over some field, from which the coefficient are taken.\\
+           The solutions of such an equation are the values that when substituted for the unknowns, make the equality true.\\
+           
+           In the case of just one variable, there is exactly one solution (provided that $a_1 \neq 0)$. Often, the term Linear Equation refers implicitly to this particular case, in which the variable is sensibly called the unknown.\\
+           
+           In the case of two variables, each solution may be interpreted as the Cartesian Coordinates of a point of the Euclidean plane.\\
+           The solutions of a linear equation form a line in the Euclidean plane and conversely, every line can be viewed as the set of all solutions of a linear equation in two variables. This is the origin of the term LINEAR for describing this type of equations. More generally, the solutions of a linear equation in n variables form a hyperplane (a subspace of dimension $n_1$) in the Euclidean space of dimension n.\\
+           
+           Linear equations occur frequently in all mathematics and their applications in physics and engineering, partly because non-linear systems are often well approximated by linear equations.\\
+           This article considers the case of a single equation with coefficients from the field of real numbers, for which one studies the real numbers, for which one studies the real solutions. All of its content applies to complex solutions and more generally, for linear equations with coefficients and solutions in any field.\\
+           
+           \subsection{One Variable}
+           Frequently the term linear refers implicitly to the case of just one variable.\\
+           In this case, the equation can be put in the form
+           \begin{equation}
+           ax + b = 0
+           \end{equation}    
+           and it has a unique solution
+           \begin{equation}
+           x =  - \frac{x}{a}
+          \end{equation}\\
+          
+         In the general case where $a \neq 0$. In this case, the name unknown is sensibly given to the variable $x$.\\
+         
+         If $a = 0$, there are two cases. Either b equals also 0, and every number is a solution.\\
+         Otherwise $b \neq 0$, and there is no solution. In this latter case, the equation is said to be INCONSISTENT.\\
+         
+         \subsection{Two Variables}
+         In the case of two variables, any linear equation can be put in the form 
+         \begin{equation}
+         ax + by + c = 0,
+         \end{equation} \\
+         where the variables are x and y, and the coefficients are a, b and c.
+         An equivalent equation (that is an equation with exactly the same solutions) is
+         \begin{equation}
+         Ax + By = C
+         \end{equation}\\
+         with $A = a, \quad B = b, \quad and \quad C = -c $\\
+         
+         These equivalent Variants are sometimes given generic names, such as general form or standard form.
+         There are other forms for a linear equation (see below), which can all be transformed in the standard form with simple algebraic manipulations, such as adding the same quantity to both members of the equation, or multiplying both members by the same non-zero constant.\\
+         
+         \subsection{Linear Function(Calculus)}
+         If $b \neq 0$, the equation 
+         \begin{equation}
+         a_x + b_y + c = 0
+         \end{equation}\\
+         is a linear equation in the single variable of y for every value of X. It has therefore a unique solution for y, which is given by
+         \begin{equation}
+         y = -\frac{a}{b_x} - \frac{c}{b}
+         \end{equation}\\
+         This defines a function. The graph of this function is a line with slope $-a/b$ and y-intercept $-c/b$. The functions whose graph is a line are generally called linear functions in the context of calculus. However, in linear algebra, a linear function is a function that maps a sum to the sum of the images of the summands. So, for this definition, the above function is linear only when c = 0, that is when the line passes through the origin. For avoiding confusion, the functions whose graph is an arbitrary line are often called affine functions by Wilson and Tracey (1925).\\
+         
+         \subsection{Geometric Interpretation}
+         \begin{center}
+         	\begin{figure}[!hbt]
+         		\begin{minipage}[c]{0.5\linewidth}
+         			\begin{tikzpicture}[]
+         			%x and y cordinates lines
+         			\draw[thick] (-3.2,0) -- (3.4,0) node[below]{$x$};
+         			\draw[thick] (0,-4.3) -- (0,3.3) node[above left]{$y$};
+         			
+         			%x-axis labels
+         			\foreach \x/\y in {-3,-2,-1,1,2,3}
+         			\draw (\x,0) -- (\x,-0.1) node[below]{$\x$};
+         			
+         			%y-axis labels	
+         			\foreach \y in {-4,-3,-2,-1,1,2,3}
+         			\draw (0,\y) -- (-0.1,\y) node[left]{$\y$};
+         			
+         			%zero label
+         			\node(Z) at (-0.3,-0.4){$0$};
+         			
+         			%vertical line and dot
+         			\fill (1.5,0) circle(1mm);
+         			\draw[thick] (1.5,3.1) -- (1.5,-4.2) node[right]{$x=a$};
+         			
+         			\draw[thick] (1.5,0) -- (2.5,0.9) node[right]{$(a,0)$};
+         			\end{tikzpicture}
+         			\caption{Vertical line of equation \\$x=a$}\hfill
+         		\end{minipage}
+         		\begin{minipage}[c]{0.5\linewidth}
+         			\begin{tikzpicture}
+         			%x and y cordinates lines
+         			\draw[thick] (-3.2,0) -- (3.4,0) node[below]{$x$};
+         			\draw[thick] (0,-4.3) -- (0,3.3) node[above left]{$y$};
+         			
+         			%x-axis labels
+         			\foreach \x/\y in {-3,-2,-1,1,2,3}
+         			\draw (\x,0) -- (\x,-0.1) node[below]{$\x$};
+         			
+         			%y-axis labels	
+         			\foreach \y in {-4,-3,-2,-1,1,2,3}
+         			\draw (0,\y) -- (-0.1,\y) node[left]{$\y$};
+         			
+         			%zero label
+         			\node(Z) at (-0.3,-0.4){$0$};
+         			
+         			%vertical line and dot
+         			\fill (0,-2.5) circle(1mm);
+         			\draw[thick] (-3,-2.5) -- (3,-2.5) node[right]{$y=b$};
+         			
+         			\draw[thick] (0,-2.5) -- (1,-3.5) node[right]{$(0,b)$};
+         			\end{tikzpicture}
+         			\caption{Horizontal line of graph\\ $y=b$}
+         		\end{minipage}
+         	\end{figure}
+         \end{center}
+         
+         Each solution $(x, y)$ of a linear equation
+         \begin{equation}
+         ax + by + c = 0
+         \end{equation}\\
+          may be viewed as the Cartesian coordinates of a point in the Euclidean plane. With this interpretation, all solutions of the equation form a line, provided that a and b are not both zero. Conversely, every line is the set of the all solutions of a linear equation.\\
+          The phrase "Linear Equation" takes its origin in this correspondence between lines and eqation: a linear equation in two variables is an equation whose solutions form a line.\\
+          If $ b \neq 0$, the line is the graph of the function of X that has been defined in the preceding section. $b = 0$, the line is a vertical line (that is a line parallel to the y-axis) of the equation $x = -c/a$, which is not the graph of a function of X.\\
+          Similarly, if $a \neq 0$, the line is the graph of a function of y, and if $a = 0$, one has a horizontal line of equation
+          \begin{equation}
+          y = \frac{-c}{b}
+        \end{equation}           
+          
+         \subsection{Equation of a Line}
+          There are various ways of defining a line. In the following subsections, a linear equation of the line is given in each case.\\
+          
+          \subsection{Slope Intercept Form}
+          A non-vertical line can be defined by its slope m, and its y-intercept $y_o$ (the y coordinate of its intersection with the y-axis). In this case, its linear equation can be written 
+          \begin{equation}
+          y = m_x - y_o
+          \end{equation}
+          If moreover, the line is not horizontal, it can be defined by its slope and its X-intercept $X_o$. In this case, its equation can be written
+          \begin{equation}
+          y = m(x - x_o)
+          \end{equation}
+          or equivalently
+          \begin{equation}
+          y = mx-mx_o.
+          \end{equation}
+          These forms rely on the habit of considering a non vertical line as the graph of function. For a line given by an equation
+          \begin{equation}
+          a_x + b_y + c = 0,
+          \end{equation}
+          these forms can be easily deduced from the relations\\
+          \begin{equation}
+          	\left.\begin{array}{lp{0.2cm}l}
+          		m &=& - \frac{a}{b}\\
+          		x_o &=& - \frac{c}{b}\\
+          		y_o &=& - \frac{c}{b}
+          	\end{array}~~\right\}
+          \end{equation}
+          
+          \subsection{Point Slope Form}
+          A non-vertical line can be defined by its slope m, and the coordinates $x_1, y_1$ of any point of the line. In this case, a linear equation of the line is
+          \begin{equation}
+          y = y_1 + m(x - x_1)
+          \end{equation}
+          or
+          \begin{equation}
+          y = mx + y_1 - mx_1
+          \end{equation}\\
+          This equation can also be written as
+          \begin{equation}
+          y - y_1 = m(x - x_1)
+          \end{equation}
+          for emphasizing that the slope of a line can be computed from the coordinates of any two points.\\
+          
+          \subsection{Intercept Form}
+          A line that is not parallel to an axis and does not pass through the origin cuts the axes in two different points. The intercept values $X_o \quad and \quad Y_o$ of these two points are non-zero, and an equation is of the form 
+          \begin{equation}
+          \frac{x}{x_o} + \frac{y}{y_o} = 1.
+          \end{equation}
+          It easy to verify that the line defined by this equation has $x_o \quad and \quad y_o$ as intercept values.\\
+          
+          \subsection{Two-Points Form}
+          Given two different points $(x_1,y_1) \quad and \quad (x_2, y_2)$, there is exactly one line that passes through them. There are several ways to write a linear equation of this line.\\
+          If $x_1 \neq x_2$, the slope of the line is 
+          \begin{equation}
+          \frac{y_2 - y_1} {x_2 - x_1}
+          \end{equation}\\
+          Thus, a point slope form is 
+          \begin{equation}
+          y - y_1 =\frac{y_2 - y_1} {x_2 - x_1} (x - x_1)
+          \end{equation}
+          By clearing denominators, one gets the equation
+          \begin{equation}
+          (x_2 - x_1) (y - y_1) - (y_2 - y_1) (x - x_1)
+          \end{equation}
+          which is valid also when $x_1 = x_2$ (for verifying this, it suffices to verify that the two given points satisfy the equation).\\
+          This form is not symmetric in the two given points, but a symmetric form can be obtained by regrouping the constant terms.
+          \begin{equation}
+          (y_1 - y_2)x + (x_2 - x_1)y + (x_1 y_1 - x_2 y_1)
+          \end{equation}
+          (exchange the two points changes the sign of the left-hand side of the equation).\\
+          
+         \subsection{Determinant Form}
+          The two-point form of the equation of a line can be expressed simply in terms of a determinant. There are two common ways for that.\\
+          The equation
+          \begin{equation}
+          (x_2 - x_1) (y - y_1) - (y_2 - y_1) (x - x_1) = 0
+          \end{equation}
+          is the result of expanding the determinant of the equation
+          \begin{equation}
+          \begin{bmatrix}
+          x - x_1 & y - y_1\\
+          x_2 - x_1 & y_2 - y_1
+          \end{bmatrix}=0
+          \end{equation}
+           The equation 
+          \begin{equation}
+          (y_1 - y_2)x + (x_2 - x_1)y + (x_1 y_2 - x_2 y_1) = 0 
+          \end{equation}
+          can be obtained by expanding with respect to its first row the determinant in the equation
+          \begin{equation}
+          \begin{bmatrix}
+          x & y & 1\\
+          x_1 & y_1 & 1\\
+          x_2 & y_2 & 1
+          \end{bmatrix}=0
+           \end{equation}
+          Beside being very simple and mnemonic, this form has the advantage of being a special case of the more general equation of a hyperlane passing through the n points in a space of dimension n-1. These equations rely on the condition of linear dependence of points in a projective space.\\
+          
+\subsection{More Than Two Variables}
+A linear equation with more than two variables may always be assumed to have the form 
+\begin{equation}
+ a_1 x_1 + a_2 x_2 + ... + a_n x_n + b = 0.
+ \end{equation}
+The coefficient b, often denoted $a_o$ is called the constant term, sometimes the absolute term. Depending on the context, the term coefficient can be reserved for the $a_i$ with $i > 0$.\\
+When dealing with $n = 3$ variables, it is common to use x, y, and z instead of indexed variables.\\
+ A solution of such an equation is an n-tuples such that substituting each element of the tuple for the corresponding variable transforms the equation into a true equality.
+For an equation to be meaningful, the coefficient of at least one variable must be non-zero. In fact, if every variable has a zero coefficient, then, as mentioned for one variable, the equation is either inconsistent (for $b \neq 0)$ as having no solution, or all n-tuples are solution. \\
+The n-tuples that are solutions of a linear equation in n variables are the Cartesian Coordinates of the points of an (n-1)-dimensional hyperlane in an n-dimensional Euclidean space (0r affice space if the coefficient are complex numbers or belong to any field). In the case of three variables, this hyperlane is a pane.
+          If a lInear equation is given with $aij \neq 0$, then the equation can be solved for $x_j$, yielding 
+          \begin{equation}
+          x_j = -\frac{b}{a_j} - \sum_{i\in\{1,\cdots,n\},i \neq j} \frac{a_i}{a_j} x_i. 					
+          \end{equation}
+          If the coefficients are real numbers, this defines a real-valued function of n real variables.\\
+          
+          
+         \section{Methods of Solving Linear Equations}
+        Solving a linear equation refers to finding the solution of linear equations in one, two, three or more variables. In simple words, a solution of a linear equation means the value or values of the variables involved in the equation (Barneh, Ziegler and Byleon, 2008).\\
+         There are six main methods to solve linear equations. These methods for finding the solution of linear equations are:
+\\        
+      
+      (i) Graphical Method
+\
+
+(ii) Elimination Method
+\
+
+        (iii) Substitution Method
+\ 
+ 
+        (iv) Cross Multiplication Method
+\ 
+ 
+        (v) Matrix Method
+\ 
+ 
+        (vi) Determinants Method\\
+     
+        
+                 
+    \subsection{Graphical Method of Solving Linear Equations}
+        To solve linear equations graphically, first graph both equations in the same coordinate system and check for the intersection point in the graph.\\
+        For example, take two equations as 
+        \begin{equation}
+        2x + 3y = 9
+        \end{equation}
+        and
+        \begin{equation}
+        x - y = 3
+        \end{equation}
+        
+        Now, to plot the graph. Consider $x = \{0, 1, 2, 3, 4,\}$ and solve for y. Once $(x, y)$ is Obtained, put the points on the graph. It should be noted that by having more values of $x \quad and \quad $y will make the graph more accurate.\\
+        
+        Graphical method of solving Linear programming.\\
+        \begin{center}
+        		\begin{tikzpicture}
+        			\draw[thick] (-4.5,0) -- (4.5,0) node[below]{$x$};
+				\draw[thick] (0,-4.5) -- (0,4.5) node[above]{$y$};
+				
+				%x-axis label
+				\foreach \x / \y in {-4/-10,-2/-5,2/5,4/10}
+					\draw[thick] (\x,0) -- (\x,-0.1) node[below]{$\y$};
+				
+				%zero label
+				\node(Z) at (-0.3,-0.4){$0$};
+				
+				%y-axis label
+				\foreach \x / \y in {-4/-10,-2/-5,2/5,4/10}
+					\draw[thick] (0,\x) -- (-0.1,\x) node[left]{$\y$};
+					
+				%2x+3y=9 line
+				\draw[thick] (3.7,-4) -- (0.8, 0.3) -- (-2,4) node[above left]{$2x+3y=9$};
+				%x-y=3 line
+				\draw[thick] (-4,-4) -- (1,0.5) -- (4,3) node[below right]{$x-y=3$};
+				
+				\node[above right](xy) at (.3, 0.85){$x-y$};
+        		\end{tikzpicture}
+        \end{center}
+        
+        
+        
+        
+        
+        Checking for the intersection point of both the lines on the graph, it is mentioned as $(x, y)$. Check the value of that point and that will be the solution of both the given equations. Here, the value of $(x, y) = (3.6, 0.6)$.\\
+        
+       \subsection{Elimination Method of Solving Linear Equations}
+         In the elimination method, any of the coefficient is first equated and eliminated. After elimination, the equations are solved to obtain the other equation.\\
+         Below is an example of solving Linear equations using the elimination method for better understanding.\\
+         
+		\begin{center}
+			\textbf{Example 2.1}
+		\end{center}       
+         Consider the same equation as
+         \begin{equation}
+         2x + 3y = 9
+         \end{equation}
+         and
+         \begin{equation}
+         x - y = 3 
+         \end{equation}
+         Here, if the equation  $(2.34)$ is multiplied by 2, the coefficient of $"x"$ will become the same and can be subtracted. So, multiply $(2.34)$ by 2 and then subtract $(2.33)$ from it.
+         \begin{align*}
+         2x + 3y &= 9\\
+         -2x - 2y &= 6\\
+         \begin{tikzpicture}
+         	\draw (0,0)--(1.5,0);
+         \end{tikzpicture}&
+     	\begin{tikzpicture}
+     		\draw (1.5,0)--(2.6,0);
+     	\end{tikzpicture}\\
+         -5y &= -3 \\  
+         y = \frac{3}{5} \qquad \text{or} \qquad y = 0.6
+         \end{align*}      
+         Now, put the value of $y =0.6$ in equation (2.34).
+         So,
+         \begin{equation}
+         x - 0.6 = 3
+         \end{equation} 
+         Thus, $x = 3.6$.\\ 
+         In this way, the values of $x \quad and \quad y$ are found to be $3.6 \quad and \quad 0.6$.\\   
+         
+         \subsection{Substitution Method of Solving Linear Equations}
+         To solve a linear equation using the substitution method, first, isolate the value of one variable from any of the equations. Then, substitute the value of the isolated variable in the second equation and solve it. Take the same equations again.\\
+         \begin{center}
+         	\textbf{Example 2.2}
+         \end{center}
+         Consider,
+         \begin{equation}
+         2x + 3y
+         \end{equation}
+         and 
+         \begin{equation}
+         x - y = 3
+         \end{equation}
+         Now, consider equation $(2.41)$ and isolate the variable "x".
+         So equation ${2.34}$
+         \begin{equation}
+         x = 3 + y
+         \end{equation}
+         Now, substitute the value of $x$ in equation(2.40). So, equation(2.40) will be
+         \begin{align*}
+         2x + 3y &= 9\\
+         \Rightarrow 2(3 + y) + 3y &= 9\\
+         6 + 2y + 3y &= 9\\
+         6 + 5y &= 9\\
+         5y &= 9 - 6\\
+         5y &= 3\\
+         y = \frac{3}{5} \qquad \text {or} \qquad y = 0.6
+           \end{align*}
+          Now, substitute "y" value in equation (2.41)
+          \begin{align*}
+          x - y = 3
+          \Rightarrow x = 3 + 0.6
+          x = 3.6
+          \end{align*}.\\
+          Thus, $(x, y) = (3.6, 0.6)$.\\
+          
+         \subsection{Cross Multiplication Method of Solving Linear Equations}
+          Linear equations can be easily solved using the cross multiplication method. In this method, the cross multiplication technique is used to simplify the solution. For the cross-multiplication method for solving 2 variable equations, the formula used is:\\
+          \begin{equation}
+          \frac{x}{b_1 c_1 - b_2 c_1} = \frac{y}{ c_1 a_2 - c_2 a_1 } = \frac{1}{ b_2 a_1 - b_1 a_2 }
+          \end{equation}
+          for example; consider the equations
+          \begin{equation}
+          2x + 3y = 9
+          \end{equation}
+          and
+          \begin{equation}
+          x - y = 3
+          \end{equation}
+      Here,\\
+      $a_1 = 2, b_1 = 3, c_1 = -9, a_2 = 1, b_2 = -1, c_2 = -3$\\
+      Now, solve using the aforementioned formula.\\
+      \begin{equation}
+      x = \frac { b_1 c_2 - b_2 c_1 } { b_2 a_1 - b_1 a_2 }
+      \end{equation}\\
+      putting the respective values we get,
+      \begin{align*}
+      x &= \frac{ (3 -3) - (-1 -9) } { (-1 . 2) - (3 . 1) }\\
+      &= \frac{-9 - 9} {-2 - 3}\\
+      &= \frac{18}{5}\\
+      x &= 3.6
+      \end{align*}\\
+      Similarly, solve for y.
+      \begin{equation}
+      y = \frac{ c_1 a_2 - c_2 a_1 }{ b_2 a_1 - b_1 a_2 }
+      \end{equation}
+      putting the values we get,
+      \begin{align*}
+      y = \frac{ (-9 . 1) - (-3 . 2) }{ (-1 . 2) - (3 . 1) }\\
+      = \frac{-9 + 6 }{-2 - 3}\\
+      = \frac {3}{5}\\
+      y = 0.6
+      \end{align*}\\
+      
+\subsection{Matrix Method of Solving Linear Equations}
+      Linear equations can also be given using matrix method. This method is extremely helpful for solving linear equations in two or three variables.\\
+      Consider three equations as:
+      \begin{equation}
+          	\left.\begin{array}{lp{0.2cm}l}
+          		a_1x + a_2y + a_3z &=&d_1\\
+          		b_1x + b_2y + b_3z &=&d_2\\
+          		c_1x + c_2y + c_3z &=&d_3
+          	\end{array}\right\}
+          \end{equation}
+
+      These equations can be written as:
+      \begin{equation*}
+      \begin{bmatrix}
+      a_1x& + a_2x& + a_3z\\
+      b_1x& + b_2x& + b_3z\\
+      c_1x& + c_2x& + c_3z
+      \end{bmatrix}
+      =
+       \begin{bmatrix}
+       d_1\\
+       d_2\\
+       d_3
+         \end{bmatrix}
+        \Rightarrow
+           \begin{bmatrix}
+         a_1&a_2&a_3\\
+         b_1&b_2&b_3\\
+         c_1&c_2&c_3
+         \end{bmatrix}
+         \begin{bmatrix}
+        x\\
+        y\\
+        z
+         \end{bmatrix}
+         =
+         \begin{bmatrix}
+         d_1\\
+         d_2\\
+         d_3
+         \end{bmatrix}
+      \end{equation*}
+      \begin{equation}
+      \Rightarrow AX=B
+      \end{equation}
+      Here, the A matrix, B matrix and X matrix are:
+      \begin{equation}
+      	\left.
+      	A=
+      \begin{bmatrix}
+      a_1&a_2&a_3\\
+      b_1&b_2&b_3\\
+      c_1&c_2&c_3
+      \end{bmatrix}
+      ,X=
+      \begin{bmatrix}
+      x\\
+      y\\
+      z
+      \end{bmatrix}
+      ,B=
+      \begin{bmatrix}
+      d_1\\
+      d_2\\
+      d_3
+      \end{bmatrix}~~~\right\}
+      \end{equation}
+      Now, multiply equation (2.43) by $A^{-1}$ to get:
+      \begin{equation*}
+      A^{-1} AX= A^{-1}B \Rightarrow (A^{-1}A)X= A^{-1}B
+      \end{equation*}
+      \begin{equation*}
+      = IX= A^{-1}B
+      \end{equation*}
+      \begin{equation}
+      \Rightarrow X= A^{-1}B
+      \end{equation} 
+      \newpage
+      \begin{center}
+      	\textbf{EXAMPLE 2.3}
+      \end{center}
+      Solve the following equations by matrix inversion
+      \begin{equation}
+          	\left.\begin{array}{lp{0.2cm}l}
+          		2x + y + 2z&=&0\\
+          		2x - y + z &=&10\\
+          		x + 3y - z &=&5
+          	\end{array}\right\}
+          	\end{equation}
+
+      \begin{center}
+      	\textbf{Solution}
+      \end{center}
+      The given can be written in a matrix form as $AX=D$ and then by obtaining $A^{-1}$ and multiplying it on both sides we can solve the given problem.
+      \begin{equation*}
+      \begin{bmatrix}
+      2&1&2\\
+      2&-1&1\\
+      1&3&-1
+      \end{bmatrix}
+      \begin{bmatrix}
+      x\\
+      y\\
+      z
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+      0\\
+      10\\
+      5\\
+      \end{bmatrix}
+      \end{equation*}
+      $AX= D$, where 
+      \begin{equation*}A=
+      \begin{bmatrix}
+      2&1&2\\
+      2&-1&1\\
+      1&3&-1
+      \end{bmatrix}
+      ,X=
+      \begin{bmatrix}
+      x\\
+      y\\
+      z
+      \end{bmatrix}
+      ,D=
+      \begin{bmatrix}
+      0\\
+      10\\
+      5
+      \end{bmatrix}
+      \end{equation*}
+      \begin{equation*}
+      \Rightarrow A^{-1}(AX)= A^{-1}D
+      \end{equation*}
+      \begin{equation*} 
+      \Rightarrow (A^{-1}A)X= A^{-1}D 
+      \end{equation*}
+      \begin{equation*}
+      \Rightarrow IX=A^{-1}D 
+      \end{equation*}
+      \begin{equation}
+      \Rightarrow X= A^{-1}D
+      \end{equation}
+      Now,
+      \begin{equation}
+      A^{-1}= \frac{AdjA}{|A|}; 
+      \end{equation}
+      \begin{equation*}|A|= 
+      \begin{bmatrix}
+      2&1&2\\
+      2&-1&1\\
+      1&3&-1\\
+      \end{bmatrix}
+      =
+      2(1 - 3) - 1(-2 - 1) + 2(6 + 1)= 13
+      \end{equation*}
+      The matrix of co-factor of /A/ is
+      \begin{equation*}
+      \begin{bmatrix}
+      -2&3&7\\
+      7&-4&-5\\
+      3&2&-4\\
+      \end{bmatrix}
+      \end{equation*}
+      So,
+      \begin{equation*}adj A=
+      \begin{bmatrix}
+      -2&7&3\\
+      3&-4&2\\
+      7&-5&-4\\
+      \end{bmatrix}
+      \end{equation*}
+      $\therefore$  
+      \begin{equation*}
+       A^{-1}= \frac{1}{13}
+      \begin{bmatrix}
+      2&7&3\\
+      3&-4&2\\
+      7&-5&-4
+      \end{bmatrix}
+      \end{equation*}
+      \begin{equation*}
+      \text{From equation (2.47) }
+      x= \frac {1}{13}
+      \begin{bmatrix}
+      -2&7&3\\
+      3&-4&2\\
+      7&-5&-4
+      \end{bmatrix}
+      \begin{bmatrix}
+      0\\
+      10\\
+      5
+      \end{bmatrix}
+      =\frac {1}{13}
+      \begin{bmatrix}
+      0&+70&+15\\
+      0&-40&+10\\
+      0&-50&-20
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+      \frac{85}{13}\\
+      \frac {-30}{13}\\
+      \frac {-70}{13}
+      \end{bmatrix}
+      \end{equation*}
+      \begin{equation*}
+       \therefore
+      \begin{bmatrix}
+      x\\
+      y\\
+      z
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+      \frac{85}{13}\\
+      \frac{-30}{13}\\
+      \frac{-70}{13}
+      \end{bmatrix}
+      \end{equation*}
+      
+      \begin{equation*}
+      \Rightarrow
+      x= \frac {85}{13},
+      y= \frac {-30}{13},
+      z= \frac {-70}{13}
+      \end{equation*}
+      
+      \subsection{Determinant Method of Solving Linear Equations (CRAMER'S RULE)}
+      Determinants method can be used to solve linear equations in two or three variables easily. For two variables and three variables of linear equations, the procedure is as follows.\\
+      For linear equations in two variables: 
+      \begin{equation*}
+      x= \frac {\Delta_1} {\Delta}, \quad y= \quad \frac {\Delta_2} {\Delta} 
+      \end{equation*}
+      or
+      \begin{equation*}
+      x = \frac{ b_1 c_2 - b_2 c_1 }{ b_2 a_1 - b_1 a_2 } \quad and \quad  y = \frac{ c_1 a_2 - c_2 a_1 }{ b_2 a_1 - b_1 a_2 }
+     \end{equation*}
+     Here,
+     \begin{equation*}
+      \Delta_1 =
+      \begin{bmatrix}
+      b_1&c_1\\
+      b_2&c_2
+      \end{bmatrix}
+      ,
+      \Delta_2 =
+      \begin{bmatrix}
+      c_1&a_1\\
+      c_2&a_2
+      \end{bmatrix}
+      \quad and \quad
+      \Delta =
+      \begin{bmatrix}
+      a_1&b_1\\
+      a_2&b_2
+      \end{bmatrix}
+      \end{equation*}
+      For linear equations in three variables
+      \begin{equation*}
+      \Delta =
+      \begin{bmatrix}
+      a_1&b_1&c_1\\
+      a_2&b_2&c_3\\
+      a_3&b_3&c_3
+      \end{bmatrix}
+      ,
+      \Delta_1 
+      \begin{bmatrix}
+      d_1&b_1&c_1\\
+      d_2&b_2&c_2\\
+      d_3&b_3&c_3
+      \end{bmatrix}
+      ,
+      \Delta_2 =
+      \begin{bmatrix}
+      a_1&d_1&c_1\\
+      a_2&d_2&c_2\\
+      a_3&d_3&c_3
+      \end{bmatrix}
+      ,
+      \Delta_3 =
+      \begin{bmatrix}
+      a_1&b_1&d_1\\
+      a_2&b_2&d_2\\
+      a_3&b_3&d_3
+      \end{bmatrix}
+      \end{equation*}\\
+      
+      \subsection{Methods of Solving Linear Equations in One Variable}
+Solving a linear equation with one variable is extremely easy and quick. To solve any two equations having only one variable, bring all the variable terms on one side and the constants on the other. The graphical method can also be used in which the point of intersection of the line with the x-axis will give the solution of the equation.\\
+      For example, consider the equation\\
+      \begin{equation*}
+       2x+4+7= 4x-3+x
+       \end{equation*}
+      Here, combine the $"x"$ terms and bring them on one side.
+      So,
+      \begin{align*}
+      2x+4+7 &= 5x-3\\
+      2x-5x &= -3-4-\\
+      -3x &= -14\\
+      x&= \frac{14}{3}
+      \end{align*}          
+      \subsection{Methods of Solving Linear Equation in Two Variables}
+      To solve a linear equation in two variables, any of the above-mentioned methods can be used. i.e. graphical method, elimination method, substitution method, cross-multiplication method, matrix method and determinants method.\\
+      
+\subsection{Methods of Solving Linear Equations in Three or More Variables}
+      For solving any equation having three or more variables, the graphical method, elimination method and the substitution method is not feasible. For solving a three-variable equation, the cross-multiplication method is the most preferred method. Even matrix (Cramer's rule) is extremely useful for solving equations having three or more variables.\\
+      
+     \chapter{Research Methodology}
+     \section{Gaussian Elimination Method}
+     In Mathematics, Gaussian elimination, also known as row reduction, is an algorithm for solving systems of linear equations. It consists of a sequence of operations performed on the corresponding matrix of coefficients. This method can also be used to compute the rank of a matrix, the determinant of a square matrix, and the inverse of an invertible matrix. The method is named after carl Friedrich Gauss(1777-1855) although some special cases of the method-albeit presented without prrof-were known to Chinese Mathematicians as early as circa 179CE.
+     
+     To perform row reduction on a matrix, one uses a sequence of elementary row operations to modify the matrix until the lower left hand corner of the matrix is filled with zeros, as much as possible. There are three types of elementary row operations:
+     \begin{enumerate}
+     	\item Swapping two rows
+     	\item Multiplying a row by a non-zero number
+     	\item Adding a multiple of one row to another row.
+     \end{enumerate}    
+     For these row operations, we will use the following notations
+     \begin{itemize}
+     	\item $R_i\to R_j$ means: interchange row $i$ and row $j$
+     	\item $aR_i$ means: replace row $i$ with $a$ times row $j$
+     	\item $R_i+aR_j$ means: replace row $i$ with the sum of row $i$ and $a$ times row $j$
+     \end{itemize}
+     Using these operations, a matrix can always be transformed into an upper triangular matrix, and in fact one that is in row echelon form. Once all of the leading coefficients(the leftmost non-zero entry in each row) are 1, and every column containing a leading coefficient has zero elsewhere, the matrix is said to be in reduced echelon form. This final form is unique; in other words, it is independent of the sequence of row operations used. For example, in the following sequence of row operations(where two elementary operations on different rows are done at the first and third steps), the third and the fourth matrices are the ones in row echelon form, and the final matrix is the unique reduced row echelon form.
+     
+     \begin{align*}
+     \begin{bmatrix}1& 3& 1& 9 \\ 1& 1& -1& 1\\ 3& 11& 5& 35 \end{bmatrix}
+     \to
+     \begin{bmatrix} 1& 3& 1& 9 \\ 0& -2& -2& -8\\ 0& 2& 2& 8 \end{bmatrix}
+     \to
+     \begin{bmatrix} 1& 3& 1& 9 \\ 0& -2& -2& -8\\ 0& 0& 0& 0 \end{bmatrix}
+     \to
+     \begin{bmatrix} 1& 0& -2& -3 \\ 0& 1& 1& 4\\ 0& 0& 0& 0 \end{bmatrix}
+     \end{align*}
+     Using row operations to convert a matrix into reduced row echelon form is sometimes called Gauss-Jordan elimination ((Dukkipati, 2010). In this case, the term Gaussian elimination refers to the until it has reached its upper triangle, or (unreduced) row echelon form.
+     \par The basic idea with Gaussian(or Gauss) elimination is to replace the matrix of coefficients with a matrix that is easier to deal with. Ussually the nicer matrix is of \textbf{``upper triangular"} form which allows us to find the solution by substitution.\sps
+     \begin{center}
+     	\textbf{EXAMPLE 3.1}
+     \end{center}   
+     \begin{align}
+     x_1+3x_2-5x_3&=2\\
+     3x_1+11x_2-9x_3&=4\\
+     -x_1+x_2+6x_3&=5
+     \end{align}
+     Which we can abbreviate using an \textbf{augmented matrix} to
+     \[
+     \left[ \begin{array}{c c c |c}
+     \boxed{1}& 3& -5& 2\\
+     3& 11& -9& 4\\
+     -1& 1& 6& 5
+     \end{array} \right]
+     \]
+     We use the boxed element to eliminate any non-zeros below it. This involves the following row operations
+     
+     \[
+     \left[ \begin{array}{c c c |c}
+     1& 3& -5& 2\\
+     3& 11& -9& 4\\
+     -1& 1& 6& 5
+     \end{array} \right]
+     \begin{array}{c} R_2-3R_1\\ R_3+R_1 \end{array}\implies
+     \left[ \begin{array}{c c c |c}
+     \boxed{1}& 3& -5& 2\\
+     0& 2& 6& -2\\
+     0& 4& 1& 7
+     \end{array} \right]
+     \]
+     Also the next is to use $\boxed{2}$ to eliminate the non-zero below it. This requires the final operation
+     
+     \[
+     \left[ \begin{array}{c c c |c}
+     1& 3& -5& 2\\
+     0& 2& 6& -2\\
+     0& 4& 1& 7
+     \end{array} \right]
+     R_3-2R_2 \implies
+     \left[ \begin{array}{c c c |c}
+     1& 3& -5& 2\\
+     0& 2& 6& -2\\
+     0& 0& -11& 11
+     \end{array} \right]
+     \]
+     This is the augmented form for an upper triangular system. Writing the system in extended form we have
+     
+     \begin{align*}
+     x_1+3x_2-5x_3&=2\\
+     2x_2+6x_3&=-2\\
+     -11x_3&=11
+     \end{align*}
+     Which is easy to solve from the bottom up, by \textbf{back substitution}.
+     \\
+     \begin{center}
+     	\textbf{EXAMPLE 3.2}
+     \end{center}
+      Solve the system  
+     \begin{align}
+     x_1+3x_2-5x_3&=2\\
+     2x_2+6x_3&=-2\\
+     -11x_3&=11
+     \end{align}
+     \begin{center}
+     	\textbf{Solution}
+     \end{center}
+     The bottom equation implies that $x_3=-1$. The middle gives us that
+     
+     \begin{align*}
+     2x_2+6x_3&=-2\\
+     2x_2&=-2-6x_3\\
+     2x_2&=-2+6\\
+     2x_2&=4\\
+     \therefore x_2&=2
+     \end{align*}
+     and Finally, from the top equation
+     
+     \begin{align*}
+     x_1+3x_2-5x_3&=2\\
+     x_1&=2-3x_2+5x_3\\
+     x_1&=2-6-5\\
+     x_1&=-9
+     \end{align*}
+     Therefore, the solution to the problem stated at the beginning of this section is
+     
+     \begin{equation*}
+     \begin{bmatrix} x_1\\x_2\\x_3 \end{bmatrix}
+     =
+     \begin{bmatrix} -9\\2\\-1 \end{bmatrix}
+     \end{equation*}
+     \newpage
+     \begin{center}
+     	\textbf{EXAMPLE 3.3}
+     \end{center}
+      Solve the system
+     
+     \begin{align*}
+     x+y+z&=6\\
+     2x-y+z&=3\\
+     x+z&=4
+     \end{align*}
+     \begin{center}
+     	\textbf{Solution}
+     \end{center}
+      First form the augmented matrix 
+     
+     \[
+     \left( \begin{array}{c c c |c}
+     1& 1& 1& 6\\
+     2& -1& 1& 3\\
+     1& 0& 1& 4
+     \end{array} \right)
+     \begin{array}{c} -2R_1+R_2 \\ -1R_1+R_3 \end{array}
+     \implies
+     \left( \begin{array}{c c c c}
+     1& 1& 1& 6\\
+     0& -3& -1& -9\\
+     0& -1& 0& -2
+     \end{array} \right)
+     \]
+     Next, we multiply the second and the third row by (-1), just to get rid of the minus signs. Then switch the second and the third rows
+     
+     \[
+     \left( \begin{array}{c c c c}
+     1& 1& 1& 6\\
+     0& -3& -1& -9\\
+     0& -1& 0& -2
+     \end{array} \right)
+     \begin{array}{c}-1R_1 \\ -1R_3 \end{array}
+     \implies
+     \left( \begin{array}{c c c c}
+     1& 1& 1& 6\\
+     0& 3& 1& 9\\
+     0& 1& 0& 2
+     \end{array} \right)
+     \]
+     Now we have:
+     
+     \[
+     \left( \begin{array}{c c c c}
+     1& 1& 1& 6\\
+     0& 1& 0& 2\\
+     0& 3& 1& 9
+     \end{array} \right)
+     -3R_2 + R_3
+     \implies
+     \left( \begin{array}{c c c c}
+     1& 1& 1& 6\\
+     0& 1& 0& 2\\
+     0& 0& 1& 3
+     \end{array} \right)
+     \]
+     This is the augmented matrix form.\\
+     
+     By back substitution method, we have:  
+     \begin{align*}
+     x+y+z&=6\\
+     y&=2\\
+     z&=3
+     \end{align*}
+     The bottom equation is
+     \begin{equation*}
+      0x+0y+z=3.
+      \end{equation*}
+       So,
+       \begin{equation*}
+        z=3.
+        \end{equation*}
+     The next is
+     \begin{equation*}
+      0x+y+0z=2.
+      \end{equation*}
+      So, 
+      \begin{equation*}
+      y=2
+     \end{equation*}
+     and the first is
+     
+     \begin{align*}
+     x+y+z&=6\\
+     x+2+3&=6\\
+     x+5&=6\\
+     x&=6-5\\
+     x&=1
+     \end{align*}
+     Therefore, the solution to the problem is
+     
+     
+     \begin{equation*}
+     \begin{bmatrix} x\\y\\z \end{bmatrix}
+     =
+     \begin{bmatrix} 1\\2\\3 \end{bmatrix}
+     \end{equation*}
+     
+     \begin{center}
+     	\textbf{Example 3.4}
+     \end{center}
+      Carry out row operations to reduce the matrix   
+     \begin{equation*}
+     \begin{bmatrix} 2& -1& 4\\4& 3& -1\\-6& 8& -2 \end{bmatrix}
+     \end{equation*}
+     into upper triangle form.\\
+     \begin{center}
+     	\textbf{Solution}
+     \end{center}
+      The row operations required to eliminate the non-zeros below the diagonal in the first column are as follows 
+     
+     \[
+     \left[ \begin{array}{c c c}
+     2& -1& 4\\
+     4& 3& -1\\
+     -6& 8& -2
+     \end{array} \right]
+     \begin{array}{c}R_2-2R_1\\ R_3+3R_1 \end{array}
+     \implies
+     \left[ \begin{array}{c c c}
+     2& -1& 4\\
+     0& 5& -9\\
+     0& 5& 10
+     \end{array} \right]
+     \]
+     Next we use $\boxed{5}$ on the diagonal to eliminate the 5 below it
+     
+     \[
+     \left[ \begin{array}{c c c}
+     2& -1& 4\\
+     0& 5& -9\\
+     0& 5& 10
+     \end{array} \right]
+     R_3-R_2 \implies
+     \left[ \begin{array}{c c c}
+     2& -1& 4\\
+     0& 5& -9\\
+     0& 0& 19
+     \end{array} \right]
+     \]
+     
+     \[
+     \left[ \begin{array}{c c c}
+     2& -1& 4\\
+     4& 3& -1\\
+     -6& 8& -2
+     \end{array} \right]
+     =
+     \left[ \begin{array}{c c c}
+     2& -1& 4\\
+     0& 5& -9\\
+     0& 0& 19
+     \end{array} \right]
+     \]
+     which is now in the required upper triangular form.\\
+     \begin{center}
+     	\textbf{Example 3.5}
+     \end{center}
+      Solve the following system by using the Gauss-Jordan elimination method.    
+     \begin{align*}
+     A+B+2C&=1\\
+     2A-B+D&=-2\\
+     A-B-C-2D&=4\\
+     2A-B+2C-D&=0
+     \end{align*}
+     \begin{center}
+     	\textbf{Solution}
+     \end{center}
+      We will perform row operations on the augmented matrix of the system until we obtain a matrix in reduced row echelon form.
+     
+     \[
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     2& -1& 0& 1& -2\\
+     1& -1& -1& -2& 4\\
+     2& -1& 2& -1& 0
+     \end{array} \right]
+     \begin{array}{c}R_2-2R_1 \\ R_3-R_1 \end{array}
+     \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& -3& -4& 1& -4\\
+     0& -2& -3& -2& 3\\
+     2& -1& 2& -1& 0
+     \end{array} \right]
+     \]
+     
+     \[
+     R_4-2R_1 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& -3& -4& 1& -4\\
+     0& -2& -3& -2& 3\\
+     0& -3& -2& -1& -2
+     \end{array} \right]
+     R_4-R_2 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& -3& -4& 1& -4\\
+     0& -2& -3& -2& 3\\
+     0& 0& 2& -2& 2
+     \end{array} \right]
+     \]
+     Let us interchange $R_2$ and $R_3$, we have:
+     
+     \[
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& -2& -3&-2& 3\\
+     0& -3& -4& 1& -4\\
+     0& 0& 2& -2& 2
+     \end{array} \right]
+     -\frac{1}{2}R_2 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& 1& \frac{3}{2}& 1& -\frac{3}{2}\\
+     0& -3& -4& 1& -4\\
+     0& 0& 2& -2& 2
+     \end{array} \right]
+     \]
+     
+     \[
+     R_3+3R_2 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& 1& \frac{3}{2}& 1& -\frac{3}{2}\\
+     0& 0& \frac{1}{2}& 4& -\frac{17}{2}\\
+     0& 0& 2& -2& 2
+     \end{array} \right]
+     2R_3 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& 1& \frac{3}{2}& 1& -\frac{3}{2}\\
+     0& 0& 1& 8& -17\\
+     0& 0& 2& -2& 2
+     \end{array} \right]
+     \]
+     
+     \[
+     R_4-2R_3 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& 1& \frac{3}{2}& 1& -\frac{3}{2}\\
+     0& 0& 1& 8& -17\\
+     0& 0& 0& -18& 36
+     \end{array} \right]
+     -\frac{1}{18}R_4 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& 1& \frac{3}{2}& 1& -\frac{3}{2}\\
+     0& 0& 1& 8& -17\\
+     0& 0& 0& 1& -2
+     \end{array} \right]
+     \]
+     
+     \[
+     R_3-8R_4 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& 1& \frac{3}{2}& 1& -\frac{3}{2}\\
+     0& 0& 1& 0& -1\\
+     0& 0& 0& 1& -2
+     \end{array} \right]
+     R_2-R_4 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& 1& \frac{3}{2}& 0& \frac{1}{2}\\
+     0& 0& 1& 0& -1\\
+     0& 0& 0& 1& -2
+     \end{array} \right]
+     \]
+     
+     \[
+     R_2-\frac{3}{2}R_3 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 1& 2& 0& 1\\
+     0& 1& 0& 0& 2\\
+     0& 0& 1& 0& -1\\
+     0& 0& 0& 1& 2
+     \end{array} \right]
+     \begin{array}{c} R_1-2R_3\\ R_1-R_2 \end{array}
+     \implies
+     \left[ \begin{array}{c c c c| c}
+     1& 0& 0& 0& 1\\
+     0& 1& 0& 0& 2\\
+     0& 0& 1& 0& -1\\
+     0& 0& 0& 1& -2
+     \end{array} \right]
+     \]
+     From this final matrix, we can read the solution of the system. It is
+     
+     \begin{equation*}
+     \begin{bmatrix} A\\B\\C\\D \end{bmatrix}
+     =
+     \begin{bmatrix} 1\\2\\-1\\-2 \end{bmatrix}
+     \end{equation*}
+     
+     \subsection{Partial Pivoting}
+     At each step, the aim in Gaussian elimination is to use an element in the diagonal to eliminate all the non-zeros below. In partial pivoting, we look at all of these elements(the diagonal and the ones below) and swap the rows(if necessary) so that the element on the diagonal is not very much smaller than the other elements.
+     
+     This involves scanning a column from the diagonal down. If the diagonal entry is very smaller than any of the others, we swap rows. Then we proceed with Gaussian elimination in the usual way (Horn and Johnson, 1985).
+     
+     In practice on a computer we swap rows to ensure that the diagonal entry is always the largest possible(in magnitude). For calculations we can carry out by hand it is usually necessary to worry about partial pivoting if a zero crop up in a place which stops Gaussian elimination working.\\
+     Consider these examples\\
+     
+     \begin{center}
+     	\textbf{EXAMPLE 3.6}
+     \end{center}    
+     \begin{equation*}
+     \begin{bmatrix} 1& -3& 2& 1 \\ 2& -6& 1& 4 \\-1& 2& 3& 4\\0& -1& 1& 1 \end{bmatrix}
+     \begin{bmatrix} x_1\\x_2\\x_3\\x_4 \end{bmatrix}
+     =
+     \begin{bmatrix} -4\\1\\12\\0 \end{bmatrix}
+     \end{equation*}
+     
+     \begin{center}
+     	\textbf{Solution}
+     \end{center}
+      The first step is to use the 1 in the top left corner to eliminate all the non-zeros below it in the augmented matrix.
+     
+     \[
+     \left[ \begin{array}{c c c c| c}
+     \boxed{1}& -3& 2& 1& -4\\
+     2& -6& 1& 4& 1\\
+     -1& 2& 3& 4& 1\\
+     0& -1& 1& 1& 0
+     \end{array} \right]
+     \begin{array}{c}R_2-2R_1\\ R_3+R_1 \end{array}
+     \implies
+     \left[ \begin{array}{c c c c| c}
+     1& -3& 2& 1& -4\\
+     0& \boxed{0}& -3& 2& 9\\
+     0& -1& 5& 5& 8\\
+     0& -1& 1& 1& 0
+     \end{array} \right]
+     \]
+     What we would like to do now is to use the boxed element to eliminate all the non-zeros below it. But clearly, this is impossible. We need to apply partial pivoting. We look down the column starting at the diagonal entry and see that two possible candidates for the swap are both equal to -1. Either will do so let us swap the second and fourth rows to give
+     
+     \[
+     \left[ \begin{array}{c c c c| c}
+     1& -3& 2& 1& -4\\
+     0& -1& 1& 1& 0\\
+     0& -1& 5& 5& 8\\
+     0& 0& -3& 2& 9
+     \end{array} \right]
+     \]
+     This was the partial pivoting step. Now we proceed with Gausssian elimination
+     
+     \[
+     \left[ \begin{array}{c c c c| c}
+     1& -3& 2& 1& -4\\
+     0& -1& 1& 1& 0\\
+     0& -1& 5& 5& 8\\
+     0& 0& -3& 2& 9
+     \end{array} \right]
+     R_3-R_2 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& -3& 2& 1& -4\\
+     0& -1& 1& 1& 0\\
+     0& 0& 4& 4& 8\\
+     0& 0& -3& 2& 9
+     \end{array} \right]
+     \]
+     Let us cancel a factor of 4 to make the arithmetic simpler.
+     
+     \[
+     \left[ \begin{array}{c c c c| c}
+     1& -3& 2& 1& -4\\
+     0& -1& 1& 1& 0\\
+     0& 0& 1& 1& 2\\
+     0& 0& -3& 2& 9
+     \end{array} \right]
+     \]
+     The elimination phase is completed by removing the -3 from the pivots.
+     
+     \[
+     \left[ \begin{array}{c c c c| c}
+     1& -3& 2& 1& -4\\
+     0& -1& 1& 1& 0\\
+     0& 0& 1& 1& 2\\
+     0& 0& -3& 2& 9
+     \end{array} \right]
+     R_4+3R_3 \implies
+     \left[ \begin{array}{c c c c| c}
+     1& -3& 2& 1& -4\\
+     0& -1& 1& 1& 0\\
+     0& 0& 1& 1& 2\\
+     0& 0& 0& 5& 15
+     \end{array} \right]
+     \]
+     This system is upper triangular.\\
+     So, by back substitution we have
+     
+     \begin{align*}
+     x_1-3x_2+2x_3+x_4&=-4\\
+     -x_2+x_3+x_4&=0\\
+     x_3+x_4&=2\\
+     5x_4&=15
+     \end{align*}
+     From the bottom up, we have
+     
+     \begin{align*}
+     5x_4&=15\\
+     x_4&=\frac{15}{5}\\
+     x_4&=3\\
+     \\
+     x_3+x_4&=2\\
+     x_3+3&=2\\
+     x_3&=2-3\\
+     x_3&=-1\\
+     \\
+     -x_2+x_3+x_4&=0\\
+     -x_2-1+3&=0\\
+     -x_2+2&=0\\
+     -x_2&=-2\\
+     x_2&=2
+     \end{align*}
+     
+     \begin{align*}
+     x_1-3x_2+2x_3+x_4&=-4\\
+     x_1-3(2)+2(-1)+3&=-4\\
+     x_1-6-2+3&=-4\\
+     x_1-5&=-4\\
+     x_1&=-4+5\\
+     x_1&=1
+     \end{align*}
+     
+     \begin{equation*}
+     \therefore
+     \begin{bmatrix} x_1\\ x_2\\ x_3\\ x_4 \end{bmatrix}
+     =
+     \begin{bmatrix} 1\\ 2\\ -1\\ 3 \end{bmatrix}
+     \end{equation*}
+ 
+     \begin{center}
+     	\textbf{Example 3.7}
+     \end{center}
+      Transform the matrix    
+     \begin{equation*}
+     \begin{bmatrix} 1& -2& 4\\ -3& 6& -11\\ 4& 3& 5 \end{bmatrix}
+     \end{equation*}
+     into upper triangular form using Gaussian elimination(with partial pivoting when necessary).\\
+     \begin{center}
+     	\textbf{Solution}
+     \end{center}
+     
+      The row operations required to eliminate the non-zeros below the diagonal in the first column are     
+     \begin{equation*}
+     \begin{bmatrix} 1& -2& 4\\ -3& 6& -11\\ 4& 3& 5 \end{bmatrix}
+     \begin{array}{c} R_2+3R_1\\R_3-4R_1 \end{array}
+     \implies
+     \begin{bmatrix} 1& -2& 4\\ 0& 0& 1\\ 0& 11& -11 \end{bmatrix}
+     \end{equation*}
+     We are to use the pivoting and swap the second and third rows because there is zero in the secon diagonal.
+     
+     \begin{equation*}
+     \begin{bmatrix} 1& -2& 4\\ 0& 11& -11\\ 0& 0& 1 \end{bmatrix}
+     \end{equation*}
+     which is the required upper triangular form.
+     
+\section{Cholesky Decomposition Method}
+In linear algebra, a matrix decomposition or matrix factorization is a factorization of a matrix into a product of matrices. There are many different matrix decompositions. One of them is Cholesky Decomposition.
+
+The Cholesky Decomposition or factorization is a decomposition of a Hermitian, positive-definite matrix into the product of a lower triangular matrix and its conjugate transpose, which is used for numerical solutions, e.g. Monte Carlo simulations it was discovered by Andr\`{e}-Louis' Cholesky for real matrices. The Cholesky decomposition is roughly twice as efficient as the $LU$ Decomposition for solving systems of linear equations (Dass, 2008).\sps
+
+%\newtheorem{stat}{Statement}
+
+\textbf{Statement}\sps
+The Cholesky decomposition of a Hermitian positive-definite matrix A is a decomposition of the form $[L][L]^T$, where $L$ is a lower triangular matrix with real and positive diagonal entries, and $L^T$ denotes the conjugate transpose of $L$. Every Hermitian positive-definite(and thus also every real-valued symmetric positive-definite matrix) has a unique Cholesky decomposition.\\
+
+The converse holds triviality: If $A$ can be written as $LL^T$ for some invertible $L$, lower triangle or otherwise, then $B$ is Hermitian and positive definite.\\
+
+When $A$ is a real matrix(hence symmetric positive-definite), the factorization may be written as $A=LL^T$, where $L$ is a real lower triangular matrix with positive diagonal entries.
+	
+
+\subsection{Positive-Definite Matrices}
+If the matrix $A$ is Hermitian and positive semi-definite instead of positive-definite, then it still has a decomposition  of the form $A=LL^T$ if the diagonal entries of $L$ are allowed to be zero.\\
+When $A$ has real entries, $L$ has real entries as well, and the factorization may be written as $A=LL^T$.\\
+The Cholesky decomposition is unique when $A$ is positive-definite, there is only one lower triangular matrix $L$ with strictly positive diagonal entries such that $A=LL^T$.
+
+However, the decomposition need not be unique when $A$ is positive semi-definite.
+
+\subsection{LDL Decomposition}
+A closely related variant of the classical Cholesky decomposition is the LDL decomposition, $A=LDL^T$, where $L$ is a lower unit triangular(uni-triangular) matrix and $D$ is a diagonal matrix, that is, the diagonal elements of $L$ are required to be 1 at the cost of introducing an additional matrix $D$ in the decomposition. The main advantage is that the $LDL$ decomposition can be computed and used with essentially the same algorithms, but avoids extracting square roots.
+
+For this reason, the $LDL$ decomposition is often called the square-root free Cholesky decomposition. For real matrices, the factorization has the form $A=LDL^T$ and is often referred to as $LDLT$ decomposition(or $LDL^T$ decomposition or $LDL^1$). It is closely related to the eigen decomposition of real symmetric matrices, $A=Q\Lambda Q^T$.
+
+The $LDL$ decomposition is related to the classical Cholesky decomposition of the form $LL^T$ as follows:
+
+\begin{equation*}
+A=LDL^T=LD^{\frac{1}{2}}(D^{\frac{1}{2}})^TL^T=LD^{\frac{1}{2}}(LD^{\frac{1}{2}})^T
+\end{equation*}
+Conversely, given the classical Cholesky decomposition $A=CC^T$ of a positive-definite matrix, if $S$ is a diagonal matrix that contains the main diagonal of $C$, then $A$ can be decomposed as $LDL^T$ where
+
+\begin{align}
+L&=CS^{-1} \tag{this rescales each columm to make diagonal elements 1}\\
+D&=S^2 \notag
+\end{align}
+If $A$ is positive definite, then the diagonal elements of $D$ are all positive. For positive semi-definite $A$, an $LDL^T$ decomposition exist where the number of non-zero elements on the diagonal $D$ is exactly the rank of $A$. Some indefinite matrices for which no Cholesky decomposition exists have an $LDL$ decomposition with negative entries in $D$: it suffices that the first $n-1$ leading principal minors of $A$ are non-singular.\\
+
+\begin{center}
+	\textbf{EXAMPLE 3.8}
+\end{center}
+ Cholesky's decomposition method is faster than the $LU$ decomposition. There is no need for pivoting. If the decomposition fails, the matrix is not positive definite.\\
+Consider the system of linear equations:
+
+\begin{eqnarray}
+a_{11}x_1+a_{12}x_2+a_{13}x_3&=&b_1 \nonumber \\
+a_{21}x_1+a_{22}x_2+a_{33}x_3&=&b_2 \nonumber \\
+a_{31}x_1+a_{32}x_2+a_{33}x_3&=&b_3 \label{eqn1}
+\end{eqnarray}
+The above system can be written as
+
+\begin{eqnarray}
+Ax=b \label{eqn2}
+\end{eqnarray}
+Where
+
+\begin{equation*}
+A=
+\begin{bmatrix} 
+a_{11}& a_{12}& a_{13}\\
+a_{21}& a_{22}& a_{33}\\ 
+a_{31}& a_{32}& a_{33} 
+\end{bmatrix}
+,\ x=
+\begin{bmatrix} x_1\\ x_2\\ x_3 \end{bmatrix}
+,\ b=
+\begin{bmatrix} b_1\\ b_2\\ b_3 \end{bmatrix}
+\end{equation*}
+Let 
+\begin{equation}
+A=LU \label{eqn3}
+\end{equation}
+
+\begin{equation*}
+A=
+\begin{bmatrix} 
+1& 0& 0\\
+l_{21}& 1& 0\\ 
+l_{31}& l_{32}& 1 
+\end{bmatrix}
+\text{and} \ U=
+\begin{bmatrix}
+u_{11}& u_{12}& u_{13}\\
+0& u_{22}& u_{23}\\
+0& 0& u_{33}
+\end{bmatrix}
+\end{equation*}
+equation \eqref{eqn1} can be written as 
+
+\begin{eqnarray} 
+LUX=b \label{eqn4}
+\end{eqnarray}
+If we write
+
+\begin{equation}
+UX=V
+\end{equation}
+Equation \eqref{eqn4} becomes
+
+\begin{eqnarray}
+LV=b \label{eqn6}
+\end{eqnarray}
+Equation \eqref{eqn6} is equivalent to the system
+
+\begin{eqnarray}
+v_1&=&b_1 \nonumber\\
+l_{21}v_1+v_2&=&b_2 \nonumber\\
+l_{31}v_1+l_{32}v_2+v_3&=&b_3
+\end{eqnarray} 
+The above system can be solved to find the values of $v_1$, $v_2$, and $v_3$ which gives us matrix $V$.
+$$UX=V$$
+then becomes
+
+\begin{eqnarray}
+u_{11}x_1+u_{12}x_2+u_{13}x_3&=&v_1 \nonumber\\
+u_{22}x_2+u_{23}x_3=v_2 \nonumber\\
+u_{33}x_3=v_3
+\end{eqnarray}
+which can be solved for $x_3$, $x_2$, and $x_1$ by the backward substitution process. In order to compute the matrices $L$ and $U$, we write equation \eqref{eqn3} as
+
+\begin{eqnarray}
+\begin{bmatrix} 
+1& 0& 0\\
+l_{21}& 1& 0\\ 
+l_{31}& l_{32}& 1 
+\end{bmatrix}
+\begin{bmatrix}
+u_{11}& u_{12}& u_{13}\\
+0& u_{22}& u_{23}\\
+0& 0& u_{33}
+\end{bmatrix}
+=
+\begin{bmatrix} 
+a_{11}& a_{12}& a_{13}\\
+a_{21}& a_{22}& a_{33}\\ 
+a_{31}& a_{32}& a_{33} 
+\end{bmatrix}
+\end{eqnarray}
+Multiplying the matrices on the left and equating the corresponding elements of both sides, we obatin
+
+\begin{eqnarray}
+u_{11}=a_{11},&  u_{12}=a_{12},&  u_{13}=a_{13}
+\end{eqnarray}
+
+\begin{equation}
+\left.
+\begin{array}{c}
+l_{21}u_{11}=a_{21}\implies l_{21}=\frac{a_{21}}{a_{11}}\\
+l_{31}u_{11}= a_{31}\implies l_{31}=\frac{a_{31}}{a_{11}}
+\end{array}
+\right\}
+\end{equation}
+
+\begin{equation}
+\left.
+\begin{array}{c}
+l_{21}u_{12}+u_{22}=a_{22}\implies u_{22}=a_{22}-\frac{a_{21}}{a_{11}}a_{12}\\
+l_{21}u_{13}+u_{23}= a_{23}\implies u_{23}=a_{23}-\frac{a_{21}}{a_{11}}a_{13}
+\end{array}
+\right\}
+\end{equation}
+
+\begin{equation}
+l_{31}u_{12}+l_{32}u_{22}=a_{32}\implies l_{32}=\frac{1}{u_{22}}\left[ a_{32}-\frac{a_{31}}{a_{11}}a_{12} \right]
+\end{equation}
+and 
+\begin{equation}
+l_{31}u_{13}+l_{32}u_{23}+u_{33}=a_{33} \label{eqn14}
+\end{equation}
+The value of $u_{33}$ can be computed from \eqref{eqn14}.\\
+To obtain the elements of $L$ and $U$, we first find the first row of $U$ and the first column of $L$. Then, we determine the second of row of $U$ and the second column of $L$. Finally, we calculate the third row of $U$.\\
+
+\begin{center}
+	\textbf{EXAMPLE 3.9}
+\end{center}
+Solve the following equations by Cholesky's decomposition method.
+\begin{align*}
+2x+y+4z&=12\\
+8x-3y+2z&=20\\
+4x+11y-z&=33
+\end{align*}
+\begin{center}
+	\textbf{Solution}
+\end{center}
+We have
+\begin{equation*}
+\begin{bmatrix}
+2& 1& 4\\
+8& -3& 2\\
+4& 11& -1
+\end{bmatrix}
+\text{,}\ X=
+\begin{bmatrix}
+x\\y\\z
+\end{bmatrix}
+\text{,}\  B=
+\begin{bmatrix}
+12\\20\\33
+\end{bmatrix}
+\end{equation*}
+Let
+
+\begin{eqnarray*}
+\begin{bmatrix} 
+	1& 0& 0\\
+	l_{21}& 1& 0\\ 
+	l_{31}& l_{32}& 1 
+\end{bmatrix}
+\begin{bmatrix}
+	u_{11}& u_{12}& u_{13}\\
+	0& u_{22}& u_{23}\\
+	0& 0& u_{33}
+\end{bmatrix}
+=
+\begin{bmatrix} 
+	2& 1& 4\\
+	8& -3& 2\\ 
+	4& 11& -1 
+\end{bmatrix}
+\end{eqnarray*}
+multiplying and equating we get
+
+\begin{eqnarray*}
+l\times u_{11}\implies \boxed{u_{11}}&=2\\ 
+l\times u_{12}\implies \boxed{u_{12}}&=1\\
+l\times u_{13}\implies \boxed{u_{13}}&=4
+\end{eqnarray*}
+
+\begin{eqnarray*}
+l_{21}\times u_{11}=8\implies \boxed{l_{21}}=\frac{8}{u_{11}}=\frac{8}{2}=4\\ 
+l_{21}\times u_{12}+u_{22}=-3\implies \boxed{u_{22}}=-3-l_{21}\times u_{12}=-3-4\times 1=-7\\
+l_{21}\times u_{13}+u_{23}=2\implies \boxed{u_{23}}=-2-l_{21}\times u_{13}=2-4\times 4=-14\\
+\end{eqnarray*}
+
+\begin{align*}
+l_{31}\times u_{11}=4\implies \boxed{l_{31}}\\
+&=\frac{4}{u_{11}}\\
+&=\frac{4}{2}\\
+&=2\\
+l_{31}\times u_{12}+l_{32}\times u_{22}=11\implies \boxed{l_{32}}\\
+&=\frac{11- l_{32} \times u_{12}}{u_{22}}\\
+&=\frac{11-2 \times 1}{-7}\\
+&=-\frac{9}{7}\\
+l_{31}\times u_{13}+l_{32}\times u_{23}+l\times u_{33}=-1\implies \boxed{u_{33}}\\
+&=-1-l_{31}\times u_{13}-l_{32}\times u_{23}\\
+&=-1-2\times 4-\left(-\frac{9}{7}(-14)\right)\\
+&=-27
+\end{align*}
+We get
+
+\begin{equation*}
+A=
+\begin{bmatrix} 
+1& 0& 0\\
+4& 1& 0\\
+2& -\frac{9}{7}& 1
+\end{bmatrix}
+\begin{bmatrix}
+2& 1& 4\\
+0& -7& -14\\
+0& 0& -27
+\end{bmatrix}
+\end{equation*}
+and the given system can be written as:
+
+\begin{equation*}
+\begin{bmatrix} 
+1& 0& 0\\
+4& 1& 0\\
+2& -\frac{9}{7}& 1
+\end{bmatrix}
+\begin{bmatrix}
+2& 1& 4\\
+0& -7& -14\\
+0& 0& -27
+\end{bmatrix}
+\begin{bmatrix}
+x\\ y\\ z
+\end{bmatrix}
+=
+\begin{bmatrix}
+12\\ 20\\ 33
+\end{bmatrix}
+\end{equation*}
+writing: $LV=B$, we get
+
+\begin{equation*}
+A=
+\begin{bmatrix} 
+1& 0& 0\\
+4& 1& 0\\
+2& -\frac{9}{7}& 1
+\end{bmatrix}
+\begin{bmatrix}
+v_1\\ v_2\\ v_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+12\\ 20\\ 33
+\end{bmatrix}
+\end{equation*}
+which gives:
+
+\begin{eqnarray*}
+v_1=12 \implies \boxed{v_2}\\
+4v_1+v_2=20\implies \boxed{v_2} = 20-4\times 12=-28\\
+2v_1-\frac{9}{7}v_2+v_3=33\implies\boxed{v_3}=33+\frac{9}{7}(-28)-2\times 12=-27
+\end{eqnarray*}
+The solution to the original system is given by: $$UX =V$$
+
+\begin{equation*}
+\begin{bmatrix}
+2& 1& 4\\
+0& -7& -14\\
+0& 0& -27
+\end{bmatrix}
+\begin{bmatrix}
+x\\ y\\ z
+\end{bmatrix}
+=
+\begin{bmatrix}
+12\\ -28\\ -27
+\end{bmatrix}
+\end{equation*}
+
+\begin{align*}
+2x+y+4z&=12\\
+-7y-14z&=-28\\
+-27z&=-27\\
+\text{from the buttom up}\\
+z&=1\\
+-7y&=-28+14(1)\\
+-7y&=-14\\
+y&=2\\
+2x+y+4z&=12\\
+2x+2+4(1)&=12\\
+2x+6&=12\\
+2x&=12-6\\
+2x&=6\\
+x&=3\\
+x=3, y=2, \text{and}\ z=1
+\end{align*}
+
+\begin{center}
+	\textbf{Example 3.10}
+\end{center}
+Solve the system of equation using Cholesky's factorization
+\begin{align*}
+x_1+x_2+x_3-x_4&=2\\
+x_1-x_2-x_3+2x_4&=0\\
+4x_1+4x_2+x_3+x_4&=11\\
+2x_1+x_2+2x_3-2x_4&=2
+\end{align*}
+
+\begin{center}
+	\textbf{Solution}
+\end{center}
+ The set of the equations can be written in the matrix form $[A][x]=[b]$
+\begin{equation*}
+\begin{bmatrix}
+1& 1& 1& -1\\
+1& -1& -1& 2\\
+4& 4& 1& 1\\
+2& 1& 2& -2
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\ x_2\\ x_3\\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+2\\ 0\\ 11\\ 2
+\end{bmatrix}
+\end{equation*}
+Let us decompose $[A]$ in the form $$[A]=[L][U]$$
+where
+
+\begin{equation*}
+[L]=
+\begin{bmatrix}
+1& 0& 0& 0\\
+l_{21}& 1& 0& 0\\
+l_{31}& l_{32}& 1& 0\\
+l_{41}& l_{42}& l_{43}& 1
+\end{bmatrix}
+\text{and}\ [U]=
+\begin{bmatrix}
+u_{11}& u_{12}& u_{13}& u_{14}\\
+0& u_{22}& u_{23}& u_{24}\\
+0& 0& u_{33}& u_{34}\\
+0& 0& 0& u_{44}
+\end{bmatrix}
+\end{equation*}
+The product of $[L][U]$ gives
+
+\begin{equation*}
+[L][U]=
+\begin{bmatrix}
+u_{11}& u_{12}& u_{13}& u_{14}\\
+l_{21}u_{11}& l_{21}u_{12}+u_{22}& l_{21}u_{13}+u_{23}& l_{21}u_{14}+u_{24}\\
+l_{31}u_{11}& l_{31}u_{12}+l_{32}u_{22}& l_{31}u_{13}+l_{32}u_{23}+u_{33}& l_{31}u_{14}+l_{32}u_{24}+u_{34}\\
+l_{41}u_{11}& l_{41}u_{12}+l_{42}u_{22}& l_{41}u_{13}+l_{42}u_{23}+l_{43}u_{33}& l_{41}u_{14}+l_{42}u_{24}+l_{43}u_{34}+u_{44}
+\end{bmatrix}
+\end{equation*}
+Equating the elements of this matrix to the $[A]$ matrix yields the following equations
+
+\begin{equation*}
+\begin{bmatrix}
+u_{11}=1& l_{21}u_{11}=1& l_{31}u_{11}=4& l_{41}u_{11}=2\\
+u_{12}=1& l_{21}u_{12}+u_{22}=-1& l_{31}u_{12}+l_{32}u_{22}=4& l_{41}u_{12}+l_{42}u_{22}=1\\
+u_{13}=1& l_{21}u_{13}+u_{23}=-1& l_{31}u_{13}+l_{32}u_{23}+u_{33}=1& l_{41}u_{13}+l_{42}u_{23}+l_{23}u_{33}=2\\
+u_{14}=-1& l_{21}u_{14}+u_{24}=2& l_{31}u_{14}+l_{32}u_{24}+u_{34}=1& l_{41}u_{14}+l_{42}u_{24}+l_{43}u_{34}+u_{44}=-2
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+\begin{bmatrix}
+u_{11}& u_{12}& u_{13}\\
+l_{21}u_{11}& l_{21}u_{12}+u_{22}& l_{21}u_{13}+u_{23}\\
+l_{23}u_{11}& l_{31}u_{12}+l_{32}u_{22}& l_{31}u_{13}+l_{32}u_{23}+u_{33}
+\end{bmatrix}
+=
+\begin{bmatrix}
+2& -6& 8\\
+5& 4& -3\\
+3& 1& 2
+\end{bmatrix}
+\end{equation*}
+
+\begin{align*}
+u_{11}=2,\ u_{12}=-6,\ u_{13}=8\\
+l_{21}&=\frac{5}{u_{11}}=2.5\\
+l_{31}&=\frac{3}{u_{11}}=1.5\\
+u_{22}&=4-l_{21}u_{22}=19\\
+u_{23}&=-3-l_{21}u_{13}=-23\\
+l_{32}&=\frac{1-l_{31}u_{12}}{u_{22}}=\frac{10}{19}\\
+l_{33}&=2-l_{31}u_{13}-l_{32}u_{23}=\frac{40}{19}
+\end{align*}
+
+\begin{equation*}
+L=
+\begin{bmatrix}
+1& 0& 0\\
+2.5& 1& 0\\
+1.5& \frac{10}{19}& 1
+\end{bmatrix}
+\text{,}\ U=
+\begin{bmatrix}
+2& -6& 2\\
+0& 19& -23\\
+0& 0& \frac{40}{19}
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+LV=B\implies
+\begin{bmatrix}
+1& 0& 0\\
+2.5& 1& 0\\
+1.5& \frac{10}{19}& 1
+\end{bmatrix}
+\begin{bmatrix}
+v_1\\ v_2\\ v_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+24\\ 2\\ 16
+\end{bmatrix}
+\end{equation*}
+
+\begin{align*}
+\implies v_1&=24\\
+v_2&=2-2.5\times 24=-58\\
+v_3&=16-1.5\times 24-\frac{10}{9}(-58)=\frac{200}{19}
+\end{align*}
+
+\begin{equation*}
+UX=V\implies
+\begin{bmatrix}
+2& -6& 8\\
+0& 19& -23\\
+0& 0& \frac{40}{19}
+\end{bmatrix}
+\begin{bmatrix}
+x\\ y\\ z
+\end{bmatrix}
+=
+\begin{bmatrix}
+24\\ -58\\ \frac{200}{19}
+\end{bmatrix}
+\end{equation*}
+
+\begin{align*}
+2x-6y+8z&=24\\
+19y-23z&=-58\\
+\frac{40}{19}z&=\frac{200}{19}
+\end{align*}
+from the bottom up
+
+\begin{align*}
+\frac{40}{19}z&=\frac{200}{19}\\
+z&=\frac{200}{19}\times \frac{19}{40}\\
+z&=5\\
+19(y)-23(5)&=-58\\
+19y-115&=-58\\
+19y&=-58+115\\
+19y&=57\\
+y&=\frac{57}{19}=3\\
+2x-6y+8z&=24\\
+\end{align*}
+
+\begin{align*}
+2x-6(3)+8(5)&=24\\
+2x-18+40&=24\\
+2x+22&=24\\
+2x&=24-22\\
+2x&=2\\
+x&=1\\
+\therefore x=1,\ y=3,\ \text{and}\ z=5
+\end{align*}
+
+        
+      \chapter{Modeling and Simulation }  
+      \section{Practical Comparison of Gaussian Elimination and Cholesky Decomposition Methods}\
+ Both Gaussian elimination and Cholesky decomposition methods will be  used in solving same problems in this chapter, by following the steps or algorithms discussed in the previous chapters of this project work. Every Mathematics related problems can be approached in many different ways, i.e. with the use of different methods. However, the direct methods for solving linear system of equations.\\
+      
+      \begin{center}
+      	\textbf{EXAMPLE 4.1}
+      \end{center}
+      Solve the system of equations below:
+      \begin{align*}
+      16x_1 + 16x_2 - 4x_3 - 24x_4 &= 0\\
+      16x_1 + 32x_2 - 12x_3 - 24x_4 &= 16\\
+      -4x_1 - 12x_2 + 30x_3 + x_4 &= -63\\
+      -24x_1 - 24x_2 + x_3 + 46x_4 &= 20\\
+      \end{align*}
+      
+      \begin{center}
+      	\textbf{Solution}
+      \end{center}
+      The equations above can be written as:\\
+      \begin{equation*}
+      \begin{pmatrix}
+      16 & 16 & -4 & -24\\
+      16 & 32 & -12 & -24\\
+      -4 & -12 & 30 & 1\\
+      -24 & -24 & 1 & 46
+      \end{pmatrix}
+      \begin{pmatrix}
+      x_1\\
+      x_2\\
+      x_3\\
+      x_4
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+      0\\
+      16\\
+      -63\\
+      20
+      \end{pmatrix}
+      \end{equation*}\\
+      which is of the form $Ax=b$\\
+      where  
+       \begin{equation*}A =
+      \begin{pmatrix}
+      16 & 16 & -4 & -24\\
+      16 & 32 & -12 & -24\\
+      -4 & -12 & 30 & 1\\
+      -24 & -24 & 1 & 46
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+      a_{11} & a_{12} & a_{13} & a_{14}\\
+      a_{21} & a_{22} & a_{23} & a_{24}\\
+      a_{31} & a_{32} & a_{33} & a_{34}\\
+      a_{41} & a_{42} & a_{43} & a_{44}
+      \end{pmatrix}
+      \end{equation*}\\
+      Here, A is a symmetric matrix.\\
+      
+      (1) Using the Cholesky decomposition method\\
+      \begin{equation*}
+      \begin{pmatrix}
+      16 & 16 & -4 & -24\\
+      16 & 32 & -12 & -24\\
+      -4 & -12 & 30 & 1\\
+      -24 & -24 & 1 & 46
+      \end{pmatrix}
+      =
+     \begin{pmatrix}
+     l_{11} & 0 & 0 & 0\\
+     l_{21} & l_{22} & 0 & 0\\
+     l_{31} & l_{32} & l_{33} & 0\\
+     l_{41} & l_{42} & l_{43} & l_{44}
+     \end{pmatrix}
+     \begin{pmatrix}
+     l_{11} & l_{21} & l_{31} & l_{41}\\
+     0 & l_{22} & l_{32} & l_{42}\\
+     0 & 0 & l_{33} & l_{43}\\
+     0 & 0 & 0 & l_{44}
+     \end{pmatrix}
+     \end{equation*}\\
+     Hence,\\
+     
+     $l^2_{11} = a^2_{11} = 16 \Rightarrow l_{11} = 4;$\\
+     $l_{11}l_{21} = a_{12} = 16 \Rightarrow l_{21} = 4;$\\
+     $l_{11}l_{31} = a_{13} = -4 \Rightarrow l_{31} = -1;$\\
+     $l_{11}l_{41} = a_{14} = -24 \Rightarrow l_{41} = -6;$\\
+     $l^2_{21} + l^2_{22} = a_{22} = 32 \Rightarrow l_{22} = 4;$\\
+     $l_{21}l_{31} + l_{22}l_{32} = a_{23} = -12 \Rightarrow l_{32} = -2;$\\   
+     $l_{21}l_{41} + l_{22}l_{42} = a_{24} = -24 \Rightarrow l_{42} = 0;$\\
+     $l^2_{31} + l^2_{32} + l^2_{33} = a_{33} = 30 \Rightarrow l_{33} = 5;$\\
+     $l_{31}l_{41} + l_{32}l_{42} + l_{33}l_{43} = a_{34} = 1 \Rightarrow l_{43} = -1;$
+     $l^2_{41} + l^2_{42} + l^2_{43} + l^2_{44} = a_{44} = 46 \Rightarrow l_{44} = 3;$\\
+     $l^2_{41} + l^2_{42} + l^2_{43} + l^2_{44} = a_{44} = 46 \Rightarrow l_{44} = 3;$\\
+    \begin{equation*}L =
+    \begin{pmatrix}
+    4 & 0 & 0 & 0\\
+    4 & 4 & 0 & 0\\
+    -1 & -2 & 5 & 0\\
+    -6 & 0 & -1 & 3
+    \end{pmatrix}
+    \end{equation*}\\
+    
+    So,
+    \begin{equation*}
+    \begin{pmatrix}
+    4 & 0 & 0 & 0\\
+    4 & 4 & 0 & 0\\
+    -1 & -2 & 5 & 0\\
+    -6 & 0 & -1 & 3
+    \end{pmatrix}
+    \begin{pmatrix}
+    4 & 4 & -1 & -6\\
+    0 & 4 & -2 & 0\\
+    0 & 0 & 5 & -1\\
+    0 & 0 & 0 & 3
+    \end{pmatrix}
+    \end{equation*}\\
+    Now, $Ax = b$\\
+    $\Rightarrow$ $LL^Tx = b$\\
+    $\Rightarrow$ $Ly = b$ \quad where, \quad $L^T x = y$
+    \begin{equation*} b =
+    \begin{pmatrix}
+    0\\
+    16\\
+    -63\\
+    20
+    \end{pmatrix}
+    ,X=
+    \begin{pmatrix}
+    x_1\\
+    x_2\\
+    x_3\\
+    x_4
+    \end{pmatrix}
+    and \quad y=
+    \begin{pmatrix}
+    y_1\\
+    y_2\\
+    y_3\\
+    y_4
+    \end{pmatrix}
+\end{equation*}\\
+$L_y = b$ implies\\
+\begin{equation*}
+\begin{pmatrix}
+4 & 0 & 0 & 0\\
+4 & 4 & 0 & 0\\
+-1 & -2 & 5 & 0\\
+-6 & 0 & -1 & 3
+\end{pmatrix}
+\begin{pmatrix}
+	y_1\\
+	y_2\\
+	y_3\\
+	y_4
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+16\\
+-63\\
+20
+\end{pmatrix}
+\end{equation*}
+Solving we get, $y_1 = 0, \quad y_2 = 4, \quad y_3 = -11 \quad and \quad y_4 = 3.$
+\begin{equation*} y =
+\begin{pmatrix}
+0\\
+4\\
+-11\\
+3
+\end{pmatrix}
+\end{equation*}
+$L^Tx = y$ implies,
+ \begin{equation*}
+ \begin{pmatrix}
+ 4 & 4 & -1 & -6\\
+ 0 & 4 & -2 & 0\\
+ 0 & 0 & 5 & -1\\
+ 0 & 0 & 0 & 3
+ \end{pmatrix}
+ \begin{pmatrix}
+ x_1\\
+ x_2\\
+ x_3\\
+ x_4
+ \end{pmatrix}
+ =    
+ \begin{pmatrix}
+ 0\\
+ 4\\
+ -11\\
+ 3
+ \end{pmatrix}
+\end{equation*} 
+Solving we get, $x_4 = 1, \quad x_3 = -2, \quad x_2 = 0 \quad and \quad x_1 = 1.$
+ \begin{equation*} x =
+ \begin{pmatrix}
+ 1\\
+ 0\\
+ -2\\
+ 1
+ \end{pmatrix}
+ \end{equation*}\\
+ 
+
+ Using the Gaussian elimination method,\spn{0.6}
+$\dsp
+\left(
+\begin{array}{cccccc}
+16 & 16 & -4 & -24 & \bp & 0\\
+16 & 32 & -12 & -24 & \bp & 16\\
+-4 & -12 & 30 & 1 & \bp & -63\\
+-24 & -24 & 1 & 46 &\bp & 20 \\
+\end{array}
+\right)
+$\spn{0.8}
+%%%%%
+$\dsp
+\begin{array}{clr}
+R'_1 =& \frac{R_1}{16} &\implies \sps
+R'_2 =& R_2 - R_1 &\implies \sps
+R'_3 =& 4R_3 + R_1 &\implies \sps
+R'_4 =& 2R_4 + 3R_1 &\implies \sps
+\end{array}
+\left(
+\begin{array}{cccccc}
+1 & 1 & -\frac{1}{4} & - \frac{3}{2} & \bp & 0\\
+0 & 16 & -8 & 0 & \bp & 16\\
+0 & -32 & 116 & -20 & \bp & -252\\
+0 & 0 & -10 & 20 & \bp & 40\\
+\end{array}
+\right)
+$\spn{0.7}
+%%%%%
+$\dsp
+\begin{array}{clr}
+R'_2 =& \frac{R_2}{8} & \sps
+R'_3 =& \frac{R_3}{4} &\implies \sps
+R'_4 =& \frac{R_4}{10} & \sps
+\end{array}
+\left(
+\begin{array}{cccccc}
+1 & 1 & -\frac{1}{4} & - \frac{3}{2} & \bp & 0\\
+0 & 2 & -1 & 0 & \bp & 2 \\
+0 & -8 & 29 & -5 & \bp & -63 \\
+0 & 0 & -1 & 2 & \bp & 4
+\end{array}
+\right)
+$\spn{0.7}
+%%%%%
+$\dsp
+\begin{array}{clr}
+R'_3 =& R_3 + R_4 &\implies \sps
+&&\\
+&&\\
+\end{array}
+\left(
+\begin{array}{cccccc}
+1 & 1 & -\frac{1}{4} & -\frac{3}{4} & \bp & 0\\
+0 & 2 & -1 & 0 & \bp & 2 \\
+0 & 0 & 25 & -5 & \bp & -55 \\
+0 & 0 & -1 & 2 & \bp & 4 \\
+\end{array}
+\right)
+$\spn{0.7}
+%%%%%
+$\dsp
+\begin{array}{clr}
+R'_3 =& \frac{R_3}{5} &\implies \sps
+&&\\
+&&\\
+\end{array}
+\left(
+\begin{array}{cccccc}
+1 & 1 & -\frac{1}{4} & -\frac{3}{4} & \bp & 0\\
+0 & 2 & -1 & 0 & \bp & 2 \\
+0 & 0 & 5 & -1 & \bp & -11 \\
+0 & 0 & -1 & 2 & \bp & 4 \\
+\end{array}
+\right)
+$\spn{0.7}
+%%%%%
+$\dsp
+\begin{array}{clr}
+R'_4 =& 5R_4 + R_3 &\implies \sps
+&&\\
+&&\\
+\end{array}
+\left(
+\begin{array}{cccccc}
+1 & 1 & -\frac{1}{4} & -\frac{3}{4} & \bp & 0\\
+0 & 2 & -1 & 0 & \bp & 2 \\
+0 & 0 & 5 & -1 & \bp & -11 \\
+0 & 0 & 0 & 9 & \bp & 9 \\
+\end{array}
+\right)
+$\spn{0.5}
+This implies:
+\begin{enumerate}
+	\item[(i)] $\dsp 9x_4 = 9 \implies x_4 = 1$
+	
+	\item[(ii)] $\dsp
+	5x_3 - x_4 = -11\\
+	5x_3 - 1 = -11\\
+	5x_3 = -11 + 1\\
+	x_3 = -\frac{10}{5} = -2
+	$
+	
+	\item[(iii)] $\dsp
+	2x_2 - x_3 = 2\\
+	2x_2 - (-2) = 2\\
+	2x_2 + 2 = 2 \\
+	2x_2 = 2-2=0\\
+	x_2 = \frac{0}{2} = 0
+	$
+	
+	\item[(iv)] $\dsp
+	x_1  + x_2 - \frac{x_3}{4} - \frac{3x_4}{2} = 0\sps
+	x_1 + \frac{2}{4} - \frac{3}{2} = 0\sps
+	x_1 + \frac{2-6}{4} = 0\sps
+	x_1 + \left(-\frac{4}{4}\right) = 0\sps
+	x_1 - 1 = 0 \implies x_1 = 1\\
+	$
+\end{enumerate}
+Hence, $x_1 =1, x_2=0, x_3=-2,$ and $x_4=1$\sps
+$\dsp
+\begin{array}{c}
+x =\\
+\left.\right.\\
+\left.\right.\\
+\end{array}
+\left(
+\begin{array}{c}
+1\\0\\-2\\1
+\end{array}
+\right)
+$\spn{0.5}
+
+\begin{center}
+	\textbf{EXAMPLE 4.2}
+\end{center}
+ Solve the linear system of equations below\sps
+$
+6x + 15y + 55z = 76\\
+15x + 55y + 225z = 295\\
+55x + 255y + 979z = 1259\\
+$\sps
+\begin{center}
+	\textbf{Solution}
+\end{center}
+(i) Using Cholesky decomposition method\sps
+$\dsp
+\left(
+\begin{array}{ccc}
+6 & 15 & 55\\
+15 & 55 & 225\\
+55 & 225 & 979\\
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+x\\y\\z\\
+\end{array}
+\right)
+\begin{array}{c}
+~\\=\\~\\
+\end{array}
+\left(
+\begin{array}{c}
+76\\295\\1259\\
+\end{array}
+\right)
+$\sps
+Cholesky decomposition: $A=L\cdot L^T$, Every symmetric positive definite matrix $A$ can be decomposed into a product of a unique lower triangular matrix $L$ and its transpose. Here, the matrix is symmetric positive definite.\sps
+
+\NI Formula $\dsp l_{ki} = \frac{a_{ki} - \sum\limits_{j=1}^{i-1} l_{ij} - l_{kj}}{l_{ii}} $ and $\dsp l_{kk} = \sqrt{a_{kk} - \sum\limits_{j=1}^{k-1}l_{kj}^2}$
+\begin{eqnarray}
+l_{11} &=& \sqrt{a_{11}} = \sqrt{6} = 2.44495 \notag\sps
+%%%
+l_{21} &=& \frac{a_{21}}{l_{11}} = \frac{15}{2.4495} = 6.1237 \notag \sps
+%%%
+l_{22} &=& \sqrt{a_{22} - l_{21}^2} = \sqrt{55 - (6.1237)^2} = \sqrt{55-37.5} = 4.1833 \notag \sps
+%%%
+l_{31} &=& \frac{a_{31}}{l_{11}} = \frac{55}{2.4495} = 22.4537 \notag \sps
+%%%
+l_{32} &=& \frac{a_{32} - l_{31} \times l_{21}}{l_{22}} = \frac{225 - (22.4537) \times (6.1237)}{4.1833} = \frac{225-137.5}{4.1833} = 20.9165 \notag \sps
+%%%
+l_{33} &=& \sqrt{a_{33} - l_{31}^2 - l_{32}^2} = \sqrt{979 - (22.4537)^2 - (20.9165)^2} = \sqrt{979 - 941.6667} = 6.1101 \notag \sps
+\end{eqnarray}
+So, 
+$\dsp
+~~L = 
+\left(
+\begin{array}{ccc}
+l_{11} & 0 & 0 \\
+l_{21} & l_{22} & 0 \\
+l_{31} & l_{32} & l_{33}\\
+\end{array}
+\right) ~~ = ~~
+\left(
+\begin{array}{ccc}
+2.4495 & 0 & 0 \\
+6.1237 & 4.1833 & 0\\
+22.4537 & 20.9165 & 6.1101\\
+\end{array}
+\right)
+\spn{0.9}
+%%%
+L\times L^T ~=~ 
+\left( 
+\begin{array}{ccc}
+2.4495 & 0 & 0 \\
+6.1237 & 4.1833 & 0\\
+22.4537 & 20.9165 & 6.1101\\
+\end{array}
+\right)
+\left(
+\begin{array}{ccc}
+2.4495 & 6.1237 & 22.4537\\
+0 & 4.1833 & 20.9165 \\
+0 & 0 & 6.117\\
+\end{array}
+\right)
+\spn{0.9}
+~~~~~~~~~~~~~~~~~~= 
+\left(
+\begin{array}{cccc}
+6 & 15 & 55\\
+15 & 55 & 225\\
+55 & 225 & 979\\
+\end{array}
+\right)
+$\sps
+
+\NI Now, $Ax = B,$ and $A=LL^T \implies LL^Tx=B$\sps
+Let $L^Tx = y,$ then $Ly=B$\sps
+$
+\implies ~~
+\begin{bmatrix}
+2.4495 & 0 & 0 \\
+6.1237 & 4.1833 & 0 \\
+22.4537 & 20.9165 & 6.1101 \\
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\y_2\\y_3
+\end{bmatrix}
+\begin{array}{c}
+~\\
+=\\
+~\\
+\end{array}
+\begin{bmatrix}
+76\\295\\1259
+\end{bmatrix}
+\spn{0.6}
+%%%
+2.4495y_1 = 76 \implies y_1 = 31.0269\sps
+6.1237y_1 + 4.1833y_2 = 295 \sps
+6.1237(31.0269) + 4.1833y_2 = 295 \sps
+4.1833y_2 = 295 - 190 = 105 \sps
+y_2 = 25.0998\sps
+22.4537y_1 = 20.9165y_2 + 6.1101y_3 = 1259\sps
+22.4537(31.0269) + 20.9165(25.0998) + 6.1101y_3 = 1259\sps
+y_3 = \frac{37.3333}{6.1101} = 6.1101		
+$\spn{0.5}
+
+\NI Now, $L^Tx=y$\sps 
+$\dsp
+\begin{bmatrix}
+2.4495 & 6.1237 & 22.4537\\
+0 & 4.1833 & 20.9165 \\
+0 & 0 & 6.1101 \\
+\end{bmatrix}
+\begin{bmatrix}
+x\\y\\z\\
+\end{bmatrix}
+\begin{array}{c}
+~\\
+=\\
+~\\
+\end{array}
+\begin{bmatrix}
+31.0269\\
+25.0998\\
+6.1101\\
+\end{bmatrix}
+$\sps
+
+\NI Using back substitution method\sps
+$\dsp 
+~~~~~~6.1101z = 6.1101 \implies z=1\sps
+4.1833y + 20.9165x = 25.0998\sps
+4.1833y + 20.9165(1) = 25.0998\sps
+4.1833y = 25.0998 - 20.9165 = 4.1833\sps
+y = 1\spn{0.8}
+%%%
+2.4495x + 6.1237y + 22.4537z = 31.0269\sps
+2.4495x + 6.1237(1) + 22.4537(1) = 31.0269\sps
+2.4495x = 31.0269 - 28.5774 = 2.4495\sps
+x = \frac{2.4495}{2.4495} = 1
+$\sps
+Hence, $x=1, y=1$ and $z=1$\sps 
+$\dsp
+\begin{array}{c}
+X =
+\left.\right.\\
+\left.\right.\\
+\end{array}
+\left(
+\begin{array}{c}
+1\\1\\1\\
+\end{array}
+\right)
+$\spn{0.5}
+
+
+\NI(ii)Using Gaussian elimination Method\sps
+$\dsp
+\begin{bmatrix}
+6 & 15 & 55 & \bp & 76\\
+15 & 55 & 225 & \bp & 295\\
+55 & 225 & 979 & \bp & 1259\\
+\end{bmatrix}
+$\sps
+$\dsp
+\begin{array}{clr}
+R'_1 =& \frac{R_1}{6} &\sps
+R'_2 =& \frac{R_2}{5}&\implies \sps
+R'_3 =& \frac{R_3}{5} & \sps
+\end{array}
+\left(
+\begin{array}{cccccc}
+1 & \frac{5}{2} & \frac{55}{6} & \bp & \frac{38}{3}\\
+3 & 11 & 45 & \bp & 59\\
+11 & 45 & \frac{979}{5} & \bp & \frac{1259}{5}\\
+\end{array}
+\right)
+$\spn{0.7}
+%%%%
+$\dsp
+\begin{array}{clr}
+R'_2 =& R_2 - 3R_1&\\
+& & \implies \\
+R'_3 =& R_3 - 11R_1 & \sps
+\end{array}
+\left(
+\begin{array}{cccccc}
+1 & \frac{5}{2} & \frac{55}{6} & \bp & \frac{38}{3}\\
+0 & \frac{7}{2} & \frac{35}{2} & \bp & 21\\
+0 &\frac{35}{2} &\frac{2849}{30} & \bp & \frac{1687}{15}\\
+\end{array}
+\right)
+$\spn{0.7}
+%%%
+$\dsp
+\begin{array}{clr}
+R'_3 =& 7R_3 - 35R_2& \implies \\
+\end{array}
+\left(
+\begin{array}{cccccc}
+1 & \frac{5}{2} & \frac{55}{6} & \bp & \frac{38}{3}\\
+0 & \frac{7}{2} & \frac{35}{2} & \bp & 21\\
+0 &0 &\frac{784}{15} & \bp & \frac{784}{15}\\
+\end{array}
+\right)
+$\spn{0.7}
+Using backward substitution method,\\
+$\dsp
+\frac{784}{15}z = \frac{784}{15} \implies z = 1\sps
+\frac{7}{2}y + \frac{35}{2}z = 21 \sps
+\frac{7}{2}y + \frac{35}{2} = 21 \implies \frac{7}{2}y = 21 - \frac{35}{2}\sps
+~~~~~~~~~~~~~~ \frac{7}{2}y = \frac{7}{2} \implies y=1\sps
+x + \frac{5}{2}y + \frac{55}{6}z = \frac{38}{3}\sps
+x + \frac{5}{2} + \frac{55}{6} = \frac{38}{3}\sps
+x + \frac{35}{3} = \frac{38}{3}\sps
+x = \frac{38}{3} - \frac{35}{3} = \frac{3}{3} = 1\sps
+$\sps
+Hence, $x=1,~y=1,$ and $z=1$\sps
+$\dsp
+\begin{array}{c}
+X =
+\left.\right.\\
+\left.\right.\\
+\end{array}
+\left(
+\begin{array}{c}
+1\\1\\1\\
+\end{array}
+\right)
+$\spn{0.5}
+
+\begin{center}
+	\textbf{Example 4.3}
+\end{center}
+Solve;\\
+$\dsp
+~~~~~~~~~~~~~~~7x+10y+5z=42\\
+~~~~~~~~~~~~~~~11x + 6y + 2z = 31\\
+~~~~~~~~~~~~~~~11x + 14y + 8z = 63\\
+$\spn{0.5}
+\begin{center}
+	\textbf{Solution}
+\end{center}
+(1)Using the Gaussian elimination method.\\
+The linear equation given can be written in matrix form:\sps
+$\dsp
+\begin{bmatrix}
+7 & 10 & 5\\
+11 & 6 & 2 \\
+11 & 14 & 8 \\
+\end{bmatrix}
+\begin{bmatrix}
+x\\y\\z\\
+\end{bmatrix}
+\begin{array}{c}
+~\\=\\~\\
+\end{array}
+\begin{bmatrix}
+42\\31\\63
+\end{bmatrix}
+$\spn{0.5}
+The Augmented matrix is given by:\sps
+$\dsp
+\begin{bmatrix}
+7 & 10 & 5 & \bp & 42\sps
+11 & 6 & 2 & \bp & 31\sps
+11 & 14 & 8 & \bp & 63\sps
+\end{bmatrix}
+\begin{array}{c}
+R'_2 \rightarrow R_2 - \frac{11}{7}R_1\sps
+R'_3 \rightarrow R_3 - \frac{11}{7}R_1
+\end{array}
+\begin{bmatrix}
+7 & 10 & 15 & \bp & 42\sps
+0 & - \frac{88}{7} & - \frac{51}{7} & \bp & -47\sps
+0 & - \frac{12}{7} & \frac{1}{7} & \bp & -3\sps
+\end{bmatrix}
+$\spn{0.6}
+%%%%
+$\dsp
+\begin{bmatrix}
+7 & 10 & 15 & \bp & 42\sps
+0 & - \frac{88}{7} & - \frac{51}{7} & \bp & -47\sps
+0 & - \frac{12}{7} & \frac{1}{7} & \bp & -3\sps
+\end{bmatrix}
+\begin{array}{c}
+R'_3 \rightarrow R_3 - \frac{12}{88}R_2
+\end{array}
+\begin{bmatrix}
+7 & 10 & 15 & \bp & 42\sps
+0 & - \frac{88}{7} & - \frac{51}{7} & \bp & -47\sps
+0 & 0 & \frac{25}{22} & \bp & \frac{75}{22}\sps
+\end{bmatrix}
+$\spn{0.6}
+Using back substitution method\sps
+$\dsp
+\frac{25}{22}z = \frac{75}{22} \implies z = \frac{75}{25} = 3\sps
+- \frac{88}{7}y - \frac{51}{7}z = -47\sps
+-\frac{88}{7}y - \frac{153}{7} = - 47 \implies \frac{88}{7}y = 47 - \frac{153}{7}\sps
+~~~~~~~~~~~~~~~~~~~~~~~~ y = \frac{176}{7} \times \frac{7}{88} \implies y = 2\sps
+7x + 10y + 5z = 42\sps
+7x + 10(2) + 5(3) = 42 \implies 7x = 42-35 = 7\sps
+$
+Hence, $x=1,~y=2,$ and $z=3$.\sps
+
+\NI(2)Using Cholesky decomposition method\sps
+\textbf{Note:} The matrix is not symmetric; thereby not a symmetric positive definite matrix.\sps
+
+\NI Using $\dsp l_{ki} = \frac{a_{ki} - \sum\limits_{j=1}^{i-1} l_{ij} - l_{kj}}{l_{ii}} $ and $\dsp l_{kk} = \sqrt{a_{kk} - \sum\limits_{j=1}^{k-1}l_{kj}^2}$\sps
+
+\NI$\dsp
+l_{11} = \sqrt{a_{11}} = \sqrt{7} = 2.6458\sps
+l_{21} = \frac{a_{21}}{l_{11}} = \frac{11}{2.6458} = 4.1575 \sps
+l_{22} = \sqrt{a_{22} - l_{21}^2} = \sqrt{6 - (4.1575)^2} = \sqrt{6-17.2848} = \Big[ \text{No real answer} \Big]
+$\sps
+
+\NI This implies, Cholesky decomposition method fails for a non-symmetric positive definite matrix.
+
+
+
+
+
+
+\chapter{Summary and Conclusion }  
+\section{Summary}
+This project work is concerned with the study of  "The Comparison of Gaussian Elimination and Cholesky Decomposition Method to Linear System of Equations".\\
+
+In chapter one, we are concerned with Introduction and Aim and Objectives. While in chapter two, we dealt with Linear System of Equations and various methods of solving them. In chapter three and four, we dealt with in-depth study of Gaussian elimination and Cholesky decomposition methods with various examples, their practical comparison and finally, summary and conclusion in chapter five.
+
+\section{Conclusion}
+In this project work, both the methods of Gaussian elimination and Cholesky decomposition have been used. Different types of matrices have been solved using both methods and results are been given after implementing the Gaussian and Cholesky decomposition methods.\\
+
+\NI However, the Gaussian elimination method successfully solve all types of linear system of equations, while the Cholesky decomposition method fails for a linear system of equations which forms a non-symmetric positive-definite matrix.\\[-0.3cm]
+
+\NI Therefore, the Gaussian elimination method accurately solve all linear systems of equations but the Cholesky decomposition method will solve linear system of equations if and only if the matrix which arises from the linear equations is symmetric positive definite.\\[-0.3cm]
+
+\NI A matrix has a Cholesky factorization if and only if it is symmetric positive definite (SPD). Trying to compute a Cholesky factorization for matrix that is not SPD will always fail.
+
+ \newpage
+\chapter*{References}
+\begin{description}
+\addcontentsline{toc}{chapter}{\numberline{}References}
+\item Barnett, R. A., Ziegler, M. R. \& Byleon, K. E. (2008). \textit{College Mathematics for Business, Economics, Life Sciences and the Social Sciences (11th ed.)}. California: Pearson, N. J.
+\item Dukkipati, R. V. (2010). \textit{Numerical Methods}. New Delhi: New Age International (P) Limited.
+\item Dass, H. K. (2008). \textit{Advanced engineering mathematics}. New Delhi: S. Chand \& Company LTD.
+\item Horn, R. A. \& Johnson, C. R. (1985). \textit{Matrix Analysis Cambridge}. Virginia: University Press.
+\item Wilson, W. A. \& Tracey, J. I. (1925). \textit{Analytic Geometry (Rev. ed.)}. U.S.A.: Forgotten Books
+\end{description}
+ 
+
+ \end{document}
+    

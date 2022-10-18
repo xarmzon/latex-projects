@@ -1,0 +1,560 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\newcommand{\cosec}{\text{ cosec}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{\textbf{(\ref{#1})}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+
+\setlength{\parindent}{1em}
+
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\clearpage
+	\thispagestyle{empty}
+	\addcontentsline{toc}{chapter}{Title Page}
+	\begin{center}
+		\LARGE \bt{UNKNOWN YET}
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\Large \textbf{Ni Jeremiah Wisdom 
+			\\
+			17/56EB0}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+
+	\hspace{8cm} \\
+	
+	\begin{center}
+		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE \textit{(B.Sc.)} DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ \\
+	\begin{center}
+		\textbf{JANUARY, 2021}
+	\end{center}
+
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{\numberline{}Certification}
+	\section*{\begin{center}\textbf{\Large Certification}   \end{center}}
+	This is to certify that this project was carried out by \textbf{Wisdom} of Matriculation Number  17/56EB0, for the award of Bachelor of Science B.Sc (Hons) degree in the Department of Mathematics, Faculty of Physical sciences, University of Ilorin, Ilorin, Nigeria.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	name   \quad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	(SUPERVISOR)\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	PROF. K. RAUF      \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	(HEAD OF DEPARTMENT)\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	external  \qquad\qquad\qquad\qquad\qquad\qquad \qquad        Date\\
+	(EXTERNAL EXAMINER)
+	
+	\newpage
+	%%ACKNOLEDGEMENT%%
+	\section*{\begin{center}\textbf{\Large Acknowledgments}\end{center}}
+	\addcontentsline{toc}{chapter}{\numberline{}Acknowledgments} 					
+	All thanks to God the Almighty, the one who is and will forever be, the one and only true God, for all He was done for me throughout the course of my academic journey in the University of Ilorin. May the name be praised forever.\\
+
+
+
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	This project work is concerned with 
+
+
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{Table of Contents}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{GENERAL INTRODUCTION}
+	
+	\section{INTRODUCTION}
+	
+	
+	\section{STATEMENT OF THE PROBLEM}
+
+	
+	\section{AIMS AND OBJECTIVES OF THE STUDY}
+	
+	\section{SIGNIFICANCE OF STUDY}
+
+	
+	\section{SCOPE OF THE STUDY}
+	
+	
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{LITERATURE REVIEW}
+	
+	\section{REVIEW OF RELATED LITERATURE}
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{SOLVED EXAMPLES}
+	%In this chapter, three problems was solved by Closed Newton-Cotes Formulae and the results obtained  were compared with the exact solution.\\
+	\section{Solved Examples on Rectangle Rule}
+	\subsection{Example 1}
+	Using Rectangle rule, solve
+	\begin{gather*}
+		I = \int_1^3\left(x^3 - 2x^2 + 7x - 5\right)dx
+	\end{gather*}
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		f(x) = x^3 - 2x^2 + 7x - 5\sps
+		b = 3,~~ a = 1
+	\end{eqnarray*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Rectangle rule} = b-af(a)
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&=&(3-1)(1^3 - 2(1)^2 + 7(1) - 5)\sps
+		&=&(2)(1-2+7-5)\sps
+		&=&(2)(1)\sps
+		&=&2
+	\end{eqnarray*}
+	
+	\subsection{Example 2}
+	Using Rectangle rule, solve
+	\begin{eqnarray*}
+		I = \int_0^1\left(x^3 + 3x + 1\right)dx
+	\end{eqnarray*}
+
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 + 3x + 1\sps
+		b=1,~~ a = 0
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Rectangle rule} = b-af(a)
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&=&(1-0)(0^3 + 3(0) + 1)\sps
+		&=&(1)(1)\sps
+		&=&1
+	\end{eqnarray*}
+	
+	\subsection{Example 3}
+	Using Rectangle rule, solve
+	\begin{eqnarray*}
+		I = \int_2^5\left(x^5 + 2x^4 + 3x^2 + 2\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^5 + 2x^4 + 3x^2 + 2\sps
+		b=5,~~ a = 2
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Rectangle rule} = b-af(a)
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&=&(5-2)(2^5 + 2(2)^4 + 3 (2)^2 + 2)\sps
+		&=&(3)(32+32+12+2)\sps
+		&=&(3)(78)\sps
+		&=&234
+	\end{eqnarray*}
+	
+	\section{Solved Examples on Midpoint Rule}
+	\subsection{Example 1}
+	Using Midpoint rule, solve
+	\begin{eqnarray*}
+		I = \int_1^3\left(x^3 - 2x^2 + 7x - 5\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 - 2x^2 + 7x - 5\sps
+		b=3,~~ a=1
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Midpoint rule} = b-af\left(\frac{a+b}{2}\right)
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&=&(3-1)f\left(\frac{1+3}{2}\right)\sps
+		&=&(3-1)f\left(\frac{4}{2}\right)\sps
+		&=&(2)f(2)\sps
+		&=&(2)(2^3+2(2)^2 + 7(2)-5)\sps
+		&=&(2)(9)\sps
+		&=&18
+	\end{eqnarray*}
+	
+	\subsection{Example 2}
+	Using Midpoint rule, solve
+	\begin{eqnarray*}
+		I = \int_0^1\left(x^3 + 3x + 1\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 + 3x + 1\sps
+		b=1, a=0
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Midpoint rule} = b-af\left(\frac{a+b}{2}\right)
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&=&(1-0)f\left(\frac{0+1}{2}\right)\sps
+		&=&(1)f\left(\frac{1}{2}\right)\sps
+		&=&(1)\left(\left(\frac{1}{2}\right)^2 + 3\left(\frac{1}{2}\right) + 1\right)\sps
+		&=&(1)\left(\frac{1}{8} + \frac{3}{2} + 1\right)\sps
+		&=&\frac{21}{8}
+	\end{eqnarray*}
+	
+	\subsection{Example 3}
+	Using Midpoint rule, solve
+	\begin{eqnarray*}
+		I = \int_2^5\left(x^5 + 2x^4 + 3x^2 + 2\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^5 + 2x^4 + 3x^2 + 2\sps
+		b=5, a=2
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Midpoint rule} = b-af\left(\frac{a+b}{2}\right)
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&=&(5-2)f\left(\frac{2+5}{2}\right)\sps
+		&=&(3)f\left(\frac{7}{2}\right)\sps
+		&=&(3)\left(\left(\frac{7}{2}\right)^5 + 2\left(\frac{7}{2}^4 \right)+ 3\left(\frac{7}{2}\right)^2 + 2\right)\sps
+		&=&(3)\left(\frac{27651}{32}\right)\sps
+		&\implies& \frac{82953}{32}
+	\end{eqnarray*}
+
+
+	\section{Solved Examples on Trapezoidal Rule}
+	\subsection{Example 1}
+	Using trapezoidal rule, solve
+	\begin{eqnarray*}
+		I = \int_1^3\left(x^3 - 2x^2 + 7x - 5\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 - 2x^2 + 7x - 5\sps
+		b=3,~~ a=1
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Trapezoidal rule} = \frac{1}{2}(b-a)[f(a) + f(b)]
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&\implies&\frac{1}{2}(3-1)\left[(1^3-2(1)^2 + 7(1)-5) + (3^3 - 2(3)^2) + 7(3) - 5)\right] \sps
+		&\implies&\frac{1}{2}(2)\left[(1-2+7-5) + (27-18 + 21-5)\right]\sps
+		&\implies&[1+25]\sps
+		&\implies& 26
+	\end{eqnarray*}
+	
+	\subsection{Example 2}
+	Using trapezoidal rule, solve
+	\begin{eqnarray*}
+		I = \int_0^1\left(x^3 + 3x + 1\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 + 3x + 1\sps
+		b=1,~~ a=0
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Trapezoidal rule} = \frac{1}{2}(b-a)[f(a) + f(b)]
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&\implies&\frac{1}{2}(1-0)[(0^3 + 3(0) + 1) + (1^3 + 3(1) + 1)]\sps
+		&\implies& \frac{1}{2}(1)[1+5]\sps
+		&\implies&\frac{1}{2}[6]\sps
+		&\implies& 3
+	\end{eqnarray*}
+	
+	\subsection{Example 3}
+	Using trapezoidal rule, solve
+	\begin{eqnarray*}
+		I = \int_2^5\left(x^5 + 2x^4 + 3x^2 + 2\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^5 + 2x^4 + 3x^2 + 2\sps
+		b=2,~~ a=5
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Trapezoidal rule} = \frac{1}{2}(b-a)[f(a) + f(b)]
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&\implies&\frac{1}{2}(5-2)[(2^5 + 2(2)^4 + 3(2)^2 + 2) + (5^5 + 2(5)^4+3(5)^2 + 2)]\sps
+		&\implies& \frac{1}{2}(3)[(32+32+12+2) + (3125+1250+75+2)]\sps
+		&\implies& \frac{3}{2}[78+445]\sps
+		&\implies& \frac{3}{2}[4530]\sps
+		&\implies& \frac{13590}{2}\sps
+		&\implies& 6795
+	\end{eqnarray*}
+	
+	\section{Solved Examples on Simpson's Rule}
+	\subsection{Example 1}
+	Using Simpson's rule, solve
+	\begin{eqnarray*}
+		I = \int_1^3\left(x^3 - 2x^2 + 7x - 5\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 - 2x^2 + 7x - 5\sps
+		b=3,~~ a=1
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Simpson's rule} = \frac{b-a}{6}\left[f(a)+ 4f\left(\frac{a+b}{2}\right) + f(b)\right]
+	\end{gather*}
+	{~}\\[-1.5cm]
+	\begin{eqnarray*}
+		&\implies&\frac{3-1}{6}\left[(1^3 -2(1)^2 + 7(1)-5)+ 4f\left(\frac{1+3}{2}\right)+(3^3 - 2(3)^2) + 7(3)-5\right]\sps
+		&\implies& \frac{2}{6}\left[(1-2+7-5) + 4(2^3 - 2(2)^2 + 7(2)-5) + (27-18+21-5)\right]\sps
+		&\implies& \frac{1}{3}[1+36+25]\sps
+		&\implies& \frac{62}{3}
+	\end{eqnarray*}
+	
+	
+	\subsection{Example 2}
+	Using Simpson's rule, solve
+	\begin{eqnarray*}
+		I = \int_0^1\left(x^3 +3x + 1\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 +3x + 1\sps
+		b=1,~~ a=0
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Simpson's rule} = \frac{b-a}{6}\left[f(a)+ 4f\left(\frac{a+b}{2}\right) + f(b)\right]
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{eqnarray*}
+		&\implies&\frac{1-0}{6}\left[(0^3 + 3(0) + 1) + 4(\frac{0+1}{2})+ (1^3 + 3(1) + 1)\right]\sps
+		&\implies& \frac{1}{6}\left[1+4\left(\frac{1}{2}\right)+5\right]\sps
+		&\implies&\frac{1}{6}\left[1+4\left(\frac{1}{8}+\frac{3}{2}+1\right)+5\right]\sps
+		&\implies&\frac{1}{6}\left[\frac{33}{2}\right]\sps
+		&\implies& \frac{11}{4}
+	\end{eqnarray*}
+	
+	
+	\subsection{Example 3}
+	Using Simpson's rule, solve
+	\begin{eqnarray*}
+		I = \int_2^5\left(x^5 + 2x^4 + 3x^2 + 2\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-1.9cm]
+	\begin{gather*}
+		f(x) = x^5 + 2x^4 + 3x^2 + 2\\[-0.2cm]
+		b=5,~~ a=2
+	\end{gather*}
+	{~}\\[-1.9cm]
+	\begin{gather*}
+		\text{Simpson's rule} = \frac{b-a}{6}\left[f(a)+ 4f\left(\frac{a+b}{2}\right) + f(b)\right]
+	\end{gather*}
+	{~}\\[-1.5cm]
+	\begin{eqnarray*}
+		&\implies& \frac{5-2}{6}\left[(2^5 + 2(2)^4 + 3(2)^2 + 2) + 4f\left(\frac{7}{2}\right) + (3125+1250+75+2)\right]\sps
+		&\implies&\frac{3}{6}\left[78+\frac{27651}{32}+ 4452\right]\sps
+		&\implies& \frac{1}{2}\left[\frac{172611}{32}\right]\sps
+		&\implies& \frac{172611}{64}
+	\end{eqnarray*}
+
+	
+	
+	\section{Solved Examples on Corrected Trapezoidal Rule}
+	\subsection{Example 1}
+	Using corrected trapezoidal rule, solve
+	\begin{eqnarray*}
+		I = \int_1^3\left(x^3 - 2x^2 + 7x - 5\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 - 2x^2 + 7x - 5\sps
+		f\sprime(x) = 3x^2 + 4x + 7\sps
+		b=3,~~ a=1
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Corrected trapezoidal rule} = \frac{b-a}{2}\Big[f(a) + f(b)\Big] + \frac{(b-a)^2}{12}\Big[f\sprime(a)-f\sprime(b)\Big]
+	\end{gather*}
+	{~}\\[-1.5cm]
+	\begin{eqnarray*}
+		&\implies&\frac{3-1}{2}\left[(1^2-2(1)^2 + 7(1) - 5) + (3^3 - 2(3)^2 + 7(3) - 5)\right]\sps
+		&& +\frac{(3-1)^2}{12}\left[(3(1)^2 - 4(1) + 7) - (3(3)^2 - 4(3) + 7)\right]\spn{0.4}
+		&\implies& 1\Big[(1-2+7-5) + (27-18+21-5)\Big] + \frac{4}{12}\Big[(3-4+7)- (27-12+7)\Big]\spn{0.4}
+		&\implies&\Big[1+25\Big]+ \frac{1}{3}\Big[6-22\Big]\spn{0.4}
+		&\implies& 26 + \left(-\frac{16}{3}\right)\spn{0.4}
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		&\implies& 26 - \frac{16}{3}\hspace{10cm}\spn{0.4}
+		&\implies& \frac{62}{3}
+	\end{eqnarray*}
+	
+	
+		\subsection{Example 2}
+	Using corrected trapezoidal rule, solve
+	\begin{eqnarray*}
+		I = \int_0^1\left(x^3 +3x + 1\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^3 +3x + 1\sps
+		f\sprime(x) = 3x^2 + 3sps
+		b=1,~~ a=0
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Corrected trapezoidal rule} = \frac{b-a}{2}\Big[f(a) + f(b)\Big] + \frac{(b-a)^2}{12}\Big[f\sprime(a)-f\sprime(b)\Big]
+	\end{gather*}
+	{~}\\[-1.5cm]
+	\begin{eqnarray*}
+		&\implies&\frac{1-0}{2}\left[ (0^3 + 3(0) + 1) + (1^3 + 3(1) + 1) \right]\sps
+		&& +\frac{(1-0)^2}{12}\left[ (3(0)^2 + 3) - (3(1)^2 + 3) \right]\spn{0.4}
+		&\implies&\frac{1}{2}\left[(1) + (5)\right]+ \frac{1}{2}\left[3-6\right]\spn{0.4}
+		&\implies&\frac{1}{2}\left[6\right]+ \frac{1}{12}\left[-3\right]\spn{0.4}
+		&\implies& 3 - \frac{3}{12}\spn{0.4}
+		&\implies&\frac{11}{4}
+	\end{eqnarray*}
+	
+	
+	
+	\subsection{Example 3}
+	Using corrected trapezoidal rule, solve
+	\begin{eqnarray*}
+		I = \int_2^5\left(x^5 + 2x^4 + 3x^2 + 2\right)dx
+	\end{eqnarray*}
+	
+	\subsection*{Solution}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		f(x) = x^5 + 2x^4 + 3x^2 + 2\sps
+		f\sprime(x) = 5x^4 + 8x^3 + 6x \sps
+		b=5,~~ a=2
+	\end{gather*}
+	{~}\\[-2.1cm]
+	\begin{gather*}
+		\text{Corrected trapezoidal rule} = \frac{b-a}{2}\Big[f(a) + f(b)\Big] + \frac{(b-a)^2}{12}\Big[f\sprime(a)-f\sprime(b)\Big]
+	\end{gather*}
+	{~}\\[-1.5cm]
+	\begin{eqnarray*}
+		&\implies&\frac{5-2}{2}\left[ (2^5 + 2(2)^4 + 3(2)^2 + 2) + (5^5 + 2(5)^4 + 3(5)^2 + 2) \right]\sps
+		&& +\frac{(5-2)^2}{12}\left[ (5(2)^4 + 8(2)^3 + 6(2)) + (5(5)^4 + 8(5)^3 + 6(5))  \right]\spn{0.4}
+		&\implies& \frac{3}{2}[(32+32+12+2) + (3125+1250+75+2)] \sps
+		&& +\frac{3}{4}\left[ (80+64412) - (3125+1000+30) \right]   \spn{0.4}
+		&\implies&  \frac{3}{2}[78+4452] + \frac{3}{4}[156 - 4155] \spn{0.4}
+		&\implies& \frac{13590}{2} + \left(\frac{-11997}{4}\right)\spn{0.4}
+		&\implies&\frac{13590}{2} - \frac{11997}{4}\spn{0.4}
+		&\implies& \frac{15183}{4} 
+	\end{eqnarray*}
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{THE NEWTON-COTES FORMULAE}
+	\section{DISCUSSION OF RESULTS}
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
+	\section{SUMMARY}
+
+	
+	\section{CONCLUSION} 
+	In the course of this study, 
+	
+	\section{RECOMMENDATION}
+	Based on what we have considered in this study, 
+	
+	\NI It is recommended that a formulae be done so that it value could be compare with the most accurate of the closed Newton-Cotes Formulae.
+	
+
+		\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	\begin{description}
+		\item A.
+	\end{description}
+
+
+\end{document}

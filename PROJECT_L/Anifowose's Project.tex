@@ -1,0 +1,1043 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\linespread{1.5}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\setlength\parindent{0pt}
+\newcommand\Laplace{\mathlarger{\mathlarger{\mathscr}}}
+
+\begin{document}
+\tableofcontents
+\newcommand{\np}{\newpage}
+\pagenumbering{roman}
+\begin{titlepage}
+\addcontentsline{toc}{section}{\numberline{}Title page}
+		\begin{center} 
+		\textbf{\Large ON A PROPERTY OF FINITE SEQUENCE OF UNIVALENT FUNCTION} 
+		\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center}	                    \textbf{\emph\large BY}		                               \end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}    				
+\textbf{\large ANIFOWOSE, Abdulkabir Adeola}               \end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center} 		           \textbf{\upshape MATRIC NO: 16/56EB047}															             \end{center}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{center}      \textbf{A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, NIGERIA, IN PARTIAL FULFILMENT OF THE  REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.}
+		\end{center}
+		
+		
+		
+\begin{center}       
+\vspace{2in}\textbf{JUNE, 2021}
+\end{center}						 
+\end{titlepage}
+ \np
+\section*{\begin{center}	\textbf{\Large Certification}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Certification}
+ This is to certify that this project work was carried out by \textbf{Anifowose Abdulkabir Adeola} with matriculation number \textbf{16/56EB047} and approved as meeting the requirement for the award of the Bachelor of Science (B. Sc.) degree of the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria.
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+\textbf{Prof. T. O. Opoola}$\qquad\qquad\qquad\quad\qquad\qquad\qquad\qquad\qquad$Date\\
+{\small Supervisor}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+\textbf{Prof. K. A. Rauf} $\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad$Date\\
+{\small Head of Department}
+$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$\ldots\ldots\ldots\ldots\ldots\ldots\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \ldots\ldots\ldots\ldots\ldots\ldots$$
+{\small \textbf{Prof. T. O. Oluyo} $\quad\qquad\quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad$Date\\
+External Examiner
+
+\np
+\begin{center}      \textbf{\upshape Acknowledgment } 		             \end{center}
+						\addcontentsline{toc}{section}{\numberline{}Acknowledgment}
+All praise is due to Allah (s.w.t), the most Merciful for His infinite mercy and blessings bestowed upon me during course of my program.
+
+I am grateful to my supervisor, Prof. T. O. Opoola,  for his support, encouragement, and care towards this work. He is indeed the best. May Allah bless you and your family infinitely.
+
+
+I also want to acknowledge my H. O. D., Prof. K. Rauf, for his fatherly love and care, and my level adviser, Dr. (Mrs) I. F. Usamot, for their support and guidance. My profound gratitude goes to all the lecturers in the Department. These includes Prof. J. A. Gbadeyan, Prof. O. M. Bamigbola, Prof. M. O. Ibrahim, Prof. O. A. Taiwo, Prof. R. B. Adeniyi, Prof. K. O. Babalola, Prof. M. S. Dada, Prof. A. S. Idowu, Doctors E. O. Titiloye, (Mrs) O. A. Fadipe Joseph, (Mrs) Y. O. Aderinto,  (Mrs) C. N. Ejieji, Dr. B. M.  Yisa, J. U. Abubakar, K. A. Bello, G. N. Bakare, B. M. Ahmed, O. T. Olotu, I. F. Usamot, O. A. Umaheren, O. Odetunde, T. L. Oyekunle, A. A. Yeketi. The efforts of the non-academic staff of the department are equally appreciated.\\
+I also want to use this beautiful moment to ask Almighty Allah to forgive my lovely mother, Alhaja Muinat Arinpe Yusuf, maami owon, may Allah grant her Al-Janat Fridaous. To my ever caring father, he has always been my pillar ever since, i want to use this medium to thank him for his constant care, prayer and absolute support, may almighty Allah make you reap the fruits of your labour.\\
+To my ever supportive sisters, Kabirat Ayoka Ade and Rofiat Amoke Ade, i thank you both for your immense support from the very beginning of my tertiary education up to this moment, i love you both and i pray almighty Allah never forsake you for once. I also appreciate my elder brother, Sodiq Adigun for his support and encouragement. Umar, i pray almighty Allah continue to guide and guard you in all your endeavours, i love you Akande.\\
+It is a must and compulsory to thank my benefactor, guardian, Uncle, Alfa and daddy for everything he has done for me, Alhaji Taofiq Yusuf, you've been an integral part of my life since inception till this very moment, words can't really express my appreciation towards you sir, and to my beautiful Iya Ibeji as well, i say Jazakumullahu Khayran for everything you've done for me.\\
+To Engr. Daud, i must appreciate your efforts towards this academic success and more, i say jazakumullahu khayran. I equally appreciate the efforts of Dr. Abdullateef Ibrahim Onireti and his wife, a caring mother (Iya Ibrahim), thank you for all you do ma.\\
+To mummy wa (Iya Yusuf), i ask almighty Allah to grant you long life and sound health for you to reap the fruits of your labour over us.\\
+My appreciation is defintely not a complete one, i mean it is nothing but a mere jargons if i fail to appreciate, acknowledge and thank my role model for his undiluted, unflinching  and invaluable support towards my academic success, in person of Alhaji Abubakar Aribidesi Jimoh. May almighty Allah reward you for everything you've done. Your kind is rare and you are one in a billion i have always try as much as i can to emulate you in so any ways, i hope one day i can impact people's life like you've always done and still doing sir.\\
+To my mummy (Mummy Folashade Jimoh), my mentor, i am truly blessed to have crossed path with such a great individual like you are, you are so open minded, generous, kind, lovely and loving, supportive, unique and beautiful in and out, mummy, i thank you for all your support, admonitions and advice, i thank you for taking me as your own, you've done for me things i can't even repay you, i just hope that one day, i will be able to say mummy relax and let me take care of your bills, not because you won't be able to afford them, but because i want you to be a proud mum having me beside you, Mummy FJ, i love, appreciate and thank you for everything. I mean everything! I remain loyal and indebted to you mummy. Jazakumullahu Khayran.\\
+To my beautiful Bestie, soulmate, angel, a unique one and my beautiful partner, Ajala Rashidat Okikiade, you've done for me great and unimaginable things, i appreciate you for the support you've always given me, Ashabi, may almighty Allah grant all your heart desires my queen, and make you a great offspring for your family, society and Islam at large. I love you Princess Ashabi, thank you for all you do and i want to assure you that it is forever.\\
+To my amiable, unique and lovely brother Adebayo Mubarak Adeshola, my P. A., adviser, partner and everything you may want in a brother and more, Alade, thank you for all you do, you know i love you and i pray that we keep moving towards the very top blooder.\\
+To my cousins and my lovely junior ones, Yusuf Adebayo(legend), Qayum, Sheu, Adam, Muhammed, Yasir, Usman, Habeeb, Taofiqat Abdullahi, Zainab, Mariam, Zayd, AbdulRahmon, Shukroh, Jamal, Ibrahim Onireti, Mustopha, Munawarah, Wahab, Ibrahim, Haleemat, i love you all.\\
+To all my fantastic and ever supportive friends, Alfa Abdulbakyy,Musa Adeboye, Haleem, Hussein, Alfa Jamiu, Luminous, Ayman, Yusuf (Prof), Shukroh, Aminat, Soji, Jamosky, J Baba, Scholar Idrees,Oriyomi, Senator Temmy and Awolowo. I love and appreciate you all for your support throughout my stay on this beautiful campus of ours, let's meet at the very top.
+
+
+\np 						\section*{\begin{center}	\textbf{\Large Dedication}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Dedication}
+This project is dedicated to almighty Allah, the creator of all and my late mother, Alhaja Muinat Yusuf-Anifowose.%you may decide to change this anytime
+\np
+		         \section*{\begin{center}	\textbf{\Large Abstract}   \end{center}}
+						\addcontentsline{toc}{section}{\numberline{}Abstract}
+In this work, the concept of infinite sequences and infinite series of complex numbers are investigated. In particular, it is shown that if infinite sequences of univalent functions converges to a function $f(z)$, then $f(z)$ is univalent.
+
+\newpage
+\pagenumbering{arabic}
+
+
+\chapter{COMPLEX NUMBER}
+\section{Definition of Complex Number}
+There is no real number $x$ that satisfies the polynomial equation $x^2 + 1 = 0$. To permits solution of this and similar equations, the set of complex is introduced.\\
+We can consider a complex number as having the form $a + ib$ where a and b are real numbers and i, which is called the imaginary unit, has the property that $i^2 = -1$ if $z = a + ib$ then a is called the part of z and b is called the real part and b is called the imaginary part of z and are denoted by $Re(z)$ and $Im(z)$, respectively.\\
+The symbol $z$, which can stand for any complex number, is called a complex variable.\\
+Two complex numbers $a + bi$ and $c + di$ are equal if and only if $a = c$ and $b = d$. We can consider real numbers as subset of the of complex numbers with $b = 0$. accordingly, the complex numbers $0 + 0i$ and $-3 + 0i$ represent the real numbers 0 and -3, respectively.\\
+If $a = 0$, the complex number $0 + bi$ or $bi$ is called a pure imaginary number.
+The complex conjugate or briefly conjugate of a complex number a + bi is a - bi. The complex conjugate a + bi. The complex conjugate of a complex number $z$ is often indicated by $\bar{z}$ or $z^*$. (Dass, 2013) 
+\section{Operation of Complex Numbers}
+In performing operations with complex numbers we can proceed as in the algebra of real numbers replacing $i^2$ by $-1$ when it occurs.\\
+1. \textbf{Addition}
+\begin{equation*}
+(a + ib) + (c + id) = a + bi + c + di = (a + c) + (b + d)i
+\end{equation*}
+\textbf{Examples}\\
+a. Let $z_1 = 5 + 3i$ and $z_2 = 4 + 2i$, then 
+\begin{equation*}
+z_1 + z_2 = (5 + 3i) + (4 + 2i) = 5 + 4 + 3i + 2i = 9 + 5i
+\end{equation*}
+b. Let $z_1 = 3 + i$ and $z_2 = -1 + 2i$, then
+\begin{equation*}
+z_1 + z_2 = (3 + i) + (-1 + 2i) = 3 - 1 + i + 2i = 2 + 3i
+\end{equation*}
+c. Let $z_1 = 8 + 6i$ and $z_2 = 1 - 3i$, then
+\begin{equation*}
+z_1 + z_2 = (8 + 6i) + (1 - 3i) = 8 + 1 + 6i - 3i = 9 + 3i
+\end{equation*}
+2. \textbf{Subtraction}
+\begin{equation*}
+(a + ib) - (c + id) = a + bi - c - di = (a - c) + (b - d)i
+\end{equation*}
+\textbf{Examples}\\
+a. Let $z_1 = 6 + 4i$ and $z_2 = -7 + 5i$, then
+\begin{equation*}
+z_1 - z_2 = (6 + 4i) - (-7 + 5i) = 6 + 7 + 4i - 5i = 13 - i
+\end{equation*}
+b. Let $z_1 = 2 + 3i$ and $z_2 = - 9 - 2i$, then
+\begin{equation*}
+z_1 - z_2 = (2 + 3i) - (-9 + 5i) = 2 + 9 + 3i + 2i = 11 + 5i
+\end{equation*}
+c. Let $z_1 = 7\sqrt{5} + 3i$ and $z_2 = \sqrt{5} - 2i$, then
+\begin{equation*}
+z_1 - z_2 = (7\sqrt{5} + 3i) - (\sqrt{5} - 2i) = 7\sqrt{5} + 3i - \sqrt{5} + 2i = 7\sqrt{5} - \sqrt{5} + 3i + 2i = 6\sqrt{5} - 5i
+\end{equation*}
+3. \textbf{Multiplication}
+\begin{equation*}
+(a + ib)(c + id) = ac + adi + bci + bd^2i = (ac - bd) + (ad + bc)i
+\end{equation*}
+\textbf{Examples}\\
+
+\textbf{a.} $\quad (3 + 2i)(1 + 7i) = 3 \times 1 + 3 \times 7i + 2i \times 1 + 2i \times 7$
+
+\begin{equation*}
+= 3 + 21i + 2i + 14i^2
+\end{equation*}
+\begin{equation*}
+= (3 - 14) + (21 + 2)i
+\end{equation*}
+\begin{equation*}
+= -11 + 23i
+\end{equation*}
+
+\textbf{b.} $\quad (1 + 1)^2 = (1 + 1)(1 + i)$
+\begin{equation*}
+= 1 + i + i + i^2
+\end{equation*}
+\begin{equation*}
+= 1 + i + i - 1
+\end{equation*}
+\begin{equation*}
+= (1 - 1) + (1 + 1)i = 0 + 2i
+\end{equation*}
+\textbf{c.} $\quad (2 + 4i)(-1 - 3i)$
+\begin{equation*}
+= - 2 - 6i - 4i - 12i^2
+\end{equation*}
+\begin{equation*}
+= - 2 - 6i - 4i + 12
+\end{equation*}
+\begin{equation*}
+= (-2 + 12) + (-6 - 4)i = 10 - 10i
+\end{equation*}
+4. \textbf{Division}: If c $\neq 0$ and $d \neq 0$ then
+\begin{equation*}
+\frac{a + bi}{c + di} = \frac{a + bi}{c + di} \cdot \frac{c - di}{c - di} = \frac{ac - adi + bci - bdi^2}{c^2 - d^2i^2}
+\end{equation*}
+\begin{equation*}
+= \frac{ac + bd + (bc + ad)i}{c^2 + d^2} = \frac{ac + bd}{c^2 + d^2} + \frac{bc - adi}{c^2 + d^2}
+\end{equation*}
+\textbf{Examples:}\\
+a. Divide (2 + 5i) by (4 - i).\\
+Solution:
+\begin{equation*}
+\frac{2 + 5i}{4 - i} = \frac{2 + 5i}{4 - i} \cdot \frac{4 + i}{4 + i}
+\end{equation*}
+\begin{equation*}
+\frac{8 + 2i + 20i + 5i^2}{16 + 4i - 4i - i^2} = \frac{8 + 2i + 20i - 5}{16 + 1}
+\end{equation*}
+\begin{equation*}
+\frac{8 + 22i - 5}{17} = \frac{3}{17} + \frac{22i}{17}
+\end{equation*}
+b. Divide (3 + 3i) by 5i.\\
+Solution:
+\begin{equation*}
+\frac{3 + 3i}{5i} = \frac{3 + 3i}{5i} \cdot \frac{-5i}{-5i}
+\end{equation*}
+\begin{equation*}
+\frac{- 15i - 15i^2}{-25i^2} = \frac{15i + 15}{25} = \frac{3}{5} - \frac{3}{5}i
+\end{equation*}
+\section{Modulus and argument of Complex Numbers}
+Any Complex number $z$ can be represented by a point on Argand diagram. We can join this point of the origin with a line segment. The length of the line segment is called the modulus of the complex number and is denoted $|z|$.\\
+The angle measured from the positive real axis to the line segment is called the principal argument of the complex number, denoted arg(z) and often labelled $\theta, 0 \leq \theta \leq 2\pi$ the modulus and argument can be calculated using trigonometry.
+\begin{equation*}
+argument\quad \text{of}\quad z = argz + 2\pi k, k = 0, \pm 1, \pm 2\cdots
+\end{equation*}
+The modulus of a complex number z = a + ib is
+\begin{equation*}
+|z| = \sqrt{a^2 + b^2}
+\end{equation*}
+when calculating the argument of a complex number, there is a choice to be made between taking values in the range $[-\pi, \pi]$ or the range $[0, \pi]$. Both are equivalent and equally valid. On this page we will use the convention $\pi < \theta < \pi$.\\
+The 'naive' way of calculating the angle to a point (a,b) is to use $arctan(\frac{b}{a})$ but, since $arctan$ only takes values in the range $[-\frac{\pi}{2},\frac{\pi}{2}]$, this will give the wrong result for co-ordinates with negative x-component. You can fix this by adding or subtracting $\pi$, depending on which quadrant of the Argand diagram the pint lies in:
+\begin{center}
+\includegraphics{c2}
+\end{center}
+
+\begin{itemize}
+\item First quadrant: $\theta = arctan(\frac{b}{a})$
+\item Second quadrant: $\theta = arctan(\frac{b}{a}) + \pi$
+\item Third quadrant: $\theta = arctan(\frac{b}{a}) - \pi$
+\item Fourth quadrant: $\theta = arctan(\frac{b}{a})$
+\end{itemize}
+It should be noted that for the case when $a = 0$, i.e the complex number has no real part. In this case, the $arctan$ method doesn't work, but the argument is $\frac{\pi}{2}$ or $\frac{-\pi}{2}$ for numbers with positive and negative imaginary parts, respectively.\\
+\textbf{Examples}: $z_1 = 1 + i$ has the argument
+\begin{equation*}
+argZ_1 = arctan\bigg(\frac{1}{1}\bigg) = arctan(a) = \frac{\pi}{4}
+\end{equation*}
+However, the same calculation for $z_2 = -1 - i$ give $artcan(\frac{-1}{-1}) arctan(1) = \frac{\pi}{4}$, the same numbers.\\
+If we draw $z_2$ an Argand digram, we can see that it falls in the third quadrant, so the argument should be between -$\frac{\pi}{2}$ and $-\pi$. We must subtract $\pi$ to convert this and therefore get $argZ_2 = \frac{-3\pi}{4}$. (Stroud \& Booth, 2003)\\
+\textbf{Examples}:\\
+1. Find the modulus and argument of the complex number z = 3 + 2i.\\
+Solution:
+\begin{equation*}
+|z| = \sqrt{3^2 + 2^2} = \sqrt{9 + 4} = \sqrt{13}
+\end{equation*}
+As the complex number lies in the first quadrant of the Argand diagram, we can use $artan(\frac{2}{3})$ without modification to find the argument.
+\begin{equation*}
+argz = arctan\bigg(\frac{2}{3}\bigg) = 0.59radius \qquad \text{(to 2d.p)}
+\end{equation*}
+2. Find the modulus and argument of the complex number z = 4i.\\
+Solution:
+\begin{equation}
+|z| = \sqrt{0^2 + 4^2} = \sqrt{16} = 4
+\end{equation}
+The simplest way to find the argument is to look at an Argand diagram and plot the pint (0,4). The point lies on the positive vertical axis so
+\begin{equation*}
+argz = \frac{\pi}{2}
+\end{equation*}
+3. Find the modulus and argument of the complex number z = -2 + 5i.\\
+Solution:
+\begin{equation}
+|z| = \sqrt{(-2)^2 + 5^2} = \sqrt{4 + 25} = \sqrt{29}
+\end{equation}
+A z is in the second quadrant of the Argand diagram, we need to add $\pi$ to the result obtained from $arctan(\frac{5}{2})$.
+\begin{equation*}
+argz = arctan(\frac{5}{2}) + \pi
+\end{equation*}
+\begin{equation*}
+= - 1.19 + \pi
+\end{equation*}
+\begin{equation*}
+= 1.95radius \qquad\text{to 2d.p}
+\end{equation*}
+\section{Trigonometrical Form of Complex Numbers}
+The trigonometric form of a complex number $z = a + bi is z = r(cos\theta + isin\theta)$, where $r = |a + bi|$ is the modulus of $z$, and $tan\theta = \frac{b}{a}, \theta$ is called the principal argument of z. Normally, we will require $0 \leq \theta \leq 2\pi$.(Dass, 2013)\\
+\textbf{Examples}:\\
+1. Write the following complex numbers in trigonometric form $- 4 + 4i$.\\
+Solution:\\
+To write the number in trigonometric form we need $r$ and $\theta$
+\begin{equation*}
+r = \sqrt{16 + 16} = \sqrt{32} = 4\sqrt{2}
+\end{equation*}
+\begin{equation*}
+tan\theta = \frac{4}{-4} = -1
+\end{equation*}
+\begin{equation*}
+\theta = \frac{3\pi}{4}
+\end{equation*}
+Since we need an angle in quadrant II ( we can see this by graphing the complex number).\\
+Then,
+\begin{equation*}
+-4 + 4i = 4\sqrt{2}\bigg(cos\frac{3\pi}{4}\bigg) + isin\frac{3\pi}{4}
+\end{equation*}
+2. write the complex number in trigonometric form.
+\begin{equation*}
+2 - \frac{2\sqrt{3}}{3}
+\end{equation*}
+Solution:
+\begin{equation*}
+r = \sqrt{4 + \frac{12}{9}} = \sqrt{\frac{48}{9}} = \frac{4\sqrt{3}}{3}
+\end{equation*}
+\begin{equation*}
+a = 2, b = -\frac{2\sqrt{3}}{3}
+\end{equation*}
+\begin{equation*}
+argz = \pi + tan^{-1}(\frac{b}{a}) = \pi + tan^{-1}(\frac{\sqrt{3}}{3})
+\end{equation*}
+\begin{equation*}
+= \pi - tan^{-1}\bigg(\frac{\sqrt{3}}{3}\bigg)
+\end{equation*}
+\begin{equation*}
+\pi - \frac{\pi}{6} = \frac{6\pi - \pi}{6} = \frac{5\pi}{6}
+\end{equation*}
+\section{Exponential Form of Complex Nunbers}
+Since $z = r(cos\theta + isin\theta)$ and since $e^{i\theta} = cos\theta + isin\theta$ we therefore obtain another way in which to denote a complex number. z$ = re^{i\theta}$, called the exponential form. The exponential form of a complex number is 
+\begin{equation*}
+z = re^{i\theta}
+\end{equation*}
+in which $r = |z|$ and $\theta = arg(z)$ so, 
+\begin{equation*}
+z = re^{i\theta} = r(cos\theta + isin\theta)
+\end{equation*}
+\textbf{Remember that the exponential form is obtained from the polar form}: \\
+(a) The r value is the same in each case.\\
+(b) The angle is also the same in each case, but in the exponential form the angle must be in radians. (Dass, 2013)\\
+\textbf{Examples}:\\
+1. Change the polar form $5(cos60^o + isin60^o)$ into the exponential form.\\
+Solution:\\
+Because we have $5(cos60^o + isin60^o)$
+\begin{equation}
+r = 5, \theta = 60^o = \frac{\pi}{3}radians
+\end{equation}
+$\therefore$ Exponential form is $5e^{i\frac{\pi}{3}}$\\
+2. Express $5(cos135^o + isin135^o)$ in exponential form.\\
+Solution:\\
+we have r = 5 from the question. we must express $\theta = 135^o$ in radians.\\
+Recall:
+\begin{equation*}
+1^0 = \frac{\pi}{180}
+\end{equation*}
+so,
+\begin{equation*}
+135^o = \frac{135\pi}{80}
+\end{equation*}
+\begin{equation*}
+= \frac{3\pi}{4} \approx \text{2.36radians}
+\end{equation*}
+So we can write
+\begin{equation*}
+5(cos135^o + isin135^o) = 5e^{\frac{3\pi i}{4}} \approx 5e^{2.36i}
+\end{equation*}
+3. Express $-1 + 5i$ in exponential form.\\
+Solution:\\
+we need to find $\theta$ in radians and $r$
+\begin{equation*}
+\alpha = tan^{-1}(\frac{b}{a}) = tan^{-1}\frac{5}{1}
+\end{equation*}
+\begin{equation*}
+\approx 1. 37 \text{radians}
+\end{equation*}
+[This is $78.7^o$ if we were working in degrees].
+because our angle is in the second quadrant, we need to apply:
+\begin{equation*}
+\theta = \pi - 1.37 \approx 1.77
+\end{equation*}
+and
+\begin{equation*}
+r = \sqrt{a^2 + b^2}
+\end{equation*}
+\begin{equation*}
+ = \sqrt{(-1)^2 + 5^2}
+\end{equation*}
+\begin{equation*}
+ = \sqrt{26}
+\end{equation*}
+\begin{equation*}
+\approx 5.10
+\end{equation*}
+so $-1 + 5i$ in exponential form is $5.10e^{1.77i}$
+\section{Power of Complex Numbers}
+Because i stands for $\sqrt{-1}$, let us consider some power of $i$
+\begin{equation*}
+i = \sqrt{-1}
+\end{equation*}
+\begin{equation*}
+i^2 = -1
+\end{equation*}
+\begin{equation*}
+i^3 = (i^2)i = -1 \cdot i = -i
+\end{equation*}
+\begin{equation*}
+i^4 = (i^2)i^2 = (-1)^2 = 1
+\end{equation*}
+Let
+\begin{equation*}
+z = re^{i\theta}
+\end{equation*}
+\begin{equation*}
+\Rightarrow z^n = (re^{i\theta})^n = r^ne^{in\theta}
+\end{equation*}
+\begin{equation*}
+\Rightarrow r^n(cosn\theta + isinn\theta)
+\end{equation*}
+is nth power of z\\
+It should be noted that every time a factor it occurs. It can be replaced by the factor $'i'$, so that the power of $'i'$ is reduced to one of the four results above.\\
+\textbf{Examples}:
+(a) $i^9 = (i^4)i = (1)^2\cdot i = 1\cdot i = i$\\
+(b) $i^{20} = (i^4)^5 = (1)^5 = 1$\\
+(c) $i^{30} = (i^4)^7\cdot i^2 = (1)^7\cdot i^2 = 1\cdot (-1) = -1$\\
+(d) $i^{15} = (i^4)^3\cdot i^3 = (1)^3\cdot i^3 = 1\cdot (-i)^2 = -1\cdot (-1)i = -i$\\
+The complex number power formula is used to compare the value of a complex number which is raised to the power of 'n'.\\
+To recall, a complex number is the form of $a + bi$, where a and b are the real numbers and 'i' is an imaginary number.\\The $"i"$ satisfies $i^2 = -1$.\\
+The complex number power formula is given below (Dass, 2013).
+\begin{equation*}
+z^n = (re^{i\theta})^n = r^ne^{in\theta}
+\end{equation*}
+\textbf{More Examples}:\\
+1. Compute $(3 + 3i)^5$.\\
+Solution:
+Here is the exponential form $3 + 3i$.
+\begin{equation*}
+r = \sqrt{a^2 + b^2} = \sqrt{3^2 + 3^2} = \sqrt{9 + 9}
+\end{equation*}
+\begin{equation*}
+= \sqrt{18} = 3\sqrt{2}
+\end{equation*}
+\begin{equation*}
+tan\theta = \frac{3}{3}
+\end{equation*}
+\begin{equation*}
+\Rightarrow argz = \bigg(\frac{\pi}{4}\bigg)
+\end{equation*}
+\begin{equation*}
+3 + 3i = 3\sqrt{2e^{i(\frac{\pi}{4}}}
+\end{equation*}
+Now,
+\begin{equation*}
+(3 + 3i)^5 = (3\sqrt{2})^5e^{i(5\frac{\pi}{4}}
+\end{equation*}
+\begin{equation*}
+= 972\sqrt{2}\bigg[cos\bigg(\frac{5\pi}{4}\bigg) + isin\bigg(\frac{5\pi}{4}\bigg)\bigg]
+\end{equation*}
+\begin{equation*}
+= 972\sqrt{2}\bigg[\bigg(\frac{-\sqrt{2}}{2}\bigg) - i\bigg(\frac{\sqrt{2}}{2}\bigg)\bigg]
+\end{equation*}
+\begin{equation*}
+= -972 - 972i
+\end{equation*}
+2. Compute $(1- \sqrt{3i})^6$.\\
+Solution:\\
+Given complex number is $(1 - \sqrt{3i})^6$.
+The exponential form $1 - \sqrt{3i}$ is:
+\begin{equation*}
+r = \sqrt{(1 + 3)} = 2
+\end{equation*}
+\begin{equation*}
+tan\theta = \frac{\sqrt{3}}{1}
+\end{equation*}
+\begin{equation*}
+\Rightarrow arg z = \bigg(\frac{\pi}{3}\bigg)
+\end{equation*}
+\begin{equation*}
+1 - \sqrt{3i} = 2e^{i(\frac{\pi}{3})}
+\end{equation*}
+Now,
+\begin{equation*}
+(1 - \sqrt{3i})^6 = 2^6e^{i(\frac{6\pi}{3})}
+\end{equation*}
+\begin{equation}
+= 64e^{i(2\pi)} \Rightarrow 64[cos2\pi + sin2\pi] = 64[1 + 0(i)] = 64
+\end{equation}
+3. Write the square root of $5 + 12i$ in the polar form.\\
+Solution:\\
+Given complex number $5 + 12i$\\
+Square root of the given complex number is
+\begin{equation}
+= \sqrt{25 + 144} = \sqrt{169} = 13
+\end{equation}
+\begin{equation*}
+tan\theta = \bigg(\frac{12}{5}\bigg)
+\end{equation*}
+\begin{equation*}
+\theta =tan^- \bigg(\frac{12}{5}\bigg)
+\end{equation*}
+\begin{equation*}
+arg z = 67.38
+\end{equation*}
+\begin{equation*}
+5 + 12i = 13e^{i67.38}  
+\end{equation*}
+\begin{equation*}
+(5 + 12i)^{\frac{1}{2}} = 13^{\frac{1}{2}}e^{i\frac{67.38}{2}}
+\end{equation*}
+\begin{equation*}
+\sqrt{5 + 12i} = \sqrt{13}e^{i33.69}
+\end{equation*}
+\begin{equation*}
+= \sqrt{13}(cos33.69 + isin33.69)
+\end{equation*}
+\section{Roots of Complex Numbers}
+In mathematics whenever a new operation is presented, the inverse operation often follows that is generaly because the inverse operation is often procedurally similar and it makes good sense and very important to know both.\\
+The inverse operation of finding a power for number is to find a root of the same number.\\
+We should also recall that from algebra that any root can be written as $x^{\frac{1}{n}}$. Also, given the formula for De Moivre's theorem also works for fractional powers, the same formula can be used for finding roots:
+\begin{equation*}
+z^{\frac{1}{n}} = (a + bi)^{\frac{1}{n}} = r^{\frac{1}{n}}cis\bigg(\frac{\theta}{n}\bigg)
+\end{equation*}
+\textbf{De Moivre's Theorem:}
+For any positive integer n, we have
+\begin{equation*}
+(e^{i\theta})^n = e^{in\theta}
+\end{equation*}
+Thus, for any real number $r > 0$ and any positive integer n, we have:
+\begin{equation*}
+(r(cos\theta + isin\theta))^n = r^n(cos\theta + isin\theta)
+\end{equation*}
+\textbf{Find the Roots of Complex Numbers:}\\
+Let z be roots of complex numbers, then there are always exactly k many $k^{th}$ roots of z in $\mathbb{C}$.\\
+The procedure for finding the $k^{th}$ roots of $\mathbb{Z} \in \mathbb{C}$ is as follows:\\
+Let $\omega$ be a complex. number. We wish to find the nth root of $\omega$, that is all \ such that $z^n = \omega$. (Dass, 2013)\\
+There are n-distant $n^{th}$ roots and they can be found as follows:\\
+1. Express both z and $\omega$ in polar form
+\begin{equation*}
+z = re^{i\theta}, \omega = se^{i\theta}. \quad \text{Then} \quad z^n = \omega \text{becomes}
+\end{equation*}
+\begin{equation*}
+(re^{i\theta})^n = r^ne^{i\theta n} = se^{i\theta}
+\end{equation*}
+We need to solve for $r$ and $\theta$.\\
+2. Solve the following two equations:
+\begin{equation*}
+r^n = s \qquad \text{and} \qquad e^{i\theta n} = e^{i\theta}
+\end{equation*}
+3 The solution to $r^n$ are give by $r = \sqrt[n]{s}$.\\
+4. The solutions to $e^{in\theta} = e^{i\theta}$ are given by
+\begin{equation*}
+n\theta = \phi + 2\pi e = 0, 1, 2,\cdots, n-1
+\end{equation*}
+or
+\begin{equation*}
+\theta = \frac{\phi}{n} + \frac{2}{n}, for e = 0, 1, 2,\cdots, n-1 
+\end{equation*}
+5. Using the solutions $r, \theta$ to the equations given in (roots equations) conjugated the nth root of the form $z = re^{i\theta}$.\\
+\textbf{Examples}:\\
+(1) Find the value of $(1 + \sqrt{3i})^4$.
+Solution:
+\begin{equation*}
+r = \sqrt{1^2 + (\sqrt{3})^2} = 2
+\end{equation*}
+\begin{equation*}
+tan\theta = \frac{\sqrt{3}}{1},
+\end{equation*}
+and $\theta$ is in the 1st quadrant, so $\theta = \frac{\pi}{3}$, using our equation from above
+\begin{equation*}
+z^4 = r^4cis4\theta
+\end{equation*}
+\begin{equation*}
+z^4 = (2)^4cis4\frac{\theta}{3}
+\end{equation*}
+Expanding $cis$ form:
+\begin{equation*}
+z^4 = 16(cos(\frac{4\pi}{3}) + isin(\frac{4\pi}{3})
+\end{equation*}
+\begin{equation*}
+= 16((-0.5) - 0.866i)
+\end{equation*}
+Finally we have,
+\begin{equation*}
+z^4 = -8 - 13.856i
+\end{equation*}
+2. Find $\sqrt{1 + i}$.\\
+Solution:\\
+First, rewriting in exponential form: $(1 + i)^{\frac{1}{2}}$\\
+And now in polar form:
+\begin{equation*}
+\sqrt{1 + i} = \bigg(\sqrt{2}cis\bigg(\frac{\pi}{4}\bigg)\bigg)^{\frac{1}{2}}
+\end{equation*}
+Expanding $cis$ form,
+\begin{equation}
+= (\sqrt{2}\bigg(cos\bigg(\frac{\pi}{4}\bigg) + isin\bigg(\frac{\pi}{4}\bigg))\bigg)^{\frac{1}{2}}
+\end{equation}
+Using the formula:
+\begin{equation*}
+(2^{\frac{1}{2}})^{\frac{1}{2}}\bigg(cos(\frac{1}{2}\cdot\frac{\pi}{4}) + isin(\frac{1}{2}\cdot\frac{\pi}{4})\bigg)
+\end{equation*}
+\begin{equation*}
+2^{\frac{1}{4}}\bigg(cos\bigg(\frac{\pi}{8}\bigg) + isin\bigg(\frac{\pi}{8}\bigg)\bigg)
+\end{equation*}
+in decimal form we get
+\begin{equation*}
+1.189(0.924 + 0.383i)
+\end{equation*}
+\begin{equation*}
+1.099 + 0.455i
+\end{equation*}
+We can equally check if the result is correct, to do this we will multiply the result by itself in rectangular form:\\
+\begin{equation*}
+(1.099 + 0.455i)\cdot(1.099 + 0.455i) = (1.099)^2 + (0.455i)^2
+\end{equation*}
+\begin{equation*}
+1.208 + 0.500i + 0.500i + 0.208i^2
+\end{equation*}
+\begin{equation*}
+= 1.208 + i - 0.208 \qquad \text{or} \qquad 1 + i
+\end{equation*}
+
+\newpage
+\chapter{INFINITE SEQUENCE OF COMPLEX NUMBERS}
+\section{Definition}
+A sequence of complex numbers is an infinite ordered list of complex numbers, $[a_n]^\infty_{n=1}$, i.e $(a_1, a_2,...,a_n,...)$, $a_n$ $\epsilon$ $\mathbb{C}$ for any $n$ $\epsilon$ $\mathbb{N}$.
+The start index for a sequence is conventionally 1.\\
+For example,\\
+The sequence $\bigg[\frac{n + i}{n - i}\bigg]^\infty_{n=1}$, when expanded is 
+\begin{equation*}
+\bigg[\frac{n + i}{n - i}\bigg]^\infty_{n=1} = \bigg(\frac{1 + i}{1 - i}, \frac{2 + i}{2 - i},...\frac{n + i}{n - i},...\bigg)
+\end{equation*}
+(Murray, Saymaur, John \& Dennis, 2009)
+
+\textbf{Convergence of Sequence of Complex Numbers}\\
+\textbf{Definition}\\
+A sequence of complex numbers, $[a_n]^\infty_{n=1}$ is said to converge to A $\epsilon$ $\mathbb{C}$, if for all $\varepsilon > 0$, there exist an $N$ $\epsilon$ $\mathbb{N}$, such that if $n$ $\geq$ $\mathbb{N}$, then $|a_n - A| < \varepsilon$.
+A sequence of complex numbers $[a_n]^\infty_{n=1}$ is said to diverge iff it does not converge to any point $|a_n - A| \nless \varepsilon$ i.e if $|a_n - A| \geq \varepsilon$.\\
+For example,\\
+Consider the sequence $\bigg[\frac{(2 + i)n}{n - i}\bigg]^\infty_{n=1}$. we claim that this sequence converges to $(2 + i)$, if $|a_n - A| < \varepsilon$ where $a_n = \frac{(2 + i)n}{n - i}$ and $A = 2 + i$.
+Solution:
+We show that the limit of this sequence $[\frac{(2 + i)n}{n - i}]^\infty_{n=1}$ is $2 + i$.
+\begin{equation*}
+\lim_{n\rightarrow\infty}\bigg[\frac{(2 + i)n}{n - i}\bigg]^\infty_{n=1} = \frac{2 + i}{1} = 2 + i
+\end{equation*}
+Now,\\
+To prove that this sequence converges to $2 + i$, let $\varepsilon > 0$, then $|a_n - A| < \varepsilon$.
+\begin{equation*}
+\bigg|\frac{(2 + i)n}{n + i} - (2 + i)\bigg| = \bigg|\frac{(2 + i)n - (2 + i)(n + 1)}{n + i}\bigg| < \varepsilon
+\end{equation*}
+\begin{equation*}
+= \bigg|\frac{(2 + i)n - (2 + i)n  - (2 + i)}{n + i}\bigg|  < \varepsilon
+\end{equation*}
+\begin{equation*}
+\bigg|-\frac{(2 + i)}{n + 1}\bigg| < \varepsilon
+\end{equation*}
+\begin{equation*}
+\frac{|2 + i|}{|n + 1|} < \varepsilon
+\end{equation*}
+\begin{equation*}
+\frac{\sqrt{5}}{n + 1} < \varepsilon
+\end{equation*}
+Taking the inverse, we have 
+\begin{equation*}
+\frac{n + 1}{\sqrt{5}} >  \frac{1}{\varepsilon}
+\end{equation*}
+\begin{equation*}
+n + 1 > \frac{\sqrt{5}}{\varepsilon}
+\end{equation*}
+\begin{equation*}
+n > \frac{\sqrt{5}}{\varepsilon} - 1
+\end{equation*}
+Since $\exists$ $n \epsilon \mathbb{N}$ such that $n \geq \mathbb{N}$, then
+\begin{equation*}
+\mathbb{N} > \bigg[\frac{\sqrt{5}}{\varepsilon} - 1\bigg]
+\end{equation*}
+Therefore,
+\begin{equation*}
+\frac{1}{n} \leq \frac{1}{N} < \frac{\sqrt{5}}{\varepsilon} - 1
+\end{equation*}
+which implies that this sequence 
+\begin{equation*}
+\bigg[\frac{(2 + i)n}{n - 1}\bigg]^\infty_{n=1}
+\end{equation*}
+converges to $2 + i$ for every $n \epsilon \mathbb{N}$.\\
+(See Murray et al, (2009))
+
+\textbf{Example 2}:\\
+Consider the sequence 
+\begin{equation*}
+\frac{i^n}{n}
+\end{equation*}
+we claim that the sequence converges to 0, if $|a_n - A| < \varepsilon$ where 
+\begin{equation*}
+a_n = \bigg(\frac{i^n}{n}\bigg) \quad A = 0
+\end{equation*}
+\textbf{Solution}\\
+To show that the limit of the sequence is 0.
+\begin{equation*}
+\lim_{n\rightarrow\infty}\bigg(\frac{i^n}{n}\bigg) = \frac{0}{1} = 0
+\end{equation*}
+To prove that this sequence $\bigg(\frac{i^n}{n}\bigg)$ converges to 0. Let $\varepsilon > 0$, then
+\begin{equation*}
+|a_n - A| < \varepsilon 
+\end{equation*}
+i.e
+\begin{equation*}
+\bigg|\frac{i^n}{n} - 0\bigg| < \varepsilon = \bigg|\frac{i^n}{n}\bigg| < \varepsilon
+\end{equation*}
+\begin{equation*}
+\frac{|i^n|}{|n|} < \varepsilon
+\end{equation*}
+\begin{equation*}
+\Rightarrow \frac{1}{n} < \varepsilon
+\end{equation*}
+\begin{equation*}
+\Rightarrow n > \frac{1}{\varepsilon}
+\end{equation*}
+Since $\exists n \epsilon N$, such that $n \geq \mathbb{N}$, then
+\begin{equation*}
+N \geq \frac{1}{\varepsilon}
+\end{equation*}
+Therefore,
+\begin{equation*}
+\frac{1}{n} \leq \frac{1}{N} < \frac{1}{\varepsilon}
+\end{equation*}
+Therefore, the sequence $\frac{i^n}{n}$ converges to 0 for every $n \epsilon \mathbb{N}$.\\
+\textbf{Example 3}:\\
+Consider the sequence,
+\begin{equation*}
+\frac{1}{1 + n\mathbb{Z}}
+\end{equation*}
+we claim that the sequence converges to 0 for every $n \epsilon \mathbb{N}$ if $|a_n - A| < \varepsilon$ where
+\begin{equation*}
+a_n = \frac{1}{1 + n\mathbb{Z}} \qquad and \qquad A = 0
+\end{equation*}.
+\textbf{Solution}\\
+To show that the limit of the sequence is 0.
+\begin{equation*}
+\lim_{n\rightarrow\infty}\bigg(\frac{1}{1 + n\mathbb{Z}}\bigg) = 0
+\end{equation*}
+To prove that this sequence 
+\begin{equation*}
+\frac{1}{1 + n\mathbb{Z}}
+\end{equation*}
+converges to 0. Let $\varepsilon > 0$, then $|a_n - A| < \varepsilon$ i.e
+\begin{equation*}
+\bigg|\frac{1}{1 + nz} - 0\bigg| < \varepsilon = \bigg|\frac{1}{1 + n}\bigg| < \varepsilon
+\end{equation*}
+\begin{equation*}
+\frac{|1|}{|1 + nz|} < \varepsilon
+\end{equation*}
+Taking the inverse, we have
+\begin{equation*}
+|1 + nz| > \frac{1}{\varepsilon}
+\end{equation*}
+\begin{equation*}
+\Rightarrow |1| + |nz| > \frac{1}{\varepsilon}
+\end{equation*}
+\begin{equation*}
+|n\mathbb{Z}| > \frac{1}{\varepsilon} - 1 \Rightarrow |n||z| > \frac{1}{\varepsilon} - 1
+\end{equation*}
+\begin{equation*}
+n > \frac{1}{|z|}\bigg(\frac{1}{\varepsilon} - 1\bigg)
+\end{equation*}
+which implies that the sequence $\frac{1}{1 + nz}$ converges to zero (0) for every n $\epsilon$ N.
+\newpage
+\chapter{Series of Complex of Numbers}
+If $[a_n]^\infty_0$ is a sequence of complex number then the corresponding series of complex number is infinite formal sum $\sum^{\infty}_{n=1}a_n$. 
+The corresponding sequence of partial sums is the sequence of complex $[S_n]^\infty_{n=1} where$
+\begin{equation}
+S_n = \sum^{\infty}_{k=1}a_k\quad for\quad each\quad k \epsilon \{1, 2,..., n\}
+\end{equation}
+The complex series $\sum^{\infty}_{k=1}a_k$ is said to converge to the sum $s \epsilon \mathbb{C}$ if the sequence of partial sum $(S_n)^\infty_{n=1}$ converges to S, and if $\sum^{\infty}_{n=1}a_kn$ is said to diverge if it does not converge to any $S \epsilon \mathbb{C}$.
+A series $\sum^{\infty}_{n=1}a_n$ is said to converge if
+\begin{equation*}
+\bigg|\sum^{\infty}_{n=1}a_n\bigg| < \infty \quad or \quad \lim_{n\rightarrow\infty}S_n = A < \infty
+\end{equation*}
+such that $\forall \varepsilon > 0 \exists N = N(\varepsilon): \forall n > N$
+\begin{equation*}
+|S_n - A| < \varepsilon
+\end{equation*}
+A series is said to diverge if
+\begin{equation*}
+\sum^{\infty}_{n=1}a_n \geq \infty
+\end{equation*}
+The series $\sum^{\infty}_{n=1}a_n$ is said to be absolutely convergent if $\sum^{\infty}_{n=1}|a_n|$ converges i.e 
+\begin{equation*}
+\sum^{\infty}_{n=1}|a_n| < \infty
+\end{equation*}
+(See Stroud \& Booth, (2003))
+\section{Radius of Convergence}
+The radius of convergence of a power series is the radius of the largest disk in which the series converges. It is either a non-negative real numbers or infinity ($\infty$). When the terms of series is positive, the power series converges absolutely and uniformly on a compact sets inside the open disk of radius equal to the radius of convergence and it is the Taylor series of the analytic function to which it converges.
+
+\section{Definition}
+For a power series  defined as 
+\begin{equation*}
+f(\mathbb{Z}) = \sum^{\infty}_{n=0}C_n(z - a)^n,
+\end{equation*}
+where 'a' is a complex constant, the centre of the disk of convergence, $C_n$ is the nth complex coefficient and $\mathbb{Z}$ is a complex variable.
+Some may prefer an alternative definition as existence is obvious;
+\begin{equation*}
+r = sup|\mathbb{Z} - a|\sum^{\infty}_{n=0}C_n(\mathbb{Z} - a)^n
+\end{equation*}
+converges inside the disk
+\begin{equation*}
+|\mathbb{Z} - a| < \frac{a}{1 - r},
+\end{equation*}
+The behaviour of the power series may be complicated and the series may converge for some values of $z$ and diverges for others.\\
+The radius of convergence is infinite if the series converges for all complex number $z$.\\
+Examples:\\
+1. Let z be a fixed complex number and 
+\begin{equation*}
+z_n = \frac{z^n}{n^2}, n \in \mathbb{N}.
+\end{equation*}
+The series $\sum^\infty_{k=1}z_k$ is manifestly convergent for $z = 0$, so let us assume that $z \neq 0$.
+\begin{equation*}
+\lim_{n \to \infty}\bigg|\frac{z_{n+1}}{z_n}\bigg| = \lim_{n \to \infty}\bigg|\frac{n^2z}{(n + 1)^2}\bigg| = |z|
+\end{equation*}
+the series
+\begin{equation*}
+\sum^\infty_{k=1}\bigg(\frac{z^k}{k^2}\bigg)
+\end{equation*}
+is absolutely convergent for $|z| < 1$ and divergent for $|z| > 1$. Furthermore, when $|z| = 1, |z_k| = \frac{1}{k^2}$, so the said series also converges absolutely for all such values of z.\\
+2. 
+\begin{equation*}
+\sum^\infty_{k=1}\frac{1}{k^2 + 1} \qquad \text{converges because}
+\end{equation*}
+\begin{equation*}
+\sum^\infty_{k=1}\bigg|\frac{1}{k^2 + 1}\bigg| = \sum^\infty_{k=1}\frac{1}{k^4 + 1}(\equiv \sum^\infty_{k=1}\frac{1}{3})
+\end{equation*}
+Converges.\\
+3. $\sum^\infty_{k=1}\frac{1}{k + 1}$ diverges because
+\begin{equation*}
+Re(\sum^\infty_{k=1}\frac{1}{k + 1}) = Re(\sum^\infty_{k=1}\frac{k - i}{k^2 + 1}) = \sum^\infty_{k=1}\frac{k}{k^2 + 1}
+\end{equation*}
+\begin{equation*}
+Re(\equiv\sum^\infty_{k=1}\frac{1}{k + 1})
+\end{equation*}
+\section{The Radius of Convergence}
+The radius of convergence can be found by applying the root test to the terms of the series. The toot test values uses the number
+\begin{equation*}
+C = \lim_{n\rightarrow\infty}sup\sqrt[n]{|C_n(\mathbb{Z} - a)^n|} =  \lim_{n\rightarrow\infty}\sqrt[n]{|C_n||\mathbb{Z}|}
+\end{equation*}
+"$\limsup$" denotes the limit superior. The root test states that the series converges if $C < 1$ and diverges if $C > 1$.
+It follows that the power series converges if the distance from $\mathbb{Z}$ to the center $a$ is less than
+\begin{equation*}
+r = \frac{1}{\lim_{n\rightarrow\infty} sup\sqrt[n]{|Cn|}} 
+\end{equation*}
+and diverges if the distance exceeds that  number; this statement is the Cauchy Hadamard theorem.\\
+Note that $r = \frac{1}{0}$ is interpreted as an infinite radius, meaning that f is an entire function.\\
+The ratio test
+\begin{equation*}
+r = \lim_{n\rightarrow\infty}\bigg|\frac{C_n}{C_n + 1}\bigg|
+\end{equation*}
+This is shown as follows. The ratio test says the series converges if 
+\begin{equation}
+\lim_{n\rightarrow\infty}\frac{|C_{n+1}(\mathbb{Z} - a)^{n+1}|}{|C_{n} (\mathbb{Z} - a)^{n}|} < 1
+\end{equation}
+This is equivalent to 
+\begin{equation}
+|\mathbb{Z} - a| < \frac{1}{\lim_{n\rightarrow\infty}\frac{|C_{n+1}|}{|C_n|}} = \lim_{n\rightarrow\infty}\bigg|\frac{C_n}{C_{n+1}}\bigg|
+\end{equation}
+From (3.2), we have 
+\begin{equation*}
+\lim_{n\rightarrow\infty}\frac{|C_{n}(\mathbb{Z} - a)^{n+1}|}{|C_{n+1} (\mathbb{Z} - a)^{n}|} < 1
+\end{equation*}
+\begin{equation*}
+\lim_{n\rightarrow\infty}\frac{|C_{n+1}||\mathbb{Z} - a)|^{n+1}}{|C_{n}||\mathbb{Z} - a)|^{n}} 
+\end{equation*}
+\begin{equation*}
+\lim_{n\rightarrow\infty}\frac{|C_{n+1}||\mathbb{Z} - a)|^{n}|\mathbb{Z} - a)|^{1}}{|C_{n}||\mathbb{Z} - a)|^{n}} < 1
+\end{equation*}
+\begin{equation*}
+\lim_{n\rightarrow\infty}\frac{|C_{n+1}||\mathbb{Z} - a)|^{1}}{|C_{n}|} < 1
+\end{equation*}
+Taking the inverse, we have
+\begin{equation*}
+\frac{1}{\lim_{n\rightarrow\infty}\frac{|C_{n+1}||\mathbb{Z} - a)|^{1}}{|C_{n}|}} > 1
+\end{equation*}
+multiplying through by $|\mathbb{Z} - a|$, we have
+\begin{equation*}
+\frac{1}{\lim_{n\rightarrow\infty}\frac{|C_{n+1}|}{|C_{n}|}} > |\mathbb{Z} - a|
+\end{equation*}
+\begin{equation*}
+|\mathbb{Z} - a| < \frac{1}{\lim_{n\rightarrow\infty}\frac{|C_{n+1}|}{|C_{n}|}} = \frac{\lim_{n\rightarrow\infty}1}{\lim_{n\rightarrow\infty}\frac{|C_{n+1}|}{|C_{n}|}}
+\end{equation*}
+Taking the inverse again, we have
+\begin{equation*}
+|\mathbb{Z} - a| < \lim_{n\rightarrow\infty}\frac{|C_{n}|}{|C_{n+1}|}
+\end{equation*}
+Thus, equation (3.2) is equivalent to equation (3.3). (Stroud \& Booth, 2003)
+\subsection{Cauchy Hadamard Theorem}
+Consider the formal power series in one complex variable $z$ of the form
+\begin{equation*}
+f(z) = \sum^\infty_{n=0}C_n(z - a)^n
+\end{equation*}
+where a, $C_n \epsilon \mathbb{C}$.\\
+Then the radius of convergence $R$ of $f$ at the point 'a' is given by
+\begin{equation*}
+\frac{1}{R} = \lim_{n\rightarrow\infty}sup(|C_n|^{\frac{1}{n}})
+\end{equation*}
+where "lim sup" denotes (limit superior), the limit as n approaches infinity of the supremum of the sequence values after the nth position. If the sequence value are unbounded so that the $\limsup$ is $\infty$, then the power series does not converges near 'a', while if the $\limsup$ is 0, then the radius of convergence is $\infty$, meaning the series converges on the entire plane.\\
+\textbf{Proof}\\
+Assume that $n=0$, we will show first that the power series $\sum C_uZ^n$ converges for $|z| < R$, and then that it diverges for $|z| > R$.
+Suppose $|z| < R$, let $t = \frac{1}{R}$ not be zero $0$ or infinity ($\infty$). For any $\varepsilon > 0$, there exists only a finite 
+number of n such that
+\begin{equation*}
+\sqrt[n]{|C_n|} \geq t - \varepsilon.
+\end{equation*}
+Now,
+\begin{equation*}
+|C_n| \leq (t - \varepsilon)^n
+\end{equation*}
+for all but a finite number of $C_n$, so the series $\sum C_uZ^n$ converges if 
+\begin{equation*}
+|z| < \frac{1}{t - \varepsilon}.
+\end{equation*}
+This proves the first part.
+Conversely, for $\varepsilon > 0$, $|C_n| \geq (t - \varepsilon)^n$ for infinitely many $C_n$, so if 
+\begin{equation*}
+|z| = \frac{1}{(t - \varepsilon)} > R
+\end{equation*}
+we clearly see that the series cannot because its nth term does not tend to zero (0).
+\section{Properties of Series of Complex Numbers}
+1. If a series of complex numbers converges, the nth term converges to zero as n tends to infinity.\\
+It follows from the above proper that the terms of convergent serie are bounded. That is when series converges, there exist a positive M such that $|z_n| \leq M$ for each positive integer n.\\
+2. The absolute convergence of a series of complex numbers implies the convergence of that series. Recall that a series is said to be absolutely convergent if the series 
+\begin{equation*}
+\sum^\infty_{n-1}|z_n| = \sum^\infty_{n-1}\sqrt{x_n^2 + y_n^2}, (Z_n = x_n + iy_n)
+\end{equation*}
+for real numbers $\sqrt{x_n^2 + y_n^2}$ converges.
+
+\newpage
+\chapter{Infinite Sequence of Univalent Function}
+In this chapter we define a univalent function and establish a property of infinite sequence of univalent functions.
+\section{Definition}
+A complex function $f(z)$ is said to be univalent in a domain D if for every $z_1 \neq z_2$ in D, $f(z_1) \neq f(z_2)$. This also implies that a complex function f(z) is univalent in D if $z_1 = z_2$ implies that $f(z_1) = f(z_2)$.
+\section{Examples of Univalent Functions}
+(a) Let $f(z) = z$ then $f(z_1) = z_1$ and $f(z_2) = z_2$.\\
+Thus,\\
+\begin{equation*}
+f(z_1) - f(z_2) = z_1 - z_2
+\end{equation*}
+Suppose, $z_1 = z_2$, then
+\begin{equation*}
+f(z_1) - f(z_2) = 0
+\end{equation*}
+\begin{equation*}
+f(z_1) = f(z_2) 
+\end{equation*}
+which gives that f(z) is univalent.\\
+(b) Let $f(z) = 3z + 1$.\\
+Then,
+\begin{equation}
+f(z_1) = 3z_1 + 1 \qquad \text{and} \qquad f(z_2) = 3z_2 + 1
+\end{equation}
+\begin{equation*}
+f(z_1) - f(z_2) = 3z_1 + 1 - 3z_2 - 1
+\end{equation*}
+\begin{equation*}
+f(z_1) - f(z_2) = 3(z_1 - z_2)
+\end{equation*}
+Let $z_1 = z_2$, then
+\begin{equation}
+f(z_1) - f(z_2) = 0
+\end{equation}
+\begin{equation}
+f(z_1) = f(z_2) 
+\end{equation}
+which implies that $f(z)$ is univalent.(Duncqn, 1986)\\
+Our main result in this project work is the following:\\
+\textbf{Theorem:}\\
+Let $\{f_n(z)\}$ be infinite sequence of univalent functions in D such that 
+\begin{equation*}
+\lim_{n \to \infty}f_n(z) = f(z)
+\end{equation*}
+Then $f(z)$ is univalent in D.\\
+\textbf{Proof}:\\
+Let ${f_n(z)}$ be infinite sequence of univalent functions. Suppose
+\begin{equation*}
+\lim_{n \to \infty}f_n(z) = f(z)
+\end{equation*}
+It shall be shown that f(z) is univalent.\\
+This shall be proved using the contradiction method.\\
+Suppose that f(z) is not univalent in D. There exist $z_1$ and $z_2$ such that $z_1 \neq z_2$ and $f(z_1) = f(z_2)$.\\
+Let $D(z_2, r)$ be a disk of centre $z_2$ and radius r be in D.\\
+Let $z_1 \in D(z_2, r)$.\\
+For every z on the boundary of $D(z_2, r)$
+\begin{equation*}
+|f(z_1) - f(z)| > 2\varepsilon\quad   \forall\quad  \varepsilon > 0
+\end{equation*}
+
+\begin{center}
+\includegraphics{c1}
+\end{center}
+
+Since
+\begin{equation*}
+\lim_{n \to \infty}f_n(z) = f(z)
+\end{equation*}
+\begin{equation*}
+\Rightarrow \forall \varepsilon > 0 \exists N = N(\varepsilon). \forall n > N:
+\end{equation*}
+\begin{equation*}
+|f_n(z) - f(z)| < \varepsilon 
+\end{equation*}
+Now,
+\begin{equation*}
+|f(z) - f(z_1) + f_n(z) - f_n(z_1)| \leq |f_n(z) - f(z)| + |f_n(z_1) - f(z_1)|
+\end{equation*}
+\begin{equation*}
+< \varepsilon + \varepsilon = 2\varepsilon
+\end{equation*}
+\begin{equation*}
+|f(z) - f(z_1) + f_n(z) - f_n(z_1)| < 2\varepsilon < |f(z) - f(z_1)|
+\end{equation*}
+Since z belongs to the boundary of $D(z_2, r)$\\
+By Rouches Theorem
+\begin{equation*}
+[f_n(z) - f_n(z_1)] and [f(z) - f(z_1)]
+\end{equation*}
+has the same number of zeros since $f(z_1) = f(z_2)$ for $z_1 \neq z_2$\\
+$f(z) - f(z_1)$ has two zeros $z_1$ and $z_2$
+\begin{equation*}
+f(z_1) - f(z_1) = 0
+\end{equation*}
+\begin{equation*}
+f(z_2) - f(z_1) = f(z_1) - f(z_1) = 0
+\end{equation*}
+Then,
+$\{f_n(z) - f_n(z_1)\}$ has two zeros which are $z_1$ and $z_2$.
+\begin{equation*}
+f_n(z_1) - f(z_1) = 0
+\end{equation*}
+and
+\begin{equation*}
+f_n(z_2) - f(z_1) = 0
+\end{equation*}
+i.e $f_n(z_2) = f(z_1)$ but $z_1 \neq z_2$.\\
+$\Rightarrow f_n(z)$ is not a univalent function since
+\begin{equation*}
+f_n(z_1) = f_n(z_2) \qquad \text{for} \qquad z_1 \neq z_2.
+\end{equation*}
+\chapter{Summary and Conclusion}
+In this section, the summary and conclusion of the result obtained in this work is discussed.
+\section{Summary}
+The main result in this work is the following theorem.\\
+\textbf{Theorem:}
+Let $\{f_n(z)\}$ be infinite sequence of univalent functions in D such that
+\begin{equation*}
+\lim_{n \to \infty}f_n(z) = f(z)
+\end{equation*}
+then $f(z)$ is univalent in D.
+\section{Conclusion}
+In this work it is shown that the limit of infinite sequence of univalent function is univalent.
+
+\newpage
+\section*{Reference}
+\begin{description}
+\item Dass, H. K. (2013). \textit{Advance engineering mathematics}, (Rev. ed.). Ram Nogar, New Delhi: S. Chand and Company Ltd. 
+\item Duncan, J. (1986). \textit{Elements of complex analysis}. John Willy and Sons, London.
+\item Murray, R. S., Saymaur, L., John J. S. \& Dennis, S. (2009). \textit{Schaum’s outlines of complex variable },(2nd ed.). McGraw-Hill Professional Publishing Publisher, U.S.A.
+\item Stroud, K. A. (2003). \textit{Advanced engineering mathematics}, (4th ed.) Palgrave Macmillan, New York.
+\end{description}
+
+
+
+
+
+
+
+\end{document}

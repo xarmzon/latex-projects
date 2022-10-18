@@ -1,0 +1,940 @@
+\documentclass[a4paper 11pt]{article}
+\usepackage{amsmath, amssymb}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\NI}{\noindent}
+\newcommand{\IVP}{Initial Value Problem }
+\newcommand{\IVPs}{Initial Value Problems }
+\newcommand{\realnum}{\mathbb{R}}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\be}{\(\dsp} %begin equation(inline display)
+\newcommand{\ee}{\)\\[0.3cm]} %end equation (inline display)
+\newcommand{\sol}{\bt{\NI\underline{Solution}}\\[0.2cm]}
+\newcommand{\st}{\bt{\underline{Step 1:}}\\[0.2cm]}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\stn}[1]{\bt{\underline{Step 2:}} When \be#1\ee}
+\newcommand{\imp}{\Rightarrow}
+\renewcommand{\sp}{\\[0.3cm]}
+\newcommand{\spn}[1]{\\[#1]}
+
+\newcommand{\soL}[1]{\bt{SOLUTION:} \be #1 \ee}
+\newcommand{\ODE}{Ordinary Differential Equation}
+\newcommand{\ODEs}{Ordinary Differential Equations}
+\newcommand{\nprim}[1]{^{#1}}
+\newcommand{\yn}[1]{y_{#1}}
+\newcommand{\ex}[1]{\NI Example #1:}
+
+
+
+\begin{document}
+\begin{center}
+\textbf{NUMERICAL SOLUTION TO HIGHER ORDER INTIAL VALUE PROBLEMS USING ADAMS-BASHFORTH AND ADAMS-MOULTON METHOD AND RUNGE-KUTTA METHOD OF ORDER 4} \\[1.5cm]
+\end{center}
+
+\NI \bt{Definition:} An \IVP ( often times abbreviated IVP) is a problem where we want to find a solution to some differential equation that satisfies a given initial value \(\displaystyle y(x_0) = y_0\). \\
+
+\NI In the field of differential equation, an \IVP (also called a Cauchy Problem) is an Ordinary Differential Equation together with a specific value, called the Initial condition of the unknown function at a given point in the domain of the solution.\\
+
+\NI An \IVP is a differential equation  \( \displaystyle y\sprime(t) = f(t, y(t))\) with \( \displaystyle f:\Omega\; c \in \realnum \times \realnum^{n} \rightarrow \realnum^{n}\) where ( is an open set of \(\displaystyle \realnum \times \realnum^{n}\), together with a point in the domain of \((t_0,y_0) \in \Omega  \), called the initial condition.\\
+
+\NI A solution to an initial value problem is a function \(y\) that is a solution to the differrential equation and satisfies \(\displaystyle y(t_0) = y_0\).\\
+
+\NI In higher dimension, the differential equation is replaced with family of equation \(\displaystyle y\sprime_{i}(t) = f_{1}(t,y_{2}(t), y_2(t), \cdots)\) and \(y(t)\) is viewed as the Vector \(\displaystyle (y_{1}(t), \cdots, y_{n}(t), \cdots)\), mot commonly associated with the position in space, such as Banach Spacce or Spaces distributions. \IVPs are extended to higher Order by treating the derivatives in the same way as an indedependent fuction, e.g: \(y\dprime(t) = f(t, y(t), y\sprime(t)\)\\
+
+\NI\bt{Solving Initial Value Problems Anaytically}\\
+\NI Example I: A simple example is to solve \(y\sprime = 0.85y\) and \(y(0) = 19\).\\
+
+\bt{\NI \underline{Solution}}\\
+
+\NI We are trying to find a formular for \(y(t)\) that satisfies these\\[0.2cm]
+start by noting that \(y\sprime = \frac{dy}{dt}\), so \(\frac{dy}{dt} = 0.85y\) \\
+
+\NI Now, we separate the valuables, so that \(y\) is on the left and \(t\) on the right.\\[0.3cm]
+\(\frac{dy}{dt} = 0.85\)dt \\
+on integrating both sides, we have \\[0.3cm]
+\(\displaystyle \int \frac{dy}{y} = \int 0.85\)dt \\
+\(\Rightarrow \ln \mid y\mid = 0.85t + B\) \\
+
+\NI Eliminate the \(\ln\) by taking \(e\) of both sides\\
+\(\displaystyle e^{\ln \mid y \mid} = e^{0.85t} .\;  e^{B}\)\\
+\(\mid y \mid = e^B . e^{0.85t}\)\\[0.3cm]
+Let \(C\) be a new unknown constant, \\[0.2cm]
+\(C = \pm e^B\), so\\
+\(y = Ce^{0.85t}\) \\[0.3cm]
+Now, we need to find a value for \(c\) use \(y(0) = 19\) as given at the start and substitute \(0\) for \(t\) and \(19\) for \(y\)\\
+\(\Rightarrow 19 = Ce^{0.85(0)}\)\\[0.3cm]
+\(\Rightarrow C = 19\)\\[0.3cm]
+This gives the final solution \\[0.3cm]
+\(\displaystyle y(t) = 19e^{0.85t}\)\\
+
+\NI Example II: The solution of \(\displaystyle y\sprime + 3y = 6t + 5, y(0) = 3\) can be found to be \(\displaystyle y(t) = 2e^{-3t} + 2t + 1\)\\[0.3cm]
+Indeed,\\[0.4cm]
+\begin{flalign*}
+(y\sprime + 3y & =  \frac{d}{dt}\left(2e^{-3t} + 2t + 1) + 3 (2e^{-3t} + 2t + 1\right)\\
+		& = (-6e^{-3t} + 2) + 6e^{-3t} + 6t + 3 \\
+		& = -6e^{-3t} + 2 + 6e^{-3t} + 6t + 3 \\
+		& = 6t + 5 \\
+\end{flalign*}
+
+\NI Example III: Solve the \IVP \(\displaystyle \frac{dy}{dx} = 10 - x, \; y(0 = -1\)\\[0.4cm]
+\bt{\underline{Solution}}\\[0.2cm]
+For an equation of the form \(\displaystyle \frac{dy}{dx} = f(x)\), the Problmes can be solves in two step\\[0.3cm]
+\bt{\underline{Step 1:}}\\[0.2cm]
+\(\displaystyle \frac{dy}{dx} = 10 - x \Rightarrow \text{dy} = (10 - x)\text{dx}\)\\[0.3cm]
+\(\displaystyle \int \text{dy} = \int (10 - x)\text{dx} \Rightarrow y = 10x - \frac{x^2}{2} + C\)\\[0.3cm]
+\bt{\underline{Step 2:}}\\[0.2cm]
+When \( \displaystyle x=0, y= 1\)\\[0.3cm]
+\(\displaystyle-\mid 2 \mid 0(0) - \frac{0}{2} + C \Rightarrow C=1\)\\[0.2cm]
+Hence, the solution  is: \(\displaystyle y = 10x - \frac{x^2}{x} - 1\)\\[0.2cm]
+Example IV: Solve the Initial \IVP \(\dsp \frac{dy}{dx} = 9x^2 - 4x + 5, \; y(-1) = 0\)\\[0.4cm]
+\bt{\underline{Solution}}\\[0.2cm]
+\bt{\underline{Step 1:}}\\[0.2cm]
+\(\dsp\int \text{dy} = \int (9x^2 - 4x + 5)\text{dx} \Rightarrow y = \frac{9x^3}{3} - \frac{4x^2}{2} + 5x + C\)\\[0.3cm]
+\bt{\underline{Step 2:}} When \(x = -1, y=0\)\\[0.2cm]
+\be 0=3(-1)^3 - 2(-1)^2 + 5(-1) + C \Rightarrow 0 = -3 - 2 - 5 + C \Rightarrow C = 10\ee
+\bt{SOLUTION:} \be y = 3x^3 - 2x^2 + 5x + 10 \ee
+Example V: Sovle the \IVP \be \frac{ds}{dt} = \cos t + \sin t ,\; \; S(\pi) = 1 \ee
+\sol \st
+\be \int\text{ds} = \int(\cos t + \sin t)\text{dt} \imp S = \sin t - \cos t + C \ee
+\stn{ t = \pi, \; S= 1}
+\be 1 = \sin \pi - \cos \pi + C\ee
+\be 1 = 0 - (-1) + C \ee
+\be \imp C = 0 \ee
+\bt{SOLUTION:} \be S = \sin t - \cos t \ee
+Example VI: Solve the \IVP \be \frac{d^{2}y}{dx^2} = 2 - 6x, \; y\sprime(0) = 4, \; y(0) = 1 \ee
+\bt{SOLUTION:} We will have to do the two steps twice to find the solution to this \IVP. The first time through will give us \(y\sprime\) and the second time through will ngive us \(y\)
+\newpage
+\NI \st
+\be y\dprime =(2 \cdot 6x) \ee
+\be \imp y\sprime = \int (2 - 6x)\text{dx} \ee
+\be \imp y\sprime = 2x \cdot \frac{6x^2}{2} + C \ee
+\stn{x=0, y\sprime = 4}
+\be 4 = 2(0) - 3(0)^2 + C \imp C = 4\ee
+\be y\sprime = 2x - 3x^2 + 4\ee
+\st
+\be y = \int(2x - 3x^2 + 4)\text{dx} \imp y = \frac{2x^2}{2} - \frac{3x^3}{3} + 4x + C \ee
+\stn{x=0, y=1}
+\be 1 = 0^2 - 0^3 + 4(0) + C \imp C = 1\ee
+\bt{SOLUTION:} \be y = x^2 - x^3 + 4x + 1\ee
+Exampe VII: Sovle the \IVP \be \; \; y^{(4)} = - \sin t + \cos t, \; y\tprime(0) = 7, \; y\dprime(0) = y\sprime(0) = -1, y(0) = 0 \ee 
+\sol
+Since we are working with the fourth derivatives, we will have to go through the two steps four times\\
+\st
+\be y^{(4)} = y^{iv} = - \sin t + \cos t \ee
+\be \imp y\tprime = \int(-\sin t + \cos t)\text{dt} \ee
+\be \imp y\tprime = \cos t + \sin t + C \ee 
+\stn{ t=0\; \; y\tprime = 7}
+\be 
+7 = \cos(0) + \sin(0) + C \\  
+\imp 7 = 1 + C \imp C = 6 \spn{0.2cm}
+y\tprime = \cos t + \sin t + 6
+\ee
+\newpage
+\NI Again,\sp
+\st
+\be
+y\dprime = \int(\cos t + \sin t + 6)\text{dt} \\
+\imp y\dprime = \sin t - \cos t + 6t + C
+\ee \spn{0.1cm}
+\stn{ t=0, \; \; y\dprime = -1}
+\be 
+-1 = \sin(0) - \cos(0) + 6(0) + C \\
+\imp -1 = -1 + C \imp C = 0 \spn{0.1cm}
+y\dprime = \sin t - \cos t + 6t
+\ee
+Again,\sp
+\st
+\be
+y\sprime = \int(\sin t - \cos t + 6t)\text{dt} \imp y\sprime = - \cos t - \sin t + 6\frac{t^2}{2} + C
+\ee
+
+\stn{ t=0, \; \; y\sprime = -1}
+\be 
+-1 = \cos(0) - \sin(0) + 3(0) + C \imp -1 = -1 + C \imp C = 0 \spn{0.1cm}
+y\sprime = - \cos t - \sin t + 3t^2
+\ee
+
+Again,\sp
+\st
+\be
+y = \int(-\cos t - \sin t + 3t^2)\text{dt} \\
+\imp y = -\sin t + \cos t + 3 \frac{3t^3}{3} + C
+\ee
+\stn{ t=0, \; \; y = 0}
+\be 
+0 = -\sin(0) + \cos(0) + 0^3 + C \\
+\imp 0 = 1 + C \imp C = -1
+\ee
+\bt{SOLUTION: } \be y = -\sin t + \cos t + t^3 - 1\ee
+Example VIII: Given the Velocity, 
+\[
+V = \frac{ds}{dt} = 32t - 2
+\]
+and the Initial position of the body as \(S(\frac{1}{2}) = 4\). Find the body's position at the time \(t\).\sp
+\sol
+\st
+\be
+\frac{ds}{dt} = 32t - 2 \\
+\text{ds} = (32t - 2)\text{dt} \\
+\int \text{ds} = \int(32t - 2)\text{dt} \\
+S = \frac{32t^2}{2} - 2t + C
+\ee
+\stn{t = \frac{1}{2}, S = 4}
+\be
+4 = 16(\frac{1}{2})^2 - 2 (\frac{1}{2}) + C \sp
+\imp 4 = 4 - 1 + C \imp C = 1\\
+\ee
+\bt{SOLUTION:} \be S = 16t^2 - 2t + 1 \ee
+
+\NI Example VIX: Given the aceleration \(a = \frac{d^{2}s}{dt^2} = -4 \sin 2t\). Initial Velocity \(V(0)=2\), and the Initial position of the body as \(S(0)-3\). Find the body's position at time \(t\)\\
+\sol
+\st
+\be V = \int -4\sin 2t dt \imp V = \frac{4\cos 2t}{2} + C\ee
+\stn{t=0, \; V=2}
+\be
+\imp 2 = 2 \cos(0) + C \imp 2 = 2 + C \; \imp C = 0 \sp
+\therefore V = 2 \cos 2t
+\ee
+\st
+\be
+S = \int 2\cos 2t dt \imp S = \frac{2\sin 2t}{2} + C
+\ee
+\stn{t=0, \; S=-3}
+\be
+-3 = \sin(0) + C \imp C = -3
+\ee
+\soL{S=\sin 2t - 3}
+\newpage
+\begin{center}
+\bt{REDUCING N-ORDER ODEs INTO SYSTEM OF FIRST-ORDER ORDINARY DIFFERENTIAL}
+\end{center}
+In this section we show how to reduce higher-order \ODE into systems of first order \ODE (O.D.Es).\\
+
+\NI Example I: Reduce the differential equation into its equivalent system of first-order O.D.Es\\
+\be
+y\tprime + 6y\dprime + 11y\sprime + 6y = 0 - - - - - - - - - (1.0) \\
+y(0) = 1 - - - - - - - - - - - - - - - - - (1.1) \\
+y\sprime(0) = 0 - - - - - -  - - - - - - - - - -   (1.2)\\
+y\dprime(0) = 0 - - - -  - - - - - - - - -  - - -  (1.3)
+\ee
+Let \(y = y_1\)\\
+(1.0) becomes,
+\be
+\yn{1}\tprime + 6\yn{1}\dprime + 11\yn{1}\sprime + 6\yn{1} = 0 \\[0.2cm]
+\yn{1}\sprime = \yn{2} \imp \yn{1}\dprime = \yn{2}, \; \yn{1}(0) = 1 \\[0.2cm]
+\yn{1}\dprime = \yn{2}\sprime = \yn{3} \imp \yn{2}\sprime = \yn{3}, \; \yn{2}(0) = 0 \\[0.2cm]
+\yn{1}\tprime = \yn{2}\dprime = \yn{3}\sprime \\[0.3cm]
+\imp \yn{3}\sprime + 6\yn{3} + 11\yn{2} + 6\yn{1} = 0 \\[0.2cm]
+\imp \yn{3}\sprime = -6\yn{3} - 11\yn{2} - 6\yn{1}, \yn{3}(0) = 0 \\[0.2cm]
+\ee
+\(\therefore\) The third-Order \ODE in its equivalent system of first Order ODEs is:\\[0.3cm] 
+\be 
+\yn{1}\sprime = \yn{2}, \yn{1}(0) = 1\\
+\yn{2}\sprime = \yn{3}, \yn{2}(0) = 0 \\
+\yn{3}\sprime = -6\yn{1} - 11\yn{2} - 6\yn{3}, \yn{3}(0) = 0\\
+\ee
+which matrice form gives,\\[0.4cm]
+\(\displaystyle \underline{y}\sprime \; \; = \; \; \)
+\(\begin{pmatrix}
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	-6 & -11 & -6 \\
+\end{pmatrix}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+y_3 \\
+\end{pmatrix} = 
+\begin{pmatrix}
+0\\0\\0
+\end{pmatrix} ,
+\begin{pmatrix}
+\yn{1}(0)\\ \yn{2}(0)
+\end{pmatrix}  = 
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix} 
+\)\\[0.4cm]
+
+\NI Example II: Reduce the differential equation into its equivalent System of First-Order O.D.Es\\[0.2cm]
+\be
+y\dprime + 2y\sprime + 6y = 0  - - - - - - - - - (1.0) \\[0.2cm]
+y(0) = 0, \; y\sprime(0) = 1
+\ee
+Let \(y =y_1\) \spn{0.1cm}
+\((1.0)\) becomes \sp
+\be
+\yn{1}\dprime + 2\yn{1}\sprime + 6\yn{1} = 0 \spn{0.1cm}
+\yn{1}\sprime = \yn{2} \imp \yn{1}\sprime = \yn{2}, \; \yn{1}(0) = 0 \\[0.2cm]
+\yn{1}\dprime = \yn{2}\sprime \\[0.2cm]
+\imp \yn{2}\sprime + 2y_2 + 6y_1 = 0 \imp \yn{2}\sprime = -6y_1 - 2y_2 , y_2(0) = 1
+\ee
+Hence, the Second-Order \ODE in its equivalent System of First Order ODEs is:\sp
+\be 
+\yn{1}\sprime = \yn{2} , \; \yn{1}(0) = 0 \sp
+\yn{2}\sprime = - 6y_1 - 2y_2 , \; y_2(0) = 1
+\ee
+
+\ex{III} Reduce the following higher Order \IVPs to the equivalence Order System\sp
+\be
+(1) \; \; y\tprime + 2y\dprime - y\sprime - 2y = e^x, \; \text{for } \; 0 \leq x \leq 1, \; \text{for which } \; y(0) = 1, \; y\sprime(0) = 2 \text{ and } \; y\dprime(0) = 0 \sp
+\ee
+Let \(y = y_1\)\sp
+\be
+\yn{1}\tprime + 2\yn{1}\dprime - \yn{1} - 2y_1 = e^x \sp
+y_1\dprime = y_2 \imp y_1\sprime = y_2, \; y_1(0) = 1\sp
+y_1\dprime = y_2\sprime = y_3 \imp y_2\sprime = y_2, y_2(0) = 2\sp
+y_1\tprime = y_2\dprime = y_3\sprime\sp
+\imp y_3\sprime + 2y_3 - y_2 - 2y_1 = e^x \sp
+y_3\sprime = 2y_1 + y_2 - 2y_3 + e^x, \; y_3(0) = 0
+\ee
+Hence the third-order \ODE in its equivalent System of first Order ODEs is:\sp
+\be 
+y_1\sprime = y_2, \; y_1(0) = 1 \sp
+y_2\sprime = y_3, \; y_2(0) = 2
+y_3\sprime = 2y_1 + y_2 + 2y_3 + e^x , \; y_3(0) = 0
+\ee
+In matrice form the ODE is expressed as;\sp
+\(\displaystyle \underline{y}\sprime \; \; = \; \;
+\begin{pmatrix}
+	0	&	1	&	0\\
+	0	&	0	&	1\\
+	2	&	1	&	-2\\
+\end{pmatrix}
+\begin{pmatrix}
+	y_1 \\
+	y_2 \\
+	y_3 \\
+\end{pmatrix}
++ \; e^x, \;
+\begin{pmatrix}
+	y_1(0) \\
+	y_2(0) \\
+	y_3(0) \\
+\end{pmatrix} = 
+\begin{pmatrix}
+	1 \\ 2 \\ 0 \\
+\end{pmatrix}
+\)\sp
+\newpage
+\ex{IV} Reduce the following Second-Order \IVP to the equivalence Order System \sp
+\be
+(1) y\dprime + 7y\sprime + 5y = 0 , y(0) = 1 , y\sprime(0) = 7 \sp
+(2) y\nprim{(iv)} + 3y\tprime - 2y\dprime + y\sprime - 4y = 0 , y(0) = 1, y\sprime(0) = 2 , y\dprime(0) = 3 , y\tprime(0) = 4
+\ee
+\sol
+\be
+y\dprime + 7y\sprime + 5y = 0 \sp
+\text{let } y = y_1\sp
+y_1\dprime + 7y_1 + 5y1 = 0\sp
+y_1\sprime = y_2 \imp y_1\sprime , y(0) = 1 \sp
+y_1\dprime = y_2\sprime \sp
+\imp y_2\sprime + 7y_2 + 5y_1 = 0\sp
+\imp y_2\sprime = -5y_1 - 7y_2 , y_2(0) = 7 \spn{0.01cm}
+\ee
+Hence, the Second-Order \ODE in the equivalent System of first Order ODEs is;\sp
+\be
+y_1\sprime = y_2 , y(0) = 1 \sp
+y_2\sprime = -5y_1 - 7y_2 , y_2(0) = 7
+\ee
+In matrice form, we have;\sp
+\be \begin{pmatrix}
+y_1\sprime \\
+y_2\sprime
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+0 & 1 \\
+-5 & -7 \\
+\end{pmatrix} \;
+\begin{pmatrix}
+y_1 \\ 
+y_2
+\end{pmatrix} \; , \;
+\begin{pmatrix}
+y_1(0) \\
+y_2(0) 
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+1 \\
+7
+\end{pmatrix}
+\ee
+\be
+y^{iv} + 3y\tprime - 2y\dprime + y\sprime - 4y = 0 , y(0) = 1, y\sprime(0) = 2, y\dprime(0) = 3, y\tprime(0) = 4 \sp
+\text{Let } y = y_1 \sp
+y_1^{iv} + 3y_1\tprime - 2y_1\dprime + y_1\sprime - 4y_1 = 0 \sp
+y_1\sprime = y_2 \imp y_1(0) = 1\sp
+y_1\dprime = y_2\sprime = y_3 \imp y_2\sprime = y_3 , y_2(0) = 2\sp
+y_1\tprime = y_2\dprime = y_3\sprime = y_4 \imp y_3\sprime = y_4  , y_3(0) = 3 \sp
+y_1^{iv} = y_2\tprime = y_3\dprime = y_4\sprime \sp
+\imp y_4\sprime + 3y_4 - 2y_3 + y_2 - 4y_1 = 0 \sp
+y_4\sprime =  4y_1 - y_2  + 2y_3 - 3y_4 , y_4(0) = 4 \sp
+\ee
+Hence, the fourth Order \ODE in its equivalent System of first Order ODEs is;\sp
+\be
+y_1\sprime = y_2 , y_1(0) = 1 \sp
+y_2\sprime = y_3 , y_2(0) = 2 \sp
+y_3\sprime = y_4 , y_3(0) = 3 \sp
+y_4\sprime = 4y_1 - y_2 + 2y_3 - 3y_4 , y_4(0) = 4 
+\ee
+In matrice form we have;\sp
+\be
+\begin{pmatrix}
+y_1\sprime \\
+y_2\sprime \\
+y_3\sprime \\
+y_4\sprime \\
+\end{pmatrix}
+ \; = \;
+\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+4 & -1 & 2 & -3 \\
+\end{pmatrix}
+\begin{pmatrix}
+y_1(0) \\
+y_2(0) \\
+y_3(0) \\
+y_4(0) \\
+\end{pmatrix}
+\; = \; 
+\begin{pmatrix}
+1 \\ 2 \\ 3 \\ 4
+\end{pmatrix}
+\ee
+\newpage
+\begin{center}
+\textbf{SOLVING HIGHER ORDER INITIAL VALUE PROBLEM BY METHOD OF EIGNE VALUES AND EIGEN VECTORS} \\[1.5cm]
+\end{center}
+Here, we will learn how to solve Second-Order and Third-Order \IVPs using eigen Value/eigen Vectors approach\sp
+
+\ex{I}
+Solve \(\dsp y\tprime + 6y\dprime + 11y\sprime + 6y = 0\) by reducing to a system of first Order ODEs. \(\dsp y(0)=1, \; y\sprime(0)=0, \; y\dprime(0)=0\)\sp
+\sol
+\be 
+y_1\tprime + 6y_1\dprime + 11y_1\sprime + 6y_1 = 0\sp
+y_1\sprime = y_2 , \; y_1(0)=1 \sp
+y_1\dprime = y_2\sprime = y_3 , \; y_2(0)=0 \sp
+y_1\tprime = y_2\dprime = y_3\sprime , \; y_3(0)=0 \sp
+\imp y_3\sprime + 6y_3 + 11y_2 + 6y_1 = 0 \sp
+y_3\sprime = -6y_1 - 11y_2 - 6y_3 , \; y_3(0)=0 \sp
+\ee
+Hence we have, 
+\be
+y_1\sprime = y_2 , \; y_1(0)=1 \sp
+y_2\sprime = y_3 , \; y_2(0)=0 \sp
+y_3\sprime = -6y_1 - 11y_2 - 6y_3 , \; y_3(0)=0 \sp
+\therefore \text{ In matrice form, we have; }\sp
+\begin{pmatrix}
+	y_1\sprime \\
+	y_2\sprime \\
+	y_3\sprime \\
+\end{pmatrix} \; = \; 
+\begin{pmatrix}
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	-6 & -11 & -6 \\
+\end{pmatrix}
+\begin{pmatrix}
+	y_1\\
+	y_2\\
+	y_3\\
+\end{pmatrix} \; , \;
+\begin{pmatrix}
+	y_1(0)\\
+	y_2(0)\\
+	y_3(0)\\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	1\\
+	0\\
+	0\\
+\end{pmatrix} \sp
+\therefore \text{ Using the characteristic equation } \left|A-\lambda I\right| = 0, \text{we obtain the eigen values}\sp
+\left| 
+\begin{pmatrix}
+	0 & 1 & 0\\
+	0 & 0 & 1\\
+	-6 & -11 & -6\\
+\end{pmatrix} \; - \;
+\lambda
+\begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+\end{pmatrix} 
+\right| \; = 0 \;
+\imp 
+\left|
+\begin{pmatrix}
+	0 & 1 & 0\\
+	0 & 0 & 1\\
+	-6 & -11 & -6\\
+\end{pmatrix} \; - \;
+\begin{pmatrix}
+	\lambda & 0 & 0\\\
+	0 & \lambda & 0 \\
+	0 & 0 & \lambda \\
+\end{pmatrix}
+\right|
+\sp
+\left|
+\begin{pmatrix}
+	\lambda & 1 & 0\\
+	0 & \lambda & 1\\
+	-6 & -11 & -6-\lambda\\
+\end{pmatrix} 
+\right| \; = \; 0 \sp
+-\lambda(-\lambda(-6-\lambda) + 11)- 1(0+6) + 0 (0-6\lambda) = 0 \sp
+-\lambda(6\lambda + \lambda^2 + 11) - 1(6) = 0 \sp
+\imp -\lambda^3 - 6\lambda^2 - 11\lambda - 6 = 0 \sp
+\imp \lambda^3 + 6\lambda^2 + 11\lambda + 6 = 0 \sp
+\ee
+By trial and error method,\sp
+When \(\dsp \lambda = -1,\) i.e \(\dsp \lambda=-1\) is a zero of the polynomial, \sp
+\(\dsp \imp \lambda + 1\) is a factor. \sp
+By long division method,\sp
+\be
+\begin{array}{rrrrrrrrrrr}
+	&&&& \lambda^2 & + & 5\lambda & + & 6&\\
+	\cline{5-11}\\[-2.7mm]
+	\lambda & + & 1 & \big| & \lambda^3 & + & 6\lambda^2 & + &  11\lambda & +&  6 \\[1mm]
+	&&&&\lambda^3 & + & \lambda^2 \\
+	\cline{5-11}\\[0.7mm]
+	&&&&&& 5\lambda^2 & + & 11\lambda & + &  6\\
+	&&&&&& 5\lambda^2 & + &  5\lambda \\
+	\cline{7-11}\\
+	&&&&&&&& 6\lambda & + & 6 \\
+	&&&&&&&& 6\lambda & + & 6 \\
+	\cline{9-11}\\
+	&&&&&&&&&--\\[2.8mm]
+	\cline{9-11}\\
+\end{array}\sp
+\therefore (\lambda + 1) (\lambda^2 +  5\lambda + 6) \equiv (\lambda + 1)(\lambda + 2)(\lambda + 3)\\
+\imp \lambda = -1, -2, -3
+\ee
+Hence the eigen Values are \(\dsp \lambda_1 = -1, \lambda_2 = -2, \lambda_3=-3\)\sp
+Now, we obtain the eigen Vectors, using \(\dsp (A-\lambda I) \underline{y} = 0\)\sp
+When \be \lambda = -1 \ee
+\be
+\left[
+\begin{pmatrix}
+	0 & 1 & 0\\
+	0 & 0 & 1 \\
+	-6 & - 11 & -6\\
+\end{pmatrix} \; - \; \lambda
+\begin{pmatrix}
+	1 & 0 & 0\\
+	0 & 1 & 0\\
+	0 & 0 & 1\\
+\end{pmatrix}
+\right]
+\begin{pmatrix}
+	y_1\\
+	y_2\\
+	y_3\\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	0\\
+	0\\
+	0\\
+\end{pmatrix}
+\imp (y_1, y)2, y_3) = (1,-1,1)\sp
+\begin{array}{llll}
+	\imp & y_1 & = & 1\\
+	& y_2 & = & -1 \\
+	& y_3 & = & 1 \\
+\end{array}\sp
+\therefore \text{The eigen Vector corresponding to the eigen Value } \lambda = -1 \text{ is } k_1 = 
+\begin{pmatrix}
+	1 \\ 
+	-1 \\
+	1 \\
+\end{pmatrix}
+\ee
+When 
+\be
+\lambda = -2 \sp
+\text{Now, we obtain the eigen Vector using } (A - \lambda I)\underline{y} = 0 \sp
+\left[
+\begin{pmatrix}
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	-6 & -11 & -6 \\
+\end{pmatrix} \; + \; 2 \;
+\begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+\end{pmatrix}
+\right]
+\begin{pmatrix}
+	y_1 \\
+	y_2 \\
+	y_3 \\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	0\\
+	0\\
+	0\\
+\end{pmatrix} \sp
+\left[
+\begin{pmatrix}
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	-6 & -11 & -6 \\
+\end{pmatrix} \; + \;
+\begin{pmatrix}
+	2 & 0 & 0 \\
+	0 & 2 & 0 \\
+	0 & 0 & 2 \\
+\end{pmatrix}
+\right]
+\begin{pmatrix}
+	y_1 \\
+	y_2 \\
+	y_3 \\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	0\\
+	0\\
+	0\\
+\end{pmatrix} \sp
+\begin{pmatrix}
+	2 & 1 & 0 \\
+	0 & 2 & 1 \\
+	-6 & -11 & -4\\
+\end{pmatrix}
+\begin{pmatrix}
+	y_1 \\
+	y_2 \\
+	y_3 \\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	0 \\
+	0 \\
+	0 \\
+\end{pmatrix}\sp
+2y_1  +  y_2  =  0  --------------- (1)\sp
+2y_2  +  y_3  = 0  --------------- (2) \sp
+-6y_1 -11y_2 - 4y_3  =  0 ----------- (3) \sp
+\text{ From (1) } 2y_1 = -y_2 ------------ (4)\sp
+\text{ From (2) } 2y_2 = -y_3 ------------ (5)\sp
+\imp y_1 = - \frac{1}{2}y_2 = \frac{1}{4}y_3 \sp
+y_1 = \frac{1}{4}y_3 \; , \; y_2 = -\frac{1}{2}y_3 \; , \; y_3 = y_3\sp
+\begin{pmatrix}
+	y_1\\
+	y_2\\
+	y_3\\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	\frac{1}{4}y_3\\
+	-\frac{1}{2}y_3 \\
+	y_3\\
+\end{pmatrix} \; = \;y_3
+\begin{pmatrix}
+	\frac{1}{4}\\
+	-\frac{1}{2}\\
+	1\\
+\end{pmatrix} \; = \; \frac{1}{4}y_3
+\begin{pmatrix}
+	1 \\
+	-2 \\
+	4 \\
+\end{pmatrix}\sp
+\text{ Set } \frac{1}{4}y_3 = 1 \sp
+\therefore k_2 = 
+\begin{pmatrix}
+	1\\
+	-2\\
+	4
+\end{pmatrix}\sp
+\text{ Where } k_2 = 
+\begin{pmatrix}
+	1\\
+	-2 \\
+	4 \\
+\end{pmatrix}
+\text{ is the eigen Vector corresponding to } \lambda = -2\sp
+\text{Also, When } \lambda = -3\sp
+\text{We obtain the eigen Vector, using } (A-\lambda I)\underline{y} = 0\sp
+\left[
+\begin{pmatrix}
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	-6 & -11 & -6 \\
+\end{pmatrix} \; + \; 3 \;
+\begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+\end{pmatrix}
+\right]
+\begin{pmatrix}
+	y_1 \\
+	y_2 \\
+	y_3 \\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	0\\
+	0\\
+	0\\
+\end{pmatrix} \sp
+\left[
+\begin{pmatrix}
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	-6 & -11 & -6 \\
+\end{pmatrix} \; + \;
+\begin{pmatrix}
+	3 & 0 & 0 \\
+	0 & 3 & 0 \\
+	0 & 0 & 3 \\
+\end{pmatrix}
+\right]
+\begin{pmatrix}
+	y_1 \\
+	y_2 \\
+	y_3 \\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	0\\
+	0\\
+	0\\
+\end{pmatrix} \sp
+\begin{pmatrix}
+	3 & 1 & 0 \\
+	0 & 3 & 1 \\
+	-6 & -11 & -3\\
+\end{pmatrix}
+\begin{pmatrix}
+	y_1 \\
+	y_2 \\
+	y_3 \\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	0 \\
+	0 \\
+	0 \\
+\end{pmatrix}\sp
+3y_1  +  y_2  =  0  --------------- (1)\sp
+3y_2  +  y_3  = 0  --------------- (2) \sp
+-6y_1 -11y_2 - 3y_3  =  0 ----------- (3) \sp
+3y_1 = -y_2 ------ (4)\sp
+3y_2 = -y_3 ------ (5)\sp
+\imp y_1 = -\frac{1}{3}y_2 \; , \; y_2 = -\frac{1}{3}y_3 \sp
+y_1 = -\frac{1}{3}y_3 = \frac{1}{9}y_3 \sp
+y_1 = \frac{1}{9}y_3 \; , \; y_2 = - \frac{1}{3}y_3 \; , \; y_3 = y_3\sp
+\begin{pmatrix}
+	y_1\\
+	y_2\\
+	y_3\\
+\end{pmatrix} \; = \;
+\begin{pmatrix}
+	\frac{1}{9}y_3\\
+	-\frac{1}{3}y_3 \\
+	y_3\\
+\end{pmatrix} \; = \;y_3
+\begin{pmatrix}
+	\frac{1}{9}\\
+	-\frac{1}{3}\\
+	1\\
+\end{pmatrix} \; = \; \frac{1}{9}y_3
+\begin{pmatrix}
+	1 \\
+	-3 \\
+	9 \\
+\end{pmatrix}\sp
+\text{ Set } \frac{1}{9}y_3 = 1 \sp
+\therefore k_3 = 
+\begin{pmatrix}
+	1\\
+	-3\\
+	9
+\end{pmatrix}\sp
+\text{ Where } k_3 = 
+\begin{pmatrix}
+	1\\
+	-3 \\
+	9 \\
+\end{pmatrix}
+\text{ is the eigen Vector corresponding to } \lambda = -3\sp
+\therefore \text{ We have the solution in the form, }\sp
+\ee
+\[
+\gamma_1 = e^{\lambda_1 x}C_1 + e^{\lambda_2 x}C_2 + e^{\lambda_3 x}C_3\sp
+\]
+\be
+\gamma_1 = 
+\begin{pmatrix}
+	1\\ -1 \\ 1\\
+\end{pmatrix}
+e^{-x} + 
+\begin{pmatrix}
+	1 \\ -2 \\ 4
+\end{pmatrix}
+e^{-2x} + 
+\begin{pmatrix}
+	1 \\ -3 \\ 9
+\end{pmatrix}
+e^{-3x}\sp
+\gamma_1 = 
+\begin{pmatrix}
+	e^{-x} + e^{-2x} + e^{-3x}\\[0.2cm]
+	-e^{-x} -2e^{-2x} - 3e^{-3x}\\[0.2cm]
+	e^{-x} + 4e^{-2x} + 9e^{-3x}\\[0.2cm]
+\end{pmatrix}
+\gamma_1 = \gamma = e^{-x} + e^{-2x} + e^{-3x}\sp
+y(x) = C_1 e^{-x} + C_2 e^{-2x} + C_3 e^{-3x}\sp
+y(0) = 1 \imp C_1 + C_2 + C_3 = 1\sp
+y\sprime(0) = 0 \imp -C_2 -2C_2 -3C_3 = 0\sp
+y\dprime(0) = 0 \imp C_1 + 4C_2 + 9C_3 = 0 \sp
+\therefore \text{ We have } 3 \times 3 \text{ System of equation}\sp
+\begin{array}{ccccccc}
+C_1 & + & C_2 & + & C_3 & =& 1\sp
+-C_1 & - &2C_2 &- & 3C_3 &=& 0 \sp
+C_1 &+ &4C_2 &+& 9C_3 &=& 0\sp
+\end{array}
+\ee
+Using Gaussian Elimination, i.e reducing to echolon form\sp
+\be
+\begin{pmatrix}
+	1 & 1 & 1 & \vdots & 1\\
+	-1 & -2 & -3 & \vdots & 0\\
+	1 & 4 & 9 & \vdots & 0
+\end{pmatrix} \; \sim \;
+\begin{pmatrix}
+	1 & 1 & 1 & \vdots & 1\\
+	0 & -1 & -2 & \vdots & 1\\
+	0 & 3 & 8 & \vdots & -1\\
+\end{pmatrix} \; \sim \;
+\begin{pmatrix}
+	1 & 1 & 1 & \vdots & 1\\
+	0 & -1 & -2 & \vdots & 1\\
+	0 & 0 & 2 & \vdots & 2\\
+\end{pmatrix}\sp
+\begin{array}{ccccccc}
+C_1 & + & C_2 & + & C_3 &=&1 -----(1)\sp
+&-&C_2 &-& 2C_3&=&1 ----- (2)\sp
+&&&&2C_3 &=&2 ----- (3)\sp
+\end{array} \spn{0.4mm}
+\imp C_3 = 1, \; \; -C_2 - 2C_3 = 1 \imp -C_2 - 2 = 1 \imp -C_2 = 3 \imp C_2 = -3 \spn{0.3mm}
+\text{ Also from (1) } C_1 + C_2 + C_3 = 1 \imp C_1 - 3 + 1 = 1 \imp C_1 = 3\sp
+\therefore y(x) = 3e^{-x} - 3e^{-2x} + e^{-3x}
+\ee
+\newpage
+\begin{center}
+\textbf{RUNGE-KUTTA METHODS} \\[1cm]
+\end{center}
+In Numerical Analysis, the \bt{Runge-Kutta} methods are family of implicit and explicit iterative methods, which include the well known routine called the \bt{Euler Method}, used in temporal discretization for the approximate solutions of \ODEs. These methods were developed around 1900 by the German mathematicians Carl Runge and Wilhelm Kutta.\sp
+
+\NI Runge-Kutta methods belong to the class of one-step Integration for the numerical solution of \ODEs. Nonstiff Problems can be efficiency sovled with explicit Runge-Kutta methods, Stiff Problems with certain conflicit Runge-Kutta methods. The Runge-Kutta method is known as the \bt{Predictor Method}.\sp
+The Euler's modified formula is\sp
+\be
+y_{n+1} = y_n + \frac{h}{2} \left[f(x_n,y_n) + f(x_{n+1}, y_{n+1})\right] \spn{1cm}
+y_{n+1} = y_n + \frac{h}{2} \left[f(x_n,y_n) + f(x_n + h, y_n + h)\right] - - - - - - (1.0)\sp 
+\begin{array}{llll}
+\text{ Let } & k_1 & = & hf(x_n,y_n)\sp
+& k_2 & = & hf\left[x_n + h, y_n + hf(x_n,y_n)\right] \text{ or } k_2 = hf(x_n + h, y_n + k1)\sp
+\end{array} \sp
+\text{ Substituting the values of } k_1 \text{ and } k_2 \text{ in } 1.0  \text{ we get } \sp
+\mathbf{y_{n+1} = y_n + \frac{1}{2}\left( k_1 + k_2 \right)}\sp
+\ee
+This is known as \bt{Runge's Formula of Order 2}\sp
+The Runge's Formula of Order 3 is also given by;\sp
+\be
+\mathbf{y_1 = y_0 + \frac{1}{6}\left(k_1 + 4k_4 + k_3\right)} \sp
+\text{ where, }\sp
+\begin{array}{lll}
+ k_1 &=& hf(x_0,y_0),\sp
+ k_2& =& hf\left(x_0 + \frac{h}{2}, y_0 + \frac{k_1}{2}\right)\sp
+k_3 &=& hf(x_0+h, y_0 + 2k_2 - k_1)
+\end{array}
+\ee
+The most widely known member of the Runge-Kutta family is generally referred to as \bt{"RK4"} the \bt{"Classic Runge-Kutta method"} Or simply as the \bt{"Runge-Kutta method"}.
+
+\begin{center}
+\textbf{RUNGE-KUTTA METHOD OF ORDER 4} \\
+\end{center}
+Let an \IVP be specified as follows\sp
+\be
+\hat{y} = f(x,y) \; , \; y(x_0) = y_0
+\ee
+Here, \(y\) is an unknown function (scalar or vector) of \(x\), which  we would like to approximate, we are told that \(\dsp \hat{y}\), the rate at which \(\dsp y\) changes, is a function of \(\dsp x\) and of \(\dsp y\) itself. At the initial time \(\dsp x_0\) the corresponding \(\dsp y\) value is \(\dsp y_0\). The function \(\dsp f\) and the initial conditions \(\dsp x_0, y_0\) are given.\sp
+Given the following inputs\sp
+\begin{itemize}
+	\item An \ODE that defines values of \( dy/ dx \) in the form \(\dsp x\) and \(\dsp y\).
+	\item Initial Value of \(\dsp y\), i.e, \(\dsp y(0)\)
+\end{itemize}
+Thus we are given below\sp
+\be
+\frac{dy}{dx} = f(x,y), y(0) = y_0
+\ee
+The task is to find value of unknown function \(\dsp y\) at a given point \(\dsp x\).\sp
+The Runge-Kutta method finds approximate value of \(\dsp y\) for a given \(\dsp x\). Only First Order \ODEs can be solved by using the Runge-Kutta 4th Order Method.\sp
+The formula used to compute next value \(y_{n+1}\) from previous value \(y_n\) is given below. The value of \(n\) are \(\dsp  0,1,2,3,\cdots \frac{(x-x_0)}{h}\). Here \(h\) is step height and \(\dsp x_{n+1} = x_{n+h}\). Lower step size means more accuracy.\sp
+\be
+k_1 = hf(x_n,y_n)\sp
+k_2 = hf(x_n +\frac{h}{2}, y_n + \frac{k_1}{2}) \sp
+k_3 = hf(x_n + \frac{h}{2}, y_n + \frac{k_2}{2}) \sp
+k_4 = hf(x_n + h, y_n + k3) \sp
+y_{n+1} = y_n + \frac{k_1}{6} + \frac{k_2}{3} + \frac{k_3}{3} + \frac{k_4}{6} + O(h^5)\sp
+\imp y_{n+1} = y_n + \frac{1}{6}\left[ k_1 + 2k_2 + 2k_3 + k_4 \right]
+\ee
+The formula basically computes next value \(y_{n+1}\) using current \(y_n\) plus weighted average of four increments.
+\begin{itemize}
+	\item \(k_1\) is the based on the slop of the the beginning of the interval, using \(y\)
+	\item \(k_2\) is the increment based on the slope at the midpoint of the interval, using \(\dsp y + \frac{hk_1}{2}\)
+	\item \(k_3\) is again the increment based on the slope at the midpoint, using \(\dsp y + \frac{hk_2}{2}\)
+	\item \(k_4\) is the increment based on the slope at the end of the interval, using \(y + hk_3\)
+\end{itemize}
+The method is a fourth-order method, meaning  that the  local trunction error is on the Order of \( \dsp O(h^5)\), while the total accumulated error is Order \(\dsp O(h^4)\).
+\ex{I} \be \left\{
+\begin{array}{rcl}
+y\sprime &=& y - t^2 + 1\\
+y(0) &=& 0.5
+\end{array}
+\right.
+\ee
+The exact solution for this problem is \(\dsp y=t^2 + 2t + 1 - \frac{1}{2}e^t\), and we are interested in the value of \(\dsp y\) for \(\dsp 0 \leq t \leq 2\).\sp
+\NI1. We first solve this problem using RK4 with \(h=0.5\) from \(t=0\) to \(t=2\) with step size \(h=0.5\). It takes 4 steps:\sp
+\be
+t_0 = 0, \; t_1 = 0.5, \; t_2 = 1, \; t_3 = 1.5, \; t_4 = 2\sp
+\text{Step 0: } t_0 = 0, y_0=0.5, \text{ since } y(t_0) = y_0 \sp
+\text{Step I: } t_1 = 0.5, \text{but} \spn{0.5mm}
+k_1 = hf(x_n, y_n) \spn{0.5mm}
+k_2 = hf(x_n + \frac{h}{2}, y_n + \frac{k_1}{2})\spn{0.5mm}
+k_3 = hf(x_n + \frac{h}{2}, y_n + \frac{k_2}{2})\spn{0.5mm}
+k_4 = hf(x_n + h, y_n + k_3)\spn{0.8mm}
+\imp \text{ at } t_1 = 0.5, n=0\sp
+k_1 = hf(t_0, y_0) = 0.5 f(0,0.5) = 0.5(y_0 - t_0^2 + 1) = 0.5(0.5 - 0^2 + 1) \sp
+\imp k_1 = 0.5(1.5) = 0.75\sp
+\ee
+\newpage
+\begin{center}
+\textbf{GENERALIZING ADAMS-BASHFORTH AND ADAMS-MOULTON FOR SYSTEM OF ORDINARY DIFFERENTIAL EQUATIONS} \\[1cm]
+\end{center}
+The Adams-Basforth for a single differential equation of the form; \(\dsp y\sprime = f(x,y), y(x_0) = y_0\) is given as \\
+\be
+y_{n+1} = y_n + \frac{h}{24}\big[55f_n - 59f_{n-1} + 37f_{n-2} - 9f_{n-3}\big] - - - - - - - (i)
+\ee
+While the Adams-Bashforth for a System of \ODE is given as;\sp
+\be
+y_{i,j+1} = y_{i,j} + \frac{h}{24}\big[55f_{i,j} - 59f_{i,j-1} - 37f_{i,j-2} - 9f_{i,j-3}\big] - - - - - (ii)\\
+\ee
+(ii) is the Adams-Bashforth for a System where \(i = 1,\; j=3\)\sp
+Also,\\
+The Adams-Moulton for a single differential equation of the form; \be y\sprime = f(x,y), \; y(x_0) = y_0 \) is given as \sp
+\be
+y_{n+1} = y_n + \frac{h}{24} \big[ 9f_{n+1} + 19f_n - 5f_{n-1} + f_{n-2}\big] - - - - - - -  (iii)
+\ee
+While the Adams-Moulton for a System of \ODE is given as,\sp
+\be
+y_{i,i+1} = y_{i,j} + \frac{h}{24}\big[9f_{i,j+1} + 19f_{i,j} - 5f_{i, j-1} + f_{i,j-2} \big] - - - - - - - - (iv)
+\ee
+(iv) is the Adams-Moulton for a System, where \(i=1, \; j=3\) \sp
+for (i) and (iii) \(f_n = f(x_n,y_n)\)\sp
+And for (ii) and (iv) \(f_{i,j} = f\big(x_J, y_{1,j}, y_{2,j}, \cdots,y_{n,j}\big) \)
+\end{document}

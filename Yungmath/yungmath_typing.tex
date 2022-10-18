@@ -1,0 +1,150 @@
+\documentclass[a4paper 11]{article}
+
+\usepackage{amsmath, amssymb}
+\newcommand{\be}{\(\displaystyle}
+\newcommand{\ee}{\)\\[0.2cm]}
+\renewcommand{\sp}{\\[0.3cm]}
+\newcommand{\spn}[1]{\\[#1]}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\NI}{\noindent}
+\newcommand{\st}{\NI\bt{Step 1:}\sp}
+\newcommand{\stn}[1]{\NI\bt{Step 2:} When \be #1 \ee}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\sol}{\NI \bt{\underline{Solution}} \spn{0.07cm}}
+
+\newcommand{\soL}[1]{\bt{SOLUTION:} \be #1 \ee}
+\newcommand{\ODE}{Ordinary Differential Equation}
+\newcommand{\nprim}[1]{^{#1}}
+\newcommand{\yn}[1]{y_{#1}}
+
+
+\begin{document}
+\st
+\be \frac{ds}{dt} = 32t - 2 \spn{0.2cm}
+ds = (32t - 2)dt \sp
+\int ds = \int (32t - 2)dt \sp
+S = \frac{32t^2}{2} - 2t + c \sp
+\ee
+\stn{t = \frac{1}{2}, S = 4}
+\be
+4 = 16(\frac{1}{2})^2 - 2 (\frac{1}{2}) + C \sp
+\imp 4 = 4 - 1 + C \imp C = 1\\
+\ee
+\bt{SOLUTION:} \be S = 16t^2 - 2t + 1 \ee
+
+\NI Example VIX: Given the aceleration \(a = \frac{d^{2}s}{dt^2} = -4 \sin 2t\). Initial Velocity \(V(0)=2\), and the Initial position of the body as \(S(0)-3\). Find the body's position at time \(t\)\\
+\sol
+\st
+\be V = \int -4\sin 2t dt \imp V = \frac{4\cos 2t}{2} + C\ee
+\stn{t=0, \; V=2}
+\be
+\imp 2 = 2 \cos(0) + C \imp 2 = 2 + C \; \imp C = 0 \sp
+\therefore V = 2 \cos 2t
+\ee
+\st
+\be
+S = \int 2\cos 2t dt \imp S = \frac{2\sin 2t}{2} + C
+\ee
+\stn{t=0, \; S=-3}
+\be
+-3 = \sin(0) + C \imp C = -3
+\ee
+\soL{S=\sin 2t - 3}
+\newpage
+\begin{center}
+\bt{REDUCING N-ORDER ODEs INTO SYSTEM OF FIRST-ORDER ORDINARY DIFFERENTIAL}
+\end{center}
+In this section we show how to reduce higher-order \ODE into systems of first order \ODE (O.D.Es).\\
+
+\NI Example I: Reduce the differential equation into its equivalent system of first-order O.D.Es\\
+\be
+y\tprime + 6y\dprime + 11y\sprime + 6y = 0 - - - - - - - - - (1.0) \\
+y(0) = 1 - - - - - - - - - - - - - - - - - (1.1) \\
+y\sprime(0) = 0 - - - - - -  - - - - - - - - - -   (1.2)\\
+y\dprime(0) = 0 - - - -  - - - - - - - - -  - - -  (1.3)
+\ee
+Let \(y = y_1\)\\
+(1.0) becomes,
+\be
+\yn{1}\tprime + 6\yn{1}\dprime + 11\yn{1}\sprime + 6\yn{1} = 0 \\[0.2cm]
+\yn{1}\sprime = \yn{2} \imp \yn{1}\dprime = \yn{2}, \; \yn{1}(0) = 1 \\[0.2cm]
+\yn{1}\dprime = \yn{2}\sprime = \yn{3} \imp \yn{2}\sprime = \yn{3}, \; \yn{2}(0) = 0 \\[0.2cm]
+\yn{1}\tprime = \yn{2}\dprime = \yn{3}\sprime \\[0.3cm]
+\imp \yn{3}\sprime + 6\yn{3} + 11\yn{2} + 6\yn{1} = 0 \\[0.2cm]
+\imp \yn{3}\sprime = -6\yn{3} - 11\yn{2} - 6\yn{1}, \yn{3}(0) = 0 \\[0.2cm]
+\ee
+\(\therefore\) The third-Order \ODE in its equivalent system of first Order ODEs is:\\[0.3cm] 
+\be 
+\yn{1}\sprime = \yn{2}, \yn{1}(0) = 1\\
+\yn{2}\sprime = \yn{3}, \yn{2}(0) = 0 \\
+\yn{3}\sprime = -6\yn{1} - 11\yn{2} - 6\yn{3}, \yn{3}(0) = 0\\
+\ee
+which matrice form gives,\\[0.4cm]
+\(y\sprime = \)
+\(\begin{pmatrix}
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	-6 & -11 & -6 \\
+\end{pmatrix}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+y_3 \\
+\end{pmatrix} = 
+\begin{pmatrix}
+0\\0\\0
+\end{pmatrix} ,
+\begin{pmatrix}
+\yn{1}(0)\\ \yn{2}(0)
+\end{pmatrix}  = 
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix} 
+\)\\[0.4cm]
+
+\NI Example II: Reduce the differential equation into its equivalent System of First-Order O.D.Es\\[0.2cm]
+\be
+y\dprime + 2y\sprime + 6y = 0  - - - - - - - - - (1.0) \\[0.2cm]
+y(0) = 0, \; y\sprime(0) = 1
+\ee
+Let \(y =y_1\) \spn{0.1cm}
+\((1.0)\) becomes \sp
+\be
+\yn{1}\dprime + 2\yn{1}\sprime + 6\yn{1} = 0 \spn{0.1cm}
+\yn{1}\sprime = \yn{2} \imp \yn{1}\sprime = \yn{2}, \; \yn{1}(0) = 0 \\[0.2cm]
+\yn{1}\dprime = \yn{2}\sprime \\[0.2cm]
+\imp \yn{2}\sprime + 2y_2 + 6y_1 = 0 \imp \yn{2}\sprime = -6y_1 - 2y_2 , y_2(0) = 1
+\ee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

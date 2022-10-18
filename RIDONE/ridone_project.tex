@@ -1,0 +1,1494 @@
+\documentclass[11pt]{report}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{longtable}
+
+\newcommand{\Laplace}{\mathcal{L}}
+\newcommand{\ft}{f(t)}
+\newcommand{\ftn}[1]{f(#1)}
+\newcommand{\ftp}[1]{f^{#1}(t)}
+\newcommand{\Fs}{F(s)}
+\newcommand{\Fsp}[1]{F^{#1}(s)}
+\newcommand{\LaplaceIntegral}{\int_{0}^{\infty}e^{-st}\ft\text{dt}}
+\newcommand{\sbracket}[1]{\left[#1\right]}
+\newcommand{\Sn}[1]{s^{#1}}
+\newcommand{\LFt}{\Laplace \sbracket{\ft}}
+\newcommand{\Ly}{\Laplace \sbracket{y}}
+\newcommand{\Lyp}[1]{\Laplace \sbracket{y{#1}}}
+\newcommand{\NI}{\noindent}
+\newcommand{\LFn}[1]{\Laplace \sbracket{#1}}
+\newcommand{\Dtl}[1]{\Delta_{#1}}
+\newcommand{\sqL}[1]{#1^{2}}
+\newcommand{\sqLn}[2]{#1^{#2}}
+\newcommand{\InverseL}[1]{\Laplace^{-1}\left[#1\right]}
+\newcommand{\LT}[1]{\Laplace \left[#1\right]}
+\newcommand{\LTb}[1]{\Laplace \left(#1\right)}
+\newcommand{\InverseLx}[1]{\Laplace^{-1}\left\{ #1 \right\}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\PDe}{Partial Differential Equation }
+\newcommand{\PDes}{Partial Differential Equations }
+\newcommand{\PDE}{PDE }
+\newcommand{\PDEs}{PDEs }
+\newcommand{\inte}{\int_0^\infty e^{-st}}
+\newcommand{\tiw}{\widetilde{w}}
+
+
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+
+
+\begin{document}
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\Large \bt{APPLICATION OF LAPLACE TRANSFORM IN SOLVING PARTIAL DIFFERENTIAL EQUATION IN THE SECOND DERIVATIVE}
+	\end{center}
+	
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{AKINWUNMI, RILWAN BABATUNDE 
+			\\
+			17/56EB029}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+	
+	\hspace{7cm}
+	
+	\begin{center}
+		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ 
+	\begin{center}
+		\textbf{DECEMBER, 2021}
+	\end{center}
+	
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project was carried out by \textbf{AKINWUNMI, Rilwan Babatunde} with Matriculation Number  17/56EB029 in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Dr. O.T. Olootu   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof.  \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner 
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	I would like to dedicate the project to God, for the grace and faithfulness of God thus far. For His mercies, guidance and protection throughout my years of study.
+	
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	All praises, adoration and glorification are for Almighty Allah, the most beneficent, the most merciful, and the sustainer of the world. I pray may the peace of Allah and His blessings be upon the Noble Prophet(the last of all prophets), his companions, household and the entire Muslims. I give gratitude to Allah for His mercies and grace bestowed on me over the years vis-a-vis sparing my life from the beginning to the end of my course in the "Better by Far" University.\\
+	
+	\NI My profound gratitude and appreciation goes to my versatile and persevering supervisor, Prof. O.A. Taiwo for his kind-hearted, and for his candid advice, encouragement and useful guidelines towards the success of this work. I pray Almighty God be with him and his family.\\
+	
+	\NI I as well acknowledge my level adviser Dr. Idayat F. Usamot for her motherly love, support and help when needed, i am really grateful.\\
+	
+	\NI I also extend my sincere gratitude to all the lecturers in the Department starting from Prof. K. Rauf(HOD), Professors J.A. Gbadeyan, T.O. Opoola, O.M. Bamigbola, M.O. Ibrahim, R.B. Adeniyi, M.S. Dada, A.S. Idowu and Doctors E.O. Titiloye, Mrs. Olubunmi A. Fadipe-Joseph, Mrs. Yidiat O. Aderinto, Mrs. Catherine N. Ejieji, J.U. Abubakar, K.A. Bello, Mrs. G.N. Bakare, B.N. Ahmed, O.T. Olotu, O.A. Uwaheren, O. Odetunde, T.L. Oyekunle, A.A. Yekiti and all other members of staff of the department.
+
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	This project deals with 
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{GENERAL INTRODUCTION}
+	
+	\section{INTRODUCTION}
+	The Laplace transform is a globally used integral transform with many application in Physics and Engineering. The Laplace transform method is applicable in the solution of differential equation (DE) to that of solving in algebraic problem. It is denoted by $\LFt$ or $\dsp\LFn{f}\{s\} = \LaplaceIntegral$, it is a linear operator of a function $\ft$ with a real argument $t(t\geq 0)$ that transform it to a function $\Fs$ with a complex argument $s$. This transformation is essentially bijective for the majority of practical uses, the respective pairs of $\ft$ and $\Fs$ are matched in tables. The Laplace transform has the useful property that many relationships and operations over the original $\ft$ correspond to simpler relationships and operation over the images $\Fs$.\\
+	
+	It is named after Pierre-Simon Laplace, who introduced the transform in his work in probability theory. The Laplace transform is related to the Fourier transform, but an the Fourier transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moments. In physics and engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are function of complex angular frequency on radians per unit time. Given a simple mathematical or functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on a set of specification.\\
+	
+	On the other hand, \PDe (PDE) provide a quantitative description for many central models on physical, biological and social sciences. A \PDe (PDE) is an equation which involves derivates of an unknown function with respect to two or more independent variables.\sps
+	For example:
+	\begin{equation}
+		\frac{\partial v}{\partial x} + \frac{\partial v}{\partial y} - \lambda v = 0
+		\label{eq:1_1}
+	\end{equation}
+	where $\lambda$ is a constant.\sps
+	
+	The description is in terms of unknown functions of two or more independent variables, and the relation between partial derivates with respect to those variables. The order of a \PDE is the order of the highest derivative.\\
+	
+	A \PDE is said to be linear if the unknown function and all its partial derivatives occur to the first power only, and there are no product involving more than one of the terms e.g. \refx{1_1}. And it is non-linear if the relations between the unknown functions and the partial derivatives involved are non-linear.\sps
+	For example;
+	\begin{equation}
+		\frac{\partial^2w}{\partial x^2}+\frac{\partial^2w}{\partial y^2} = f(w)
+		\label{eq:1_2}
+	\end{equation}
+	called a stationary heat equation with a non-linear source.\sps
+	
+	Despite the apparent simplicity of the underlying differential relations, non-linear \PDE govern a vast array of complex phenomena of motion, reactions, diffusion, equilibrium, conservation and more. Due to their pivotal role in science and engineering and more recently, they spread into economic, financial, forecasting, image processing and other fields.\\
+	
+	Indeed, these studies found their way into entries throughout the scientific literature. They reflect a rich development of mathematical theories and analytical techniques to solve \PDEs  and illustrate the phenomena they govern. Yet, analytical theories provide only a limited account for the array of complex phenomena governed by non-linear \PDEs.\\
+	
+	Over the past fifty years, scientific computation has emerged as the most versatile tool to complement theory and experiments. Modern numerical methods, in particular those for solving non-linear \PDEs are the heart of many of these advanced scientific computation. Apparantly, numerical computation have not only joined experiment and theory as one of the fundamental tools of investigation, they have also altered the kind of experiments performed and have expanded the scope of theory.
+	
+	\section{STATEMENT OF THE PROBLEM}
+	This study will try to apply Laplace transform in solving the following Partial Differential Equations.\\
+	\begin{enumerate}
+		\item $\dsp \frac{\partial^2 V}{\partial x\partial y} = e^{-2y}\sin x$ ~~with initial condition $Vx(x,0)=0, ~~Vy(0,y) =0$
+		%%%%%%%%%%%%%%%%%%%%%%%%
+		\item $\dsp \frac{\partial^2 V}{\partial y \partial x}= \cos x \cos y$~~ with initial condition $V(x,0)=1+\sin x, ~ Vy(0,y)=-2\cos y$
+	\end{enumerate}
+
+	\section{AIM AND OBJECTIVES OF STUDY}
+	This project aim at the application of Laplace transform in solving partial differential equation on the second derivatives. Other specific objectives of the study are to:
+	\begin{enumerate}
+		\item determine the exact solution of the problem stated above
+		\item determine whether \PDEs can be solved using Laplace substitution method
+		\item investigate in the factors affecting the use of Laplace transform in solving differential equations.
+	\end{enumerate}
+
+	\section{SCOPE OF STUDY}
+	The study on the application of Laplace transform in solving partial differential equations in the second derivative will be limited to second order \PDEs. The study will cover on how to apply Laplace transform to \PDEs in the second derivatives. 
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{LAPLACE TRANSFORM}
+	\section{INTRODUCTION}
+	This chapter gives an insight into various studies conducted by outstanding researchers, as well as explained terminologies in the regards to the application of Laplace transform in solving \PDe in the second derivative.
+	
+	\section{LAPLACE TRANSFORM}
+	The Laplace transform method is applicable in the solution of differential equation. The method reduces the problem of solving differential equation to that of solving an algebraic problem.  Bendei being a different and efficient alternative to variation of parameters and undetermined coefficient, the Laplace transform method is particularly advantageous for input term that are piecewise-defined, periodic or impulse.
+	
+	\subsection{DEFINITION 1}
+	A function $\ft$ defined in the interval $[a,b]$ is said to have a \bt{Jumping Discontinuity} at $t_0\in [a,b]$ if $\ft$ is discontinuous at $t_0$ and the one sided limits $f(t_0-)$ and $f(t_0+)$ exists in finite members.\sps
+	If the discontinuity occurs at an endpoint $t_0=a(\text{ or } b)$, a jump discontinuity occurs if $f(a+)$(or $f(b-)$) exists in finite number.\sps
+	For example:, if\\
+	$\dsp f(t) = \left\{ \begin{array}{lr}
+		t^2 + 1, & t>1\\
+		1-t, & t<1
+	\end{array} \right.
+	$\sps
+	Then \sps
+	$\dsp
+		f(1+) = \lim\limits_{t\rightarrow 1}(t^2+1) = 2\sps
+		f(1-) = \lim\limits_{t\rightarrow 1}(1-t) = 0\sps
+	$
+	Since these two limits exist, the given function has a jump discontinuity at $t_0=1$ and its magnitude is $2-0=2$.
+	
+	\subsection{Definition 2}
+	A function $\ft$ is said to be \bt{piecewise continuous} on a finite interval $I=[a,b]$ if it continuous at every point of $[a,b]$ except possibly for a finite number of points at which $\ft$ has a jump discontinuity.
+	
+	\subsection{Definition 3}
+	\label{sec:2_2_3}
+	A function $\ft$ is said to be \bt{piecewise continuous (or sectionally continuous)} on a finite interval $[a,b]$ if $[a,b]$ can be divided into a finite number of subinterval such that 
+	\begin{enumerate}
+		\item $\ft$ is continuous in the interior of each subintervals
+		\item $\ft$ approaches finite limits at $t$ approaches either and points of each subintervals from its interiors.
+	\end{enumerate}	
+	
+	\subsection{Definition 4}
+	A function $\ft$ is said to be \bt{piecewise continuous} on the infinite interval $[0,\infty)$ if $\ft$ is piecewise continuous on $[0, N]~~\forall~~ N>0$.\sps
+	A function which is piecewise continuous on a finite member of intervals as necessarily integrable over that interval.
+	
+	\subsection{Definition 5}
+	A function $\ft$ is said to be \bt{Exponential Order} if a constant $k$ exists such that $\dsp e^{-kt}|\ft|$ is bounded for sufficiently large values of $t$, that is there exists a positive constant $M$ such that
+	\begin{eqnarray}
+		|f(t)| < Me^{-kt}\sps
+		\forall ~~t > T \text{ at which } \ft \text{ is defined }\notag
+		\label{eq:2_1}
+	\end{eqnarray}
+	
+	\subsection{Definition 6}
+	Given $f$, a function of time, with value $\ft$ at time $t$, the Laplace Transform of $f$ is denoted by $F$ and it gives an average value of $f$ taken over all positive values of $t$ such that the value $F(s)$ represents an average of $f$ taken over possible time intervals of length $s$.
+	
+	\subsection{Definition 7}
+	Let $\ft$ be a real valued function on $[0,\infty]$. The Laplace transform of $f$ is defined by
+	\begin{equation}
+		\Fs = \LaplaceIntegral ~\equiv~ \LFt ~~~ \text{ for } s > 0
+		\label{eq:2_2}
+	\end{equation}
+	and it is denoted by $\LFt$ or $\Laplace[f]\{s\}$\sps
+	
+	This immediately raises the question of why to use such a procedure. The research is strongly motivated by real engineering problems. There, we encounter models for the dynamics of phenomena which depends on rate of change of functions e.g velocities and acceleration of particles or points in rigid bodies, ordinary calculus to solve ODE, provided that the function are nicely-behaved, that is, continuous and with continuous derivatives. But, there is much interest in engineering dynamical problems involving functions that input step change or spike impulses to system, a good example in a playing pool. Now, there is an easy way to smooth out discontinuities in functions of time: simply take an average value over all time. But an ordinary average will replace the function by a constant, so we use a kind of moving average which takes continuous averages over all possible intervals of $t$. This effectively deals with the discontinuities by encoding them as a smooth function of interval length $s$.\\
+	
+	The amazing thing about using Laplace Transform is that we can convert a whole the algebra, find the transformed solution $\Fs$, then undo the transform to get back the required solution $f$ as a function of $t$. Furthermore, it turns out that the transform of a derivatives of a function on a simple combination of the transform of the function and its initial value. So a calculus problem in converted into an algebraic problem involving polynomial functions, which is easier.\\
+	
+	In addition, calculus operation of differentiation and integration are linear, so the Laplace Transform of a sum of functions in the sum of their Laplace transforms and multiplication of a function by a constant can be done before or after taking its transform. 
+	
+	\section{FINDING LAPLACE TRANSFORM}
+	In this section, we shall find some Laplace Transforms form first principle, that is, from the definition (\ref{sec:2_2_3}) describe some theorems that help find some transform, then use Laplace Transform to solve problems involving ODEs.
+	\subsection{FROM THE DEFINITION}
+	Here, we used (\ref{sec:2_2_3}) directly:
+	\begin{eqnarray*}
+		\text{For } \ft = 1:\qquad  \dsp\LFn{1} &=& \int_0^\infty e^{-st}dt \\
+		&=& -\dsp\frac{1}{s}\lim\limits_{p\rightarrow\infty}\Big[e^{-st}\Big]_0^p\\
+		&=&-\dsp\frac{1}{s}\lim\limits_{p\rightarrow\infty}\Big(\dsp\frac{1}{e^{sp}}-1\Big)\\
+		&=& \dsp \frac{1}{s}\sps
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		\text{For } \ft = t:\qquad  \dsp\LFn{t} =\int_0^\infty te^{-st}dt\\
+		&=& \dsp\frac{1}{s}\lim\limits_{p\rightarrow\infty}\left\{ \Big[-te^{-st}\Big]_0^p + \int_0^pe^{-st}dt\right\}\\
+		&=&\dsp\frac{1}{s}\lim\limits_{p\rightarrow\infty}\left\{ -pe^{-sp} - \frac{1}{s}\left(e^{-sp} - 1\right)    \right\}\\
+		&=&\dsp\frac{1}{s^2}\spn{.6}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\text{For } \ft = \dsp e^{at}:\qquad  \dsp\LFn{e^{at}} &=& \int_0^\infty e^{at}e^{-st}dt\\
+		&=& \lim\limits_{p\rightarrow\infty}\int_0^p e^{(a-s)t}dt\\
+		&=&\frac{1}{a-s}\lim\limits_{p\rightarrow\infty}\Big[e^{(a-s)t}\Big]_0^p\\
+		&=&\frac{1}{a-s}\lim\limits_{p\rightarrow\infty}\Big\{e^{(a-s)p}-1\Big\}\\
+		&=& \frac{1}{s-a}~~, ~~~~ s > a\spn{.6}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\text{For } \ft = \dsp \cos kt:\qquad  \dsp\LFn{\cos kt} &=& \int_0^\infty e^{-st}\cos kt~dt\\
+		&=&\lim\limits_{p\rightarrow\infty}\int_0^p e^{-at}\cos kt~dt\\
+		&=& \frac{1}{k}\lim\limits_{p\rightarrow\infty}\left\{ \Big[e^{-st}\sin kt\Big]_0^p + s\int_0^p e^{-st}\sin kt~dt \right\}\\
+		&=& \frac{1}{k}\lim\limits_{p\rightarrow\infty}\Big\{ e^{-sp}\sin kp + \frac{s}{k}\Big\{ \Big[-e^{-st}\cos kt\Big]_0^p\\ &-& s\int_0^p e^{-st}\cos kt~ dt \Big\}  \Big\}\\
+		&=&\frac{1}{k}\lim\limits_{p\rightarrow\infty}\Big(e^{-sp}\sin kp \Big) + \frac{s}{k^2}\lim\limits_{p\rightarrow\infty}\Big(-e^{-sp}\cos kt + 1\Big)\\ &-& \frac{s^2}{k^2}\lim\limits_{p\rightarrow\infty}\int_0^p e^{-st}\cos kt\\
+		\Laplace[\cos kt]&=&\frac{s}{k^2}-\frac{s^2}{k^2}\Laplace[\cos kt]\\
+		\Laplace[\cos kt]\left(1 + \frac{s^2}{k^2}\right) &=& \frac{s}{k^2}\\
+		&&\text{Hence, }~~~ \LFn{\cos kt} = \frac{s}{s^2 + k^2}~~, ~~~ s > 0
+	\end{eqnarray*}
+	
+	\subsection{THEOREM}
+	\label{subsec:2_3_2}
+	Suppose
+	\begin{enumerate}
+		\item $\ft$ is piecewise continuous on $[0,\infty]$
+		\item $\ft$ is of exponential order $k$.
+	\end{enumerate}
+	Then $\LFt$ exists for $s > k$\sps
+	\bt{Proof:}\\
+	Since $\ft$ is continuous, $e^{-st}\ft$ is integrable over any finite interval on the $t$-axis.\\
+	Now assuming that $s>k$, then\\
+	$\dsp \LFt = \left| \int_0^\infty e^{-st}f(t)dt\right| \leq \int_0^\infty |\ft|e^{-st} dt$\\
+	But by the given hypothesis $\exists M>0$ such that $|\ft| \leq Me^{-kt}$\\
+	So that,\\
+	$$
+		\LFt \leq M\int_0^\infty e^{-st}f(t)dt = \dsp\frac{M}{s-k}~,~~ s > k
+	$$
+	and hence the proof.
+	
+	\section*{Example 2.1}
+	Find the Laplace transform of the function\\
+	\begin{equation*}
+		f(t) = \left\{\begin{array}{l}
+			4~,~~ 0 < t < 3\\
+			0~, ~~ 3 < t < 5\\
+			e^{2t}~, ~~ t > 5
+		\end{array}\right.
+	\end{equation*}
+
+	\subsection*{Solution}
+	\begin{eqnarray*}
+		\LFt &=& \int_0^\infty e^{-st}\ft dt\\
+		&=& \int_0^3 e^{-st}\ft dt + \int_3^5 e^{-st}\ft dt + \int_5^\infty e^{-st}\ft dt\\
+		&=&4\int_0^3 e^{-st}dt + \int_5^\infty e^{2t}e^{-st}dt\\
+		&=&-\frac{4}{5}\Big(e^{-3s} - 1\Big) - \lim\limits_{p\rightarrow\infty}\int_5^p e^{-(s-2)t}dt\\
+		&=& \frac{4}{5}\Big(1-e^{-3s}\Big) - \frac{1}{s-2}\lim\limits_{p\rightarrow\infty}\Big[e^{-(s-2)p} - e^{-5(s-2)}\Big]\\
+		&=&\frac{4}{5}\Big(1-e^{-3s}\Big)+ \frac{1}{s-2}e^{5(s-2)}~, ~~ s > 2
+	\end{eqnarray*}
+	
+	\subsection{PROPERTIES OF LAPLACE TRANSFORMS}
+	If $f$ and $g$ are two real valued functions of $t$ and $a,b,c$ are constants, then the following properties hold.
+	\begin{eqnarray}
+		\LFn{af + bg} &=& a\LFn{f} + b\LFn{b}\label{eq:2_3}\sps
+		\LFn{e^{at}\ft} &=& F(s-a)\label{eq:2_4}\sps
+		\LFn{\ftp{(n)}} &=& s^n\LFt - s^{n-1}f(0) - s^{n-2}f\sprime(0) - \cdots f^{n-1}(0)\label{eq:2_5}\sps
+		\LFn{t^n\ft} &=& (-1)^{n}F^{(n)}(s)\sps
+		\LFn{g(t)} &=& e^{-as}\Fs\sps
+		\text{Where}\notag\\
+		\Fs &=& \int_0^\infty e^{-st}\ft dt\notag
+	\end{eqnarray}
+	\begin{eqnarray}
+		\text{and}\notag\\
+		g(t) &=& \left\{\begin{array}{l}
+			0~~~~, 0 < t < a\\
+			f(t-a)~~, t > a
+		\end{array}\right.\notag
+	\end{eqnarray}\\
+	Some of these results are established as follows
+	\begin{eqnarray*}
+		\LFn{af + bg} &=& \int_0^\infty e^{-st}\Big[a\ft + bg(t)\Big]dt\sps
+		&=& \int_0^\infty\Big[ae^{-st}\ft + be^{-st}g(t)\Big]dt\sps
+		&=& a\int_0^\infty e^{-st}f(t) + b\int_0^\infty e^{-st}g(t)dt\sps
+		\LFn{af + bg} &=& a \LFn{f} + b\LFn{g}\\
+		\text{which is \refx{2_3}}
+	\end{eqnarray*}
+	\\Also;
+	\begin{eqnarray*}
+		\LFn{e^{at}\ft} &=&\int_0^\infty e^{-st}e^{at}\ft dt\sps
+		\LFn{e^{at}\ft} &=& \int_0^\infty e^{(-s-a)t}\\
+		\LFn{e^{at}\ft} &=& F(s-a)
+	\end{eqnarray*}
+	which is \refx{2_4}. It is also called the First Shifting Theorem.\sps
+	With the help of this property, we can have the following important results.
+	\begin{eqnarray}
+		\LFn{t^n} &=& \frac{n!}{s^{n+1}}\sps
+		\LFn{e^{at}t^n} &=& \frac{n!}{(s-a)^{n+1}}
+	\end{eqnarray}
+	\begin{eqnarray}
+		\LFn{e^{at}\cosh bt} &=&\frac{s-a}{(s-a)^2-b^2}\sps
+		\LFn{e^{at}\sinh bt} &=& \frac{b}{(s-a)^2-b^2}\sps
+		\LFn{e^{at}\sin bt} &=& \frac{b}{(s-a)^2+b^2}\sps
+		\LFn{e^{at}\cos bt} &=& \frac{s-a}{(s-a)^2 + b^2}
+	\end{eqnarray}
+
+	\subsection{THEOREM}
+	Suppose that
+	\begin{enumerate}
+		\item $f$ is of exponential order
+		\item $f$ is continuous on $[0, \infty)$
+		\item $f\sprime$ is also of exponential order
+		\item $f\sprime$ is piecewise continuous on $[0, \infty)$
+	\end{enumerate}
+	Then
+	\begin{equation}
+		\LFn{f\sprime} = s\LFn{f} - f(0)
+		\label{eq:2_14}
+	\end{equation}	
+	\ubt{Proof:}
+	\begin{eqnarray*}
+		\LFn{f\sprime} &=&\inte \ftp{\sprime}dt\sps
+		&=& \lim\limits_{p\rightarrow\infty}\Big[ e^{-st}\ft  \Big]_0^p + s\lim\limits_{p\rightarrow\infty}\int_0^p e^{-st}\ft dt\sps
+		&=&\lim\limits_{p\rightarrow\infty}\Big( e^{-sp} f(p) - f(0) + s\inte\ft dt \Big)\sps
+		&=& \lim\limits_{t\rightarrow\infty} e^{-st}\ft - f(0)+ s\LFn{f}, ~~\text{(Since p is dummy)}
+	\end{eqnarray*}
+	By hypothesis (1) of theorem (\ref{subsec:2_3_2})\\
+	Now;
+	\begin{eqnarray*}
+		0 &\leq& \left|e^{-st}\ft\right| \leq \lim\limits_{t\rightarrow\infty} e^{-st}\;\big|\ft\big|\sps
+		&\leq& \lim\limits_{t\rightarrow\infty} e^{-st}Me^{kt}\sps
+		&=& \lim\limits_{t\rightarrow\infty}Me^{(k-s)t} = 0\sps
+		&&\text{Provided that } s > k
+	\end{eqnarray*}
+	Hence
+	\begin{eqnarray*}
+		\lim\limits_{t\rightarrow\infty}\left| e^{-st} \ft \right| = 0
+	\end{eqnarray*}
+	So that
+	\begin{eqnarray*}
+		\lim\limits_{t\rightarrow\infty} e^{-st}\ft = 0
+	\end{eqnarray*}
+	correprently;\\
+	By using \refx{2_14}, we have;
+	\begin{eqnarray*}
+		\LFn{f\dprime} &=& s\LFn{f\sprime} - f\sprime(0)\sps
+		&=& s\left\{s\LFn{f} - f(0)\right\}-f\sprime(0) ~~~~ \text{(from \ref{eq:2_14})}\sps
+		&=& s^2\LFn{f}-sf(0) - f\sprime(0)
+	\end{eqnarray*}
+	Provided that;
+	\begin{enumerate}
+		\item $f\sprime$ is continuous on $[0, \infty)$
+		\item $f\dprime$ is piecewise continuous on $[0, \infty)$
+		\item $f,~f\sprime,~f\dprime$ are of exponential order
+	\end{enumerate}
+	Then by repeatedly applying \refx{2_14}, we get \refx{2_5} provided that
+	\begin{enumerate}
+		\item $f^{(n-1)}$ is continuous on $[0, \infty)$
+		\item $f^{(n)}$ is piecewise continuous on $[0, \infty)$
+		\item $f,~f\sprime,~f\dprime$ are of exponential order
+	\end{enumerate}
+	~ {}\sps
+	\section*{Example 2.2}
+	If $\dsp \LFn{\sin bt} = \frac{b}{s^2+b^2}, ~~~~$ Find $\LFn{\cos bt}$\\
+	\subsection*{Solution}
+	$\dsp
+	\LFt{f\sprime} = s\LFn{f} - f(0) \equiv \LFn{\cos bt}\sps
+	f\sprime(t)=\cos bt;\sps
+	\therefore~~ \ft = \frac{1}{b}\sin bt ~~~ f(0) = 0\sps
+	\text{Hence; }\\ 
+	\LFn{\cos bt} = s\LFn{\frac{1}{b}\sin bt} - 0 = \frac{s}{b}\LFn{\sin bt} = \frac{s}{s^2 + b^2}
+	$\sps\sps
+	%%%%%%%
+	\section*{Example 2.3}
+	Find the Laplace transform of $e^{at}\cos bt$
+	\subsection*{Solution}
+	$\dsp
+	\LFt{e^{at}\ft} = F(s-a) \equiv \LFn{e^{at}\cos bt}\sps
+	\LFt = \LFn{\cos bt} = \frac{s}{s^2 + b^2} \equiv F(s)\sps
+	\text{Hence }\\ 
+	\LFn{e^{at} \cos bt} = F(s-a) = \frac{s-a}{(s-a)^2 + b^2}
+	$\\
+	
+	\section*{Example 2.4}
+	Determine $\LFn{t\cos bt}$
+	
+	\subsection*{Solution}
+	$\dsp
+	\LFn{t\ft} = - F\sprime(s) \equiv \LFn{t\cos bt}\sps
+	\text{Let } \ft = \cos bt\\
+	\text{Since } \LFt = \frac{s}{s^2+b^2},~~~~ \text{then}\\
+	\LFn{t\ft} = - \frac{d}{ds}\left(\frac{s}{s^2 + b^2}\right) \\{~}~~~~~~\quad~=\frac{s^2-b^2}{(s^2+b^2)^2}
+	$
+	%\newpage
+	\subsection{TABLE OF LAPLACE TRANSFORMS}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{longtable}{|c|c|c|c|c|c|}
+		\caption{Some useful Laplace Transforms are listed below} \label{tab:2_1}\\[-0.5cm]
+		\hline
+			S/N & $f(t)$ & $\LFn{f}$ & S/N & $f(t)$ & $\LFn{f}$\\ \hline
+			1 &  1 & $\frac{1}{s}$ & 7 & $e^{at}\cos bt$ & $\dsp\frac{s-a}{(s-a)^2 + b^2}$\\\hline
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			2 & $t^n$ & $\dsp\frac{n!}{s^{n+1}}$ & 8 & $\dsp e^{at}\sin bt$ & $\dsp\frac{b}{(s-a)^2 + b^2}$\\\hline
+			3 & $\dsp t^n e^{at},~ n\geq 0$& $\dsp \frac{n!}{(s-a)^{n+1}}$ & 9 & $\cosh bt$ & $\dsp\frac{s}{s^2-b^2}$\\\hline
+			4 & $\dsp t^a, ~ a > 0 $ & $\dsp \frac{\Gamma(a+1)}{s^{a+1}}$ & 10 & $\sinh bt$ & $\dsp \frac{b}{s^2 - b^2}$\\\hline
+			5 & $\cos bt$ & $\dsp \frac{s}{s^2 + b^2}$ & 11 & $e^{at}$ & $\dsp\frac{1}{s-a}$\\\hline
+			6 & $\sin bt$ & $\dsp\frac{b}{s^2+b^2}$ & 12 & $\dsp \Bigg\{ \begin{array}{l}
+				1,~ 0 \leq t \leq a\\
+				0,~ t > a
+			\end{array}$ & $\dsp \frac{1}{s}\Big(1-e^{as}\Big)$\\\hline
+	\end{longtable}
+	
+	
+	\section{THE INVERSE LAPLACE TRANSFORM}
+	If
+	\begin{eqnarray*}
+		\LFt = F(s)
+	\end{eqnarray*}
+	is the Laplace transform of the function $\ft$, the function
+	\begin{equation*}
+		\ft = \InverseL{F(s)}
+	\end{equation*}
+	is called the \bt{Inverse Laplace Transform of $\Fs$}\\
+	Some examples will be considered to determine the inverse transforms of some function. This will be added by the use of the results in the Table \ref{tab:2_1}
+	
+	\section*{Example 2.5}
+	Find the Inverse Laplace transform for the given functions\\
+	(i)$\dsp F(s) =\frac{6}{s^4}$ \qquad (ii)$\dsp F(s)=\frac{s}{s^2 + 9}$ \qquad (iii)$\dsp F(s)=\frac{s-3}{s^2-3s + 25}$
+	
+	\subsection*{Solution}
+	From Table \ref{tab:2_1}, we have
+	\begin{enumerate}
+		\item $\dsp \InverseL{\frac{6}{s^4}} =  \InverseL{\frac{3!}{s^4}} = t^3$\sps
+		\item $\dsp \InverseL{\frac{s}{s^2+9}} = \InverseL{\frac{s}{s^2 + 3^2}} = \cos 3t$\sps
+		\item $\dsp\InverseL{\frac{s-3}{s^2-3s+25}} = \InverseL{\frac{s-3}{(s-3)^2 + 16}} = e^{3t}\cos 4t$
+	\end{enumerate}
+	
+	\subsection{LINEARITY PROPERTY}
+	The Inverse transform also satisfies the linearity property. If the inverse transforms $\dsp \InverseL{F}$ and $\dsp\InverseL{G}$ of the two function $f_1$ and $f_2$ respectively exist, then;
+	\begin{eqnarray*}
+		\InverseL{aF + bG} = a\InverseL{F} + b\InverseL{G}
+	\end{eqnarray*}
+	where $a$ and $b$ are constants.\\
+	Thus, for example
+	\begin{eqnarray*}
+		&&\InverseL{\frac{2}{s-2} + \frac{3s}{s^2+25} - \frac{7(s-3)}{s^2-3s+25}}\sps
+		&&= 2\InverseL{\frac{1}{s-2}} + 3\InverseL{\frac{s}{s^2+25}} - 7\InverseL{\frac{s-3}{s^2-3s+25}}\sps
+		&&=2e^{2t} + 3\cos 5t - 7e^{3t}\cos 4t
+	\end{eqnarray*}
+	
+	\section{APPLICATION OF LAPLACE TRANSFORM TO SOLUTION OF INITIAL VALUE PROBLEMS (IVPs)}
+	Initial Value Problem(IVP) is an ordinary differential equation together with an initial condition which specifies the value of the unknown function at a given point in the domain.\\A good example is given;
+	\begin{equation*}
+		\frac{d^2y}{dx^2}=2-6x \qquad\quad y\sprime(0)=4, ~~ y(0)=1
+	\end{equation*}
+	It is possible to solve certain initial value problem in ODE by the use of Laplace transform.\\
+	Let us consider the second order ordinary differential equation(ODE)
+	\begin{equation}
+		y\dprime + a_1 y\sprime + a_0y = g(t)
+		\label{eq:2_15}
+	\end{equation}
+	with the associated initial conditions
+	\begin{equation}
+		y(0)=k_1\qquad\qquad\qquad y\sprime(0)=k_2
+		\label{eq:2_16}
+	\end{equation}
+	Taking the transform of \refx{2_15}
+	\begin{equation}
+		\LFn{y\dprime} + a_1\LFn{y\sprime} + a_0\LFn{y} = \LFn{g(t)}
+		\label{eq:2_17}
+	\end{equation}
+	But from \refx{2_5}
+	\begin{eqnarray}
+		&&\LFn{y\sprime}=s\LFn{y} - y(0) = s\LFn{y} - k_1\label{eq:2_18}\sps
+		&& \LFn{y\dprime} = s^2\LFn{y}-sy(0)-y\sprime(0)=s^2\LFn{y}-sk_1 - k_2\label{eq:2_19}
+	\end{eqnarray}
+	Substitute \refx{2_18} and \refx{2_19} into \refx{2_17}, to have
+	\begin{eqnarray*}
+		s^2\LFn{y}-sk_1 - k_2 + a_1(s\LFn{y} - k_1)+ a_0\LFn{y} = \LFn{g}
+	\end{eqnarray*}
+	That is;
+	\begin{eqnarray}
+		(s^2+a_1s+a_0)\LFn{y} - k_1(s+a_1)-k_2 = \LFn{g}\label{eq:2_20}
+	\end{eqnarray}
+	This is
+	\begin{eqnarray}
+		\LFn{y} = \frac{k_1(s+a_1)+k_2+\LFn{g}}{s^2 +a_1s+a_0}\label{eq:2_21}
+	\end{eqnarray}
+	The solution of \refx{2_15} is then obtained as
+	\begin{eqnarray}
+		y(t) = \InverseL{\LFn{y}}\label{eq:2_22}
+	\end{eqnarray}
+	with the aid of the table of transform.\sps
+	
+	\section*{Example 2.6}
+	Solve the IVP
+	\begin{equation}
+		 y\dprime + 2y\sprime + y = t^2 + 1\tag{i} \label{eq:2_i}
+	\end{equation}
+	\begin{equation}
+		y(0)=0~;\quad y\sprime(0)=1 \tag{ii}\label{eq:2_ii}
+	\end{equation}
+	
+	\subsection*{Solution}
+	We take the transform of \refx{2_i} to have 
+	\begin{eqnarray*}
+		\LFn{y\dprime} + 2 \LFn{y\sprime} + \LFn{y} = \LFn{t^2}+ \LFn{1}
+	\end{eqnarray*}
+	Now insert \refx{2_18} and \refx{2_19} with $k_1=0$ and $k_2=1$, to get
+	\begin{equation*}
+		(s^2\LFn{y}-1)+ 2s\LFn{y} + \LFn{y} = \LFn{t^2} + \LFn{1}
+	\end{equation*}
+	since $\dsp\LFn{y} = \frac{-s^2-2s}{(s+1)(s^2+2s+2)}$\sps
+	By expressing the RHS in term of partial fraction, we have
+	\begin{eqnarray*}
+		\Ly = \frac{1}{s+1} -\frac{2s+2}{s^2+2s+2}
+	\end{eqnarray*}
+	so that
+	\begin{eqnarray*}
+		y&=&\InverseL{\frac{1}{s+1}} - 2\InverseL{\frac{s+1}{s^2+2s+2}}\sps
+		&=&\InverseL{\frac{1}{s+1}} - 2\InverseL{\frac{s+1}{(s+1)^2 +1}}
+	\end{eqnarray*}
+	Using the results in the Table \ref{tab:2_1}, we have
+	\begin{eqnarray*}
+		y=e^{-t} - 2e^{-t}\cos t
+	\end{eqnarray*}
+	as the desired solution.
+	
+	\section{CONVOLUTION}
+	We shall consider a method for finding the inverse Laplace transform of a function which is the product of two Laplace transforms.\sps
+	The \bt{convolution} of two functions $f$ and $g$ is defined by 
+	\begin{eqnarray}
+		f\times g(t) = \int_0^tf(x)g(t-x)dx\label{eq:2_23}
+	\end{eqnarray}
+	where $f$ and $g$ are piecewise continuous functions on $[0,\infty)$ and are of exponential order.\sps
+	clearly;
+	\begin{eqnarray*}
+		f\times g = g\times f
+	\end{eqnarray*}
+	Since by letting $u=t-x$ in \refx{2_23}, we have
+	\begin{eqnarray*}
+		f\times g(t) &=&\int_0^tf(x)g(t-x)dx\sps
+		&=&-\int_0^t f(t-u)g(u)du\sps
+		&=&\int_0^t g(u)f(t-u) = g\times f(t)
+	\end{eqnarray*}
+	The transform of the convolution of $f$ and $g$ is given by
+	\begin{eqnarray}
+		\LFn{f\times g} = \LFn{f}\LFn{g}\label{eq:2_24}
+	\end{eqnarray}
+	or equivalently
+	\begin{eqnarray}
+		f\times g = \InverseL{\LFn{f}\LFn{g}}\label{eq:2_25}
+	\end{eqnarray}
+
+	\section*{Example 2.8}
+	If $\ft=2t$ and $g(t)=e^t$, find the convolution of $f$ and $g$\sps
+	\subsection*{Solution}
+	\begin{eqnarray*}
+		f\times g &=&\int_0^t f(x)g(t-x)dx\sps
+		&=&int_0^t 2xe^{t-x}dx\sps
+		&=& 2\left[\Big[-xe^{t-x}\Big]_0^t + \int_0^te^{t-x}dx\right]\sps
+		&=&2\left[-t - \Big[e^{t-x}\Big]_0^t\right]\sps
+		&=&2\left[-t - \Big(1-e^t\Big)\right]\sps
+		&=&2\Big(e^t-t-1\Big)
+	\end{eqnarray*}
+
+	\section*{Example 2.9}
+	Determine the inverse transform of
+	\begin{eqnarray*}
+		\frac{s+1}{s(s^2+4)}
+	\end{eqnarray*}
+	\subsection*{Solution}
+	\begin{equation*}
+		\frac{s+1}{s(s^2+4)} = \frac{s}{s(s^2+4)} + \frac{1}{s(s^2+4)} \equiv F(s) + G(s)
+	\end{equation*}
+	For
+	\begin{equation*}
+		F(s)=\frac{s}{s(s^2+4)}
+	\end{equation*}
+	Let
+	\begin{equation*}
+		F_1(s) = \frac{1}{s}~,~~ F_2(s) = \frac{s}{s^2+4}
+	\end{equation*}
+	so that
+	\begin{equation*}
+		f_1(t) = 1~~~~~~~~~ f_2(t) = \cos 2t
+	\end{equation*}
+	\begin{eqnarray*}
+		\InverseL{\Fs} &=& g * \ft\sps
+		&=&\int_0^t\cos 2x dx = \frac{1}{2}\sin 2t
+	\end{eqnarray*}
+	Also for
+	\begin{equation*}
+		G(s) = \frac{1}{s(s^2+4)}
+	\end{equation*}
+	Let
+	\begin{equation*}
+		G_1(s) = \frac{1}{s}, ~~~~~ G_2(s) = \frac{1}{s^2+4} = \frac{1}{2}\left(\frac{2}{s^2+4}\right)
+	\end{equation*}
+	Then
+	\begin{equation*}
+		g_1(t) = 1 ~~~~~~~~ g_2(t)=\frac{1}{2}\sin 2t
+	\end{equation*}
+	Hence;
+	\begin{eqnarray*}
+		\InverseL{G(s)} &=& g \times f(t)\sps
+		&=&\frac{1}{2}\int_0^t\sin 2x dx\sps
+		\InverseL{G(s)}&=&-\frac{1}{4}\Big[\cos 2x\Big]_0^t = \frac{1}{4}\Big(1-\cos 2t\Big)
+	\end{eqnarray*}
+	Therefore;
+	\begin{eqnarray*}
+		\InverseL{F(s) + G(s)} &=& \InverseL{F(s)} + \InverseL{G(s)}\sps
+		&=&\frac{1}{2}\sin 2t + \frac{1}{4}\Big(1-\cos 2t\Big)
+	\end{eqnarray*}
+	
+	\section*{Example 2.10}
+	Solve by the property of convolution the IVP
+	\begin{equation}
+		y\dprime + y = \cos 2t \tag{i}\label{eq:2_10_i}
+	\end{equation}
+	\begin{equation}
+		y(0)=y\sprime(0)=0 \tag{ii}\label{eq:2_10_ii}
+	\end{equation}
+	\subsection*{Solution}
+	We take the transform of \refx{2_10_i} to have
+	\begin{eqnarray*}
+		\Lyp{\dprime} + \Ly = \LFn{\cos 2t}
+	\end{eqnarray*}
+	Next, we apply \refx{2_15} to have
+	\begin{eqnarray*}
+		\Big\{ s^2\Ly - sy(0) - y\sprime(0) \Big\}+ \Ly = \frac{s}{s^2 + 4}
+	\end{eqnarray*}
+	This gives
+	\begin{eqnarray*}
+		(s^2+1)\Ly = \frac{s}{s^2 + 4},~~ \text{by use of \refx{2_10_ii}}
+	\end{eqnarray*}
+	Thus;
+	\begin{eqnarray*}
+		\Ly = \frac{s}{(s^2+1)(s^2+4)}
+	\end{eqnarray*}
+	So then;
+	\begin{eqnarray*}
+		y = \InverseL{\frac{s}{(s^2+1)(s^2+4)}}
+	\end{eqnarray*}
+	Let
+	\begin{eqnarray*}
+		F(s)=\frac{s}{s^2+1}, ~~~~~~ G(s)= \frac{1}{s^2+4} \equiv \frac{1}{2}\left(\frac{2}{s^2+4}\right)
+	\end{eqnarray*}
+	Then
+	\begin{eqnarray*}
+		f(t)=\cos t ~~~~~~~~ g(t)=\frac{1}{2}\sin 2t
+	\end{eqnarray*}
+	Thus;
+	\begin{eqnarray*}
+		y &=& g \times \ft\sps
+		&=&\frac{1}{2}\int_0^t\sin 2t\cos(t-x)dx\sps
+		&=&\frac{1}{4}\int_0^t\Big[\sin(x+t)+\sin(3x-t)dx\Big]
+	\end{eqnarray*}
+	That is, apply trigonometric property
+	\begin{equation*}
+		\sin A + \sin B = 2\sin\frac{A+B}{2}\cos\frac{A-B}{2}
+	\end{equation*}
+	Then
+	\begin{eqnarray*}
+		y&=&-\frac{1}{4}\left\{ \Big[\cos(x+t)\Big]_0^t + \frac{1}{3}\Big[\cos(3x-t)\Big]_0^t \right\}\sps
+		&=&-\frac{1}{4}\left\{\cos 2t - \cos t + \frac{1}{3}\Big(\cos 2t - \cos t\Big)\right\}\sps
+		&=&-\frac{1}{4}\Big\{\frac{4}{3}\cos 2t - \frac{4}{3}\cos t\Big\}\sps
+		y&=&\frac{1}{3}\Big(\cos t - \cos 2t\Big)
+	\end{eqnarray*}
+	This is the required solution
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{PARTIAL DIFFERENTIATION EQUATION}
+	\section{INTRODUCTION}
+	The key defining property of partial differential equation (PDE) in that there is more than one independent variables $x,y,\ldots$. There is a dependent variable that is an unknown function of these variable, $u(x,y,\ldots)$. We will often denotes its derivates by subscripts; this $\dsp\frac{\partial u}{\partial x} = u_x$, and so on.\\
+	
+	A Partial Differential Equation (or briefly a PDE) is  mathematical equation that involves two or more independent variables, an unknown function(dependent on those variables), and partial derivatives of the unknown function with respect to the independent variables. It can be written as
+	\begin{equation}
+		F(x,y,u(x,y), u_x(x,y), u_y(x,y)) = F(x,y,u,u_x,u_y) = 0
+	\end{equation}
+	This is the most general PDE in two independent variables of \textit{first} order.\\
+	
+	The order of a partial differential equation is the order of the highest derivative involved. The most general \textit{second}-order PDE in two independent variables is
+	\begin{equation}
+		F(x,y,u,u_x,u_y,u_{xx}, u_{xy}, u_{yy})=0
+	\end{equation}
+	A \textit{solution} (or a particular solution) to partial differential equation is a function $u(x,y,\ldots)$ that solves the equation or in other words, turns it into an identity when substituted into the equation. A solution is called \textit{general} if it contain all particular solution of the equation involved. The term \textit{exact} solution is often used for second and higher-order non-linear PDEs to denote a \textit{particular} solution.\\
+	
+	Partial differential equation are used to mathematically formulate and thus aid the solution of Physical and other problems involving functions of several variables such as the propagation of heat or sound, fluid flow, elasticity, electrostatics, electrodynamics, etc.
+	
+	
+	
+	\section{DEFINITION OF RELEVANT TERMS}
+	\subsection{Linear Equation}
+	A linear equation is an algebraic equation in which the highest power of the unknown is one. For example;
+	\begin{eqnarray}
+		ax+b=0\label{eq:3_3}
+	\end{eqnarray}
+	
+	\subsection{Differential Equation}
+	An equation involving derivatives or differential of one or more dependent variable with respect to one or more independent variables is called differential equation. An example is;
+	\begin{eqnarray}
+		\frac{d^2y}{dx^2} + y = 0\label{eq:3_4}
+	\end{eqnarray}
+	
+	\subsection{Ordinary Differential Equation}
+	A differential equation which express a relationship between an independent variable, dependent variable and one or more differential coefficient of the dependent variable with respect to independent variable is called an ordinary differential equation. For example;
+	\begin{eqnarray}
+		y\dprime + 5y = 0 \label{eq:3_5}
+	\end{eqnarray}
+	
+	\subsection{Partial Differential Equation}
+	A partial differential equation (PDE) is an equation which involves derivatives of an unknown function with respect to two or more independent variables. An example is;
+	\begin{eqnarray}
+		\frac{\partial u}{\partial x} + \frac{\partial^2u}{\partial y^2} - \lambda u = 0\label{eq:3_6}\\
+		\text{where }\lambda \text{ is a constant}\notag
+	\end{eqnarray}
+	
+	\subsection{Linear Partial Differential Equation}
+	A partial differential equation is linear if it linear in the unknown function and all its derivatives with coefficient depending only on the independent variable. For example; equation \refx{1_1}
+	
+	\subsection{Non-Linear Partial Differential Equation}
+	A partial differential equation is said to be non-linear if its contains the product of the dependent variable or its derivatives. For example; equation \refx{1_2}
+	
+	\subsection{Quasi-Linear Partial Differential Equation}
+	A partial differential equation is quasi-linear if it is linear in the highest order derivatives with coefficients depending on the independent variable the unknown function and its derivatives of order lower than the order of the equation. For example;
+	\begin{eqnarray}
+		a(x,y,u)\frac{\partial u}{\partial x}+ b(x,y,u)\frac{\partial u}{\partial y} = c(x,y,u)\label{eq:3_7}
+	\end{eqnarray}
+	\begin{center}where the function $a,b$ and $c$ can be involve $u$ but not its derivatives\end{center}
+	
+	\subsection{Homogeneous Partial Differential Equation}
+	A PDE is said to be homogeneous if the equation does not contain a term independent of the unknown function and its derivatives. For example;
+	\begin{eqnarray}
+		U_{xx} + U_{yy} = 0\label{eq:3_8}
+	\end{eqnarray}
+	
+	\section{FIRST ORDER PARTIAL DIFFERENTIAL EQUATION}
+	\subsection{General Form of First-Order Partial Differential Equation}
+	A first order partial differential equation with independent variables has the general form
+	\begin{eqnarray}
+		F\left(x_1,x_2,\cdots,x_n,w,\frac{\partial w}{\partial x_1},\frac{\partial w}{\partial x_2},\cdots , \frac{\partial w}{\partial x_n}\right) = 0\label{eq:3_9}
+	\end{eqnarray}
+	where $w=w(x_1, x_2,\cdots,x_n)$ in the unknown function and $F(\cdot)$ is a given function.
+	
+	\subsection{Quasilinear Equations, Characteristic System, General Solution} 
+	A general form of first-order quasilinear partial differential equation (PDE) with two independent variables has the general form
+	\begin{eqnarray}
+		f(x,y,w)\frac{\partial w}{\partial x} + g(x,y,w)\frac{\partial w}{\partial y}= h(x,y,w)\label{eq:3_10}
+	\end{eqnarray}
+	Such equations are encountered in various applications(continuum mechanics, gas dynamics, hydrodynamics, heat and mars transfer, wave theory, acoustics, multiphere flows, chemical engineering, e.t.c.). If the function $f,g$ and $h$ are independent of the unknown $w$, then equation \refx{3_10} is called \textit{linear}.
+	
+	\NI\bt{Characteristics System, General Solution}\sps
+	The System of ordinary differential equations
+	\begin{eqnarray}
+		\frac{dx}{f(x,y,w)} = \frac{dy}{g(x,y,w)} = \frac{dw}{h(x,y,w)} \label{eq:3_11}
+	\end{eqnarray}
+	is known as the \textit{characteristics system} of equation \refx{3_10}\sps
+	Suppose that two independent particular solutions of this system have been found in the form
+	\begin{eqnarray}
+		u_i(x,y,w) =c_1\qquad u_2(x,y,w)=c_2\label{eq:3_12}
+	\end{eqnarray}
+	where $c_1$ and $c_2$ are arbitrary constants, such particular solutions are known as integral of system \refx{3_11}. Then the general solution to \refx{3_10} can be written as
+	\begin{eqnarray}
+		\Phi(u_1,u_2) = 0 \label{eq:3_13}
+	\end{eqnarray}
+	where $\Phi$ is an arbitrary function of two variables. With equation \refx{3_13} solved for $u_2$, one often specifies the general solution in the form $u_2 = \varphi(u_1)$ where $\varphi(u)$ is an arbitrary function of one variable.
+	
+	\NI Remark: If $h(x,y,w)\equiv 0$, then $w=c_2$ can be used as the second integral in \refx{3_12}\sps
+	
+	\section*{Example 3.1}
+	Consider the linear equation $\dsp \frac{\partial w}{\partial x} + a \frac{\partial w}{\partial y} = b$\sps
+	The associated characteristics system of ordinary differential equations.
+	\begin{eqnarray*}
+		\frac{dx}{1} = \frac{dy}{a} = \frac{dw}{b}
+	\end{eqnarray*}
+	has two integrals
+	\begin{eqnarray*}
+		y-ax=c_1\qquad , \quad w-bx = c_2
+	\end{eqnarray*}
+	Therefore, the general solution to this PDE can be written as
+	\begin{eqnarray*}
+		w-bx=\varphi(y-ax)~~~, \text{ or } ~~ w=bx+\varphi(y-ax)
+	\end{eqnarray*}
+	where $\varphi(z)$ is an arbitrary function.
+	
+	\subsection{Cauchy Problem: Two Formulation, Solving the Cauchy Problem}
+	\bt{Generalized Cauchy Problem}\sps
+	\textit{Generalized Cauchy Problem:} Find a solution $w=w(x,y)$ to equation \refx{3_10} satisfying the initial conditions
+	\begin{equation}
+		x=\varphi_1(\xi), ~~ y=\varphi_2(\xi), ~~ w=\varphi_3(\xi)\label{eq:3_14}
+	\end{equation}
+	where $\xi$ is a parameter $(\alpha \leq \xi \leq \beta)$ and the $\varphi_k(\xi)$ are given functions.\\
+	
+	\textit{Geometric interpretation:} Find an integral surface of equation \refx{3_10} passing through the line defined parametrically by equation \refx{3_14}.\\
+	
+	\NI\bt{Classical Cauchy Problem}\sps
+	\textit{Classical Cauchy Problem:} Find a solution $w=w(x,y)$ of equation \refx{3_10} satisfying the initial condition
+	\begin{equation}
+		w=\varphi(y) \text{ at } x=0, \label{eq:3_15}
+	\end{equation}
+	where $\varphi(y)$ is a given function.\\
+	It is often convenient to represent the classical Cauchy Problem as a generalized Cauchy Problem by rewriting condition \refx{3_15} in the parametric form
+	\begin{eqnarray*}
+		x=0, ~~~ y=\xi~~~ w=\varphi(\xi)
+	\end{eqnarray*}
+	
+	\NI\bt{Existence and Uniqueness Theorem}\sps
+	If the coefficients $f,g$ and $h$ of equation \refx{3_10}  and the functions $\varphi_k$ in \refx{3_14} are continuously differentiable with respect to each of their arguments and if the inequalities $f(\varphi_2) - g(\varphi_1) \neq 0$ and $(\varphi_1)^2 + (\varphi_2)^2 \neq 0$ hold along the curve \refx{3_14}, then there is a unique solution to the Cauchy Problem (in a neighbourhood of the curve \refx{3_14})
+	
+	\NI\bt{Procedure of solving the Cauchy Problem}\sps
+	The procedure for solving the Cauchy Problem \refx{3_10}, \refx{3_14} involves several steps. First, two independent integrals \refx{3_12} are determined. Then, to find the constants of integration $c_1$ and $c_2$, the initial data \refx{3_14} must be substituted into the integrals \refx{3_12} to obtain
+	\begin{eqnarray}
+		u_1(\varphi_i(\xi), \varphi_2(\xi), \varphi_3(\xi)) = c1,~~ u_2(\varphi_i(\xi), \varphi_2(\xi), \varphi_3(\xi))=c_2\label{eq:3_16}
+	\end{eqnarray}
+	Eliminating $c_1$ and $c_2$ from \refx{3_12} and \refx{3_16} yields
+	\begin{eqnarray}
+		\begin{split}
+			u_1(x,y,w)=u_1(\varphi_i(\xi), \varphi_2(\xi), \varphi_3(\xi))\\
+			u_2(x,y,w) = u_2(\varphi_i(\xi), \varphi_2(\xi), \varphi_3(\xi))
+		\end{split}\label{eq:3_17}
+	\end{eqnarray}
+	Formulas \refx{3_17} are a parametric form of the solution to the Cauchy Problem \refx{3_10}, \refx{3_14}. In some cases, one may succeed in eliminating the parameter $\xi$ from relations \refx{3_17}, thus obtaining the solution in an explicit form.
+	
+	In the cases where first integral \refx{3_12} of the characteristics system \refx{3_11} cannot be found using analytical methods, one should employ numerical methods to solve the Cauchy Problem \refx{3_10}, \refx{3_14} ( or \refx{3_10}, \refx{3_15}).
+	
+	\section{SECOND-ORDER PARTIAL DIFFERENTIAL EQUATIONS}
+	\subsection{Linear, Semilinear and Non-linear Second-Order PDEs}
+	Linear Second-Order PDEs and their properties\sps
+	A Second-Order linear partial differential equation with two independent variables has the form 
+	\begin{eqnarray}
+		\begin{split}
+			a(x,y)\frac{\partial^2 w}{\partial x^2} + 2b(x,y)\frac{\partial^2 w}{\partial x \partial y} + c(x,y)\frac{\partial^2 w}{\partial \partial y^2} = \alpha(x,y)\frac{\partial w}{\partial x}\\ +\beta(x,y)\frac{\partial w}{\partial y}
+			+ \gamma(x,y)w + \delta(x,y) 
+		\end{split}\label{eq:3_18}
+	\end{eqnarray}
+	If $\delta\equiv 0$, equation \refx{3_18} is a \textit{homogeneous linear equation} and if $\delta \neq 0$, it is a non-homogeneous linear equation. The functions $a(x,y), b(x,y),\ldots,\gamma(x,y),\delta(x,y)$ are called coefficients of equation \refx{3_18}.\\
+	
+	\NI\bt{Some properties of a homogenous linear equation (with $\delta \equiv 0$)}
+	\begin{enumerate}
+		\item A homogenous linear equation has a particular solution $w=0$
+		\item The principle of linear superposition holds; namely, if $u_1(x,y),u_2(x,y),\\\ldots,u_k(x,y)$ are particular solutions to homogeneous linear solution equation, then the function $A_1u_1(x,y)+A_2u_2(x,y)+\cdots +A_nu_n(x,y),\\ A_1,A_2,\ldots,A_n$ are arbitrary numbers is also an exact solution to that equation.
+		\item Suppose equation \refx{3_18} has a particular solution $\tiw = \tiw(x,y,\mu)$ that depends on a parameter $\mu$(but can depend on $x$ and $y$). Then, by differentiating $\tiw$ in the respect to $\mu$, one obtains other solutions to the equation $\dsp\frac{\partial\tiw}{\partial \mu},~\frac{\partial^2\tiw}{\partial \mu^2},\cdots,\frac{\partial^k\tiw}{\partial \mu^k},\cdots$
+		\item Let $\tiw=\tiw(x,y,\mu)$ be a particular solution as described in property 3. Multiplying $\tiw$ by an arbitrary function $\varphi(\mu)$ and integrating the resulting expression with respect to $\mu$ over some interval $[\mu_1,\mu_2]$, one obtain a new function $\dsp\int_{\mu_1}^{\mu_2}(x,y,\mu)\varphi(\mu)d\mu$, which is also a solution to the original homogeneous linear equation.
+		\item Suppose the coefficients of the homogeneous linear equation \refx{3_18} are independent of $x$. Then: (i)there is a particular solution of the form $w=e^{\lambda x}u(y)$ where $\lambda$ arbitrary number and $u(y)$ is determined by a linear second-order ordinary differential equation, and (ii) differentiating any particular solution with respect to $x$ also results in a particular solution to equation \refx{3_18}
+	\end{enumerate}
+	Properties 2-5 are widely used for constructing solutions to problems governed by linear PDEs.
+	
+	\NI Examples of particular solution to linear PDEs can be found in the subsections Heat equation and Laplace equation below.\sps
+	
+	\NI\bt{Semi-linear and Non-linear Second-order PDEs}\sps
+	A second-order partial differential equation with two independent variables has the form
+	\begin{eqnarray}
+		a(x,y)\frac{\partial^2 w}{\partial x^2} + 2b(x,y)\frac{\partial^2 w}{\partial x \partial y} + c(x,y)\frac{\partial^2 w}{\partial y^2} = F\left(x,y,w,\frac{\partial w}{\partial x},\frac{\partial w}{\partial y}\right)\label{eq:3_19}
+	\end{eqnarray}
+	In the general case, a second-order non-linear partial differential equation with two independent variables has the form
+	\begin{eqnarray}
+		F\left(x,y,w,\frac{\partial w}{\partial x},\frac{\partial w}{\partial y},\frac{\partial^2 w}{\partial x^2},\frac{\partial^2 w}{\partial x\partial y}, \frac{\partial^2 w}{\partial y^2}\right) = 0\label{eq:3_20}
+	\end{eqnarray}
+	The classification and the procedure for reducing linear and semi-linear equations of the form \refx{3_18} and \refx{3_19} to a canonical form are only determined by the left-hand side of the equation.
+	
+	\subsection{Some Linear Equation Encountered in Applications}
+	Three basic types of linear partial differential equation are distinguished - \textit{parabolic, hyperbolic} and \textit{elliptic}. The solution of the equation pertaining to each of the types have their own characteristic qualitative differences.\sps
+	
+	\NI\bt{Heat Equation (a parabolic equation)}
+	\begin{enumerate}
+		\item The simplest of a \textit{parabolic equation} is the \textit{heat equation}
+		\begin{eqnarray}
+			\frac{\partial w}{\partial t} - \frac{\partial^2 w}{\partial x^2} = 0 \label{eq:3_21}
+		\end{eqnarray}
+		where the variables $t$ and $x$ play the role of the time and a spatial coordinate, respectively. Note that the equation \refx{3_21} contains only one highest derivative term.\\
+		Equation \refx{3_21} is often encountered in the theory of heat and mass transfer. It describes one-dimensional unsteady mass-exchange processes with constant diffusivity.
+		
+		\item The heat equation \refx{3_21} has infinitely many particular solutions(this fact is commonly to many PDE).
+	\end{enumerate}
+	
+	\NI\bt{Wave Equation (a hyperbolic equation)}
+	\begin{enumerate}
+		\item The simplest example of a \textit{hyperbolic equation} is the \textit{wave equation}
+		\begin{eqnarray}
+			\frac{\partial^2 w}{\partial t^2} - \frac{\partial^2 w}{\partial x^2} = 0\label{eq:3_22}
+		\end{eqnarray}
+		where the variables $t$ and $x$ play the role of time and the spatial coordinate, respectively. Note that the highest derivative term in equation \refx{3_22} differ in sign.\\
+		This equation is also known as the \textit{equation of vibration of a string}. It is often encountered in elasticity, aerodynamics, acoustics, electrodynamics
+		
+		\item The general solution of the wave equation \refx{3_22} is
+		\begin{eqnarray}
+			w = \varphi(x+t) + \psi(x-t)\label{eq:3_23}
+		\end{eqnarray}
+		where $\varphi(x)$ and $\psi(x)$ are arbitrary twice continuous differentiable function. This solution has the physical interpretation of two travelling waves of arbitrary shape that propagate to the right and to the left along the axis with a constant speed equal to 1.
+	\end{enumerate}
+
+	\NI\bt{Laplace Equation (an elliptic equation)}
+	\begin{enumerate}
+		\item The simplest example of an \textit{elliptic equation} is the \textit{Laplace equation}
+		\begin{eqnarray}
+			\frac{\partial^2 w}{\partial x^2} + \frac{\partial^2 w}{\partial y^2} = 0\label{eq:3_24}
+		\end{eqnarray}
+		where $x$ and $y$ play the the role of the spatial coordinates. Note that the highest derivatives terms in equation \refx{3_24} have like signs. The Laplace equation is often written briefly as $\Delta w = 0$, where $\Delta$ is the Laplace operator.\\
+		
+		The Laplace equation is often considered in heat and mass transfer theory, fluid mechanics, elasticity, electrostatics, and other areas of mechanics and physics. For example, in heat and mass transfer theory, this equation describes steady-state temperature distribution in the absence of the heat sources and sinks in the domain under study. A solution to the Laplace equation \refx{3_24} is called a \textit{harmonic function}.
+		
+		\item Note some particular solutions of the Laplace equation \refx{3_24}
+		\begin{eqnarray*}
+			y &=& Ax + By + c\sps
+			y &=& A(x^2-y^2) + Bxy\sps
+			y &=& \frac{Ax}{x^2+y^2}+By + c\sps
+			y &=& (A\sinh \mu x + B\cosh\mu x)(C\cos\mu y + D\sin\mu y)\sps
+			y &=& (A\cos\mu x + B\sin\mu x)(C\sinh\mu y + D\cosh\mu y)
+		\end{eqnarray*}
+		where $A,B,C,D$ and $\mu$ are arbitrary constants.\\
+		A fairly general method for constructing solutions to the Laplace equation \refx{3_24} involves the following.\sps
+		Let $f(z)=u(x,y)+ iv(x,y)$ be any analytic function of the complex variables ($z=x+uiy$ and $v$ are real functions of the real variables $x$ and $y$; $i^2=-1$). Then the real and imaginary parts of $f$ both satisfy the Laplace equations;
+		\begin{eqnarray*}
+			\Delta u = 0, ~~ \Delta = 0
+		\end{eqnarray*}
+		Thus, by specifying analytic functions $f(z)$ and looking their real and imaginary parts, one obtain various solutions of the Laplace equation \refx{3_24}
+	\end{enumerate}
+	
+	\subsection{Classification of Second-Order Partial Differential Equations}
+	\bt{Types of Equations}\sps
+	Any semi-linear partial differential equation of the second order with two independent variables \refx{3_19} can be reduced, by appropriate manipulations, to a simple equation that has one of the three highest derivative combinations specified above in examples \refx{3_21}, \refx{3_22} and \refx{3_24}.\sps
+	Given a point $(x,y)$ equation \refx{3_19} is said to be
+	\begin{eqnarray*}
+		\text{parabolic if } b^2-ac = 0,\\
+		\text{hyperbolic if } b^2-ac > 0,\\
+		\text{elliptic if } b^2 - ac < 0
+	\end{eqnarray*}
+	a this point.\sps
+	
+	\NI\bt{Characteristic Equations}\\
+	In order  to reduce equation \refx{3_19} to a canonical form, we should first write out the characteristic equation
+	\begin{eqnarray*}
+		a(dy)^2 - 2b~dx~dy + c(dx)^2 = 0
+	\end{eqnarray*}
+	which with $a\neq 0 $ splits into two equations
+	\begin{eqnarray}
+		ady - (b+\sqrt{b^2-ac})dx = 0\label{eq:3_25}
+	\end{eqnarray}
+	and
+	\begin{eqnarray}
+		ady - (b-\sqrt{b^2-ac})dx = 0;\label{eq:3_26}
+	\end{eqnarray}
+	Remark. If $a\equiv 0$, the simpler equation
+	\begin{eqnarray*}
+		dx = 0
+	\end{eqnarray*}
+	should be used instead of \refx{3_25} and \refx{3_26}. The first equation has the 
+	\begin{eqnarray*}
+		x = c
+	\end{eqnarray*}
+	
+	\NI\bt{Canonical form of parabolic equations (case $\mathbf{b^2-ac = 0}$)}.\\
+	In this case, equations \refx{3_25} and \refx{3_26} coincide and have a common general integral,
+	\begin{eqnarray*}
+		w(x,y) = c
+	\end{eqnarray*}
+	By passing from $x,y$ to new independent variables, $\xi, \eta$ in accordance with the relations
+	\begin{eqnarray*}
+		\xi = u(x,y),~~~~ \eta = \eta(x,y),
+	\end{eqnarray*}
+	where $\eta=\eta(x,y)$ is any twice differentiable function that satisfies the condition of non-degeneracy of the Jacobian $\dfrac{D(\xi,\eta)}{D(x,y)}$ in the given domain, one reduces equation \refx{3_19} to the canonical form
+	\begin{eqnarray}
+		\frac{\partial^2 w}{\partial\eta^2} = F_1\left(\xi,\eta,w,\frac{\partial w}{\partial\xi}, \frac{\partial w}{\partial\eta}\right) \label{eq:3_27}
+	\end{eqnarray}
+	As $\eta$, we can take $\eta =x$ or $\eta=y$.\sps
+	It is apparent that the transformed equation \refx{3_27} has only one highest derivative term, just as the heat equation
+	\refx{3_21}.\sps
+	
+	\NI\bt{Reduction of Second Order Linear Equations to Canonical Form}\\
+	Let the general second order linear PDE of two variables be
+	\begin{eqnarray}
+		\LFn{u} = au_{xx} + 2bu_{xy} + cu_{yy} + du_x + eu_y + fu = g\label{eq:3_28}
+	\end{eqnarray}
+	or
+	\begin{eqnarray}
+		au_{xx} + 2bu_{xy} + cu_{yy} = \phi(x,y,u,u_x,u_y)\label{eq:3_29}
+	\end{eqnarray}
+	and let $(\xi,\eta) = (\xi(x,y),\eta(x,y))$ be a non-singular transformation\\
+	we write,
+	\begin{eqnarray}
+		w(\xi,\eta) = u(x(\xi,\eta),y(\xi,\eta))\label{eq:3_30}
+	\end{eqnarray}
+	where $w$ is a solution of a second-order equation of the same type. Using the chain rule one finds that
+	\begin{eqnarray}
+		 \begin{array}{l}
+			u_x = w_\xi\xi_x + w_\eta\eta_x,\\
+			u_y = w_\xi\xi_y + w_\eta\eta_y,\\
+			u_{xx} = w_{\xi\xi}\xi^2_x + 2w_{\xi\eta}\xi_x\eta_x + w_{\eta\eta}\eta^2_2 + w_\xi\xi_{xx}+w_\eta\eta_{xx}\\
+			u_{xy} = w_{\xi\xi}\xi_x\xi_y + w_{\xi\eta}(\xi_x\eta_y + \xi_y\eta_x) + w_{\eta\eta}\eta_x\eta_y + w_\xi\xi_{xy} + w_\eta\eta_{xy}\\
+			u_{yy} = w_{\xi\xi}\xi^2_y + 2w_{\xi\eta}\xi_y\eta_y + w_{\eta\eta}\eta^2_2 + w_\xi\xi_{yy}+w_\eta\eta_{yy}
+		\end{array}\label{eq:3_31}
+	\end{eqnarray}
+	Substituting these formulas into \refx{3_28}, we see that as satisfies the following linear PDE after transformation:
+	\begin{eqnarray}
+		\LFn{w}: Aw_{\xi\xi} + 2Bw_{\xi\eta} + Cw_{\eta\eta} + Dw_\xi + Ew_\eta + Fw = G\label{eq:3_32}
+	\end{eqnarray}
+	or
+	\begin{eqnarray}
+		\Laplace_0[w]: Aw_{\xi\xi} + 2Bw_{\xi\eta} + Cw_{\eta\eta} = \varphi(\xi,\eta,w,w_\xi,w_\eta)\label{eq:3_33}
+	\end{eqnarray}
+	Where $\phi$ becomes $\varphi$ and the new coefficients of the principal part of the linear operator $\Laplace$ are given by
+	\begin{eqnarray*}
+		A(\xi,\eta) &=& a\xi^2_x + 2b\xi_x\eta_x + c\eta^2_y,\sps
+		B(\xi,\eta) &=& a\xi_x\eta_x + b(\xi_x\eta_y + \xi_y\eta_x) + c\xi_y\eta_y,\sps
+		C(\xi,\eta) &=& a\eta_x^2 + 2b\eta_x\eta_y + c\eta_y^2
+	\end{eqnarray*}
+	
+	
+	\section*{Example 3.2}
+	Prove that the equation
+	\begin{equation}
+		x^2u_{xx} - 2xyu_{xy} + y^2u_{yy} + xu_{x} + yu_y=0 \tag{1}\label{ex:3_2_1}
+	\end{equation}
+	is parabolic and find its canonical form; find the general solution on the half-plane $x>0$.\\
+	\subsection*{Solution}
+	We identify: $a=x^2\quad 2b=-2xy\quad c=y^2$\\
+	therefore $b^2-ac=x^2y^2-x^2y^2=0$\\
+	and the equation is parabolic\sps
+	The equation for the characteristics is
+	\begin{equation}
+		\frac{dy}{dx} = -\frac{y}{x} \label{ex:3_2_2} \tag{2}
+	\end{equation}
+	and the solution is
+	\begin{equation*}
+		xy = \text{ constant}
+	\end{equation*}
+	We define
+	\begin{equation}
+		\eta(x,y)=xy \label{ex:3_2_3}\tag{3}
+	\end{equation}
+	The second variable can be chosen in
+	\begin{equation}
+		\xi(x,y)=x\label{ex:3_2_4}\tag{4}
+	\end{equation}
+	Let $v(\xi,\eta) = u(x,y)$. From (\ref{ex:3_2_3}) and (\ref{ex:3_2_4}), we have;
+	\begin{eqnarray*}
+		\eta_x =y &\qquad&\xi_x = 1\\
+		\eta_y = x &\qquad&\xi = 0
+	\end{eqnarray*}
+	By chain rule, we have
+	\begin{eqnarray*}
+		\begin{array}{ll}
+			u_x = yv_\eta + v_\xi &\qquad u_y = u_\eta\\
+			u_{xx} = y^2v_{\eta\eta} + 2yv_{\xi\eta}+v_{\eta\eta} &\qquad u_{yy} = x^2v_{\eta\eta}\\
+			u_{xy}=v_\eta + x_yv_{\eta\eta} + xv_{\xi\eta}
+		\end{array}
+	\end{eqnarray*}
+	Substituting the new coordinates $\xi$ and $\eta$ into (\ref{ex:3_2_1}), we obtain:
+	\begin{equation}
+		x^2(y^2v_{\eta\eta} + 2yv_{\xi\eta}+v_{\eta\eta})-2xy(v_\eta + x_yv_{\eta\eta} + xv_{\xi\eta}) + x^2y^2v_{\eta\eta} + xyv_{\eta\eta} + xv_{\xi}+xyv_\eta\label{ex:3_2_5}\tag{5}
+	\end{equation}
+	Thus
+	\begin{equation}
+		\xi^2v_{\xi\xi} + \xi v_\xi = 0\label{ex:3_2_6}\tag{6}
+	\end{equation}
+	or
+	\begin{equation}
+		v_{\xi\xi} + \left(\frac{1}{\xi}\right)v_\xi = 0\label{ex:3_2_7}\tag{7}
+	\end{equation}
+	and this is the desired canonical form\sps
+	Setting 
+	\begin{equation}
+		w = v_{\xi}\label{ex:3_2_8}\tag{8}
+	\end{equation}
+	we arrive at the first-order ODE
+	\begin{equation}
+		w_\xi + \left(\frac{1}{\xi}\right)w=0\label{ex:3_2_9}\tag{9}
+	\end{equation}
+	The solution is
+	\begin{equation}
+		\ln w = \ln \xi + \widetilde{f}(\eta)\label{ex:3_2_10}\tag{10}
+	\end{equation}
+	or
+	\begin{equation}
+		w = f(\eta)/\xi\label{ex:3_2_11}\tag{11}
+	\end{equation}
+	Hence $v$ satisfies
+	\begin{equation}
+		v = \int v_\xi d\xi = \int w d\xi = \int \frac{f(\eta)}{\xi}d\xi = f(\eta)\ln\xi + g(\eta)\label{ex:3_2_12}\tag{12}
+	\end{equation}
+	Therefore, the general solution $u(x,y)$ of (\ref{ex:3_2_1}) is
+	\begin{equation}
+		u(x,y) = f(x,y)\ln x + g(x,y)\label{ex:3_2_13}\tag{13}
+	\end{equation}
+	where $f,g \in C^2(R)$ are arbitrary real functions\sps
+	{~}\sps
+	
+	\NI\bt{Two Canonical forms of hyperbolic equation (case $\mathbf{b^2-ac>0}$)}
+	\begin{enumerate}
+		\item The general integral
+		\begin{eqnarray*}
+			u_1(x,y)=c_1 ~~, ~~~ u_2(x,y)=c_2
+		\end{eqnarray*}
+		of equation \refx{3_25} and \refx{3_26} are real and different. These integrals determines two different families of real characteristics.\\
+		By passing from $x,y$ to new independent variables $\xi, \eta$ in accordance with the relations
+		\begin{eqnarray*}
+			\xi=u_1(x,y)~, ~~~ \eta = u_2(x,y),
+		\end{eqnarray*}
+		one reduces equation \refx{3_19} to
+		\begin{eqnarray*}
+			\frac{\partial^2 w}{\partial\xi\partial y} = F_2\left(\xi,\eta,w,\frac{\partial w}{\partial\xi},\frac{\partial w}{\partial\eta}\right)
+		\end{eqnarray*}
+		This is the \textit{first canonical form of a hyperbolic equation}.
+		\item The transformation
+		\begin{eqnarray*}
+			\xi = t + z;~~ \eta = t-z
+		\end{eqnarray*}
+		brings the above equation to another canonical form
+		\begin{eqnarray*}
+			\frac{\partial^2 w}{\partial t^2} - \frac{\partial^2 w}{\partial z^2} = F_3\left(t,z,w,\frac{\partial w}{\partial t}, \frac{\partial w}{\partial z}\right),
+		\end{eqnarray*}
+		where $F_3=4F_2$. This is called the \textit{second canonical form of a hyperbolic equation}. Apart from notation, the left-hand side of the last equation coincides with that of the wave equation \refx{3_22}
+	\end{enumerate}
+	
+	\section*{Example 3.3}
+	Consider the Triconi equation
+	\begin{equation}
+		u_{xx} + xu_{yy} = 0 \qquad x < 0 \label{ex:3_3_1}\tag{1}
+	\end{equation}
+	Find a mapping $q=q(x,y), r=r(x,y)$ that transforms the equation into its canonical form, and present the equation in this coordinate system
+	
+	\subsection*{Solution}
+	It follows that the Triconi equation is variable coefficient equation with
+	\begin{equation}
+		a=1,\qquad b=0;\qquad c=x;\qquad (x<0)\label{ex:3_3_2} \tag{2}
+	\end{equation}
+	We calculate the discriminant, $\delta(\Laplace) = -x > 0$, and therefore the PDE is hyperbolic.\sps
+	The zeroes of the characteristic polynomial are given by
+	\begin{equation}
+		\begin{array}{l}
+			\dsp\lambda = \frac{b+\sqrt{\delta}}{a} = \sqrt{-x},\\
+			\text{ and }\\
+			\dsp\lambda_2= \frac{b-\sqrt{\delta}}{a}= -\sqrt{-x}
+		\end{array}\label{ex:3_3_3} \tag{3}
+	\end{equation}
+	Therefore, from the characteristics equation \refx{3_25} and \refx{3_26}
+	\begin{equation}
+	\begin{array}{l}
+			\dsp\frac{dy}{dx} = \frac{b+\sqrt{b^2-ac}}{a} = \lambda_1 = \sqrt{-x},\\
+			\text{ and }\\
+			\dsp\frac{dy}{dx}= \frac{b-\sqrt{b^2-ac}}{a}=\lambda_2 = -\sqrt{-x}
+	\end{array}\label{ex:3_3_4} \tag{4}
+	\end{equation}
+	Integrating the above two ODEs, we obtain the characteristics of the wave equation as
+	\begin{equation}
+		y=-\frac{2}{3}\Big(-x\Big)^{\frac{3}{2}} + K_1 ~~\text{ and }~~ y =\frac{2}{3}\Big(-x\Big)^{\frac{3}{2}} + K_2 \label{ex:3_3_5} \tag{5}
+	\end{equation}
+	where $K_1$ and $K_2$ are the constants of integration.\\
+	
+	\NI We see that the two families of characteristics for the wave equation are given by $\dsp \frac{3}{2}y+(-x)^{\frac{3}{2}}=$ constant and $\dsp \frac{3}{2}y-(-x)^{\frac{3}{2}}=$ constant.
+	
+	\NI It follows, that the transformation
+	\begin{equation}
+		q = \frac{3}{2}y+(-x)^{\frac{3}{2}}, \qquad  r=\frac{3}{2}y-(-x)^{\frac{3}{2}}\label{ex:3_3_6} \tag{6}
+	\end{equation}
+	reduces the Triconi equation to canonical form.
+	
+	\NI Thus, the new independent variables are
+	\begin{equation}
+		q(x,y) = \frac{3}{2}y+(-x)^{\frac{3}{2}}, \qquad  r(x,y)=\frac{3}{2}y-(-x)^{\frac{3}{2}}\label{ex:3_3_7} \tag{7}
+	\end{equation}
+	Clearly,
+	\begin{equation}
+		q_x = -r_x = -\frac{3}{2}\Big(-x\Big)^{\frac{1}{2}}\qquad\qquad q_y = r_y = \frac{3}{2}\label{ex:3_3_8} \tag{8}
+	\end{equation}
+	Define $(q,r) = u(x,y)$. By the chain rule
+	\begin{equation*}
+		\begin{array}{l}
+			u_x = -\frac{3}{2}\Big(-x\Big)^{\frac{1}{2}}v_q + \frac{3}{2}\Big(-x\Big)^{\frac{1}{2}}v_r,\qquad\qquad\qquad u_y = \frac{3}{2}v_q + \frac{3}{2}v_r,\\
+			u_{xx} = - \frac{9}{4}xv_{qq} - \frac{9}{4}xv_{rr} + 2\frac{9}{4}xv_{qr}+\frac{3}{4}\Big(-x\Big)^{-\frac{1}{2}}(v_q-v_r)\\
+			u_{yy} = \frac{9}{4}(v_{qq}+v_{rr}+2v_{qr})
+		\end{array}
+	\end{equation*}
+	Substituting these expression into the Triconi equation we obtain
+	\begin{eqnarray*}
+		- \frac{9}{4}xv_{qq} - \frac{9}{4}xv_{rr} + 2\frac{9}{4}xv_{qr}+\frac{3}{4}\Big(-x\Big)^{-\frac{1}{2}}(v_q-v_r)+ \frac{9}{4}xv_{qq} + \frac{9}{4}xv_{rr} + 2\frac{9}{4}xv_{qr}=0
+	\end{eqnarray*}
+	which implies that
+	\begin{eqnarray*}
+		-9\Big(q-r\Big)^{\frac{2}{3}}\left[v_{qr}-\frac{v_q - v_r}{6(q-r)}\right] = 0
+	\end{eqnarray*}
+	Hence,
+	\begin{equation}
+		v_{qr} = \frac{v_q - v_r}{6(q-r)} = \psi(q,r,v,v_q,v_r)\qquad (\because q \neq r)\label{ex:3_3_9} \tag{9}
+	\end{equation}
+	{~}\sps
+
+	\NI\bt{Canonical form of elliptic equations (case $\mathbf{b^2-ac<0}$)}\\
+	In this case, the general integral of equations \refx{3_25} and \refx{3_26} are complex conjugate; these determines two families of complex characteristics.\\
+	Let the general integral of equation \refx{3_25} have the form
+	\begin{eqnarray*}
+		u_1(x,y)+iu_2(x,y)=c, ~~~~ i^2 = -1,
+	\end{eqnarray*}
+	where $u_(x,y)$ and $u_2(x,y)$ are real-valued functions.\sps
+	By passing from $x,y$ to new independent variables, $\xi, \eta$ in accordance with the relations
+	\begin{eqnarray*}
+		\xi = u_1(x,y),~~ \eta=u_2(x,y),
+	\end{eqnarray*}
+	one reduces equation \refx{3_19} to the canonical form
+	\begin{eqnarray*}
+		\frac{\partial^2 w}{\partial \xi^2} + \frac{\partial^2 w}{\partial \eta^2} = F_1\left(\xi,\eta,w,\frac{\partial w}{\partial\xi},\frac{\partial w}{\partial\eta}\right)
+	\end{eqnarray*}
+	Apart from notation, the left-hand side of the last coincides with that of the Laplace equation \refx{3_24}.
+	
+	\section*{Example 3.4}
+	Show that the equation
+	\begin{equation}
+		u_{xx} + x^2u_{yy} = 0 \label{ex:3_4_1} \tag{1}
+	\end{equation}
+	is elliptic everywhere except on the coordinate axis $x=0$, find the characteristics variables and hence write the equation in canonical form
+	
+	\subsection*{Solution}
+	The given equation in variable coefficient equation where
+	\begin{equation}
+		a=1\quad, \quad b=0~, \qquad c=x^2\label{ex:3_4_2} \tag{2}
+	\end{equation}
+	The discriminant, $\delta = b^2 - ac = -x^2 < 0$ for $x\neq 0$, and therefore the PDE is elliptic.\sps
+	
+	\NI The roots of the characteristics polynomial are given by
+	\begin{equation}
+		\lambda_1 = \frac{b-i\sqrt{ac-b^2}}{a} =-ix \text{ ~~and~~ } \lambda_2=\frac{b+i\sqrt{ac-b^2}}{a}=ix\label{ex:3_4_3} \tag{3}
+	\end{equation}
+	Therefore, from the characteristic equation \refx{3_25} and \refx{3_26}, we have
+	\begin{equation}
+		\frac{dy}{dx}=-ix,\qquad\qquad \frac{dy}{dx} = ix\label{ex:3_4_4} \tag{4}
+	\end{equation}
+	Integrating the above two ODEs, we obtain the characteristics in the complex plain as
+	\begin{equation}
+		y = -i\frac{x^2}{2}+C_1\quad , \qquad y=i\frac{x^2}{2}+C_2\label{ex:3_4_5} \tag{5}
+	\end{equation}
+	where $C_1$ and $C_2$ are the complex constants. We see that the two families of complex characteristics for the elliptic equation are given by 
+	\begin{equation}
+		y + i\frac{x^2}{2} = \text{ constant }\quad \text{ and } \quad y- i\frac{x^2}{2}= \text{ constant}\label{ex:3_4_6} \tag{6}
+	\end{equation}
+	It follows, then, that the transformation
+	\begin{equation}
+			\alpha = y + i\frac{x^2}{2}, \qquad \quad \beta = y- i\frac{x^2}{2}\label{ex:3_4_7} \tag{7}
+	\end{equation}
+	The real and imaginary parts of $\alpha$ and $\beta$ give the required transformation variables $\xi$ and $\eta$.\sps
+	Thus, we have
+	\begin{equation}
+		\xi = \frac{\alpha + \beta}{2} = y \qquad\qquad\quad \eta = \frac{\alpha - \beta}{2i} =\frac{x^2}{2} \label{ex:3_4_8} \tag{8}
+	\end{equation}
+	With these choice of coordinates variable, equation \refx{3_32} reduces to following canonical form
+	\begin{equation}
+		\begin{array}{l}
+			u_{xx} = w_{\xi\xi}\xi_x^2 + 2w_{\xi\eta}\xi_x\eta_x + w_{\eta\eta}\eta_x^2 + w_{\xi}\xi_{xx} + w_\eta\eta_{xx} = x^2w_{\eta\eta} + w_\eta\\
+			u_{yy} = w_{\xi\xi}\xi y^2 + 2w_{\xi\eta}\xi_y \eta_y + w_{\eta\eta}\eta_y^2 + w_{\xi}\xi_{yy} + w_\eta\eta_{yy}=w_{\xi\xi}
+		\end{array}\label{ex:3_4_9} \tag{9}
+	\end{equation}
+	Substituting these relations in the given PDE and noting that $x^2=2\eta$, we obtain
+	\begin{equation}
+		w_{\xi\xi} + w_{\eta\eta} = - \frac{1}{2\eta}w_\eta\label{ex:3_4_10} \tag{10}
+	\end{equation}
+	This is the canonical form of the given elliptic PDE.\sps
+	Therefore, the PDE
+	\begin{equation*}
+		u_{xx} + x^2u_{yy} = 0
+	\end{equation*}
+	in rectangular coordinate system $(x,y)$ has been transformed to PDE
+	\begin{equation*}
+		w_{\xi\xi} + w_{\eta\eta} = - \frac{1}{2\eta}w_\eta
+	\end{equation*}
+	in curvilinear coordinate system $(\xi,\eta)$. Here $\xi=$constant, these represent a family of straight lines parallel to $x$-axis and $\eta=$constant lines presents family of parabolas.
+	
+	\begin{table}[!ht]
+		\centering
+		\caption{Summary}
+		\renewcommand{\arraystretch}{2}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			$b^2-ac$ & $> 0$ & $= 0$ & $< 0$\\\hline
+			Canonical Form & $\dfrac{\partial^2 w}{\partial\xi\partial\eta}+ \cdots = 0$ & $\dfrac{\partial^2 w}{\partial\eta^2}+\cdots = 0$ & $\dfrac{\partial^2 w}{\partial\xi^2} + \dfrac{\partial^2 w}{\partial\eta^2}+\cdots = 0$\\\hline
+			Type & Hyperbolic & Parabolic & Elliptic\\\hline
+		\end{tabular}
+	\end{table}
+
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{SOLUTION TO PDEs USING LAPLACE TRANSFORM}
+	This chapter deals with the solution of partial differential equation using Laplace transform.
+	
+	\section*{Problem 1:}
+	Consider the partial differential equation
+	\begin{equation}
+		\frac{\partial^2 v}{\partial x \partial y} = e^{-2y}\sin x \label{p:4_1_1} \tag{1}
+	\end{equation}
+	with initial conditions 
+	\begin{equation}
+		V_x(x,0)=0, ~ V_y(0,y)=0 \label{p:4_1_2} \tag{2}
+	\end{equation}
+
+	\subsection*{Solution}	
+	In the above initial value problem (\ref{p:4_1_2}) ;
+	\begin{equation*}
+		\Laplace v(x,y) = \frac{\partial^2 v}{\partial x \partial y}~~;\qquad \Laplace(x,y)=e^{-2y}\sin x
+	\end{equation*}
+	and the general term $Rv(x,y)$ is zero.
+	
+	\NI Equation (\ref{p:4_1_1}) can be rewritten in the form;
+	\begin{equation}
+		\frac{\partial}{\partial x}\left(\frac{\partial v}{\partial y}\right) = e^{-2y}\sin x \label{p:4_1_3} \tag{3}
+	\end{equation}
+	Substituting $\dfrac{\partial v}{\partial y} = V$ in equation (\ref{p:4_1_3}), we get
+	\begin{equation}
+		\frac{\partial V}{\partial x}=e^{-2y}\sin x\label{p:4_1_4} \tag{4}
+	\end{equation}
+	This is non-homogeneous partial differential equation of first order. Taking Laplace transform on both sides of the equation (\ref{p:4_1_4}) with respect to $x$, we have
+	\begin{equation}
+		\begin{array}{l}
+			\dsp SV(s,y) - V(0,y) = \Laplace_x\left[e^{-2y}\sin x\right]\sps
+			\dsp SV(s,y) - 0 = e^{-2y}\left(\frac{1}{s^2+1}\right)\sps
+			\dsp V(s,y) = e^{-2y}\frac{1}{s}\left(\frac{1}{s^2+1}\right)
+		\end{array}\label{p:4_1_5} \tag{5}
+	\end{equation}
+	Taking the inverse Laplace transform of equation (\ref{p:4_1_5}) with respect to $x$, we get
+	\begin{equation}
+		\begin{array}{l}
+			\dsp V(x,y) = e^{-2y}(1-\cos x)\sps
+			\dsp\frac{\partial V(x,y)}{\partial x} = e^{-2y}(1-\cos x)
+		\end{array}\label{p:4_1_6} \tag{6}
+	\end{equation}
+	This is the partial differential equation of first order in the variables $x$ and $y$.\\
+	
+	\NI Taking Laplace transform of equation (\ref{p:4_1_6}) with respect to $y$, we obtain
+	\begin{equation}
+		\begin{array}{l}
+			\dsp SV(x,s)-V(x,0) = \Laplace_y\left[e^{-2y}(1-\cos x)\right]\sps
+			\dsp SV(x,s) - 0 = (1-\cos x )\frac{1}{s+2}\sps
+			\dsp V(x,s) = (1-\cos x)\frac{1}{s}\left(\frac{1}{s^2+1}\right)
+		\end{array}
+		\label{p:4_1_7} \tag{7}
+	\end{equation}
+	Taking inverse Laplace transform of equation (\ref{p:4_1_7}) with resect to $y$, we obtain
+	\begin{equation}
+		V(x,y)=\frac{1}{2}(1-\cos x)(1-e^{-2y}) \label{p:4_1_8} \tag{8}
+	\end{equation}
+	This is the required exact solution of the given partial differential equation.
+	
+	\section*{Problem 2}
+	Consider the partial differential equation
+	\begin{equation}
+		\frac{\partial^2 v}{\partial y\partial x} = \cos x \cos y\label{p:4_2_1} \tag{1}
+	\end{equation}
+	with initial conditions
+	\begin{equation}
+		v(x,0)=1+\sin x \qquad ; \quad v_y(0,y)=-2\cos y  \label{p:4_2_2} \tag{2}
+	\end{equation}
+	
+	\subsection*{Solution}
+	Assume both $v_x(x,y)$ and $v_y(x,y)$ are differentiable in the domain of definition of function $U(x,y)$ [Young's theorem].\sps
+	This implies that,
+	\begin{equation*}
+		\frac{\partial^2 v}{\partial y \partial x}= \frac{\partial^2 v}{\partial x \partial y}
+	\end{equation*}
+	Given initial value problems (\ref{p:4_2_2}) ;
+	\begin{equation*}
+		\Laplace v(x,y) = \frac{\partial^2 v}{\partial x\partial y}~~ , \quad h(x,y) =\cos x \cos y
+	\end{equation*}
+	and the general term $RV(x,y)$ is zero.\\
+	
+	\NI Equation (\ref{p:4_2_1}) can be rewritten in the form 
+	\begin{equation}
+		\dfrac{\partial}{\partial x}\left(\frac{\partial v}{\partial y}\right) = \cos x\cos y \label{p:4_2_3} \tag{3}
+	\end{equation}
+	Substituting $\dfrac{\partial v}{\partial y} = V$ in equation (\ref{p:4_2_3}), we get
+	\begin{equation}
+		\frac{\partial V}{\partial x} = \cos x\cos y \label{p:4_2_4} \tag{4}
+	\end{equation}
+	Taking Laplace transform of equation (\ref{p:4_2_4}) with respect to $x$, we get
+	\begin{equation}
+		\begin{array}{l}
+			SV(s,y) - V(0,y) = \Laplace_x\left[\cos x \cos y\right]\sps
+			\dsp SV(s,y) + 2\cos y = \cos y \left(\frac{s}{s^2+1}\right)\sps
+			\dsp V(s,y) = -\frac{2\cos y}{s} + \cos y \frac{1}{s}\left(\frac{s}{s^2 + 1}\right)
+		\end{array}\label{p:4_2_5} \tag{5}
+	\end{equation}
+	Taking inverse Laplace transform of equation (\ref{p:4_2_5}) with respect to $x$, we get
+	\begin{equation}
+		\begin{array}{l}
+			V(x,y) = -2\cos y + \cos y\sin x\sps
+			\dsp\frac{\partial v(x,y)}{\partial x}=\cos y(-2 + \sin x)
+		\end{array}\label{p:4_2_6} \tag{6}
+	\end{equation}
+	This is the partial differential equation of first order in  the variables $x$ and $y$.\sps
+	Taking Laplace transform of equation (\ref{p:4_2_6}) with respect to $y$, we obtain
+	\begin{equation}
+		\begin{array}{l}
+			\dsp SV(x,s)-V(x,0) = \Laplace_y\left[\cos y(-2+\sin x)\right]\sps
+			\dsp SV(x,s)-(1+\sin x) = \dsp\frac{s}{s^2 + 1}(-2 + \sin x)\sps
+			\dsp V(x,s) = \frac{1+\sin x}{s} + \frac{1}{s}\left(\frac{s}{s^2+1}\right)(-2+\sin x)
+		\end{array}\label{p:4_2_7} \tag{7}
+	\end{equation}
+	Taking the inverse Laplace transform of equation (\ref{p:4_2_7}) with respect to $y$, we get
+	\begin{equation*}
+		\begin{array}{l}
+			\dsp V(x,y)= 1+\sin x + \sin y(-2 + \sin x)\sps
+			\dsp V(x,y) = \sin x(1+\sin y) - 2\sin y + 1
+		\end{array}
+	\end{equation*}
+	This is the required exact solution of the given partial differential equation.
+
+
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}

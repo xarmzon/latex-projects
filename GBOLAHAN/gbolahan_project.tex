@@ -1,0 +1,1131 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{tikz}
+
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\NI}{\noindent}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\tti}[1]{\textit{#1}}
+\newcommand{\Laplace}{\mathcal{L}}
+\newcommand{\ft}{f(t)}
+\newcommand{\ftn}[1]{f(#1)}
+\newcommand{\ftp}[1]{f^{#1}(t)}
+\newcommand{\Fs}{F(s)}
+\newcommand{\Fsp}[1]{F^{#1}(s)}
+\newcommand{\LaplaceIntegral}{\int_{0}^{\infty}e^{-st}\ft\text{dt}}
+\newcommand{\sbracket}[1]{\left[#1\right]}
+\newcommand{\Sn}[1]{s^{#1}}
+\newcommand{\LFt}{\Laplace \sbracket{\ft}}
+\newcommand{\Ly}{\Laplace \sbracket{y}}
+\newcommand{\LFn}[1]{\Laplace \sbracket{#1}}
+\newcommand{\Lyp}[1]{\Laplace \sbracket{y{#1}}}
+\newcommand{\InverseL}[1]{\Laplace^{-1}\left[#1\right]}
+\newcommand{\LT}[1]{\Laplace \left[#1\right]}
+\newcommand{\LTb}[1]{\Laplace \left(#1\right)}
+\newcommand{\InverseLx}[1]{\Laplace^{-1}\left\{ #1 \right\}}
+\newcommand{\Lpt}{Laplace Transform }
+\newcommand{\Lpts}{Laplace Transforms }
+
+
+\renewcommand*\contentsname{Table of Contents}
+\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+	%%remove the numbering from the first page 
+	\clearpage
+	\thispagestyle{empty}
+	%%TITLE%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\begin{center}
+		{\bf \LARGE UNSTEADY FREE CONVECTION BOUNDARY LAYER FLOW }
+	\end{center}
+	$$$$
+	\begin{center}
+		\textbf{\itshape BY}
+	\end{center} 
+	$$$$
+	\begin{center}
+		{\bf AKINLABI, Faruk Gbolahan\\
+			17/30GN021}
+	\end{center}
+	$$$$
+	\begin{center}
+		\textbf{A PROJECT SUBMITTED TO THE
+			DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES,
+			UNIVERSITY OF ILORIN, ILORIN, NIGERIA,
+			$$$$
+			IN PARTIAL 
+			FULFILMENT OF REQUIREMENTS FOR THE AWARD OF
+			BACHELOR OF SCIENCE (B.Sc.) DEGREE IN MATHEMATICS.}
+	\end{center}
+	$$ $$ 
+	\\ \\
+	\begin{center}
+		{\bf DECEMBER, 2021}
+	\end{center}
+	\newpage
+	\pagenumbering{roman} 
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project work was carried out by \textbf{AKINLABI, Faruk Gbolahan} with matriculation number \textbf{17/30GN021} and approved as meeting the requirement for the award of the Bachelor of Science (B. Sc.) degree of the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria.
+		\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Prof. A.S. Idowu   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof.  \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	I would like to dedicate the project to God, for the grace and faithfulness of God thus far. For His mercies, guidance and protection throughout my years of study.
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	All praises, adoration and glorification are for Almighty Allah, the most beneficent, the most merciful, and the sustainer of the world. I pray may the peace of Allah and His blessings be upon the Noble Prophet(the last of all prophets), his companions, household and the entire Muslims. I give gratitude to Allah for His mercies and grace bestowed on me over the years vis-a-vis sparing my life from the beginning to the end of my course in the "Better by Far" University.\\
+	
+	\NI My profound gratitude and appreciation goes to my versatile and persevering supervisor, Prof. A.S. Idowu for his kind-hearted, and for his candid advice, encouragement and useful guidelines towards the success of this work. I pray Almighty God be with him and his family.\\
+	
+	\NI I as well acknowledge my level adviser Dr. K.A. Bello for her motherly love, support and help when needed, i am really grateful.\\
+	
+	\NI I also extend my sincere gratitude to all the lecturers in the Department starting from Prof. K. Rauf(HOD), Professors J.A. Gbadeyan, T.O. Opoola, O.M. Bamigbola, M.O. Ibrahim, R.B. Adeniyi, M.S. Dada, A.S. Idowu and Doctors E.O. Titiloye, Mrs. Olubunmi A. Fadipe-Joseph, Mrs. Yidiat O. Aderinto, Mrs. Catherine N. Ejieji, J.U. Abubakar, K.A. Bello, Mrs. G.N. Bakare, B.N. Ahmed, O.T. Olotu, O.A. Uwaheren, O. Odetunde, T.L. Oyekunle, A.A. Yekiti and all other members of staff of the department.
+	
+		
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	This project work is concerned with basically unsteady free convection boundary layer flow. The government equations, momentum equation and energy equation are simplified and non-dimensionalised in accordance with the model. The equations are solved using Laplace transform method.
+	
+	%%TABLE OF CONTENTS%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	\newpage
+	
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION AND LITERATURE REVIEW}
+	
+	\section{BACKGROUND OF THE STUDY}
+	The study of unsteady boundary layer is useful in several physical problems such as flow over a helicopter in translation motion, flow over blades of turbines and compressors, flow over the aerodynamics surface of vehicles in manned flight, etc.
+	
+	The unsteadiness in the flow field is caused either by time dependent motion of the external stream (or the surface of the body) or by impulsive motion of the external stream(or the body surface). When the fluid motion over a body is created impulsively, the inviscid flow over the body is developed instantaneously but the viscous layer near the body is developed slowly and it becomes fully developed steady state viscous flow after certain instant of time.
+	
+	Siegel studied the unsteady free convection flow past a semi-infinite vertical plate under step-change in wall temperature or surface heat flux by employing the momentum integral method. He first pointed out that the initial behaviour of the temperature field it is the same as a solution of an unsteady one-dimensional heat conduction problem.
+	
+	Soundalgekar first presented an exact solution to the flow of a viscous incompressible fluid past an impulsively started infinite vertical plate by Laplace transform technique.
+	
+	Theoretical studies on the laminar natural convection heat transfer from a vertical plate continue to receive attention in the literature due to their industrial and technological applications.
+	
+	Perdikis studied free convection effects on flow past a moving plate. Camargo et al. presented a numerical study of the natural convective cooling. Recently Raptis et al. studied the free convection flow of water near a moving plate. The unsteady free convection flow with heat flux and accelerated boundary condition was investigated by Chandran et al. Das et al. analysed the flow problem with periodic temperature variation and Mutucumaraswamy considered the natural convection with variable surface heat flux.
+	
+	In all the studies cited above, the flow is driven either by a prescribed surface temperature or by a prescribed surface heat flux. Heat transfer characteristics are dependent on the thermal boundary conditions. In general, there are four common heating processes specifying the wall-to-ambient temperature distributions where heat is specified through a bounding surface of finite thickness and finite heat capacity. The interface temperature is not known priori but depends on the intrinsic properties of the system, namely the thermal conductivity of the fluid and solid respectively.
+	
+	Therefore, this project deals with the unsteady free convection boundary layer flow and the solution is obtained in closed form using Laplace transformation technique.
+	
+	
+	\section{DEFINITIONS OF RELEVANT TERMS}
+	
+	\subsection{FLUID}
+	A Fluid is a substance which is capable of flowing. Also a fluid is a substance which when in static equilibrium cannot sustain tangential or shear force.
+	
+	\subsection{BOUNDARY LAYER}
+	Boundary layer is formed whenever there is relative motion between the boundary and the fluid.
+	
+	\subsection{BOUNDARY LAYER FLOW}
+	The flow of that portion of a viscous fluid which is in the neighbourhood of a body in contact with the fluid and in motion relative to the fluid
+	
+	\subsection{BOUSSINESQ APPROXIMATION}
+	It is used in the field of buoyancy driven flow. It states that density differences are sufficiently small to be neglected, except where they appear in terms multiplied by acceleration due to gravity.
+	
+	\subsection{NATURAL CONVECTION}
+	Is a type of heat transfer wherein non-human forces influence the cooling and heating of fluids
+	
+	\subsection{HEAT TRANSFER}
+	Is the process of moving heat from a location where much heat exists to another location.
+	
+	\subsection{NEWTONIAN HEATING}
+	The process in which the internal resistance is assumed negligible in comparison with its surface resistance is called Newtonian heating or cooling process.
+	
+	\subsection{ERROR FUNCTION}
+	This is an entire function defined by
+	\begin{equation*}
+		er f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}dt
+	\end{equation*}
+	
+	
+	\section{TYPES OF FLUIDS}
+	\subsection{COMPRESSIBLE AND INCOMPRESSIBLE FLUIDS}
+	The ability for changes in volume of a mass of fluid due to change in temperature and pressing is known as compressibility. An incompressible fluid is one whose element undergo no change in volume and density.
+	
+	\subsection{INVISCID FLUID}
+	This a type of fluid which even when in motion is capable of sustaining shear stress.
+	
+	\subsection{NEWTONIAN AND NON-NEWTONIAN FLUIDS}
+	Fluid may be classified according to relationship between shear stress and deformation of fluid. The fluid in which the shear stress is directly proportional to the rate of deformation is termed as Newtonian fluid. Examples are water, air, gasoline etc.\\
+	Non-Newtonian fluid is used to classify fluid in which shear stress is not directly proportional to deformation. Example is Blood.
+	
+	\subsection{IDEAL FLUID}
+	Ideal fluid is one which is compressible and has zero viscosity(the shear stress is always zero regardless of the motion of the fluid)
+	
+	\subsection{REAL FLUID}
+	This is a type of fluid that possesses viscosity, surface tension and compressibility in addition to the density.
+	
+	\subsection{UNIFORM FLUID}
+	Fluid is said to be uniform if its properties are the same at all point.
+	
+	
+	\section{TYPES OF FLUID FLOW}
+	
+	\subsection{UNIFORM FLOW AND NON-UNIFORM FLOW}
+	A uniform fluid flow is a type of fluid flow in which the velocity at any given time does not change(.ie it is the same in magnitude and direction at any given point in the fluid) while Non-Uniform flow are fluid flow in which the given velocity at any given instance of time changes.
+	
+	\subsection{STEADY AND UNSTEADY FLOW}
+	Steady flow is a type of fluid flow in which the fluid characteristics like velocity, pressure, density etc at a point do not change. while Unsteady flow is a type of fluid flow in which the velocity, pressure or density at any given point change with resect to time
+	
+	\subsection{ROTATIONAL AND IRROTATIONAL FLOW}
+	A flow in which the fluid particles while moving in the direction of flow rotate about their mass centres are referred to as Rotational Flow while Irrotational Flow is the motion where the particles is purely translational and the distortion is symmetrical.
+	
+	\subsection{ADVABATIC FLOW}
+	This is the situation where there is not exchange of heat between the different part of the fluid.
+	
+	\subsection{IDEAL FLUID FLOW}
+	This is a situation where there is no heat transfer between the different path of the fluid flow, in which the thermal conductivity are negligible.
+	
+	\subsection{ISOTROPIC FLOW}
+	The entropy will retain its initial value. That is, their is a smooth flow. 
+	
+	\section{PROPERTIES OF FLUID}
+	The following properties of fluid are of great importance to the study of mechanics of fluid.
+	
+	\subsection{DENSITY($\rho$)}
+	This is the ratio between \tti{mass} and \tti{volume}, unit is $kgm^{-3}$
+	
+	\subsection{SPECIFIC WEIGHT($W$)}
+	This the weight per unit volume which varies from point to point as acceleration due to gravity $g$ varies in relation to density and it is given by
+	\begin{eqnarray*}
+		W = \frac{mg}{v} = \frac{m}{v}g = \rho g
+	\end{eqnarray*}
+	
+	\subsection{SPECIFIC VOLUME($v_s$)}
+	This is either volume per unit mass or volume per unit weight
+	\begin{equation*}
+		V_s = \frac{\text{volume}}{\text{weight}} = \frac{v}{mg}=\frac{1}{\rho}g
+	\end{equation*}
+	
+	\subsection{RELATIVE DENSITY OR SPECIFIC GRAVITY}
+	This is the mass density of a substance over substandard mass density. It is given by
+	\begin{eqnarray*}
+		\sigma = \frac{\text{mass density of a substance}}{\text{some specific mass density}}
+	\end{eqnarray*}
+	
+	\subsection{VISCOSITY}
+	Properties of fluid which measure resistance to flow.
+	
+	\subsection{COMPRESSIBILITY AND THE BULK MODULUS}
+	This is the relationship between change in \tti{pressure} and \tti{volume}. That is
+	\begin{eqnarray*}
+		\begin{array}{l}
+			\kappa = \frac{\text{change in pressure intensity}}{\text{volumetric strain}}\sps
+			\text{volumetric strain} = \frac{\text{change in volume}}{\text{original volume}}
+		\end{array}
+	\end{eqnarray*}
+	
+	\subsection{SURFACE TENSION}
+	This is defined as the force per unit length acting on the surface of a right angle to one line drawn on the surface. The unit is $kgm^{-2}$
+	
+	\section{NOMENCLATURE}
+	$Cp$ - Specific heat at constant pressure\\
+	$g$ - Magnitude of the acceleration due to gravity\\
+	$Gr$ - Grashof Number\\
+	$h$ - Heat transfer coefficient\\
+	$k$ - Thermal conductivity\\
+	$Pr$ - Prandtl Number\\
+	$T^*$ - Temperature\\
+	$t^*$ - Dimensional time\\
+	$u^*$ - Dimensional velocity\\
+	$x$ - Direction \\
+	$x^*$ - Cartesian coordinate along the plate\\
+	$y^*$ - Cartesian coordinate normal to the plate\\
+	$\beta$ Coefficient of volumetric expansion\\
+	$\rho$ Density of the fluid\\
+	$\theta$ Dimensionless temperature\\
+	$\mu$ Coefficient of viscosity\\
+	$\nu$ Kinematic viscosity\\
+	
+	
+	
+	\section{OUTLINE OF THE STUDY}
+	This project consists of five chapters. A concise organization of the study is as follows:
+	\begin{enumerate}
+		\item Chapter one contains the general introduction, literature review, definition of relevant terms and nomenclature.
+		
+		\item Chapter two, focus on equation of Fluid, Energy Equation and Navier Stokes Equation. 
+		
+		\item Chapter three would be to show Laplace Transformation and its application in solving partial differentiation equation.
+		
+		\item Chapter four would use the solution of Laplace Transform to find the exact solutions to the given problems.
+		
+		\item Chapter five presents the summary and conclusion.
+	\end{enumerate}	
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{EQUATIONS OF FLUID}
+	\section{INTRODUCTION}
+	We have different equation of fluid. In this chapter, we shall be considering Equation of Fluid, Energy Equation, Navier Stokes Equation.
+	
+	\section{TYPE OF FLUID EQUATION OF MOTION}
+	\subsection{EQUATION OF CONTINUITY}
+	Consider a closed surface $F$ enclosing a fixed volume $V$ in the region occupied by moving fluid.\sps
+	If $n_j$ is the unit vector in the direction outward, normal to the element $dF$ of the surface $F$. And $v_j$ is the velocity of the fluid at the point $j$.\sps
+	Then the inward normal velocity is given by $-v_jn_j$\sps
+	The volume of the fluid flowing in through the surface per unit time = $-v_jn_j dF$\sps
+	Thus mass of fluid entering through $dF$ per unit time given by $\rho(-v_jn_jdF)$\sps
+	Therefore mass of fluid entering the control surface $F$ per unit time is given by $\dsp\oint\rho(-v_jn_jdF)$\sps
+	The integration is taken all over the whole surface containing the fluid. Mass of fluid within the surface $F=\rho dv$ ~(since $\rho=\rho(x,y,z,t)$). The rate at which the mass within the surface increases
+	\begin{equation}
+		\frac{\partial}{\partial t}\int_v = \int_v\frac{\partial \rho}{\partial t}dv
+	\end{equation}
+	By principle of conservation of mass:\\
+	\textit{Mass increase in the control volume per unit = mass of fluid entering}\sps
+	the control surface per unit time
+	\begin{equation}
+		\int_v\frac{\partial\rho}{\partial t} dv = - \oint \rho(v_j n_j)dv \label{eq:2_2}
+	\end{equation}
+	Green Formula is given by
+	\begin{equation}
+		\oint gn_j ds = \int_v \frac{\partial g}{\partial x_j}\label{eq:2_3}
+	\end{equation}
+	where $n_j$ is the unite normal vector.\\
+	
+	\NI Applying Green formula \refx{2_3} to transform surface integral, then equation \refx{2_2} becomes
+	\begin{eqnarray}
+		\begin{split}
+			\int \frac{\partial \rho}{\partial t}dv = - \int_v \frac{\partial(\rho v_j)}{\partial(x_j)}\sps
+			%%%%%%%%%%%%%%%%%%%%%%%
+			\int \frac{\partial\rho}{\partial t} + \frac{\partial(\rho v_j)}{\partial(x_j)}dv = 0
+		\end{split} \label{eq:2_4}
+	\end{eqnarray} 
+	Since the control volume was arbitrary choosing, the only condition that this equation \refx{2_4} can be satisfied is for the integral to be equal to zero
+	\begin{equation}
+		\frac{\partial \rho}{\partial t} + \frac{\partial(\rho v_j)}{\partial(x_j)} = 0\label{eq:2_5}
+	\end{equation}
+	in tensor form
+	\begin{equation}
+		\frac{\partial\rho}{\partial t} + div~ \vec{\rho v} = 0\label{eq:2_6}
+	\end{equation}
+	in vector form, explicitly it can be written as
+	\begin{equation}
+		\frac{\partial \rho}{\partial t} + \frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial\rho w}{\partial z} = 0\label{eq:2_7}
+	\end{equation}
+	In a case of steady compressible flow, the Continuity Equation reduces to
+	\begin{equation}
+		\frac{\partial(\rho vg)}{\partial x_j}
+	\end{equation}
+	in tensor form, we have
+	\begin{equation}
+		div(\vec{\rho v}) = 0
+	\end{equation}
+	and in vector form, it can be explicitly written as
+	\begin{equation}
+		\frac{\partial\rho u}{\partial x} + \frac{\partial\rho u}{\partial y} + \frac{\partial \rho w}{\partial z} = 0
+	\end{equation}
+	This is the case when it is steady and incompressible
+	\begin{equation}
+		\frac{\partial v_j}{\partial x_j}  = 0
+	\end{equation}
+	in tensor form
+	\begin{equation}
+		div~\vec{v} = 0
+	\end{equation}
+	and in vector form it is given as
+	\begin{equation}
+		\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} = 0
+	\end{equation}
+	
+	\subsection{ENERGY EQUATION}
+	The general energy equation applied to any change of state of a fluid asserts that\\
+	\textit{The heat added to unit weight of the flowing fluid between entrance and exit + the total work transferred to(done upon) unit weight of the flowing fluid between entrance and exit = The total gain in energy of unit weight of the flowing fluid between entrance and exit}\sps
+	Now, Let\\
+	$q$ be the heat transfer to the fluid per unit weight, $p$ represent pressure, $v$ represent inner velocity, $z$ represent the elevation above datum, $g$ represent the gravitational acceleration and $j$ represent the conversion factor or heat equivalent of work. Also, subscript 1 refers to inlet and subscript 2 refers to exit. In mathematical symbol, energy equation becomes
+	\begin{eqnarray}
+		q + \frac{p_1v_1}{j} - \frac{p_2v_2}{j} + \frac{w}{j} = v_2-v_1+\frac{v_2^2 - v_1^2}{2gj} + \frac{z_2 - z_1}{j}
+	\end{eqnarray}
+	This equation can be written be written in differential form as
+	\begin{equation}
+		\rho cp\frac{\Delta T}{\Delta t} = k\nabla^2 T
+	\end{equation}
+	where $cp$ is specific heat at constant pressure, $\dsp\nabla = \frac{\partial}{\partial x} + \frac{\partial}{\partial y}$ and $k$ is the temperature coefficient. Then we have
+	\begin{equation}
+		\rho cp\frac{\partial T}{\partial t} + u\frac{\partial T}{\partial x} + v\frac{\partial T}{\partial y} = k\left[\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right]
+	\end{equation}
+	since $\rho \neq 0$ and $cp\neq 0$, then
+	\begin{equation}
+		\frac{\partial T}{\partial t} + u\frac{\partial T}{\partial x}+ v \frac{\partial T}{\partial y} = k\left[\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right]
+	\end{equation}
+
+	\subsection{NAVIER STOKES EQUATION}
+	Restricting ourself to laminal incompressible flow of isotropic fluids, we study the motion of an infinitesimal system of fluid which at time $t$ is rectangular parallelepiped. Thus the Navier Stokes equation for incompressible flow in different form are given by
+	\begin{eqnarray*}
+			\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} &=& - \frac{1}{p}\frac{\partial p}{\partial x} + \frac{\mu}{p}\left(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)\sps
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z} &=& - \frac{1}{p}\frac{\partial p}{\partial x} + \frac{\mu}{p}\left(\frac{\partial^2 v}{\partial x^2}+\frac{\partial^2 v}{\partial y^2} + \frac{\partial^2 v}{\partial z^2}\right)\sps
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z} &=& - \frac{1}{p}\frac{\partial p}{\partial x} + \frac{\mu}{p}\left(\frac{\partial^2 w}{\partial x^2}+\frac{\partial^2 w}{\partial y^2} + \frac{\partial^2 w}{\partial z^2}\right)\sps
+	\end{eqnarray*}
+	
+	\section{SIMPLIFICATION OF FLUID EQUATION OF MOTIONS}
+	The unsteady free convective flow of a viscous incompressible fluid past an impulsively started infinite vertical plate with Newtonian heating is considered. The $x^*$-axis is taken along the plate in the vertically upward direction and $y^*$-axis is chosen normal to the plate. Initially, for time $t^* \leq 0$, the plate and fluid are at the same temperature $T^*_\infty$ in a stationary condition. At time $t^* > 0$, the plate is given an impulsive motion in the vertically upward direction against gravitational field with a characteristic velocity $U_c$. It is assumed that rate of heat transfer from the surface is proportional to the local surface temperature $T^*$. Since the plate is considered infinite in the $x*$ direction, hence all physical variables will be independent of $x^*$. 
+	
+	\NI Therefore, the physical variables are functions of $y^*$ and $t^*$ only. Considering Momentum Equation, given as
+	\begin{equation}
+		\rho\frac{\Delta u}{\Delta t} = - \frac{\partial p}{\partial x} + \left(\frac{\partial A_{xx}}{\partial x} + \frac{\partial A_{yx}}{\partial y}\right) + \rho g\beta(T-T_\infty)
+	\end{equation}
+	where $A_{xx}$ and $A_{yx}$ are called viscous shear component
+	\begin{eqnarray}
+		\begin{split}
+			A_{xx} = 2\mu\frac{\partial u}{\partial x}- \frac{2}{3}\mu\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}\right)\sps
+			A_{yx} = \mu\left(\frac{\partial v}{\partial x}\frac{\partial u}{\partial y}\right)
+		\end{split}
+	\end{eqnarray}
+	where $\rho$ present density, $p$ present pressure, $T$ represent temperature and $g$ represent gravitational field.\sps
+	
+	\NI Therefore,
+	\begin{eqnarray*}
+		\rho\left[\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x}+ v\frac{\partial u}{\partial y}\right] &=& - \frac{\partial p}{\partial x} + \frac{\partial}{\partial x}\left[2\mu\frac{\partial u}{\partial x} - \frac{2}{3}\mu\left(\frac{\partial u}{\partial x} +\frac{\partial v}{\partial y}\right)\right] + \frac{\partial}{\partial y}\left[\mu\frac{\partial v}{\partial x} + \mu\frac{\partial u}{\partial y}\right] \\
+		&&+ \rho g\beta[T-T_\infty]\spn{0.5}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		&=& - \frac{\partial p}{\partial x}+\frac{\partial}{\partial x}\left[2\mu\frac{\partial u}{\partial x} - \frac{2}{3}\mu\frac{\partial u}{\partial x} - \frac{2}{3}\mu\frac{\partial v}{\partial y}\right] + \frac{\partial}{\partial y}\left[\mu\frac{\partial v}{\partial x}+\mu\frac{\partial u}{\partial y}\right] \\
+		&&+ \rho g\beta[T-T_\infty]\spn{0.5}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		&=&-\frac{\partial p}{\partial x} + 2\mu\frac{\partial^2 u}{\partial x^2} - \frac{2}{3}\mu\frac{\partial u}{\partial x} - \frac{2}{3}\left[\mu\frac{\partial^2 u}{\partial x \partial y} + \mu \frac{\partial^2 u}{\partial y^2}\right] \\
+		&&+ \rho g\beta[T-T_\infty]\spn{0.5}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		&=& - \frac{\partial p}{\partial x} + \mu\frac{\partial^2 u}{\partial x^2} + \mu\frac{\partial^2 u}{\partial x^2} - \frac{2}{3}\mu\frac{\partial^2 u}{\partial x^2} - \frac{2}{3}\mu\frac{\partial^2 u}{\partial x^2} - \frac{2}{3}\mu\frac{\partial^2 v}{\partial x \partial y} \\
+		&&+ \mu\frac{\partial^2 v}{\partial x \partial y} + \mu\frac{\partial^2 u}{\partial y^2} + \rho g\beta[T-T_\infty]
+	\end{eqnarray*}
+	From continuity equation
+	\begin{eqnarray*}
+		\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0
+	\end{eqnarray*}
+	Hence
+	\begin{eqnarray}
+		\rho\left[\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x}+ v\frac{\partial u}{\partial y}\right] = \mu\left[\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}\right]+ \rho g\beta[T-T_\infty]
+	\end{eqnarray}
+	Also, since density is constant for incompressible fluid, we have
+	\begin{eqnarray}
+			\rho\left[\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x}+ v\frac{\partial u}{\partial y}\right] = \mu\left[\frac{\partial^2 u}{\partial y^2}\right]+ \rho g\beta[T-T_\infty]
+	\end{eqnarray}
+	Since there exit no velocity along $X$ and $Y$ direction and their is no variation along $X$ axis
+	\begin{eqnarray}
+		\rho\frac{\partial u}{\partial t} = \mu\frac{\partial^2 u}{\partial y^2} + \rho g\beta[T-T_\infty]
+	\end{eqnarray}
+	Divide through by $\rho$
+	\begin{eqnarray}
+		\frac{\partial u}{\partial t} = \frac{\mu}{\rho}\frac{\partial^2 u}{\partial y^2} + \beta[T-T_\infty]
+	\end{eqnarray}
+	Since $\dsp \nu = \frac{\mu}{\rho}$
+	\begin{eqnarray}
+		\frac{\partial u}{\partial t} = \nu\frac{\partial^2 u}{\partial y^2} + \beta[T-T_\infty]\sps \notag
+	\end{eqnarray}
+	Also for energy equation, the general energy equation is given by
+	\begin{eqnarray}
+		\rho Cp\frac{\Delta T}{\Delta t} = k \nabla^2 t
+	\end{eqnarray}
+	where $\rho$ = mass density, $Cp$ = specific heat at constant pressure
+	\begin{eqnarray}
+		\frac{\Delta T}{\Delta t} &=& \frac{\partial T}{\partial t} + u\frac{\partial T}{\partial x} + v\frac{\partial T}{\partial y}+ w\frac{\partial T}{\partial z}\sps
+		\rho Cp\left[u\frac{\partial T}{\partial t} + v\frac{\partial T}{\partial y}\right] &=& k\left[\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right]
+	\end{eqnarray}
+	Since there is not velocity along $X$ and $Y$ direction
+	\begin{eqnarray}
+		\rho Cp\left[\frac{\partial T}{\partial t} \right] &=& k\left[\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right]
+	\end{eqnarray}
+	Since there is no variation along x axis
+	\begin{eqnarray}
+		k\left[\frac{\partial^2 T}{\partial x^2}\right] = 0\sps
+		\rho Cp \frac{\partial T}{\partial t} = k\frac{\partial^2 T}{\partial y^2}
+	\end{eqnarray}
+	So, applying the Boussinesq approximation the flow is governed by the following equation of fluid
+	\begin{eqnarray*}
+		\frac{\partial u^*}{\partial t^*}= \nu\frac{\partial^2 u^*}{\partial y^*} + g\beta(T^* - T^*_\infty)\sps
+		\rho Cp\frac{\partial T}{\partial t} = k\frac{\partial^2 T}{\partial y^2}
+	\end{eqnarray*}
+	with the following initial and boundary conditions
+	\begin{eqnarray*}
+		t^* \leq 0 : u^* = 0, T^* = T^*_\infty ~~\forall~~ y^*
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		t^* > 0 : u^* = U_c, \frac{\partial T^*}{\partial y^*} = -\frac{h}{k}T^* \text{ at } y^* = 0 : u^* = 0~~~ T^* = T^*_\infty \text{ as } y^* \rightarrow \infty
+	\end{eqnarray*}
+	on introducing the following non-dimensional quantities
+	\begin{eqnarray*}
+		u=\frac{u^*}{U_c}, t=\frac{t^*U_c^2}{\nu}, y=\frac{y^* U_c}{\nu}, Pr=\frac{\mu Cp}{k}, Gr=\frac{\nu g\beta T_\infty^*}{U_c^3}, \frac{T^* - T^*_\infty}{T^*_\infty}
+	\end{eqnarray*}
+	according to the above, non-dimensionalisation process, the characteristics velocity $U_c$ can be defined as
+	\begin{eqnarray*}
+		U_c = \frac{h\nu}{k}
+	\end{eqnarray*}
+	substituting the transformation, we have
+	\begin{eqnarray}
+		\frac{\partial u^*}{\partial t^*}&=& \nu\frac{\partial^2 u^*}{\partial y^{*2}} + g\beta(T^*-T^*_\infty)\label{eq:2_31}\sps
+		\rho Cp\frac{\partial T^*}{\partial t^*} &=& k\frac{\partial^2 T^*}{\partial y^{*2}}\label{eq:2_32}
+	\end{eqnarray}
+	\begin{eqnarray*}
+		u=\frac{u^*}{U_c}, t=\frac{t^* U_c^2}{\nu}, y=\frac{y^* U_c}{\nu}, Pr=\frac{\mu Cp}{k},
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		Gr=\frac{\nu g\beta T_\infty^*}{U_c^3}, \frac{T^* - T^*_\infty}{T^*_\infty}, ~~~~\frac{\partial u^*}{\partial t^*} = \nu\frac{\partial^2 u^*}{\partial y^{*2}} + g\beta(T^*-T^*_\infty)
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		u^* = uU_c, ~~ t^* = \frac{t\nu}{U_c^2}, ~~ T^*-T^*_\infty = \theta T^*_\infty, ~~ y^* = \frac{y\nu}{U_c}
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		\frac{\partial u\partial u^*}{\partial t^{*2}} = \frac{\partial u U_c}{\partial \left[\frac{y^2 \nu^2}{U_c^2}\right]}= \nu\frac{\partial^2 u}{\partial y^2}\left[\frac{U_c/v^2}{U_c^2}\right]
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		\begin{gathered}
+			\nu\frac{\partial^2}{\partial y^2}\left[\frac{U_c^3}{\nu^2}\right] = \frac{\partial^2 u}{\partial y^2}\left[\frac{U_c^3}{\nu}\right]\sps
+			g\beta(T^*_\infty - T^*_\infty) = g\beta[\theta T^*\infty] = g\beta0T^*_\infty
+		\end{gathered}
+	\end{eqnarray*}
+	Hence equation \refx{2_31} becomes
+	\begin{eqnarray}
+		\frac{\partial u}{\partial t}\left[\frac{U_c^3}{\nu}\right] = \frac{\partial^2 u}{\partial y^2}\left[\frac{U_c^3}{\nu}\right] + g\beta\theta T^*_\infty\label{eq:2_33}
+	\end{eqnarray}
+	multiply both sides by $\dsp\frac{\nu}{U_c^3}$, we have
+	\begin{eqnarray}
+		\frac{\partial u}{\partial t} &=& \frac{\partial^2 u}{\partial y^2} + g\beta\theta T^*_\infty\frac{\nu}{U_c^3}\sps
+		\frac{\partial u}{\partial t} &=& \frac{\partial^2 u}{\partial y^2} + Gr\theta
+	\end{eqnarray}
+	Also, from equation \refx{2_32}
+	\begin{eqnarray}
+		\rho Cp \frac{\partial T^*}{\partial t^*} = k\frac{\partial^2 T^*}{\partial y^{*2}}
+	\end{eqnarray}
+	since $\dsp \theta  \frac{T^* - T^*_\infty}{T^*_\infty}$
+	\begin{eqnarray*}
+		\begin{gathered}
+			T^* - T^*_\infty = \theta T^*_\infty\sps
+			t^* = \frac{t\nu}{U_c^2}, y^* =\frac{y\nu}{U_c}, y^{*2}=\frac{y^2\nu^2}{U_c^2}\sps
+			\rho Cp\frac{\partial\left[\theta T^*_\infty + T^*_\infty\right]}{\partial\left[\frac{t\nu}{U_c^2}\right]} = \rho Cp\frac{\partial\theta}{\partial t}\frac{\left[\frac{T^*_\infty}{\nu}\right]}{U_c^2}\sps
+			= \rho Cp\frac{\partial\theta}{\partial t}\left[\frac{T^*_\infty U_c^2}{\nu}\right]\sps
+			k\frac{\partial^2 T^*}{\partial y^{*2}} = k\frac{\partial^2\left[\theta T^*_\infty\right]}{\partial \left[\frac{y^2\nu^2}{U_c^2}\right]}\sps
+			= k\frac{\partial^2 \theta}{\partial y^2}\left[\frac{T^*_\infty U_c^2}{\nu^2}\right]
+		\end{gathered}
+	\end{eqnarray*}
+	Hence equation \refx{2_32} becomes
+	\begin{eqnarray}
+		\rho Cp\frac{\partial\theta}{\partial t}\left[\frac{T^*_\infty U_c^2}{\nu}\right] = k\frac{\partial^2\theta}{\partial y^2}\left[\frac{T^*_\infty U_c^2}{\nu^2}\right]
+	\end{eqnarray}
+	multiply both sides by $\dsp \frac{\nu}{T^*_\infty U_c^2}$, we have
+	\begin{eqnarray}
+		\rho Cp\frac{\partial\theta}{\partial t} = k\frac{\partial^2\theta}{\partial y^2}\frac{1}{\nu}\label{eq:2_38}
+	\end{eqnarray}
+	but
+	\begin{eqnarray*}
+		\nu \frac{\mu}{p}=\frac{1}{\nu}=\frac{p}{\mu}
+	\end{eqnarray*}
+	Hence, equation \refx{2_38} becomes
+	\begin{eqnarray}
+		\rho Cp =\frac{\partial\theta}{\partial t} = k\frac{\partial^2 \theta}{\partial y^2}\frac{p}{\mu}\sps
+		\rho Cp\frac{\partial\theta}{\partial t} = k\frac{\partial^2 \theta}{\partial y^2}\frac{\rho}{\mu}\label{eq:2_40}
+	\end{eqnarray}
+	Dividing through by $\rho$, equation \refx{2_40} becomes
+	\begin{eqnarray}
+			Cp\frac{\partial\theta}{\partial t} = k\frac{\partial^2 \theta}{\mu\partial y^2}\sps
+			\frac{\partial\theta}{\partial t} = \frac{k}{Cp \mu}\frac{\partial^2 \theta}{\partial y^2}\label{eq:2_42}
+	\end{eqnarray}
+	Since $\dsp Pr = \frac{\mu Cp}{k}, \frac{1}{Pr} = \frac{k}{\mu Cp}$, equation \refx{2_42} becomes
+	\begin{eqnarray}
+		\frac{\partial\theta}{\partial t} = \frac{1}{Pr}\frac{\partial^2 \theta}{\partial y^2}\label{eq:2_43}
+	\end{eqnarray}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{METHODOLOGY}
+	\section{INTRODUCTION}
+	One of the most efficient methods of solving some certain partial and ordinary differential equations is to use Laplace transform. The usefulness of the Laplace transform is due to its ability to convert a differential equation into an algebraic equation whose solutions yields the solution of the differential equation.
+	
+	\NI The Laplace transform of a function $\ft$ is denoted by $\LFt$ and defined by $\dsp \LaplaceIntegral, t > 0$ where the constant parameter is assumed to be positive and large enough to ensure that the product $\ft e^{-st}$ converges to zero as $t\rightarrow\infty$
+	\begin{eqnarray}
+		\LFt = \LaplaceIntegral = \Fs\label{eq:3_1}
+	\end{eqnarray}
+	
+	\section{SOME PROPERTIES OF LAPLACE TRANSFORM}
+	\subsection{LINEARITY PROPERTY}
+	If $f_1(t), f_2(t), f_3(t),\ldots,f_n(t)$ are functions whose \Lpts exist and $c_1, c_2, c_3,\ldots,c_n$ are any constants, then
+	\begin{eqnarray*}
+		\LFn{c_1f_1(t) + c_2f_2(t) + \cdots + c_nf_n(t)} = c_1\LFn{f_1(t)} + c_2\LFn{f_2(t)} + \cdots + c_n\LFn{f_n(t)}
+	\end{eqnarray*}
+	\bt{Proof:}\\
+	By definition
+	\begin{eqnarray*}
+		\LFn{c_1f_1(t) + c_2f_2(t) + \cdots + c_nf_n(t)} &=& \int_0^\infty e^{-st}\left[c_1f_1(t) + c_2f_2(t) + \cdots + c_nf_n(t)\right]dt\sps
+		&=& c_1\int_0^\infty e^{-st}f_1(t) + c_2\int_0^\infty e^{-st}f_2(t) + \cdots \\
+		&&+ c_n\int_0^\infty e^{-st}f_n(t)\sps
+		&=& c_1\LFn{f_1(t)} + c_2\LFn{f_2(t)} + \cdots + c_n\LFn{f_n(t)}
+	\end{eqnarray*}
+	
+	\subsection{FIRST TRANSLATION PROPERTY}
+	If 
+	\begin{eqnarray*}
+		\LFt = \Fs
+	\end{eqnarray*}
+	then 
+	\begin{eqnarray*}
+		\LFn{e^{at}\ft} = F(s-a)
+	\end{eqnarray*}
+	\bt{Proof:}\\
+	By definition
+	\begin{eqnarray*}
+		\LFn{e^{at}\ft} &=&  \int_0^\infty e^{-st}\left(e^{at}\ft\right)dt\sps
+		&=& \int_0^\infty e^{-(s-a)t}\ft dt\sps
+		&=& F(s-a)
+	\end{eqnarray*}
+	
+	\subsection{CHANGE OF SCALE PROPERTY}
+	Let
+	\begin{eqnarray*}
+		\ft = \Fs
+	\end{eqnarray*}
+	Then
+	\begin{eqnarray*}
+		\LFn{f(at)} =  \frac{1}{a}F\left(\frac{s}{a}\right)
+	\end{eqnarray*}
+	\bt{Proof:}\\
+	By definition
+	\begin{eqnarray*}
+		\LFn{f(at)} &=& \int_0^\infty e^{-st} f(at)dt\sps
+		&=&\frac{1}{a}\int_0^\infty e^{-\frac{s}{a}y}f(y)dy\sps
+		&=& \frac{1}{a}F\left(\frac{s}{a}\right)\\
+		&& \text{where } y = at
+	\end{eqnarray*}
+	
+	\subsection{SECOND TRANSLATION PROPERTY}
+	Let
+	\begin{eqnarray*}
+		\ft = \Fs
+	\end{eqnarray*}
+	And
+	\begin{eqnarray*}
+		G(t) = \left\{
+				\begin{array}{l}
+					F(t-a),~ t > a\\
+					0,~ t < a
+				\end{array}
+		\right.
+	\end{eqnarray*}
+	Then
+	\begin{eqnarray*}
+		\LFn{G(t)} = e^{as}f(s) = \exp(-as)f(s)
+	\end{eqnarray*}
+	\bt{Proof:}\\
+	\begin{eqnarray*}
+		\LFn{G(t)} &=& \int_0^\infty e^{-st}G(t)dt\sps
+		&=& int_0^\infty e^{-st}F(t-a)dt\sps
+		&=& \int_0^\infty e^{-s(u+a)}F(u)du\sps
+		&& \text{where } u = t-a\sps
+		\LFn{G(t)} &=& \int_0^\infty e^{-su}F(u)du = e^{-as}f(s)
+	\end{eqnarray*}
+	
+	\subsection{LAPLACE TRANSFORMS OF DERIVATIVES OF ORDER n}
+	\begin{eqnarray*}
+		\LFn{f^n(t)} = s^n\LFt - s^{n-1}f(0) - s^{s-2}f^1(0) - \cdots - f^{n-1}(0)
+	\end{eqnarray*}
+	\bt{Proof:}
+	\begin{eqnarray}
+		\LFn{f\sprime(t)} = s\LFt - f(0)\label{eq:3_2}
+	\end{eqnarray}
+	Replacing $f(t)$ in equation \refx{3_2} by $f\sprime(t)$ and $f\sprime(t)$ by $f\dprime(t)$, we get
+	\begin{eqnarray}
+		\LFn{f\dprime(t)} = s\LFn{f\sprime(t)} - f\sprime(0)\label{eq:3_3}
+	\end{eqnarray}
+	Putting the value of $\LFn{f\sprime(t)}$ from equation \refx{3_2} into equation \refx{3_3}, we have
+	\begin{eqnarray}
+			\LFn{f\dprime(t)} = s^2\LFt - sf(0) - f\sprime(0)
+	\end{eqnarray}
+	in similar manner, we have
+	\begin{eqnarray}
+		\LFn{f\tprime(t)} = s^3\LFt - s^2f(0) - sf\sprime(0) - f\dprime(0)\label{eq:3_5}
+	\end{eqnarray}
+	$\cdots$
+	\begin{eqnarray}
+		\LFn{f^n(t)} = s^n\LFt - s^{n-1}f(0) - s^{s-2}f^1(0) - \cdots - f^{n-1}(0)
+	\end{eqnarray}
+
+	
+	\section{LAPLACE TRANSFORM FOR SOLVING PARTIAL DIFFERENTIAL EQUATIONS}
+	These are equation which contain partial differential coefficients, independent variables and dependent variables.
+	
+	\subsection{EXAMPLES OF PARTIAL DIFFERENTIAL EQUATION SOLVE BY USING LAPLACE TRANSFORM METHOD}
+
+	\subsection*{Example 1}
+	Solve
+	\begin{eqnarray}
+		\frac{\partial^2 u}{\partial t^2} = \frac{\partial^2 u}{\partial x^2}, ~ x > 0, ~ t > 0 \label{eq:3_7}
+	\end{eqnarray}
+	given that
+	\begin{eqnarray}
+		U(x,0),~ U_t(x,0) = 0, ~ U(0,t)=3\sin 2t,~ \lim\limits_{x\rightarrow\infty}U(x,t) = 0\label{eq:3_8}
+	\end{eqnarray}
+	\subsection*{Solution}
+	Taking the \Lpt of the given partial differential equation, we have
+	\begin{eqnarray}
+		\LFn{\frac{\partial^2 U}{\partial t^2}} = \LFn{\frac{\partial^2 U}{\partial x^2}}, x > 0, t >\sps
+		s^2U - sU(x,0) - U_t(x,0) = \frac{\partial^2 U}{\partial x^2}\sps
+		\frac{\partial^2 U}{\partial x^2} - s^2U = -sU(x,0) - U_t(x,0)\label{eq:3_11}
+	\end{eqnarray}
+	Using the given condition in \refx{3_8}, equation \refx{3_11} becomes
+	\begin{eqnarray}
+		\frac{\partial^2 U}{\partial x^2} - s^2 U = 0 
+	\end{eqnarray}
+	Hence, the solution is given by
+	\begin{eqnarray}
+		U(x,s) = c_1e^{sx} + c_2e^{-sx} = c_1\exp(sx) + c_2\exp(-sx)\label{eq:3_13}
+	\end{eqnarray}
+	Now, taking the \Lpt of the given conditions in \refx{3_8} which involve $t$, we have
+	\begin{eqnarray}
+		\LFn{U(0,t)} = \LFn{3\sin t} \label{eq:3_14}\sps
+		U(0,s) = 3\frac{2}{s^2 + 4} = \frac{6}{s^2 + 4}\label{eq:3_15}
+	\end{eqnarray}
+	Since $\lim\limits_{x\rightarrow \infty}U(x,s) = 0$, we have
+	\begin{eqnarray}
+		U(0,s) = c_1 + c_2 = \frac{6}{s^2 + 4}
+	\end{eqnarray}
+	and $c_1 = 0$, therefore, $\dsp c_2 = \frac{6}{s^2 + 4}$. Hence equation \refx{3_13} becomes
+	\begin{eqnarray}
+		U(x,s) = \frac{6}{s^2+4}e^{-sx} = \frac{6}{s^2+4}\exp(-sx)\label{eq:3_17}
+	\end{eqnarray}
+	Taking the inverse of \refx{3_17}, i.e
+	\begin{eqnarray}
+		U(x,t) &=& \InverseL{U(x,s)}\notag\sps
+		&=& \InverseL{\frac{6e^{-st}}{s^2+4}}\notag\sps
+		&=& 6\InverseL{\frac{e^{-st}}{s^2+4}}\notag 
+	\end{eqnarray}
+	Hence,
+	\begin{eqnarray*}
+		\mathbf{U(x,t) = \left\{
+			\begin{array}{l}
+			3\sin 2t,~ t >x\\
+			0,~ t < x
+			\end{array}
+		\right.}
+	\end{eqnarray*}
+	which is the required solution of \refx{3_7}
+	
+
+	\subsection*{Example 2}
+	Find
+	\begin{eqnarray}
+		x\frac{\partial u}{\partial x} + \frac{\partial u}{\partial t} = xt\label{eq:3_18}
+	\end{eqnarray}
+	
+	\subsection*{Solution}
+	Dividing \refx{3_18} by $x$ we  have
+	\begin{eqnarray}
+		\frac{\partial u}{\partial x} + \frac{1}{x}\frac{\partial u}{\partial t} = t\label{eq:3_19}
+	\end{eqnarray}
+	Taking \Lpt of \refx{3_19} with respect to $t$, we have
+	\begin{eqnarray}
+		\LFn{\frac{\partial u}{\partial x} + \frac{1}{x}\frac{\partial u}{\partial t}} &=& \LFn{t}\notag\sps
+		\LFn{\frac{\partial u}{\partial x}} + \LFn{\frac{1}{x}\frac{\partial u}{\partial t}} &=& \LFn{t}\notag\sps
+		\LFn{\frac{\partial u}{\partial x}} + \frac{1}{x}\LFn{\frac{\partial u}{\partial t}} &=& \LFn{t}\notag\sps
+		\LFn{\frac{\partial u}{\partial x}} + \frac{s}{x}\LFn{U(x,t)} &=& \frac{1}{s^2}\label{eq:3_20}
+	\end{eqnarray}
+	Let
+	\begin{eqnarray}
+		\LFn{U(x,t)} = U(x,s)\label{eq:3_21}
+	\end{eqnarray}
+	Here,
+	\begin{eqnarray}
+		\LFn{\frac{\partial u}{\partial x}} = \frac{\partial}{\partial x}\int_0^\infty e^{-st}U(x,t)dt\label{eq:3_22}
+	\end{eqnarray}
+	Using \refx{3_21}, equation \refx{3_22} becomes
+	\begin{eqnarray}
+		\LFn{\frac{\partial u}{\partial x}} = \frac{\partial u}{\partial x}(x,s)\label{eq:3_23}
+	\end{eqnarray}
+	Hence, using \refx{3_21} and \refx{3_23}, equation \refx{3_20} becomes
+	\begin{eqnarray}
+		\frac{\partial u}{\partial x}(x,s) + \frac{s}{x}U(x,s) = \frac{1}{s^2}\label{eq:3_24}
+	\end{eqnarray}
+	Here, let
+	\begin{gather*}
+		Q = \frac{1}{s^2}\sps
+		P = \frac{s}{x} \sps
+		\int Pdx = s\int\frac{1}{x}dx = s\ln x = \ln x^s
+	\end{gather*}
+	Hence, we have
+	\begin{gather}
+		y\sprime  + \frac{s}{x}y = \frac{1}{s^2}\notag\sps
+		y = e^{-\int Pdx}\int Qe^{-\int Pdx} dx + c(s)\notag\sps
+		=\frac{1}{x^2}\int\frac{1}{s^2}x^s dx + \frac{c(s)}{x^s}\label{eq:3_25}
+	\end{gather}
+	But
+	\begin{eqnarray}
+		\int x^s dx = \frac{x^{s+1}}{s+1}\label{eq:3_26}
+	\end{eqnarray}
+	Using \refx{3_26} in \refx{3_25}, equation \refx{3_25} becomes
+	\begin{eqnarray}
+		\frac{1}{x^s}\cdot \frac{1}{s^2}\cdot \frac{x^{s+1}}{s+1} + \frac{c(s)}{x^s}\label{eq:3_27}
+	\end{eqnarray}
+	\begin{eqnarray}
+		U(x,s) = \frac{x}{s^2 + (s+1)} + \frac{c(s)}{x^s}\label{eq:3_28}
+	\end{eqnarray}
+	But,
+	\begin{eqnarray*}
+		U(0,t) = 0, U(0,s) = 0 \implies c(s) = 0
+	\end{eqnarray*}
+	Hence, equation \refx{3_28}
+	\begin{eqnarray}
+		U(x,s)= \frac{x}{s^2(s+1)}\label{eq:3_29}
+	\end{eqnarray}
+	Taking the inverse of \refx{3_29}, that is 
+	\begin{eqnarray}
+		U(x,t) &=& \InverseL{U(x,s)}\sps
+		\InverseL{\frac{x}{s^2(s+1)}} &=& x\InverseL{\frac{1}{s^2(s+1)}}
+	\end{eqnarray}
+	Hence,
+	\begin{eqnarray}
+		\mathbf{U(x,t)} &=& \mathbf{x(t-1+e^{-t})}
+	\end{eqnarray}
+	which is the required solution to \refx{3_18}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{SOLUTION TECHNIQUES}
+	\section{FINAL SOLUTION USING LAPLACE TRANSFORM}
+	Solve
+	\begin{eqnarray}
+		\frac{\partial u}{\partial t} &=& \frac{\partial^2 u}{\partial y^2} + Gr\theta\label{eq:4_1}\sps
+		\frac{\partial\theta}{\partial t} &=& \frac{1}{Pr}\frac{\partial^2 \theta}{\partial y^2}\label{eq:4_2}
+	\end{eqnarray}
+	with the initial conditions
+	\begin{eqnarray}
+		\begin{gathered}
+			\theta(0,t) = 0\\
+			\theta(10,t) = 0\\
+			\theta(y,0) = \sin 3\pi y
+		\end{gathered}\label{eq:4_3}
+	\end{eqnarray}
+
+	\subsection*{Solution}
+	Taking the Laplace transform, of both sides of equation \refx{4_2}, we have
+	\begin{eqnarray}
+		\LFn{\frac{\partial\theta}{\partial t}} &=& \LFn{\frac{1}{Pr}\frac{\partial^2 \theta}{\partial y^2}}\label{eq:4_4}\sps
+		\LFn{\frac{\partial\theta}{\partial t}} &=& \frac{1}{Pr}\LFn{\frac{\partial^2 \theta}{\partial y^2}}\label{eq:4_5}
+	\end{eqnarray}
+	From equation \refx{4_5}, let $\dsp \frac{1}{Pr} = \lambda$.
+	
+	\NI Hence, equation \refx{4_5} becomes
+	\begin{eqnarray}
+		\LFn{\frac{\partial\theta}{\partial t}} = \lambda\LFn{\frac{\partial^2 \theta}{\partial y^2}}\label{eq:4_6}
+	\end{eqnarray}
+	Therefore, we have
+	\begin{eqnarray}
+		\int_0^\infty e^{-st}\frac{\partial \theta}{\partial t}dt &=& \int_0^\infty \lambda e^{-st}\frac{\partial^2 \theta}{\partial y^2}dt\label{eq:4_7}\spn{0.3}
+		\int_0^\infty e^{-st}\frac{\partial \theta}{\partial t}dt &=& \lambda\frac{\partial^2}{\partial y^2}\int_0^\infty e^{-st}\theta(y,t)dt\label{eq:4_8}\spn{0.5} 
+		\int_0^\infty e^{-st}\frac{\partial \theta}{\partial t}dt &=& \lambda\frac{\partial^2}{\partial y^2}\bar{\theta}(y,s)dt\label{eq:4_9}
+	\end{eqnarray}
+	Where
+	\begin{eqnarray}
+		\bar{\theta}(y,s) = \LFn{\theta}\label{eq:4_10}
+	\end{eqnarray}
+	And
+	\begin{eqnarray}
+		s\bar{\theta} - \theta(y,0) = \lambda\frac{\partial^2}{\partial y^2}\bar{\theta}\label{eq:4_11}
+	\end{eqnarray}
+	Hence,
+	\begin{eqnarray}
+		\frac{d^2 \bar{\theta}}{d y^2} - \frac{s\bar{\theta}}{\lambda} &=& \frac{1}{\lambda}\theta(y,0) =  -  \frac{1}{\lambda}\theta(y,0)\sps
+		\frac{d^2 \bar{\theta}}{d y^2} - \frac{s\bar{\theta}}{\lambda} &=& \frac{1}{\lambda}\theta(y,0) =  -  \frac{1}{\lambda}\sin 3\pi y\label{eq:4_13}
+	\end{eqnarray}
+	Finding the homogenous solution to equation \refx{4_13}
+	\begin{eqnarray}
+		\frac{d^2 \bar{\theta}}{d y^2} - \frac{s\bar{\theta}}{\lambda} = 0 \label{eq:4_14}
+	\end{eqnarray}
+	Let
+	\begin{eqnarray}
+		\bar{\theta} = \exp my\label{eq:4_15}
+	\end{eqnarray}
+	Then the auxiliary polynomial to \refx{4_14} is given by
+	\begin{eqnarray}
+		m^2 = \pm\frac{s}{\lambda}\label{eq:4_16}
+	\end{eqnarray}
+	Solving for $m$ in equation \refx{4_16}, we have
+	\begin{eqnarray}
+		m = \pm\sqrt{\frac{s}{\lambda}}
+	\end{eqnarray}
+	And the basis of linearly independent solutions are,
+	\begin{eqnarray}
+		\bar{\theta}_1 &=& \exp\left[+\sqrt{\frac{s}{\lambda}y}~\right]\sps
+		\bar{\theta}_2 &=& \exp\left[-\sqrt{\frac{s}{\lambda}y}~\right]
+	\end{eqnarray}
+	Hence, the complementary solution is
+	\begin{eqnarray}
+		\bar{\theta}(y,s) = c_1\exp\left[+\sqrt{\frac{s}{\lambda}y}~\right] + c_2 \exp\left[-\sqrt{\frac{s}{\lambda}y}~\right]\label{eq:4_20}
+	\end{eqnarray}
+	where $c_1$ and $c_2$ are constants of integration. The particular integral is obtained by the method of undermined parameters.
+	\begin{eqnarray}
+		\bar{\theta}_p(y,s) = a\cos 3\pi y + b\sin 3\pi y\label{eq:4_21}
+	\end{eqnarray}
+	From equation \refx{4_21}, we have
+	\begin{eqnarray}
+		\frac{d\bar{\theta}_p}{dy} &=& -a3\pi\sin 3\pi y - b3\pi\cos 3\pi y\label{eq:4_22}\sps
+		\frac{d^2\bar{\theta}_p}{dy^2} &=& -a^29\pi^2\cos 3\pi y - b^29\pi^2\sin 3\pi y\label{eq:4_23}
+	\end{eqnarray}
+	Substituting equations \refx{4_21}, \refx{4_22} and \refx{4_23} into \refx{4_13}, we have
+	\begin{gather*}
+		-a9\pi^2\cos 3\pi y - b9\pi^2\sin 3\pi y = -\frac{1}{\lambda}\sin 3\pi y - \frac{s}{\lambda}\Big[a\cos 3\pi y + b\sin 3\pi y\Big]
+	\end{gather*}
+	or
+	\begin{gather}
+		\left[-a9\pi^2 - \frac{sa}{\lambda}\right]\cos 3\pi y + \left[-b\pi^2 - \frac{sb}{\lambda}\right]\sin 3\pi y = -\frac{1}{\lambda}\label{eq:4_24}
+	\end{gather}
+	Equating the coefficients of like terms, in equation \refx{4_24}, we have
+	\begin{gather*}
+		a\left[-9\pi^2 + \frac{s}{\lambda}\right] = 0\sps
+		\implies a = 0
+	\end{gather*}
+	and
+	\begin{gather*}
+		-b\left[9\pi^2 + \frac{s}{\lambda}\right] = -\frac{1}{\lambda}\sps
+		\implies b = \frac{\frac{1}{\lambda}}{9\pi^2 + \frac{s}{\lambda}} = \frac{1}{\lambda}(9\pi^2 + \frac{s}{\lambda})
+	\end{gather*}
+	
+	\NI Hence the generation solution of \refx{4_13} is given by
+	\begin{eqnarray}
+		\theta(y,s) =  c_1\exp\left[+\sqrt{\frac{s}{\lambda}y}~\right] + c_2 \exp\left[-\sqrt{\frac{s}{\lambda}y}~\right] + \frac{\sin 3\pi y}{\lambda (9\pi^2 + \frac{s}{\lambda})}\label{eq:4_25}
+	\end{eqnarray}
+	Taking the Laplace transform of conditions which involve $t$ in \refx{4_3}, we have
+	\begin{eqnarray*}
+		\LFn{\theta(0,t)} = \bar{\theta}(0,s) = 0\sps
+		\LFn{\theta(10,t)} = \bar{\theta}(10,s) = 0
+	\end{eqnarray*}
+	Using these conditions in \refx{4_25}, we have
+	\begin{gather*}
+		c_1 + c_2 = 0\sps
+		\implies c_1\exp\left[+\sqrt{\frac{s}{\lambda}y}~\right] + c_2 \exp\left[-\sqrt{\frac{s}{\lambda}y}~\right]
+	\end{gather*}
+	Hence, equation \refx{4_25} becomes
+	\begin{eqnarray}
+		\theta(y,s) = \frac{\sin 3\pi y}{\lambda (9\pi^2 + \frac{s}{\lambda})} = \frac{\sin 3\pi y}{s+9\lambda\pi^2}\label{eq:4_26}
+	\end{eqnarray}
+	Taking the inverse of equation \refx{4_26}, that is
+	\begin{eqnarray}
+		\theta(y,t) &=& \InverseL{\theta(y,s)}\notag\spn{0.4}
+		&=& \InverseL{\frac{\sin 3\pi y}{s+9\lambda\pi^2}}\notag\spn{0.4}
+		&=&\sin3\pi y \InverseL{\frac{1}{s+9\lambda\pi^2}}\notag\spn{0.4}
+		\theta(y,t) &=& \exp(-9\pi^2\lambda t)\sin3\pi y\label{eq:4_27}
+	\end{eqnarray}
+	which is the required solution to \refx{4_2}.\\
+	
+	\NI Now, substituting \refx{4_27} into \refx{4_1} for $\theta$, equation \refx{4_1} becomes
+	\begin{eqnarray}
+		\frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial y^2} + Gr\left[ \exp(-9\pi^2\lambda t)\sin3\pi y\right]\label{eq:4_28}
+	\end{eqnarray}
+
+	\NI with the boundary conditions
+	\begin{eqnarray}
+		U(0,t)=0, ~~U(10,t) = 0, ~~U(y,0) = 0\label{eq:4_29}
+	\end{eqnarray}
+	
+	\NI Taking the \Lpt of the partial differential equation \refx{4_28}, we have
+	\begin{eqnarray}
+		\LFn{\frac{\partial u}{\partial t}} &=& \LFn{\frac{\partial^2 u}{\partial y^2} + Gr\left[ \exp(-9\pi^2\lambda t)\sin3\pi y\right]}\notag\sps
+		\LFn{\frac{\partial u}{\partial t}} &=& \LFn{\frac{\partial^2 u}{\partial y^2}} + \LFn{Gr\left[ \exp(-9\pi^2\lambda t)\sin3\pi y\right]}\notag\sps
+		\LFn{\frac{\partial u}{\partial t}} &=& \LFn{\frac{\partial^2 u}{\partial y^2}} + Gr\sin3\pi y\LFn{ \exp(-9\pi^2\lambda t)}\label{eq:4_30}
+	\end{eqnarray}
+	Hence, from \refx{4_30} we have
+	\begin{eqnarray}
+		sU(y,s) - U(y,0) = \frac{d^2 u}{d y^2}(y,s) + Gr\sin 3\pi y\left[\frac{-1}{s+9\pi^2\lambda}\right]\label{eq:4_31}
+	\end{eqnarray}
+	\begin{eqnarray}
+		\frac{d^2 u}{d y^2} - su = - U(y,0) + Gr\sin 3\pi y\left[\frac{-1}{s+9\pi^2\lambda}\right]\label{eq:4_32}
+	\end{eqnarray}
+	
+	\NI Applying the boundary conditions \refx{4_29} in \refx{4_32}, equation \refx{4_32} becomes
+	\begin{eqnarray}
+		\frac{d^2 u}{d y^2} - su &=& - 0 + Gr\sin 3\pi y\left[\frac{-1}{s+9\pi^2\lambda}\right]\notag\sps
+		\frac{d^2 u}{d y^2} - su &=&  Gr\sin 3\pi y\left[\frac{-1}{s+9\pi^2\lambda}\right]\notag\sps
+		\frac{d^2 u}{d y^2} - su &=& \left[\frac{-Gr}{s+9\pi^2\lambda}\right]\sin 3\pi y\label{eq:4_33}
+	\end{eqnarray}
+	The reduced homogeneous equation of \refx{4_33} is given by
+	\begin{equation}
+		\frac{du^2 u}{dy^2} - su = 0\label{eq:4_34}
+	\end{equation}
+	And the homogeneous solution  to \refx{4_34} is  
+	\begin{eqnarray}
+		U(y,s) = c_1e^{\sqrt{sy}} + c_2e^{-\sqrt{sy}}\label{eq:4_35}
+	\end{eqnarray}
+	
+	\NI Also, finding the particular integral to \refx{4_33} by the method of undetermined parameters. Thus let the particular integral be
+	\begin{eqnarray}
+		U_p = a\cos 3\pi y + b\sin 3\pi y\label{eq:4_36}
+	\end{eqnarray}
+	On differentiating \refx{4_36} twice, we have the followings
+	\begin{eqnarray}
+		\frac{du_p}{dy} &=& -a3\pi\sin 3\pi y + b3\pi\cos 3\pi y\label{eq:4_37}\sps
+		\frac{d^2 u_p}{dy^2} &=& -a9\pi^2\cos3\pi y - b\pi^2\sin3\pi y\label{eq:4_38}
+	\end{eqnarray}
+	
+	\NI Substituting equations \refx{4_36}, \refx{4_37} and \refx{4_38} into \refx{4_33}, we have
+	\begin{multline}
+		\Big[ -a9\pi^2\cos3\pi y - b9\pi^2\sin 3\pi y \Big] - \Big[ as\cos 3\pi y - b\sin 3\pi y \Big]\frac{Gr}{s+9\pi^2 \lambda} \sps= \frac{-Gr}{s+9\pi^2\lambda}\sin 3\pi y
+	\end{multline}
+	which simplifies to
+	\begin{multline}
+		\left[-a9\pi^2 - as\frac{Gr}{s+9\pi^2\lambda}\right]\cos3\pi y + \left[-b9\pi^2 - bs\frac{Gr}{s+9\pi^2\lambda}\right] \sps= \frac{-Gr}{s+9\pi^2\lambda}\sin3\pi y\label{eq:4_40}
+	\end{multline}
+
+	\NI By equating the coefficients of likes terms in \refx{4_40}, we have
+	\begin{gather*}
+		-a\left[9\pi^2 - \frac{sGr}{s+9\pi^2\lambda}\right] = 0\sps
+		\implies a = 0
+	\end{gather*}
+	Also,
+	\begin{gather*}
+		-b\left[9\pi^2 - \frac{sGr}{s+ 9\pi^2\lambda}\right] = \frac{-Gr}{s+9\pi^2\lambda}\sps
+		-b = \left[\frac{-Gr}{s+ 9\pi^2\lambda}\right]\left[\frac{s+9\pi^2\lambda}{9\pi^2s + 81\pi^4\lambda^2 - sGr}\right]\sps
+		= \frac{Gr}{9\pi^2 s + 81\pi^4\lambda^4 - sGr}\sps
+		b = \frac{Gr}{9\pi^2\left[s+9\pi^2\lambda^2\right]-sGr}
+	\end{gather*}
+	Hence, the particular equation \refx{4_36} becomes
+	\begin{eqnarray}
+		U_p = a(0) + \frac{Gr}{9\pi^2\left[s+9\pi^2\lambda^2\right]-sGr}\sin3\pi y\label{eq:4_41}
+	\end{eqnarray}
+	
+	\NI Therefore, the general solution of \refx{4_33} is given by
+	\begin{eqnarray}
+		U(y,s) = c_1e^{\sqrt{sy}} + c_2e^{-\sqrt{sy}} + \frac{Gr\sin3\pi y}{9\pi^2\left[s+9\pi^2\lambda^2\right]-sGr} \label{eq:4_42}
+	\end{eqnarray}
+	
+	\NI Taking the \Lpt of the conditions \refx{4_29} which involve $t$ i.e
+	\begin{eqnarray}
+		\LFn{U(0,t)} = U(0,s) = 0 \text{ ~and~ } \LFn{U(10,t)} = U(10,s) = 0\label{eq:4_43}
+	\end{eqnarray}
+	using these conditions in \refx{4_42}, we have
+	\begin{eqnarray}
+		U(0,s) = c_1 + c_2 = 0\label{eq:4_44}
+	\end{eqnarray}
+	and
+	\begin{eqnarray}
+		U(10,s) = c_1e^{10\sqrt{s}} + c_2e^{10\sqrt{s}} = 0\label{eq:4_45}
+	\end{eqnarray}
+	On solving for $c_1$ and $c_2$ from \refx{4_44} and \refx{4_45}, we have
+	\begin{eqnarray}
+		c_1 = c_2 = 0\label{eq:4_46}
+	\end{eqnarray}
+	
+	\NI Putting the values of $c_1$ and $c_2$ into \refx{4_42}, equation \refx{4_42} becomes
+	\begin{eqnarray}
+		U(y,s) = \frac{Gr\sin3\pi y}{9\pi^2\left[s+9\pi^2\lambda^2\right]-sGr}\label{eq:4_47}
+	\end{eqnarray}
+	
+	\NI Taking the inverse \Lpt of \refx{4_47}, we have
+	\begin{eqnarray}
+		U(y,t) &=& \InverseL{U(y,s)}\notag\spn{0.4}
+		U(y,t) &=& \InverseL{\frac{Gr\sin3\pi y}{9\pi^2\left[s+9\pi^2\lambda^2\right]-sGr}}\notag\spn{0.4}
+		&=& \frac{1}{9\pi^2}\InverseL{\frac{Gr\sin3\pi y}{(s+9\pi^2\lambda^2) - sGr}}\notag\spn{0.4}
+		&=&\frac{1}{9\pi^2}\InverseL{\frac{Gr\sin3\pi y}{(1-Gr)s + 9\pi^2\lambda^2}}\notag\spn{0.4}
+		&=& \frac{1}{9\pi^2}\InverseL{\frac{Gr\sin3\pi y}{s+ 9\pi^2\lambda^2(1-Gr)}}\notag\spn{0.4}
+		&=& \frac{1-Gr}{9\pi^2}\InverseL{\frac{Gr\sin3\pi y}{s+ 9\pi^2\lambda^2(1-Gr)}}\notag\spn{0.4}
+		U(y,t) &=& \frac{1-Gr}{9\pi^2}Gr\sin3\pi y\InverseL{\frac{1}{s+ 9\pi^2\lambda^2(1-Gr)}}\label{eq:4_48}
+	\end{eqnarray}
+	
+	\NI Hence, from \refx{4_48}, we have
+	\begin{eqnarray}
+		U(y,t) &=& \frac{1-Gr}{9\pi^2}Gr\sin3\pi ye^{-\left[s+ 9\pi^2\lambda^2(1-Gr)\right]t}\label{eq:4_49}
+	\end{eqnarray}
+	which is the required solution to \refx{4_1}.
+	
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY AND CONCLUSION}
+	
+	\section{SUMMARY AND CONCLUSION}
+	In this project work, unsteady free convection boundary layer flow, in fluid mechanics was devoted to and general introduction on fluid was discussed. Basic definition and types of fluid, types of fluid flow, properties of fluid and equation of fluid.\\
+	
+	\NI When considering the simplification of fluid equations of motions, the unsteady free convective flow of a viscous incompressible fluid past an impulsively started infinitely vertical plate with Newtonian heating was considered, applying the Boussineq approximation the flow is governed by the following equation of fluid namely Momentum equation and Energy equation.
+	\begin{gather*}
+		\frac{\partial u^*}{\partial t^*} = \nu\frac{\partial^2 u^*}{\partial y^{*2}} + g\beta(T^* - T^*_\infty)\spn{0.5}
+		\rho Cp\frac{\partial T}{\partial t} = k\frac{\partial^2 T}{\partial y^2}
+	\end{gather*}
+	
+	\NI Introducing some non-dimensionless quantities we resulted to a partial differential equation
+	\begin{gather*}
+		\frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial y^2} + Gr\theta\spn{0.5}
+		\frac{\partial\theta}{\partial t} = \frac{1}{Pr}\frac{\partial^2\theta}{\partial y^2}
+	\end{gather*}
+	
+	\NI Considering \Lpt as the method of solution, the partial differential equation resulted to
+	\begin{eqnarray*}
+		\frac{1-Gr}{9\pi^2}Gr\sin3\pi ye^{-\left[s+ 9\pi^2\lambda^2(1-Gr)\right]t}
+	\end{eqnarray*}
+	as the final solution.\\
+	
+	\NI It may be permitted to doubt the public at large has any adequately realizing sense of the party which fluid mechanics plays, not only in our daily lives, but throughout the entire domain of nature.
+		
+	
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	\begin{description}
+		\item A. Raptis and C. Perdikis, Free convection flow of water near 4$^\circ C$ past a moving plate, Forschung in Ingeneiurwesen, Vol. 67 (5), pp. 206-208(2002).
+		
+		\item B.M. Abramowitz and I. A. Stegun, Handbook of Mathematical Functions, Dover Publication, Inc., New York (1970).
+		
+		\item C.P Perdikis and H. S. Takhar, Free convection effects on flow past a moving vertical infinite porous plate, Astrophys.  Space Science, Vol. 125(1), pp. 205-209 (1986).
+		
+		\item D. P. Telionis, Unsteady Viscous Flows, Springer-Verlag, New York (1981).
+		
+		\item Erwin Kreyzig Advanced Engineering Mathematics(8th Edition), John Wiley and Sons Inc (2004).
+		
+		\item I. Pop, Theory of Unsteady Boundary Layers, Romanian Academy of Sciences, Bucharest (1983).
+		
+		\item John E. Plapp, Engineering Fluid Mechanics, Engineering and Material Science, Rice University Houston, Texas (1968).
+		
+		\item J. C. Slattery, Advanced Transport Phenomena, Cambridge University Press (1999).
+		
+		\item P. Chandran, N.C Sacheti and A.K. Singh, Unsteady hydromagnetic free convection flow with heat flux and accelerated boundary motion, J. Phys. Soc. Jpn. Vol. 67, pp. 124-129 (1998).
+		
+		\item R. Camargo, E. Luna, and C. Trevino, Numerical study of the natural convective cooling of a vertical plate, Heat and Mass Transfer, Vol. 32, pp. 89-95 (1996).
+		
+		\item R. C. Binder, PhD, Fluid mechanics, New York, Prentice Hall Inc., (1995).
+		
+		\item R. C. Chaudhary, Preeti Jain (2006), Unsteady free convection boundary-layer flow past an impulsively started vertical plate with Newtonian heating.
+		
+		\item R. K. Rajput, Textbook of fluid mechanics, Fluid mechanics(2nd Edition) S. Chand and Company LTD (1998).
+		
+		\item R. Muthukumaraswamy, Natural convection on flow past an impulsively started vertical plate with variable surface heat flux, Far East Journal of Applied Mathematics, Vol. 14, pp. 99-109 (2004).
+		
+		\item R. Siegel, Transient free convection from a vertical flat plate, Transactions of the American Societies of Mechanical Engineers, Vol. 80, pp. 347-359 (1958).
+		
+		\item U. N. Das, R. K. Deka and V. M. Soundalgekar, Transient free convection flow past an infinite vertical plate with periodic temperature variation, Journal of Heat Transfer, Vol. 121, pp. 10911094 (1999).
+		
+		\item V. M. Soundalgekar, Free convection effects on Stokes problem for a vertical plate, J. Heat Transfer, ASME, Vol. 99c, pp. 499-501 (1977)
+	\end{description}
+\end{document}
+

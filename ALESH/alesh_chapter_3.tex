@@ -1,0 +1,692 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{\textbf{(\ref{#1})}}
+\newcommand{\NI}{\noindent}
+\newcommand{\beq}{\NI$\displaystyle}
+\newcommand{\eeq}{$}
+\newcommand{\eeqn}{$\\[0.3cm]}
+
+\renewcommand{\baselinestretch}{1.5}
+
+
+\begin{document}
+	\chapter{}
+	\bt{\underline{Problem 1}}\\
+	Evaluate Prey-Pradator Model $\frac{dx}{dt} = \alpha x + \beta xy + c$ using the quadrature rule with $\alpha = 0.01, \; \beta = 0.5, \; c = 0.4$ and $x(0) = 1$, taking $n = 2$ and $n = 4$\sps
+	\ubt{Solution}\sps
+	Given $\frac{dx}{dt} = \alpha x - \beta xy + c$\\
+	This can be re-written as votterral equation of the second order
+
+	\beq \phi(x) = \text{f}(x) + \int_{x_0}^{x} k(x,y) \phi (y) \text{ dy}\eeq
+	
+	\beq\phi(x) = 0.01x + 0.4 + \int_{0}^{1}(0.5)(xy)\phi(y) \text{ dy}\eeq
+	
+	\beq\phi(x) - \frac{1}{2} \int_{0}^{1} (xy) \phi(y)\text{ dy} = \frac{1}{100}x + \frac{2}{5} \eeq \\
+
+	\NI When $n=2$\sps
+	\beq h = \frac{b-a}{n} = \frac{1-0}{2} = \frac{1}{2} \\[0.2cm]
+	\Rightarrow y_0 = 0, \; y_1 = \frac{1}{2}, \; y_2 = 1
+	\eeqn
+	By Trapezoidal Rule\spn{0.3}
+
+	\begin{equation*}
+	\phi(x) - \frac{1}{2} \cdot \frac{h}{2} \left[ (xy_0) \phi(y_0) + 2(xy_1)\phi(y_1) + (xy_2) \phi(y_2)\right] = \frac{1}{100}x + \frac{2}{5}
+	\end{equation*}
+	\begin{equation}
+		\phi(x) - \frac{1}{8}\left[ (xy_0)\phi(y_0) + 2(xy_1)\phi(y_1) + (xy_2)\phi(y_2)\right] = \frac{1}{100}x + \frac{2}{5} \tag{1} \label{eq:a}
+	\end{equation}
+	\\Changing $x$ terms to $y_i$
+	\begin{equation*}
+		\phi(y_i) - \frac{1}{8} \left[ (y_iy0)\phi y_0 + 2y_iy_1\phi y_1 + y_iy_2\phi y_2\right] = \frac{1}{100}y_i + \frac{2}{5}
+	\end{equation*}	
+	When $i=0$
+	\begin{equation*}
+		\phi_0 - \frac{1}{8} \left[ y_0^2\phi_0 + 2y_0y_1\phi_1 + y_0y_2\phi_2\right] = \frac{1}{100}y_0 + \frac{2}{5}
+	\end{equation*}	
+	But $y_0 = 0, \; y_1 = \frac{1}{2}, \; y_2=1, \; \phi_0 = \frac{2}{5}$
+	\begin{equation}
+		\Rightarrow \quad\phi_0 = 0.4 \quad \quad \quad \quad \quad \quad \quad \quad \quad\quad \quad \quad\quad \quad \quad\quad \quad \quad\quad \quad \quad\quad \quad \quad\tag{i} \label{eq:b}
+	\end{equation}
+	\\When $i=1$
+	\begin{eqnarray*}
+		\phi_1 - \frac{1}{8} \left[ y_0y_1\phi_0 + 2y_1^2 \phi_1 + y_1y_2\phi_2\right] = \frac{1}{100}y_1 + \frac{2}{5}\quad\sps
+			\phi_1 - \frac{1}{8} \left[ 0 + 2\left(\frac{1}{2}\right)^2 \phi_1 + \frac{1}{2}\phi_2\right] = \frac{1}{100}\left(\frac{1}{2}\right) + \frac{2}{5}\sps
+			\phi_1 - \frac{1}{8} \left[\frac{1}{2} \phi_1 + \frac{1}{2}\phi_2\right] = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{eqnarray*}
+	\begin{equation}
+		\frac{15}{16} \phi_1 + \frac{1}{16}\phi_2 = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{ii} \label{eq:c}
+	\end{equation}
+	\\When $i=2$
+	\begin{eqnarray*}
+		\phi_2 - \frac{1}{8} \left[ y_0y_2\phi_0 + 2y_1y_2 \phi_1 + y_2^2\phi_2\right] = \frac{1}{100}y_2 + \frac{2}{5}\quad\sps
+		\phi_2 - \frac{1}{8} \left[ 0 + 2\left(\frac{1}{2}\right) \phi_1 + \phi_2\right] = \frac{1}{100} + \frac{2}{5}\quad\quad\quad\quad\sps
+		\phi_2 - \frac{1}{8}\phi_1 + \frac{1}{8}\phi_2 = \frac{41}{100}\quad\quad \;\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{eqnarray*}
+	\begin{equation}
+		-\frac{1}{8} \phi_1 + \frac{7}{8}\phi_2 = \frac{41}{100}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{iii} \label{eq:d}
+	\end{equation}
+	Bringing together the system of equation
+	\begin{equation}
+		\phi_0 = \frac{2}{5} \tag{i} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\begin{equation}
+		\frac{15}{16}\phi_1 - \frac{1}{16}\phi_2 = \frac{81}{200} \tag{ii} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\begin{equation}
+		-\frac{1}{8}\phi_1 - \frac{7}{8}\phi_2 = \frac{41}{100} \tag{iii} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	Solving the system of equations we obtain
+	$$
+		\phi_0 = \frac{2}{5}, \quad \phi_1 = \frac{152}{325}, \quad \phi_2 = \frac{174}{325}
+	$$
+	From equation \refn{eq:a} we obtain
+	\begin{eqnarray*}
+		\phi(x) - \frac{1}{8}\left[ 0 + 2x\left(\frac{1}{2}\right)\left(\frac{152}{325}\right) + \frac{174}{325}x \right] = \frac{1}{100}x + \frac{2}{5}\sps
+		\phi(x) - \frac{19}{325}x - \frac{87}{1300}x = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\sps
+		\phi(x)) = \frac{19}{325}x + \frac{87}{1300}x + \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\;\;\sps
+		\phi(x) = \frac{44}{325}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\;\;\sps
+		\mathbf{\phi(x) = 0.13538x + 0.4}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\;\;
+	\end{eqnarray*}
+	\\
+	\NI\bt{SIMPSON'S 1/3 RULE}
+	\begin{equation}
+		\phi(x) - \frac{1}{2}\frac{h}{3}\left[ (xy_0)\phi y_0 + 4(y_iy_1)\phi y_1 + (xy_2)\phi y_2 \right] = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad \tag{2} \label{eq:e}
+	\end{equation}
+	Changing $x$ terms to $y_i$
+	$$
+		\phi(y_i) \frac{1}{12}\left[ (y_iy_0)\phi y_0 + 4(y_iy_1) \phi y_1 + (y_iy_2)\phi y_2\right] = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	When $i=0$, $y_0=0$, $y_1=\frac{1}{2}$, $y_2=1$
+	$$
+		\phi_0 - \frac{1}{12} \left[y_0^2 \phi_0 + 4y_0y_1\phi_1 + y_0y_2\phi_2\right] = \frac{1}{100}y_0 + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_0 - \frac{1}{12}[0] = \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	\begin{equation}
+		\phi_0 = \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{i}
+	\end{equation}
+	\\When $i=1$
+	$$
+		\phi_1 - \frac{1}{12} \left[y_0y_1 \phi_0 + 4y_1^2\phi_1 + y_1y_2\phi_2\right] = \frac{1}{100}y_1 + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_1 - \frac{1}{12}\left[0 + 4\left(\frac{1}{2}\right)^2\phi_1 + \left(\frac{1}{2}\right)\phi_2\right] = \frac{1}{100}\left(\frac{1}{2}\right) + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_1 - \frac{1}{12}\phi_1 - \frac{1}{24}\phi_2 = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	\begin{equation}
+		\frac{11}{12}\phi_1 - \frac{1}{24}\phi_2 = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{ii}
+	\end{equation}
+	\\When $i=2$
+	$$
+		\phi_2 - \frac{1}{12} \left[y_0y_2 \phi_0 + 4y_1y_2\phi_1 + y_2^2\phi_2\right] = \frac{1}{100}y_2 + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_2 - \frac{1}{12}\left[0 + 4\left(\frac{1}{2}\right)\phi_1 + \phi_2 \right] = \frac{1}{100} +  \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \quad
+	$$
+	$$
+		\phi_2 - \frac{1}{6}\phi_1 - \frac{1}{12}\phi_2 = \frac{41}{100}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	\begin{equation}
+		-\frac{1}{6}\phi_1 + \frac{11}{12}\phi_2 = \frac{41}{100}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{iii}
+	\end{equation}
+	\\The System of equations are
+	\begin{equation}
+		\phi_0 = \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{i}
+	\end{equation}
+	\begin{equation}
+		\frac{11}{12}\phi_1 - \frac{1}{24}\phi_2 = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{ii}
+	\end{equation}
+	\begin{equation}
+		-\frac{1}{6}\phi_1 + \frac{11}{12}\phi_2 = \frac{41}{100}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{iii}
+	\end{equation}
+	\\[-0.3cm]Solving the System of equation we obtain
+	$$
+		\phi_0 = \frac{2}{5}, \quad \phi_1 = \frac{233}{500}, \quad \phi_2 = \frac{133}{250}
+	$$
+	Then, equation \refn{eq:e} becomes
+	\begin{eqnarray*}
+		\phi(x) - \frac{1}{12}\left[ 0 + 4x\left(\frac{1}{2}\right)\left(\frac{233}{500}\right) + x\left(1\right)\frac{133}{250} \right] = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\sps
+		\phi(x) - \frac{233}{3000}x - \frac{133}{250}x = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\sps
+		\phi(x)) = \frac{233}{3000}x + \frac{133}{250}x + \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\;\;\sps
+		\phi(x) = \frac{1859}{3000}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\sps
+		\mathbf{\phi(x) = 0.61967x + 0.4}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\;
+	\end{eqnarray*}
+	\\
+	\NI\bt{SIMPSON'S 3/8 RULE}
+	\begin{equation}
+		\phi(x) - \frac{1}{2} \cdot \frac{3h}{8} \left[(xy_0)\phi y_0 + 3(xy_1)\phi y_1 + (xy_2)\phi y_2\right] = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad \tag{3} \label{eq:f}
+	\end{equation}
+	\begin{eqnarray*}
+		\phi(x) - \frac{3}{32}\left[(xy_0)\phi y_0 + 3(xy_1)\phi y_1 + (xy_2)\phi y_2 \right] = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\sps
+	\end{eqnarray*}
+	Changing $x$ terms to $y_i$
+	\begin{eqnarray*}
+		\phi(y_i) - \frac{3}{32}\left[y_iy_0\phi y_0 + 3y_iy_1\phi y_1 + y_iy_2\phi y_2 \right] = \frac{1}{100}y_i + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{eqnarray*}
+	When $\displaystyle i=0, \; y_0=0, \; y_1=\frac{1}{2}, \; y_2=2$
+	\begin{eqnarray*}
+		\phi_0 - \frac{3}{32}\left[y_0^2\phi_0 + 3y_0y_1\phi_1 + y_iy_2\phi y_2 \right] = \frac{1}{100}y_0 + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\sps
+		\phi_0 - \frac{3}{32}(0) = \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\;
+	\end{eqnarray*}
+	\begin{equation}
+		\phi_0=\frac{2}{5} \tag{i}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\\When $i=1$
+	$$
+		\phi_1 - \frac{3}{32} \left[y_0y_1 \phi_0 + 3y_1^2\phi_1 + y_1y_2\phi_2\right] = \frac{1}{100}y_1 + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_1 - \frac{3}{32}\left[0 + 3\left(\frac{1}{2}\right)^2\phi_1 + \left(\frac{1}{2}\right)\phi_2\right] = \frac{1}{100}\left(\frac{1}{2}\right) + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_1 - \frac{3}{32}\left[\frac{3}{4}\phi_1 + \frac{1}{2}\phi_2\right] = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_1 - \frac{9}{128}\phi_1 - \frac{3}{64}\phi_2 = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	\begin{equation}
+		\frac{119}{128}\phi_1 - \frac{3}{64}\phi_2 = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{ii}
+	\end{equation}
+	\\When $i=2$
+	$$
+		\phi_2 - \frac{3}{32} \left[y_0y_2 \phi_0 + 3y_1y_2\phi_1 + y_2^2\phi_2\right] = \frac{1}{100}y_2 + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_2 - \frac{3}{32}\left[0 + 3\left(\frac{1}{2}\right)\phi_1 + \phi_2\right] = \frac{1}{100} + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi_2 - \frac{9}{64}\phi_1 - \frac{3}{32}\phi_2 = \frac{41}{100}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	\begin{equation}
+		-\frac{9}{64}\phi_1 + \frac{29}{32}\phi_2 = \frac{41}{100}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{iii}
+	\end{equation}
+	\\[-0.7cm]The System of equations are\\
+	\begin{equation}
+		\phi_0=\frac{2}{5} \tag{i}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\begin{equation}
+		\frac{119}{128}\phi_1 - \frac{3}{64}\phi_2 = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{ii}
+	\end{equation}
+	\begin{equation}
+		-\frac{9}{64}\phi_1 + \frac{29}{32}\phi_2 = \frac{41}{100}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad \tag{iii}
+	\end{equation}
+	\\[-0.7cm]Solving the System of equation we obtain\\
+	$\displaystyle \phi_0=\frac{2}{5}, \; \phi_1=\frac{1236}{2675}, \; \phi_2=\frac{1402}{2675} $\sps
+	Equation\refn{eq:f} becomes
+	$$
+		\phi(x) - \frac{3}{32} \left[0 + 3x \left(\frac{1}{2}\right)\left(\frac{1236}{2675}\right) + x(1)\left(\frac{1402}{2675}\right)\right] = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi(x) - \frac{3}{32} \left[\frac{1854}{2675}x + \frac{1402}{2675}x\right] = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi(x) - \frac{2781}{42800}x - \frac{2103}{42800}x = \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi(x) = \frac{2781}{42800}x + \frac{2103}{42800}x + \frac{1}{100}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\phi(x) = \frac{332}{2675}x + \frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	$$
+		\mathbf{\phi(x) = 0.12411x +0.4}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$\\
+	$$
+		\phi(x) - \frac{1}{2} \int_0^1 (xy)\phi(y)\text{ dy} = \frac{1}{100}x + \frac{2}{5}
+	$$
+	When $n=4$\sps
+	$\displaystyle h = \frac{b-a}{n} = \frac{1-0}{4} = \frac{1}{4}\\[0.3cm] y_0=0, \; y_1=\frac{1}{4},\; y_2=\frac{1}{2},\; y_3=\frac{3}{4},\; y_4=1$\sps
+	
+	\NI\bt{TRAPEZOIDAL RULE}
+	$$
+		\phi(x) - \frac{1}{2} \cdot \frac{h}{2} \left[(xy_0)\phi(y_0) + 2(xy_1)\phi(y_1) + 2(xy_2)\phi(y_2) + 2(xy_3)\phi(y_3)+(xy_4)\phi(y_4)\right] 
+	$$
+	$$
+		= \frac{1}{100}x + \frac{2}{5}
+	$$\spn{-0.8}
+	$$
+		\phi(x) - \frac{1}{16}\left[(xy_0)\phi y_0 + 2(xy_1)\phi y_1 + 2(xy_2)\phi y_2 + 2(xy_3)\phi y_3 + (xy_4)\phi y_4\right] \quad\quad\quad 
+	$$
+	\begin{equation}
+		= \frac{1}{100}x + \frac{2}{5} \tag{4} \label{eq:g}
+	\end{equation}
+	Changing $x$ terms to $y_i$
+	$$
+	\phi(x) - \frac{1}{16}\left[(y_iy_0)\phi y_0 + 2(y_iy_1)\phi y_1 + 2(y_iy_2)\phi y_2 + 2(y_iy_3)\phi y_3 + (y_iy_4)\phi y_4\right] \quad\quad\quad 
+	$$
+	$$
+		= \frac{1}{100}y_i + \frac{2}{5}
+	$$
+	When $i=0$
+	$$
+		\phi_0 - \frac{1}{16}\left[y_0^2\phi_0 + 2y_0y_1\phi_1 + 2y_0y_2\phi_2 + 2y_0y_3\phi_3 + y_0y_4\phi_4\right] = \frac{1}{100}y_0 + \frac{2}{5} \quad\quad
+	$$
+	$$
+		\phi_0 - \frac{1}{6}\left[0\right] = \frac{2}{5} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$
+	\begin{equation}
+		\phi_0  = \frac{2}{5} \tag{i} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\spn{-0.2}When $i=1$
+	$$
+		\phi_1 - \frac{1}{16}\left[y_0y_1\phi_0 + 2y_1^2\phi_1 + 2y_1y_2\phi_2 + 2y_1y_3\phi_3 + y_1y_4\phi_4\right] = \frac{1}{100}y_1 + \frac{2}{5} \quad\quad
+	$$\spn{-0.5}
+	$$
+		\phi_1 - \frac{1}{16}\left[0 + 2\left(\frac{1}{4}\right)^2\phi_1 + 2\left(\frac{1}{4}\right)\left(\frac{1}{2}\right)\phi_2 +2\left(\frac{1}{4}\right)\left(\frac{3}{4}\right)\phi_3 + \left(\frac{1}{4}\right)\left(1\right)\phi_4\right]
+	$$
+	$$
+		= \frac{1}{100}\left(\frac{1}{4}\right)+\frac{2}{5}
+	$$
+	$$
+		\phi_1 - \frac{1}{16}\left[\frac{1}{8}\phi_1 +\frac{1}{4}\phi_2 +\frac{3}{8}\phi_3 +\frac{1}{4}\phi_4\right] = \frac{1}{400}+\frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$\spn{-0.9}
+	$$
+		\phi_1 - \frac{1}{128}\phi_1 -\frac{1}{64}\phi_2 -\frac{3}{128}\phi_3 -\frac{1}{64}\phi_4 = \frac{161}{400}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\qquad
+	$$\spn{-0.9}
+	\begin{equation}
+		\frac{127}{128}\phi_1 -\frac{1}{64}\phi_2 -\frac{3}{128}\phi_3 -\frac{1}{64}\phi_4 = \frac{161}{400} \tag{ii} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\spn{-0.2}When $i=2$
+	$$
+		\phi_2 - \frac{1}{16}\left[y_0y_2\phi_0 + 2y_1y_2\phi_1 + 2y_2^2\phi_2 + 2y_2y_3\phi_3 + y_2y_4\phi_4\right] = \frac{1}{100}y_2 + \frac{2}{5} \quad\quad
+	$$\spn{-.9}
+	$$
+		\phi_2 - \frac{1}{16}\left[0 + 2\left(\frac{1}{4}\right)\left(\frac{1}{2}\right)\phi_1 + 2\left(\frac{1}{4}\right)^2\phi_2 +2\left(\frac{1}{2}\right)\left(\frac{3}{4}\right)\phi_3 + \frac{1}{2}\phi_4\right]
+	$$
+	$$
+		= \frac{1}{100}\left(\frac{1}{2}\right)+\frac{2}{5}
+	$$\spn{-0.5}
+	$$
+		\phi_2 - \frac{1}{16}\left[\frac{1}{4}\phi_1 +\frac{1}{2}\phi_2 +\frac{3}{4}\phi_3 +\frac{1}{2}\phi_4\right] = \frac{1}{200}+\frac{2}{5}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$\spn{-0.8}
+	$$
+		\phi_2 - \frac{1}{64}\phi_1 -\frac{1}{32}\phi_2 -\frac{3}{64}\phi_3 -\frac{1}{32}\phi_4 = \frac{81}{200}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$\spn{-.8}
+	\begin{equation}
+		-\frac{1}{64}\phi_1 -\frac{31}{32}\phi_2 -\frac{3}{64}\phi_3 -\frac{1}{32}\phi_4 = \frac{81}{200} \tag{iii} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\spn{-0.2}When $i=3$
+	$$
+		\phi_3 - \frac{1}{16}\left[y_0y_3\phi_0 + 2y_3y_1\phi_1 + 2y_2y_3\phi_2 + 2y_3^2\phi_3 + y_3y_4\phi_4\right] = \frac{1}{100}y_3 + \frac{2}{5} \quad\quad
+	$$
+	\newpage
+	$$
+		\phi_3 - \frac{1}{16}\left[0 + 2\left(\frac{1}{4}\right)\left(\frac{3}{4}\right)\phi_1 + 2\left(\frac{1}{2}\right)\left(\frac{3}{4}\right)\phi_2 +2\left(\frac{3}{4}\right)^2\phi_3 + \left(\frac{3}{4}\right)\left(1\right)\phi_4\right]
+	$$
+	$$
+		= \frac{1}{100}\left(\frac{3}{4}\right)+\frac{2}{5}
+	$$\spn{-0.5}
+	$$
+		\phi_3 - \frac{3}{128}\phi_1 -\frac{3}{64}\phi_2 -\frac{9}{128}\phi_3 -\frac{3}{64}\phi_4 = \frac{163}{400}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$\spn{-.8}
+	\begin{equation}
+		-\frac{3}{128}\phi_1 -\frac{3}{64}\phi_2 +\frac{119}{128}\phi_3 -\frac{3}{64}\phi_4 = \frac{163}{400} \tag{iv} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\spn{-0.2}When $i=4$
+	$$
+		\phi_4 - \frac{1}{16}\left[y_0y_4\phi_0 + 2y_4y_1\phi_1 + 2y_2y_4\phi_2 + 2y_3y_4\phi_3 + y_4^2\phi_4\right] = \frac{1}{100}y_4 + \frac{2}{5} \quad\quad
+	$$\spn{-.7}
+	$$
+		\phi_4 - \frac{1}{16}\left[0 + 2\left(\frac{1}{4}\right)\left(1\right)\phi_1 + 2\left(\frac{1}{2}\right)\left(1\right)\phi_2 +2\left(\frac{3}{4}\right)(1)\phi_3 + \left(1\right)^2\phi_4\right]\qquad\quad
+	$$
+	$$
+		= \frac{1}{100}\left(1\right)+\frac{2}{5}
+	$$\spn{-0.5}
+	$$
+		\phi_4 - \frac{1}{32}\phi_1 -\frac{1}{16}\phi_2 -\frac{3}{32}\phi_3 -\frac{1}{16}\phi_4 = \frac{41}{100}\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	$$\spn{-.8}
+	\begin{equation}
+		-\frac{1}{32}\phi_1 -\frac{1}{16}\phi_2 -\frac{3}{32}\phi_3 +\frac{15}{16}\phi_4 = \frac{41}{100} \tag{v} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\newpage
+	The System of equations are\spn{-.8}
+	\begin{equation}
+		\phi_0  = \frac{2}{5} \tag{i} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\begin{equation}
+		\frac{127}{128}\phi_1 -\frac{1}{64}\phi_2 -\frac{3}{128}\phi_3 -\frac{1}{64}\phi_4 = \frac{161}{400} \tag{ii} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\begin{equation}
+		-\frac{1}{64}\phi_1 -\frac{31}{32}\phi_2 -\frac{3}{64}\phi_3 -\frac{1}{32}\phi_4 = \frac{81}{200} \tag{iii} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\begin{equation}
+		-\frac{3}{128}\phi_1 -\frac{3}{64}\phi_2 +\frac{119}{128}\phi_3 -\frac{3}{64}\phi_4 = \frac{163}{400} \tag{iv} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\begin{equation}
+		-\frac{1}{32}\phi_1 -\frac{1}{16}\phi_2 -\frac{3}{32}\phi_3 +\frac{15}{16}\phi_4 = \frac{41}{100} \tag{v} \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+	\end{equation}
+	\\Solving the System of equation we obtain\spn{-.7}
+	$$
+		\phi_0 = \frac{2}{5},\; \phi_1 = 0.43321, \; \phi_2 = 0.46642, \; \phi_3 = 0.49962, \; \phi_4 = 0.53283
+	$$
+	\spn{-.7}Then equation\refn{eq:g} implies\\
+	$$
+		\phi(x) - \frac{1}{16}\left[0 + 2x\left(\frac{1}{4}\right)\left(0.43321\right) + 2x\left(\frac{1}{2}\right)\left(0.46642\right)+2x\left(\frac{3}{4}\right)\left(0.49962\right) + x(1)(0.53283)\right]
+	$$
+	$$
+		= \frac{1}{100}x +\frac{2}{5}
+	$$\spn{-0.5}
+	$$
+		\phi(x) - \frac{1}{16}\left[0.216605x  + 0.46642x + 0.74943x + 0.53283x\right]= \frac{1}{100}x +\frac{2}{5}\qquad\quad
+	$$
+	\spn{-1.2}
+	$$
+		\phi(x) - 0.013537x  -0.029151x - 0.046339x - 0.033302x =  0.01x + 0.4\qquad\qquad
+	$$
+	\spn{-1.2}
+	$$
+		\phi(x) = 0.122829x + 0.01x + 0.4\qquad\quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	\spn{-1.4}
+	$$
+		\mathbf{\phi(x) = 0.132829x + 0.4\qquad\quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \qquad}
+	$$
+	\newpage
+	\NI\bt{SIMPSON'S 1/3 RULE}
+	$$
+	\phi(x) - \frac{1}{2} \cdot \frac{h}{3} \left[(xy_0)\phi(y_0) + 4(xy_1)\phi(y_1) + 2(xy_2)\phi(y_2) + 4(xy_3)\phi(y_3)+(xy_4)\phi(y_4)\right] 
+	$$
+	$$
+	= \frac{1}{100}x + \frac{2}{5}
+	$$\spn{-0.8}
+	$$
+	\phi(x) - \frac{1}{24}\left[(xy_0)\phi y_0 + 4(xy_1)\phi y_1 + 2(xy_2)\phi y_2 + 4(xy_3)\phi y_3 +(xy_4)\phi y_4 \right] \qquad\quad
+	$$
+	\begin{equation}
+		= \frac{1}{100}x + \frac{2}{5} \tag{5} \label{eq:h}
+	\end{equation}
+	\spn{-0.8}
+	Changing $x$ terms to $y_i$
+	$$
+		\phi(x) - \frac{1}{24}\left[(y_iy_0)\phi y_0 + 4(y_iy_1)\phi y_1 + 2(y_iy_2)\phi y_2 + 4(y_iy_3)\phi y_3 +(y_iy_4)\phi y_4 \right] 
+	$$
+	$$
+		= \frac{1}{100}y_i + \frac{2}{5}
+	$$\spn{-0.8}
+	When $i=0$
+	$$
+		\phi_0 - \frac{1}{24} \left[y_0^2 \phi_0 + 4y_0y_1\phi_1 + 2y_0y_2\phi_2 + 4y_0y_3\phi_3 + y_0y_4\phi_4\right]	= \frac{1}{100}y_0 + \frac{2}{5}\qquad\qquad
+	$$
+	$$
+		\phi_0 - \frac{1}{24} \left[0\right] = \frac{2}{5}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+	$$
+	\begin{equation}
+		\phi_0 = \frac{2}{5}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\quad \tag{i}
+	\end{equation}
+	\spn{-0.7}When $i=1$
+	$$
+	\phi_1 - \frac{1}{24} \left[y_0y_1 \phi_0 + 4y_1^2\phi_1 + 2y_1y_2\phi_2 + 4y_1y_3\phi_3 + y_1y_4\phi_4\right]	= \frac{1}{100}y_1 + \frac{2}{5}\qquad\qquad
+	$$
+	$$
+		\phi_1 - \frac{1}{24} \left[0 + 4\left(\frac{1}{4}\right)^2\phi_1 + 2\left(\frac{1}{4}\right)\left(\frac{1}{2}\right)\phi_2 + 4\left(\frac{1}{4}\right)\left(\frac{3}{4}\right)\phi_3 + \left(\frac{1}{4}\right)\phi_4\right] = \frac{1}{100}\left(\frac{1}{4}\right)+\frac{2}{5}
+	$$
+	$$
+		\phi_1 - \frac{1}{24} \left[\frac{1}{4}\phi_1 +\frac{1}{4}\phi_2 + \frac{3}{4}\phi_3 + \frac{1}{4}\phi_4\right] = \frac{1}{400}+\frac{2}{5} \qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	$$
+		\phi_1 - \frac{1}{96}\phi_1 -\frac{1}{96}\phi_2 - \frac{1}{32}\phi_3 - \frac{1}{96}\phi_4 = \frac{161}{400} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad\quad
+	$$
+	\begin{equation}
+		\frac{95}{96}\phi_1 -\frac{1}{96}\phi_2 - \frac{1}{32}\phi_3 - \frac{1}{96}\phi_4 = \frac{161}{400} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad\quad \tag{ii}
+	\end{equation}
+	\\When $i=2$
+	$$
+	\phi_2 - \frac{1}{24} \left[y_2y_1 \phi_0 + 4y_1y_2\phi_1 + 2y_2^2\phi_2 + 4y_2y_3\phi_3 + y_2y_4\phi_4\right]	= \frac{1}{100}y_2 + \frac{2}{5}\qquad\qquad
+	$$
+	$$
+	\phi_2 - \frac{1}{24} \left[0 + 4\left(\frac{1}{4}\right)\left(\frac{1}{2}\right)\phi_1 + 2\left(\frac{1}{2}\right)^2\phi_2 + 4\left(\frac{1}{2}\right)\left(\frac{3}{4}\right)\phi_3 + \left(\frac{1}{2}\right)(1)\phi_4\right] = \frac{1}{100}\left(\frac{1}{2}\right)+\frac{2}{5}
+	$$
+	$$
+	\phi_2 - \frac{1}{24} \left[\frac{1}{2}\phi_1 +\frac{1}{2}\phi_2 + \frac{3}{2}\phi_3 + \frac{1}{2}\phi_4\right] = \frac{1}{200}+\frac{2}{5} \qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	$$
+	\phi_2 - \frac{1}{48}\phi_1 -\frac{1}{48}\phi_2 - \frac{1}{16}\phi_3 - \frac{1}{48}\phi_4 = \frac{81}{200} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad\quad
+	$$
+	\begin{equation}
+		-\frac{1}{48}\phi_1 +\frac{47}{48}\phi_2 - \frac{1}{16}\phi_3 - \frac{1}{48}\phi_4 = \frac{161}{200} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad \tag{iii}
+	\end{equation}
+	\\When $i=3$
+	$$
+	\phi_3 - \frac{1}{24} \left[y_3y_1 \phi_0 + 4y_1y_3\phi_1 + 2y_2y_3\phi_2 + 4y_3^2\phi_3 + y_3y_4\phi_4\right]	= \frac{1}{100}y_3 + \frac{2}{5}\qquad\qquad
+	$$
+	$$
+	\phi_3 - \frac{1}{24} \left[0 + 4\left(\frac{1}{4}\right)\left(\frac{3}{4}\right)\phi_1 + 2\left(\frac{1}{2}\right)\left(\frac{3}{4}\right)\phi_2 + 4\left(\frac{3}{4}\right)^2\phi_3 + \left(\frac{3}{4}\right)(1)\phi_4\right] = \frac{1}{100}\left(\frac{3}{4}\right)+\frac{2}{5}
+	$$
+	$$
+	\phi_3 - \frac{1}{24} \left[\frac{3}{4}\phi_1 +\frac{3}{4}\phi_2 + \frac{9}{4}\phi_3 + \frac{3}{4}\phi_4\right] = \frac{3}{400}+\frac{2}{5} \qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	$$
+	\phi_3 - \frac{1}{32}\phi_1 -\frac{1}{32}\phi_2 - \frac{3}{32}\phi_3 - \frac{1}{32}\phi_4 = \frac{163}{400} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad\quad
+	$$
+	\begin{equation}
+		-\frac{1}{32}\phi_1 -\frac{1}{32}\phi_2 + \frac{29}{32}\phi_3 - \frac{1}{32}\phi_4 = \frac{163}{400} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad \tag{iv}
+	\end{equation}
+	\\When $i=4$
+	$$
+	\phi_4 - \frac{1}{24} \left[y_4y_1 \phi_0 + 4y_1y_4\phi_1 + 2y_2y_4\phi_2 + 4y_3y_4\phi_3 + y_4^2\phi_4\right]	= \frac{1}{100}y_4 + \frac{2}{5}\qquad\qquad
+	$$
+	$$
+	\phi_4 - \frac{1}{24} \left[0 + 4\left(\frac{1}{4}\right)\phi_1 + 2\left(\frac{1}{2}\right)\phi_2 + 4\left(\frac{3}{4}\right)\phi_3 + \phi_4\right] = \frac{1}{100}+\frac{2}{5}\qquad\qquad\quad
+	$$
+	$$
+	\phi_4 - \frac{1}{24} \left[\phi_1 +\phi_2 + 3\phi_3 + \phi_4\right] = \frac{41}{100}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+	$$
+	$$
+	\phi_4 - \frac{1}{24}\phi_1 -\frac{1}{24}\phi_2 - \frac{1}{8}\phi_3 - \frac{1}{24}\phi_4 = \frac{41}{100} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad\quad
+	$$
+	\begin{equation}
+		-\frac{1}{24}\phi_1 -\frac{1}{24}\phi_2 - \frac{1}{8}\phi_3 + \frac{23}{24}\phi_4 = \frac{41}{100} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad \tag{v}
+	\end{equation}
+	\spn{-.2}The System of equations are
+	\begin{equation}
+		\phi_0 = \frac{2}{5}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\quad \tag{i}
+	\end{equation}
+	\begin{equation}
+		\frac{95}{96}\phi_1 -\frac{1}{96}\phi_2 - \frac{1}{32}\phi_3 - \frac{1}{96}\phi_4 = \frac{161}{400} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad\quad \tag{ii}
+	\end{equation}
+	\begin{equation}
+		-\frac{1}{48}\phi_1 +\frac{47}{48}\phi_2 - \frac{1}{16}\phi_3 - \frac{1}{48}\phi_4 = \frac{161}{200} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad \tag{iii}
+	\end{equation}
+	\begin{equation}
+		-\frac{1}{32}\phi_1 -\frac{1}{32}\phi_2 + \frac{29}{32}\phi_3 - \frac{1}{32}\phi_4 = \frac{163}{400} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad \tag{iv}
+	\end{equation}
+	\begin{equation}
+		-\frac{1}{24}\phi_1 -\frac{1}{24}\phi_2 - \frac{1}{8}\phi_3 + \frac{23}{24}\phi_4 = \frac{41}{100} \qquad\qquad\qquad\qquad\qquad\qquad\quad\qquad \tag{v}
+	\end{equation}
+	\spn{-.5}Solving the system of equations, we have
+	$$
+		\phi_0 = \frac{2}{5}, \quad \phi_1 = 0.43300, \quad \phi_2=0.4660, \quad \phi_3 = 0.49989, \quad \phi_4=0.5320
+	$$
+	The Equation\refn{eq:h} implies
+	$$
+		\phi(x) - \frac{1}{24}\left[0 + 4x\left(\frac{1}{4}\right)\left(0.4330\right) + 2x\left(\frac{1}{2}\right)\left(0.4660\right)+4x\left(\frac{3}{4}\right)\left(0.49989\right) + x(1)(0.5320)\right]
+	$$
+	$$
+		= \frac{1}{100}x +\frac{2}{5}
+	$$\spn{-1.1}
+	$$
+		\phi(x) - \frac{433}{24000}x - \frac{233}{12000}x - 0.06249 - \frac{133}{6000}x = \frac{x}{100} + \frac{2}{5}\qquad\qquad\qquad\qquad
+	$$
+	\spn{-1.2}
+	$$
+		\phi(x) - 0.01804x - 0.01942x - 0.06249 - 0.02216x = \frac{x}{100} + \frac{2}{5}\qquad\qquad\qquad\qquad
+	$$
+	\spn{-1.2}
+	$$
+		\phi(x) - 0.12211x = 0.01x + 0.4\qquad\quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \qquad
+	$$
+	\spn{-1.2}
+	$$
+		\mathbf{\phi(x) = 0.13211x + 0.4}\qquad\quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \qquad
+	$$
+	
+	\NI\bt{SIMPSON'S 3/8 RULE}
+	$$
+		\phi(x) - \frac{1}{2} \cdot \frac{3h}{8} \left[(xy_0)\phi(y_0) + 3(xy_1)\phi(y_1) + 3(xy_2)\phi(y_2) + 2(xy_3)\phi(y_3)+(xy_4)\phi(y_4)\right] 
+	$$
+	$$
+		= \frac{1}{100}x + \frac{2}{5}
+	$$\spn{-0.8}
+	$$
+		\phi(x) -\frac{3}{64} \left[(xy_0)\phi(y_0) + 3(xy_1)\phi(y_1) + 3(xy_2)\phi(y_2) + 2(xy_3)\phi(y_3)+(xy_4)\phi(y_4)\right] 
+	$$
+	\begin{equation}
+		= \frac{1}{100}x + \frac{2}{5} \tag{6} \label{eq:i}
+	\end{equation}
+	\\Changing $x$ terms to $y_i$
+	$$
+		\phi(y_i) - \frac{3}{64} \left[(y_iy_0)\phi(y_0) + 3(y_iy_1)\phi(y_1) + 3(y_iy_2)\phi(y_2) + 2(y_iy_3)\phi(y_3)+(y_iy_4)\phi(y_4)\right] 
+	$$
+	$$
+		= \frac{1}{100}y_i + \frac{2}{5}
+	$$\spn{-0.8}
+	\\When $i=0$
+	$$
+		\phi_0 - \frac{3}{64} \left[y_0^2\phi_0 + 3y_0y_1\phi_1 + 3y_0y_2\phi_2 + 2y_0y_3\phi_3+y_0y_4\phi_4\right] = \frac{1}{100}y_0 + \frac{2}{5}\qquad
+	$$
+	\begin{equation}
+		\phi_0 = \frac{2}{5}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \tag{i}
+	\end{equation}
+	\\When $i=1$
+	$$
+		\phi_1 - \frac{3}{64} \left[y_0y_1\phi_0 + 3y_1^2\phi_1 + 3y_1y_2\phi_2 + 2y_1y_3\phi_3+y_1y_4\phi_4\right] = \frac{1}{100}y_1 + \frac{2}{5}\qquad\quad
+	$$
+	$$
+		\phi_1 - \frac{3}{64} \left[3\left(\frac{1}{4}\right)^2\phi_1 + 3\left(\frac{1}{4}\right)\left(\frac{1}{2}\right)\phi_2 + 2\left(\frac{1}{4}\right)\left(\frac{3}{4}\right)\phi_3 + \left(\frac{1}{4}\right)\phi_4\right] = \frac{1}{100}\left(\frac{1}{4}\right) + \frac{2}{5}
+	$$
+	$$
+		\phi_1 - \frac{3}{64} \left[\frac{1}{16}\phi_1 + \frac{3}{8}\phi_2 + \frac{3}{8}\phi_3 + \frac{1}{4}\phi_4\right] = \frac{1}{400} + \frac{2}{5}\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	$$
+		\phi_1 - \frac{3}{1024}\phi_1 - \frac{9}{512}\phi_2 - \frac{9}{512}\phi_3 - \frac{3}{256}\phi_4 = \frac{161}{400}\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	\begin{equation}
+		\frac{1021}{1024}\phi_1 - \frac{9}{512}\phi_2 - \frac{9}{512}\phi_3 - \frac{3}{256}\phi_4 = \frac{161}{400}\qquad\qquad\qquad\qquad\qquad\qquad\quad \tag{ii}
+	\end{equation}
+	\\When $i=2$
+	$$
+		\phi_2 - \frac{3}{64} \left[y_0y_2\phi_0 + 3y_1y_2\phi_1 + 3y_2^2\phi_2 + 2y_2y_3\phi_3+y_2y_4\phi_4\right] = \frac{1}{100}y_2 + \frac{2}{5}\qquad\quad
+	$$
+	$$
+		\phi_2 - \frac{3}{64} \left[3\left(\frac{1}{4}\right)\left(\frac{1}{2}\right)\phi_1 + 3\left(\frac{1}{2}\right)^2\phi_2 + 2\left(\frac{1}{2}\right)\left(\frac{3}{4}\right)\phi_3 + \left(\frac{1}{2}\right)\phi_4\right] = \frac{1}{100}\left(\frac{1}{2}\right) + \frac{2}{5}
+	$$
+	$$
+		\phi_2 - \frac{3}{64} \left[\frac{3}{8}\phi_1 + \frac{3}{4}\phi_2 + \frac{3}{4}\phi_3 + \frac{1}{2}\phi_4\right] = \frac{1}{200} + \frac{2}{5}\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	$$
+		\phi_2 - \frac{9}{512}\phi_1 - \frac{9}{256}\phi_2 - \frac{9}{256}\phi_3 - \frac{3}{128}\phi_4 = \frac{81}{200}\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	\begin{equation}
+		-\frac{9}{512}\phi_1 + \frac{247}{256}\phi_2 - \frac{9}{256}\phi_3 - \frac{3}{128}\phi_4 = \frac{81}{200}\qquad\qquad\qquad\qquad\qquad\qquad\quad \tag{iii}
+	\end{equation}
+	\\When $i=3$
+	$$
+		\phi_3 - \frac{3}{64} \left[y_0y_3\phi_0 + 3y_1y_3\phi_1 + 3y_2y_3\phi_2 + 2y_3^2\phi_3+y_3y_4\phi_4\right] = \frac{1}{100}y_3 + \frac{2}{5}\qquad\quad
+	$$
+	$$
+		\phi_3 - \frac{3}{64} \left[3\left(\frac{1}{4}\right)\left(\frac{3}{4}\right)\phi_1 + 3\left(\frac{1}{2}\right)\left(\frac{3}{4}\right)\phi_2 + 2\left(\frac{3}{4}\right)^2\phi_3 + \left(\frac{3}{4}\right)\phi_4\right] = \frac{1}{100}\left(\frac{3}{4}\right) + \frac{2}{5}
+	$$
+	$$
+		\phi_3 - \frac{3}{64} \left[\frac{9}{16}\phi_1 + \frac{9}{8}\phi_2 + \frac{9}{8}\phi_3 + \frac{3}{4}\phi_4\right] = \frac{3}{400} + \frac{2}{5}\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	$$
+		\phi_3 - \frac{27}{1024}\phi_1 - \frac{27}{512}\phi_2 - \frac{27}{512}\phi_3 - \frac{9}{256}\phi_4 = \frac{163}{400}\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	\begin{equation}
+		-\frac{27}{1024}\phi_1 - \frac{27}{512}\phi_2 + \frac{485}{512}\phi_3 - \frac{9}{256}\phi_4 = \frac{163}{400}\qquad\qquad\qquad\qquad\qquad\qquad\quad \tag{iv}
+	\end{equation}
+	\\When $i=4$
+	$$
+		\phi_4 - \frac{3}{64} \left[y_0y_4\phi_0 + 3y_1y_4\phi_1 + 3y_2y_4\phi_2 + 2y_3y_4\phi_3+y_4^2\phi_4\right] = \frac{1}{100}y_4 + \frac{2}{5}\qquad\quad
+	$$
+	$$
+		\phi_4 - \frac{3}{64} \left[3\left(\frac{1}{4}\right)\phi_1 + 3\left(\frac{1}{2}\right)\phi_2 + 2\left(\frac{3}{4}\right)\phi_3 + \phi_4\right] = \frac{1}{100} + \frac{2}{5}\qquad\qquad\qquad
+	$$
+	$$
+		\phi_4 - \frac{3}{64} \left[\frac{3}{4}\phi_1 + \frac{3}{2}\phi_2 + \frac{3}{2}\phi_3 + \phi_4\right] = \frac{41}{100}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	$$
+		\phi_4 - \frac{9}{256}\phi_1 - \frac{9}{128}\phi_2 - \frac{9}{128}\phi_3 - \frac{3}{64}\phi_4 = \frac{41}{100}\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+	\begin{equation}
+		-\frac{9}{256}\phi_1 - \frac{9}{128}\phi_2 - \frac{9}{128}\phi_3 + \frac{61}{64}\phi_4 = \frac{41}{100}\qquad\qquad\qquad\qquad\qquad\qquad\quad \tag{v}
+	\end{equation}
+	\\The System of equation are\spn{-.6}
+	\begin{equation}
+		\phi_0 = \frac{2}{5}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \tag{i}
+	\end{equation}
+	\begin{equation}
+		\frac{1021}{1024}\phi_1 - \frac{9}{512}\phi_2 - \frac{9}{512}\phi_3 - \frac{3}{256}\phi_4 = \frac{161}{400}\qquad\qquad\qquad\qquad\qquad\qquad\quad \tag{ii}
+	\end{equation}
+	\begin{equation}
+		-\frac{9}{512}\phi_1 + \frac{247}{256}\phi_2 - \frac{9}{256}\phi_3 - \frac{3}{128}\phi_4 = \frac{81}{200}\qquad\qquad\qquad\qquad\qquad\qquad\quad \tag{iii}
+	\end{equation}
+	\begin{equation}
+		-\frac{27}{1024}\phi_1 - \frac{27}{512}\phi_2 + \frac{485}{512}\phi_3 - \frac{9}{256}\phi_4 = \frac{163}{400}\qquad\qquad\qquad\qquad\qquad\qquad\quad \tag{iv}
+	\end{equation}
+	\begin{equation}
+		-\frac{9}{256}\phi_1 - \frac{9}{128}\phi_2 - \frac{9}{128}\phi_3 + \frac{61}{64}\phi_4 = \frac{41}{100}\qquad\qquad\qquad\qquad\qquad\qquad\quad \tag{v}
+	\end{equation}
+	\\Solving the System of equations we have
+	$$
+		\phi_0=\frac{2}{5},\quad \phi_1=0.42639,\quad \phi_2=0.45778,\quad \phi_3=0.48667,\quad \phi_4=0.51556
+	$$
+	\spn{-.5}Equation\refn{eq:i} implies
+	$$
+		\phi(x) - \frac{3}{64} \left[ 0 + 3x\left(\frac{1}{4}\right)(0.42639) + 3x\left(\frac{1}{2}\right)(0.45778) + 2x\left(\frac{3}{4}\right)(0.48667) + x(1)(0.51556)\right]
+	$$
+	$$
+		= \frac{1}{100}x + \frac{2}{5}
+	$$
+	$$
+		\phi(x) - 0.011499x - 0.03218x - 0.03421x - 0.02416x = 0.01x + 0.4\qquad\qquad
+	$$
+	$$
+		\phi(x) - 0.10554x = 0.01x + 0.4\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+	$$
+	$$
+		\phi(x) = 0.01x + 0.10554x + 0.4\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+	$$
+	$$
+		\mathbf{\phi(x) = 0.11554x + 0.4} \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad
+	$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

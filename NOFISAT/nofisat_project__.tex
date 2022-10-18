@@ -1,0 +1,328 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\NI}{\noindent}
+\newcommand{\real}{ \mathbb{R}}
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\begin{center}
+		\Large \bt{COMPLEX ANALYSIS}
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{ABIFARIN, NAFISAT BUSAYO
+			\\
+			18/56EB111}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ 
+	\begin{center}
+		\textbf{February, 2021}
+	\end{center}
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION}
+		
+	\section{Complex Analysis}
+	Complex analysis, traditionally known as the theory of functions of complex variable is the branch of mathematical analysis that investigates functions of complex numbers together with their derivatives.\\
+	
+	\NI As a differentiable function of a complex variable is equal to its Taylor Series (that is, it is analytic). Complex analysis is particularly concerned with analytic functions of a complex variable(that is, holomorphic functions).
+	
+	\section{Historical Background of Complex Analysis}
+	\subsection{Introduction}
+	In 18th Century, a reaching generalization of analysis was discovered, centred on the imaginary number of $i=\sqrt{-1}$. The name imaginary arises because squares of real numbers are always positive. Positive numbers have two distinct squares roots - one positive and one negative; zero has a single square root which is zero and negative have no real square roots at all. Numbers formed by combining real and imaginary components such as $2+3i$ are said to be complex. 
+	
+	\subsection{Why do we study Complex Analysis?}
+	Complex analysis serves as an effective capstone course for mathematics major and as a stepping stone to the pursuit of higher mathematics in graduate school.\\
+	
+	\NI Nearly any number we can think of is a real number. So what happens when we square a number and its gives a negative result, normally, this does not happen because:
+	\begin{enumerate}
+		\item When we square a positive number, we get a positive result.
+		\item When we square a negative number we get a positive result also. Example, $-3x - 3 = +9$.
+	\end{enumerate}
+	
+	\NI Moving on to imaginary numbers, the unit for imaginary number is $i$, which is the square root of $-1$
+	\begin{eqnarray}
+		i=\sqrt{-1}
+	\end{eqnarray}
+		
+	Because when we square $i$, we get -1
+	\begin{equation}
+		i^2 = -1
+	\end{equation}
+	Ordinarily, equation of this form $a^2+9=0$ cannot be solved since our $a=\sqrt{-9}$ which does not have a solution. But with complex analysis, it does have a solution.
+	\begin{eqnarray}
+		a^2+9=0\notag\\
+		a^2=-9\notag\\
+		a=\sqrt{-9}\notag\\
+		\text{Since } i^2=-1\notag\\
+		a = \sqrt{9 i^2}\notag\\
+		a = \pm 3i\notag
+	\end{eqnarray}
+	\subsection{Leonhard Euler}
+	Leonhard Euler is the 18th-century Swiss mathematician and is among the most successful mathematicians in history.\\
+	Euler made important contributions to Complex analysis and he introduced the scientific notation. He discovered what is known now as \textbf{Euler's formular}, that for any real number $\psi$, the complex exponential equation satisfies
+	\begin{equation}
+		e^{i\psi} = \cos\psi + i\sin\psi
+	\end{equation}
+	An this has been called the most remarkable formular in mathematics. Euler's identity is a special case of this:
+	\begin{equation}
+		e^{i\pi} + 1 = 0
+	\end{equation}
+	This identity is remarkable as it involves $e,\pi,i,1$ and $0$ and they are arguably the five most important constant in mathematics\sps
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[->] (0,-3.2)--(0,4);
+			\node at (-0.3,3.9) {Im};
+			%%%%%%%%%%%%
+			\draw[->] (-3.2,0)--(4,0);
+			\node at (3.9,-0.3) {Re};
+			%%%%%%%%%%%%%
+			\draw (0,0) circle(2.8cm);
+			%%%%%%%%%%%%%
+			\draw (0,0)--(1,2.61)--(1,0);
+			\node at (2.24, 2.86) {$e^{i\psi = \cos\psi + i\sin\psi}$};
+			%%%%%%%%%%%%%
+			\draw (0.2,0.5) .. controls (0.55,0.55) and (0.65,0.2) .. (0.65,0);
+			\node at (0.65,0.6) {$\psi$};
+			%%%%%%%%%%%%%
+			\node at (-0.25, 3) {$i$};
+			\node at (-0.15,-0.22) {$0$};
+			\node at (0.5, -0.22) {$\cos\psi$};
+			\node at (1.58,1.22) {$\sin\psi$};
+			\node at (2.96,-0.22) {$1$};
+			
+		\end{tikzpicture}
+	\end{center}
+
+	\subsection{Georg Friedrich Bernhard Riemann}
+	He was a German mathematician born in 1826. His contribution to complex analysis include most notably, the introduction of Riemann surfaces breaking new ground in a natural, geometric treatment of complex analysis.
+	
+	\subsection{Augustin-Louis Cauchy}
+	He was a French mathematician born in 1789. He made pioneering contributions to several branches of mathematics. Cauchy is most famous for his single-handed development of complex function theory. The first pivotal theorem proved by Cauchy, now known as Cauchy's Integral Theorem, is the following
+	\begin{equation}
+		\oint_c f(z)dz=0
+	\end{equation}
+	where $f(z)$ is a complex valued function on and within the non-self closed curve $c$(contour) lying in the complex plane. The contour integral is taken along the contour $c$. In 1826, Cauchy gave a formal definition of a residue of a function. If the complex-valued function $f(z)$ can be expanded in the neighbourhood of a singularity as
+	\begin{equation}
+		\underset{z=a}{\text{Res}} f(z) = \lim\limits_{z\rightarrow a}(z-a)f(z) 
+	\end{equation}
+	In 1831, Cauchy proposed the formula known as Cauchy's integral formula
+	\begin{equation}
+		f(a)=\frac{1}{2\pi i}\oint_c\frac{f(z)}{z-a}dz
+	\end{equation}
+	where $f(z)$ is analytic on $c$ and within the region bounded by the contour $c$ and the complex number $a$ is somewhere in this region.\sps
+	
+	\NI Clearly, the integrand has a simple pole at $z=a$. He also presented the residue theorem.
+	\begin{equation}
+		\frac{1}{2\pi i}\oint_c f(z)dz = \sum_{k=1}^{n}\underset{z=a_k}{\text{Res}}f(z)
+	\end{equation}
+	where the sum is over the n poles of $f(z)$ and within the contour $c$. These results of Cauchy's still form the core of complex function theory.
+	
+	\section{Complex Number}
+	A complex number is a number that can be expressed in the form $a+bi$, where $a$ and $b$ are real numbers and $i$ is a symbol called the imaginary unit and satisfying the equation $i^2=-1$. For the complex number $a+bi$, $a$ is called the real part and $b$ is called the imaginary part. The set of complex number is denoted by $\mathbb{C}$\\
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[->] (0,-1)--(0,4.5);
+			\node at (-0.4,4.2) {Im};
+			%%%%%%%%%%%%%%%%%%%
+			\draw[->] (-1,0)--(6.2,0);
+			\node at (5.87,-0.4) {Re};
+			%%%%%%%%%%%%%%%%%%%%
+			\draw[dashed] (0,3.5) -- (4,3.5)-- (4,0);
+			%%%%%%%%%%%%%%%%%%%%
+			\draw (0,0)-- (4,3.5);
+			\node at (5.06, 3.57) {$z = a+bi$};
+			%%%%%%%%%%%%%%%%%%%%%
+			\node at (-0.18,-0.25) {$0$};
+		\end{tikzpicture}
+	\end{center}
+	Addition, Subtraction and Subtraction of complex numbers can be naturally defined by using the rule $i^2=-1$ combined with the associative, commutative and distributive laws.
+	
+	\section{Algebraic Properties of Complex Numbers}
+	\begin{enumerate}
+		\item When $a+ib=0$ and $a,b,c$ are the real numbers, the value of both $a,b=0$ that is $a=0$ and $b=0$\sps
+		\bt{Proof}\sps
+		$\dsp
+		a+ib=0\\
+		0+1\cdot 0 = 0
+		$\sps
+		Hence, the value of $a$ and $b$ is zero. \\
+		%%%%%%%%%%%%%%%%%%
+		\item When $a,b,c$ are real numbers and $a+ib=c+id$, then $a=c$ and $b=d$\sps
+		\bt{Proof}\sps
+		When $a,b,c,d$ exist as real numbers, then\\
+		$a+ib=c+id$\\
+		$a=c+id-ib$\\
+		$\therefore a=c$\\
+		%%%%%%%%%%%%%%%%%%
+		\item For $z_1, z_2$ and $z_3$ complex numbers, the set must be satisfying the associative, commutative and distributive laws\sps
+		\bt{Commutative law for multiplication}\\
+		$z_1\cdot z_2 = z_2 \cdot z_1$\sps
+		\bt{Associative law for multiplication}\\
+		$(z_1z_2)z_3 = z_1(z_2z_3) = z_2(z_1z_3)$\sps
+		\bt{Commutative law for addition}\\
+		$z_1 + z_2 = z_2 + z_1$\sps
+		\bt{Associative law for addition}\\
+		$z_1+(z_2+z_3) = (z_1+z_2) + z_3$\sps
+		\bt{Distributive law}\\
+		$z_1(z_2+z_3) = z_1z_2 + z_1z_3$\sps
+		%%%%%%%%%%%%%%%%%%%
+		\item The product and the sum of two complex conjugate quantities both exist as ''real''\\
+		\bt{Proof}\sps
+		Let us assume $z=x+iy$ is the complex number where the real values are $x$ and $y$. Accordingly, the conjugate of $Z$ is equal to $\bar{z} = x-iy$\\
+		Now,\\
+		$(x+iy)(x-iy) = x^2-i^2y^2 = x^2 + y^2 = z\cdot \bar{z}$~(multiplication)\\
+		which is real\\
+		And,\\
+		$x+iy + x-iy = z + \bar{z}$~(Addition)\\
+		${}\qquad\qquad\qquad~~=2x$\\
+		Hence, multiplication and addition of two complex conjugates are real.\\
+		\item If the product and sum of two complex numbers exist as real, then these complex numbers will be conjugate to each other.\sps
+		\bt{Proof}\sps
+		Let us assume $z_1 = a+ib$ and $z_2 = c+id$, these are the two quantities where the real values are $a,b,c,d$ and $b\neq 0$ and $d\neq 0$ also.\sps
+		So by the theory of assumption, $z_1 + z_2 = a+ib + c+id$\\
+		$
+			z_1+z_2 = a+ib + c +id\sps
+			z_1+z_2 = (a+c) + i(b+d)\sps
+		$
+		Therefore, $b+d=0 \implies d = -b$\sps
+		And\sps
+		$
+			z_1 \cdot z_2 = (a+ib)(c+id)\\
+			~~~~~~~~~~~~ = (ac - bd) + i(ad+bc)$ exists for real.\\
+		Hence, $ad+bc=0, -ab+bc=0$\\
+		Therefore,\\
+		$ad+bc=0$ or $-ab + bc =0$ (since $d=-b$)\\
+		Thus,\\
+		$z_2 = c+id=a+i(-b)=a-ib=\bar{z}$, which verifies that the values of $z_1$ and $z_2$ are conjugates of each other.
+	\end{enumerate}
+
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{BASIC CONCEPTS IN COMPLEX ANALYSIS}
+	\section{Preamble}
+	In this chapter, the basic concepts in Complex Analysis shall be discussed.
+	
+	\section{Function}
+	Function is process or a relation that associates each element $x$ of a set $X$, the domain of the function to a single element $y$ of another set $Y$(possibly the same set), the codomain of the function.\\
+	
+	\NI If the function is called $f$, this relation is denoted by $y=f(x)$ where the element $x$ is the input of the function and $y$ is the value of the function or the image of $x$ by $f$. A function is represented by the se of all pairs $(x,f(x))$, called the graph of the function. Hence, $f:X\rightarrow Y$ is a function such that for $x\in X$, there is a unique element $y\in Y$ such that $(x,y)\in f$.
+	\subsection{Types of Functions}
+	\begin{enumerate}
+		\item \bt{Identity function}\\
+		Let $\real$ be the set of real numbers. If the function $f:\real\rightarrow\real$ is defined as $f(x)=y=x$ for $x\in \real$, then the function is known as Identity function. The domain  and the range being $\real$.
+		
+		\item \bt{Polynomial function}\\
+		A polynomial function is defined by $y=a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$, where $n$ is a non-negative integer and $a_0, a_1, a_2,\ldots,a_n \in \real$. The highest power in the expression is the degree of the polynomial function. Polynomial functions are further classified based on their degree.
+		\begin{itemize}
+			\item \bt{Constant function:} If the degree is zero, polynomial function is a constant function.
+			\item \bt{Linear function:} The polynomial function with degree one such as $y=x+1$ or $y=x$ or $y=2x-5$.
+		\end{itemize}
+	
+		\item \bt{Constant function}\\
+		If the function $f:\real\rightarrow\real$ is defined as $f(x)=y=c$, for $x\in\real$ and $c$ is a constant in $\real$, then such function is known as constant function. The domain of the function $f$ is $\real$ and its range is a constant $c$.
+	
+		\item \bt{Rational function}\\
+		A rational function is any function which can be represented by a rational fraction, say $\dfrac{f(x)}{g(x)}$ in which numerator $f(x)$ and denominator $g(x)$ are polynomial functions of $x$, where $g(x) \neq 0$.
+		
+		\item \bt{Modulus function}\\
+		The absolute value of any number, $c$ is represented in the form of $|c|$. If any function $f:\real\rightarrow\real$ is defined by $f(x)=|x|$, is known as modulus function.
+		
+		\item \bt{Greatest Integer function}\\
+		If a function $f\real\rightarrow\real$ is defined by $f(x)=[x], x\in X$. It round off to the integer less than the number. Suppose the given interval is in the form of $(m,m+1)$, the value of the greatest integer is $m$ which is an integer.
+		
+		\item\bt{Quadratic function}\\
+		If the degree of the polynomial function is two, then it is a quadratic function. It is expressed as $f(x)=ax^2 + bx + c$, where $a\neq 0$ and $a,b,c$ are constants and $x$ is a variable.
+		
+		\item\bt{Algebraic function}\\
+		A function is called an algebraic function if it can be constructed using algebraic operations such as addition, subtraction, multiplication, division and taking roots.
+	\end{enumerate}
+	
+	\section{Basic Definitions}
+	\begin{enumerate}
+		\item\bt{Function of Complex variable}\\
+		Functions of $(x,y)$ that depend only on the combination $(x+iy)$ are called functions of a complex variable. the function $f(z)$ of a complex variable $z$ denoted by $\omega$ such that $z=x+iy$ where $x$ and $y$ presents the real and imaginary parts.
+		
+		\item\bt{Limits of Functions}\\
+		The limit of a function at a point $''a''$ in its domain (if it exists) is the value that the function approaches as its argument approaches $''a''$. That is $\lim\limits_{x\rightarrow a}f(x) = L$.
+		
+		\item\bt{Limit of function of a Complex Variable}\\
+		Let a function $f$ be defined at all point $z(f(z))$ in some neighborhood of $z_0$. The $f(z)$ is said to have a limit $''L''$ as $z$ approaches $z_0$. i.e $\lim\limits_{z\rightarrow z_0}f(z) =L ~\forall~ \epsilon > 0$, there exist $\delta>0$ such that $|f(z)-L|<\epsilon$ whenever $|z-z_0|<\delta$.
+		
+		
+		\item\bt{Continuity}\\
+		Let $f(z)$ be defined and single-valued in a neighborhood of $z_0$, then $f(z)$ is said to be continuous at $z=z_0$ if for every $\epsilon >0$, there exist $\delta > 0$ such that $|f(z)-f(z_0)|<\epsilon$ whenever $|z-z_0|< \delta$.\\
+		For a function to be continuous, these conditions must be satisfied
+		\begin{enumerate}
+			\item $f(z)$ must be defined
+			\item $\lim f(z)$ exist at $z\rightarrow z_0$
+			\item $\lim\limits_{z\rightarrow z_0}f(z) = f(z_0)$
+		\end{enumerate}
+		\item\bt{Differentiability}\\
+		Let $f(z)$ be singled-valued in some region $\real$ of the z-plane and $z_0$ be any point in the derivative of $f(z)$ and it is defined as
+		\begin{equation}
+			f'(z) = \frac{df}{dz} = \lim\limits_{\delta z\rightarrow 0 }\frac{f(z_0 + \delta z) - f(z_0)}{\delta z}
+		\end{equation}	
+		If a function satisfies the property at a point $z_0$, we say that the function is complex differentiable at $z_0$.
+		
+		\item\bt{Analyticity}\\
+		A function $f(z)$ is said to be analytic in a region $\real$ of the complex plane if $f(z)$ has a derivative at each pint of  $\real$ and if $f(z)$ is single valued.\\
+		Pints at which a function $f(z)$ is not analytic are called singular points. A necessary condition for $f(z)$ to be analytic is
+		\begin{equation}
+			\frac{\partial f}{\partial z}=0
+			\label{eq:2_2}
+		\end{equation}
+		Therefore, necessary condition for $f=u+iv$ to be analytic is that $f$ depends only on $z$. In terms of the real and imaginary parts, $u,v$ of $f$, condition \refx{2_2} is equivalent to
+		\begin{equation}
+			\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}
+			\label{eq:2_3}
+		\end{equation}
+		\begin{equation}
+			\frac{\partial u}{\partial y}=-\frac{\partial 	v}{\partial x}
+			\label{eq:2_4}
+		\end{equation}
+		Equations \refx{2_3} and \refx{2_4} are known as Cauchy-Riemann equations. They are a necessary condition for $f=u+iv$ to be analytic.
+	\end{enumerate}
+	
+\end{document}

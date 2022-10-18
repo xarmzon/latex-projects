@@ -1,0 +1,1229 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{longtable}
+
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\NI}{\noindent}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\tti}[1]{\textit{#1}}
+
+
+\renewcommand*\contentsname{Table of Contents}
+\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+	%%remove the numbering from the first page 
+	\clearpage
+	\thispagestyle{empty}
+	%%TITLE%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\begin{center}
+		{\bf \LARGE SOLUTIONS OF SOME SECOND ORDER BOUNDARY VALUE PROBLEMS }
+	\end{center}
+	$$$$
+	\begin{center}
+		\textbf{\itshape\large BY}
+	\end{center} 
+	$$$$
+	\begin{center}
+		{\bf THOMPSON, Timilehin David\\
+			16/56EB158}
+	\end{center}
+	$$$$
+	\begin{center}
+		\textbf{A PROJECT SUBMITTED TO THE
+			DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES,
+			UNIVERSITY OF ILORIN, ILORIN, NIGERIA,
+			$$$$
+			IN PARTIAL 
+			FULFILMENT OF REQUIREMENTS FOR THE AWARD OF
+			BACHELOR OF SCIENCE {\itshape{(B.Sc.)}} DEGREE IN MATHEMATICS.}
+	\end{center}
+	$$ $$ 
+	\\ \\
+	\begin{center}
+		{\bf JUNE, 2021}
+	\end{center}
+	\newpage
+	\pagenumbering{roman} 
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project work was carried out by \textbf{THOMPSON, Timilehin David} with matriculation number \textbf{16/56EB158} and approved as meeting the requirement for the award of the Bachelor of Science (B. Sc.) degree of the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria.
+	\\
+	\\
+	................................... \quad \qquad\qquad\qquad\qquad\quad...................... \\
+	Dr. E. O. Titiloye  \qquad\qquad\qquad\qquad\qquad\qquad\quad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	.................................... \qquad\qquad\qquad\qquad\qquad......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad.......................\\
+	Prof. T. O. Oluyo  \qquad\qquad\qquad\qquad\qquad\qquad \quad        Date\\
+	External Examiner
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}	\textbf{\Large DEDICATION}   \end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	\begin{center}
+		This project is dedicated to God.
+	\end{center}
+	
+	\newpage
+	%%ACKNOLEDGEMENT%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	I give thanks to God , my creator and sustainer of the world, whom I owe every deep sense of gratitude over the years for sparing my life from the beginning to the end of my course in the prestigious University of Ilorin.\\
+	
+	\NI My profound gratitude to Dr. E. O. Titiloye who has been my project supervisor , for his  advice and patient encouragement aided the writing of this project in innumerable ways. I pray almighty God bless him and his family abundantly.
+	I express my thanks to Prof. K. Rauf(H.O.D) for being a true father, creating accommodating environment for we students to excel in our studies. My sincere gratitude to my level adviser, Dr Idayat. F. Usamot, for her motherly advice on our academics, may God be with her and her family.\\
+	
+	\NI I also appreciate the immeasurable effort of my lecturers in the department including Prof. J. A Gbadeyan, Prof. O. T. Opoola, Prof. O. M. Bamigbola, Prof M. O. Ibrahim, Prof. O. A. Taiwo, Prof R. B. Adeniyi, Prof A. S. Idowu, Prof. M. S. Dada, Prof. K. O. Babalola, Dr. Olubunmi A. Fadipe-Joseph, Dr. Yidiat O. Aderinto, Dr. Catherine N. Ejieji, Dr. B. M. Yisa, Dr J. U. Abubakar, Dr. K. A. Bello, Dr. Gata N. Bakare, Dr T. O. Olotu, Dr. B. M. Ahmad, Dr Idayat F. Usamot, Dr O. A. Uwaheren, Mr Odetunde and all other members of staff of the department of mathematics, who contributed greatly to my academic excellence, obtained during my period of study in the department. May God bless them all.\newline
+	
+	\NI I am highly indebted to my loving and respectable family; my gold, my
+	late father Mr Thompson Olabode,thank you for birthing me, raising me and teaching me the essential lessons of life before leaving this world and My sweet mother Thompson Bukola may almighty God be with you and bless you all in all abundantly ramifications.
+	I would like to also comment my friends Mathew, Ayomide Balogun, John wick, Khalid , Hassan Razaq , for their undying support, advice and assistance to my dedication.\\
+	
+	\NI Special thanks to the the entire student of mathematics department for their cooperation and assistance towards my work.
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	In this project, Second Order Boundary Value Problems (BVP) were investigated. Numerical problems were identified and solutions were provided. Sturm-Liouville Theory was introduced for solving certain ordinary differential equations (ODE'S) of the second order BVP. 
+	
+	%%TABLE OF CONTENTS%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	\newpage
+	
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{GENERAL INTRODUCTION}
+	
+	\section{Introduction}
+	In mathematics , in the fields of differential equation , an initial value problem (IVP) is an ordinary differential equation (ODE) which frequently occurs in mathematical models that arises in many branches of science , engineering together with specific value called the initial condition of the unknown function at a given point in the domain of the solution .
+	\begin{equation}
+		y\prime = f(t,y)
+	\end{equation}
+	\begin{equation}
+		y(t_0) = y_0
+	\end{equation}
+	There is another case where we consider another an ordinary differential equation (ODE), we require the solution on an interval [a,b] and some conditions are given at a and the rest at b. Although more complicated so;utions are possible , involving three or more points . We we call this a boundary value problem(BVP).
+	\begin{equation}
+		y\prime\prime +r(t)y = f(t),	 a < t < b
+	\end{equation}
+	with the bounadry conditions 
+	\begin{equation}
+		y(a) = A    .   and    .  y(b) =B
+	\end{equation}
+	For analytic solutions of initial value problem (IVPs) and Boundary value problem(BVPs) there exists many differential method .There are several methods which include Shooting method for linear and non - linear Boundary value problem, Finite difference method for linear and non linear Boundary value problem, the Sturm-Liouville  and so on.....
+	In this projects the aim is to discuss some methods for the numerical solution of second order Boundary value problem both linear and non linear cases.\newline
+	Some examples are given to show the performances and disadvantages. We give a clear definition of shooting method and where we use it  and for which problem it is used for .
+	
+	\section{Significance of Study}
+	The significance of the study lies in the applications of some techniques in solving boundary value problems. This eventually resolves mathematical models involving second order Boundary value problems (BVPs).
+	
+	\section{Scope of Study}
+	The scope of this project is meant to solve Second Order Boundary Value problem using the Shooting technique, Sturm-Liouville method and also the finite difference method and provide a foundation of knowledge for all subsequent steps with the knowledge of the subject.  To solve problems with derivative conditions and without derivative condition by examples with concurrently Understandable explanations, hereby creating a foreknowledge for people who are not familiar with the topic.
+	
+	\section{Aim and Objectives}
+	The aim of this project is to examine boundary value problems (BVPs) and of second order differential equation as basis and the objective were to 
+	\begin{enumerate}
+		\item[i.] Investigate some second order boundary value problems;
+		
+		\item[ii.] Apply some methods of solving second order boundary value problems to the identified problems;
+		
+		\item[iii.]Provide numerical solutions to the second order boundary value problems solved; and 
+		
+		\item[iv.] Compute the solutions of the solved problems and compare with the exact solutions.
+	\end{enumerate}
+	
+	\section{Definition of Basic Terms}
+	
+	\subsection{Differential Equations}
+	A differential equation is an equation involving a dependent variable and its independent variable(its derivatives).\\
+	
+	\NI Example of a differential equation involving the depending variable $y$ and its independent variable $x$.
+	\begin{enumerate}
+		\item 
+		\begin{equation}
+			\frac{dy}{dx} = 5x + 3
+		\end{equation}
+	
+		\item
+			\begin{equation}
+				e^y\frac{d^3y}{dx^3} + \sin x \frac{d^2y}{dx^2} = 0
+			\end{equation}
+		
+		\item 
+			\begin{equation}
+				\Big(\frac{d^2y}{dx^2}\Big)^3 + 3y\Big(\frac{dy}{dx}\Big)^7 = 5
+			\end{equation}
+		
+		\item 
+			\begin{equation}
+				\frac{\partial^3y}{\partial t^3} - 4 \frac{\partial^2y}{\partial x^2} = 0
+			\end{equation}
+	\end{enumerate}
+	
+	\subsection{Order of a Differential Equation}
+	The Order of a differential equation is the order of the highest derivatives appearing in the equation.\\
+	
+	\NI\ubt{Examples}
+	\begin{enumerate}
+		\item $\dsp \frac{dy}{dx} = 5x + 3$ is a first Order differential equation
+		
+		\item $\dsp e^y\frac{d^3y}{dx^3} + \sin x \frac{d^2y}{dx^2} = 0$ is a second Order differential equation.
+		
+		\item $\dsp 4\frac{d^3y}{dx^3} + \sin x \frac{d^2y}{dx^2} + 5xy = 0$ is a third order differential equation
+	\end{enumerate}
+	
+	\subsection{Degree of a Differential Equation}
+	The degree of a differential equation is the power of the highest derivatives after the equation has been made rational or rationalized.\\
+	
+	\NI\ubt{Examples}
+	\begin{enumerate}
+		\item $\dsp \frac{dy}{dx} = 5x + 3$ is of a degree 1
+		
+		\item $\dsp e^y\Big(\frac{d^2y}{dx^2}\Big)^2 + 2\frac{dy}{dx} = 1$ is a degree of 2 
+	\end{enumerate}
+
+	\subsection{Ordinary Differential Equation}
+	A differential equation is an Ordinary differential equation if the dependent variable $y$, depends on only an independent variable $x$.\\
+	
+	\NI\ubt{Examples}
+	\begin{enumerate}
+		\item $\dsp \frac{dy}{dx} = 5x + 3$
+		
+		\item $\dsp 4\frac{d^3y}{dx^3} + \sin x \frac{d^2y}{dx^2} =0 $
+		
+		\item $\dsp e^yy\dprime + 2\Big(\frac{dy}{dx}\Big)^2 = 1$
+	\end{enumerate}
+	
+	\subsection{Partial Differential Equation}
+	A differential equation is a partial differential equation if the dependent variable depends on two or more independent variables.\\
+	\newpage
+	\NI\ubt{Example}
+	\begin{enumerate}
+		\item $\dsp \frac{\partial^2y}{\partial t^2} - 4\frac{\partial^2y}{\partial x^2} = 0 $
+	\end{enumerate}
+	
+	\subsection{Initial Value Problems}
+	An initial value problem is an ordinary differential equation (ODE) together with a specified value which is called the initial value conditions of the unknown function at a given point in the domain of the solution.\\
+	
+	\NI\ubt{Example}\sps
+	The problem $\dsp y\dprime + 2y\sprime = e^x; ~~~ y(\pi) = 1, ~~ y\sprime(\pi) = 2$ is an initial value problem because the two subsidiary conditions are both given at $x=\pi$.
+	
+	\subsection{Boundary Value Problem}
+	A boundary value problem is a system of ordinary differential equation with solution and derivative values specified at more than one point. Most commonly, the solution and derivatives are specified at just two points (i.e. the initial and the final point.).\\
+	
+	\NI\ubt{Example}\sps
+	The problem $\dsp y\dprime + 2y\sprime = e^x;$ at $y(0)=1$ \& $y(1)=1$ is a boundary value problem because the two subsidiary conditions are given at different value of $x=0$ and $x=1$.
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{LITERATURE REVIEW}
+	A solution to a boundary value problem is a solution to a differential equation which also satisfies the boundary conditions. Boundary value problems arise in several branches of physics as any physical differential equation will have them. Problems involving the wave equations, such as the determination of normal modes, are often stated as boundary value problems. A large class of important boundary value problems are the Sturm-Liouville problems.\sps
+	
+	\NI The analysis  these problems involves the eigen functions of a differential operator O'Regan(1990) established the existence of solutions for some higher order boundary value problems. Bobisud, Calvert \& Royalty(1993) obtained some existence results for singular boundary value problems.\sps
+	
+	\NI Eloe and Henderson (1993) obtained some solutions for some higher order boundary value problems. \sps
+	
+	\NI Agarwal and O'Regan (1998a) solved some linear superlinear singular and non singular second order bounding value problems. Wing and Agarwal (1998) obtained two point right focal eigenvalue problems, and also Agarwal and O'Regan (1998b) solved some problems on second-order bounding value problems of singular type.\sps
+	
+	\NI Brugnano and Trigiante (1998) solved differential problems by multi-step initial and boundary value method. Amodio and Lavernaro (2006), presented some symmetric boundary value methods for second order initial and boundary value problems.\sps
+	
+	\NI Biala and Jactor (2015) obtained a boundary value approach for solving three-dimensional elliptic and hyperbolic partial differential equations. More results of second-order bounding value problems could be seen in Biala and Jactor (2017).\sps
+	
+	\section{Boundary Value Problems}
+	A Second Order Boundary Value Problem consists of a second order differential equation along with the constraint on the solution $y=y(x)$ at two values of $x$. For example
+	\begin{equation}
+		y\dprime + y = 0 ~~~~~\text{ with }~~~~ y(0) = 0 ~~\text{ and }~~ y(\pi/6) = 4 \label{eq:2_1}
+	\end{equation}
+	is fairly simple boundary value problem.\sps
+	Alternatively, we might not actually require particular values at two points, just that they are related in some way. E.g:
+	\begin{equation}
+		y\dprime + y = 0 ~~~~~\text{ with }~~~~ y(\pi/6) = 0 ~~\text{ and }~~ y\sprime(\pi/6) = 4 \label{eq:2_2}
+	\end{equation}
+	The constraint given at two points are called the boundary values or boundary conditions. Typically, the interval between the two points at which boundary conditions are specified. Hence, these two points are often referred to as boundary points.\sps
+	
+	\NI A solution to a given boundary-value problem is a function that satisfies the given differential equation over the interval of interest, along with as the given boundary conditions.\sps
+	e.g if
+	\begin{equation}
+		y(x) = C_1\cos(x) + C_2\sin(x)
+	\end{equation}
+	Basically, the boundary value problem is in determining the values of $C_1$ and $C_2$ so that the above equation with the determine $C_1$ and $C_2$ satisfies the boundary conditions.\sps
+	
+	\section{Solving Examples on B.V.P}
+	\section*{Example 1}
+	Solve $\dsp y\dprime + y = 0$ with the boundary condition $y(0)=0$ and $y(\pi/6) = 4$.\sps
+	\ubt{Solution}\sps
+	\begin{equation}
+		y\dprime + y = 0 \label{eq:2_4}
+	\end{equation}
+	Finding the general solution of equation \refx{2_4}, we get
+	\begin{equation*}
+		\begin{array}{c}
+			m^2 + 1 = 0 \\
+			m^2 = -1\\
+			m = \pm\sqrt{-1} = m = \pm i
+		\end{array}
+	\end{equation*}
+	\begin{equation}
+		y(x) = C_1\cos x + C_2\sin x \label{eq:2_5}
+	\end{equation}
+	Applying the boundary conditions at $y(0) = 0$\sps
+	\begin{equation*}
+		\begin{array}{c}
+			C_1\cos(0) + C_2\sin(0) = 0\sps
+			C_1 \cdot 1 + 0 = 0 \sps
+			C_1 = 0\sps
+		\end{array}
+	\end{equation*}
+	Also at $y(\pi/6) = 4$\sps
+	\begin{equation*}
+		\begin{array}{c}
+			C_1\cos(\pi/6) + C_2\sin(\pi/6) = 4\sps
+			C_1\frac{\sqrt{3}}{2} + C_2 \cdot \frac{1}{2} = 4\sps
+			\text{Since } C_1 = 0\sps
+			C_2 = 8
+		\end{array}
+	\end{equation*}
+	Hence $C_1 = 0$ and $C_2 = 8$ and the only solution to our boundary value problem is 
+	\begin{equation*}
+		y(x) = 8\sin x
+	\end{equation*}
+	
+	\section*{Example 2}
+	Solve $y\dprime + y = 0$ with $y(0) = 0$ and $y(\pi) = 4$\sps
+	\ubt{Solution}\sps
+	\begin{equation*}
+		\begin{array}{c}
+			m^2 + 1 = 0\sps
+			m = \pm i\sps
+		\end{array}
+	\end{equation*}
+	\begin{equation}
+		y(x) = C_1\cos x + C_2\sin x \label{eq:2_6}
+	\end{equation}
+	Applying the boundary conditions
+	\begin{equation*}
+		\begin{array}{c}
+			C_1\cos(0) + C_2\sin(0) = 0\sps
+			C_1 = 0\sps
+		\end{array}
+	\end{equation*}
+	Also $y(\pi) = 4$,
+	\begin{equation*}
+		\begin{array}{c}
+			C_1\cos\pi + C_2\sin\pi = 4\sps
+			C_1(-1) + C_2(0) = 4\sps
+			C_1 = -4
+		\end{array}
+	\end{equation*}
+	But this is impossible, Hence a solution to the given boundary value problem is not possible. It implies there is no solution.
+	\section*{Example 3}
+	Find $y\dprime + y = 0$ with $y(0)=0$ and $y(\pi)=0$\sps
+	\newpage
+	\ubt{Solution}\sps
+	find the general solution, we have\\
+	\begin{equation*}
+		\begin{array}{c}
+			m^2 + 1 = 0\sps
+			m^2 = -1\sps
+			m = \pm\sqrt{-1} = m = \pm i\sps
+		\end{array}
+	\end{equation*}
+	\begin{equation*}
+		y(x) = C_1\cos x + C_2\sin x\sps
+	\end{equation*}
+	Applying the boundary conditions, we have $y(0)=0$
+	\begin{equation*}
+		\begin{array}{c}
+			C_1\cos(0) + C_2\sin(0) = 0\sps
+			C_1 \cdot 1 + C_2 \cdot 0 = 0\sps
+			C_1 = 0
+		\end{array}
+	\end{equation*}
+	Also at $y(\pi) = 0$
+	\begin{equation*}
+		\begin{array}{c}
+			C_1\cos(\pi) + C_2\sin(\pi) = 0\sps
+			C_1 \cdot (-1) + C_2 \cdot (0) = 0\sps
+			C_1 = 0
+		\end{array}
+	\end{equation*}
+	Both of these equations reduces to $C_1 =0$
+	\begin{equation*}
+		\implies y(x) = C_2\sin x
+	\end{equation*}
+
+	\section{Classes of Boundary Conditions}
+	\subsection{Regular Boundary Conditions}
+	A Boundary Condition at $x=x_0$ is said to be regular if and only if it can be described by
+	\begin{equation}
+		\alpha y(x_0) + \beta y\sprime(x_0) = \gamma \label{eq:2_7}
+	\end{equation}
+	where $a\alpha, \beta$ and $\gamma$ are constants, with $\alpha, \beta$ or both being non-zero.\sps
+	
+	\NI practice, either $\beta$ or $\alpha$ is often zero, in which case the above reduces to
+	\begin{equation}
+		y(x_0) = \gamma ~~\text{ or }~~ y\sprime(x_0) = \gamma
+	\end{equation}
+	And in many cases $\gamma = 0$.\sps 
+	
+	\subsection{Periodic Boundary Condition}
+	A periodic boundary conditions states that the solution or its derivatives at two distinct points $x=x_0$ and $x=x_1$ are equal.\sps
+	i.e
+	\begin{equation}
+		y(x_0) = y(x_1) ~~\text{ or } ~~ y\sprime(x_0) = y\sprime(x_1)
+	\end{equation}
+	
+	\subsection{Boundeness Boundary Condition}
+	This is where we simply say that a solution does not ``blow up'' at a point $x=x_0$. To be precise
+	\begin{equation}
+		\lim\limits_{x\rightarrow x_0}\Big[y(x)\Big] < \infty
+	\end{equation}
+	Such condition are typically the appropriate condition when $x_0$ is a Singular Point for the differential equation.
+	
+	\section*{Example}
+	\begin{equation}
+		x^2y\dprime - 4y = 0 ~~~~~ \text{with}~~~~ |y(0)| < \infty ~~~~\&~~~ y\sprime(1) = 0 \label{eq:2_11}
+	\end{equation}
+	\ubt{Solution}\sps
+	Here is boundary-value problem with one boundeness condition at $x=0$ and one regular boundary condition.\sps
+	The D.E is an Euler equation. Plugging $y=x^r$\sps
+	if
+	\begin{equation}
+		y = x^r \label{eq:2_12}
+	\end{equation}
+	then
+	\begin{equation}
+		y\sprime = rx^{r-1} ~~\text{ and }~~  y\dprime = r(r-1)x^{r-2}  \label{eq:2_13}
+	\end{equation}
+	Substituting \refx{2_12} and \refx{2_13} in \refx{2_11}
+	$$
+		x^2\Big[r(r-1)x^{r-2}\Big] + x\Big[rx^{r-1}\Big] - 4x^r = 0
+	$$
+	$$
+		x^2\Big[r(r-1) \frac{x^r}{x^2}\Big] + x\Big[r\frac{x^r}{x}\Big] - 4x^r = 0
+	$$
+	Diving through by $x^r$
+	\begin{equation*}
+		\begin{array}{c}
+			r(r-1) + r - 4 = 0\sps
+			r^2 - 4 = 0 \sps
+			r = \pm 2
+		\end{array}
+	\end{equation*}
+	So the general solution is
+	$$
+		y(x) = C_1x^2 + C_2x^{-2}
+	$$
+	Using this with the boundeness condition at $x=0$, we get
+	\begin{eqnarray}
+		\infty &<& \lim\limits_{x\rightarrow 0}|y(x)|\notag\sps
+		&=& \lim\limits_{x\rightarrow 0}|C_1x^2 + C_2x^{-2}|\notag\sps
+		&=& \lim\limits_{x\rightarrow 0}|0 + C_2x^{-2}| = \left\{
+							\begin{array}{lcl}
+								+\infty &\text{ if } & C_2 \neq 0\\
+								0 & \text{ if } & C_2 = 0
+							\end{array}\right. \notag
+	\end{eqnarray}
+	Hence the boundeness condition forces $C_2$ to be zero
+	$$
+		\implies y(x) = C_1x^2
+	$$
+	Applying the one regular boundary condition at $y'(1) = 6$\sps
+	Since $y(x) = C_1x^2$\sps
+	\begin{equation*}
+		\begin{array}{c}
+			y\sprime(x) = 2C_1 x\sps
+			\implies y\sprime(1) = 2C_1(1) = 6\sps
+			\implies 2C_1 = 6\sps
+			C_1 = 3\sps
+		\end{array}
+	\end{equation*}
+	\begin{equation*}
+		y(x) = 3x^2
+	\end{equation*}
+	
+	\NI There exists many methods of solving Second-Order Boundary Value Problems, of type (a). of there, the Finite Difference method is a popular one and will be described.
+	
+	\section{Finite Difference Method}
+	The Finite Difference Method for the solution of a two point boundary value problems consists in replacing the derivatives occurring in the differential equation (and in the boundary as well) by means of their finite difference approximations and then solving the resulting linear system of equations by a standard procedure.\sps
+	
+	\NI To obtain the appropriate finite-difference approximation to the derivatives, we proceed as follows:\sps
+	Expanding $y(x+h)$ in Taylor's Series, we have
+	\begin{eqnarray}
+		y(x+h) = y(x) + hy\sprime(x) + \frac{h^2}{2}y\dprime(x) + \frac{h^3}{6}y\tprime(x) + \cdots \label{eq:2_14}
+	\end{eqnarray}
+	from which we obtain
+	\begin{equation*}
+		y\sprime(x) = \frac{y(x+h) - y(x)}{h} - \frac{h}{2}y\dprime(x)
+	\end{equation*}
+	Thus, we have
+	\begin{equation}
+		y\sprime(x) = \frac{y(x+h) - y(x)}{h} + O(h) \label{eq:2_15}
+	\end{equation}
+	
+	\NI Which is the forward difference approximate for $y\sprime(x)$. Similarly, expansion of $y(x-h)$ in Taylor's Series
+	\begin{equation}
+		y(x-h) = y(x) - hy\sprime(x) + \frac{h^2}{2}y\dprime(x) - \frac{h^3}{6}y\tprime(x) + \cdots \label{eq:2_16}
+	\end{equation}
+	from which we obtain
+	\begin{equation}
+		y\sprime(x) = \frac{y(x) - y(x-h)}{h} + O(h) \label{eq:2_17}
+	\end{equation}
+	Which is the backward difference approximation for $y\sprime(x)$. A central difference approximation for $y\sprime(x)$ can be obtained by subtracting \refx{2_16} from \refx{2_14}. We thus have
+	\begin{equation}
+		y\sprime(x) = \frac{y(x+h) - y(x-h)}{2h} + O(h^2) \label{eq:2_18}
+	\end{equation}
+	
+	 
+	\NI It is clear that \refx{2_18} is a better approximation to $y\sprime(x)$ then either \refx{2_15} or \refx{2_17}. Again, adding \refx{2_14} and \refx{2_16}, we get an approximation for $y\dprime(x)$.
+	\begin{equation}
+		y\dprime(x) = \frac{y(x-h) - 2y(x) + y(x+h)}{h^2} + O(h^2) \label{eq:2_19}
+	\end{equation}
+	In a similar manner, it is possible to derive finite-difference approximation to higher derivatives.
+	\begin{eqnarray}
+		y\dprime(x) + F(x)y\sprime(x) + g(x)y(x) = \gamma(x) \label{eq:2_20}
+	\end{eqnarray}
+	with the boundary conditions
+	\begin{equation}
+		y(x_0)=a ~~~~\text{ and }~~~~ y(x_n) = b \label{eq:2_21}
+	\end{equation}
+	To solve the boundary value problem defined by \refx{2_20} and \refx{2_21}, we divide the range $[x_0, x_n]$ into $n$ equal sub intervals of width $h$ so that
+	$$
+		x_i = x_0 + ih; ~~~~~ i=1,2,\ldots, n
+	$$
+	The corresponding values of $y$ at these points are defined by
+	$$
+		y(x_i) = y_i = y(x_0 + ih); ~~~ i=0,1,2,\ldots, n
+	$$
+	from equation \refx{2_18} and \refx{2_19}, values of $y\sprime(x)$ and $y\dprime(x)$ at the point $x=x_i$ can now be written as:
+	$$
+		y\sprime_i = \frac{y_{i+1} - y_{i-1}}{2h} + O(h^2)
+	$$
+	Satisfying the differential equation at the point $x=x_i$, we get
+	\begin{equation*}
+		y_i\dprime + f_iy_i + g_iy_i = \gamma_i
+	\end{equation*}
+	Substituting the expressions for $y_i\sprime$ and $y_i\dprime$, this give 
+	\begin{eqnarray}
+		\frac{y_{i-1} - 2y_i + y_{i+1}}{h^2} + f_i\frac{y_{i+1} - y_{i-1}}{2h} + g_iy_i = \gamma_i, ~~i=1,2,\ldots, n-1\label{eq:2_22}
+	\end{eqnarray}
+	with 
+	\begin{equation}
+		y_0=a ~~~\text{ and }~~~ y_n=b \label{eq:2_23}
+	\end{equation}
+	Equation \refx{2_22} with the conditions \refx{2_23} comprise a tridiagonal system which can be solved. The solution of this tridiagonal system constitutes an approximate solution of the boundary value problem defined by (1) and (2)
+	
+	\section*{Example 1}
+	A boundary value problem is defined by 
+	\begin{equation*}
+		y\dprime(x) + y(x) + 1 = 0, ~~~~~~~ 0 \leq x \leq 1
+	\end{equation*}
+	where, $y(0)=0$ and $y(1)=0$;. Take $h=0.5$\sps
+	Use the finite difference method to determine the value of $y(0.5)$\sps
+	This example was considered by Bickley(1968).
+	\begin{equation}
+			y(x) = \cos x + \frac{1-\cos 1}{\sin 1}\sin x - 1,
+	\end{equation}
+	from which, we obtain
+	$$
+		y(0.5) = 0.139493927
+	$$
+	here $nh=1$. The differential equation is approximated as
+	\begin{equation}
+		\frac{y_{i-1} - 2y_i + y_{i+1}}{h^2} + y_i + 1 = 0
+	\end{equation}
+	and this gives after simplification
+	\begin{equation}
+		y_{i-1} - (2-h^2)y_i + y_{i+1} = -h2, ~~ i=1,2,\ldots, n-1
+	\end{equation}
+	which together with the boundary conditions $y_0=0$ and $y_n=0$, comprises a system of $(n+1)$ equations for the $(n+1)$ unknowns $y_0, y_1,\ldots, y_n$.\sps
+	Choosing $h=\frac{1}{2} (\text{i.e} ~~ n=2)$, the above system becomes
+	\begin{equation*}
+		y_0 - \Big[2 - \frac{1}{4}\Big]y_1 + y_2 = -\frac{1}{4}
+	\end{equation*}
+	with $y_0=y_2 = 0,$ this gives
+	\begin{equation*}
+		y_1 = y(0.5) = \frac{1}{7} = 0.142857142
+	\end{equation*}
+	comparison with the exact solution given above shows that the error in the computed solution is 0.00336.\sps
+	
+	\NI On the other hand , if we choose $h=\frac{1}{4}$ (i.e $n=4$), we obtain the three equations.
+	\begin{equation*}
+		\begin{array}{l}
+			y_0 - \frac{31}{16}y_1 + y_2 = -\frac{1}{16}\sps
+			y_1 - \frac{31}{16}y_2 + y_3 = -\frac{1}{16}\sps
+			y_2 - \frac{31}{16}y_3 + y_4 = -\frac{1}{16}
+		\end{array}
+	\end{equation*}
+	where $y_0=y_4 =0$. Solving the system we obtain
+	\begin{equation*}
+		y_2 = y(0.5) = \frac{63}{449} = 0.140311804
+	\end{equation*}
+	the error in which is 0.000082. Since the ratio of the two errors is about 4, it follows that the order of convergence is $h^2$.\\
+	
+	These results show that the accuracy obtained by the finite-difference method depends upon the width of the sub-interval chosen and also on the order of the approximations.\sps
+	
+	\NI As $h$ is reduced, the accuracy increases but the number of equations to be solved also increases.
+	\section*{Example 2}
+	Solve the following boundary-Value problem 
+	\begin{equation*}
+		y\dprime + (x+1)y\sprime - 2y = (1-x^2)e^{-x}, ~~~ 0\leq x \leq 1
+	\end{equation*}
+	$$y(0) = -1, ~~~ y(1) = 0$$
+	using finite difference method with $h=0.2$ Tabulate the errors with the exact solution $y=(x-1)e^{-x}$ to five decimal places.
+	
+	\NI\ubt{Solution}\sps
+	In this example $f_i = x_i + 1, g_i = -2, \gamma_i = (1-x^2_i)e^{x_i} ~~ h= 0.2$ and $n=5$\sps
+	hence equation \refx{2_22} yields
+	\begin{eqnarray}
+		\Big(1 - \frac{0.2}{2}(x_i + 1)\Big)y_{i-1} + \Big(-2 + (0.2)^2(-2)\Big)y_i + \Big(1+\frac{0.2}{2}(x_i+1)\Big)y_{i+1}\notag\sps
+		= \Big(0.2\Big)^2\Big(1-x^2_i\Big)e^{x_i}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\label{eq:2_27}
+	\end{eqnarray}
+	and from equation \refx{2_23}, we have
+	$$y_0 = -1 ~~~\text{ and }~~~ y_5 = 0$$
+	$$x_i = x_0 + ih; ~ i=1,2,3,4$$
+	$$\implies x_i = 0.2i$$
+	for $i=1$, \refx{2_27} becomes after simplification
+	$$
+		-2.08y_i + 1.12y_2 = 0.91143926
+	$$
+	for $i=2$ \refx{2_27} gives
+	$$
+		0.86y_1 - 2.08y_2 + 1.14y_3 = 0.02252275
+	$$
+	for $i=3$, equation \refx{2_27} yields
+	$$
+		0.84y_2 - 2.08y_3 + 1.16y_4 = 0.01404958
+	$$
+	for $i=4$, equation \refx{2_27} yields
+	$$
+		0.82y_3 - 2.08y_4 = 0.00647034
+	$$
+	Solving the above equations, we have
+	\begin{equation*}
+		\begin{array}{l}
+			y_0 = -1\\
+			y_1 = -0.65413\\
+			y_2 = -0.40103\\
+			y_3 = -0.21848\\
+			y_4 = -0.08924\\
+			y_5 = 0.0
+		\end{array}
+	\end{equation*}
+	\newpage
+	For comparison, the table also gives values calculated from the analytical solution
+	\begin{longtable}{c|c|c|c}
+		$x$ & F. Diff. Method & Exact Solution & Error\\ \hline
+		0.0 & -1.00000 & -1.00000 & 0.00000\\
+		0.2 & -0.65413 & -0.65498 & 0.00085\\
+		0.4 & -0.40103 & -0.40219 & 0.00116\\
+		0.6 & -0.21848 & -0.21952 & 0.00105\\
+		0.8	& -0.08924 & -0.08987 & 0.00062\\
+		1.0 & 0.00000 & 0.00000 & 0.00000
+	\end{longtable}
+
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{STURM LIOUVILLE PROBLEMS}
+	\section{Introduction to Sturm-Liouville Theory}
+	We have learned various techniques for solving certain ODEs, and in a first course in differential equations, such ODEs are generally accompanied with boundary conditions, in which the value of the solution, or some derivative of the solution, is specified on the boundary of the domain on which the ODE is defined. The ODE, together with boundary conditions, is called Boundary Value Problem.\sps
+	
+	\NI Furthermore, the ODEs in such boundary value problems often have parameter that is only allowed to assume certain values in order to obtain solutions that satisfy the boundary conditions. Such an ODE generally has the form 
+	\begin{equation*}
+		L(x)y(x) = \lambda y(x)
+	\end{equation*}
+	where $L$ is a differential operator, and $\lambda$ is a parameter. If a solution to this ODE exists that also satisfies the given boundary conditions, then $\lambda$ is called an eigen value of the operator $L(x)$, and the accompanying solution $y(x)$ is called an eigen function. The ODE itself is called an eigen value problem.\sps
+	
+	\NI In this project, we applied the Adjoint Equation in explaining the Sturm-Liouville Problem in solving Boundary Value Problem.
+	
+	
+	\section{Introduction to Sturm-Liouville Problems}
+	This chapter will be concerned with the solution of Sturm-Liouville (S-L) Problems.\sps
+	We shall start by laying the necessary foundation for subsequent discussions.
+	
+	
+	\section{Adjoint and Self-Adjoint Equation}
+	Let us consider the DE
+	\begin{equation}
+		Ly = a_0(x) \frac{d^2y}{dx^2} + a_1(x)\frac{dy}{dx} + a_2(x)y = 0 \label{eq:3_1}
+	\end{equation}
+	and also define the adjoint equation
+	\begin{equation}
+		My = \frac{d^2}{dx^2}[a_0(x)u] - \frac{d}{dx}[a_1(x)u] + a_2(x)u \label{eq:3_2}
+	\end{equation}
+	Now if
+	\begin{equation}
+		Ly = My \label{eq:3_3}
+	\end{equation}
+	then the D.E \refx{3_3} is said to be self-adjoint. The equation \refx{3_3} is equivalent to writing 
+	\begin{eqnarray}
+		a_0(x)\frac{d^2y}{dx^2} + a_1(x)\frac{dy}{dx} + a_2(x)y = a_0(x)\frac{d^2y}{dx^2} + \big(2a\sprime(x) - a_1(x)\big)\frac{dy}{dx}\notag \\
+		+ \big(a_0\dprime(x) - a_1\sprime(x) + a_2(x)\big)y \notag ~~~~~~~~~~~~~~~~~~~~
+	\end{eqnarray}
+	This will hold provided that
+	\begin{eqnarray}
+		a_0\sprime(x) &-& a_1(x) = 0  \label{eq:3_4}\\
+		\text{and} \notag \\
+		a_0\dprime(x) &-& a_1\sprime(x) = 0 \label{eq:3_5}
+	\end{eqnarray}
+	Evidently, \refx{3_4} and \refx{3_5} are equivalent since the differential of the \refx{3_4} yields \refx{3_5}.\sps
+	Hence the D.E \refx{3_1} is Self-Adjoint provided that 
+	\begin{equation}
+		a_0\sprime(x) - a_1(x) = 0  \label{eq:3_6}
+	\end{equation}
+	obtained from \refx{3_4}. Consequently, \refx{3_1} becomes
+	\begin{equation*}
+		a_0(x)\frac{d^2y}{dx^2} + a_0\sprime(x)\frac{dy}{dx} + a_2(x)y = 0
+	\end{equation*}
+	That is
+	\begin{equation}
+		\frac{d}{dx}\Big[a_0(x)\frac{dy}{dx}\Big] + a_2(x) \label{eq:3_7}
+	\end{equation}
+	\newpage
+	
+	\subsection{Examples of Self-Adjoint Equations}
+	(1) The Legendre equation is an example of a Self-Adjoint Equation.
+	i.e
+	\begin{equation}
+		(1-x^2)\frac{d^2y}{dx^2} - 2x \frac{dy}{dx} + n(n+1)y = 0 \label{eq:3_8}
+	\end{equation}
+	\refx{3_8} can be re-written in adjoint form as
+	\begin{equation*}
+		\frac{d}{dx}\Big[(1-x^2)\frac{dy}{dx}\Big] + n(n+1)y = 0
+	\end{equation*}
+	
+	\NI (2) The Bessel Equation is an example of a self-adjoint equation. i.e 
+	\begin{equation}
+		x^2y\dprime + xy\sprime + (x^2-v^2)y = 0  \label{eq:3_9}
+	\end{equation}
+	\refx{3_9} can be re-written in Self adjoint form as
+	\begin{equation*}
+		\frac{d}{dx}\Big[x\frac{dy}{dx}\Big] + \Big[x - \frac{v^2}{x}\Big]y = 0 
+	\end{equation*}
+
+	\NI\bt{Remark:} A Self-Adjoint equation could also be said to be of the Sturm-Liouville form.\sps
+
+
+	\section{Sturm-Liouville Problems}
+	Consider the DE
+	\begin{equation}
+		a_2(x)\frac{d^2y}{dx^2} + a_1(x)\frac{dy}{dx} + (a_0(x) + \lambda)y = 0, ~~~a \leq x \leq b \label{eq:3_10}
+	\end{equation}
+	which may be written as
+	\begin{equation}
+		\frac{d^2y}{dx^2} + p(x)\frac{dy}{dx} + \Big(q(x) + \lambda r(x)\Big)y = 0 \label{eq:3_11}
+	\end{equation}
+	Where $\lambda$ is a real constant and the function
+	\begin{equation}
+		p(x) = \frac{a_1(x)}{a_2(x)}, ~~~ q(x) = \frac{a_0(x)}{a_2(x)}, ~~~ r(x) = \frac{1}{a_2(x)} \label{eq:3_12}
+	\end{equation}
+	Now lets define the following functions
+	\begin{eqnarray}
+		P(x) &=& e^{\int p(x)dx} \label{eq:3_13}\sps
+		Q(x) &=& q(x)P(x) \label{eq:3_14} \sps
+		R(x) &=& r(x)P(x) \label{eq:3_15}
+	\end{eqnarray}
+	So that \refx{3_10}
+	\begin{equation}
+		\frac{d}{dx}\Big[P\frac{dy}{dx}\Big] + (Q + \lambda R)y = 0 \label{eq:3_16}
+	\end{equation}
+	To ensure the existence of the solution of \refx{3_16}, $P, Q, R$ and $P\sprime$ must be continuous and $P(x) > 0$.\sps
+	Also, \refx{3_16} is said to be a Regular Sturm Liouville (S-L) Equation if $P$ and $R$ are both positive in $[a,b]$.
+	
+	
+	\section*{Example 1}
+	Convert the Legendre equation into S-L Form
+	\begin{equation*}
+		(1-x^2)y\dprime - 2xy\sprime + n(n+1)y = 0
+	\end{equation*}
+	\ubt{Solution}\sps
+	\begin{equation}
+		(1-x^2)y\dprime - 2xy\sprime + n(n+1)y = 0 \label{eq:3_17}
+	\end{equation}
+	Divide through by $(1-x^2)$
+	\begin{equation}
+		y\dprime - \frac{2x}{1-x^2}y\sprime + \frac{n(n+1)}{1-x^2}y = 0 \label{eq:3_18}
+	\end{equation}
+	in this case,
+	\begin{equation*}
+		p(x) = \frac{-2x}{1-x^2}, ~~ q(x) = 0, ~~ r(x) = \frac{1}{1-x^2}, ~~ \lambda \equiv n(n+1)
+	\end{equation*}
+	Hence 
+	$\dsp 
+		P(x) = e^{\int p(x)dx}\sps
+		\int p(x)d = - \int \frac{2x}{1-x^2}dx = \ln(1-x^2)\sps
+		\implies P(x) = e^{\int p(x)dx} = e^{\ln(1-x^2)} = 1-x^2\sps
+		Q(x) = q(x)P(x) = 0\sps
+		R(x) = r(x)P(x) = \frac{1-x^2}{1-x^2} = 1\sps				
+	$
+	So then the S-L form gives
+	\begin{equation*}
+		\frac{d}{dx}\Big[(1-x^2)\frac{dy}{dx}\Big] + n(n+1)y = 0 
+	\end{equation*}
+	
+	
+	\section*{Example 2}
+	Express the equation
+	\begin{equation*}
+		3x^2y\dprime + 4xy\sprime + (6+\lambda)y = 0 ~~~~\text{ in S-L form}
+	\end{equation*}
+	
+	\NI\ubt{Solution}
+	\begin{equation}
+		3x^2y\dprime + 4xy\sprime + (6+\lambda)y = 0  \label{eq:3_19}
+	\end{equation}
+	Rewrite \refx{3_19} in the form
+	\begin{equation*}
+		y\dprime + p(x)y\sprime + (q(x) + r(x)\lambda)y = 0
+	\end{equation*}
+	we have it by dividing \refx{3_19} by $3x^2$
+	\begin{equation*}
+		y\dprime + \frac{4}{3x}y\sprime + \Big[\frac{2}{x^2} + \frac{\lambda}{3x^2}\Big]y = 0
+	\end{equation*}
+	Hence\sps
+	$\dsp 
+		p(x) = \frac{4}{3x}, ~~~ q(x) = \frac{2}{x^2}, ~~~ r(x) = \frac{1}{3x^2}\spn{0.5}
+		\dsp P(x) = e^{\int p(x)dx} = e^{\frac{4}{3}\int\frac{1}{x}dx} = e^{\frac{4}{3}\ln x} = e^{\ln x^{\frac{4}{3}}} = x^{\frac{4}{3}}\sps
+		\dsp Q(x) = q(x) \cdot P(x) = \frac{2}{x^2} \cdot x^{\frac{4}{3}} = 2x^{-\frac{2}{3}}\sps 
+		R(x) = r(x) \cdot P(x) = \frac{1}{3x^2} \cdot x^{\frac{4}{3}} = \frac{1}{3}x^{-\frac{2}{3}}\sps
+	$
+	Therefore, the equations gives
+	\begin{equation*}
+		\frac{d}{dx}\Big[x^{\frac{4}{3}}\frac{dy}{dx}\Big] + \Big[2x^{-\frac{2}{3}} + \frac{1}{3}x^{-\frac{2}{3}}\lambda\Big]y = 0
+	\end{equation*}
+
+	
+	\section{Solving Boundary Value Problems Using the Sturm-Liouville Equation}
+	\subsection{Properties of S-L Equation}
+	Suppose that two boundary conditions are associated with the S-L equation to have the following BVP.
+	\begin{eqnarray}
+		Ly + \lambda R(x)y~~~~ &=& 0 \label{eq:3_20}\\
+		a_1y(a) + a_2y\sprime(a) &=& 0 \label{eq:3_21}\\
+		b_1y(b) + b_2y\sprime(b)~ &=& 0 \label{eq:3_22}
+	\end{eqnarray}
+
+	\begin{enumerate}
+		\item Where $\dsp L \equiv \frac{d}{dx}\Big(P\frac{d}{dx}\Big) + Q$ and $a_1, a_2$ and $b_1, b_2$ are not both zero constitutes what is known \ubt{Regular S-L System}.
+		
+		\item If $P(a) = 0$ (or $P(b) = 0$), the condition \refx{3_21} and \refx{3_22} can be dropped. Then the solution problem \refx{3_20} is said to be \ubt{Singular S-L System}.
+		
+		\item If $P(a) = P(b)$, then \refx{3_22} can be replaced by periodic conditions
+		\begin{eqnarray}
+			y(a) &=& y(b)\notag\\
+			y\sprime(a) &=& y\sprime(b)\notag
+		\end{eqnarray}
+		The S-L Problem in this case is called Periodic S-L.
+	\end{enumerate}
+	\ubt{N.B:} The value of $\lambda$ for which the S-L Problem has a non-trivial solution are called the eigen values and the corresponding solution $y(x)$ are called eigen functions. 
+	
+	
+	\subsection*{Example 1}
+	Show that the BVP
+	\begin{equation}
+		y\dprime + \lambda y = 0, ~~~ 0 \leq x \leq L \label{eq:3_23}
+	\end{equation}
+	\begin{equation}
+		y(0) = 0, ~~~~~~ y(\pi) = 0 \label{eq:3_24}
+	\end{equation}
+	is a Sturm-Liouville Problem and hence obtain its eigen values and corresponding eigen-functions.\sps
+	\ubt{Solution:}\sps
+	from
+	\begin{equation}
+		Py\dprime + P\sprime y\sprime + Qy + \lambda Ry = 0 \label{eq:3_25}
+	\end{equation}
+	comparing \refx{3_23} and \refx{3_25}, we have
+	$$
+		P\equiv 1, ~~~ P\sprime = 0, ~~~ R \equiv 1, ~~~ Q=0
+	$$
+	Also comparing \refx{3_24},
+	$$
+		1 \cdot y(0) + 0 \cdot y\sprime(0), ~~~~~~~~~ 1\cdot y(\pi) + y\sprime(\pi) = 0 
+	$$
+	with
+	$$
+		a_1y(a) + a_2y\sprime(a), ~~~~\text{ and }~~~~ b_1y(b) + b_2y\sprime(b) = 0 
+	$$
+	we get,
+	$$
+		a=0, b=L,~~~~ a_1=1, a_2 = 1, ~~~ b_1=1, b_2 = 1
+	$$
+	Thus \refx{3_20} becomes
+	$$
+		\frac{d}{dx}\Big[1\cdot \frac{dy}{dx}\Big] + \Big[0 + 1\cdot\lambda\Big] = 0 
+	$$
+	Hence since the B.V.P \refx{3_20} and \refx{3_21} can be put in the form $\dsp \frac{d}{dx}\Big[Py\sprime\Big] + \Big[Q + \lambda R(x)\Big]y = 0$, hence it is a Sturm-Liouville Problem.\sps
+	
+	\NI To obtain the eigen values, three possible cases will be considered\sps
+	\bt{Case 1:} $\lambda < 0$\sps
+	Let $\lambda = - \alpha^2$. The auxiliary equation becomes
+	$$
+		y\dprime + \lambda y= 0 ~~~~ \implies ~~~~ m^2 - \alpha^2 = 0
+	$$
+	$$
+		\implies m^2 = \alpha^2 ~~~\implies ~~~ m = \pm \alpha
+	$$
+	Hence the solution is 
+	\begin{equation}
+		y(x) = C_1 e^{\alpha x} + C_2 e^{-\alpha x} \label{eq:3_26}
+	\end{equation}
+	Where $C_1$ and $C_2$ are constant by applying the boundary conditions.\\
+	$y(0) = 0$ in \refx{3_20}, we get\sps
+	\begin{eqnarray}
+		y(0) &=& C_1e^{\alpha(0)} + C_2 e^{-\alpha(0)} = 0 \notag\sps
+		y(0) &=& C_1 e^0 + C_2 e^0 = 0\notag \sps
+		y(0) &=& C_1 + C_2 = 0\notag\sps
+		\implies C_1 &=& -C_2\notag
+	\end{eqnarray}
+	\begin{equation}
+		\implies y(x) = C_1\Big(e^{\alpha x} - e^{-\alpha x}\Big) \label{eq:3_27}~~~~~~~~~~~
+	\end{equation}
+	Now apply the second condition $y(L) = 0$ in \refx{3_27} to get
+	$$
+		y(0) = C_1\Big(e^{\alpha \pi} - e^{-\alpha \pi}\Big) = 0
+	$$
+	Divide through by $e^{-\alpha \pi}$
+	\begin{equation}
+		C_1\Big(e^{2\alpha \pi} - 1\Big) = 0 \label{eq:3_28}
+	\end{equation}
+	But $\dsp e^{2\alpha \pi} - 1 = 0 $ if and only if $\alpha =0$ (which is excluded from our assumption that $\alpha < 0$). Hence $C_1 = 0, C_2=0$.\sps
+	Hence $y(x) = 0$. This is a trivial solution.\sps
+	
+	\NI\bt{Case 2:} $\lambda = 0 $\sps
+	for this case, the auxiliary roots are $m_1=m_2=0$\sps
+	So
+	\begin{equation}
+		y(x) = C_1 + C_2 x \label{eq:3_29}
+	\end{equation}
+	Applying the two given conditions to \refx{3_29} which gives a trivial solution $y=0$. 
+	
+	\NI\bt{Case 3:} $\lambda > 0$ (i.e $\lambda = \alpha^2$)\sps
+	Then the auxiliary roots are $m = \pm i\alpha$, hence the solution is 
+	\begin{equation}
+		y(x) = A\cos \alpha x + B \sin \alpha x \label{eq:3_30}
+	\end{equation}
+	Where $A$ and $B$ are constant\sps
+	Applying the first condition $y(0)=0$ in \refx{3_30}
+	$$
+		y(0) = A\cos\alpha(0) + B\sin\alpha(0) = 0
+	$$
+	$$
+		A=0, \text{ it becomes }
+	$$
+	\begin{equation}
+		y(x) = B\sin\alpha x \label{eq:3_31}
+	\end{equation}
+	Next apply the second condition $y(L) = 0$ to \refx{3_31} to get 
+	$$
+		B\sin\alpha\pi = 0
+	$$
+	for non-trivial solution, this give
+	$$
+		\sin\alpha\pi = 0, ~~~~~~~~ B \neq 0 
+	$$
+	Hence $\alpha\phi = n\pi ~~~ , ~~~~~ n=\pm 1, \pm 2, \ldots, \text{ or } \alpha_n = n, n=1, n=2, \ldots$\sps
+	Then $\lambda = \alpha_n^2 = n^2$\sps
+	The eigen functions are therefore
+	$$
+		y_n(x) = B_n\sin \alpha_n x = b_n\sin x , ~~~~~~~ n \geq 1
+	$$
+	\newpage
+	
+	\subsection*{Example 2}
+	Solve the eigen value problem
+	\begin{equation}
+		y\dprime - \lambda y = 0, ~~~~~~ y(0) = 0, ~~ y(1) = 0 \label{eq:3_32}
+	\end{equation}
+	\ubt{Solution}\sps
+	
+	\NI\ubt{Case 1:} $\lambda > 0 (\lambda = \alpha^2$, say)\sps
+	This gives
+	$$
+		y\dprime - \alpha^2 = 0
+	$$
+	whose solution is 
+	\begin{equation}
+		y(x) = C_1 e^{\alpha x} + C_2 e^{-\alpha x} \label{eq:3_33}
+	\end{equation}
+	using the condition $y(0) = 0$ in \refx{3_32} yields $C_2 = -C1$ and so \refx{3_33} becomes
+	\begin{equation}
+		y(x) = C_1\Big(e^{\alpha x} - e^{-\alpha x}\Big) \label{eq:3_34}
+	\end{equation}
+	with the condition $y(1) = 0,$ we now have
+	$$
+		C_1\Big(e^{\alpha 1} - e^{-\alpha 1}\Big) = 0 ~~~\text{ or }~~~ C_1\Big(e^{2\alpha} - 1\Big) = 0 
+	$$
+	This gives $C_1 = 0$ since $e^{2\alpha} \neq 1$ except when $\alpha = 0$, so a case which is already excluded by our assumption.\sps
+	Hence $C_2 = 0$ and so $y(x) \equiv 0$ (trivial)\sps
+	
+	\NI\bt{Case 2:} $\lambda = 0$\sps
+	This case yields
+	$$
+		y(x) = C_1 + C_2 x
+	$$
+	by applying the two given conditions we get $y(x) \equiv 0$ (trivial)\sps
+	
+	\NI\bt{Case 3:} $\lambda < 0 (\lambda = -\alpha^2,$ say)\sps
+	The auxiliary equation is
+	$$
+		m^ + \alpha^2 = 0
+	$$
+	with roots $m=\pm i\alpha$ Hence
+	$$
+		y(x) = A\cos \alpha x + B\sin\alpha x
+	$$
+	using $y(0) = 0$ gives $A=0$ and so
+	$$
+		y(x) = B\sin\alpha x
+	$$
+	Now use $y(1)=0$ to get
+	$$
+		B\sin\alpha 1 = 0 ~~~~ \text{ or } ~~~~ \alpha 1 = n\pi ~~~ (B\neq 0)
+	$$
+	giving us
+	$$
+		\alpha n = \frac{n\pi}{l} ~~, ~~~ n\geq 1
+	$$
+	Hence
+	
+	$$
+		\lambda_n = \alpha_n^2 = \frac{n^2\pi^2}{l^2}, ~~~ n \geq 1
+	$$
+	are the eigen values and 
+	$$
+		y_n(x) = b_n\sin \frac{n\pi}{l}x, ~~~~ n\geq 1
+	$$
+	where $B_n \equiv b_n$, are the eigen functions.
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{SHOOTING METHOD}
+	
+	\section{Introduction to Shooting Method}
+	In Shooting method, the given boundary value problem is first converted into an equivalent initial value problem and then solved using any of
+	
+	\section{Types of Shooting Method}
+	\subsection{Linear Shooting Method}
+	The boundary value problem is linear if $f$ has the form
+	\begin{equation}
+		f(t, y(t), y\sprime(t)) = p(t)y\sprime(t) + q(t)y(t) + r(t)
+	\end{equation}
+	in this case, the solution to the boundary value problem is usually given by
+	\begin{equation}
+		y(t) = y_{(1)}(t) + \frac{y_1 - y_{(1)}(t_1)}{y_{(2)}(t_1)}y_{(2)}(t)
+	\end{equation}
+	where $y_1(t)$ is the solution to the initial value problem 
+	\begin{equation}
+		y_{(1)}\dprime(t) = p(t)y_{(2)}\sprime(t) + q(t)y_{(2)}(t), ~~ y_{(2)}(t) = 0, ~~ y_{(2)}\sprime(t_0) = 1
+	\end{equation}
+	and $y_{(2)}\dprime (t)$ is the solution to the initial value problem
+	\begin{equation}
+		y_{(2)}\dprime = p(t)y_{(2)}\sprime(t) + q(t)y_{(2)}(t), ~~~ y_{(2)}(t_0)  = 0, ~~~ y_{(2)}\sprime(t_0) = 1
+	\end{equation}
+	
+	\subsection{Single Shooting Method}
+	Shooting methods can be used to solve B.V.P like
+	\begin{equation}
+		y\dprime(t) = f(t, y(t), y\sprime(t)) , ~~~~ y(t_a) = y_a, ~~~ y(t_b) = y_b,
+	\end{equation}
+	in which the time points $t_a$ and $t_b$ are known and we seek $y(t), ~~t \in (t_a, t_b)$.\sps
+	
+	\NI Single Shooting methods proceeds as follows. Let $y(t, t_0, y_0)$ denote the solution of the initial value problem (IVP)
+	\begin{equation}
+		y\dprime(t) = f(t, y(t), y\sprime(t)), ~~ y(t_0) = y_0, ~~~ y\sprime(t_0) = \rho 
+	\end{equation}
+	Define the function $F(\rho)$ as the difference between $y(t_b, \rho)$ and the specified boundary value $y_b$:
+	\begin{equation}
+		F(\rho) = y(t_b, \rho) - y_b
+	\end{equation}
+	Then for every solution $(y_a, y_b)$ of the boundary value problem, we have $y_a=y_b$ while any root-finding method given that certain method pre-requisites are satisfied.\sps
+	
+	%%%%%%%%%%%%%
+	\NI Let consider the equation
+	\begin{equation}
+		y\dprime = f(x,y, y\sprime)
+	\end{equation}
+	with $y(x_0) = y(a) = A$ and $y(x_n) = y(b) = B$. By letting $y\sprime = z$, we obtain the following set of equations
+	\begin{equation}
+		y\sprime = z = f_1(x,y,z) ~~\text{ and }~~ z\sprime = y\dprime = f_2(x,y,z)
+	\end{equation}
+	
+	\NI In order to solve this set as an initial value problem, we need two conditions at $x=a$ we have one condition $y(a)=A$ and therefore, require another condition for $z$ at $x=a$.\sps
+	Let assume $z(x_0) = z(a) = M_1$ (just a guess but represent the slope of $y\sprime(x)$ at $x=a$).\sps
+	Thus, the problem is reduced to a system of first order equation with the initial condition as;
+	\begin{eqnarray}
+		y\sprime &=& z = f_1(x,y,z) ~~~~~~ \text{with}~~~ y(a) = A\sps
+		z\dprime &=& y\dprime = f_2(x,y,z) ~~~~~~\text{with}~~~ z(a) = M_1 (= y\sprime(a)) 
+	\end{eqnarray}
+	Now using $z(a) = z(x_0) = M_1$ estimate $y(b)=y(x_n) = B_1$ if $B_1=B$ (exact solution), else\sps
+	Suppose $z(a) = z(x_0) = M_2$ (another guess) and estimate
+	\begin{equation}
+			y(b) = y(x_n) = B_2
+	\end{equation}
+	If $B_2 = B$ (exact solution), else\\
+	Estimate $'M'$ using the following relation
+	\begin{equation}
+		\frac{M - M_1}{B - B_1} = \frac{M_2 - M_1}{B_2 - B_1}
+	\end{equation}
+	Now with $z(x_0) = z(a) = M_3$ we can again obtain the solution of $y(x)$.
+	
+	\section*{Example 1}
+	Using shooting method, solve the equation
+	$$
+		y\dprime = 6x^2, \text{ with } y(0)=1 \text{ and } y(1) = 2 \text{ in the interval } (0,1) \text{ for } y(0.5) \text{ taking } h=0.5
+	$$
+	\ubt{Solution}\sps
+	we have given:\sps
+	for $x_0 [=x(a)] = 0, y_0 = (= y(0)) = 1,$ \sps
+	for $x_n [=x(b)] = 1, y_0 = (= y(1)) = 2 = B$ and $h=0.5$\sps
+	
+	\NI Assume: $y\sprime = z = f_1(x,y,z)$\sps
+	Then $y\dprime = z\sprime = 6x^2 = f_2(x,y,z)$\sps
+	
+	\NI By the shooting method,\sps
+	Let: $z(0) = 1.5 = M_1$\sps
+	So using Euler's method\sps
+	$y_1 = y(0.5) = y_0 + hf_1(x_0,y_0,z_0) = 1 + 0.5 \times 1.5 = 1.75$ and\sps
+	$z_1 = z(0.5) = z_0 + hf_2(x_0,y_0, z_0) = 1.5 + 0.5 \times 6 \times 0^2 = 1.5$\sps
+	
+	\NI Therefore,\sps
+	$y_2 = y(1) = y_1 + hf_1(x_1, y_1, z_1) = 1.75 + 0.5 \times 1.5 = 2.50 = B_1$\sps
+	
+	\NI Since $B_1 > B$ assume another guess; $z(0) = 0.5 (=M_2)$\sps
+	so again using Euler's method\sps
+	$y_1 = y(0.5) y_0 + hf_1(x_0, y_0, z_0) = 1 + 0.5 \times 0.5 = 1.25$\sps
+	$z_1 = z(0.5) = z_0 + hf_2(x_0, y_0, z_0) = 0.5 + 0.5 \times 6 \times 0^2 = 0.5$ \sps
+	Therefore:\sps
+	$y_2 = y(1) = y_1 + hf_1(x_1, y_1, z_1) = 1.25 + 0.5 \times 0.5 = 1.50 = B_2$\sps
+	Again $B_2 < B_1$, so finding $M$ using the following relation
+	$$
+		\frac{M - M_1}{B - B_1} = \frac{M_2 - M_1}{B_2 - B_1}
+	$$
+	$$
+		\frac{M - 1.5}{2 - 2.5} = \frac{0.5 - 1.5}{1.5 - 2.5}
+	$$
+	$M = 1 = z(0)$\sps
+	finally, 
+	$$
+		y_1 = y(0.5) = y_0 + hf_1(x_0, y_0, z_0) = 1 + 0.5 \times 1 = 1.5
+	$$
+	
+	\section*{Example 2}
+	Solve the boundary value problem
+	$$
+		y\dprime(x) = y(x); ~~~ y(0) = 0, ~~~ y(1) = 1.1752
+	$$
+	by the shooting method, taking $M_0 = 0.7$ and $M_1 = 0.8$\sps
+	\newpage
+	\NI\ubt{Solution}\sps
+	By Taylor's series, we have
+	\begin{eqnarray}
+		y(x) &=& y(0) + xy\sprime(0) + \frac{x^2}{2}y\dprime(0) + \frac{x^3}{6}y\tprime(0) + \frac{x^4}{24}y^{iv}(0) \notag\\
+		&+& \frac{x^5}{120}y^v(0) + \frac{x^6}{720}y^{vi}(0) + \cdots \label{eq:4_14} 
+	\end{eqnarray}
+	since $y\dprime(x) = y(x)$, we have
+	\begin{equation*}
+		\begin{array}{c}
+			y\tprime(x) = y\sprime(x), ~~y^{iv}(x) = y\dprime(x) = y(x)~~~~\\
+			y^{v}(x) = y\sprime(x), ~~y^{vi}(x) = y\dprime(x) = y(x), \ldots
+		\end{array}
+	\end{equation*}
+	Putting $x=0$ in the above, we obtain
+	$$
+		y\dprime(0) = y(0), ~~ y\tprime(0) = y\sprime(0), ~~y^{iv}(0) = 0, ~~ y^{v}(0) = y\sprime(0) 
+	$$
+	Substitution in \refx{4_14} gives
+	\begin{eqnarray}
+		y(x) = y\sprime(0)\Big(x + \frac{x^3}{6} + \frac{x^5}{120}+ \frac{x^7}{5040} + \frac{x^9}{362800} + \cdots\Big); \text{ since } y(0) = 0\label{eq:4_15}
+	\end{eqnarray}
+	Hence,
+	\begin{eqnarray}
+		y(1) = y\sprime(0)\Big(1 + \frac{1}{6} + \frac{1}{120}+ \frac{1}{5040} + \cdots\Big)  = y'(0)(1.1752)\label{eq:4_16}
+	\end{eqnarray}
+	with $y\sprime(0) = M_0 = 0.7$, \refx{3_16} gives
+	\begin{equation*}
+		y(1) \approxeq y_0 = 0.8226
+	\end{equation*}
+	Similarly, $y\sprime(0) \approxeq M_1 = 0.8$ gives $y(1)\approxeq y_1 = 0.9402$\sps
+	Using linear interpolation, we obtain
+	\begin{equation*}
+		\gamma_1 = \gamma_0 + (0.1) \Big\{\frac{1.1752 - 0.8226}{0.9402 - 0.8226}\Big\} = 0.9998
+	\end{equation*}
+	
+	\NI which is closer to the exact value of $y\sprime(0) = 1$. With this value of $\gamma_1$, we solve the initial value problem
+	\begin{equation*}
+		y\dprime(x) = y(x); ~~~ y(0) = 0, ~~~ y\sprime(0) = 0.9998
+	\end{equation*}
+	
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
+	
+	\section{Summary}
+	In this project, we have discussed in details numerical solutions to second order boundary value problems(BVPs). using Sturm-Liouville technique for solving certain ordinary differential equations (ODEs) arising from the solved problems. The computed solutions are then compared with the exact solutions.
+
+	
+	\section{Conclusion}
+	Boundary value problems (BVPs) are usually difficult to solve analytically. in many cases it is required to obtain the general solutions. in this work, we introduced the Sturm-Liouville theory technique in solving the ordinary differential equations.
+	
+	\section{Recommendation}
+	Based on the problems considered in this project work, it was shown that the solution of second order Boundary  Value Problems (BVPs) can be obtained by finding the general solution of equation. it is recommended that for further studies, approximate solution for boundary value problems(BVPs) should be considered.
+	
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	\begin{description}
+		\item Agarwal, R. P. \& O'regan, D. (1998a). Singular and nonsingular Second order boundary value problems. \tti{Journal of Differential Equations, 143}, 60-95
+		
+		
+		\item Agarwal, R. P. \& O'Regan, D. (1998b). Second-order boundary value problems of singular type. \tti{Journal of Mathematical Analysis and Applications, 226}, 414-430.
+		
+		
+		\item Amodio, P. \& Iavernam, F. (2006). Symmetric boundary value methods for second order initial and boundary value problems. \tti{Mediterranean Journal of Mathematics, 3}(3-4), 383-398.
+		
+		
+		\item Biala, T.A \& Jator, S. N. (2015). A boundary value approach for solving three dimensional elliptic and hyperbolic partial differential equations. \tti{Springer Press Journal, 4}(1), 580-597.
+		
+		
+		\item Biala, T. A. \& Jator, S. N. (2017). A family of boundary value method for systems of second-order boundary value problems. \tti{International Journal of Differential Equations}, 1-12.
+		
+		
+		\item Bobisud, L. E., Calvert, J. E. \& Royalty, W. D. (1993). Some existence results for singular boundary value problems. \tti{Differential Integral Equations, 6}, 353-571.
+		
+		
+		\item Brugano, L. \& Trigiant, D. (1998). Solving differential problems by multistep initial and boundary value method. \tti{Theory, Methods and Applications, 6}, 1-20.
+		
+		
+		\item Eloe, P. W. \& Henderson, J. (1993). Existence of Solutions for some higher order boundary value problems. \tti{ZAMM - Journal of Applied Mathematics and Mechanics, 73}, 315-323.
+		
+		
+		\item O'Regan, D. (1990). Existence of Positive solutions to some singular and nonsingular Second order boundary value problems. \tti{Journal of Differential Equations, 84}, 228-251.
+		
+		
+		\item Wing, P. J. Y. \& Agarwal, R. P. (1998). On two-point right focal eigenvalue problems. \tti{ZAMM Analysis Anwendungen, 17}, 691-713. 
+		
+	\end{description}
+\end{document}
+

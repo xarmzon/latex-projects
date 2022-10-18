@@ -1,0 +1,205 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{array}
+
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+%\newcommand{\real}{ \mathbb{R}}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\sbracket}[1]{\left[#1\right]}
+\newcommand{\example}[1]{\section*{\ubt{Example #1}}}
+\newcommand{\property}{\subsubsection{\ubt{Property}}}
+\newcommand{\properties}{\subsubsection{\ubt{Properties}}}
+\newcommand{\solution}{\subsubsection{\ubt{Solution}}}
+\newcommand{\proposition}[1]{\section*{\ubt{Proposition #1}}}
+\newcommand{\eg}{\section*{\ubt{Example}}}
+
+\newcommand{\real}{\mathbbm{R}}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+
+
+%\setlength{\parindent}{1em}
+
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\Large \bt{SOLUTION OF SECOND ORDER ORDINARY DIFFERENTIAL EQUATION USING ADOMIAN DECOMPOSITION}
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{ELUTADE, ISAIAH ABIOLA
+			\\
+			17/56EB050}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		IN PARTIAL FULFILMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ 
+	\begin{center}
+		\textbf{February, 2022}
+	\end{center}
+
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project was carried out by \textbf{ELUTADE, Isaiah Abiola} with Matriculation Number  17/56EB050 in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Prof. A.O. Taiwo   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof.o \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner 
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	All praises\\
+	
+	\NI i
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	I would like to dedicate the project to God, for the grace and faithfulness of God thus far. For His mercies, guidance and protection throughout my years of study.
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	In this project, 
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION TO ADOMIAN DECOMPOSITION METHOD (ADM)}
+	\section{General Introduction}
+	The Adomian Decomposition Method (ADM) was first established in the 1980's by George Adomian, chairman of Center for Applied Mathematics at the University of Georgia. In the recent years, this method of Adomian Decomposition has be paid attention to in the field of applied mathematics and series solution. In addition, the ADM is widely used to obtain the solution to many types of linear or non-linear ordinary differential equation and integral equations.
+	
+	The ADM gives the accurate and efficient solution to problem in a direct and simply way without the use of linearization and partubation which can change the physical behaviour of the method.
+	
+	For the purpose of this study, we consider the solution of second order differential equation of the form 
+	\begin{eqnarray*}
+		P(x)\frac{d^2y}{dx^2}+ Q(x)\frac{dy}{dx} + R(x)y = F(x)
+	\end{eqnarray*}
+	or
+	\begin{eqnarray*}
+		y\dprime P(x) + y\sprime Q(x) + R(x)y=F(x)
+	\end{eqnarray*}
+	with initial conditions
+	\begin{eqnarray*}
+		y(x_0) = y_0 \text{ and } y\sprime(x_0) = y_1
+	\end{eqnarray*}
+	Where $P(x), Q(x), R(x)$ and $F(x)$ are continuous functions of $x$; and $y_0$ and $y_1$ are given constant.
+	
+	\section{Definition of Relative Terms}
+	\subsection{Differential Equation}
+	Differential equation is an equation that contains at least one derivative of 
+
+	
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{}
+	\section{}
+	
+	
+	
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{METHODOLOGY}
+	\section{}
+	
+	
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{}
+	
+	
+
+
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY AND CONCLUSION}
+	\section{Summary}
+	
+	
+	\section{Conclusion}
+	
+	
+
+	
+	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	
+	\begin{description}
+		\item 
+	\end{description}
+	
+\end{document}

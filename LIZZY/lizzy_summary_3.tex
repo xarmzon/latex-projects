@@ -1,0 +1,192 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{tikz}
+
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\NI}{\noindent}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\tti}[1]{\textit{#1}}
+
+
+\renewcommand*\contentsname{Table of Contents}
+\renewcommand{\baselinestretch}{1.4}
+
+\begin{document}
+	%%remove the numbering from the first page 
+	\clearpage
+	\thispagestyle{empty}
+	%%TITLE%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\begin{center}
+		\textbf{\itshape SUMMARY ON}
+	\end{center} 
+	\begin{center}
+		{\bf \Large FLUID FLOW IN PARALLEL PLATES (2017)}
+	\end{center}
+	$$$$
+	\vspace{3cm}
+	\begin{center}
+		\textbf{\itshape BY}
+	\end{center} 
+	$$$$
+	\vspace{2cm}
+	\begin{center}
+		{\bf KODJO, Elizabeth\\
+			17/56EB062}
+	\end{center}
+	$$$$
+	\\ \\
+	%\newpage
+	%\pagenumbering{roman} 
+	%%TABLE OF CONTENTS%%
+	%\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	%\tableofcontents
+	\newpage
+	
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION TO FLUIDS}
+	Fluid can either be liquid or gasses. Fluid is a substance which deforms under the action of shear force. Fluids cannot resist the deformation forces, when fluid is at rest, there is no shear stress. Shear stress is developed when fluid is in motion.\sps
+	Fluid behave differently under stress.
+	
+	\section{Newtonian Fluids}
+	Fluid that obey Newton's Law of viscosity. They depend on temperature and pressure of the fluid
+	
+	\section{Properties of Fluids}
+	(i)density (ii)surface tension (iii)compressibility (iv) viscosity
+	
+	\section{Compressibility of Fluids}
+	A fluid remain compressible when the density changes with pressure.
+	
+	\section{The concept of fluid flow}
+	Fluid flow is a vital part when transfer of heat is involve. It is also use to provide lubrication.\sps
+	Fluid flow in nuclear field can be complex and is not always subject ot rigorous mathematics. The particles of fluids move at different velocity and acceleration. Hence we will be study the variation of flow of parameter with time (steady), variation along the flow path (uniform)
+	
+	\section{Uniform and steady flow}
+	When a fluid flow past a solid boundary where will be variation fo velocity in the region close to the boundary if the size and shape of the cross-section of the stream of the fluid is constant then it is uniform flow and if it doesn't vary with time is called STEADY FLOW.
+	
+	\section{Real and Ideal Fluids}
+	When a real fluid flow past a boundary, the fluid immediately in contact with the boundary will have the same velocity as the boundary. When the shear stress is ignored, then is known as IDEAL FLUID.
+	
+	\section{One Dimensional \& Two Dimensional Flow}
+	\bt{One Dimensional Flow:} This flow when pressure, velocity which describe flow vary along the direction and doesn't cross the cross-section.\sps
+	\bt{Two Dimensional Flow:} This flow occurs when pressure and velocity vary in a direction of flow and in one direction at right angles.
+	
+	\section{Dimensionless Number in Compressible Flow}
+	Reynoids number: It is used to determine whether fluid is laminar or turbulent. $\dsp R_e = \frac{VL}{U}\;$ where $V$ is the characteristics velocity\sps
+	
+	\NI Nusselt Number: It is the ratio of heat transferred through convection to the heat transferred through conduction.
+	
+	\section{Fluid Flow Types}
+	\bt{Laminar Flow:} is a flow that has order manner and successive cross-section on through the path.\sps
+	\bt{Turbulent Flow:} is disorderly and has varying cross-section
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{LITERATURE REVIEW}
+	The studies of fluid flow between parallel plates has been studied by many authors.\sps
+	Myres et al (2006) invested a model for the flow of fluid channel with parallel plates\sps
+	Sheiknole Salami et al (2016) investigated the heat and mass transfer behaviour of steady nano fluid between parallel plates in the presence of magnetic field.\sps
+	Devakar et al (2010) considered the flow of an incompressible fluid between two parallel plates initially induced by a constant pressure gradient.\sps
+	Dada et al (2015) conducted a study to investigate the two dimensional heat transfer of free corrective MHD flow with radiation and temperature dependent heat source in porous medium.
+
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{METHODOLOGY}
+	This study is used in modelling steady fluid flow between parallel plates and focus more on poiseviles.
+	
+	\section{The Navier Stokes Equation}
+	They are set of non-linear partial differential equation that describe the flow of fluids.\sps
+	For irrotational flow
+	\begin{eqnarray}
+		\nabla \times \vec{U} = \Big(\frac{\partial U_z}{\partial y} - \frac{\partial U_y}{\partial z}U\Big)i + \Big(\frac{\partial U_x}{\partial z} - \frac{\partial U_z}{\partial x}y\Big)j + \Big(\frac{\partial U_y}{\partial x} - \frac{\partial U_x}{\partial y}\Big)k = 0 \notag
+	\end{eqnarray}
+	\begin{enumerate}
+		\item Incompressible Fluid: In fluid dynamics, an incompressible fluid is a fluid whose density is constant.
+		
+		\item Inviscid or Stoke flow: Viscous problems are those in which fluid direction have significant effect on solution. Problem for which friction can safely be neglected are called Inviscid.
+		
+		\item Steady flow: Another simplification of the equation is to set all change of fluid properties with time to zero.
+		
+		\item Boussinea approximation: is used in the field of buoyancy - driven flow. It essence is that the different in inertial is negligible.
+		
+		\item laminar versus turbulent flow: Turbulence is flow dominated by eddies and apparent randomness.
+	\end{enumerate}
+
+	\section{Poiseuiles Flow}
+	A pressure-driven laminar flow in a conduct of arbitrary but constant cross-section.\\
+	
+	\NI Poiseuile Flow in rectangle conduit\\
+	We seek to determine the relationship between flow rate and the pressure drop between the inlet and exit, together with several other quantities.
+	
+	\section{Velocity distribution between parallel plates}
+	we study the flow of a viscous fluid
+	\begin{eqnarray}
+		\rho \left(\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y}\right) = \mu\left(\frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}\right)- \frac{\partial \rho}{\partial x} + F_x \notag \sps
+		%%%%%%%%%%%%%%%%%%%%%%
+		\rho \left(\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y}\right) = \mu\left(\frac{\partial^2v}{\partial x^2} + \frac{\partial^2v}{\partial y^2}\right)- \frac{\partial \rho}{\partial x} + F_y \notag
+	\end{eqnarray}
+	there is no change of momentum between the two faces, the following equation is obtained
+	\begin{eqnarray}
+		\rho dy - \left(\rho + \frac{\partial\rho}{\partial x}dx\right)T dx + \left(T + \frac{\partial T}{\partial y}dy\right)dhw\notag
+	\end{eqnarray}
+	Therefore $\dsp \frac{dT}{dy} = \frac{d\rho}{dx}$\sps
+	$$
+		T = \mu\frac{du}{dy}\qquad \text{ since }\qquad \mu\frac{d^2u}{dy^2} = \frac{dp}{dx}
+	$$
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{Discussion of Results}
+	\subsubsection{Test Problem}
+	The fluid is driven between the plates by an applied pressure gradient in the k-direction
+	
+	\subsubsection{Derivation of velocity distribution $u(y)$}
+	After derivation we get
+	\begin{equation*}
+		u(y) = \frac{1}{\mu}\frac{\partial\rho}{dx}\frac{y^2}{2} + C_1y + C_2
+	\end{equation*}
+	\begin{equation*}
+		u(y) = \frac{3}{2}u_m\left[1 - \left(\frac{y}{\pi}\right)^2\right]
+	\end{equation*}
+
+	\subsubsection{Derivation of temperature distribution $T(x,y)$}
+	After derivation, we get
+	\begin{equation*}
+		\frac{(T_s - T)}{(T_s - T_m)} = \frac{35}{136}\left[5 - 6\left(\frac{y}{\pi}\right)^2 + \left(\frac{y}{\pi}\right)^4\right]
+	\end{equation*}
+	
+	\subsubsection{Derivation of Nusselt Number, $N_u$}
+	\begin{equation*}
+		N_u = 4H\left(\frac{-35}{136}\right)\left(\frac{-8}{\pi}\right) = \frac{140}{7} = 8.2353
+	\end{equation*}
+	
+	
+		
+	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\chapter{Summary, Conclusion and Recommendation}
+	\section{Summary and Conclusion}
+	We have carried out studies on the flow of fluid between two parallel plates. We also investigated Navier Stokes equation for this type of flow.\sps
+	We also explored some fundamental fluid properties.\sps
+	The difference between liquids and gases is consider in addition to condition in which these fluids flow.
+	
+	\section{recommendation}
+	We have exploired the dynamics of steady laminar fluid between two parallel plate in the project. Further studies can be carried out on behaviour of fluid in pipe.
+	
+	
+	
+	
+\end{document}
+
