@@ -496,54 +496,122 @@
 	When $f(z)$ is multivalued function, any point which cannot be an interior point of the region of definition of a single-valued branch of $f(z)$ is a singular branch point.
 	\example{}
 	$\dsp f(z)=\sqrt{z-a}$ has a branch point at $z=a$
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
-	\chapter{THE GAMMA FUNCTION}
-	
-	
 
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{LAURENT SERIES OF COMPLEX-VALUED FUNCTIONS}
+	In this chapter, we are considering the Laurent Series as a method of solving complex-valued functions. Before we discuss or talk about Laurent Series, we need to look at Taylor and Power Series.
+	
+	\section{Taylor Series}
+	The Taylor Series of a function is the result of successive approximation of the function by polynomials. Suppose that $f(z)$ is analytic in a neighbourhood of $z_0$. Then $f$ is infinitely differentiable around $z_0$. Let us consider a polynomial function $f_n$ such that it agrees with $f$ at $z_0$ up to an including its $n$-th derivative. In other words, $f_n^{(j)}\Big(z_0\Big)=f^{(j)}\Big(z_0\Big)$ for $j=0,1,\ldots,n$. The polynomial function of least order which satisfies this condition is:
+	\begin{eqnarray}
+		f_n(z) = f(z_0) + f\sprime(z_0)(z-z_0)+\frac{f\dprime(z_0)}{2}(z-z_0)^2 + \cdots + \frac{f^{(n)(z_0)}}{n!}(z-z_0)^n
+	\end{eqnarray}
+	The sequence $\left\{f_n\right\}$, if it converges does so to the Taylor series around $z_0$ of the function f:
+	\begin{eqnarray}
+		\sum_{j=0}^{\infty}\frac{f^{(j)(z_0)}}{j!}\Big(z-z_0\Big)^j
+	\end{eqnarray}
+	If $z_0=0$ this series is also called the Maclaurin Series of $f$.
+	
+	\subsection{Basic Properties of Taylor Series}
+	Taking the derivatives of the Taylor Series for $\log z$ about $z_0=1$ term by term, we find the series
+	\begin{eqnarray}
+		\sum_{j=1}^{\infty}(-1)^{j+1}(z-1)^{j-1} = \sum_{j=1}^{\infty}(-1)^j(z-1)^j = \sum_{j=0}^{\infty}(1-z)^j
+	\end{eqnarray} 
+	This is a geometric series which for $|z-1|< 1$ converges to
+	\begin{eqnarray}
+		\frac{1}{1-(1-z)} = \frac{1}{z}
+	\end{eqnarray}
+	which is precisely the derivative of $\log z$.
+	
+	\subsection{Standard Series}
+	Let us recall some standard series which will be useful while working on Laurent Series of Complex Valued functions. All these series can be obtained from the Taylor Series at $z_0 = 0$
+	\begin{enumerate}
+		\item $\dsp \frac{1}{1-z}=1+z+z^2 + z^3 + z^4 + \cdots$
+		\item $\dsp e^{\imaginary z} = 1+\imaginary z + \frac{z^2}{2!} + \frac{z^3}{3!} + \frac{z^4}{4!} + \cdots$
+		\item $\dsp \sin z = z - \frac{z^3}{3!} + \frac{z^5}{5!} - \frac{z^7}{7!} + \cdots$
+		\item $\dsp \cos z = 1 - \frac{z^2}{2!} + \frac{z^4}{4!} - \frac{z^6}{6!}+\cdots$
+		\item $\dsp (1+z)^p = 1+ pz + \frac{p(p-1)}{2!}z^2 + \frac{p(p-1)(p-2)}{3!}z^3 + \cdots$
+	\end{enumerate}
+	
+	\section{Power Series}
+	Taylor Series are example of a more general type of series called Power Series. Basically, Power Series are always the Taylor Series of some analytic function. This shows series representations of analytic functions are in some sense unique, so that if we cook up by whatever means, a power series converging to a function in some disk, we known that this series will be its Taylor series of the function around the center of the disk.\\
+	
+	\NI By a power series around $z_0$ we mean series of the form
+	\begin{eqnarray}
+		\sum_{j=0}^{\infty}a_j(z-z_0)^j
+	\end{eqnarray}
+	and where $\left\{a_j\right\}$ are known as the coefficients of the power series. A Power Series is clearly determined by its coefficients and by the point $z_0$. Given a power series one can ask many questions. For which $z$ does it converges? Is the convergence uniform? will it converge to an analytic function? will the power series be a Taylor series?\\
+	From the power series
+	\begin{eqnarray*}
+			\sum_{j=0}^{\infty}a_j(z-z_0)^j
+	\end{eqnarray*}
+	One can associate a number $0 \leq \real \leq \infty$, called the Radius of Convergence, depending only on the coefficients  $\left\{a_j\right\}$ such that the series converges in the disk $|z-z_0|< \real$. Uniformly on any closed subdisk, and the series diverges in $|z-z_0|> \real$.
+	
+	\section{The Laurent Series}
+	We will begin with the well known Cauchy Integral
+	\begin{theorem}
+		If $f(z)$ is analytic include and on a a simple closed $C$ and $\alpha$ is any point inside $C$, then
+		\begin{eqnarray}
+			f(\alpha) = \frac{1}{2\pi\imaginary}\oint_C\frac{f(z)}{z-\alpha}dz
+		\end{eqnarray}
+	\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
 	\chapter{ANALYTICAL APPLICATIONS OF THE GAMMA FUNCTION}
@@ -562,7 +630,7 @@
 	
 	\NI Lastly, In chapter four (4), we looked at practical problems and how it can be solved using the Laurent series expansion. We were able to use Laurent series of function about some fixed points in the their region to solve all the problems.
 	\section{Conclusion}
-	The Gamma function has been studied and presented 
+	The study of complex analysis cannot be ignored by mathematicians and in this project we were able to observed that without the Taylor and geometric series, the Laurent series cannot be solved. This research has truly proved that and it is well explained.
 	
 
 	
