@@ -713,50 +713,106 @@
 		\end{eqnarray}
 		When we subtract eqn \refx{3_9} and \refx{3_10}, we have:
 		\begin{eqnarray*}
-			S_n - rS_n &=&(a+ar+ar^2+\cdots + ar^n) - (ar+ar^2+\cdots+ar^n+ar^{n+1})
+			S_n - rS_n &=&(a+ar+ar^2+\cdots + ar^n) - (ar+ar^2+\cdots+ar^n+ar^{n+1})\sps
+			S_n - rS_n &=& a + ar + ar^2 + \cdots + ar^n - ar - ar^2 - \cdots - ar^n - ar^{n+1}
+		\end{eqnarray*}
+		some terms cancel out, we have:
+		\begin{eqnarray*}
+			S_n - rS_n = a-ar^{n+1}
 		\end{eqnarray*}
 	\end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
+	\begin{definition}
+		An infinite geometric series has the same form as the finite geometric series except there is not last term
+		\begin{eqnarray*}
+			S = a + ar + ar^2 + \cdots = a\sum_{i=0}^{\infty}r^i
+		\end{eqnarray*}
+	\end{definition}
+	We called geometric series instead of infinite geometric series.
+	
+	\begin{theorem}
+		If |r|<1 then the infinite geometric series converges to 
+		\begin{eqnarray*}
+			S = a\sum_{i=0}^{\infty}r^i = \frac{1}{1-r}
+		\end{eqnarray*}
+		If |r| $\geq$ 1, then the series does not converge.
+	\end{theorem}
+	
+	\subsection{Connection to Cauchy's Integral formula}
+	Cauchy's Integral formula says
+	\begin{eqnarray*}
+		f(z) = \frac{1}{2\pi\imaginary}\int_c \frac{f(w)}{w-z}dw
+	\end{eqnarray*}
+	Inside the integral we have the express
+	\begin{eqnarray*}
+		\frac{1}{w-z}
+	\end{eqnarray*}
+	Which looks a lot like the sum of a geometric series. Now,
+	\begin{eqnarray*}
+		\frac{1}{w-z} = \frac{1}{w}\cdot \frac{1}{1-\frac{z}{w}} = \frac{1}{w}\left( 1 + \left(\frac{z}{w}\right)+ \left(\frac{z}{w}\right)^2 + \cdots \right)
+	\end{eqnarray*}
+	The geometric series in this equation has ratio $\dsp\frac{z}{w}$.\\
+	
+	\NI Hence, the series converges, hence, we can say that the formula is valid whenever $\dsp\left|\frac{z}{w}\right| < 1$ or $|z|< |w|$
+
+
+
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
 	\chapter{ANALYTICAL APPLICATIONS OF THE GAMMA FUNCTION}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	
