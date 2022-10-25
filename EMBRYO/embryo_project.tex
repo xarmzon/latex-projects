@@ -1,4 +1,4 @@
-\documentclass[11pt]{report}
+\documentclass[12pt]{report}
 \usepackage{amsmath}
 \usepackage{amssymb}
 %\usepackage{bbm}
@@ -673,14 +673,14 @@
 	\end{eqnarray*}
 	with $b_n$ as defined, we have
 	\begin{eqnarray*}
-		\frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{w-z}dw = b_1(z-z_0)^{-1} + \cdots + b_n(z-z_0)^{-n} + V_n
+		\frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{w-z}dw = b_1(z-z_0)^{-1} + \cdots + b_n(z-z_0)^{-n} + V_n\\
 	\end{eqnarray*}
-	with $V_n$ varnishing as $n\rightarrow\infty$.\\
+	with $V_n$ varnishing as $n\rightarrow\infty$.\sps
 	To show that, since $w$ is on $C_2$, we have
 	\begin{eqnarray*}
-		\left| \frac{w-z_0}{z - z_0} \right| = \beta < 1,\;\; |f(z)| < M\phi
+		\left| \frac{w-z_0}{z - z_0} \right| = \beta < 1,\;\; |f(z)| < M\phi\\
 	\end{eqnarray*}
-	where $M$ is a constant, $f(z)$ is bounded in $\real$ and 
+	where $M$ is a constant, $f(z)$ is bounded in $\real$ and \\
 	\begin{eqnarray*}
 		|z-w| &=& |(z-z_0) - (w-z_0) | \geq |z-z_0| - r_2\sps
 		\implies |V_n| &=&\frac{1}{2\pi}\left| \oint_{C_2}\left( \frac{w-z_0}{z-z_0} \right)^n \frac{f(w)}{z-w} dw \right| \leq \frac{1}{2\pi}\frac{\beta^n M}{|z-z_0|-r_2} 2\pi r_2 = \frac{\beta^n M}{|z-z_0|-r_2} \cdot r_2 

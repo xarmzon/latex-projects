@@ -1,0 +1,27 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+
+
+\begin{document}
+	
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\draw[thick, ->] (0,-0.5)--(0,5);
+			\draw[thick, ->] (-.5,0)--(5.3,0);
+			\node at (2.8,-.5){$x$};
+			\node at (-0.3, -0.3){0};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\draw[dashed] (0,4.5)--(4.3,4.5)--(4.3,4.5)--(4.3,0);
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\draw[dashed] (0,0)--(4.3,4.5);
+			\node at (1.5,2){$r$};
+			\node at (4.6,2){$y$};
+		\end{tikzpicture}\caption{Polar Form of a Complex Number}\label{fig:1_4_1}
+	\end{figure}
+
+\end{document}
