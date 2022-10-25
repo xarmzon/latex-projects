@@ -4,6 +4,7 @@
 %\usepackage{bbm}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{amsthm}
 
 \newcommand{\ubt}[1]{\textbf{\underline{#1}}}
 \newcommand{\sps}{\\[0.2cm]}
@@ -27,9 +28,10 @@
 %\newcommand{\definition}[1]{\Large{\NI\ubt{Defintion}~~\bt{#1:}}}
 \newcommand{\solution}{\subsubsection{\ubt{Solution}}}
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{definition}{Definition}[section]
-\newtheorem{corollary}{Corollary}[section]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+%\newtheorem*{proof}{Proof}
 
 
 %\newcommand{\real}{\mathbbm{R}}
@@ -37,6 +39,7 @@
 \renewcommand{\baselinestretch}{1.5}
 \renewcommand{\contentsname}{Table of Contents}
 %\renewcommand{\labelenumi}{\roman{enumi}.}
+
 
 
 %\setlength{\parindent}{1em}
@@ -556,25 +559,163 @@
 			f(\alpha) = \frac{1}{2\pi\imaginary}\oint_C\frac{f(z)}{z-\alpha}dz
 		\end{eqnarray}
 	\end{theorem}
+	The above is the general Cauchy integral formulae. The first i.e the case $n=0$, expresses the value of analytic function $f(z)$ at all points inside a simple closed curve $C$ in terms of its value on the curve $C$.
+	
+	\begin{theorem}[Laurent's theorem]
+		If $f(z)$ is analytic inside and on the boundary of a ring-shaped region $\real$ bounded by the two concentric circles $C_1$ and $C_2$ with centre at $'a'$ and radii $r_1$ and $r_2$ respectively with $r_1 > r_2$, therefore all $z\in\real$.\\
+		A Laurent Series about the point $z_0$ is a sum of two power series one consisting of positive powers of $z-z_0$ and the other of negative power.
+		\begin{eqnarray*}
+			f(z) = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}a_{-j}(z-z_0)^{-j}
+		\end{eqnarray*}
+		or
+		\begin{eqnarray*}
+			f(z) = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}b_j(z-z_0)^{-n}
+		\end{eqnarray*}
+		where,
+		\begin{eqnarray*}
+			a_j &=& \frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z_0)^{n+1}}dw\;\; n=0,1,2,\ldots\sps
+			b_j &=& \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{(w-z_0)^{1-j}}dw\;\; n=0,1,2,\ldots
+		\end{eqnarray*}
+	\end{theorem}
+	The Laurent Series are often abbreviated as 
+	\begin{eqnarray}
+		\sum_{-\infty}^{\infty} a_j(z-z_0)^j
+	\end{eqnarray}
+	but we should keep in mind that this is only an abbreviation. Conceptually a Laurent Series is the sum of two independent Power Series.\\
+	
+	\NI A Laurent Series is said to converges if each of the Power Series converges. The first series being a power series in $z-z_0$ converges inside some circle of convergence $|z-z_0|=\real$ for some $0\leq \real \leq \infty$.\\
+	The second series, however is a power series in $\dsp w = \frac{1}{z-z_0}$. Hence it converges inside a circle of convergence $|w|=\real\sprime$, that is for $|w|<\real\sprime$.
 
+	\subsection{Singularities and the Laurent Series}
+	Let $z_0$ be an isolated, singularity of $f:D\rightarrow\complex$ and suppose $f$ has Laurent series representation
+	\begin{eqnarray}
+		f(z) = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}\frac{b_j}{(z-z_0)^j} \text{ on } N_r^{\sprime}(z_0) \subset D
+	\end{eqnarray}
+	
+	\begin{enumerate}
+		\item If $b_j=0$ for all $j\geq $, then $f$ is said to have a removable singularity at $z_0$
+		\item If there exists $N\in\mathcal{N}$ such that $b_j=0$ for $j>N$ but $b_N\neq 0 $, then $f$ is said to have a pole of order $N$ at $z_0$. In the special case where $N=1$, the pole is often referred to as a simple pole.
+		\item Otherwise, $f$ is said to have an essential singularity at $z_0$. 
+	\end{enumerate}
+	
+	\NI Proof of Laurent Series
+	\\Recall,
+	\begin{eqnarray*}
+		f(z) = \sum_{n=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}b_j(z-z_0)^{-n}
+	\end{eqnarray*}
+	where
+	\begin{eqnarray*}
+		a_j &=& \frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z_0)^{n+1}}dw\;\; n=0,1,2,\ldots\sps
+		b_j &=& \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{(w-z_0)^{1-j}}dw\;\; n=0,1,2,\ldots
+	\end{eqnarray*}
+	Let $z$ be a point inside $\real$. Then by Cauchy Integral formula
+	\begin{eqnarray*}
+		f(z) = \frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z)}dw - \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{w-z}dw
+	\end{eqnarray*}
+	Consider the first integral, let $w$ be on $C_1$
+	\begin{eqnarray*}
+		\frac{1}{w-z} = \frac{1}{(w-z_0)-(z-z_0)} = \frac{1}{w-z_0}\left\{\frac{1}{1-\frac{(z-z_0)}{(w-z_0)}}\right\}
+	\end{eqnarray*}
+	which gives
+	\begin{eqnarray*}
+		\frac{1}{w-z} &=& \frac{1}{w-z_0}\left\{1+ \left[\frac{z-z_0}{w-z_0}\right] + \left[\frac{z-z_0}{w-z_0}\right]^2 + \cdots + \left[\frac{z-z_0}{w-z_0}\right]^{n-1} +\right. \sps
+		 && \left. \left(\frac{z-z_0}{w-z_0}\right)^n\left[ 1 + \left(\frac{z-z_0}{w-z_0}\right) + \left(\frac{z-z_0}{w-z_0}\right)^2 \right] + \cdots  \right\}
+	\end{eqnarray*}
+	And then
+	\begin{eqnarray*}
+		\frac{1}{w-z} = \frac{1}{w-z_0} + \frac{z-z_0}{(w-z_0)^2} + \frac{(z-z_0)^2}{(w-z_0)^3} + \cdots + \frac{(z-z_0)^{n-1}}{(w-z_0)^n} + \left(\frac{z-z_0}{w-z_0}\right)^n\frac{1}{w-z}
+	\end{eqnarray*}
+	Multiply through by $\dsp \frac{f(w)}{2\pi\imaginary}$ and integrating term by term we have
+	\begin{eqnarray*}
+		\frac{1}{2\pi \imaginary}\oint_{C_1}\frac{f(w)}{w-z}dz &=& \frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{w-z_0} dw + \frac{z-z_0}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z_0)^2}+ \cdots \sps
+		&+&\frac{(z-z_0)^{n-1}}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z_0)^n}dw + U_n
+	\end{eqnarray*}
+	where 
+	\begin{eqnarray*}
+		U_n = \frac{1}{2\pi\imaginary}\oint_{C_1}\left(\frac{z-z_0}{z-z_0}\right)^n \frac{f(w)}{w-z}dw
+	\end{eqnarray*}
+	with $a_n$ as defined we have 
+	\begin{eqnarray*}
+		\frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{w-z}dw = a_0 + a_1(z-z_0) + \cdots + a_n(z-z_0)^n + U_n
+	\end{eqnarray*}
+	with $U_n$ varnishing as $n\rightarrow\infty$.\\
+	
+	\NI To show that $U_n$ varnishes as $n\rightarrow\infty$, we not that since $w$ is on $C_1$, we have 
+	\begin{eqnarray*}
+		\left|\frac{(z-a)}{(w-a)}\right| = \gamma < 1,\;\; |f(z)| < M
+	\end{eqnarray*}
+	Where $M$ is a constant since $f(z)$ is bounded in $\real$ and
+	\begin{eqnarray*}
+		|w-z| = |(w-z_0) - (z-z_0)| \geq r_1 - |z-z_0|
+	\end{eqnarray*}
+	Therefore
+	\begin{eqnarray*}
+		|U_n| = \frac{1}{2\pi\imaginary}\left|\oint_{C_1}\left(\frac{z-z_0}{w-z_0}\right)^n \frac{f(w)}{w-z}dw \right|\;\; \leq \frac{1}{2\pi\imaginary}\;\;\frac{\gamma^nM}{r_1-|z-a|}2\pi r_1 = \frac{\gamma^n M}{r_1-|z-a|}r_1
+	\end{eqnarray*}
+	$\Rightarrow U_n$ vanishes when $n\rightarrow\infty$. With this, we have the complete proof of the first part of the Laurent Series.\\
+	
+	\NI Let us consider the part 2 integral. Let $w$ be on $C_2$
+	\begin{eqnarray*}
+		-\frac{1}{w-z} &=& \frac{1}{\left(z-z_0\right)\left[1-\frac{w-z_0}{z-z_0}\right] } = \frac{1}{z-z_0}\left\{\frac{1}{1-\left(\frac{w-z_0}{z-z_0}\right)}\right\}\sps
+		\implies -\frac{1}{w-z}&=& \frac{1}{z-a}+ \frac{w-z_0}{(z-z_0)^2} + \cdots + \frac{(w-z_0)^{n-1}}{(z-z_0)^n}+\left( \frac{w-z_0}{z-z_0} \right)^n\frac{1}{z-w}
+	\end{eqnarray*}
+	We multiply through by $\dsp \frac{f(w)}{2\pi\imaginary}$ and the integrate
+	\begin{eqnarray*}
+		-\frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{w-z}dw &=& \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{z-z_0}dw + \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{w-z_0}{(z-z_0)^2}f(w)dw\sps
+		&+&\frac{1}{2\pi\imaginary}\oint_{C_2}\frac{(w-z_0)^{n-1}}{(z-z_0)^n}f(w)dw + V_n
+	\end{eqnarray*}
+	where,
+	\begin{eqnarray*}
+		V_n = \frac{1}{2\pi\imaginary}\oint_{C_2}\left( \frac{w-z_0}{z-z_0} \right)^n \frac{f(w)}{z-w}dw
+	\end{eqnarray*}
+	with $b_n$ as defined, we have
+	\begin{eqnarray*}
+		\frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{w-z}dw = b_1(z-z_0)^{-1} + \cdots + b_n(z-z_0)^{-n} + V_n
+	\end{eqnarray*}
+	with $V_n$ varnishing as $n\rightarrow\infty$.\\
+	To show that, since $w$ is on $C_2$, we have
+	\begin{eqnarray*}
+		\left| \frac{w-z_0}{z - z_0} \right| = \beta < 1,\;\; |f(z)| < M\phi
+	\end{eqnarray*}
+	where $M$ is a constant, $f(z)$ is bounded in $\real$ and 
+	\begin{eqnarray*}
+		|z-w| &=& |(z-z_0) - (w-z_0) | \geq |z-z_0| - r_2\sps
+		\implies |V_n| &=&\frac{1}{2\pi}\left| \oint_{C_2}\left( \frac{w-z_0}{z-z_0} \right)^n \frac{f(w)}{z-w} dw \right| \leq \frac{1}{2\pi}\frac{\beta^n M}{|z-z_0|-r_2} 2\pi r_2 = \frac{\beta^n M}{|z-z_0|-r_2} \cdot r_2 
+	\end{eqnarray*}
+	$\implies V_n$ varnishes as $n\rightarrow\infty$.\\
+	This shows the complete proof of the second part.\\
+	
+	\NI The first part of the series $a_0 + a_1(z-z_0) + \cdots + a_n(z-z_0)^{-n}$ is called the analytic part while the second part $b_1(z-z_0)^{-1} + \cdots + b_n(z-z_0)^{-n}$ is called the principal part. If the principal part is zero, the series therefore is called the Taylor Series of analytic functions.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	\section{Geometric Series}
+	We having a detailed understanding of geometric series will enable us to use Cauchy formula to understand power series expansion of analytic functions. We start with the definition.
+	\begin{definition}
+		A finite geometric series has one of the following forms
+		\begin{eqnarray*}
+			S_n &=& a(1+r+r^2+r^3+\cdots + r^n)\sps
+			&=& a+ ar + ar^2 + ar^3 + \cdot + ar^n\sps
+			&=& \sum_{i=0}^{n}ar^i\sps
+			&=& a\sum_{i=0}^{n}r^i
+		\end{eqnarray*}
+	\end{definition}
+	The letter $``r"$ is called the ratio of the geometric series because it is the ratio of conservative terms of the series.
+	
+	\begin{theorem}
+		The sum of a finite geometric series is given by 
+		\begin{eqnarray*}
+			S_n = a(1+r+r^2+r^3+\cdots + r^n)= \frac{a(1-r)^{n+1}}{1-r}
+		\end{eqnarray*}
+	\end{theorem}
+	\begin{proof}
+		\begin{eqnarray}
+			S_n &=& a+ar + ar^2 + \cdots + ar^n\sps \label{eq:3_9}
+			rS_n &=& ar + ar^2 + \cdots + ar^n + ar^{n+1}\label{eq:3_10}
+		\end{eqnarray}
+		When we subtract eqn \refx{3_9} and \refx{3_10}, we have:
+		\begin{eqnarray*}
+			S_n - rS_n &=&(a+ar+ar^2+\cdots + ar^n) - (ar+ar^2+\cdots+ar^n+ar^{n+1})
+		\end{eqnarray*}
+	\end{proof}
 
 
 
