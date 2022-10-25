@@ -11,6 +11,7 @@
 \newcommand{\spn}[1]{\\[#1cm]}
 \newcommand{\refn}[1]{(\ref{#1})}
 \newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\refxq}[1]{\refn{eqp:#1}}
 \newcommand{\bt}[1]{\textbf{#1}}
 \newcommand{\zbar}{\overline{z}}
 \newcommand{\sprime}{'}
@@ -25,8 +26,10 @@
 \newcommand{\Laplace}{\mathcal{L}}
 \newcommand{\sbracket}[1]{\left[#1\right]}
 \newcommand{\example}[1]{\section*{\ubt{Example #1}}}
-%\newcommand{\definition}[1]{\Large{\NI\ubt{Defintion}~~\bt{#1:}}}
+\newcommand{\problem}[1]{\section*{\ubt{Problem #1}}}
 \newcommand{\solution}{\subsubsection{\ubt{Solution}}}
+\newcommand{\working}{\subsubsection{\ubt{Working}}}
+
 
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{definition}{Definition}[chapter]
@@ -140,7 +143,7 @@
 	\pagenumbering{arabic}
 	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
 	\chapter{INTRODUCTION TO COMPLEX NUMBERS}
-		
+	\label{chap:1}
 	\section{The History of Complex Numbers}
 	In mathematics, a real number is a value of a continuous quantity that con represent a distance along a line. Real numbers comprises all rational numbers, such as integer, fraction and all irrational numbers. the numbers 1, 2, 3, 4, 5,$\ldots$ are numbers we can easily understand and can see it in every part of the universe, and we can visualize. For example, three apples or six mangoes make complete sense but you can never visualize what $-2$ is. A lot of people in the world had a hard time accepting zero or negative numbers, the reason is because they would not make any sense. However, at a certain period of time, people encounter some problems where they could not ignore negative numbers anymore. Because of these situation, it caused them to extent the number line adding digits before zero (0). There are some problem we try to solve and our main conclusion at the end is that there is no solution due to the negative number that we got, e.g When working with the quadratic formula, when square root is having negative number back the, our conclusion is no solution. Imagery numbers have been shaped to make solving these problems easier and smoother. Despite the fact that we might still hit dead-end, but in order to reach to an answer for our problems and any other types of equation, it is needed to complete our number system even more. Imaginary numbers have an interesting history on how they have been shaped, how they are solved and how they contributed to form \ubt{Complex numbers} by the help of Greek mathematician Heron of Alexandria, who lived between 100BC and 100AD(Roy, 2007). Complex numbers were first introduced by G. Cardano (1501-1576) in his Ars Magna(The Great Art) as a tool for finding real roots of a cubic equation:
 	\begin{equation}
@@ -759,37 +762,186 @@
 
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
-	\chapter{ANALYTICAL APPLICATIONS OF THE GAMMA FUNCTION}
+	\chapter{LAURENT SERIES EXPANSION APPLICATION}
+	\problem{1}
+	Find the Laurent Series of 
+	\begin{eqnarray*}
+		f(z) = \frac{e^{2z}}{(z-1)^3}
+	\end{eqnarray*}
+	about $z=0$
+	\working
+	Let $U=z-1$ then $z=U+1$\\
+	Therefore, we have:
+	\begin{eqnarray*}
+		\frac{e^{2z}}{(z-1)^3} = \frac{e^{2(U+1)}}{(U+1-1)^3} = \frac{e^{2U+2}}{U^3} = \frac{e^2}{U^3} \cdot e^{2U}
+	\end{eqnarray*}
+	Recall, the standard series in Chapter 3:
+	\begin{eqnarray*}
+		e^{\imaginary z} = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \frac{z^4}{4!} + \cdots
+	\end{eqnarray*}
+	Now, 
+	\begin{eqnarray*}
+		e^{2U} &=& 1 + 2U + \frac{(2U)^2}{2!} + \frac{(2U)^3}{3!}+ \frac{(2U)^4}{4!} + \cdots\sps
+		%%%%%%%
+		\implies \frac{e^2}{U^3}e^{2U} &=&\frac{e^2}{U^3}\left\{ 1 + 2U + + \frac{(2U)^2}{2!}+ \frac{(2U)^3}{3!}+ \frac{(2U)^4}{4!} + \cdots \right\}
+	\end{eqnarray*}
+	Expand the bracket:
+	\begin{eqnarray*}
+		= \frac{e^2}{U^3} + \frac{2e^2}{U^2} + \frac{2e^2}{U}+ \frac{4e^2}{3}+ \frac{2e^2}{3}U + \cdots 
+	\end{eqnarray*}
+	Recall, $U=z-1$
+	\begin{eqnarray*}
+		\implies \frac{e^2}{(z-1)^3} + \frac{2e^2}{(z-1)^2} + \frac{2e^2}{(z-1)} + \frac{4e^2}{3} + \frac{2e^2}{3}(z-1) + \cdots
+	\end{eqnarray*}
+	Hence, the Laurent Series of the given $f(z)$ is:
+	\begin{eqnarray*}
+		f(z) = \frac{e^{2z}}{(z-1)^3} = \frac{e^2}{(z-1)^3} + \frac{2e^2}{(z-1)^2} + \frac{2e^2}{(z-1)} + \frac{4e^2}{3} + \frac{2e^2}{3}(z-1)+\cdots 
+	\end{eqnarray*}
 	
 	
+	\problem{2}
+	Find the Laurent series of
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z^2(z-3)^2}
+	\end{eqnarray*}
+	about the origin
+	\working
+	Given
+	\begin{equation}
+		f(z) = \frac{1}{z^2(z-3)^2} \tag{1}\label{eqp:2_1}
+	\end{equation}
+	We can simplify $f(z)$ as follows:
+	\begin{equation}
+		\frac{1}{z^2(z-3)^2} = \frac{1}{z^2(3-z)^2} = \frac{1}{9z^2\left(1-\frac{z}{3}\right)^2} \tag{2}\label{eqp:2_2}
+	\end{equation}
+	Recall, the standard Series in Chapter 3:
+	\begin{equation}
+			(1+z)^p = 1+ pz + \frac{p(p-1)}{2!}z^2 + \frac{p(p-1)(p-2)}{3!}z^3 + \cdots \tag{3}\label{eqp:2_3}
+	\end{equation}
+	Now, we consider 
+	\begin{equation}
+		\frac{1}{\left(1-\frac{z}{3}\right)^2} \tag{4}\label{eqp:2_4}
+	\end{equation}
+	by finding the series, all we need to do is to related eqn \refxq{2_4} with \refxq{2_3}
+	\begin{eqnarray*}
+		\frac{1}{\left(1-\frac{z}{3}\right)^2} = \left(1-\frac{z}{3}\right)^{-2}
+	\end{eqnarray*} 
+	In which $p=-2$
+	\begin{eqnarray*}
+		\implies \left(1-\frac{z}{3}\right)^{-2} &=& 1 + (-2) \left(\frac{-z}{3}\right) + \frac{-2(-3)}{2!}\left(\frac{-z}{3}\right)^2 + \frac{-2(-3)(-4)}{3!}\left(\frac{-z}{3}\right)^3\sps
+		&+& \frac{-2(-3)(-4)(-5)}{4!}\left(\frac{-z}{3}\right)^4
+	\end{eqnarray*}
+	Now,
+	\begin{gather*}
+		\frac{1}{9z^2}\left\{ 1+ (-2)\left(\frac{-z}{3}\right) + \frac{-2(-3)}{2!}\left(\frac{-z}{3}\right)^2 + \frac{-2(-3)(-4)}{3!}\left(\frac{-z}{3}\right)^3 \right.\sps
+		+ \left. \frac{-2(-3)(-4)(-5)}{4!}\left(\frac{-z}{3}\right)^4 \right\}
+	\end{gather*}
+	\begin{eqnarray*}
+		\implies \frac{1}{9z^2}\left\{ 1 + \frac{2z}{3} + \frac{z^2}{3}+ \frac{4z^3}{27}+ \frac{5z^4}{81}+\cdots \right\}
+	\end{eqnarray*}
+	Expanding the bracket, we obtain:
+	\begin{eqnarray*}
+		\implies \frac{1}{9z^2} + \frac{2}{27z} + \frac{1}{27} + \frac{4z}{243} + \frac{5z^2}{729} + \cdots
+	\end{eqnarray*}
+	Which is the Laurent Series of
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z^2(z-3)^2}
+	\end{eqnarray*}
 	
 	
+	\problem{3}
+	Let us find the Laurent Series of
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z(z-2)(z-5)}
+	\end{eqnarray*}
+	valid in the region $2 < |5|<5$ around $z=0$
 	
+	\working
+	\ubt{Step 1}: We Start with partial fraction decomposition
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z(z-2)(z-5)} = \frac{A}{z}+ \frac{B}{z-2} + \frac{C}{z-5}
+	\end{eqnarray*}
+	We need the L.C.M of the denominator which is $z(z-2)(z-5)$
+	\begin{eqnarray*}
+		\frac{1}{z(z-2)(z-5)}  &=& \frac{A(z-2)(z-5)+B(z)(z-5)+C(z)(z-2)}{z(z-2)(z-5)}\sps
+		1 &\equiv& A(z-2)(z-5)+Bz(z-5)+Cz(z-2)\sps
+		1 &\equiv& A(z^2-7z-10) + B(z^2-5z) + C(z^2-2z)
+	\end{eqnarray*}
+	\begin{gather*}
+		A+B+C= 0\hspace{3cm} -7A + B - 5B - 2C = 0\sps
+		10A = 1 \implies A = \frac{1}{10}
+	\end{gather*}
+	From the above equations, we obtain the following coefficients:
+	\begin{eqnarray*}
+		A = \frac{1}{10}\; ; \; B =-\frac{1}{6}\; ; \; C =\frac{1}{15}
+	\end{eqnarray*}
+	We will represent the partial fraction components of $f(z)$ as:
+	\begin{eqnarray*}
+		f_1(z) = \frac{1}{10z}, f_2(z) = -\frac{1}{6(z-2)}, f_3(z) = \frac{1}{15(z-5)}
+	\end{eqnarray*}
 	
+	\NI\ubt{Step 2:} Determining the geometric series to each corresponding partial fraction.\\
 	
+	\NI We consider the region $2<|z|<5$. In order to use our geometric series, we must represent the function in the region in terms of $z$ or $\dsp\frac{1}{z}$ based on the fact that
+	\begin{eqnarray*}
+		2 < |z| \implies \left|\frac{2}{z}\right| < 1 and |z| < 5 \implies\left|\frac{z}{5}\right| < 1
+	\end{eqnarray*}
+	The Laurent Series representation is formed by looking for $\dsp\frac{2}{z}$ for $f_2(z)$ and $\dsp\frac{z}{5}$ for $f_3(z)$
+	\begin{eqnarray*}
+		f_2(z) = \frac{-1}{6(z-2)} = \frac{-1}{6z}\left(\frac{1}{1-\frac{2}{z}}\right) = -\frac{1}{6z}\sum_{n=0}^{\infty}\frac{2^n}{z^n}=-\frac{1}{6}\sum_{n=0}^{\infty}\frac{z^n}{5^{n+1}}
+	\end{eqnarray*}
+	Note that $\dsp f_1(z)=\frac{1}{10z} = \frac{1}{10}\cdot \frac{1}{z}$ is the form of series representation.\\
 	
+	\NI\ubt{Step 3:} Build the Laurent expansion from the above geometric series
+	\begin{eqnarray*}
+		f(z) &=& \frac{1}{10}\cdot \frac{1}{z} - \frac{1}{6}\sum_{n=0}^{\infty}\frac{2^n}{z^{n+1}} - \frac{1}{15}\sum_{n=0}^{\infty}\frac{z^n}{5^{n+1}}\sps
+		%%%%%%%%%
+		\implies f(z) &=& - \sum_{n=0}^{\infty}\frac{z^n}{15\big(5^{n+1}\big)} + \frac{1}{10}\cdot\frac{1}{z} - \sum_{n=0}^{\infty}\frac{2^n}{6\big(z^{n+1}\big)}\sps
+		\implies f(z) &=& -\sum_{n=0}^{\infty}\frac{z^n}{15\big(5^{n+1}\big)} - \frac{1}{15}\cdot\frac{1}{z} - \sum_{n=2}^{\infty}\frac{2^{n-1}}{6}\cdot \frac{1}{z^n}
+	\end{eqnarray*}
 	
+	\NI\ubt{Step 4:} We need to find the generalized residue. We can only nee to collect the $\dsp\frac{b_1}{z}$ term.\\
+	Therefore, the generalized residue of $f(z)$ is $\dsp\frac{-1}{15}$ in the region $2<|z|<5$.
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
-
-
+	\problem{4}
+	Find the Laurent Series of 
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z^2(z-3)^2}
+	\end{eqnarray*}
+	about the point $z=3$.
+	\working
+	Let $U=z-3\implies z=U+3$,
+	\\Then we have:
+	\begin{eqnarray*}
+		1\frac{1}{z^2(z-3)^2} = \frac{1}{(U+3)^2(U+3-3)^2} = \frac{1}{(U+3)^2 (U)^2} = \frac{1}{U^2(U+3)^2}
+	\end{eqnarray*}
+	By manipulation,
+	\begin{eqnarray*}
+		\frac{1}{U^2(U+3)^2} = \frac{1}{9U^2\left(1+\frac{U}{3}\right)^2} = \frac{1}{9U^2}\cdot \left(1+\frac{U}{3}\right)^{-2}
+	\end{eqnarray*}
+	Using the standard series in Chapter 3:
+	\begin{eqnarray*}
+		(1+z)^p = 1+ pz + \frac{p(p-1)}{2!}z^2 + \frac{p(p-1)(p-2)}{3!}z^3 + \cdots
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		\left(1+\frac{U}{3}\right)^{-2} \implies p = - 2
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		\left(1+\frac{U}{3}\right)^{-2} &=& \left\{ 1 + \frac{-2}{3}U + \frac{-2(-3)}{2!}\left(\frac{U}{3}\right)^2 + \frac{-2(-3)(-4)}{3!}\left(\frac{U}{3}\right)^3\right. \sps
+		 &+&\left. \frac{-2(-3)(-4)(-5)}{4!}\left(\frac{U}{3}\right)^4 + \cdots \right\}
+	\end{eqnarray*}
+	Now,
+	\begin{eqnarray*}
+		\frac{1}{9U^2}\left(1+\frac{U}{3}\right)^{-2} &\implies& \frac{1}{9U^2}\left\{ 1 + \frac{-2}{3}U + \frac{-2(-3)}{2!}\left(\frac{U}{3}\right)^2 + \frac{-2(-3)(-4)}{3!}\left(\frac{U}{3}\right)^3\right. \sps
+		&+&\left. \frac{-2(-3)(-4)(-5)}{4!}\left(\frac{U}{3}\right)^4 + \cdots \right\}\sps
+		&\implies& \frac{1}{9U^2}\left\{1-\frac{2U}{3}+\frac{U^2}{3} - \frac{4U^3}{27} + \frac{5U^4}{81} - \cdots\right\}\sps
+		&\implies& \frac{1}{9U^2} - \frac{2}{27U} + \frac{1}{27} - \frac{4U}{243} + \frac{5U^2}{729} - \cdots
+	\end{eqnarray*}
+	Recall, $U = z-3$
+	\begin{eqnarray*}
+		\implies \frac{1}{9(z-3)^2} - \frac{2}{27(z-3)} + \frac{1}{27} - \frac{4(z-3)}{243} + \frac{5(z-3)^2}{729} - \cdots
+	\end{eqnarray*}
+	Which is the required Laurent Series expansion.
 
 
 
