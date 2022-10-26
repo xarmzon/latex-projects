@@ -52,9 +52,13 @@
 			\node at (-0.3,7){$y$};
 			\node at (-0.3, -0.3){0};
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			
+			\draw[thick] (1,5)--(6,5)--(6,2)--(1,2)--(1,5);
+			\node at (.6,1.8){$P(z)$};
+			\node at (7,5){$Q(z+\delta z)$};
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			
+			\draw[thick] (1,2) -- (6,5);
+			\draw[thick] (1,2) .. controls (3,3.5) and (2,3.8) .. (6,5);
+			\draw[thick] (1,2) .. controls (3,3) and (3,2) .. (6,5);
 		\end{tikzpicture}\caption{}\label{fig:_}
 	\end{figure}
 
