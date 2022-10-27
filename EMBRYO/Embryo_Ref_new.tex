@@ -1,0 +1,1014 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsthm}
+
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\refxq}[1]{\refn{eqp:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+\newcommand{\real}{ \mathbb{R}}
+\newcommand{\imaginary}{\imath}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\Laplace}{\mathcal{L}}
+\newcommand{\sbracket}[1]{\left[#1\right]}
+\newcommand{\example}[1]{\section*{\ubt{Example #1}}}
+\newcommand{\problem}[1]{\section*{\ubt{Problem #1}}}
+\newcommand{\solution}{\subsubsection{\ubt{Solution}}}
+\newcommand{\working}{\subsubsection{\ubt{Working}}}
+
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+%\newtheorem*{proof}{Proof}
+
+
+%\newcommand{\real}{\mathbbm{R}}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+%\renewcommand{\labelenumi}{\roman{enumi}.}
+
+
+
+%\setlength{\parindent}{1em}
+
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\Large \bt{LAURENT SERIES OF COMPLEX-VALUED FUNCTIONS AND APPLICATIONS}
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{ADEGOKE, AANUOLUWAPO ABIODUN
+			\\
+			17/30GD007}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ 
+	\begin{center}
+		\textbf{November, 2022}
+	\end{center}
+
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project was carried out by \textbf{ADEGOKE, Aanuoluwapo Abiodun} with Matriculation Number  17/30GD007 in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Prof. K. O. Babalola   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof.o \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner 
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	I want to give thanks and praises to Almighty God, most merciful for giving me the courage and determination to complete this research work. My gratitude to my supervisor Prof. K. O. Babalola for his assistance towards the completion of my project. May God bless you extensively beyond your dreams.\\
+	
+	\NI My appreciation goes to the Head of Department, Prof. K. Rauf and my level adviser Dr. K.A Bello and also to all my esteem Lecturers: Prof. J. A. Gbadeyan, Prof. T. O. Opoola, Prof. O. M. Bamigbola, Prof. O. A. Taiwo, Prof. M. O. Ibrahim, Prof. R. B. Adeniyi, Prof. S. O. Makanjuola, Prof. M. S. Dada, Prof. A. S. Idowu, Prof. E. O. Titiloye,  Prof. O. A. Fadipe-Joseph,  Dr. Yidiat O. Aderinto, Dr. Catherine N. Ejieji, Dr. B. M. Yisa, Dr J. U. Abubakar, Dr. Gata N. Bakare, Dr T. O. Olotu, Dr. B. M. Ahmed, Dr Idayat F. Usamot, Dr O. A. Uwaheren, O. Odetunde and all other members of staff of the department of mathematics, who contributed greatly to my academic excellence, obtained during my period of study in the department. May God bless them all.\\
+	
+	\NI My profound gratitude goes to my parents (Mr. Adegoke Thomas and Mrs. Adegoke Oyemomilara) and my siblings (Abiola, Babatunde, Oluwasegun, and Oluwatimileyin Adegoke) for your love and support all the time, am really grateful. To my lovely fiance (Kazeem Adegoke), I say a very big thank you for being a huge support, giving me words of encouragement never to give up during the cause of this research. God bless you. 
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	I would like to dedicate the project to God, for the grace and faithfulness of God thus far. For His mercies, guidance and protection throughout my years of study.
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	This project deals with 
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION TO COMPLEX NUMBERS}
+	\label{chap:1}
+	\section{The History of Complex Numbers}
+	In mathematics, a real number is a value of a continuous quantity that con represent a distance along a line. Real numbers comprises all rational numbers, such as integer, fraction and all irrational numbers. the numbers 1, 2, 3, 4, 5,$\ldots$ are numbers we can easily understand and can see it in every part of the universe, and we can visualize. For example, three apples or six mangoes make complete sense but you can never visualize what $-2$ is. A lot of people in the world had a hard time accepting zero or negative numbers, the reason is because they would not make any sense. However, at a certain period of time, people encounter some problems where they could not ignore negative numbers anymore. Because of these situation, it caused them to extent the number line adding digits before zero (0). There are some problem we try to solve and our main conclusion at the end is that there is no solution due to the negative number that we got, e.g When working with the quadratic formula, when square root is having negative number back the, our conclusion is no solution. Imagery numbers have been shaped to make solving these problems easier and smoother. Despite the fact that we might still hit dead-end, but in order to reach to an answer for our problems and any other types of equation, it is needed to complete our number system even more.(Martin Lavelle,2004 ). Imaginary numbers have an interesting history on how they have been shaped, how they are solved and how they contributed to form \ubt{Complex numbers} by the help of Greek mathematician Heron of Alexandria, who lived between 100BC and 100AD(Roy, 2007). Complex numbers were first introduced by (G. Cardano  1501-1576) in his Ars Magna(The Great Art) as a tool for finding real roots of a cubic equation:
+	\begin{equation}
+		x^3+ax+b=0\label{eq:1_1}
+	\end{equation}
+	His technique involved transforming this equation into what is called a depressed cubic. This is a cubic equation without the $x^2$ term, so that it can be written as:
+	\begin{equation}
+		x^3 +bx + c = 0\label{eq:1_2}
+	\end{equation}
+	However, he had serious misgiving about such expressions (e.g $2+\sqrt{-20}$), he referred to thinking about them as ``mental torture''.\\
+	
+	\NI Cardano was able to crack what had seemed to be impossible task of solving the general cubic equation. It turns out that his development finally great impetus toward the acceptable of imaginary numbers. Roots of negative numbers, of course, had come up earlier in the simplest of quadratic equations such as 
+	\begin{equation}
+		x^2 + 1 = 0\label{eq:1_3}
+	\end{equation}
+	The solutions to this problem \refx{1_3} is
+	\begin{equation}
+		x= \pm\sqrt{-1}\label{eq:1_4}
+	\end{equation}
+	However, were easy for mathematicians to ignore. In Cardano's time, negative numbers were still being treated with some suspicious, so all the more was the idea of taking square roots of them. Cardano made some attempts to deal with this notation, at one point said that quantities such as $\sqrt{-1}$ were as subtle as they are useless. Many mathematicians also had his view. But in (1572, Rafael Bombeli) showed that roots of negative numbers have great utility indeed. In his three books on Algebra, he introduced the symbol "$\imaginary$`` and established rules for calculating in $\complex$(symbol for complex number).\\
+	
+	\NI Rene Descartes (1596-1650) was a philosopher whose work, La Geometrie, includes his application of algebra to geometry from which we now have Cartesian geometry. Descartes was pressed by his friends to public his ideas. Descartes associated imaginary numbers with geometric impossibility. This can be seen from the geometric construction he used to solve the equation
+	\begin{equation}
+		z^2 = az-b^2\label{eq:1_5}
+	\end{equation}
+	with $a$ and $b^2$ both positive. Descartes coined th term imaginary.( B. Blank , 1999)\\
+	
+	\NI John Wallis (1616-1703) said in his algebra that negative numbers, so long viewed with suspicion by mathematicians, had a perfectly good physical explanation, based on a line with a zero mark, and positive numbers being at distance from the zero point to the right, where negative numbers are a distance to the left of zero. Also, he made some progress at giving a geometric interpretation to $\sqrt{-1}$.
+	
+	\NI As time goes by, Abraham de Moivre (1667-1754) left France to seek religious refuge in London at eighteen years of age. There he befriended Newton. In 1698 he mentions that Newton knew, as early as 1676 of the equivalent expression to what is known today as \bt{de Moivre's theorem}:
+	\begin{equation}
+		\Big(\cos(\theta) + \imaginary\sin(\theta)\Big)^n = \cos(n\theta) + \imaginary\sin(n\theta)\label{eq:1_6}
+	\end{equation}
+	where $n$ is an integer. Apparently Newton used this formula to compute the cubic roots that appears in Cardan formulas, in the irreducible case. De Moivre knew and used the formula that bears his name, as it is clear from his writings although he didn't write out explicitly.\\
+	
+	\NI Another mathematician, (Euler,1707-1783) introduced the notation 
+	\begin{equation}
+		\imaginary = \sqrt{-1}\label{eq:1_7}
+	\end{equation}
+	 and he sees complex numbers as points with rectangular coordinates but didn't give satisfactory root of complex numbers. Euler used the formula
+	\begin{equation}
+		x+iy= r(\cos\theta + \imaginary\sin\theta)\label{eq:1_8}
+	\end{equation}
+	and show that the roots of 
+	\begin{equation}
+		z^n=1\label{eq:1_9}
+	\end{equation}
+	as vertices of a regular polygon. He defined the complex exponential and he was able to proved that 
+	\begin{equation}
+		e^{\imaginary\theta} = \cos\theta + \imaginary\sin\theta\label{eq:1_10}
+	\end{equation}
+	From $x+\imaginary y$, we can defined complex numbers as numbers that incorporate or comprises both the real and imaginary parts or elements, where $x$ and $y$ are real numbers. These numbers are usually represented on a 2-dimensional grid, where the real element is represented on the x-axis and the imaginary part is represented on the y-axis, hence a complex numbers can be presented by a point with coordinates $(x,y)$.
+	
+	\begin{figure}[!h]
+		\centering
+		\begin{tikzpicture}
+			\draw[thick, ->] (0,-1)--(0,4);
+			\node at (0,4.2){Im};
+			\draw[thick, ->] (-1,0)--(4,0);
+			\node at (4.2,0){$\real$};
+			\node at (-0.3, -0.3){0};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\draw[thick, dashed] (0,3)--(3,3)--(3,0);
+			\draw[thick,->] (0,0)--(2.95,2.95);
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\node at (-0.3, 3){$y$};
+			\node at (3,-0.3){$x$};
+			\node at (3.7,2.98){$x+\imaginary y$};
+		\end{tikzpicture}\caption{The geometrical representation of complex plane}\label{fig:1_1}
+	\end{figure}
+	Complex numbers have no real representation in the physical world, but yet they are extremely useful tools in performing calculations that have bearing in the real world. The most useful application for complex numbers is the fact they can be geometrically presented on a 2-dimensional plane and they have capability of incorporating two different values into a single vector that can be use to perform different computations.. (Berlinghoff, 2002)\\
+	
+	\NI In the field of physics, engineering, where in some cases a single number needs to represent multiple values, complex numbers show themselves to be useful because one can use a single calculation to deal with 2-dimensional problem.
+	
+	\section{Basic Operations with Complex Numbers}
+	\subsection{Complex Numbers Algebra}
+	A number such as $6+2\imaginary$ is called a complex number. It is the sum of two terms (each of which may be zero).\\
+	
+	\NI The Real term or is known as the real part and the coefficient of $\imaginary$ is the imaginary part. Therefore the real part of $6+2\imaginary$ is 6 and the imaginary part is 2.\\
+	
+	\NI Having introduced a complex number, the ways in which they can be combined i.e addition, multiplication, division etc. need to be defined. This is called or termed the \ubt{algebra} of complex numbers. As we progress, we will see that in general, $\imaginary^2 = -$ can be used where appropriate.
+	
+	\subsection{Additional and Subtraction of Complex Numbers}
+	\ubt{Addition} of complex numbers is defined by separately adding real and imaginary parts. The parentheses do not change the problem. Combine like terms (real with real and imaginary with imaginary) by combining coefficients, so if
+	\begin{equation}
+		z=a+b\imaginary, p=c+d\imaginary\label{eq:1_11}
+	\end{equation}
+	then
+	\begin{equation}
+		z+p = (a+c) + (b+d)\imaginary\label{eq:1_12}
+	\end{equation}
+	Similarly for subtraction.
+	\example{}
+	Express $(7+6\imaginary) + (8-3\imaginary)$ in the form $x+y\imaginary$
+	\solution
+	Given\\
+	$(7+6\imaginary) + (8-3\imaginary) = 7+8+(6-3)\imaginary = 15+3\imaginary$\\
+	Similarly, if we have\\
+	$(7+6\imaginary) - (8-3\imaginary)\implies (7-8) - (6-3)\imaginary = -1-3\imaginary$
+	
+	\subsection{Multiplication}
+	When multiplying two complex numbers, you are just using the distributive property multiple times. Simplify the resulting expression and remember that $\imaginary^2 = -1$
+	\begin{eqnarray*}
+		(a+\imaginary b)(c+\imaginary d) &=& ac + a(\imaginary d)+(\imaginary d)c + (\imaginary b)(\imaginary d)\\
+		&=& ac + \imaginary ad + \imaginary bc - bd ~~~ (\imaginary^2 = -1)\\
+		&=& ac - bd + \imaginary(ad + bc)
+	\end{eqnarray*}
+	\example{}
+	\begin{eqnarray*}
+		(2+3\imaginary)(3+2\imaginary) &=& 2\times 3 + 2\times 2\imaginary + 3\imaginary\times 3 + 3\imaginary \times 2\imaginary\\
+		&=&6 + 4\imaginary + 9\imaginary - 6 ~~~ (\imaginary^2 = -1)\\
+		&=&13\imaginary
+	\end{eqnarray*}
+	
+	\subsection{Complex Conjugation}
+	For any complex number,
+	\begin{equation}
+		z=a+\imaginary b\label{eq:1_13}
+	\end{equation}
+	we define the complex conjugate to be
+	\begin{equation}
+		z^{*} = a-\imaginary b\label{eq:1_14}
+	\end{equation}
+	It is very useful since the following are real:
+	\begin{eqnarray*}
+		z+z^{*}&=&a+\imaginary b + (a-\imaginary b) = 2a\sps
+		zz^{*} &=&(a+\imaginary b)(a-\imaginary b) = a^2 + \imaginary ab - \imaginary ab - a^2 - (\imaginary b)^2\\
+		&=& a^2 + b^2
+	\end{eqnarray*}
+	The modulus of a complex number is defined as 
+	\begin{equation}
+		|z| = \sqrt{zz^{*}}
+	\end{equation}
+	Hence, complex conjugate of a complex number is obtained by change the sign of the imaginary part.
+	\example{}
+	If $z=3+2\imaginary$, $z^{*}$(conjugate)$=3-2\imaginary$
+	
+	\subsection{Division}
+	To divide complex numbers is to multiply top and bottom by the complex conjugate of the denominator.
+	\begin{eqnarray*}
+		\frac{z_1}{z_2} = \frac{z_1}{z_2}= \frac{z_1}{z_2} \times \frac{z^{*}_2}{z^{*}_2} = \frac{z_1z^{*}_2}{z_2z^{*}_2}
+	\end{eqnarray*}
+	\example{}
+	\begin{eqnarray*}
+		\frac{1}{\imaginary} &=&\frac{1}{\imaginary} \times \frac{-\imaginary}{-\imaginary}\sps
+		&=&\frac{-\imaginary}{\imaginary\times(-\imaginary)}\sps
+		&=& \frac{-\imaginary}{1}33
+		= -\imaginary		
+	\end{eqnarray*}
+	Similarly,
+	\begin{eqnarray*}
+		\frac{(2+3\imaginary)}{(1+2\imaginary)} &=& \frac{(2+3\imaginary)(1-2\imaginary)}{(1+2\imaginary)(1-2\imaginary)}\sps
+		&=&\frac{(2+3\imaginary)(1-2\imaginary)}{1+4}\sps
+		&=&\frac{1}{5}\Big(2+3\imaginary\Big)\Big(1-2\imaginary\Big)\sps
+		&=&\frac{1}{5}\Big(2-4\imaginary+3\imaginary+6\Big)
+		= \frac{1}{5}\Big(8-\imaginary\Big)
+	\end{eqnarray*}
+	
+	\section{Solving Equations}
+	Just as we have equations with real number, we can have equations with complex numbers, let us look at an example.\\
+	If $4+5\imaginary = z - (1-\imaginary)$\\
+	We have, 
+	\begin{eqnarray*}
+		z &=& x + \imaginary y\sps
+		4+5\imaginary &=& x - 1 + (y+1)\imaginary\sps
+	\end{eqnarray*}
+	Comparing both sides
+	Real parts $\implies 4 = x -1 \implies x = 5$\sps
+	Imaginary parts $\implies 5 = y+1 \implies y = 4$\\
+	Hence, $z = 5+4\imaginary$
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{INTRODUCTION TO ANALYTIC FUNCTIONS}
+	In this chapter, we shall introduce the main topic, namely the analytic functions. We shall, however, start by first introducing the complex differentiable functions.
+	
+	\section{Complex Differentiable Functions and Analytic Functions}
+	The definition of complex differentiability of a complex function is formally identical with the definition of real differentiability, and yet there is a fundamental difference between the two definitions, which will give the complex continuously differentiable functions much better properties than the real continuously differentiable function. Therefore, one should not be confused that the definition below is just the same as the definition of real differentiability.(Dr. Yisa 2018)
+	
+	\begin{definition}
+		Let $\Omega$ be an open and non-empty subset of $\complex$ and let $f:\Omega\rightarrow\complex$ be a complex function on $\Omega$. The function $f$ is complex differentiable at a point $z_0\in\Omega$, if the limit
+		\begin{equation}
+			\lim\limits_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0}\label{eq:2_1}
+		\end{equation} 
+		exist. If this is the case, we denote this limit by 
+		\begin{equation}
+			f\sprime(z_0), \text{ or } \frac{df}{dz}\big(z_0\big) \text{ or } \frac{df}{dz} \text{ or } f\sprime \label{eq:2_2}
+		\end{equation}
+		If $f$ is complex differentiable at $z_0$, then it follows the limit expression above that that $f(z)\rightarrow f(z_0)$ for $z\rightarrow z_0$ in $\Omega$. Thus $f$ is continuous at $z_0$.
+	\end{definition}
+	\NI That the complex differentiability is fairly strong property - stronger than real differentiability - follows from the facts that the limit expression above does not follow a specified direction as in the real case, whereby changing the notation to real $x$, either $x\rightarrow x_0$ from below or $x\rightarrow x_0$ from above, and no other possibility.
+	
+	\section{Limits and Continuous Functions}
+	\begin{definition}
+		If $f(z)$ is defined on a punctured disk around $z_0$ or neighbourhood of $z_0$, then we say that
+		\begin{equation}
+			\lim\limits_{z\rightarrow z_0} f(z) = w_0\label{eq:2_3}
+		\end{equation}
+		If $f(z)$ goes to $w_0$ no matter what direction $z$ approaches $z_0$ .i.e the limit must be independent of the manner which $z\rightarrow z_0$. .(Dr. Yisa 2018)\\
+	\end{definition}
+
+	\example{}
+	Many functions have obvious limits, e.g
+	\begin{eqnarray*}
+		\lim\limits_{z\rightarrow 2} z^2 = 4
+	\end{eqnarray*}
+	and
+	\begin{eqnarray*}
+		\lim\limits_{z\rightarrow 2} (z^2+2)/(z^3+) = \frac{6}{9}
+	\end{eqnarray*}
+	Here is an example of the limit that doesn't exist because different sequences give different limits.
+	\example{}
+	Show that
+	\begin{eqnarray*}
+		\lim\limits_{z\rightarrow 0}\frac{z}{\zbar} = \lim\limits_{z\rightarrow 0} \frac{x+\imaginary y}{x - \imaginary y} \text{ ~~~~~~~does not exist}
+	\end{eqnarray*}
+	\solution
+	On the real axis, we have $y=0$
+	\begin{eqnarray*}
+		\frac{z}{\zbar} = \frac{x}{x} = 1
+	\end{eqnarray*}
+	So the limit as $z-\rightarrow 0$ along the real axis is $1$. \\
+	By contrast, on the imaginary axis, we have $x=0$
+	\begin{eqnarray*}
+		\frac{z}{\zbar} = \frac{\imaginary y}{-\imaginary y} = -1
+	\end{eqnarray*}
+	So the limit as $z\rightarrow$ along the imaginary axis is $-1$. Since the two limits do not agree the limit as $z\rightarrow 0$ does not exist.
+	
+	\subsection{Properties of Limits}
+	We have the usual properties of limits, suppose
+	\begin{eqnarray}
+		\lim\limits_{z\rightarrow z_0} f(z) = w_1 \text{ and } \lim\limits_{z\rightarrow z_0} g(z) = w_2
+	\end{eqnarray}
+	then,
+	\begin{itemize}
+		\item $\lim\limits_{z\rightarrow z_0} f(z) + \lim\limits_{z\rightarrow z_0} g(z) = w_1 + w_2 $
+		\item $\lim\limits_{z\rightarrow z_0} f(z)g(z) = w_1 \cdot w_2$
+		\item If $w_2 \neq 0$ then $\lim\limits_{z\rightarrow z_0} f(z)/g(z) = w_1/w_2$
+	\end{itemize}
+	
+	\section{Continuous Functions}
+	A function f(z) is continuous if it doesn't have any sudden jumps. Let $f(z)$ be defined and single valued in a neighbourhood of $z=z_0$ as well at $z=z_0$ the function $f(z)$ is said to be continuous at $z=z_0$ if
+	\begin{eqnarray}
+		\lim\limits_{z\rightarrow z_0} f(z) = f(z_0)\label{eq:2_5}
+	\end{eqnarray}
+	The above definition implies that the following three conditions must be satisfied for a function $f(z)$ to be continuous at $z=z_0$
+	\begin{enumerate}
+		\item $\lim\limits_{z\rightarrow z_0} f(z)$ must exist
+		\item $f(z_0)$ must also exist
+		\item $L = f(z_0)$
+	\end{enumerate}
+	
+	\subsection{Properties of Continuous Function}
+	Since continuity is defined in terms of limits, we have the following properties of continuous functions. Suppose $f(z)$ and $g(z)$ are continuous on a region $A$. Then,
+	\begin{enumerate}
+		\item $f(z)+g(z)$ is continuous on $A$.
+		\item $f(z)g(z)$ is continuous on $A$.
+		\item $f(z)/g(z)$ is continuous on $A$ except at points where $g(z)=0$.
+		\item If $h$ is continuous on $f(A)$ then $h(f(z))$ is continuous on $A$.
+	\end{enumerate}
+
+	\section{Analytic Functions of a Complex Variable}
+	A function $f(z)$ is said to be analytic in a region $\real$ of the complex plane if $f(z)$ has a derivative at each point of $\real$ and if $f(z)$ is single valued. Also, we can defined a function $f(z)$ to be analytic at a point $z$ if $z$ is an interior point of some region where $f(z)$ is analytic. The basic of analytic function at a point implies that the function is analytic in some circle with center at this point. The terms \ubt{Regular} and holomophic are sometimes use for synonyms for analytic..(Dr. Yisa 2018)\\
+	
+	\NI A function $f(z)$ is said to be analytic at a point $z_0$ if there exists a neighbourhood $|z-z_0|< \delta$ at all points of which $f\sprime(z)$ exist.
+	
+	\example{}
+	Find the derivative of $w=f(z)$ where KKK is given $z^3-2z$ at the point where (a)$z=z_0$ (b)$z=-1$
+	\solution
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{(\alph{enumi})}
+		\item 	By the definition of analytic function, the derivative at $z=z_0$
+		\begin{eqnarray*}
+			f\sprime(z) &=&\lim\limits_{\Delta z\rightarrow 0} \frac{(f(z_0) + \Delta z) - f(z_0)}{\Delta z}\sps
+			&=&\lim\limits_{\Delta z\rightarrow 0}\frac{(z_0+\Delta z)^3 - 2(z_0+\Delta z)-(z_0^3-2z_0)}{\Delta z}\sps
+			&=& \lim\limits_{\Delta z\rightarrow 0} \frac{z^3+3(z_0)^2\Delta z + 3(z_0)(\Delta z)^2 + (\Delta z)^3 -2\Delta z - z_0^3}{\Delta z}\sps
+			&=&\lim\limits_{\Delta z\rightarrow 0}\frac{3z^2 + 3z_0(\Delta z)^2 + (\Delta z)^3 - 2\Delta z}{\Delta z}\sps
+			f\sprime(z_0) = 3z_0^2 - 2
+		\end{eqnarray*}
+		In general $f\sprime(z_0)= 3z^2_0 -2$ for all $z$
+		\item From (a), we find that if $z_0=-1$, then
+		\begin{eqnarray*}
+			f\sprime(-1) = 3(-1)^2 - 2 = 3-2 = 1
+		\end{eqnarray*}
+	\end{enumerate}
+	\begin{theorem}
+		If $f(z)$ is analytic at a point $z$, then the derivative $f\sprime(z)$ is continuous at $z$.
+	\end{theorem}
+	\begin{corollary}
+		If $f(z)$ is analytic at a point $z$, then $f(z)$ has continuous derivative of all order at the point $z$.
+	\end{corollary}
+	
+	\section{Conditions for a Complex Functions to be Analytic}
+	\subsection{A necessary condition for a complex function to be analytic}
+	Let 
+	\begin{eqnarray}
+		f(x,y) = U(x,y) + \imaginary V(x,y)
+	\end{eqnarray}
+	be a complex function. Since
+	\begin{eqnarray}
+		x&=&\frac{(z+\zbar)}{2}\\
+		&\text{and}\notag\\
+		y&=&\frac{(z-\zbar)}{2}
+	\end{eqnarray}
+	Substituting for $x$ and $y$, we obtain,
+	\begin{eqnarray}
+		f(z,\zbar) = U(x,y) + \imaginary V(x,y)
+	\end{eqnarray}
+	A necessary condition for $f(z,\zbar)$ to be analytic is
+	\begin{eqnarray}
+		\frac{\partial f}{\partial z} = 0\label{eq:2_10}
+	\end{eqnarray}
+	Therefore, a necessary condition for $f=U+\imaginary V$ to be analytic is that $f$ depends only on $z$. In terms of the real and imaginary parts. $U,V$ of $f$, condition \refx{2_10} is equivalent to 
+	\begin{eqnarray}
+		\frac{\partial U}{\partial x} = \frac{\partial V}{\partial y}\label{eq:2_11}\sps
+		\frac{\partial U}{\partial y} = -\frac{\partial V}{\partial x}\label{eq:2_12}
+	\end{eqnarray}
+	Equations \refx{2_11} and \refx{2_12} are known as the Cauchy-Riemann Equations. They are necessary condition for $f=U+\imaginary V$ to be analytic.The functions $U(x,y)$ and $V(x,y)$ are sometimes called conjugate function.
+	
+	\subsection{A necessary and sufficient conditions for a Complex Function to be Analytic}
+	The necessary and sufficient conditions for a function $f=U+\imaginary V$ to be analytic are that
+	\begin{enumerate}
+		\item The four partial derivatives of its real and imaginary parts $\dsp\frac{\partial U}{\partial x},\frac{\partial V}{\partial y}, \frac{\partial U}{\partial y}, \frac{\partial V}{\partial x}$ satisfy the Cauchy-Riemann equations \refx{2_11} and \refx{2_12}.
+		%%%%%%%%%%%%%%%%%%%%%
+		\item The four partial derivatives of its real and imaginary parts $\dsp\frac{\partial U}{\partial x},\frac{\partial V}{\partial y}, \frac{\partial U}{\partial y}, \frac{\partial V}{\partial x}$ are continuous. Since the partial derivatives in \refx{2_11} and \refx{2_12} are continuous in $\real$, then the Cauchy-Riemann equation are sufficient condition that $f(z)$ be analytic in $\real$.
+	\end{enumerate}
+	
+	\begin{theorem}
+		If $f(z)$ is analytic, then
+		\begin{eqnarray}
+			\frac{\partial^2 U}{\partial x^2} + \frac{\partial^2 U}{\partial y^2} = 0\label{eq:2_13}\sps
+			%%%%%%%%%%%%%%%
+			\frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} = 0\label{eq:2_14}
+		\end{eqnarray}
+	\end{theorem}
+	If the real and imaginary parts of an analytic function are harmonic conjugate functions i.e solutions to Laplace equation and satisfy the Cauchy-Riemann equations. As we have seen, if the second partial derivatives of $U$ and $V$ with respect to $x$ and $y$ exists and continuous in a region $\real$.
+	
+	\section{Singularities of Analytic Functions}
+	Points at which a function $f(z)$ is not analytic are called singular points or singularities of $f(z)$. There are two different types of singular points.
+	
+	\subsection{Isolated Singular Points}
+	If $f(z)$ is analytic everywhere throughout some neighbourhood of a point $z=a$, say inside a circle $\complex:|z-a|=\real$ except at the point $z=a$, itself, then $z=a$ is called an isolated singular point of $f(z)$. $f(z)$ cannot be bounded near an isolated singular point.
+	
+	\subsubsection{Poles}
+	If $f(z)$ has an isolated singular point at $z=a$ i.e $f(z)$ is not finite at $z=a$ and if in addition there exists an integer $n$ such that the product
+	\begin{eqnarray}
+		(z-a)^n f(z)
+	\end{eqnarray}
+	is analytic at $z=a$, then $f(z)$ has a pole of order $n$ at $z=a$, if $n$ is the smallest such integer. Note that because $(z-a)^nf(z)$ is analytic at $z=a$, such a singularity is called a removable singularity.  (Prof. Babalola ,2021)
+	\example{}
+	$\dsp f(z)= \frac{1}{(1-z)^2}$ it has a pole of 2 at $z=0$.
+	
+	\subsection{Essential Singularities}
+	A singular point $z_0$ of $f(z)$ is called essential if it is not classifiable as any pole, removable or branch point. E.g $f(z)\sin\left(\frac{1}{2}\right)$ has an essential singularity at $z=0$.(Prof. Babalola ,2021)
+	
+	\subsection{Branch Points}
+	When $f(z)$ is multivalued function, any point which cannot be an interior point of the region of definition of a single-valued branch of $f(z)$ is a singular branch point.
+	\example{}
+	$\dsp f(z)=\sqrt{z-a}$ has a branch point at $z=a$
+
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{LAURENT SERIES OF COMPLEX-VALUED FUNCTIONS}
+	In this chapter, we are considering the Laurent Series as a method of solving complex-valued functions. Before we discuss or talk about Laurent Series, we need to look at Taylor and Power Series.
+	
+	\section{Taylor Series}
+	The Taylor Series of a function is the result of successive approximation of the function by polynomials. Suppose that $f(z)$ is analytic in a neighbourhood of $z_0$. Then $f$ is infinitely differentiable around $z_0$. Let us consider a polynomial function $f_n$ such that it agrees with $f$ at $z_0$ up to an including its $n$-th derivative. In other words, $f_n^{(j)}\Big(z_0\Big)=f^{(j)}\Big(z_0\Big)$ for $j=0,1,\ldots,n$. The polynomial function of least order which satisfies this condition is:
+	\begin{eqnarray}
+		f_n(z) = f(z_0) + f\sprime(z_0)(z-z_0)+\frac{f\dprime(z_0)}{2}(z-z_0)^2 + \cdots + \frac{f^{(n)(z_0)}}{n!}(z-z_0)^n
+	\end{eqnarray}
+	The sequence $\left\{f_n\right\}$, if it converges does so to the Taylor series around $z_0$ of the function f:
+	\begin{eqnarray}
+		\sum_{j=0}^{\infty}\frac{f^{(j)(z_0)}}{j!}\Big(z-z_0\Big)^j
+	\end{eqnarray}
+	If $z_0=0$ this series is also called the Maclaurin Series of $f$.
+	
+	\subsection{Basic Properties of Taylor Series}
+	Taking the derivatives of the Taylor Series for $\log z$ about $z_0=1$ term by term, we find the series
+	\begin{eqnarray}
+		\sum_{j=1}^{\infty}(-1)^{j+1}(z-1)^{j-1} = \sum_{j=1}^{\infty}(-1)^j(z-1)^j = \sum_{j=0}^{\infty}(1-z)^j
+	\end{eqnarray} 
+	This is a geometric series which for $|z-1|< 1$ converges to
+	\begin{eqnarray}
+		\frac{1}{1-(1-z)} = \frac{1}{z}
+	\end{eqnarray}
+	which is precisely the derivative of $\log z$.
+	
+	\subsection{Standard Series}
+	Let us recall some standard series which will be useful while working on Laurent Series of Complex Valued functions. All these series can be obtained from the Taylor Series at $z_0 = 0$
+	\begin{enumerate}
+		\item $\dsp \frac{1}{1-z}=1+z+z^2 + z^3 + z^4 + \cdots$
+		\item $\dsp e^{\imaginary z} = 1+\imaginary z + \frac{z^2}{2!} + \frac{z^3}{3!} + \frac{z^4}{4!} + \cdots$
+		\item $\dsp \sin z = z - \frac{z^3}{3!} + \frac{z^5}{5!} - \frac{z^7}{7!} + \cdots$
+		\item $\dsp \cos z = 1 - \frac{z^2}{2!} + \frac{z^4}{4!} - \frac{z^6}{6!}+\cdots$
+		\item $\dsp (1+z)^p = 1+ pz + \frac{p(p-1)}{2!}z^2 + \frac{p(p-1)(p-2)}{3!}z^3 + \cdots$
+	\end{enumerate}
+	
+	\section{Power Series}
+	Taylor Series are example of a more general type of series called Power Series. Basically, Power Series are always the Taylor Series of some analytic function. This shows series representations of analytic functions are in some sense unique, so that if we cook up by whatever means, a power series converging to a function in some disk, we known that this series will be its Taylor series of the function around the center of the disk.(Sobczyk, A. 2020)\\
+	
+	\NI By a power series around $z_0$ we mean series of the form
+	\begin{eqnarray}
+		\sum_{j=0}^{\infty}a_j(z-z_0)^j
+	\end{eqnarray}
+	and where $\left\{a_j\right\}$ are known as the coefficients of the power series. A Power Series is clearly determined by its coefficients and by the point $z_0$. Given a power series one can ask many questions. For which $z$ does it converges? Is the convergence uniform? will it converge to an analytic function? will the power series be a Taylor series?\\
+	From the power series
+	\begin{eqnarray*}
+			\sum_{j=0}^{\infty}a_j(z-z_0)^j
+	\end{eqnarray*}
+	One can associate a number $0 \leq \real \leq \infty$, called the Radius of Convergence, depending only on the coefficients  $\left\{a_j\right\}$ such that the series converges in the disk $|z-z_0|< \real$. Uniformly on any closed subdisk, and the series diverges in $|z-z_0|> \real$. (Sobczyk, A. 2020)
+	
+	\section{The Laurent Series}
+	We will begin with the well known Cauchy Integral
+	\begin{theorem}
+		If $f(z)$ is analytic include and on a a simple closed $C$ and $\alpha$ is any point inside $C$, then
+		\begin{eqnarray}
+			f(\alpha) = \frac{1}{2\pi\imaginary}\oint_C\frac{f(z)}{z-\alpha}dz
+		\end{eqnarray}
+	\end{theorem}
+	The above is the general Cauchy integral formulae. The first i.e the case $n=0$, expresses the value of analytic function $f(z)$ at all points inside a simple closed curve $C$ in terms of its value on the curve $C$.
+	
+	\begin{theorem}[Laurent's theorem]
+		If $f(z)$ is analytic inside and on the boundary of a ring-shaped region $\real$ bounded by the two concentric circles $C_1$ and $C_2$ with centre at $'a'$ and radii $r_1$ and $r_2$ respectively with $r_1 > r_2$, therefore all $z\in\real$.\\
+		A Laurent Series about the point $z_0$ is a sum of two power series one consisting of positive powers of $z-z_0$ and the other of negative power.(Prof. Babalola ,2021)
+		\begin{eqnarray*}
+			f(z) = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}a_{-j}(z-z_0)^{-j}
+		\end{eqnarray*}
+		or
+		\begin{eqnarray*}
+			f(z) = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}b_j(z-z_0)^{-n}
+		\end{eqnarray*}
+		where,
+		\begin{eqnarray*}
+			a_j &=& \frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z_0)^{n+1}}dw\;\; n=0,1,2,\ldots\sps
+			b_j &=& \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{(w-z_0)^{1-j}}dw\;\; n=0,1,2,\ldots
+		\end{eqnarray*}
+	\end{theorem}
+	The Laurent Series are often abbreviated as 
+	\begin{eqnarray}
+		\sum_{-\infty}^{\infty} a_j(z-z_0)^j
+	\end{eqnarray}
+	but we should keep in mind that this is only an abbreviation. Conceptually a Laurent Series is the sum of two independent Power Series.\\
+	
+	\NI A Laurent Series is said to converges if each of the Power Series converges. The first series being a power series in $z-z_0$ converges inside some circle of convergence $|z-z_0|=\real$ for some $0\leq \real \leq \infty$.\\
+	The second series, however is a power series in $\dsp w = \frac{1}{z-z_0}$. Hence it converges inside a circle of convergence $|w|=\real\sprime$, that is for $|w|<\real\sprime$.(Sobczyk, A. 2020)
+
+	\subsection{Singularities and the Laurent Series}
+	Let $z_0$ be an isolated, singularity of $f:D\rightarrow\complex$ and suppose $f$ has Laurent series representation
+	\begin{eqnarray}
+		f(z) = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}\frac{b_j}{(z-z_0)^j} \text{ on } N_r^{\sprime}(z_0) \subset D
+	\end{eqnarray}
+	
+	\begin{enumerate}
+		\item If $b_j=0$ for all $j\geq $, then $f$ is said to have a removable singularity at $z_0$
+		\item If there exists $N\in\mathcal{N}$ such that $b_j=0$ for $j>N$ but $b_N\neq 0 $, then $f$ is said to have a pole of order $N$ at $z_0$. In the special case where $N=1$, the pole is often referred to as a simple pole.
+		\item Otherwise, $f$ is said to have an essential singularity at $z_0$. 
+	\end{enumerate}
+	
+	\NI Proof of Laurent Series
+	\\Recall,
+	\begin{eqnarray*}
+		f(z) = \sum_{n=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}b_j(z-z_0)^{-n}
+	\end{eqnarray*}
+	where
+	\begin{eqnarray*}
+		a_j &=& \frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z_0)^{n+1}}dw\;\; n=0,1,2,\ldots\sps
+		b_j &=& \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{(w-z_0)^{1-j}}dw\;\; n=0,1,2,\ldots
+	\end{eqnarray*}
+	Let $z$ be a point inside $\real$. Then by Cauchy Integral formula
+	\begin{eqnarray*}
+		f(z) = \frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z)}dw - \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{w-z}dw
+	\end{eqnarray*}
+	Consider the first integral, let $w$ be on $C_1$
+	\begin{eqnarray*}
+		\frac{1}{w-z} = \frac{1}{(w-z_0)-(z-z_0)} = \frac{1}{w-z_0}\left\{\frac{1}{1-\frac{(z-z_0)}{(w-z_0)}}\right\}
+	\end{eqnarray*}
+	which gives
+	\begin{eqnarray*}
+		\frac{1}{w-z} &=& \frac{1}{w-z_0}\left\{1+ \left[\frac{z-z_0}{w-z_0}\right] + \left[\frac{z-z_0}{w-z_0}\right]^2 + \cdots + \left[\frac{z-z_0}{w-z_0}\right]^{n-1} +\right. \sps
+		 && \left. \left(\frac{z-z_0}{w-z_0}\right)^n\left[ 1 + \left(\frac{z-z_0}{w-z_0}\right) + \left(\frac{z-z_0}{w-z_0}\right)^2 \right] + \cdots  \right\}
+	\end{eqnarray*}
+	And then
+	\begin{eqnarray*}
+		\frac{1}{w-z} = \frac{1}{w-z_0} + \frac{z-z_0}{(w-z_0)^2} + \frac{(z-z_0)^2}{(w-z_0)^3} + \cdots + \frac{(z-z_0)^{n-1}}{(w-z_0)^n} + \left(\frac{z-z_0}{w-z_0}\right)^n\frac{1}{w-z}
+	\end{eqnarray*}
+	Multiply through by $\dsp \frac{f(w)}{2\pi\imaginary}$ and integrating term by term we have
+	\begin{eqnarray*}
+		\frac{1}{2\pi \imaginary}\oint_{C_1}\frac{f(w)}{w-z}dz &=& \frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{w-z_0} dw + \frac{z-z_0}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z_0)^2}+ \cdots \sps
+		&+&\frac{(z-z_0)^{n-1}}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{(w-z_0)^n}dw + U_n
+	\end{eqnarray*}
+	where 
+	\begin{eqnarray*}
+		U_n = \frac{1}{2\pi\imaginary}\oint_{C_1}\left(\frac{z-z_0}{z-z_0}\right)^n \frac{f(w)}{w-z}dw
+	\end{eqnarray*}
+	with $a_n$ as defined we have 
+	\begin{eqnarray*}
+		\frac{1}{2\pi\imaginary}\oint_{C_1}\frac{f(w)}{w-z}dw = a_0 + a_1(z-z_0) + \cdots + a_n(z-z_0)^n + U_n
+	\end{eqnarray*}
+	with $U_n$ varnishing as $n\rightarrow\infty$.\\
+	
+	\NI To show that $U_n$ varnishes as $n\rightarrow\infty$, we not that since $w$ is on $C_1$, we have 
+	\begin{eqnarray*}
+		\left|\frac{(z-a)}{(w-a)}\right| = \gamma < 1,\;\; |f(z)| < M
+	\end{eqnarray*}
+	Where $M$ is a constant since $f(z)$ is bounded in $\real$ and
+	\begin{eqnarray*}
+		|w-z| = |(w-z_0) - (z-z_0)| \geq r_1 - |z-z_0|
+	\end{eqnarray*}
+	Therefore
+	\begin{eqnarray*}
+		|U_n| = \frac{1}{2\pi\imaginary}\left|\oint_{C_1}\left(\frac{z-z_0}{w-z_0}\right)^n \frac{f(w)}{w-z}dw \right|\;\; \leq \frac{1}{2\pi\imaginary}\;\;\frac{\gamma^nM}{r_1-|z-a|}2\pi r_1 = \frac{\gamma^n M}{r_1-|z-a|}r_1
+	\end{eqnarray*}
+	$\Rightarrow U_n$ vanishes when $n\rightarrow\infty$. With this, we have the complete proof of the first part of the Laurent Series.\\
+	
+	\NI Let us consider the part 2 integral. Let $w$ be on $C_2$
+	\begin{eqnarray*}
+		-\frac{1}{w-z} &=& \frac{1}{\left(z-z_0\right)\left[1-\frac{w-z_0}{z-z_0}\right] } = \frac{1}{z-z_0}\left\{\frac{1}{1-\left(\frac{w-z_0}{z-z_0}\right)}\right\}\sps
+		\implies -\frac{1}{w-z}&=& \frac{1}{z-a}+ \frac{w-z_0}{(z-z_0)^2} + \cdots + \frac{(w-z_0)^{n-1}}{(z-z_0)^n}+\left( \frac{w-z_0}{z-z_0} \right)^n\frac{1}{z-w}
+	\end{eqnarray*}
+	We multiply through by $\dsp \frac{f(w)}{2\pi\imaginary}$ and the integrate
+	\begin{eqnarray*}
+		-\frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{w-z}dw &=& \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{z-z_0}dw + \frac{1}{2\pi\imaginary}\oint_{C_2}\frac{w-z_0}{(z-z_0)^2}f(w)dw\sps
+		&+&\frac{1}{2\pi\imaginary}\oint_{C_2}\frac{(w-z_0)^{n-1}}{(z-z_0)^n}f(w)dw + V_n
+	\end{eqnarray*}
+	where,
+	\begin{eqnarray*}
+		V_n = \frac{1}{2\pi\imaginary}\oint_{C_2}\left( \frac{w-z_0}{z-z_0} \right)^n \frac{f(w)}{z-w}dw
+	\end{eqnarray*}
+	with $b_n$ as defined, we have
+	\begin{eqnarray*}
+		\frac{1}{2\pi\imaginary}\oint_{C_2}\frac{f(w)}{w-z}dw = b_1(z-z_0)^{-1} + \cdots + b_n(z-z_0)^{-n} + V_n
+	\end{eqnarray*}
+	with $V_n$ varnishing as $n\rightarrow\infty$.\\
+	To show that, since $w$ is on $C_2$, we have
+	\begin{eqnarray*}
+		\left| \frac{w-z_0}{z - z_0} \right| = \beta < 1,\;\; |f(z)| < M\phi
+	\end{eqnarray*}
+	where $M$ is a constant, $f(z)$ is bounded in $\real$ and 
+	\begin{eqnarray*}
+		|z-w| &=& |(z-z_0) - (w-z_0) | \geq |z-z_0| - r_2\sps
+		\implies |V_n| &=&\frac{1}{2\pi}\left| \oint_{C_2}\left( \frac{w-z_0}{z-z_0} \right)^n \frac{f(w)}{z-w} dw \right| \leq \frac{1}{2\pi}\frac{\beta^n M}{|z-z_0|-r_2} 2\pi r_2 = \frac{\beta^n M}{|z-z_0|-r_2} \cdot r_2 
+	\end{eqnarray*}
+	$\implies V_n$ varnishes as $n\rightarrow\infty$.\\
+	This shows the complete proof of the second part.\\
+	
+	\NI The first part of the series $a_0 + a_1(z-z_0) + \cdots + a_n(z-z_0)^{-n}$ is called the analytic part while the second part $b_1(z-z_0)^{-1} + \cdots + b_n(z-z_0)^{-n}$ is called the principal part. If the principal part is zero, the series therefore is called the Taylor Series of analytic functions.
+(Prof. Babalola ,2021)
+	\section{Geometric Series}
+	We having a detailed understanding of geometric series will enable us to use Cauchy formula to understand power series expansion of analytic functions. We start with the definition.
+	\begin{definition}
+		A finite geometric series has one of the following forms
+		\begin{eqnarray*}
+			S_n &=& a(1+r+r^2+r^3+\cdots + r^n)\sps
+			&=& a+ ar + ar^2 + ar^3 + \cdot + ar^n\sps
+			&=& \sum_{i=0}^{n}ar^i\sps
+			&=& a\sum_{i=0}^{n}r^i
+		\end{eqnarray*}
+	\end{definition}
+	The letter $``r"$ is called the ratio of the geometric series because it is the ratio of conservative terms of the series.
+	
+	\begin{theorem}
+		The sum of a finite geometric series is given by 
+		\begin{eqnarray*}
+			S_n = a(1+r+r^2+r^3+\cdots + r^n)= \frac{a(1-r)^{n+1}}{1-r}
+		\end{eqnarray*}
+	\end{theorem}
+	\begin{proof}
+		\begin{eqnarray}
+			S_n &=& a+ar + ar^2 + \cdots + ar^n\sps \label{eq:3_9}
+			rS_n &=& ar + ar^2 + \cdots + ar^n + ar^{n+1}\label{eq:3_10}
+		\end{eqnarray}
+		When we subtract eqn \refx{3_9} and \refx{3_10}, we have:
+		\begin{eqnarray*}
+			S_n - rS_n &=&(a+ar+ar^2+\cdots + ar^n) - (ar+ar^2+\cdots+ar^n+ar^{n+1})\sps
+			S_n - rS_n &=& a + ar + ar^2 + \cdots + ar^n - ar - ar^2 - \cdots - ar^n - ar^{n+1}
+		\end{eqnarray*}
+		some terms cancel out, we have:
+		\begin{eqnarray*}
+			S_n - rS_n = a-ar^{n+1}
+		\end{eqnarray*}
+	\end{proof}
+	
+	\begin{definition}
+		An infinite geometric series has the same form as the finite geometric series except there is not last term
+		\begin{eqnarray*}
+			S = a + ar + ar^2 + \cdots = a\sum_{i=0}^{\infty}r^i
+		\end{eqnarray*}
+	\end{definition}
+	We called geometric series instead of infinite geometric series.
+	
+	\begin{theorem}
+		If |r|<1 then the infinite geometric series converges to 
+		\begin{eqnarray*}
+			S = a\sum_{i=0}^{\infty}r^i = \frac{1}{1-r}
+		\end{eqnarray*}
+		If |r| $\geq$ 1, then the series does not converge.
+	\end{theorem}
+	
+	\subsection{Connection to Cauchy's Integral formula}
+	Cauchy's Integral formula says
+	\begin{eqnarray*}
+		f(z) = \frac{1}{2\pi\imaginary}\int_c \frac{f(w)}{w-z}dw
+	\end{eqnarray*}
+	Inside the integral we have the express
+	\begin{eqnarray*}
+		\frac{1}{w-z}
+	\end{eqnarray*}
+	Which looks a lot like the sum of a geometric series. Now,
+	\begin{eqnarray*}
+		\frac{1}{w-z} = \frac{1}{w}\cdot \frac{1}{1-\frac{z}{w}} = \frac{1}{w}\left( 1 + \left(\frac{z}{w}\right)+ \left(\frac{z}{w}\right)^2 + \cdots \right)
+	\end{eqnarray*}
+	The geometric series in this equation has ratio $\dsp\frac{z}{w}$.\\
+	
+	\NI Hence, the series converges, hence, we can say that the formula is valid whenever $\dsp\left|\frac{z}{w}\right| < 1$ or $|z|< |w|$
+
+
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{LAURENT SERIES EXPANSION APPLICATION}
+	\problem{1}
+	Find the Laurent Series of 
+	\begin{eqnarray*}
+		f(z) = \frac{e^{2z}}{(z-1)^3}
+	\end{eqnarray*}
+	about $z=0$
+	\working
+	Let $U=z-1$ then $z=U+1$\\
+	Therefore, we have:
+	\begin{eqnarray*}
+		\frac{e^{2z}}{(z-1)^3} = \frac{e^{2(U+1)}}{(U+1-1)^3} = \frac{e^{2U+2}}{U^3} = \frac{e^2}{U^3} \cdot e^{2U}
+	\end{eqnarray*}
+	Recall, the standard series in Chapter 3:
+	\begin{eqnarray*}
+		e^{\imaginary z} = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \frac{z^4}{4!} + \cdots
+	\end{eqnarray*}
+	Now, 
+	\begin{eqnarray*}
+		e^{2U} &=& 1 + 2U + \frac{(2U)^2}{2!} + \frac{(2U)^3}{3!}+ \frac{(2U)^4}{4!} + \cdots\sps
+		%%%%%%%
+		\implies \frac{e^2}{U^3}e^{2U} &=&\frac{e^2}{U^3}\left\{ 1 + 2U + + \frac{(2U)^2}{2!}+ \frac{(2U)^3}{3!}+ \frac{(2U)^4}{4!} + \cdots \right\}
+	\end{eqnarray*}
+	Expand the bracket:
+	\begin{eqnarray*}
+		= \frac{e^2}{U^3} + \frac{2e^2}{U^2} + \frac{2e^2}{U}+ \frac{4e^2}{3}+ \frac{2e^2}{3}U + \cdots 
+	\end{eqnarray*}
+	Recall, $U=z-1$
+	\begin{eqnarray*}
+		\implies \frac{e^2}{(z-1)^3} + \frac{2e^2}{(z-1)^2} + \frac{2e^2}{(z-1)} + \frac{4e^2}{3} + \frac{2e^2}{3}(z-1) + \cdots
+	\end{eqnarray*}
+	Hence, the Laurent Series of the given $f(z)$ is:
+	\begin{eqnarray*}
+		f(z) = \frac{e^{2z}}{(z-1)^3} = \frac{e^2}{(z-1)^3} + \frac{2e^2}{(z-1)^2} + \frac{2e^2}{(z-1)} + \frac{4e^2}{3} + \frac{2e^2}{3}(z-1)+\cdots 
+	\end{eqnarray*}
+	
+	
+	\problem{2}
+	Find the Laurent series of
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z^2(z-3)^2}
+	\end{eqnarray*}
+	about the origin
+	\working
+	Given
+	\begin{equation}
+		f(z) = \frac{1}{z^2(z-3)^2} \tag{1}\label{eqp:2_1}
+	\end{equation}
+	We can simplify $f(z)$ as follows:
+	\begin{equation}
+		\frac{1}{z^2(z-3)^2} = \frac{1}{z^2(3-z)^2} = \frac{1}{9z^2\left(1-\frac{z}{3}\right)^2} \tag{2}\label{eqp:2_2}
+	\end{equation}
+	Recall, the standard Series in Chapter 3:
+	\begin{equation}
+			(1+z)^p = 1+ pz + \frac{p(p-1)}{2!}z^2 + \frac{p(p-1)(p-2)}{3!}z^3 + \cdots \tag{3}\label{eqp:2_3}
+	\end{equation}
+	Now, we consider 
+	\begin{equation}
+		\frac{1}{\left(1-\frac{z}{3}\right)^2} \tag{4}\label{eqp:2_4}
+	\end{equation}
+	by finding the series, all we need to do is to related eqn \refxq{2_4} with \refxq{2_3}
+	\begin{eqnarray*}
+		\frac{1}{\left(1-\frac{z}{3}\right)^2} = \left(1-\frac{z}{3}\right)^{-2}
+	\end{eqnarray*} 
+	In which $p=-2$
+	\begin{eqnarray*}
+		\implies \left(1-\frac{z}{3}\right)^{-2} &=& 1 + (-2) \left(\frac{-z}{3}\right) + \frac{-2(-3)}{2!}\left(\frac{-z}{3}\right)^2 + \frac{-2(-3)(-4)}{3!}\left(\frac{-z}{3}\right)^3\sps
+		&+& \frac{-2(-3)(-4)(-5)}{4!}\left(\frac{-z}{3}\right)^4
+	\end{eqnarray*}
+	Now,
+	\begin{gather*}
+		\frac{1}{9z^2}\left\{ 1+ (-2)\left(\frac{-z}{3}\right) + \frac{-2(-3)}{2!}\left(\frac{-z}{3}\right)^2 + \frac{-2(-3)(-4)}{3!}\left(\frac{-z}{3}\right)^3 \right.\sps
+		+ \left. \frac{-2(-3)(-4)(-5)}{4!}\left(\frac{-z}{3}\right)^4 \right\}
+	\end{gather*}
+	\begin{eqnarray*}
+		\implies \frac{1}{9z^2}\left\{ 1 + \frac{2z}{3} + \frac{z^2}{3}+ \frac{4z^3}{27}+ \frac{5z^4}{81}+\cdots \right\}
+	\end{eqnarray*}
+	Expanding the bracket, we obtain:
+	\begin{eqnarray*}
+		\implies \frac{1}{9z^2} + \frac{2}{27z} + \frac{1}{27} + \frac{4z}{243} + \frac{5z^2}{729} + \cdots
+	\end{eqnarray*}
+	Which is the Laurent Series of
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z^2(z-3)^2}
+	\end{eqnarray*}
+	
+	
+	\problem{3}
+	Let us find the Laurent Series of
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z(z-2)(z-5)}
+	\end{eqnarray*}
+	valid in the region $2 < |5|<5$ around $z=0$
+	
+	\working
+	\ubt{Step 1}: We Start with partial fraction decomposition
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z(z-2)(z-5)} = \frac{A}{z}+ \frac{B}{z-2} + \frac{C}{z-5}
+	\end{eqnarray*}
+	We need the L.C.M of the denominator which is $z(z-2)(z-5)$
+	\begin{eqnarray*}
+		\frac{1}{z(z-2)(z-5)}  &=& \frac{A(z-2)(z-5)+B(z)(z-5)+C(z)(z-2)}{z(z-2)(z-5)}\sps
+		1 &\equiv& A(z-2)(z-5)+Bz(z-5)+Cz(z-2)\sps
+		1 &\equiv& A(z^2-7z-10) + B(z^2-5z) + C(z^2-2z)
+	\end{eqnarray*}
+	\begin{gather*}
+		A+B+C= 0\hspace{3cm} -7A + B - 5B - 2C = 0\sps
+		10A = 1 \implies A = \frac{1}{10}
+	\end{gather*}
+	From the above equations, we obtain the following coefficients:
+	\begin{eqnarray*}
+		A = \frac{1}{10}\; ; \; B =-\frac{1}{6}\; ; \; C =\frac{1}{15}
+	\end{eqnarray*}
+	We will represent the partial fraction components of $f(z)$ as:
+	\begin{eqnarray*}
+		f_1(z) = \frac{1}{10z}, f_2(z) = -\frac{1}{6(z-2)}, f_3(z) = \frac{1}{15(z-5)}
+	\end{eqnarray*}
+	
+	\NI\ubt{Step 2:} Determining the geometric series to each corresponding partial fraction.\\
+	
+	\NI We consider the region $2<|z|<5$. In order to use our geometric series, we must represent the function in the region in terms of $z$ or $\dsp\frac{1}{z}$ based on the fact that
+	\begin{eqnarray*}
+		2 < |z| \implies \left|\frac{2}{z}\right| < 1 and |z| < 5 \implies\left|\frac{z}{5}\right| < 1
+	\end{eqnarray*}
+	The Laurent Series representation is formed by looking for $\dsp\frac{2}{z}$ for $f_2(z)$ and $\dsp\frac{z}{5}$ for $f_3(z)$
+	\begin{eqnarray*}
+		f_2(z) = \frac{-1}{6(z-2)} = \frac{-1}{6z}\left(\frac{1}{1-\frac{2}{z}}\right) = -\frac{1}{6z}\sum_{n=0}^{\infty}\frac{2^n}{z^n}=-\frac{1}{6}\sum_{n=0}^{\infty}\frac{z^n}{5^{n+1}}
+	\end{eqnarray*}
+	Note that $\dsp f_1(z)=\frac{1}{10z} = \frac{1}{10}\cdot \frac{1}{z}$ is the form of series representation.\\
+	
+	\NI\ubt{Step 3:} Build the Laurent expansion from the above geometric series
+	\begin{eqnarray*}
+		f(z) &=& \frac{1}{10}\cdot \frac{1}{z} - \frac{1}{6}\sum_{n=0}^{\infty}\frac{2^n}{z^{n+1}} - \frac{1}{15}\sum_{n=0}^{\infty}\frac{z^n}{5^{n+1}}\sps
+		%%%%%%%%%
+		\implies f(z) &=& - \sum_{n=0}^{\infty}\frac{z^n}{15\big(5^{n+1}\big)} + \frac{1}{10}\cdot\frac{1}{z} - \sum_{n=0}^{\infty}\frac{2^n}{6\big(z^{n+1}\big)}\sps
+		\implies f(z) &=& -\sum_{n=0}^{\infty}\frac{z^n}{15\big(5^{n+1}\big)} - \frac{1}{15}\cdot\frac{1}{z} - \sum_{n=2}^{\infty}\frac{2^{n-1}}{6}\cdot \frac{1}{z^n}
+	\end{eqnarray*}
+	
+	\NI\ubt{Step 4:} We need to find the generalized residue. We can only nee to collect the $\dsp\frac{b_1}{z}$ term.\\
+	Therefore, the generalized residue of $f(z)$ is $\dsp\frac{-1}{15}$ in the region $2<|z|<5$.
+	
+	\problem{4}
+	Find the Laurent Series of 
+	\begin{eqnarray*}
+		f(z) = \frac{1}{z^2(z-3)^2}
+	\end{eqnarray*}
+	about the point $z=3$.
+	\working
+	Let $U=z-3\implies z=U+3$,
+	\\Then we have:
+	\begin{eqnarray*}
+		1\frac{1}{z^2(z-3)^2} = \frac{1}{(U+3)^2(U+3-3)^2} = \frac{1}{(U+3)^2 (U)^2} = \frac{1}{U^2(U+3)^2}
+	\end{eqnarray*}
+	By manipulation,
+	\begin{eqnarray*}
+		\frac{1}{U^2(U+3)^2} = \frac{1}{9U^2\left(1+\frac{U}{3}\right)^2} = \frac{1}{9U^2}\cdot \left(1+\frac{U}{3}\right)^{-2}
+	\end{eqnarray*}
+	Using the standard series in Chapter 3:
+	\begin{eqnarray*}
+		(1+z)^p = 1+ pz + \frac{p(p-1)}{2!}z^2 + \frac{p(p-1)(p-2)}{3!}z^3 + \cdots
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		\left(1+\frac{U}{3}\right)^{-2} \implies p = - 2
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		\left(1+\frac{U}{3}\right)^{-2} &=& \left\{ 1 + \frac{-2}{3}U + \frac{-2(-3)}{2!}\left(\frac{U}{3}\right)^2 + \frac{-2(-3)(-4)}{3!}\left(\frac{U}{3}\right)^3\right. \sps
+		 &+&\left. \frac{-2(-3)(-4)(-5)}{4!}\left(\frac{U}{3}\right)^4 + \cdots \right\}
+	\end{eqnarray*}
+	Now,
+	\begin{eqnarray*}
+		\frac{1}{9U^2}\left(1+\frac{U}{3}\right)^{-2} &\implies& \frac{1}{9U^2}\left\{ 1 + \frac{-2}{3}U + \frac{-2(-3)}{2!}\left(\frac{U}{3}\right)^2 + \frac{-2(-3)(-4)}{3!}\left(\frac{U}{3}\right)^3\right. \sps
+		&+&\left. \frac{-2(-3)(-4)(-5)}{4!}\left(\frac{U}{3}\right)^4 + \cdots \right\}\sps
+		&\implies& \frac{1}{9U^2}\left\{1-\frac{2U}{3}+\frac{U^2}{3} - \frac{4U^3}{27} + \frac{5U^4}{81} - \cdots\right\}\sps
+		&\implies& \frac{1}{9U^2} - \frac{2}{27U} + \frac{1}{27} - \frac{4U}{243} + \frac{5U^2}{729} - \cdots
+	\end{eqnarray*}
+	Recall, $U = z-3$
+	\begin{eqnarray*}
+		\implies \frac{1}{9(z-3)^2} - \frac{2}{27(z-3)} + \frac{1}{27} - \frac{4(z-3)}{243} + \frac{5(z-3)^2}{729} - \cdots
+	\end{eqnarray*}
+	Which is the required Laurent Series expansion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
+	\section{Summary}
+	In this project, the chapter one (1) tells the about complex number in various field. We have learnt that complex number is denoted as $\complex$ and it consist of two parts(the real and imaginary). Complex number arises as a result of negative value in a square root, most especially when working or solving quadratic equation. Cardano was able to crack what had seemed to be impossible task of solving the general cubic equation.\\
+	
+	\NI In Chapter two (2), we studied the analytic functions. A function is said to be analytic if it is differentiable at a point.\\
+	
+	\NI Thirdly, in chapter three of this project, we made research on Laurent series, how it is being originated by providing the theorem.\\
+	
+	\NI Lastly, In chapter four (4), we looked at practical problems and how it can be solved using the Laurent series expansion. We were able to use Laurent series of function about some fixed points in the their region to solve all the problems.
+	\section{Conclusion}
+	The study of complex analysis cannot be ignored by mathematicians and in this project we were able to observed that without the Taylor and geometric series, the Laurent series cannot be solved. This research has truly proved that and it is well explained.
+	
+
+	
+	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	
+
+	
+	\begin{description}
+		
+		\item 	B. Blank, \emph{An Imaginary  Tale Book Review, in Notices of the AMS }(Volume 46, Number 10,
+		November 1999), pp. 1233-1236.
+			\item Berlinghoff, W.P. \& Gouvêa, F.Q. (2002). Math through the Ages: A Gentle History for
+		Teachers and Others. Farmington, Maine: Oxford House Publishers.
+
+			\item	Cardano, H. (1545). An Imaginary Tale: The Story of [the square root of minus one: Joh. Petreius. 
+				\item 	Dr. Yisa (2018) \emph { Unpublished Lecture Note : Analytic Functions of a Complex Variable }(MAT210)
+				\item Euler, L. (1972). \emph { Elements of Algebra}. (Rev. John Hewlett, B.D. F.A.S. \&c, Trans.). Springer-Verlag. (Original work published 1770)
+				
+		\item Martin Lavelle \emph{Introduction to Complex Numbers
+		}(June 11, 2004 
+		
+		\item Merino, O. (2006).\emph{ A Short History of Complex Numbers}.
+			\item Prof. Babalola (2021)\emph{ Unpublished Lecture notes: Laurent series examples and theorem (MAT326)}
+		\item R. Descartes, La G´eom´etrie, translated from French and Latin by D. E. Smith and M.
+		Latham. Open Court Publishing Company, La Salle, Illinois, 1952.
+		\item 	Sobczyk, A. (2020). \emph{Laurent Series Expansion and its Applications.}
+	
+	\end{description}
+	
+\end{document}
