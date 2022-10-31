@@ -157,6 +157,67 @@
 	
 	\subsection{General Second Order Ordinary Differential Equation}
 	The general Second Order Ordinary Differential Equation of an independent variable $x$ and dependent variable $y$ is given by 
+	\begin{eqnarray*}
+		\begin{split}
+			P(x)\frac{d^2y}{dx^2} + Q(x)\frac{dy}{dx} + R(x)y &= f(x) \hspace{1cm} \text{Or }\sps
+			y\dprime P(x) + y\sprime Q(x) + R(x)y &= f(x)
+		\end{split}
+	\end{eqnarray*}
+	where $P(x), Q(x), R(x),f(x)$ are continuous functions of $x$.
+	
+	\subsection{Initial Value Problem}
+	An initial-value problem for the second order equation
+	\begin{eqnarray*}
+		y\dprime P(x) + y\sprime Q(x) + R(x)y = f(x)
+	\end{eqnarray*}
+	consists of finding a solution $y$ of the differential equation that also satisfies initial condition of the form
+	\begin{eqnarray*}
+		y(x_0) = y_0 \hspace{2cm} y\sprime(x_0) = y_1
+	\end{eqnarray*}
+	where $y_0$ and $y_1$ are given constants and $P(x), Q(x), R(x),f(x)$ are continuous functions of $x$ and $P(x)\neq 0$.
+	
+	\subsection{Operator}
+	An operator is a function that takes a function as an argument instead of number. Examples of operators are:
+	\begin{eqnarray*}
+		L = \frac{d}{dx}\; ; \; L=\frac{\partial}{\partial x}\; ; \ \; L = \int dx\; ; \; L= \int_a^b dx
+	\end{eqnarray*}
+	
+	\subsection{Adomian Polynomials $\mathbf{(A_n)}$}
+	The Adomian Polynomials of a non-linear differential equation is obtained using the formula
+	\begin{equation}
+		A_n = \frac{1}{n!}~\frac{d^n}{d\lambda^2}\left[ N\left(\sum_{n=0}^{\infty}\lambda^n U_n\right)\right]_{\lambda=0}\hspace{1cm} n=0,1,2,\ldots
+	\end{equation}
+
+	\section{Aims and Objectives}
+	\subsection{Aim}
+	The aim of this project work is to adopt the method of Adomian decomposition to solve Linear and Non-linear Second Order Differential Equation of the form 
+	\begin{equation*}
+		y\dprime P(x) + y\sprime Q(x) + R(x)y = f(x)
+	\end{equation*}
+	where $P(x), Q(x), R(x),f(x)$ are continuous functions of $x$.
+	
+	\subsection{Objectives}
+	The objectives of this study are to 
+	\begin{enumerate}
+		\item Describe Adomian decomposition method
+		\item Use ADM to solve linear ordinary differential equation
+		\item determine the solution of second order ordinary differential equation by Adomian decomposition method
+	\end{enumerate}
+	
+	\section{Significance of the Project}
+	The importance or significance of this project is to apply Adomian Decomposition Method to solve linear and non-linear ordinary differential equation of second order will converges the problem to its exact solution.
+	
+	\section{Outline of the Project}
+	The project is divided into five chapters. Chapter one consists of the introduction, definition of relevant terms, aims and objectives, significance of the project and project outline.\\
+	
+	\NI Chapter two consist of literature review, Chapter three consists of methodology; method of solution of ADM; Numerical examples on Adomian Polynomial; Numerical examples of linear ordinary differential equation.\\
+	
+	\NI Chapter four consist of methodology, Numerical examples on Non-linear ordinary differential equation. Chapter five consist of discussion of result; conclusion and recommendation for further study.
+	
+	
+	
+	
+	
 	
 	
 	
