@@ -1008,19 +1008,255 @@
 	\NI The Adams-Bashforth methods were designed by John Couch Adams to solve a differential equation modelling capillary action due to Francis Bashforth. Bashforth(1883) published his theory and Adams' numerical method (Goldstine 1977).
 	
 	
-	
-	
-	
-	
-	
-	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
 	\chapter{}
+	The basic equations are the three dimensional time-dependent imcompressible Navier-Stokes equations in velocity-pressure formulation with the continuity equation.
+	\begin{eqnarray}
+		\rho\frac{D\vec{V}}{Dt} = -\vec{V} P + \rho\vec{g} + \mu \Delta^2\vec{V}
+	\end{eqnarray}
+	which can also be written as
+	\begin{eqnarray}
+		\rho\left(\frac{\partial \vec{U}}{dt} + (\vec{U}\cdot \vec{\nabla})\vec{V}\right) = -\vec{\nabla}P + \rho\vec{g} + \mu\vec{\nabla}^2\vec{U}
+	\end{eqnarray}
+	\begin{equation*}
+		\frac{\partial\vec{U}}{\partial t} + (\vec{U}\cdot\nabla)\vec{U} = -\vec{\nabla}P + \frac{1}{R_e} \nabla \cdot (\nabla\vec{U})
+	\end{equation*}
+	where $R_e$ is the Reynold's number. The equation,
+	\begin{equation}
+		\frac{\partial \vec{U}}{\partial t} + (\vec{U}\cdot\nabla)\vec{U} + \nabla P = \frac{1}{R_e}\nabla\cdot(\nabla\vec{U})\label{eq:4_3}
+	\end{equation}
+	\begin{equation}
+		\nabla \cdot \underline{U} = 0\label{eq:4_4}
+	\end{equation}
+	is an unbounded/domain $\Omega$ subjected to Dirichlet boundary condition on the body surface $\Gamma$, a free stream condition at affinite
+	\begin{eqnarray*}
+		\underline{U}(x,t=0) = \vec{U}_0(x), \text{ in } \vec{\Omega} \equiv \Omega + \Gamma,\sps
+	\end{eqnarray*}
+	The equation \refx{4_3} and \refx{4_4} above now rewritten as follows:
+	\begin{gather}
+		\frac{\partial U}{\partial t} + \nabla\times\underline{U} + \nabla Q = \frac{1}{R_e}\nabla \cdot (\nabla\underline{U}),\label{eq:4_5}\sps
+		\nabla\cdot\underline{U} = 0,\label{eq:4_6}
+	\end{gather}
+	where 
+	\begin{eqnarray*}
+		Q = P + \frac{1}{2}\Bigg|\underline{U}\Bigg|^2
+	\end{eqnarray*}
+	denotes the total pressure.\\
+	
+	\NI A generalized coordinate system is required for complete configurations and XXXXXXXXX.\\
+	The physical domain coordinate $(x,y,z)$ are written as functions of the cXXXXXXXX domain coordinates $(\alpha,\beta,\gamma)$ expressed as
+	\begin{eqnarray}
+		x=x(\alpha,\beta,\gamma), y = y(\alpha,\beta,\gamma), z=z(\alpha,\beta,\gamma)\label{eq:4_7}
+	\end{eqnarray} 
+	transforming the coordinates derivative is given as follows:
+	\begin{equation}
+		\begin{bmatrix}
+			\partial x\\
+			\partial y \\
+			\partial z
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			\alpha_x & \beta_x & \gamma_x\\
+			\alpha_y & \beta_y & \gamma_y\\
+			\alpha_z & \beta_z & \gamma_z\\
+		\end{bmatrix}
+		\begin{bmatrix}
+			\partial \alpha\\
+			\partial\beta\\
+			\partial\gamma
+		\end{bmatrix}\label{eq:4_8}
+	\end{equation}
+	where subscripts denote spatial derivatives.\\
+	Metrics are evaluated from the following formulas:
+	\begin{gather}
+		\begin{gathered}
+			\alpha_x = \frac{y_\beta z_\gamma - y_\gamma z_\beta}{J}~~~,~~~~ \alpha_y = \frac{x_\gamma z_\beta - x_\beta z_\gamma}{J}~~~,~~~~\alpha_z = \frac{x_\beta y_\gamma - x_\gamma y_\beta}{J}\sps
+			%%%%%%%%%%%%%%%%%%%%%%
+			\beta_x = \frac{y_\zeta z_\zeta z_\zeta}{J}~~~,~~~~ \eta_y = \frac{x_\xi z_\zeta - x_\zeta z_\xi}{J}~~~,~~~~ \eta_z = \frac{x_\zeta y_\xi - x_\xi y_\zeta}{J}\sps
+			%%%%%%%%%%%%%%%%%%%%%%
+			\zeta_x = \frac{y_\xi z_\eta - y_\eta z_\xi}{J}~~~,~~~~ \zeta_y = \frac{x_\eta z_\xi - x_\xi z_\eta}{J}~~~,~~~~ \zeta_z = \frac{x_\xi y_\eta - x_\eta y_\xi}{J}
+		\end{gathered}
+	\end{gather}
+	where $J$ is the Jacobian transformation
+	\begin{eqnarray}
+		J = \begin{bmatrix}
+			x_\alpha & x_\beta & x_\zeta\sps
+			y_\alpha & y_\beta & y_\zeta\sps
+			z_\alpha & z_\beta & z_\zeta\sps
+		\end{bmatrix}
+	\end{eqnarray}
+	the equations are rewritten as the generalized coordinate system
+	\begin{gather*}
+		U_t + w(\alpha_z U_\alpha +\beta_z U_\beta + \gamma_z U_\gamma - \alpha_x w_\alpha - \beta_x w_\beta - \gamma_x w_\alpha) - V(\alpha_xU_X +  \beta_xV_\beta + \gamma_x V_\gamma \sps
+		 - \alpha_x U_\gamma - \beta_y U_\beta - Y_y U_y) + (\alpha_x Q_\alpha + \beta_x Q_\beta + Y_x Q_y) = \frac{1}{Re}\hat{\nabla}^2U,
+	\end{gather*}
+	\begin{gather*}
+		V_\varepsilon + U(\alpha_x V_\alpha + B_xV_\beta + \gamma_x V_\gamma - \alpha_y U_\alpha - \beta_y U_\beta - \gamma_v U_\gamma) - w(\alpha_y w_\alpha \beta_y w_\beta + \gamma_y w_\gamma - \sps
+		\alpha_z V_\alpha - \beta_zV_\beta - \gamma_z V_\gamma) + (\alpha Q_\alpha + \beta_y Q_\beta + \gamma_y Q_y) = \frac{1}{R_e} \hat{\nabla}^2 V,
+	\end{gather*}
+	
+	\begin{gather*}
+		W_t + V(\alpha_y W_\alpha + \beta_y W_\beta + Y_y W_y - \alpha_z V_\alpha - \beta_z V_\beta - Y_\beta - Y_z V_y) -U(\alpha_z U_\alpha + \beta_z V_\beta \sps
+		 + Y_z U_y - \alpha_x W_\alpha - B_x W_\beta - Y_x W_y)+ (\alpha_z Q_\alpha + \beta_z Q_\beta + Y_z Q_y) = \frac{1}{R_e}\hat{\nabla}^2W,
+	\end{gather*}
+	the continuity equation becomes,
+	\begin{gather*}
+		\alpha_x U_\alpha + \beta_x U_\beta + \zeta_x U_\zeta + \alpha_y U_\alpha + \beta_y V_\beta + \zeta_y V_\zeta + \alpha_z W_\alpha + \beta_z W_\beta + Y_z W_y = 0
+	\end{gather*}
+	
+	\NI The diffusive term is defined as the divergence of the velocity gradient, with;
+	\begin{multline}
+		\hat{\nabla}^2 = (\alpha_x\partial_\alpha + \beta_x\partial_\beta + Y_x\partial y)^2 + (\alpha y\partial\alpha + \beta_y \partial_\beta + Y_u\partial_y)^2 + (\alpha_z\partial_\alpha \\+ \beta_z \partial_\beta + Y_z\partial_y)^2
+	\end{multline}
+	In symbolic form.\\
+	
+	\NI Rather than using the Laplacian operator, this formulation of the diffusive team is employed. They are equivalent for continuous partial differential equations, but the discretized Laplacian operator's metrics required substantially more storage.
+	
+	\section{Numerical Method}
+	These equations are discrelized using a second-order finite differential scheme. The time discretization usied as an Adam-Bashfort scheme for the convecture term and the explicit Euler rule for the diffuse term. The semi-discrete version of \refx{4_5} and \refx{4_6} is written as:
+	\begin{gather*}
+		\frac{\partial u}{\partial t} + (\vec{V}\times\underline{U}) \times \underline{U} + \nabla Q = \frac{1}{R_e}\nabla \cdot (\nabla \underline{U})\sps
+		\nabla \cdot \underline{U} = 0
+	\end{gather*}
+	for the converture term, 
+	\begin{equation*}
+		y_{n+2} = y_{n+1} + h\left(\frac{3}{2}f(t_{n+1}, y_{n+1})-\frac{1}{2}f(t_n,y_n)\right)
+	\end{equation*}
+	\begin{eqnarray}
+		y_{n+1} = \frac{\partial U}{\partial t} = \frac{U^{n+1}-U^n}{\Delta t} + O\cdot(\Delta t)
+	\end{eqnarray}
+	we have,
+	\begin{eqnarray}
+		\frac{U^{n+1}-U^n}{\Delta t} + \left(\nabla \times\frac{3}{2}U^n-\frac{1}{2}U^{n-1}\right)\times\frac{3}{2}U^{n} - \frac{1}{2}U^{n-1} + \nabla Q^{n+\frac{1}{2}}
+	\end{eqnarray}
+	For the diffuse term,
+	\begin{eqnarray*}
+		\frac{1}{R_e}\nabla \cdot (\nabla \underline{U})
+	\end{eqnarray*}
+	Using Eaglet formula Euler method
+	\begin{eqnarray}
+		\frac{1}{R_e}\nabla^2 U^n
+	\end{eqnarray}
+	equation \refx{4_6} can be written as:
+	\begin{eqnarray}
+		\nabla \cdot U^{n+1}=O
+	\end{eqnarray}
+	Rewritting we have,
+	\begin{multline}
+		\frac{U^{n+1} - U^n}{\Delta t} +\left(\nabla \times \frac{3}{2}U^n -\frac{1}{2}U^{n-1}\right)\times\frac{3}{2}U^{n} - \frac{1}{2}U^{n-1} + \nabla Q^n + \frac{1}{2} \\= \frac{1}{R_e}\nabla^2 U^{n}
+ 	\end{multline}
+	
+	\begin{eqnarray*}
+		\nabla \cdot U^{n+1}=O,
+	\end{eqnarray*}
+	
+	\NI Let $U*=\dsp\frac{3}{2}U^n - \frac{1}{2}U^{n-1}$, then we have;
+	\begin{multline}
+			\frac{U^{n+1} - U^n}{\Delta t} +\left(\nabla \times U^*\right)\times U^* + \nabla Q^n + \frac{1}{2} = \frac{1}{R_e}\nabla^2 U^{n}\label{eq:4_17}
+	\end{multline}
+	\begin{eqnarray}
+		\nabla \cdot U^{n+1}=O,\label{eq:4_18}
+	\end{eqnarray}
+	All the spatial derivatives are approximated by central finite differences except on the boundaries where noncentered or periodic relations are used.\\
+	Discretizing \refx{4_17} and \refx{4_18} gives
+	\begin{gather}
+		L(U^{n+1} - U^n) + \Delta t GQ^{n+1/2} = \Delta\left[A(U^n, U^{n-1})+K(U^n)\right],\label{eq:4_19}\sps
+		DU^{n+1} = 0
+	\end{gather}
+	$A$, $K$, $G$, and $D$ are the matrices representing convection, diffusion, gradient and divergence operators, respectively.\\
+	$L$ is an implicit residual smoothing operator including the boundary conditions. It is a
+	factorized operator which has been previously used in Cartesian computation cases:
+	\begin{eqnarray}
+		L=L_\alpha L_\beta L\gamma
+	\end{eqnarray}
+	The $L_\xi$ operator is approximated by
+	\begin{eqnarray*}
+		L_\xi = 1-\theta[f(\xi)\partial_{\xi\xi}+g(\xi)\partial_\xi],
+	\end{eqnarray*}
+	with
+	\begin{eqnarray*}
+		f(\xi) = (\xi_x)^2 + (\xi_y)^2 + (\xi_z)^2 \text{ and } g(\xi) = \xi_{xx} + \xi_{yy} + \xi_{zz}
+	\end{eqnarray*}
+	in which cross derivatives having been neglected. $L_\eta$, and $L_\zeta$, are defined similarly. The derivatives in the right-hand side of the above relation are calculated by a second-order centered finite-difference approximation.\\
+	
+	\NI The $L$ matrix is a tridiagonal matrix, with a special treatment of the first and last lines to impose boundary and periodic conditions.\\
+	
+	\NI The above operator $L$ allows to improve the stability of the numerical scheme. This implicit operator does not modify the original accuracy of the scheme with a suitable choice of the parameter $\theta$. $\theta$ is defined in the following manner:
+	\begin{eqnarray*}
+		\theta = \theta'\left(U_\infty^2\Delta t^2 + \frac{1}{R_e}\Delta t\right) \text{ with } \theta' = O(1).
+	\end{eqnarray*}
+	Applying now the operator $\dsp L^{-1}$ and then the discretized divergence operator $D$ to \refx{4_19} we obtain a discrete equation to determine the total pressure:
+	\begin{eqnarray}
+		-DL^{-1}GQ^{n+1/2} = - DL^{-1}[A(U^n, U^{n-1})+K(U^n)] - \frac{DU^n}{\Delta t} + \frac{DU^{n+1}}{\Delta t}\label{eq:4_22}
+	\end{eqnarray}
+	and writing that $U^{n+1}$ is divergence free, \refx{4_22} becomes:
+	\begin{eqnarray}
+		MQ^{n+1/2} - B = 0,\label{eq:4_23}
+	\end{eqnarray}
+	with
+	\begin{eqnarray*}
+		M=-DL^{-1}G \text{ and } B=-DL^{-1}[A(U^n, U^{n-1})+K(U^n)] - \frac{DU^n}{\Delta t}
+	\end{eqnarray*}
+	This equation is solved using an iterative method which minimizes an $l_2$-norm of the residual.\\
+	This residual is directly related to the divergence of the velocity at time $(n+1)$ $\Delta t$:
+	\begin{eqnarray*}
+		R_k = B-MQ_k^{n+1/2} = \left(-\frac{DU_k^{n+1}}{\Delta t}\right),
+	\end{eqnarray*}
+	where $k$ is the iteration number.\\
+	Thus, minimizing the pressure equation solves the continuity equation. Linear systems of the type $Y=L^{-1}X$ which appear in \refx{4_19} and \refx{4_22} are solved via LU decomposition. This decomposition is done only once at the beginning of the computation. A simple backward-forward sweep in each space direction and at each time step is then performed.
+	
+	\section{Computational Results}
+	The 3-D numerical result given here is related to the computation of the flow around a circular cylinder between two walls for which experimental data will be available. Boundary and initial conditions are: 
+	\begin{enumerate}
+		\item 	no slip on the surface of the cylinder and on the two walls; 
+		\item  a free stream condition at infinity; 
+		\item the cylinder is initially at rest in the fluid. 
+	\end{enumerate}
+	Results are presented for two Reynolds numbers Re = 200 and $R_e = 1000$ (based on the velocity profile at infinity and on the cylinder diameter $D$). Grid generation is of “0” type. The three-dimensional mesh is built in the
+	usual way stacking the two-dimensional grid, generated around selected spanwise sections of the cylinder. Such a mesh introduces a condition of periodicity in the azimuthal direction $\eta$.\\
+	
+	\NI A perspective view of the discretized domain is shown in Fig. 1. The length between the two walls is 5 diameters. The computational domain is limited to $r_\infty, = 5D$. For $R_e = 200$ the grid 
 	
 	
-
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	consists of 81 nodes in the radial $(\xi)$ direction, 81 in the azimuthal $(\eta)$ direction and 101 in the spanwise $(\zeta)$ direction, and for $R_e = 1000$ a grid system of $121 \times 121 \times 121$ nodes has been chosen.\\
+	
+	\NI Calculations were made on CRAY 2 and the computational cost is about $2 \cdot 1O^{-5}$ seconds per point and per time step to obtain a divergence norm less than $10^{-3}$. The dimensionless time step is 0.02 for $R_e = 200$ and 0.015 for $R_e = 1000$.\\
+	The velocity profile time evolution behind the cylinder in the midspan section is reported in Fig. 2. The Reynolds number is equal to 200. A comparison at time $t = 3$ with a 2-D computation obtained using a $\psi - \omega$ formulation reveals the two-dimensional behaviour in the central region of the flow.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
 	\chapter{SUMMARY AND CONCLUSION}
