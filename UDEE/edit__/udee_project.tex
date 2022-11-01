@@ -1052,32 +1052,70 @@
 	\end{longtable}
 	\linkH{ab7}{ab8}\linkH{ac5}{ac6}\linkV{ad3}{ad4}\linkV{ae1}{ae2}
 	
-	\NI The smallest transportation cost is 5 in cell $S_1W_1$\sps
-	The allocation to this cell is $\min(250,100)=100$\sps
-	This satisfies the entire demand of $W_1$ and leaves $250-100=150$ units with $S_1$\\
+	\NI The smallest transportation cost is 6 in cell $S_1W_2$\sps
+	The allocation to this cell is $\min(150,200)=150$\sps
+	This exhausts the capacity of $S_1$ and leaves $200-150=50$ units with $W_2$\\
 	
+	\NI~Table-5
+	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
+		\hline
+		& \tikzmark{ae3}$W_1$ &$W_2$ & \tikzmark{ad5}$W_3$ & $W_4$ & Supply\\\hline
+		\tikzmark{af1}$S_1$ & 5(100) & 6(150) & 5(150) & \tikzmark{af2}7 & 0\\
+		\tikzmark{ab9}$S_2$ & 2(150) & 2 & 3 & \tikzmark{ab10}3 & 0\\
+		\tikzmark{ac7}$S_3$ & 5 & 4 & 4 & \tikzmark{ac8}3(100) & 0\\
+		$S_4$  & \tikzmark{ae4}13 & 12 & \tikzmark{ad6}15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 0 & 50 & 0 & 150 &  \\\hline
+	\end{longtable}
+	\linkH{ab9}{ab10}\linkH{ac7}{ac8}\linkV{ad5}{ad6}\linkV{ae3}{ae4}\linkH{af1}{af2}
 	
+	\NI The smallest transportation cost is 12 in cell $S_4W_4$\sps
+	The allocation to this cell is $\min(200,150)=150$\sps
+	This satisfies the entire demand of $W_4$ and leaves $200-150=50$ units with $S_4$\\
 	
+	\NI~Table-6
+	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
+		\hline
+		& \tikzmark{ae5}$W_1$ &$W_2$ & \tikzmark{ad7}$W_3$ & \tikzmark{ag1}$W_4$ & Supply\\\hline
+		\tikzmark{af3}$S_1$ & 5(100) & 6(150) & 5(150) & \tikzmark{af4}7 & 0\\
+		\tikzmark{ab11}$S_2$ & 2(150) & 2 & 3 & \tikzmark{ab12}3 & 0\\
+		\tikzmark{ac9}$S_3$ & 5 & 4 & 4 & \tikzmark{ac10}3(100) & 0\\
+		$S_4$  & \tikzmark{ae6}13 & 12 & \tikzmark{ad8}15 & \tikzmark{ag2}12(150) & 50\\\hhline{|=|=|=|=|=#=|}
+		Demand & 0 & 50 & 0 & 0 &  \\\hline
+	\end{longtable}
+	\linkH{ab11}{ab12}\linkH{ac9}{ac10}\linkV{ad7}{ad8}\linkV{ae5}{ae6}\linkH{af3}{af4}\linkVV{ag1}{ag2}{3}{6}
 	
-	
+	\NI The smallest transportation cost is 12 in cell $S_4W_2$\sps
+	The allocation to this cell is $\min(50,50)=50$\sps
+	\newpage
+	\NI~Table-7
+	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
+		\hline
+		& \tikzmark{ae7}$W_1$ &\tikzmark{ah1}$W_2$ & \tikzmark{ad9}$W_3$ & \tikzmark{ag3}$W_4$ & Supply\\\hline
+		\tikzmark{af5}$S_1$ & 5(100) & 6(150) & 5(150) & \tikzmark{af6}7 & 0\\
+		\tikzmark{ab13}$S_2$ & 2(150) & 2 & 3 & \tikzmark{ab14}3 & 0\\
+		\tikzmark{ac11}$S_3$ & 5 & 4 & 4 & \tikzmark{ac12}3(100) & 0\\
+		$S_4$  & \tikzmark{ae8}13 & \tikzmark{ah2}12(50) & \tikzmark{ad10}15 & \tikzmark{ag4}12(150) & 0\\\hhline{|=|=|=|=|=#=|}
+		Demand & 0 & 0 & 0 & 0 &  \\\hline
+	\end{longtable}
+	\linkH{ab13}{ab14}\linkH{ac11}{ac12}\linkV{ad9}{ad10}\linkV{ae7}{ae8}\linkH{af5}{af6}\linkVV{ag3}{ag4}{3}{6.3}\linkVV{ah1}{ah2}{3}{5.5}
 	
 	\NI Initial Feasible solution is\\[-.8cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
-		& $D_1$ &$D_2$ & $D_3$ & $D_4$ & Supply\\\hline
-		$S_1$ & 100(100) & 50 & 130 & 70(100) & 0\\
-		$S_2$ & 90 & 60 & 80(100) & 100 & 0\\
-		$S_3$ & 150(100) & 20(150) & 300(50) & 100 & 0\\
-		$S_4$ &15 & 12 & 24 & 10(30) & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 0 & 0 & 0 &  \\\hline
+		& $W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
+		$S_1$ & 5(100) & 6(150) & 5(150) & 7 & 400\\
+		$S_2$ & 2(150) & 2 & 3 & 3 & 150\\
+		$S_3$ & 5 & 4 & 4 & 3(100) & 100\\
+		$S_4$  & 13 & 12(50) & 15 &12(150) & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 250 & 200 & 150 & 250 &  \\\hline
 	\end{longtable}
 	
 	\NI The minimum total transportation cost 
 	\begin{gather*}
-		100\times 100 + 70\times 100 + 80\times 100 + 150\times 100 + 20\times 150 + 300\times 50 + 10\times 30 = 58300
+		5\times 100 + 6\times 150 + 5\times 150 + 2\times 150 +  3\times 100 + 12 \times 50 + 12 \times 150 = 5150
 	\end{gather*}
 	
-	\NI Here, the number of allocated cells = 7 which is one less than to
+	\NI Here, the number of allocated cells = 7 is equal to
 	\begin{gather*}
 		 m+n-1 = 4+4-1 = 7
 	\end{gather*}
@@ -1089,148 +1127,109 @@
 	Problem Table is\\[-.8cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
-		& $D_1$ &$D_2$ & $D_3$ & $D_4$ & Supply\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100\\
-		$S_3$ & 150 & 20 & 300 & 100 & 300\\
-		$S_4$ &15 & 12 & 24 & 10 & 30\\\hhline{|=|=|=|=|=#=|}
-		Demand & 200 & 150 & 150 & 130 &  \\\hline
+		& $W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
+		$S_1$ & 5 & 6 & 5 & 7 & 400\\
+		$S_2$ & 2 & 2 & 3 & 3 & 150\\
+		$S_3$ & 5 & 4 & 4 & 3 & 100\\
+		$S_4$  & 13 & 12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 250 & 200 & 150 & 250 &  \\\hline
 	\end{longtable}
 	
 	\NI Table-1\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
 		& $D_1$ & $D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200 & 20=70-50\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100& 20=80-60\\
-		$S_3$ & 150 & 20 & 300 & 100 & 300 & 80=100-20\\
-		$S_4$ & 15 & 12 & 24 & 10 & 30 & 2=12-10\\\hhline{|=|=|=|=|=#=|=|}
-		Demand & 200 & 150 & 150 & 130 & & \\\hline
-		Column Penalty & 75=90-15 & 8=20-12 & 56=80-24 & 60=70-10 & &\\\hline
+		$S_1$ & 5 & 6 & 5 & 7 & 400 & 0=5-5\\
+		$S_2$ & 2 & 2 & 3 & 3 & 150& 0=2-2\\
+		$S_3$ & 5 & 4 & 4 & 3 & 100& 1=4-3\\
+		$S_4$  & 13 & 12 & 15 & 12 & 200 & 0=12-12\\\hhline{|=|=|=|=|=#=|=|}
+		Demand & 250 & 200 & 150 & 250 & & \\\hline
+		Column Penalty & 3=5-2 & 2=4-2 & 1=4-3 & 0=3-3 & &\\\hline
 	\end{longtable}
 	{~}\\[-1cm]
-	The maximum penalty, 80 occur in column $S_3$\\
-	The minimum $C_{ij}$ in this column is $C_{32} = 20$\\
-	The maximum allocation in this cell is $\min(300,150)=150$\\
-	It satisfy demand of $D_2$ and adjust the supply of $S_3$ from 300 to 150 ($300-150=150$).\\
+	The maximum penalty, 3, occur in column $W_1$\\
+	The minimum $C_{ij}$ in this column is $C_{21} = 2$\\
+	The maximum allocation in this cell is $\min(150,250)=150$\\
+	It satisfy demand of $S_2$ and adjust the demand of $W_3$ from 250 to 100 ($250-150=100$).\\
 	
 	
-	\NI Table-2
+	\NI Table-2\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& $D_1$ & \tikzmark{ii1}$D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200 & 30=100-70\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100& 10=90-80\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150 & 50=150-100\\
-		$S_4$ & 15 & \tikzmark{ii2}12 & 24 & 10 & 30 & 5=15-10\\\hhline{|=|=|=|=|=#=|=|}
-		Demand & 200 & 0 & 150 & 130 & & \\\hline
-		Column Penalty & 75=90-15 & - & 56=80-24 & 60=70-10 & &\\\hline
+		& $D_1$ & $D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		$S_1$ & 5 & 6 & 5 & 7 & 400 & 0=5-5\\
+		\tikzmark{bc1}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc2}3 & 0& --\\
+		$S_3$ & 5 & 4 & 4 & 3 & 100& 1=4-3\\
+		$S_4$  & 13 & 12 & 15 & 12 & 200 & 0=12-12\\\hhline{|=|=|=|=|=#=|=|}
+		Demand & 100 & 200 & 150 & 250 & & \\\hline
+		Column Penalty & 0=5-5 & 2=6-4 & 1=5-4 & 4=7-3 & &\\\hline
 	\end{longtable}
-	\linkV{ii1}{ii2}
+	\linkH{bc1}{bc2}
 	{~}\\[-1cm]
-	The maximum penalty, 75 occur in column $D_1$\\
-	The minimum $C_{ij}$ in this column is $C_{41} = 15$\\
-	The maximum allocation in this cell is $\min(30,200)=30$\\
-	It satisfy supply of $S_4$ and adjust the demand of $D_1$ from 200 to 170 ($200-30=170$).\\
-	
+	The maximum penalty, 4, occur in column $W_4$\\
+	The minimum $C_{ij}$ in this column is $C_{34} = 3$\\
+	The maximum allocation in this cell is $\min(100,250)=100$\\
+	It satisfy supply of $S_3$ and adjust the demand of $W_4$ from 250 to 150 ($250-100=150$).\\
+
 	\newpage
-	\NI Table-3
+	\NI Table-3\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& $D_1$ & \tikzmark{ii3}$D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200 & 30=100-70\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100& 10=90-80\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150 & 50=150-100\\
-		\tikzmark{jj1}$S_4$ & 15(30) & \tikzmark{ii4}12 & 24 & \tikzmark{jj2}10 & 0 & -\\\hhline{|=|=|=|=|=#=|=|}
-		Demand & 170 & 0 & 150 & 130 & & \\\hline
-		Column Penalty & 10=100-90 & - & 50=130-80 & 30=100-70 & &\\\hline
+		& $D_1$ & $D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		$S_1$ & 5 & 6 & 5 & 7 & 400 & 0=5-5\\
+		\tikzmark{bc3}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc4}3 & 0& --\\
+		\tikzmark{bd1}$S_3$ & 5 & 4 & 4 & \tikzmark{bd2}3(100) & 0& --\\
+		$S_4$  & 13 & 12 & 15 & 12 & 200 & 0=12-12\\\hhline{|=|=|=|=|=#=|=|}
+		Demand & 100 & 200 & 150 & 150 & & \\\hline
+		Column Penalty & 8=13-5 & 6=12-6 & 10=15-5 & 5=12-7 & &\\\hline
 	\end{longtable}
-	\linkV{ii3}{ii4}\linkH{jj1}{jj2}
+	\linkH{bc3}{bc4}\linkH{bd1}{bd2}
 	{~}\\[-1cm]
-	The maximum penalty, 50 occur in column $D_3$\\
-	The minimum $C_{ij}$ in this column is $C_{23} = 80$\\
-	The maximum allocation in this cell is $\min(100,150)=100$\\
-	It satisfy supply of $S_2$ and adjust the demand of $D_3$ from 150 to 50 ($150-100=50$).\\
-	
-	
+	The maximum penalty, 10, occur in column $W_3$\\
+	The minimum $C_{ij}$ in this column is $C_{13} = 5$\\
+	The maximum allocation in this cell is $\min(400,150)=150$\\
+	It satisfy demand of $W_3$ and adjust the supply of $S_1$ from 400 to 250 ($400-150=250$).\\
+
 	\newpage
-	\NI Table-4
+	\NI Table-4\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& $D_1$ & \tikzmark{ii5}$D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200 & 30=100-70\\
-		\tikzmark{kk1}$S_2$ & 90 & 60 & 80(100) & \tikzmark{kk2}100 & 0& -\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150 & 50=150-100\\
-		\tikzmark{jj3}$S_4$ & 15(30) & \tikzmark{ii6}12 & 24 & \tikzmark{jj4}10 & 0 & -\\\hhline{|=|=|=|=|=#=|=|}
-		Demand & 170 & 0 & 50 & 130 & & \\\hline
-		Column Penalty & 50=150-100 & - & 170=300-130 & 30=100-70 & &\\\hline
+		& $D_1$ & $D_2$ &\tikzmark{be1} $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		$S_1$ & 5 & 6 & 5(150) & 7 & 250 & 1=6-5\\
+		\tikzmark{bc5}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc6}3 & 0& --\\
+		\tikzmark{bd3}$S_3$ & 5 & 4 & 4 & \tikzmark{bd4}3(100) & 0& --\\
+		$S_4$  & 13 & 12 & \tikzmark{be2}15 & 12 & 200 & 0=12-12\\\hhline{|=|=|=|=|=#=|=|}
+		Demand & 100 & 200 & 0 & 150 & & \\\hline
+		Column Penalty & 8=13-5 & 6=12-6 & -- & 5=12-7 & &\\\hline
 	\end{longtable}
-	\linkV{ii5}{ii6}\linkH{jj3}{jj4}\linkH{kk1}{kk2}
+	\linkH{bc5}{bc6}\linkH{bd3}{bd4}\linkVV{be1}{be2}{4}{2.5}
 	{~}\\[-1cm]
-	The maximum penalty, 170 occur in column $D_3$\\
-	The minimum $C_{ij}$ in this column is $C_{13} = 130$\\
-	The maximum allocation in this cell is $\min(200,50)=50$\\
-	It satisfy demand of $D_3$ and adjust the supply of $S_1$ from 200 to 150 ($200-50=150$).\\
-	
-	
-	
+	The maximum penalty, 8, occur in column $W_1$\\
+	The minimum $C_{ij}$ in this column is $C_{11} = 5$\\
+	The maximum allocation in this cell is $\min(250,100)=100$\\
+	It satisfy demand of $W_1$ and adjust the supply of $S_1$ from 250 to 150 ($250-100=150$).\\
+
+
 	\newpage
-	\NI Table-5
+	\NI Table-5\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& $D_1$ & \tikzmark{ii7}$D_2$ & \tikzmark{ll1}$D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
-		$S_1$ & 100 & 50 & 130(50) & 70 & 150 & 30=100-70\\
-		\tikzmark{kk3}$S_2$ & 90 & 60 & 80(100) & \tikzmark{kk4}100 & 0& -\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150 & 50=150-100\\
-		\tikzmark{jj5}$S_4$ & 15(30) & \tikzmark{ii8}12 & \tikzmark{ll2}24 & \tikzmark{jj6}10 & 0 & -\\\hhline{|=|=|=|=|=#=|=|}
-		Demand & 170 & 0 & 0 & 130 & & \\\hline
-		Column Penalty & 50=150-100 & - & - & 30=100-70 & &\\\hline
+		& \tikzmark{bf1}$D_1$ & $D_2$ &\tikzmark{be3} $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		$S_1$ & 5(100) & 6 & 5(150) & 7 & 250 & 1=7-6\\
+		\tikzmark{bc7}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc8}3 & 0& --\\
+		\tikzmark{bd5}$S_3$ & 5 & 4 & 4 & \tikzmark{bd6}3(100) & 0& --\\
+		$S_4$  & \tikzmark{bf2}13 & 12 & \tikzmark{be4}15 & 12 & 200 & 0=12-12\\\hhline{|=|=|=|=|=#=|=|}
+		Demand & 0 & 200 & 0 & 150 & & \\\hline
+		Column Penalty & -- & 6=12-6 & -- & 5=12-7 & &\\\hline
 	\end{longtable}
-	\linkV{ii7}{ii8}\linkH{jj5}{jj6}\linkH{kk3}{kk4}\linkV{ll1}{ll2}
+	\linkH{bc7}{bc8}\linkH{bd5}{bd6}\linkVV{be3}{be4}{4}{2.5}\linkVV{bf1}{bf2}{3}{2.4}
 	{~}\\[-1cm]
-	The maximum penalty, 50 occur in column $D_1$\\
-	The minimum $C_{ij}$ in this column is $C_{11} = 100$\\
-	The maximum allocation in this cell is $\min(150,170)=150$\\
-	It satisfy supply of $S_1$ and adjust the demand of $D_1$ from 170 to 20 ($170-150=20$).\\
-	
-	
-	\newpage
-	\NI Table-6
-	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
-		\hline
-		& $D_1$ & \tikzmark{ii9}$D_2$ & \tikzmark{ll3}$D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
-		\tikzmark{mm1}$S_1$ & 100(150) & 50 & 130(50) & \tikzmark{mm2}70 & 0 & -\\
-		\tikzmark{kk5}$S_2$ & 90 & 60 & 80(100) & \tikzmark{kk6}100 & 0& -\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150 & 50=150-100\\
-		\tikzmark{jj7}$S_4$ & 15(30) & \tikzmark{ii10}12 & \tikzmark{ll4}24 & \tikzmark{jj8}10 & 0 & -\\\hhline{|=|=|=|=|=#=|=|}
-		Demand & 20 & 0 & 0 & 130 & & \\\hline
-		Column Penalty & 150 & - & - & 100 & &\\\hline
-	\end{longtable}
-	\linkV{ii9}{ii10}\linkH{jj7}{jj8}\linkH{kk5}{kk6}\linkV{ll3}{ll4}\linkH{mm1}{mm2}
-	{~}\\[-1cm]
-	The maximum penalty, 50 occur in column $D_1$\\
-	The minimum $C_{ij}$ in this column is $C_{31} = 150$\\
-	The maximum allocation in this cell is $\min(150,20)=20$\\
-	It satisfy demand of $D_1$ and adjust the supply of $S_3$ from 150 to 130 ($150-20=130$).\\
-	
-		\newpage
-	\NI Table-7
-	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
-		\hline
-		& $D_1$ & \tikzmark{ii11}$D_2$ & \tikzmark{ll5}$D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
-		\tikzmark{mm3}$S_1$ & 100(150) & 50 & 130(50) & \tikzmark{mm4}70 & 0 & -\\
-		\tikzmark{kk7}$S_2$ & 90 & 60 & 80(100) & \tikzmark{kk8}100 & 0& -\\
-		\tikzmark{nn1}$S_3$ & 150(20) & 20(150) & 300 & \tikzmark{nn2}100 & 130 & 100\\
-		\tikzmark{jj9}$S_4$ & 15(30) & \tikzmark{ii12}12 & \tikzmark{ll6}24 & \tikzmark{jj10}10 & 0 & -\\\hhline{|=|=|=|=|=#=|=|}
-		Demand & 0 & 0 & 0 & 130 & & \\\hline
-		Column Penalty & - & - & - & 100 & &\\\hline
-	\end{longtable}
-	\linkV{ii11}{ii12}\linkH{jj9}{jj10}\linkH{kk7}{kk8}\linkV{ll5}{ll6}\linkH{mm3}{mm4}\linkH{nn1}{nn2}
-	{~}\\[-1cm]
-	The maximum penalty, 100 occur in column $S_3$\\
-	The minimum $C_{ij}$ in this column is $C_{34} = 100$\\
-	The maximum allocation in this cell is $\min(130,130)=130$\\
-	It satisfy supply of $S_3$ and demand of $D_4$.\\
+	The maximum penalty, 6, occur in column $W_2$\\
+	The minimum $C_{ij}$ in this column is $C_{12} = 6$\\
+	The maximum allocation in this cell is $\min(150,200)=150$\\
+	It satisfy supply of $S_1$ and adjust the demand of $W_2$ from 200 to 50 ($200-150=150$).\\
+
+
 	
 	
 	\newpage
