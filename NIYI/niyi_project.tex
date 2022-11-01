@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \newcommand{\ubt}[1]{\textbf{\underline{#1}}}
 \newcommand{\sps}{\\[0.2cm]}
@@ -1215,44 +1217,78 @@
 	Results are presented for two Reynolds numbers Re = 200 and $R_e = 1000$ (based on the velocity profile at infinity and on the cylinder diameter $D$). Grid generation is of “0” type. The three-dimensional mesh is built in the
 	usual way stacking the two-dimensional grid, generated around selected spanwise sections of the cylinder. Such a mesh introduces a condition of periodicity in the azimuthal direction $\eta$.\\
 	
-	\NI A perspective view of the discretized domain is shown in Fig. 1. The length between the two walls is 5 diameters. The computational domain is limited to $r_\infty, = 5D$. For $R_e = 200$ the grid 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	\NI A perspective view of the discretized domain is shown in Fig. \ref{fig:4_1}. The length between the two walls is 5 diameters. The computational domain is limited to $r_\infty, = 5D$. For $R_e = 200$ the grid 
+
+	\begin{figure}[!h]
+		\centering
+		\begin{minipage}{.4\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{graph_1}
+			\caption{Three-dimensional grid}
+			\label{fig:4_1}
+		\end{minipage}
+		\begin{minipage}{.3\textwidth}
+			\centering
+			\includegraphics[width=1.3\linewidth]{graph_2}
+			\caption{Evolution with time of the velocity profile; $R_e=200$}
+			\label{fig:4_2}
+		\end{minipage}
+	\end{figure}
+
+	\begin{figure}[!h]
+		\centering
+		\begin{minipage}{.4\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{graph_3}
+			\caption{Evolution with time of the velocity profile; $R_e=100$}
+			\label{fig:4_3}
+		\end{minipage}
+		\begin{minipage}{.3\textwidth}
+			\centering
+			\includegraphics[width=1.3\linewidth]{graph_4}
+			\caption{Vorticity contours in three cross sections; $\Delta\omega = 2, R_e=200, t=3$}
+			\label{fig:4_4}
+		\end{minipage}
+	\end{figure}
 	consists of 81 nodes in the radial $(\xi)$ direction, 81 in the azimuthal $(\eta)$ direction and 101 in the spanwise $(\zeta)$ direction, and for $R_e = 1000$ a grid system of $121 \times 121 \times 121$ nodes has been chosen.\\
 	
 	\NI Calculations were made on CRAY 2 and the computational cost is about $2 \cdot 1O^{-5}$ seconds per point and per time step to obtain a divergence norm less than $10^{-3}$. The dimensionless time step is 0.02 for $R_e = 200$ and 0.015 for $R_e = 1000$.\\
-	The velocity profile time evolution behind the cylinder in the midspan section is reported in Fig. 2. The Reynolds number is equal to 200. A comparison at time $t = 3$ with a 2-D computation obtained using a $\psi - \omega$ formulation reveals the two-dimensional behaviour in the central region of the flow.
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	The velocity profile time evolution behind the cylinder in the midspan section is reported in Fig. \ref{fig:4_2}. The Reynolds number is equal to 200. A comparison at time $t = 3$ with a 2-D computation obtained using a $\psi - \omega$ formulation reveals the two-dimensional behaviour in the central region of the flow.
+	\begin{figure}[!h]
+		\centering
+		\begin{minipage}{.4\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{graph_5}
+			\caption{Velocity vectors plot in three cross sections; $R_e=200, t=3$}
+			\label{fig:4_5}
+		\end{minipage}
+		\begin{minipage}{.4\textwidth}
+			\centering
+			\includegraphics[width=1.3\linewidth]{graph_6}
+			\caption{Velocity vectors plot behind the cylinder; $R_e=200, t=3$}
+			\label{fig:4_6}
+		\end{minipage}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\begin{minipage}{.4\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{graph_7}
+			\caption{Vorticity contours in three cross sections; $\Delta\omega = 2, R_e=200, t=3$}
+			\label{fig:4_7}
+		\end{minipage}
+		\begin{minipage}{.4\textwidth}
+			\centering
+			\includegraphics[width=1.3\linewidth]{graph_8}
+			\caption{Vorticity contours in three cross sections; $\Delta\omega = 2, R_e=200, t=3$}
+			\label{fig:4_8}
+		\end{minipage}
+	\end{figure}
+	A similar curve for Re = 1000 is given in Fig. \ref{fig:4_3}. The length of the recirculating zone increases with time and is shorter for $R_e = 1000$ than for $R_e = 200$, in accordance with the results obtained in 2-D and in the experiments. We see that the peak of negative velocity increases with time and is more marked when the Reynolds number is greater.
+	Figures \ref{fig:4_4}, \ref{fig:4_5} and \ref{fig:4_6} are related to a Reynolds number equal to 200 and Figs. \ref{fig:4_7} and \ref{fig:4_8} to a Reynolds number equal to 1000. 
+	\\Figures \ref{fig:4_4} and \ref{fig:4_7} show the vorticity contours in three cross sections, the first plane is near the wall $(z/D = 0.15)$, the second one is intermediate $(s/D = 0.75)$ and the third one is the midspan section $(z/D = 2.5)$. \\
+	Figures 5 and 8 show velocity vector plots in the same planes. Figure \ref{fig:4_6} shows velocity vectors plot behind the cylinder in the symmetric spanwise plane. For $R_e = 200$ a unique eddy is formed and for $R_e = 1000$ a secondary eddy appears.\\
+	The three-dimensional effects are located especially near the walls, the different structures which appear in the flow are noticeably modified in these zones.
 	
 	
 	
