@@ -824,7 +824,7 @@
 		Consultancy & 2 & 2 & 3 & 3 & 150\\
 		Business School & 5 & 4 & 4 & 3 & 100\\
 		Uith & 13 & 12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
-		Demand & 350 & 300 & 250 & 200 &  \\\hline
+		Demand & 250 & 200 & 150 & 250 &  \\\hline
 	\end{longtable}
 
 	\NI To find an initial basic feasible solution for the given transportation problem using the three method. Representing the stores as $S_1, S_2, S_3, S_4$.
@@ -835,123 +835,143 @@
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
 		& $W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100\\
-		$S_3$ & 150 & 20 & 300 & 100 & 300\\
-		$S_4$ &15 & 12 & 24 & 10 & 30\\\hhline{|=|=|=|=|=#=|}
-		Demand & 200 & 150 & 150 & 130 &  \\\hline
+		$S_1$ & 5 & 6 & 5 & 7 & 400\\
+		$S_2$ & 2 & 2 & 3 & 3 & 150\\
+		$S_3$ & 5 & 4 & 4 & 3 & 100\\
+		$S_4$  & 13 & 12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 250 & 200 & 150 & 250 &  \\\hline
 	\end{longtable}
-	\NI The rim values for $S_1=400$ and $W_1=350$ are compared\\
-	The smaller of the two i.e $\min(400,350) = 350$ is assigned to $S_1W_1$\\
-	This meets the complete demand of $W_1$ and leaves $400-350=50$ units with $S_1$\\
+	\NI The rim values for $S_1=400$ and $W_1=250$ are compared\\
+	The smaller of the two i.e $\min(400,250) = 250$ is assigned to $S_1W_1$\\
+	This meets the complete demand of $W_1$ and leaves $400-250=150$ units with $S_1$\\
 	
 	\NI~Table-1
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
 		& \tikzmark{j1}$W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
-		$S_1$ & 5(350) & 6 & 5 & 7 & 50\\
+		$S_1$ & 5(250) & 6 & 5 & 7 & 150\\
 		$S_2$ & 2 & 2 & 3 & 3 & 150\\
 		$S_3$ & 5 & 4 & 4 & 3 & 100\\
 		$S_4$ &\tikzmark{j2}13 & 12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 300 & 250 & 200 &  \\\hline
+		Demand & 0 & 200 & 150 & 250 &  \\\hline
 	\end{longtable}
 	\linkV{j1}{j2}
 	{~}\\[-1cm]
-	\NI The rim values for $S_1=50$ and $W_2=300$ are compared\\
-	The smaller of the two i.e $\min(50,300) = 50$ is assigned to $S_1W_2$\\
-	This exhausts the capacity of $S_1$ and leaves $300-50=250$ units with $W_2$\\
+	\NI The rim values for $S_1=150$ and $W_2=200$ are compared\\
+	The smaller of the two i.e $\min(150,200) = 150$ is assigned to $S_1W_2$\\
+	This exhausts the capacity of $S_1$ and leaves $200-150=50$ units with $W_2$\\
 	\newpage
 	\NI~Table-2
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
 		& \tikzmark{j3}$W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
-		\tikzmark{k1}$S_1$ & 5(350) & 6(50) & 5 &\tikzmark{k2} 7 & 0\\
+		\tikzmark{k1}$S_1$ & 5(250) & 6(150) & 5 & \tikzmark{k2}7 & 0\\
 		$S_2$ & 2 & 2 & 3 & 3 & 150\\
 		$S_3$ & 5 & 4 & 4 & 3 & 100\\
 		$S_4$ &\tikzmark{j4}13 & 12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 250 & 250 & 200 &  \\\hline
+		Demand & 0 & 50 & 150 & 250 &  \\\hline
 	\end{longtable}
 	\linkV{j3}{j4}\linkH{k1}{k2}
 	{~}\\[-1cm]
-	\NI The rim values for $S_2=150$ and $W_2=250$ are compared\\
-	The smaller of the two i.e $\min(150,250) = 150$ is assigned to $S_2W_2$\\
-	This exhausts the capacity of $S_2$ and leaves $250-150=100$ units with $W_2$\\
-	
+	\NI The rim values for $S_2=150$ and $W_2=50$ are compared\\
+	The smaller of the two i.e $\min(150,50) = 50$ is assigned to $S_2W_2$\\
+	This meets the complete demand of $W_2$ and leaves $150-50=100$ units with $S_2$\\
+
+
 	\NI~Table-3
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
-		& \tikzmark{j5}$W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
-		\tikzmark{k3}$S_1$ & 5(350) & 6(50) & 5 &\tikzmark{k4} 7 & 0\\
-		\tikzmark{l1}$S_2$ & 2 & 2(150) & 3 & \tikzmark{l2}3 & 0\\
+		& \tikzmark{j5}$W_1$ &\tikzmark{l1}$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
+		\tikzmark{k3}$S_1$ & 5(250) & 6(150) & 5 & \tikzmark{k4}7 & 0\\
+		$S_2$ & 2 & 2(50) & 3 & 3 & 100\\
 		$S_3$ & 5 & 4 & 4 & 3 & 100\\
-		$S_4$ &\tikzmark{j6}13 & 12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 100 & 250 & 200 &  \\\hline
+		$S_4$ &\tikzmark{j6}13 & \tikzmark{l2}12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 0 & 0 & 150 & 250 &  \\\hline
 	\end{longtable}
-	\linkV{j5}{j6}\linkH{k3}{k4}\linkH{l1}{l2}
+	\linkV{j5}{j6}\linkH{k3}{k4}\linkV{l1}{l2}
 	{~}\\[-1cm]
-	\NI The rim values for $S_3=100$ and $W_2=100$ are compared\\
-	The smaller of the two i.e $\min(100,100) = 100$ is assigned to $S_3W_2$\\
-	This exhausts the capacity of $S_3$ and leaves $100-100=0$ units with $W_2$\\
-	
+	\NI The rim values for $S_2=100$ and $W_3=150$ are compared\\
+	The smaller of the two i.e $\min(100,150) = 100$ is assigned to $S_2W_3$\\
+	This exhausts the capacity of $S_2$ and leaves $150-100=50$ units with $W_3$\\
+
 	\NI~Table-4
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
-		& \tikzmark{j7}$W_1$ &\tikzmark{n1}$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
-		\tikzmark{k5}$S_1$ & 5(350) & 6(50) & 5 &\tikzmark{k6} 7 & 0\\
-		\tikzmark{l3}$S_2$ & 2 & 2(150) & 3 & \tikzmark{l4}3 & 0\\
-		\tikzmark{m1}$S_3$ & 5 & 4(100) & 4 & \tikzmark{m2}3 & 0\\
-		$S_4$ &\tikzmark{j8}13 & \tikzmark{n2}12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 0 & 250 & 200 &  \\\hline
+		& \tikzmark{j7}$W_1$ &\tikzmark{l3}$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
+		\tikzmark{k5}$S_1$ & 5(250) & 6(150) & 5 & \tikzmark{k6}7 & 0\\
+		\tikzmark{m1}$S_2$ & 2 & 2(50) & 3(100) & \tikzmark{m2}3 & 0\\
+		$S_3$ & 5 & 4 & 4 & 3 & 100\\
+		$S_4$ &\tikzmark{j8}13 & \tikzmark{l4}12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 0 & 0 & 50 & 250 &  \\\hline
 	\end{longtable}
-	\linkV{j7}{j8}\linkH{k5}{k6}\linkH{l3}{l4}\linkH{m1}{m2}\linkV{n1}{n2}
+	\linkV{j7}{j8}\linkH{k5}{k6}\linkV{l3}{l4}\linkH{m1}{m2}
 	{~}\\[-1cm]
-	\NI The rim values for $S_4=200$ and $W_2=0$ are compared\\
-	The smaller of the two i.e $\min(200,0) = 0$ is assigned to $S_4W_2$\\
-	This meets the complete demand of $D_2$ and leaves $200-0=200$ units with $S_4$\\
-	
+	\NI The rim values for $S_3=100$ and $W_3=50$ are compared\\
+	The smaller of the two i.e $\min(100,50) = 50$ is assigned to $S_3W_3$\\
+	This meets the complete demand of $W_3$ and leaves $100-50=50$ units with $S_3$\\
+
 	\NI~Table-5
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
-		& \tikzmark{j9}$W_1$ &\tikzmark{n3}$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
-		\tikzmark{k7}$S_1$ & 5(350) & 6(50) & 5 &\tikzmark{k8} 7 & 0\\
-		\tikzmark{l5}$S_2$ & 2 & 2(150) & 3 & \tikzmark{l6}3 & 0\\
-		\tikzmark{m3}$S_3$ & 5 & 4(100) & 4 & \tikzmark{m4}3 & 0\\
-		$S_4$ &\tikzmark{j10}13 & \tikzmark{n4}12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 0 & 250 & 200 &  \\\hline
+		& \tikzmark{j9}$W_1$ &\tikzmark{l5}$W_2$ &\tikzmark{n1} $W_3$ & $W_4$ & Supply\\\hline
+		\tikzmark{k7}$S_1$ & 5(250) & 6(150) & 5 & \tikzmark{k8}7 & 0\\
+		\tikzmark{m3}$S_2$ & 2 & 2(50) & 3(100) & \tikzmark{m4}3 & 0\\
+		$S_3$ & 5 & 4 & 4(50) & 3 & 50\\
+		$S_4$ &\tikzmark{j10}13 & \tikzmark{l6}12 & \tikzmark{n2}15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 0 & 0 & 0 & 250 &  \\\hline
 	\end{longtable}
-	\linkV{j9}{j10}\linkH{k7}{k8}\linkH{l5}{l6}\linkH{m3}{m4}\linkV{n3}{n4}
+	\linkV{j9}{j10}\linkH{k7}{k8}\linkV{l5}{l6}\linkH{m3}{m4}\linkV{n1}{n2}
 	{~}\\[-1cm]
-	\NI The rim values for $S_4=200$ and $W_3=250$ are compared\\
-	The smaller of the two i.e $\min(200,250) = 200$ is assigned to $S_4W_3$\\
-	This exhausts the capacity of $S_4$ and leaves $250-200=50$ units with $W_3$\\
+	\NI The rim values for $S_3=50$ and $W_4=250$ are compared\\
+	The smaller of the two i.e $\min(50,250) = 50$ is assigned to $S_3W_4$\\
+	This exhausts the capacity of $S_3$ and leaves $250-50=200$ units with $W_4$\\
 	
 	\NI~Table-6
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
-		& \tikzmark{j11}$W_1$ &\tikzmark{n5}$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
-		\tikzmark{k9}$S_1$ & 5(350) & 6(50) & 5 &\tikzmark{k10} 7 & 0\\
-		\tikzmark{l7}$S_2$ & 2 & 2(150) & 3 & \tikzmark{l8}3 & 0\\
-		\tikzmark{m5}$S_3$ & 5 & 4(100) & 4 & \tikzmark{m6}3 & 0\\
-		\tikzmark{o1}$S_4$ &\tikzmark{j12}13 & \tikzmark{n6}12 & 15(200) & \tikzmark{o2}12 & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 0 & 50 & 200 &  \\\hline
+		& \tikzmark{j11}$W_1$ &\tikzmark{l7}$W_2$ &\tikzmark{n3} $W_3$ & $W_4$ & Supply\\\hline
+		\tikzmark{k9}$S_1$ & 5(250) & 6(150) & 5 & \tikzmark{k10}7 & 0\\
+		\tikzmark{m5}$S_2$ & 2 & 2(50) & 3(100) & \tikzmark{m6}3 & 0\\
+		\tikzmark{o1}$S_3$ & 5 & 4 & 4(50) & \tikzmark{o2}3(50) & 0\\
+		$S_4$ &\tikzmark{j12}13 & \tikzmark{l8}12 & \tikzmark{n4}15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 0 & 0 & 0 & 200 &  \\\hline
 	\end{longtable}
-	\linkV{j11}{j12}\linkH{k9}{k10}\linkH{l7}{l8}\linkH{m5}{m6}\linkV{n5}{n6}\linkH{o1}{o2}
+	\linkV{j11}{j12}\linkH{k9}{k10}\linkV{l7}{l8}\linkH{m5}{m6}\linkV{n3}{n4}\linkH{o1}{o2}
 	{~}\\[-1cm]
-	\NI The rim values for $S_4=200$ and $W_3=250$ are compared\\
-	The smaller of the two i.e $\min(200,250) = 200$ is assigned to $S_4W_3$\\
-	This exhausts the capacity of $S_4$ and leaves $250-200=50$ units with $W_3$\\
+	\NI The rim values for $S_4=200$ and $W_4=200$ are compared\\
+	The smaller of the two i.e $\min(200,200) = 200$ is assigned to $S_4W_4$\\
+	\newpage
+	\NI~Table-7
+	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{2.7cm}|}
+		\hline
+		& \tikzmark{j13}$W_1$ &\tikzmark{l9}$W_2$ &\tikzmark{n5} $W_3$ & $W_4$ & Supply\\\hline
+		\tikzmark{k11}$S_1$ & 5(250) & 6(150) & 5 & \tikzmark{k12}7 & 0\\
+		\tikzmark{m7}$S_2$ & 2 & 2(50) & 3(100) & \tikzmark{m8}3 & 0\\
+		\tikzmark{o3}$S_3$ & 5 & 4 & 4(50) & \tikzmark{o4}3(50) & 0\\
+		\tikzmark{p1}$S_4$ &\tikzmark{j14}13 & \tikzmark{l10}12 & \tikzmark{n6}15 & \tikzmark{p2}12(200) & 0\\\hhline{|=|=|=|=|=#=|}
+		Demand & 0 & 0 & 0 & 0 &  \\\hline
+	\end{longtable}
+	\linkV{j13}{j14}\linkH{k11}{k12}\linkV{l9}{l10}\linkH{m7}{m8}\linkV{n5}{n6}\linkH{o3}{o4}\linkH{p1}{p2}
+	{~}\\[-1cm]
 	
-	
+	\NI~Initial feasible solution is
+	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{2.7cm}|}
+		\hline
+		& $W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
+		$S_1$ & 5(250) & 6(150) & 5 & 7 & 400\\
+		$S_2$ & 2 & 2(50) & 3(100) & 3 & 150\\
+		$S_3$ & 5 & 4 & 4(50) & 3(50) & 100\\
+		$S_4$ &13 & 12 & 15 & 12(200) & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 250 & 200 & 150 & 250 &  \\\hline
+	\end{longtable}
+	{~}\\[-1cm]
 	\NI The minimum total transportation cost 
-		\begin{gather*}
-			100\times 200 + 60 \times 100 | 20 \times 50 + 300 \times 150 + 100\times 100 + 10\times 30 = 82000
-		\end{gather*}
-	 
-	\NI Here, the number of allocated cells = 6 which is one less than to
 	\begin{gather*}
-		m+n-1 = 4+4-1 = 7
+		5\times 250 + 6\times 150 + 2\times 50 + 3\times 100 + 4\times 50 + 3\times 50 + 12\times 200 = 5300
 	\end{gather*}
-	$\therefore$ the solution is degenerate.
+	 
+	\NI Here, the number of allocated cells = 7 is equal to $m+n-1=4+4-1=7$\sps
+	$\therefore$ the solution is non-degenerate.
 	
 	\section{METHOD 2: Using Least Cost}
 	TOTAL number of supply constraints: 4\\
@@ -959,128 +979,16 @@
 	Problem Table is\\[-.8cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
-		& $D_1$ &$D_2$ & $D_3$ & $D_4$ & Supply\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100\\
-		$S_3$ & 150 & 20 & 300 & 100 & 300\\
-		$S_4$ &15 & 12 & 24 & 10 & 30\\\hhline{|=|=|=|=|=#=|}
-		Demand & 200 & 150 & 150 & 130 &  \\\hline
+		& $W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
+		$S_1$ & 5 & 6 & 5 & 7 & 400\\
+		$S_2$ & 2 & 2 & 3 & 3 & 150\\
+		$S_3$ & 5 & 4 & 4 & 3 & 100\\
+		$S_4$  & 13 & 12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
+		Demand & 250 & 200 & 150 & 250 &  \\\hline
 	\end{longtable}
-	~\\[-1.2cm]
-	\NI The smallest transportation cost  is 10 in cell $S_4D_4$\\
-	The allocation to this cell is $\min(30,130)=30$\\
-	This exhausts the capacity of $S_4$ and leaves $130-30=100$ units with $D_4$\\[-.4cm]
-	
-	\NI Table 1\\[-.8cm]
-	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
-		\hline
-		& $D_1$ &$D_2$ & $D_3$ & $D_4$ & Supply\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100\\
-		$S_3$ & 150 & 20 & 300 & 100 & 300\\
-		\tikzmark{q1}$S_4$ &15 & 12 & 24 & \tikzmark{q2}10(30) & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 200 & 150 & 150 & 100 &  \\\hline
-	\end{longtable}
-	\linkH{q1}{q2}
-	~\\[-1.1cm]
-	\NI The smallest transportation cost  is 20 in cell $S_3D_2$\\
-	The allocation to this cell is $\min(300,150)=150$\\
-	This satisfies the entire demand of $D_2$ and leaves $300-150=150$ units with $S_3$\\
-	
-	\NI Table 2\\[-.8cm]
-	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
-		\hline
-		& $D_1$ &\tikzmark{r1}$D_2$ & $D_3$ & $D_4$ & Supply\\\hline
-		$S_1$ & 100 & 50 & 130 & 70 & 200\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150\\
-		\tikzmark{q3}$S_4$ &15 & \tikzmark{r2}12 & 24 & \tikzmark{q4}10(30) & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 200 & 0 & 150 & 100 &  \\\hline
-	\end{longtable}
-	\linkH{q3}{q4}\linkV{r1}{r2}
-	~\\[-1.1cm]
-	\NI The smallest transportation cost  is 70 in cell $S_1D_4$\\
-	The allocation to this cell is $\min(200,100)=100$\\
-	This satisfies the entire demand of $D_4$ and leaves $200-100=100$ units with $S_1$\\
-	
-	\newpage
-	\NI Table 3\\[-.8cm]
-	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
-		\hline
-		& $D_1$ &\tikzmark{r3}$D_2$ & $D_3$ & \tikzmark{s1}$D_4$ & Supply\\\hline
-		$S_1$ & 100 & 50 & 130 & 70(100) & 100\\
-		$S_2$ & 90 & 60 & 80 & 100 & 100\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150\\
-		\tikzmark{q5}$S_4$ &15 & \tikzmark{r4}12 & 24 & \tikzmark{q6}10(30) & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 200 & 0 & 150 & 0 &  \\\hline
-	\end{longtable}
-	\linkH{q5}{q6}\linkV{r3}{r4}\linkVV{s1}{q6}{2.5}{4.9}
-	~\\[-1.1cm]
-	\NI The smallest transportation cost  is 80 in cell $S_2D_3$\\
-	The allocation to this cell is $\min(100,150)=100$\\
-	This exhaust the capacity of $S_2$ and leaves $150-100=50$ units with $D_3$\\
-	
-	\NI Table 4\\[-.8cm]
-	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
-		\hline
-		& $D_1$ &\tikzmark{r5}$D_2$ & $D_3$ & \tikzmark{s2}$D_4$ & Supply\\\hline
-		$S_1$ & 100 & 50 & 130 & 70(100) & 100\\
-		\tikzmark{t1}$S_2$ & 90 & 60 & 80(100) & \tikzmark{t2}100 & 0\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150\\
-		\tikzmark{q7}$S_4$ &15 & \tikzmark{r6}12 & 24 & \tikzmark{q8}10(30) & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 200 & 0 & 50 & 0 &  \\\hline
-	\end{longtable}
-	\linkH{q7}{q8}\linkV{r5}{r6}\linkVV{s2}{q8}{2.5}{4.9}\linkH{t1}{t2}
-	~\\[-1.1cm]
-	\NI The smallest transportation cost  is 100 in cell $S_1D_1$\\
-	The allocation to this cell is $\min(100,200)=100$\\
-	This exhaust the capacity of $S_1$ and leaves $200-100=100$ units with $D_1$\\	
-	
-	
-	\NI Table 5\\[-.8cm]
-	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
-		\hline
-		& $D_1$ &\tikzmark{r7}$D_2$ & $D_3$ & \tikzmark{s3}$D_4$ & Supply\\\hline
-		\tikzmark{u1}$S_1$ & 100(100) & 50 & 130 & \tikzmark{u2}70(100) & 0\\
-		\tikzmark{t3}$S_2$ & 90 & 60 & 80(100) & \tikzmark{t4}100 & 0\\
-		$S_3$ & 150 & 20(150) & 300 & 100 & 150\\
-		\tikzmark{q9}$S_4$ &15 & \tikzmark{r8}12 & 24 & \tikzmark{q10}10(30) & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 100 & 0 & 50 & 0 &  \\\hline
-	\end{longtable}
-	\linkH{q9}{q10}\linkV{r7}{r8}\linkVV{s3}{q10}{2.5}{4.9}\linkH{t3}{t4}\linkH{u1}{u2}
-	~\\[-1.1cm]
-	\NI The smallest transportation cost  is 150 in cell $S_3D_1$\\
-	The allocation to this cell is $\min(150,100)=100$\\
-	This satisfies the entire demand of $D_1$ and leaves $150-100=50$ units with $S_3$\\
-	
-	
-	\NI Table 6\\[-.8cm]
-	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
-		\hline
-		& $D_1$ &\tikzmark{r9}$D_2$ & $D_3$ & \tikzmark{s4}$D_4$ & Supply\\\hline
-		\tikzmark{u3}$S_1$ & 100(100) & 50 & 130 & \tikzmark{u4}70(100) & 0\\
-		\tikzmark{t5}$S_2$ & 90 & 60 & 80(100) & \tikzmark{t6}100 & 0\\
-		\tikzmark{w1}$S_3$ & 150(100) & 20(150) & 300 & \tikzmark{w2}100 & 50\\
-		\tikzmark{q11}$S_4$ &15 & \tikzmark{r10}12 & 24 & \tikzmark{q12}10(30) & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 0 & 50 & 0 &  \\\hline
-	\end{longtable}
-	\linkH{q11}{q12}\linkV{r9}{r10}\linkVV{s4}{q12}{2.5}{4.9}\linkH{t5}{t6}\linkH{u3}{u4}\linkH{w1}{w2}
-	~\\[-1.1cm]
-	\NI The smallest transportation cost  is 300 in cell $S_3D_3$\\
-	The allocation to this cell is $\min(50,50)=50$\\
-	
-	\newpage
-	\NI Table 7\\[-.8cm]
-	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
-		\hline
-		& $D_1$ &\tikzmark{r11}$D_2$ & \tikzmark{x1}$D_3$ & \tikzmark{s5}$D_4$ & Supply\\\hline
-		\tikzmark{u5}$S_1$ & 100(100) & 50 & 130 & \tikzmark{u6}70(100) & 0\\
-		\tikzmark{t7}$S_2$ & 90 & 60 & 80(100) & \tikzmark{t8}100 & 0\\
-		\tikzmark{w3}$S_3$ & 150(100) & 20(150) & 300(50) & \tikzmark{w4}100 & 0\\
-		\tikzmark{q13}$S_4$ &15 & \tikzmark{r12}12 & \tikzmark{x2}24 & \tikzmark{q14}10(30) & 0\\\hhline{|=|=|=|=|=#=|}
-		Demand & 0 & 0 & 0 & 0 &  \\\hline
-	\end{longtable}
-	\linkH{q13}{q14}\linkV{r11}{r12}\linkVV{s5}{q14}{2.5}{4.9}\linkH{t7}{t8}\linkH{u5}{u6}\linkH{w3}{w4}\linkV{x1}{x2}
+
+
+
 	
 	
 	\NI Initial Feasible solution is\\[-.8cm]
