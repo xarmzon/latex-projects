@@ -1484,6 +1484,38 @@
 	\end{equation*}
 	This is the required exact solution of the given partial differential equation.
 
+	\section*{Example 4.3}
+	Consider the following partial differential equation with $R_v(x,y) \neq 0$
+	\begin{equation*}
+		\frac{\partial^2 v}{\partial x \partial y} + \frac{\partial v}{\partial x} + u = 6x^2 y\label{eq:p_3_1}
+	\end{equation*}
+	with initial conditions
+	\begin{equation*}
+		v(x,0)=1,\qquad v(0,y)=y,\qquad v_y(0,y)=0\label{eq:p_3_2}
+	\end{equation*}
+	In the above problem, $\dsp R_v(x,y) = \frac{\partial^2 v}{\partial x \partial y} + v(x,y)$. Use the substitution $\dsp \frac{\partial v}{\partial y}= V(x,y)$ in, we get
+	\begin{equation*}
+		\frac{\partial V}{\partial x} + \frac{\partial v}{\partial x} + v = 6x^2 y\label{eq:p_3_3}
+	\end{equation*}
+	Taking the Laplace transform of equation with respect to $x$, we get
+	\begin{equation*}
+		sV(s,y) - V(0,y) + sv(s,y) - v(0,y) + \Laplace_x\left[v(x,y)\right]\frac{12y}{s^2} 
+	\end{equation*}
+	\begin{equation*}
+		V(s,y) = -v(s,y) - \frac{1}{s}\Laplace_x\left[v(x,y)\right]+ \frac{12y}{s^4}\label{eq:p_3_4}
+	\end{equation*}
+	Taking inverse Laplace transform of equation with respect to $x$, we get 
+	\begin{eqnarray*}
+		V(x,y) = -v(x,y) - \InverseLx{\frac{1}{s}\Laplace_x\left[v(x,y)\right]} + 2yx^3
+	\end{eqnarray*}
+	\begin{equation*}
+		\frac{\partial v(x,y)}{\partial x} = - v(x,y) - \InverseLx{\frac{1}{s}\Laplace_x\left[v(x,y)\right]}+2yx^3\label{eq:p_3_5}
+	\end{equation*}
+	Taking inverse Laplace transform of equation  with respect to $y$, we get
+	\begin{equation*}
+		v(x,y) = 1-\Laplace_y^{-1}\left\{\frac{1}{s}\Laplace_y\left[v(x,y) + \InverseLx{\frac{1}{s}\Laplace_x\left[v(x,y)\right]}\right]\right\} + x^3 y^2\label{eq:p_3_6}
+	\end{equation*}
+	We cannot solve the equation because our goal $u(x,y)$ is appeared in both sides of equation. Therefore the equation cannot be solved by using LSM because of $R_v(x,y) \neq 0$
 
 
 	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
