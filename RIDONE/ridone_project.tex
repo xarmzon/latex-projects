@@ -55,7 +55,7 @@
 	\clearpage
 	\thispagestyle{empty}
 	\begin{center}
-		\Large \bt{APPLICATION OF LAPLACE TRANSFORM IN SOLVING PARTIAL DIFFERENTIAL EQUATION IN THE SECOND DERIVATIVE}
+		\Large \bt{APPLICATION OF LAPLACE TRANSFORM IN SOLVING PARTIAL DIFFERENTIAL EQUATION OF THE SECOND ORDER DERIVATIVE}
 	\end{center}
 	
 	\hspace{7cm}
@@ -86,7 +86,7 @@
 	\hspace{5cm}
 	\\ \\ 
 	\begin{center}
-		\textbf{DECEMBER, 2021}
+		\textbf{NOVEMBER, 2022}
 	\end{center}
 	
 	\newpage
@@ -149,11 +149,11 @@
 	\chapter{GENERAL INTRODUCTION}
 	
 	\section{INTRODUCTION}
-	The Laplace transform is a globally used integral transform with many application in Physics and Engineering. The Laplace transform method is applicable in the solution of differential equation (DE) to that of solving in algebraic problem. It is denoted by $\LFt$ or $\dsp\LFn{f}\{s\} = \LaplaceIntegral$, it is a linear operator of a function $\ft$ with a real argument $t(t\geq 0)$ that transform it to a function $\Fs$ with a complex argument $s$. This transformation is essentially bijective for the majority of practical uses, the respective pairs of $\ft$ and $\Fs$ are matched in tables. The Laplace transform has the useful property that many relationships and operations over the original $\ft$ correspond to simpler relationships and operation over the images $\Fs$.\\
+	The Laplace transform is a globally used integral transform with many applications in Physics and Engineering. The Laplace transform method is applicable in the solution of differential equation to that of solving in algebraic problem. It is denoted by $\LFt$ or $\dsp\LFn{f}\{s\} = \LaplaceIntegral$, it is a linear operator of a function $\ft$ with a real argument $t(t\geq 0)$ that transform it to a function $\Fs$ with a complex argument $s$. This transformation is essentially bijective for the majority of practical uses, the respective pairs of $\ft$ and $\Fs$ are matched in tables. The Laplace transform has the useful property that many relationships and operations over the original $\ft$ correspond to simpler relationships and operation over the images $\Fs$.\\
 	
-	It is named after Pierre-Simon Laplace, who introduced the transform in his work in probability theory. The Laplace transform is related to the Fourier transform, but an the Fourier transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moments. In physics and engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are function of complex angular frequency on radians per unit time. Given a simple mathematical or functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on a set of specification.\\
+	It is named after Pierre-Simon Laplace, who introduced the transform in his work in probability theory. The Laplace transform is related to the Fourier transform, but as the Fourier transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moments. In physics and engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are function of complex angular frequency on radians per unit time. Given a simple mathematical or functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on a set of specification.\\
 	
-	On the other hand, \PDe (PDE) provide a quantitative description for many central models on physical, biological and social sciences. A \PDe (PDE) is an equation which involves derivates of an unknown function with respect to two or more independent variables.\sps
+	On the other hand, PDE provide a quantitative description for many central models on physical, biological and social sciences. A \PDe is an equation which involves derivatives of an unknown function with respect to two or more independent variables.\sps
 	For example:
 	\begin{equation}
 		\frac{\partial v}{\partial x} + \frac{\partial v}{\partial y} - \lambda v = 0
@@ -161,10 +161,10 @@
 	\end{equation}
 	where $\lambda$ is a constant.\sps
 	
-	The description is in terms of unknown functions of two or more independent variables, and the relation between partial derivates with respect to those variables. The order of a \PDE is the order of the highest derivative.\\
+	The description is in terms of unknown functions of two or more independent variables, and the relation between partial derivatives with respect to those variables. The order of a \PDE is the order of the highest derivative.\\
 	
-	A \PDE is said to be linear if the unknown function and all its partial derivatives occur to the first power only, and there are no product involving more than one of the terms e.g. \refx{1_1}. And it is non-linear if the relations between the unknown functions and the partial derivatives involved are non-linear.\sps
-	For example;
+	A \PDE is said to be linear if the unknown function and all its partial derivatives occur to the first power only, and there are no product involving more than one of the terms, for example equation \refx{1_1} is linear. And it is non-linear if the relations between the unknown functions and the partial derivatives involved are non-linear.\sps
+	For example,
 	\begin{equation}
 		\frac{\partial^2w}{\partial x^2}+\frac{\partial^2w}{\partial y^2} = f(w)
 		\label{eq:1_2}
@@ -185,20 +185,75 @@
 		\item $\dsp \frac{\partial^2 V}{\partial y \partial x}= \cos x \cos y$~~ with initial condition $V(x,0)=1+\sin x, ~ Vy(0,y)=-2\cos y$
 	\end{enumerate}
 
+		\section{DEFINITION OF RELEVANT TERMS}
+	\subsection{Linear Equation}
+	A linear equation is an algebraic equation in which the highest power of the unknown is one. For example;
+	\begin{eqnarray}
+		ax+b=0\label{eq:3_3}
+	\end{eqnarray}
+	
+	\subsection{Differential Equation}
+	An equation involving derivatives or differential of one or more dependent variable with respect to one or more independent variables is called differential equation. An example is;
+	\begin{eqnarray}
+		\frac{d^2y}{dx^2} + y = 0\label{eq:3_4}
+	\end{eqnarray}
+	
+	\subsection{Ordinary Differential Equation}
+	A differential equation which express a relationship between an independent variable, dependent variable and one or more differential coefficient of the dependent variable with respect to independent variable is called an ordinary differential equation. For example;
+	\begin{eqnarray}
+		y\dprime + 5y = 0 \label{eq:3_5}
+	\end{eqnarray}
+	
+	\subsection{Partial Differential Equation}
+	A partial differential equation (PDE) is an equation which involves derivatives of an unknown function with respect to two or more independent variables. An example is;
+	\begin{eqnarray}
+		\frac{\partial u}{\partial x} + \frac{\partial^2u}{\partial y^2} - \lambda u = 0\label{eq:3_6}\\
+		\text{where }\lambda \text{ is a constant}\notag
+	\end{eqnarray}
+
+	\subsection{Order of a Partial Differential Equation}
+	The order of a partial differential equation is the order of the highest derivative involved. The most general \textit{second}-order PDE in two independent variables is
+	\begin{equation}
+		F(x,y,u,u_x,u_y,u_{xx}, u_{xy}, u_{yy})=0
+	\end{equation}
+
+	\subsection{Solution to a Partial Differential Equation}
+	A \textit{solution} (or a particular solution) to partial differential equation is a function $u(x,y,\ldots)$ that solves the equation or in other words, turns it into an identity when substituted into the equation. A solution is called \textit{general} if it contain all particular solution of the equation involved. The term \textit{exact} solution is often used for second and higher-order non-linear PDEs to denote a \textit{particular} solution.\\
+	
+	\subsection{Linear Partial Differential Equation}
+	A partial differential equation is linear if it linear in the unknown function and all its derivatives with coefficient depending only on the independent variable. For example; equation \refx{1_1}
+	
+	\subsection{Non-Linear Partial Differential Equation}
+	A partial differential equation is said to be non-linear if its contains the product of the dependent variable or its derivatives. For example; equation \refx{1_2}
+	
+	\subsection{Quasi-Linear Partial Differential Equation}
+	A partial differential equation is quasi-linear if it is linear in the highest order derivatives with coefficients depending on the independent variable the unknown function and its derivatives of order lower than the order of the equation. For example;
+	\begin{eqnarray}
+		a(x,y,u)\frac{\partial u}{\partial x}+ b(x,y,u)\frac{\partial u}{\partial y} = c(x,y,u)\label{eq:3_7}
+	\end{eqnarray}
+	\begin{center}where the function $a,b$ and $c$ can be involve $u$ but not its derivatives\end{center}
+	
+	\subsection{Homogeneous Partial Differential Equation}
+	A PDE is said to be homogeneous if the equation does not contain a term independent of the unknown function and its derivatives. For example;
+	\begin{eqnarray}
+		U_{xx} + U_{yy} = 0\label{eq:3_8}
+	\end{eqnarray}
+
 	\section{AIM AND OBJECTIVES OF STUDY}
-	This project aim at the application of Laplace transform in solving partial differential equation on the second derivatives. Other specific objectives of the study are to:
+	This project aim at the application of Laplace transform in solving partial differential equation of the second order derivative. The objectives of the study were to:
 	\begin{enumerate}
-		\item determine the exact solution of the problem stated above
-		\item determine whether \PDEs can be solved using Laplace substitution method
+		\renewcommand{\labelenumi}{\roman{enumi}.}
+		\item find the exact solution of the problem stated above;
+		\item determine whether \PDEs can be solved using Laplace substitution method; and
 		\item investigate in the factors affecting the use of Laplace transform in solving differential equations.
 	\end{enumerate}
 
 	\section{SCOPE OF STUDY}
-	The study on the application of Laplace transform in solving partial differential equations in the second derivative will be limited to second order \PDEs. The study will cover on how to apply Laplace transform to \PDEs in the second derivatives. 
+	The study on the application of Laplace transform in solving partial differential equations in the second derivative will be limited to second order \PDEs. The study will cover on how to apply Laplace transform to \PDEs of the second order derivative. 
 	
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
-	\chapter{LAPLACE TRANSFORM}
+	\chapter{LITERATURE REVIEW}
 	\section{INTRODUCTION}
 	This chapter gives an insight into various studies conducted by outstanding researchers, as well as explained terminologies in the regards to the application of Laplace transform in solving \PDe in the second derivative.
 	
@@ -207,8 +262,8 @@
 	
 	\subsection{DEFINITION 1}
 	A function $\ft$ defined in the interval $[a,b]$ is said to have a \bt{Jumping Discontinuity} at $t_0\in [a,b]$ if $\ft$ is discontinuous at $t_0$ and the one sided limits $f(t_0-)$ and $f(t_0+)$ exists in finite members.\sps
-	If the discontinuity occurs at an endpoint $t_0=a(\text{ or } b)$, a jump discontinuity occurs if $f(a+)$(or $f(b-)$) exists in finite number.\sps
-	For example:, if\\
+	If the discontinuity occurs at an endpoint $t_0=a(\text{ or } b)$, a jump discontinuity occurs if $f(a+)$ or $f(b-)$ exists in finite number.\sps
+	For example, if\\
 	$\dsp f(t) = \left\{ \begin{array}{lr}
 		t^2 + 1, & t>1\\
 		1-t, & t<1
@@ -237,7 +292,7 @@
 	A function which is piecewise continuous on a finite member of intervals as necessarily integrable over that interval.
 	
 	\subsection{Definition 5}
-	A function $\ft$ is said to be \bt{Exponential Order} if a constant $k$ exists such that $\dsp e^{-kt}|\ft|$ is bounded for sufficiently large values of $t$, that is there exists a positive constant $M$ such that
+	A function $\ft$ is said to be exponential order if a constant $k$ exists such that $\dsp e^{-kt}|\ft|$ is bounded for sufficiently large values of $t$, that is there exists a positive constant $M$ such that
 	\begin{eqnarray}
 		|f(t)| < Me^{-kt}\sps
 		\forall ~~t > T \text{ at which } \ft \text{ is defined }\notag
@@ -245,15 +300,15 @@
 	\end{eqnarray}
 	
 	\subsection{Definition 6}
-	Given $f$, a function of time, with value $\ft$ at time $t$, the Laplace Transform of $f$ is denoted by $F$ and it gives an average value of $f$ taken over all positive values of $t$ such that the value $F(s)$ represents an average of $f$ taken over possible time intervals of length $s$.
+	The Laplace Transform of $f$ is denoted by $F$ and it gives an average value of $f$ taken over all positive values of $t$ such that the value $F(s)$ represents an average of $f$ taken over possible time intervals of length $s$.
 	
 	\subsection{Definition 7}
 	Let $\ft$ be a real valued function on $[0,\infty]$. The Laplace transform of $f$ is defined by
 	\begin{equation}
-		\Fs = \LaplaceIntegral ~\equiv~ \LFt ~~~ \text{ for } s > 0
+		\LFt = \LaplaceIntegral ~~~ \text{ for } s > 0
 		\label{eq:2_2}
 	\end{equation}
-	and it is denoted by $\LFt$ or $\Laplace[f]\{s\}$\sps
+	and it is denoted by $\LFt$\sps
 	
 	This immediately raises the question of why to use such a procedure. The research is strongly motivated by real engineering problems. There, we encounter models for the dynamics of phenomena which depends on rate of change of functions e.g velocities and acceleration of particles or points in rigid bodies, ordinary calculus to solve ODE, provided that the function are nicely-behaved, that is, continuous and with continuous derivatives. But, there is much interest in engineering dynamical problems involving functions that input step change or spike impulses to system, a good example in a playing pool. Now, there is an easy way to smooth out discontinuities in functions of time: simply take an average value over all time. But an ordinary average will replace the function by a constant, so we use a kind of moving average which takes continuous averages over all possible intervals of $t$. This effectively deals with the discontinuities by encoding them as a smooth function of interval length $s$.\\
 	
@@ -286,11 +341,15 @@
 		\text{For } \ft = \dsp \cos kt:\qquad  \dsp\LFn{\cos kt} &=& \int_0^\infty e^{-st}\cos kt~dt\\
 		&=&\lim\limits_{p\rightarrow\infty}\int_0^p e^{-at}\cos kt~dt\\
 		&=& \frac{1}{k}\lim\limits_{p\rightarrow\infty}\left\{ \Big[e^{-st}\sin kt\Big]_0^p + s\int_0^p e^{-st}\sin kt~dt \right\}\\
-		&=& \frac{1}{k}\lim\limits_{p\rightarrow\infty}\Big\{ e^{-sp}\sin kp + \frac{s}{k}\Big\{ \Big[-e^{-st}\cos kt\Big]_0^p\\ &-& s\int_0^p e^{-st}\cos kt~ dt \Big\}  \Big\}\\
-		&=&\frac{1}{k}\lim\limits_{p\rightarrow\infty}\Big(e^{-sp}\sin kp \Big) + \frac{s}{k^2}\lim\limits_{p\rightarrow\infty}\Big(-e^{-sp}\cos kt + 1\Big)\\ &-& \frac{s^2}{k^2}\lim\limits_{p\rightarrow\infty}\int_0^p e^{-st}\cos kt\\
+		&=& \frac{1}{k}\lim\limits_{p\rightarrow\infty}\Big\{ e^{-sp}\sin kp + \frac{s}{k}\Big\{ \Big[-e^{-st}\cos kt\Big]_0^p\\ 
+		&&- s\int_0^p e^{-st}\cos kt~ dt \Big\}  \Big\}\\
+		&=&\frac{1}{k}\lim\limits_{p\rightarrow\infty}\Big(e^{-sp}\sin kp \Big) + \frac{s}{k^2}\lim\limits_{p\rightarrow\infty}\Big(-e^{-sp}\cos kt + 1\Big)\\ 
+		&&- \frac{s^2}{k^2}\lim\limits_{p\rightarrow\infty}\int_0^p e^{-st}\cos kt\\
 		\Laplace[\cos kt]&=&\frac{s}{k^2}-\frac{s^2}{k^2}\Laplace[\cos kt]\\
-		\Laplace[\cos kt]\left(1 + \frac{s^2}{k^2}\right) &=& \frac{s}{k^2}\\
-		&&\text{Hence, }~~~ \LFn{\cos kt} = \frac{s}{s^2 + k^2}~~, ~~~ s > 0
+%		\Laplace[\cos kt]\left(1 + \frac{s^2}{k^2}\right) &=& \frac{s}{k^2}\\
+	\end{eqnarray*}
+	\begin{eqnarray*}
+		\text{ Hence, }~~~ \LFn{\cos kt} = \frac{s}{s^2 + k^2}~~, ~~~ s > 0
 	\end{eqnarray*}
 	
 	\subsection{THEOREM}
@@ -327,7 +386,7 @@
 		\LFt &=& \int_0^\infty e^{-st}\ft dt\\
 		&=& \int_0^3 e^{-st}\ft dt + \int_3^5 e^{-st}\ft dt + \int_5^\infty e^{-st}\ft dt\\
 		&=&4\int_0^3 e^{-st}dt + \int_5^\infty e^{2t}e^{-st}dt\\
-		&=&-\frac{4}{5}\Big(e^{-3s} - 1\Big) - \lim\limits_{p\rightarrow\infty}\int_5^p e^{-(s-2)t}dt\\
+		&=&-\frac{4}{5}\Big(e^{-3s} - 1\Big) - \lim\limits_{p\rightarrow\infty}\int_5^p e^{-(s-2)t}dt  ~~~~~~\text{ (where $p$ is dummy)}\\
 		&=& \frac{4}{5}\Big(1-e^{-3s}\Big) - \frac{1}{s-2}\lim\limits_{p\rightarrow\infty}\Big[e^{-(s-2)p} - e^{-5(s-2)}\Big]\\
 		&=&\frac{4}{5}\Big(1-e^{-3s}\Big)+ \frac{1}{s-2}e^{5(s-2)}~, ~~ s > 2
 	\end{eqnarray*}
@@ -356,15 +415,15 @@
 		&=& \int_0^\infty\Big[ae^{-st}\ft + be^{-st}g(t)\Big]dt\sps
 		&=& a\int_0^\infty e^{-st}f(t) + b\int_0^\infty e^{-st}g(t)dt\sps
 		\LFn{af + bg} &=& a \LFn{f} + b\LFn{g}\\
-		\text{which is \refx{2_3}}
+		\text{which is in equation \refx{2_3}}
 	\end{eqnarray*}
-	\\Also;
+	\\Also,
 	\begin{eqnarray*}
 		\LFn{e^{at}\ft} &=&\int_0^\infty e^{-st}e^{at}\ft dt\sps
 		\LFn{e^{at}\ft} &=& \int_0^\infty e^{(-s-a)t}\\
 		\LFn{e^{at}\ft} &=& F(s-a)
 	\end{eqnarray*}
-	which is \refx{2_4}. It is also called the First Shifting Theorem.\sps
+	which is equation \refx{2_4}. It is also called the First Shifting Theorem.\sps
 	With the help of this property, we can have the following important results.
 	\begin{eqnarray}
 		\LFn{t^n} &=& \frac{n!}{s^{n+1}}\sps
@@ -380,6 +439,7 @@
 	\subsection{THEOREM}
 	Suppose that
 	\begin{enumerate}
+		\renewcommand{\labelenumi}{(\roman{enumi})}
 		\item $f$ is of exponential order
 		\item $f$ is continuous on $[0, \infty)$
 		\item $f\sprime$ is also of exponential order
@@ -413,11 +473,11 @@
 	\begin{eqnarray*}
 		\lim\limits_{t\rightarrow\infty} e^{-st}\ft = 0
 	\end{eqnarray*}
-	correprently;\\
-	By using \refx{2_14}, we have;
+	consequently,\\
+	By using equation \refx{2_14}, we have;
 	\begin{eqnarray*}
 		\LFn{f\dprime} &=& s\LFn{f\sprime} - f\sprime(0)\sps
-		&=& s\left\{s\LFn{f} - f(0)\right\}-f\sprime(0) ~~~~ \text{(from \ref{eq:2_14})}\sps
+		&=& s\left\{s\LFn{f} - f(0)\right\}-f\sprime(0) ~~~~ \sps
 		&=& s^2\LFn{f}-sf(0) - f\sprime(0)
 	\end{eqnarray*}
 	Provided that;
@@ -494,7 +554,7 @@
 		\ft = \InverseL{F(s)}
 	\end{equation*}
 	is called the \bt{Inverse Laplace Transform of $\Fs$}\\
-	Some examples will be considered to determine the inverse transforms of some function. This will be added by the use of the results in the Table \ref{tab:2_1}
+	Some examples will be considered to determine the inverse transforms of some function. This will be aided by the use of the results in the Table \ref{tab:2_1}
 	
 	\section*{Example 2.5}
 	Find the Inverse Laplace transform for the given functions\\
@@ -524,7 +584,7 @@
 	\section{APPLICATION OF LAPLACE TRANSFORM TO SOLUTION OF INITIAL VALUE PROBLEMS (IVPs)}
 	Initial Value Problem(IVP) is an ordinary differential equation together with an initial condition which specifies the value of the unknown function at a given point in the domain.\\A good example is given;
 	\begin{equation*}
-		\frac{d^2y}{dx^2}=2-6x \qquad\quad y\sprime(0)=4, ~~ y(0)=1
+		\frac{d^2y}{dx^2}=2-11x \qquad\quad y\sprime(0)=4, ~~ y(0)=1
 	\end{equation*}
 	It is possible to solve certain initial value problem in ODE by the use of Laplace transform.\\
 	Let us consider the second order ordinary differential equation(ODE)
@@ -547,11 +607,11 @@
 		&&\LFn{y\sprime}=s\LFn{y} - y(0) = s\LFn{y} - k_1\label{eq:2_18}\sps
 		&& \LFn{y\dprime} = s^2\LFn{y}-sy(0)-y\sprime(0)=s^2\LFn{y}-sk_1 - k_2\label{eq:2_19}
 	\end{eqnarray}
-	Substitute \refx{2_18} and \refx{2_19} into \refx{2_17}, to have
+	Substitute equation \refx{2_18} and equation \refx{2_19} into equation \refx{2_17}, to have
 	\begin{eqnarray*}
 		s^2\LFn{y}-sk_1 - k_2 + a_1(s\LFn{y} - k_1)+ a_0\LFn{y} = \LFn{g}
 	\end{eqnarray*}
-	That is;
+	That is,
 	\begin{eqnarray}
 		(s^2+a_1s+a_0)\LFn{y} - k_1(s+a_1)-k_2 = \LFn{g}\label{eq:2_20}
 	\end{eqnarray}
@@ -559,7 +619,7 @@
 	\begin{eqnarray}
 		\LFn{y} = \frac{k_1(s+a_1)+k_2+\LFn{g}}{s^2 +a_1s+a_0}\label{eq:2_21}
 	\end{eqnarray}
-	The solution of \refx{2_15} is then obtained as
+	The solution of equation \refx{2_15} is then obtained as
 	\begin{eqnarray}
 		y(t) = \InverseL{\LFn{y}}\label{eq:2_22}
 	\end{eqnarray}
@@ -579,7 +639,7 @@
 	\begin{eqnarray*}
 		\LFn{y\dprime} + 2 \LFn{y\sprime} + \LFn{y} = \LFn{t^2}+ \LFn{1}
 	\end{eqnarray*}
-	Now insert \refx{2_18} and \refx{2_19} with $k_1=0$ and $k_2=1$, to get
+	Now insert equation \refx{2_18} and equation \refx{2_19} with $k_1=0$ and $k_2=1$, to get
 	\begin{equation*}
 		(s^2\LFn{y}-1)+ 2s\LFn{y} + \LFn{y} = \LFn{t^2} + \LFn{1}
 	\end{equation*}
@@ -606,11 +666,11 @@
 		f\times g(t) = \int_0^tf(x)g(t-x)dx\label{eq:2_23}
 	\end{eqnarray}
 	where $f$ and $g$ are piecewise continuous functions on $[0,\infty)$ and are of exponential order.\sps
-	clearly;
+	Clearly,
 	\begin{eqnarray*}
 		f\times g = g\times f
 	\end{eqnarray*}
-	Since by letting $u=t-x$ in \refx{2_23}, we have
+	Since by letting $u=t-x$ in equation \refx{2_23}, we have
 	\begin{eqnarray*}
 		f\times g(t) &=&\int_0^tf(x)g(t-x)dx\sps
 		&=&-\int_0^t f(t-u)g(u)du\sps
@@ -630,7 +690,7 @@
 	\subsection*{Solution}
 	\begin{eqnarray*}
 		f\times g &=&\int_0^t f(x)g(t-x)dx\sps
-		&=&int_0^t 2xe^{t-x}dx\sps
+		&=&\int_0^t 2xe^{t-x}dx\sps
 		&=& 2\left[\Big[-xe^{t-x}\Big]_0^t + \int_0^te^{t-x}dx\right]\sps
 		&=&2\left[-t - \Big[e^{t-x}\Big]_0^t\right]\sps
 		&=&2\left[-t - \Big(1-e^t\Big)\right]\sps
@@ -695,11 +755,11 @@
 		y(0)=y\sprime(0)=0 \tag{ii}\label{eq:2_10_ii}
 	\end{equation}
 	\subsection*{Solution}
-	We take the transform of \refx{2_10_i} to have
+	We take the transform of equation \refx{2_10_i} to have
 	\begin{eqnarray*}
 		\Lyp{\dprime} + \Ly = \LFn{\cos 2t}
 	\end{eqnarray*}
-	Next, we apply \refx{2_15} to have
+	Next, we apply equation \refx{2_15} to have
 	\begin{eqnarray*}
 		\Big\{ s^2\Ly - sy(0) - y\sprime(0) \Big\}+ \Ly = \frac{s}{s^2 + 4}
 	\end{eqnarray*}
@@ -707,11 +767,11 @@
 	\begin{eqnarray*}
 		(s^2+1)\Ly = \frac{s}{s^2 + 4},~~ \text{by use of \refx{2_10_ii}}
 	\end{eqnarray*}
-	Thus;
+	Thus,
 	\begin{eqnarray*}
 		\Ly = \frac{s}{(s^2+1)(s^2+4)}
 	\end{eqnarray*}
-	So then;
+	So then,
 	\begin{eqnarray*}
 		y = \InverseL{\frac{s}{(s^2+1)(s^2+4)}}
 	\end{eqnarray*}
@@ -723,7 +783,7 @@
 	\begin{eqnarray*}
 		f(t)=\cos t ~~~~~~~~ g(t)=\frac{1}{2}\sin 2t
 	\end{eqnarray*}
-	Thus;
+	Thus,
 	\begin{eqnarray*}
 		y &=& g \times \ft\sps
 		&=&\frac{1}{2}\int_0^t\sin 2t\cos(t-x)dx\sps
@@ -745,68 +805,16 @@
 	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
 	\chapter{PARTIAL DIFFERENTIATION EQUATION}
 	\section{INTRODUCTION}
-	The key defining property of partial differential equation (PDE) in that there is more than one independent variables $x,y,\ldots$. There is a dependent variable that is an unknown function of these variable, $u(x,y,\ldots)$. We will often denotes its derivates by subscripts; this $\dsp\frac{\partial u}{\partial x} = u_x$, and so on.\\
+	The key defining property of partial differential equation (PDE) in that there is more than one independent variables $x,y,\ldots$. There is a dependent variable that is an unknown function of these variable, $u(x,y,\ldots)$. We will often denotes its derivatives by subscripts; this $\dsp\frac{\partial u}{\partial x} = u_x$, and so on.\\
 	
 	A Partial Differential Equation (or briefly a PDE) is  mathematical equation that involves two or more independent variables, an unknown function(dependent on those variables), and partial derivatives of the unknown function with respect to the independent variables. It can be written as
 	\begin{equation}
 		F(x,y,u(x,y), u_x(x,y), u_y(x,y)) = F(x,y,u,u_x,u_y) = 0
 	\end{equation}
-	This is the most general PDE in two independent variables of \textit{first} order.\\
+	This is the most general PDE in two independent variables of \textit{first} order.\\	
 	
-	The order of a partial differential equation is the order of the highest derivative involved. The most general \textit{second}-order PDE in two independent variables is
-	\begin{equation}
-		F(x,y,u,u_x,u_y,u_{xx}, u_{xy}, u_{yy})=0
-	\end{equation}
-	A \textit{solution} (or a particular solution) to partial differential equation is a function $u(x,y,\ldots)$ that solves the equation or in other words, turns it into an identity when substituted into the equation. A solution is called \textit{general} if it contain all particular solution of the equation involved. The term \textit{exact} solution is often used for second and higher-order non-linear PDEs to denote a \textit{particular} solution.\\
+%	Partial differential equation are used to mathematically formulate and thus aid the solution of Physical and other problems involving functions of several variables such as the propagation of heat or sound, fluid flow, elasticity, electrostatics, electrodynamics, etc.
 	
-	Partial differential equation are used to mathematically formulate and thus aid the solution of Physical and other problems involving functions of several variables such as the propagation of heat or sound, fluid flow, elasticity, electrostatics, electrodynamics, etc.
-	
-	
-	
-	\section{DEFINITION OF RELEVANT TERMS}
-	\subsection{Linear Equation}
-	A linear equation is an algebraic equation in which the highest power of the unknown is one. For example;
-	\begin{eqnarray}
-		ax+b=0\label{eq:3_3}
-	\end{eqnarray}
-	
-	\subsection{Differential Equation}
-	An equation involving derivatives or differential of one or more dependent variable with respect to one or more independent variables is called differential equation. An example is;
-	\begin{eqnarray}
-		\frac{d^2y}{dx^2} + y = 0\label{eq:3_4}
-	\end{eqnarray}
-	
-	\subsection{Ordinary Differential Equation}
-	A differential equation which express a relationship between an independent variable, dependent variable and one or more differential coefficient of the dependent variable with respect to independent variable is called an ordinary differential equation. For example;
-	\begin{eqnarray}
-		y\dprime + 5y = 0 \label{eq:3_5}
-	\end{eqnarray}
-	
-	\subsection{Partial Differential Equation}
-	A partial differential equation (PDE) is an equation which involves derivatives of an unknown function with respect to two or more independent variables. An example is;
-	\begin{eqnarray}
-		\frac{\partial u}{\partial x} + \frac{\partial^2u}{\partial y^2} - \lambda u = 0\label{eq:3_6}\\
-		\text{where }\lambda \text{ is a constant}\notag
-	\end{eqnarray}
-	
-	\subsection{Linear Partial Differential Equation}
-	A partial differential equation is linear if it linear in the unknown function and all its derivatives with coefficient depending only on the independent variable. For example; equation \refx{1_1}
-	
-	\subsection{Non-Linear Partial Differential Equation}
-	A partial differential equation is said to be non-linear if its contains the product of the dependent variable or its derivatives. For example; equation \refx{1_2}
-	
-	\subsection{Quasi-Linear Partial Differential Equation}
-	A partial differential equation is quasi-linear if it is linear in the highest order derivatives with coefficients depending on the independent variable the unknown function and its derivatives of order lower than the order of the equation. For example;
-	\begin{eqnarray}
-		a(x,y,u)\frac{\partial u}{\partial x}+ b(x,y,u)\frac{\partial u}{\partial y} = c(x,y,u)\label{eq:3_7}
-	\end{eqnarray}
-	\begin{center}where the function $a,b$ and $c$ can be involve $u$ but not its derivatives\end{center}
-	
-	\subsection{Homogeneous Partial Differential Equation}
-	A PDE is said to be homogeneous if the equation does not contain a term independent of the unknown function and its derivatives. For example;
-	\begin{eqnarray}
-		U_{xx} + U_{yy} = 0\label{eq:3_8}
-	\end{eqnarray}
 	
 	\section{FIRST ORDER PARTIAL DIFFERENTIAL EQUATION}
 	\subsection{General Form of First-Order Partial Differential Equation}
@@ -839,7 +847,7 @@
 	\end{eqnarray}
 	where $\Phi$ is an arbitrary function of two variables. With equation \refx{3_13} solved for $u_2$, one often specifies the general solution in the form $u_2 = \varphi(u_1)$ where $\varphi(u)$ is an arbitrary function of one variable.
 	
-	\NI Remark: If $h(x,y,w)\equiv 0$, then $w=c_2$ can be used as the second integral in \refx{3_12}\sps
+	\NI Remark: If $h(x,y,w)\equiv 0$, then $w=c_2$ can be used as the second integral in equation \refx{3_12}\sps
 	
 	\section*{Example 3.1}
 	Consider the linear equation $\dsp \frac{\partial w}{\partial x} + a \frac{\partial w}{\partial y} = b$\sps
@@ -857,8 +865,8 @@
 	\end{eqnarray*}
 	where $\varphi(z)$ is an arbitrary function.
 	
-	\subsection{Cauchy Problem: Two Formulation, Solving the Cauchy Problem}
-	\bt{Generalized Cauchy Problem}\sps
+%	\section{Cauchy Problem: Two Formulation, Solving the Cauchy Problem}
+	\subsection{Generalized Cauchy Problem}
 	\textit{Generalized Cauchy Problem:} Find a solution $w=w(x,y)$ to equation \refx{3_10} satisfying the initial conditions
 	\begin{equation}
 		x=\varphi_1(\xi), ~~ y=\varphi_2(\xi), ~~ w=\varphi_3(\xi)\label{eq:3_14}
@@ -867,7 +875,7 @@
 	
 	\textit{Geometric interpretation:} Find an integral surface of equation \refx{3_10} passing through the line defined parametrically by equation \refx{3_14}.\\
 	
-	\NI\bt{Classical Cauchy Problem}\sps
+	\subsection{Classical Cauchy Problem}
 	\textit{Classical Cauchy Problem:} Find a solution $w=w(x,y)$ of equation \refx{3_10} satisfying the initial condition
 	\begin{equation}
 		w=\varphi(y) \text{ at } x=0, \label{eq:3_15}
