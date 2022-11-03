@@ -136,7 +136,7 @@
 	%%ABSTRACT%%
 	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
 	\addcontentsline{toc}{chapter}{ABSTRACT}
-	This project deals with 
+	This project dealt with solving partial Differential Equation of the second order derivative by the application of Laplace Substitution method which is based on the Laplace transform. This method has a convenient way to find exact solution in the less computation is compared with Method of Separation of Variables (MSV) and Variational iteration method (VIM). 
 	
 	\newpage
 	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
@@ -151,9 +151,10 @@
 	\section{INTRODUCTION}
 	The Laplace transform is a globally used integral transform with many applications in Physics and Engineering. The Laplace transform method is applicable in the solution of differential equation to that of solving in algebraic problem. It is denoted by $\LFt$ or $\dsp\LFn{f}\{s\} = \LaplaceIntegral$, it is a linear operator of a function $\ft$ with a real argument $t(t\geq 0)$ that transform it to a function $\Fs$ with a complex argument $s$. This transformation is essentially bijective for the majority of practical uses, the respective pairs of $\ft$ and $\Fs$ are matched in tables. The Laplace transform has the useful property that many relationships and operations over the original $\ft$ correspond to simpler relationships and operation over the images $\Fs$.\\
 	
-	It is named after Pierre-Simon Laplace, who introduced the transform in his work in probability theory. The Laplace transform is related to the Fourier transform, but as the Fourier transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moments. In physics and engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are function of complex angular frequency on radians per unit time. Given a simple mathematical or functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on a set of specification.\\
+	\NI It is named after Pierre-Simon Laplace, who introduced the transform in his work in probability theory. \\
+%	The Laplace transform is related to the Fourier transform, but as the Fourier transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moments. In physics and engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are function of complex angular frequency on radians per unit time. Given a simple mathematical or functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on a set of specification.\\
 	
-	On the other hand, PDE provide a quantitative description for many central models on physical, biological and social sciences. A \PDe is an equation which involves derivatives of an unknown function with respect to two or more independent variables.\sps
+	\NI On the other hand, PDE provide a quantitative description for many central models on physical, biological and social sciences. A \PDe is an equation which involves derivatives of an unknown function with respect to two or more independent variables.\sps
 	For example:
 	\begin{equation}
 		\frac{\partial v}{\partial x} + \frac{\partial v}{\partial y} - \lambda v = 0
@@ -255,10 +256,23 @@
 	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
 	\chapter{LITERATURE REVIEW}
 	\section{INTRODUCTION}
-	This chapter gives an insight into various studies conducted by outstanding researchers, as well as explained terminologies in the regards to the application of Laplace transform in solving \PDe in the second derivative.
+	This chapter gives an insight into various studies conducted by outstanding researchers, as well as explained terminologies in the regards to the application of Laplace transform in solving \PDe in the second derivative.\\
+	
+	\NI The study on the application of Laplace transforms in solving Partial Differential Equation of the second order derivative will be of immense benefit to the body of existing literature and knowledge in this field of study and provide the basis for further research.\\
+	
+	\NI The Laplace transform is related to the Fourier transform, but as the Fourier Transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moment. In Physis and Engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are functions of complex angular frequency on radians per unit time. Given a simple Mathematical of functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on set of specification.\\
+	
+	\NI Prominent researchers have worked on Laplace transform and PDE. Kolev et al. (1993) applied Laplace transform for the solution of transient mass and Heat transfer problems in flow system.\\
+	
+	\NI Adeniyi R.B. (2014) wrote about using the convolution of two functions for finding the inverse of Laplace transform.
+	He J. H. (1998) carried out the study on the approximate solution of non-linear differential equations with convolution product nonlinearities. 
+	
+	\NI Widder D. V. (1946) investigated an introduction of Laplace transform with engineering applications.
+	Memberez et al. (1996) carried out a study on the use of Laplace transform technique for simple kinetic parameters evaluations.    
+	
 	
 	\section{LAPLACE TRANSFORM}
-	The Laplace transform method is applicable in the solution of differential equation. The method reduces the problem of solving differential equation to that of solving an algebraic problem.  Bendei being a different and efficient alternative to variation of parameters and undetermined coefficient, the Laplace transform method is particularly advantageous for input term that are piecewise-defined, periodic or impulse.
+	The Laplace transform method is applicable in the solution of differential equation. The method reduces the problem of solving differential equation to that of solving an algebraic problem.  Besides being a different and efficient alternative to variation of parameters and undetermined coefficient, the Laplace transform method is particularly advantageous for input term that are piecewise-defined, periodic or impulse.
 	
 	\subsection{DEFINITION 1}
 	A function $\ft$ defined in the interval $[a,b]$ is said to have a \bt{Jumping Discontinuity} at $t_0\in [a,b]$ if $\ft$ is discontinuous at $t_0$ and the one sided limits $f(t_0-)$ and $f(t_0+)$ exists in finite members.\sps
@@ -281,7 +295,7 @@
 	
 	\subsection{Definition 3}
 	\label{sec:2_2_3}
-	A function $\ft$ is said to be \bt{piecewise continuous (or sectionally continuous)} on a finite interval $[a,b]$ if $[a,b]$ can be divided into a finite number of subinterval such that 
+	A function $\ft$ is said to be \bt{piecewise continuous (or sectionally continuous)} on a finite interval $[a,b]$ if $[a,b]$ can be divided into a finite number of sub-interval such that 
 	\begin{enumerate}
 		\item $\ft$ is continuous in the interior of each subintervals
 		\item $\ft$ approaches finite limits at $t$ approaches either and points of each subintervals from its interiors.
@@ -1548,7 +1562,7 @@
 		\item T. A. Abassy, M.A.El-Tawil ,H.El-Zoheiry, Exact solutions of some nonlinear partial diferential using the
 		variational iteration method linked with Laplace transforms and the Pade technique, Computers and Mathematics
 		with Applications,54 (7-8))(2007)940-954.
-		
+		+2
 		\item Widder D. V., 1946, The Laplace transform, Princeton University Press, USA. 2. Jaeger J. C., 1961, An introduction to the Laplace transformation with engineering applications, Methuen, London. 
 	\end{description}
 

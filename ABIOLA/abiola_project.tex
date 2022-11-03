@@ -254,12 +254,36 @@
 	\begin{gather}
 		y_{n+1} = y_n+\frac{h}{6}(k_1+2k_2+2k_3+k_4)\sps
 		x_{n+1} = x_{n+h}\sps
+		\forall n = 1,2,3,\ldots
 	\end{gather}
+	using 
+	\begin{eqnarray}
+		k_1 &=& f(x_n,y_n) \sps
+		k_2 &=& f(x_n + \frac{h}{2}, y_n + \frac{h}{2}k_1)\sps
+		k_3 &=& f(x_n+\frac{h}{2}, y_n \frac{h}{2}k_2)\sps
+		k4 &=& f(x_n + h, y+hk_3) 
+	\end{eqnarray}
+	Each $k_i, i=1,2,3,\ldots$ represent $k^{th}$ order Runge-Kutta method, the forth order is the most stable and easy to implement.
 	
+	\section{Taylor's Series Method}
+	Considering the one-dimensional initial value problem $y\sprime(x) = f(x,y)$ and $y(x_0)=y_0$ where $f$ is a function of two variables $x$ and $y$ and $(x_0,y_0)$ is a known point on the solution curve(initial points). If the existence of all higher order partial derivatives is assumed for $y$ at $x=x_0$ then by Taylor's series, the value of $y$ at an neighbouring point $x+h$ is written as
+	\begin{eqnarray}
+		y(x_0+h) = y(x_0) + hy\sprime(x_0) + \frac{h^2}{2}y\dprime(x_0) + \frac{h^3}{3!}y\tprime(x_0) + \cdots
+	\end{eqnarray}
+	where $y\sprime(x)$ represent the derivative of $y$ with respect to $x$ since at $x_0$, $y_0$ is unknown, $y\sprime(x_0)$ is obtained by computing $f(x_0,y_0)$. Similarly higher derivatives of $y$ at $x_0$ can also be computed by using the relation.
+	\begin{eqnarray}
+		y\sprime &=& f(x,y)\sps
+		y\dprime &=& f_x + f_y y\sprime\sps
+		y\tprime &=& f_{xx} + 2f_{xy}y\sprime + f_{yy}(y\sprime)^2 + f_y y\dprime 
+	\end{eqnarray}
+	and so on. Then
+	\begin{eqnarray}
+		y(x_0+h) = y(x_0) + hf + \frac{h^2}{2!}(f_x + f_x y\sprime) + \frac{h^3}{3!}(f_{xx} + 2f_{xy}y\prime + f_{yy}(y\sprime)^2 + f_{yy}\dprime)
+	\end{eqnarray}
+	Hence, the value of $y$ at any neighbouring point $x_0+h$ can be obtained by summing the above infinite series.\\
+	However, in any practical computation, the summation has to be terminated after some finite number of terms. If the series has been terminated after the $p^{th}$ derivative term then the approximated formula is called the Taylor Series approximation of $y$ of order $p$.
 	
-	
-	
-	
+	\section{Euler's Method}
 	
 	
 	
