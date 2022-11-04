@@ -4,7 +4,10 @@
 %\usepackage{bbm}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{longtable}
 
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
 
 \newcommand{\Laplace}{\mathcal{L}}
 \newcommand{\ft}{f(t)}
@@ -518,30 +521,245 @@
 	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
 	\chapter{METHODOLOGY}
 	\section{Laplace Transform}
-	In mathematics, the Laplace transform, named after its inventor Pierre-Simon Laplace, is an integral transform that converts a function of a real variable $t$ (often time) to a function of a complex variable $s$ (complex frequency). The transform has many applications in science and engineering because it is a tool for solving differential equations. In particular, it transforms linear differential equations into algebraic equations and convolution into multiplication.
-
+	In mathematics, the Laplace transform, named after its inventor Pierre-Simon Laplace, is an integral transform that converts a function of a real variable $t$ (often time) to a function of a complex variable $s$ (complex frequency). The transform has many applications in science and engineering because it is a tool for solving differential equations. In particular, it transforms linear differential equations into algebraic equations and convolution into multiplication. For suitable functions $f$, the Laplace transform is the integral;
+	\begin{eqnarray}
+		\Laplace{f}(s) = \int_{0}^{\infty} f(t) e^{-st} dt
+	\end{eqnarray}
+	The Laplace transform is named after mathematician and astronomer Pierre-Simon Laplace, who used a similar transform in his work on probability theory. Laplace wrote extensively about the use of generating functions in \emph{Essai philosophique sur les probabilités} (1814), and the integral form of the Laplace transform evolved naturally as a result.\\
 	
+	\NI Laplace's use of generating functions was similar to what is now known as the z-transform, and he gave little attention to the continuous variable case which was discussed by Niels Henrik Abel. The theory was further developed in the 19th and early 20th centuries by Mathias Lerch, Oliver Heaviside, and Thomas Bromwich.\\
+	
+	\NI The current widespread use of the transform (mainly in engineering) came about during and soon after World War II, replacing the earlier Heaviside operational calculus. The advantages of the Laplace transform had been emphasized by Gustav Doetsch, to whom the name Laplace Transform is apparently due.\\
+	
+	\NI	From 1744, Leonhard Euler investigated integrals of the form;\\
+	\begin{eqnarray}
+		z =\int X(x) e^{ax} dx
+	\end{eqnarray}
+	and
+	\begin{eqnarray}
+		z =\int X(x)x^A dx
+	\end{eqnarray}
+	as solutions of differential equations, but did not pursue the matter very far. Joseph Louis Lagrange was an admirer of Euler and, in his work on integrating probability density functions, investigated expressions of the form;
+	\begin{eqnarray}
+		\int X(x) e^{-ax} a^x dx
+	\end{eqnarray}
+	which some modern historians have interpreted within modern Laplace transform theory.\\
+	
+	\NI These types of integrals seem first to have attracted Laplace's attention in 1782, where he was following in the spirit of Euler in using the integrals themselves as solutions of equations. However, in 1785, Laplace took the critical step forward when, rather than simply looking for a solution in the form of an integral, he started to apply the transforms in the sense that was later to become popular. He used an integral of the form;
+	\begin{eqnarray}
+		\int x^s \phi (x) dx
+	\end{eqnarray}
+	akin to a Mellin transform, to transform the whole of a difference equation, in order to look for solutions of the transformed equation. He then went on to apply the Laplace transform in the same way and started to derive some of its properties, beginning to appreciate its potential power.\\
+	
+	\NI Laplace also recognised that Joseph Fourier's method of Fourier series for solving the diffusion equation could only apply to a limited region of space, because those solutions were periodic. In 1809, Laplace applied his transform to find solutions that diffused indefinitely in space.\\
+	
+	\NI The Laplace transform of a function $f(t)$, defined for all real numbers $t \geq 0$, is the function $F(s)$, which is a unilateral transform defined by;
+	\begin{eqnarray}
+		F(s) =\int_{0}^{\infty} f(t)e^{-st}dt
+	\end{eqnarray}
+	where s is a complex number frequency parameter
+	\begin{eqnarray}
+		s = \mu + i\omega
+	\end{eqnarray}
+	with real numbers $\mu$ and $\omega$. An alternate notation for the Laplace transform is $\Laplace(f)$ instead of $F$.\\
+	
+	\NI The meaning of the integral depends on types of functions of interest. A necessary condition for existence of the integral is that f must be locally integrable on $[0, \infty)$. For locally integrable functions that decay at infinity or are of exponential type $(|f(t)| \leq Ae^{B|t|})$, the integral can be understood to be a (proper) Lebesgue integral. However, for many applications it is necessary to regard it as a conditionally convergent improper integral at $\infty$. Still more generally, the integral can be understood in a weak sense, and this is dealt with below.\\
+	
+	\NI One can define the Laplace transform of a finite Borel measure $\mu$ by the Lebesgue integral;
+	\begin{eqnarray}
+		(f) = \int_{[0,\infty)} e^{-st} d\nu(t)
+	\end{eqnarray}
+	An important special case is where $\mu$ is a probability measure, for example, the Dirac delta function. In operational calculus, the Laplace transform of a measure is often treated as though the measure came from a probability density function $f$. In that case, to avoid potential confusion, one often writes
+	\begin{eqnarray}
+		(f) =\int_{0^-}^{\infty} f(t)e^{-st}dt
+	\end{eqnarray}
+	where the lower limit of $0^-$ is shorthand notation for
+	\begin{eqnarray}
+		\lim_{\epsilon \to 0^+}\int_{-\epsilon}^{\infty}
+	\end{eqnarray}
+	This limit emphasizes that any point mass located at 0 is entirely captured by the Laplace transform. Although with the Lebesgue integral, it is not necessary to take such a limit, it does appear more naturally in connection with the Laplace–Stieltjes transform.
+
+	\NI The Laplace transform can be used to solve differential equations. Besides being a different and efficient alternative to variation of parameters and undetermined coefficients, the Laplace method is particularly advantageous for input terms that are piecewise-defined, periodic or impulsive.
+
+	\section{Differentiation and the Laplace Transform}
+	In this section, we explore how the Laplace transform interacts with the basic operators of calculus: differentiation and integration. The greatest interest will be in the first identity that we will derive. This relates the transform of a derivative of a function to the transform of the original function, and will allow us to convert many initial-value problems to easily solved algebraic equations. But there are other useful relations involving the Laplace transform and either differentiation or integration. So we’ll look at them, too.
+	
+	\subsection{Transforms of Derivatives}
+	To see how the Laplace transform can convert a differential equation to a simple algebraic equation, let us examine how the transform of a function’s derivative,
+	\begin{eqnarray}
+		\Laplace [f'(t)]|_{s} = \Laplace \left[\frac{df}{dt}\right]\Bigg|_{s} = \int_{0}^{\infty} \frac{df}{dt} e^{-st}dt = \int_{0}^{\infty} e^{-st} \frac{df}{dt} dt
+	\end{eqnarray}
+	is related to the corresponding transform of the original function,
+	\begin{eqnarray}
+		F(s) = \mathcal{L} [f(t)]|_{s} =\int_{0}^{\infty} f(t)e^{-st} dt
+	\end{eqnarray}
+	The last formula above for $\mathcal{L} [f'(t)]$ clearly suggests using integration by parts, and to ensure
+	that this integration by parts is valid, we need to assume $f$ is continuous on $[0,\infty)$ and $f'$ is at least piecewise continuous on $(0,\infty)$. Assuming this,
+	\begin{eqnarray}
+		\mathcal{L} [f'(t)]|_{s} = \int_{0}^{\infty} e^{-st} \frac{df}{dt} dt
+	\end{eqnarray}
+	where, $u = e^{-st}$, and $\dsp dv = \frac{df}{dt} dt$
+	\begin{eqnarray*}
+		&=& uv|_{t = 0}^{\infty} - \int_{0}^{\infty} vdu\sps
+		&=& e^{-st} f(t)|_{t=0}^{\infty} - \int_{0}^{\infty} f(t)[-se^{-st}]dt\sps
+		&=& \lim_{t \to \infty} e^{-st} f(t) - e^{-s(0)}f(0) - \int_{0}^{\infty} f(t)[-se^{-st}]dt\sps
+		&=& \lim_{t \to \infty} e^{-st} f(t) - f(0) + s \int_{0}^{\infty} f(t)e^{-st}dt
+	\end{eqnarray*}
+	Now, if f is of exponential order $s_0$, then
+	\begin{eqnarray*}
+		\lim_{t \to \infty} e^{-st} f(t) = 0		\text{whenever} ~~~~~~ s>s_0
+	\end{eqnarray*}
+	and $\dsp F(s) = \mathcal{L}[f(t)]|_s= \int_{0}^{\infty} f(t)e^{-st}dt$ exists for $s>s_0$.\\
+	
+	\NI Thus, continuing the above computations for $\mathcal{L}[f'(t)]$ with $s>s_0$, we find that
+	\begin{eqnarray*}
+		\mathcal{L}[f'(t)]|_s &=& \lim_{t \to \infty} e^{-st} f(t) - f(0) + s\int_{0}^{\infty} f(t)e^{-st}dt\sps
+		&=& 0 - f(0) + s\mathcal{L}[f(t)]|_s
+	\end{eqnarray*}
+	which is a little more conveniently written as
+	\begin{eqnarray*}
+		\mathcal{L}[f'(t)]|_s = s\mathcal{L}[f(t)]|_s - f(0)
+	\end{eqnarray*}
+	or even as,
+	\begin{eqnarray*}
+		\mathcal{L}[f'(t)]|_s = sF(s) - f(0)
+	\end{eqnarray*}
+	
+	\NI This will be a very useful result, well worth preserving in a theorem. 
+	\begin{theorem}
+		Let $F = \mathcal{L}[f]$ where $f$ is a continuous function of exponential order $s_0$ on $[0, \infty)$. If $f'$ is at least piecewise continuos on $(0, \infty)$, then
+		\begin{eqnarray*}
+			\mathcal{L}[f'(t)]|_s = sF(s) - f(0) \text{ for} s>s_0
+		\end{eqnarray*}
+	\end{theorem}
+	Extending these derivatives to formulas for the the transforms of higher derivatives is easy. First, for convenience, rewrite the equation above as
+	\begin{eqnarray*}
+		\mathcal{L}[g'(t)]|_s = s\mathcal{L}[g(t)]|_s - g(0)
+	\end{eqnarray*}
+	or equivalently as
+	\begin{eqnarray*}
+		\mathcal{L}[\frac{dg}{dt}]|_s = s\mathcal{L}[g(t)]|_s - g(0)
+	\end{eqnarray*}
+	(Keep in mind that this assumes $g$ is a continuous function of exponential order, $g'$ is piecewise continuous and $s$ is larger than the order of $g$). Now we simply apply this equation with $g = f'$, $g = f"$, etc. Assuming all the functions are sufficiently continuous and are of exponential order, we see that
+	\begin{eqnarray*}
+		\mathcal{L}[f"(t)]|_s &=& \mathcal{L}[\frac{df'}{dt}]|_s = s\mathcal{L}[f'(t)]|_s - f'(0)\sps
+		&=& s[sF(s) - f(0)] - f'(0)\sps
+		&=& s^2F(s) - sf(0) - f'(0)
+	\end{eqnarray*}
+	Using this, we then see that\\
+	\begin{eqnarray*}
+		\mathcal{L}[f''(t)]|_s &=& \mathcal{L}[\frac{df''}{dt}]|_s = s\mathcal{L}[f''(t)]|_s - f''(0)\sps
+		&=& s[s^2F(s) - sf(0) - f'(0)] - f"(0)\sps
+		&=& s^3F(s) - s^2f(0) - sf'(0) - f"(0)
+	\end{eqnarray*}
+	
+	\begin{corollary}
+		Let $F = \mathcal{L}[f]$ where $f$ is a continuous function of exponential order $s_0$ on $[0, \infty)$. If $f'$ is at least piecewise continuous on $(0, \infty)$, then
+		\begin{eqnarray*}
+			\mathcal{L}[f'(t)]|_s = sF(s) - f(0)~~~~~ \text{ for } s>s_0
+		\end{eqnarray*}
+		If in addition, $f'$ is a continuous function of exponential order $s_0$, and $f''$ is at least piecewise continuous, then
+		\begin{eqnarray*}
+			\mathcal{L}[f''(t)]|_s = s^2F(s) - sf(0) - f'(0)
+		\end{eqnarray*}
+	\end{corollary}
+	
+	\NI More generally, if $f, f', f'',\ldots$ and  $f^{(n-1)}$ are all continuous functions of exponential order $s_0$ on $[0, \infty)$ for some positive integer $n$, and $f^{(n)}$ is at least piecewise continuous on $(0, \infty)$, then, for $s>s_0$,
+	\begin{multline*}
+		\mathcal{L}[f"(t)]|_s = s^n F(s) - s^{n-1} f(0) - s^{n-2}f'(0) - s^{n-3}f"(0) - \cdots \sps- sf^{(n-2)}(0) - f^{(n-1)}(0)
+	\end{multline*}
+
+	\section{Inverse Laplace Transform}
+	Two integrable functions have the same Laplace transform only if they differ on a set of Lebesgue measure zero. This means that, on the range of the transform, there is an inverse transform. In fact, besides integrable functions, the Laplace transform is a one-to-one mapping from one function space into another in many other function spaces as well, although there is usually no easy characterization of the range.\\
+
+	\NI Typical function spaces in which this is true include the spaces of bounded continuous functions, the space $L^\infty (0 , \infty)$, or more generally tempered distributions on $(0 , \infty)$. The Laplace transform is also defined and injective for suitable spaces of tempered distributions.\\
+	
+	\NI In these cases, the image of the Laplace transform lives in a space of analytic functions in the region of convergence. The inverse Laplace transform is given by the following complex integral, which is known by various names (the Bromwich integral, the Fourier–Mellin integral, and Mellin's inverse formula):
+	\begin{eqnarray*}
+		f(t) = \mathcal{L}^{-1} [f(t)] = \frac{1}{2\pi i} \lim_{T \to \infty}\int_{\gamma - iT}^{\gamma + iT} e^{st} F(s) ds
+	\end{eqnarray*}
+
+	\section{Properties of Laplace Transforms}
+	From the definition of the Laplace transform given in the previous subsection, we can easily derive the following properties of the Laplace transforms:
+	
+	\subsection{Constant Multiple:} 
+	$\mathcal{L}[af(x)] = a \mathcal{L}[f(x)]$, $a$ is a constant. For example:
+	\begin{eqnarray*}
+		\mathcal{L}[4e^x] = 4 \mathcal{L}[e^x] = \frac{4}{s - 1}
+	\end{eqnarray*}
+	
+	\subsection{Linearity Property:}
+	$\mathcal{L}[af(x) + bg(x)] = a \mathcal{L}[f(x)] +  b \mathcal{L}[g(x)]$, $a,b$ is a constant. For example:
+	\begin{eqnarray*}
+		\mathcal{L}[4x + 3x^2] = 4 \mathcal{L}[x] + 3 \mathcal{L}[x^2]= \frac{4}{s ^2} + \frac{6}{s^3}
+	\end{eqnarray*}
+		
+	\subsection{Multiplication by:} 
+	$\mathcal{L}[xf(x)] = - \frac{d}{ds} \mathcal{L}[f(x)] = -F'(s)$. For example:
+	\begin{eqnarray*}
+		\mathcal{L}[x\sin x] = - \frac{d}{ds} \mathcal{L}[sinx] = - \frac{d}{ds} (\frac{1}{s^2 + 1}) = \frac{2s}{(s^2 + 1)^2}
+	\end{eqnarray*}
+
+	\NI To use the Laplace transform $\Laplace$ for solving initial value problems or integral equations, we use the following table of elementary Laplace transforms as shown below:\\
+	\begin{longtable}{| l | c | } \hline 
+		$f(x)$ & $F(s) = \mathcal{L}[f(x)] =$ \(\int_{0}^{\infty} e^ax f(x) dx\)\sps
+		\hline
+		c & $\dsp\frac{c}{s}, s > 0$\sps
+		x & $\dsp\frac{1}{s^2}, s > 0$\sps
+		$x^n$ & $\dsp\frac{n!}{s^{n +1}} = \frac{\Gamma (n + 1)}{s^{n + 1}}, s \geq 0, Re$ $n > -1$\sps
+		$e^ax$ & $\dsp\frac{1}{s - a}, s > a$\sps
+		$\sin ax$ & $\dsp\frac{a}{s^2 + a^2}$\sps
+		$\cos ax$ & $\dsp\frac{s}{s^2 + a^2}$\sps 
+		$\sin^2 ax$ & $\dsp\frac{2a^2}{s(s^2 + 4 a^2)}, Re(s) > |Im(a)|$\\ 
+		$\cos^2 ax$ & $\dsp\frac{s^2 + 2a^2}{s(s^2 + 4 a^2)}, Re(s) > |Im(a)|$\\ 
+		$x\sin ax$ & $\dsp\frac{2as}{(s^2 + a^2)^2}$\sps 
+		$x\cos ax$ & $\dsp\frac{s^2 - a^2}{(s^2 + a^2)^2}$\sps 
+		$\sinh ax$ & $\dsp\frac{a}{s^2 - a^2}, s \geq |a|$\sps
+		$\cosh ax$ & $\dsp\frac{s}{s^2 - a^2}, s \geq |a|$\sps 
+		$\sinh^2 ax$ & $\dsp\frac{2a^2}{s(s^2 - 4 a^2)}, Re(s) > |Im(a)|$\sps
+		$\cosh^2 ax$ & $\dsp\frac{s^2 - 2a^2}{s(s^2 - 4 a^2)}, Re(s) > |Im(a)|$\sps
+		$x\sinh ax$ & $\dsp\frac{2as}{(s^2 - a^2)^2}, s > |a|$\sps
+		$x\cosh ax$ & $\dsp\frac{s^2 + a^2}{(s^2 - a^2)^2}, s > |a|$\sps 
+		$x^n e^ax$ & $\dsp\frac{n!}{(s - a)^{n + 1}}, s > a$, n is a positive integer\sps
+		$e^ax \sin bx$ & $\dsp\frac{b}{(s - a)^2) + b^2}, s > a$\sps
+		$e^ax \cos bx$ & $\dsp\frac{s - a}{(s - a)^2) + b^2}, s > a$\sps
+		$e^ax \sinh bx$ & $\frac{b}{(s - a)^2) - b^2}, s > a$\sps
+		$e^ax \cosh bx$ & $\frac{s - a}{(s - a)^2) - b^2}, s > a$\sps 
+		\hline
+	\end{longtable}
+
+	\subsection{Laplace Transforms of Derivatives:}
+	\begin{eqnarray*}
+		\mathcal{L}[f'(x)] &=& s \mathcal{L}[f(x)] - f(0)\sps
+		\mathcal{L}[f''(x)] &=& s^2 \mathcal{L}[f(x)] - sf(0) - f'(0)\sps
+		\mathcal{L}[f'''(x)] &=& s^3 \mathcal{L}[f(x)] - s^2f(0) - sf'(0) - f''(0)\sps
+		&\vdots\sps
+		\mathcal{L}[f^{(n)} (x)] &=& s^n \mathcal{L}[f(x)] - s^{n - 1} f(0) -... - sf^{(n - 2)}(0) - f^{(n - 1)}(0)
+	\end{eqnarray*}
+
+	\subsection{Inverse Laplace Transforms:}
+	If the Laplace transform of $f(x)$ is $F(s)$, then we say that the inverse Laplace transform of $F(s)$ is $f(x)$. In other words, we write;
+	\begin{eqnarray}
+		\mathcal{L}^{-1}[F(s)] = f(x)
+	\end{eqnarray}
+	where $\mathcal{L}^{-1}$ is the operator of the inverse Laplace transform. The linearity property holds also for the inverse Laplace transform. This means that;
+	\begin{eqnarray*}
+		\mathcal{L}^{-1}[aF(s) + bG(s)] &=& a \mathcal{L}^{-1}[F(s)] +  a \mathcal{L}^{-1}[G(s)]\sps
+		&=& af(x) + bg(x)
+	\end{eqnarray*}
+
+
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
-	\chapter{APPLICATION OF DIFFERENTIAL EQUATIONS TO ELECTRICAL AND MECHANICAL ENGINEERING}
-	\section{INTRODUCTION}
+	\chapter{NUMERICAL EXAMPLES}
+
 	After a period of intense internal development which lead to an unpreceded depending of mathematics, the last few decades 
 
 	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
 	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
-	\section{SUMMARY}
-	In this project, chapter one provided a general introduction to differential equations with related motivations and concepts.\\
+	The Laplace transform is used frequently in engineering and physics; the output of a linear time-invariant system can be calculated by convolving its unit impulse response with the input signal. Performing this calculation in Laplace space turns the convolution into a multiplication; the latter being easier to solve because of its algebraic form. The Laplace transform is invertible on a large class of functions. Given a simple mathematical or functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system, or in synthesizing a new system based on a set of specifications.\\
 	
-	\NI Chapter two was used to elaborate on types, methods, and examples of first order differential equation and\\
-	
-	\NI A brief account of some first application of differential equation to biological, mechanical and electrical engineering were presented and solved in chapter three and four.
-	
-	
-	\section{CONCLUSION}
-	The most important branch of mathematics used for mathematical formulation is the differential equation.  Any physical situation involved motion or measure rates of change can be described by a mathematical model, the model is just a differential equation.This equation effectively related the quality or function upon which the attention is focused with the independent variable such as time, position upon which it may depend. Thus, the study of ordinary differential equation cannot be ignored and in this project, we were able to solved some biological and engineering problems using ordinary differential equation.\\
-	
-	
-	\section{RECOMMENDATION}
-	The application of differential equation in biological, mechanical and electrical engineering is recommended for organizations such as ministry of health, work and non-governmental organization. The area is fertile in terms of research and we therefore recommend students and researchers to venture into this area. Consequently, the government of Nigeria should also look into this area and motivate people in it.  
+	The Laplace transform can also be used to solve differential equations and is used extensively in mechanical engineering and electrical engineering. The Laplace transform reduces a linear differential equation to an algebraic equation, which can then be solved by the formal rules of algebra. The original differential equation can then be solved by applying the inverse Laplace transform. English electrical engineer Oliver Heaviside first proposed a similar scheme, although without using the Laplace transform; and the resulting operational calculus is credited as the Heaviside calculus.
+ 
 	
 	
 	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
@@ -549,37 +767,18 @@
 	\addcontentsline{toc}{chapter}{REFERENCES}
 	
 	\begin{description}
-		\item Dass, H. K. (1988). \emph{Advanced Engineering Mathematics} (1st ed., pp. 154–230). S. CHAND \& COMPANY PVT. LTD.
+		\item Sachs, E.W., Strauss, A. K. (2008) \emph{Efficient solution of a partial integro-differential equation in finance}, Applied Numerical Mathematics.58 (11): 1687 - 1703.
 		
-		\item Frank Ayres (1952). Schum's Outline Series, Theory and Problems of Differential Equations.
+		\item Brunner Hermann (2017). \emph{Volterra Integral Equations: An introduction to Theory and Applications}, Cambridge Monographs on Applied and Computational Mathematics. Cambridge, UK: Cambridge University Press.
 		
-		\item Frank Hoppenstead (1995). A Journal Getting Started to Mathematical Biology.
+		\item Polyanin, Andrei D.; Manzhirov, Alexander V. (2008).
+		\emph{Handbook of Integral Equations (2nd ed.)}. Boca Raton, FL: Chapman and Hall/CRC.
 		
-		\item Gentry R.D (1978). \emph{Introduction to Calculus for The Biological and Health Sciences}, Addition (Wesley Publishing Company).
+		\item Abdul- Majid Wazwaz (1997). \emph{A First Course in Integral Equations}, World Scientific.
 		
-		\item G. William. An Introduction to Electrical Circuit Theory.
+		\item K. Thangavel,P. Balasubramaniam (2005). \emph{Computational Mathematics}
 		
-		\item Ince E.L (1956). \emph{Ordinary Differential Equations 4th Edition}.
-		
-		\item Leigh E.R (1968). The Ecological Role of Volterra’s Equation In Lectures On Mathematics In The Life Science Some Mathematical Problems In Biology.
-		
-		\item Lotka, A. J. (1957). \emph{Elements of Mathematical Biology}.
-		
-		\item Riley, K. F. (2012). Mathematical Methods for the Physical Sciences. \emph{An Informal Treatment for Students of Physics and Engineering}. https://doi.org/10.1017/CBO9781139167550
-		
-		\item Ritger, P. D., \& Rose, N. J. (2010). \emph{Differential Equations with Applications}.
-		
-		\item Rainville, E., Bedient, P., \& Bedient, R. (1996). \emph{Elementary Differential Equations}. Pearson. https://doi.org/10.1604/9780135080115.
-		
-		\item Stroud, K., \& Booth, D. (2001). Engineering Mathematics. \emph{Programmes and Problems}.
-		
-		\item Stroud, K. A., \& Booth, D. J. (2013). \emph{Engineering Mathematics}. https://doi.org/10.1057/978113703122810.1057/978-1-137-03122-8
-		
-		\item Thomas A.B \& Finney, R. (1988). Calculus and Analytic Geometry 7th Editions. Reading Addison Wesley.
-		
-		
-
-		
+		\item Subrahamanyam Upadhyay and K. N. Rai (2015). \emph{Integral equation: An introduction}
 	\end{description}
 	
 \end{document}
