@@ -1,0 +1,220 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+\newcommand{\real}{ \mathbb{R}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\sbracket}[1]{\left[#1\right]}
+\newcommand{\example}[1]{\section*{\ubt{Example #1}}{~}\spn{-1}}
+\newcommand{\examples}{\subsubsection*{Examples}{~}\spn{-1}}
+\newcommand{\solution}{\subsubsection{\ubt{Solution}}{~}\spn{-1}}
+\newcommand{\eg}{\subsection*{\ubt{Example}}{~}\spn{-1}}
+%\newcommand{\real}{\mathbbm{R}}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+
+%\setlength{\parindent}{1em}
+
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\Large \bt{LAPLACE TRANSFORMATION METHOD OF SOLVING SYSTEM OF VOLTERRA INTEGRAL EQUATION}
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{ISHOLA, ABDULMUIZ ADESHINA
+			\\
+			17/30GQ029}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+	\hspace{5cm}
+	\\ \\ 
+	\begin{center}
+		\textbf{NOVEMBER, 2022}
+	\end{center}
+
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project was carried out by \textbf{ISHOLA, Abdulmuiz Adeshina} with Matriculation Number  17/30GQ029 in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Dr. K.A. Bello~~ \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof.o \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner 
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	Firstly, I will give glory to God for his abundant blessings and guidance throughout my stay in school and for giving strength to face all tasks.\\
+	
+	\NI An academic pursuit is a challenging task that requires all encouragement, proper guidance, direction and support. To this end I wish to express my sincere and profound gratitude to my level advisor and supervisor, Dr. K.A Bello, who supervised and carefully guided the eventual write up of this project.\\
+	
+	\NI I also appreciate the immeasurable effort of my lecturers in the departmentwho have taught and share their knowledge to me: Prof. J. A. Gbadeyan, Prof. T. O. Opoola, Prof. O. M. Bamigbola, Prof. O. A. Taiwo, Prof. M. O. Ibrahim, Prof.R.B. Adeniyi, Prof. M. S. Dada, Prof. A. S. Idowu, Prof. O. A.
+	Fadipe-Joseph, Dr E.O. Titiloye, Dr. Yidiat O. Aderinto, Dr. Catherine N. Ejieji, Dr. B. M. Yisa, Dr J. U. Abubakar, Dr. Gata N. Bakare, Dr T. O. Olotu, Dr. B. M. Ahmed, Dr Idayat F. Usamot, Dr O. A. Uwaheren, Dr O. Odetunde, Dr. Oyekunle, Dr. Ayinla and all other members of staff of the department of mathematics, who contributed greatly to my academic excellence, obtained during my period of study in the department. May God bless them all.\\
+	
+	\NI My sincere gratitude to my parents Alhaji M.A Ishola and Alhaja A.M Ishola for their continuous love, moral support, prayer, advice and financial support in all my academic undertakings. May you reap the fruit of your labour (Amin).\\
+	
+	\NI I also want to express my deep and sincere appreciation to my sisters, Muftiat and Mufeedah for their moral support and companionship.\\
+	
+	\NI Further appreciation goes to my friends, Sa’ad Muhammed, Adebayo Muhammed, Adejumo Lekan, Muhammed Teslim, Tajudeen Mustapha, and others whom I’m not opportuned to mention their names, thank you all for your constant advice, encouragement, love and making my stay on campus worthwhile.\\
+	
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	This work is dedicated to the Glory of God for His infinite mercy and guidance over me.\\
+	
+	\NI My ever caring and loving father, Alhaji M.A Ishola for his continuous guidance and support.\\
+	
+	\NI My sweet mother Alhaja A.M Ishola for her care, love, advise and motherly role and to all the people that made this project a great success.
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	This project discusses the numerical solution of the system of Volterra integral equations by using Laplace transform method. The Volterra integral equations is a method that can be used to solve initial value problems and integral equations as well, it transforms linear differential equations into algebraic equations and convolution into multiplication. Laplace is also an integral transform that converts a function of a real variable $(x)$ to a function of a complex variable $(S)$.
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{GENERAL INTRODUCTION}
+	\section{HISTORICAL BACKGROUND}
+	There is hardly a culture, however primitive, which does not 
+		
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{METHOD OF SOLVING PROBLEM}
+	\section{INTRODUCTION}
+	Many if not all phenomena in biological systems and engineering are broad areas of applied mathematics involve 
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{APPLICATIONS OF DIFFERENTIAL EQUATIONS IN BIOLOGICAL SCIENCE}
+	\section{INTRODUCTION}
+	This chapter contains some application of first order differential equation in Biological sciences. Different biological systems can be described and modelled mathematically using ordinary differential equation. \\
+
+	
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{APPLICATION OF DIFFERENTIAL EQUATIONS TO ELECTRICAL AND MECHANICAL ENGINEERING}
+	\section{INTRODUCTION}
+	After a period of intense internal development which lead to an unpreceded depending of mathematics, the last few decades 
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
+	\section{SUMMARY}
+	In this project, chapter one provided a general introduction to differential equations with related motivations and concepts.\\
+	
+	\NI Chapter two was used to elaborate on types, methods, and examples of first order differential equation and\\
+	
+	\NI A brief account of some first application of differential equation to biological, mechanical and electrical engineering were presented and solved in chapter three and four.
+	
+	
+	\section{CONCLUSION}
+	The most important branch of mathematics used for mathematical formulation is the differential equation.  Any physical situation involved motion or measure rates of change can be described by a mathematical model, the model is just a differential equation.This equation effectively related the quality or function upon which the attention is focused with the independent variable such as time, position upon which it may depend. Thus, the study of ordinary differential equation cannot be ignored and in this project, we were able to solved some biological and engineering problems using ordinary differential equation.\\
+	
+	
+	\section{RECOMMENDATION}
+	The application of differential equation in biological, mechanical and electrical engineering is recommended for organizations such as ministry of health, work and non-governmental organization. The area is fertile in terms of research and we therefore recommend students and researchers to venture into this area. Consequently, the government of Nigeria should also look into this area and motivate people in it.  
+	
+	
+	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	
+	\begin{description}
+		\item Dass, H. K. (1988). \emph{Advanced Engineering Mathematics} (1st ed., pp. 154–230). S. CHAND \& COMPANY PVT. LTD.
+		
+		\item Frank Ayres (1952). Schum's Outline Series, Theory and Problems of Differential Equations.
+		
+		\item Frank Hoppenstead (1995). A Journal Getting Started to Mathematical Biology.
+		
+		\item Gentry R.D (1978). \emph{Introduction to Calculus for The Biological and Health Sciences}, Addition (Wesley Publishing Company).
+		
+		\item G. William. An Introduction to Electrical Circuit Theory.
+		
+		\item Ince E.L (1956). \emph{Ordinary Differential Equations 4th Edition}.
+		
+		\item Leigh E.R (1968). The Ecological Role of Volterra’s Equation In Lectures On Mathematics In The Life Science Some Mathematical Problems In Biology.
+		
+		\item Lotka, A. J. (1957). \emph{Elements of Mathematical Biology}.
+		
+		\item Riley, K. F. (2012). Mathematical Methods for the Physical Sciences. \emph{An Informal Treatment for Students of Physics and Engineering}. https://doi.org/10.1017/CBO9781139167550
+		
+		\item Ritger, P. D., \& Rose, N. J. (2010). \emph{Differential Equations with Applications}.
+		
+		\item Rainville, E., Bedient, P., \& Bedient, R. (1996). \emph{Elementary Differential Equations}. Pearson. https://doi.org/10.1604/9780135080115.
+		
+		\item Stroud, K., \& Booth, D. (2001). Engineering Mathematics. \emph{Programmes and Problems}.
+		
+		\item Stroud, K. A., \& Booth, D. J. (2013). \emph{Engineering Mathematics}. https://doi.org/10.1057/978113703122810.1057/978-1-137-03122-8
+		
+		\item Thomas A.B \& Finney, R. (1988). Calculus and Analytic Geometry 7th Editions. Reading Addison Wesley.
+		
+		
+
+		
+	\end{description}
+	
+\end{document}
