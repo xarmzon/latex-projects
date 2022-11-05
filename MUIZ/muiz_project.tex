@@ -32,7 +32,7 @@
 \newcommand{\dprime}{''}
 \newcommand{\tprime}{'''}
 \newcommand{\sbracket}[1]{\left[#1\right]}
-\newcommand{\example}[1]{\section*{\ubt{Example #1}}{~}\spn{-1}}
+\newcommand{\example}[1]{\section*{\ubt{Example #1:}}{~}\spn{-1.7}}
 \newcommand{\examples}{\subsubsection*{Examples}{~}\spn{-1}}
 \newcommand{\solution}{\subsubsection{\ubt{Solution}}{~}\spn{-1}}
 \newcommand{\eg}{\subsection*{\ubt{Example}}{~}\spn{-1}}
@@ -596,20 +596,23 @@
 	The last formula above for $\mathcal{L} [f'(t)]$ clearly suggests using integration by parts, and to ensure
 	that this integration by parts is valid, we need to assume $f$ is continuous on $[0,\infty)$ and $f'$ is at least piecewise continuous on $(0,\infty)$. Assuming this,
 	\begin{eqnarray}
-		\mathcal{L} [f'(t)]|_{s} = \int_{0}^{\infty} e^{-st} \frac{df}{dt} dt
+		\mathcal{L} [f'(t)]\Big|_{s} = \int_{0}^{\infty} e^{-st} \frac{df}{dt} dt
 	\end{eqnarray}
 	where, $u = e^{-st}$, and $\dsp dv = \frac{df}{dt} dt$
 	\begin{eqnarray*}
-		&=& uv|_{t = 0}^{\infty} - \int_{0}^{\infty} vdu\sps
-		&=& e^{-st} f(t)|_{t=0}^{\infty} - \int_{0}^{\infty} f(t)[-se^{-st}]dt\sps
+		&=& uv\Big|_{t = 0}^{\infty} - \int_{0}^{\infty} vdu\sps
+		&=& e^{-st} f(t)\Big|_{t=0}^{\infty} - \int_{0}^{\infty} f(t)[-se^{-st}]dt\sps
 		&=& \lim_{t \to \infty} e^{-st} f(t) - e^{-s(0)}f(0) - \int_{0}^{\infty} f(t)[-se^{-st}]dt\sps
 		&=& \lim_{t \to \infty} e^{-st} f(t) - f(0) + s \int_{0}^{\infty} f(t)e^{-st}dt
 	\end{eqnarray*}
 	Now, if f is of exponential order $s_0$, then
 	\begin{eqnarray*}
-		\lim_{t \to \infty} e^{-st} f(t) = 0		\text{whenever} ~~~~~~ s>s_0
+		\lim_{t \to \infty} e^{-st} f(t) = 0~~~~~~		\text{whenever} ~~~~~~ s>s_0
 	\end{eqnarray*}
-	and $\dsp F(s) = \mathcal{L}[f(t)]|_s= \int_{0}^{\infty} f(t)e^{-st}dt$ exists for $s>s_0$.\\
+	and
+	\begin{equation*}
+		 F(s) = \mathcal{L}[f(t)]\Big|_s= \int_{0}^{\infty} f(t)e^{-st}d ~~~\text{exists for} ~~~~~ s>s_0
+	\end{equation*}
 	
 	\NI Thus, continuing the above computations for $\mathcal{L}[f'(t)]$ with $s>s_0$, we find that
 	\begin{eqnarray*}
@@ -618,37 +621,37 @@
 	\end{eqnarray*}
 	which is a little more conveniently written as
 	\begin{eqnarray*}
-		\mathcal{L}[f'(t)]|_s = s\mathcal{L}[f(t)]|_s - f(0)
+		\mathcal{L}[f'(t)]\Big|_s = s\mathcal{L}[f(t)]|_s - f(0)
 	\end{eqnarray*}
 	or even as,
 	\begin{eqnarray*}
-		\mathcal{L}[f'(t)]|_s = sF(s) - f(0)
+		\mathcal{L}[f'(t)]\Big|_s = sF(s) - f(0)
 	\end{eqnarray*}
 	
 	\NI This will be a very useful result, well worth preserving in a theorem. 
 	\begin{theorem}
 		Let $F = \mathcal{L}[f]$ where $f$ is a continuous function of exponential order $s_0$ on $[0, \infty)$. If $f'$ is at least piecewise continuos on $(0, \infty)$, then
 		\begin{eqnarray*}
-			\mathcal{L}[f'(t)]|_s = sF(s) - f(0) \text{ for} s>s_0
+			\mathcal{L}[f'(t)]\Big|_s = sF(s) - f(0) \text{ for} s>s_0
 		\end{eqnarray*}
 	\end{theorem}
 	Extending these derivatives to formulas for the the transforms of higher derivatives is easy. First, for convenience, rewrite the equation above as
 	\begin{eqnarray*}
-		\mathcal{L}[g'(t)]|_s = s\mathcal{L}[g(t)]|_s - g(0)
+		\mathcal{L}[g'(t)]\Big|_s = s\mathcal{L}[g(t)]\Big|_s - g(0)
 	\end{eqnarray*}
 	or equivalently as
 	\begin{eqnarray*}
-		\mathcal{L}[\frac{dg}{dt}]|_s = s\mathcal{L}[g(t)]|_s - g(0)
+		\mathcal{L}\left[\frac{dg}{dt}\right]\Bigg|_s = s\mathcal{L}[g(t)]\Big|_s - g(0)
 	\end{eqnarray*}
-	(Keep in mind that this assumes $g$ is a continuous function of exponential order, $g'$ is piecewise continuous and $s$ is larger than the order of $g$). Now we simply apply this equation with $g = f'$, $g = f"$, etc. Assuming all the functions are sufficiently continuous and are of exponential order, we see that
+	(Keep in mind that this assumes $g$ is a continuous function of exponential order, $g'$ is piecewise continuous and $s$ is larger than the order of $g$). Now we simply apply this equation with $g = f'$, $g = f''$, etc. Assuming all the functions are sufficiently continuous and are of exponential order, we see that
 	\begin{eqnarray*}
-		\mathcal{L}[f"(t)]|_s &=& \mathcal{L}[\frac{df'}{dt}]|_s = s\mathcal{L}[f'(t)]|_s - f'(0)\sps
+		\mathcal{L}[f''(t)]\Big|_s &=& \mathcal{L}\left[\frac{df'}{dt}\right]\Bigg|_s = s\mathcal{L}[f'(t)]\Big|_s - f'(0)\sps
 		&=& s[sF(s) - f(0)] - f'(0)\sps
 		&=& s^2F(s) - sf(0) - f'(0)
 	\end{eqnarray*}
 	Using this, we then see that\\
 	\begin{eqnarray*}
-		\mathcal{L}[f''(t)]|_s &=& \mathcal{L}[\frac{df''}{dt}]|_s = s\mathcal{L}[f''(t)]|_s - f''(0)\sps
+		\mathcal{L}\left[f''(t)\right]\Bigg|_s &=& \mathcal{L}[\frac{df''}{dt}]\Big|_s = s\mathcal{L}[f''(t)]\Big|_s - f''(0)\sps
 		&=& s[s^2F(s) - sf(0) - f'(0)] - f"(0)\sps
 		&=& s^3F(s) - s^2f(0) - sf'(0) - f"(0)
 	\end{eqnarray*}
@@ -662,12 +665,12 @@
 		\begin{eqnarray*}
 			\mathcal{L}[f''(t)]|_s = s^2F(s) - sf(0) - f'(0)
 		\end{eqnarray*}
+		More generally, if $f, f', f'',\ldots$ and  $f^{(n-1)}$ are all continuous functions of exponential order $s_0$ on $[0, \infty)$ for some positive integer $n$, and $f^{(n)}$ is at least piecewise continuous on $(0, \infty)$, then, for $s>s_0$,
+		\begin{multline*}
+			\mathcal{L}[f"(t)]|_s = s^n F(s) - s^{n-1} f(0) - s^{n-2}f'(0) - s^{n-3}f"(0) - \cdots \sps- sf^{(n-2)}(0) - f^{(n-1)}(0)
+		\end{multline*}
 	\end{corollary}
-	
-	\NI More generally, if $f, f', f'',\ldots$ and  $f^{(n-1)}$ are all continuous functions of exponential order $s_0$ on $[0, \infty)$ for some positive integer $n$, and $f^{(n)}$ is at least piecewise continuous on $(0, \infty)$, then, for $s>s_0$,
-	\begin{multline*}
-		\mathcal{L}[f"(t)]|_s = s^n F(s) - s^{n-1} f(0) - s^{n-2}f'(0) - s^{n-3}f"(0) - \cdots \sps- sf^{(n-2)}(0) - f^{(n-1)}(0)
-	\end{multline*}
+
 
 	\section{Inverse Laplace Transform}
 	Two integrable functions have the same Laplace transform only if they differ on a set of Lebesgue measure zero. This means that, on the range of the transform, there is an inverse transform. In fact, besides integrable functions, the Laplace transform is a one-to-one mapping from one function space into another in many other function spaces as well, although there is usually no easy characterization of the range.\\
@@ -697,7 +700,7 @@
 	\subsection{Multiplication by:} 
 	$\mathcal{L}[xf(x)] = - \frac{d}{ds} \mathcal{L}[f(x)] = -F'(s)$. For example:
 	\begin{eqnarray*}
-		\mathcal{L}[x\sin x] = - \frac{d}{ds} \mathcal{L}[sinx] = - \frac{d}{ds} (\frac{1}{s^2 + 1}) = \frac{2s}{(s^2 + 1)^2}
+		\mathcal{L}[x\sin x] = - \frac{d}{ds} \mathcal{L}[\sin x] = - \frac{d}{ds} (\frac{1}{s^2 + 1}) = \frac{2s}{(s^2 + 1)^2}
 	\end{eqnarray*}
 
 	\NI To use the Laplace transform $\Laplace$ for solving initial value problems or integral equations, we use the following table of elementary Laplace transforms as shown below:\\
@@ -739,9 +742,9 @@
 
 	\subsection{Inverse Laplace Transforms:}
 	If the Laplace transform of $f(x)$ is $F(s)$, then we say that the inverse Laplace transform of $F(s)$ is $f(x)$. In other words, we write;
-	\begin{eqnarray}
+	\begin{eqnarray*}
 		\mathcal{L}^{-1}[F(s)] = f(x)
-	\end{eqnarray}
+	\end{eqnarray*}
 	where $\mathcal{L}^{-1}$ is the operator of the inverse Laplace transform. The linearity property holds also for the inverse Laplace transform. This means that;
 	\begin{eqnarray*}
 		\mathcal{L}^{-1}[aF(s) + bG(s)] &=& a \mathcal{L}^{-1}[F(s)] +  a \mathcal{L}^{-1}[G(s)]\sps
@@ -749,10 +752,205 @@
 	\end{eqnarray*}
 
 
+	\subsection{Evaluating improper integrals}
+	Let
+	\begin{eqnarray*}
+		\mathcal{L}[f(t)] = F(s)
+	\end{eqnarray*}
+	Then,
+	\begin{eqnarray*}
+		\mathcal{L}[\frac{f(t)}{t}] = \int_{0}^{\infty} \frac{f(t)}{t} e^{-st}dt = \int_{s}^{\infty} F(p) dp
+	\end{eqnarray*}
+	In the limit $s \to 0$, one gets
+	\begin{eqnarray*}
+		\int_{0}^{\infty} \frac{f(t)}{t}dt= \int_{0}^{\infty} F(p)dp
+	\end{eqnarray*}
+	provided that the interchange of limits can be justified. This is often possible as a consequence of the final value theorem. Even when the interchange cannot be justified the calculation can be suggestive. For example, with $a \neq 0 \neq b$, proceeding formally one has
+	\begin{eqnarray*}
+		\int_{0}^{\infty} \frac{\cos(at) - \cos(bt)}{t} dt &=& \int_{0}^{\infty} \left(\frac{p}{p^2 + a^2} - \frac{p}{p^2 + b^2}\right) dp\sps
+		%%%%%
+		&=& \left[\frac{1}{2} \ln\frac{p^2 + a^2}{p^2 + b^2}\right]_{0}^{\infty} = \frac{1}{2} \ln\frac{b^2}{a^2} = \ln\left|\frac{b}{a}\right|
+	\end{eqnarray*}
+	
+	\NI The validity of this identity can be proved by other means. It is an example of a Frullani integral. Another example is Dirichlet integral.
+	
+	\subsection{Partial fraction expansion}
+	Consider a linear time-invariant system with transfer function
+	\begin{eqnarray*}
+		H(s) = \frac{1}{(s + \alpha)(s + \beta)}
+	\end{eqnarray*}
+	The impulse response is simply the inverse Laplace transform of this transfer function:
+	\begin{eqnarray*}
+		h(t)=\mathcal {L}^{-1}[H(s)]
+	\end{eqnarray*}
+	To evaluate this inverse transform, we begin by expanding $H(s)$ using the method of partial fraction expansion,
+	\begin{eqnarray*}
+		\frac{1}{(s + \alpha)(s + \beta)} = \frac{P}{s + \alpha} + \frac{R}{s + \beta}
+	\end{eqnarray*}
+	The unknown constants $P$ and $R$ are the residues located at the corresponding poles of the transfer function. Each residue represents the relative contribution of that singularity to the transfer function's overall shape.\\
+	
+	\NI By the residue theorem, the inverse Laplace transform depends only upon the poles and their residues. To find the residue $P$, we multiply both sides of the equation by $s + \alpha$ to get
+	\begin{eqnarray*}
+		\frac{1}{s + \beta} = P + \frac{R(s + \alpha)}{s + \beta}
+	\end{eqnarray*}
+	Then by letting $s =-\alpha$, the contribution from $R$ vanishes and all that is left is 
+	\begin{eqnarray*}
+		P = \frac{1}{s + \beta}\Bigg|_{s=-\alpha} = \frac{1}{\beta - \alpha}
+	\end{eqnarray*}
+	Similarly, the residue $R$ is given by
+	\begin{eqnarray*}
+		R = \frac{1}{s + \alpha}\Bigg|_{s=-\beta} = \frac{1}{\alpha - \beta}
+	\end{eqnarray*}
+	Note that 
+	\begin{eqnarray*}
+		R = \frac{-1}{\beta - \alpha} = -P
+	\end{eqnarray*}
+	and so the substitution of $R$ and $P$ into the expanded expression for $H(s)$ gives
+	\begin{eqnarray*}
+		H(s) = (\frac{1}{\beta - \alpha}) \cdot \left(\frac{1}{s + \alpha} - \frac{1}{s + \beta}\right)
+	\end{eqnarray*}
+	
+	\NI Finally, using the linearity property and the known transform for exponential decay, we can take the inverse Laplace transform of $H(s)$ to obtain
+	\begin{eqnarray*}
+		h(t)=\mathcal {L}^{-1}[H(s)] = \frac{1}{\beta - \alpha} \left( e^{-\alpha t} - e^{-\beta t}\right)
+	\end{eqnarray*}
+	which is the impulse response of the system.
+	
+	\subsection{Convolution}
+	The same result can be achieved using the convolution property as if the system is a series of filters with transfer functions of $\frac{1}{s + b}$ and $\frac{1}{s + b}$. That is, the inverse of
+	\begin{eqnarray*}
+		H(s) = \frac{1}{(s + a)(s + b)} = \frac{1}{s + a} . \frac{1}{s + b}
+	\end{eqnarray*}
+	is
+	\begin{eqnarray*}
+		\mathcal {L}^{-1}[\frac{1}{s + a}] * \mathcal {L}^{-1}[\frac{1}{s + b}] = e^{-at} * e^{-bt} = \int_{0}^{t} e^{-ax} e^{-b(t-x)}dx = \frac{e^{-at} - e^{-bt}}{b - a}
+	\end{eqnarray*}
+
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
 	\chapter{NUMERICAL EXAMPLES}
+	\example{4.1} 
+	\begin{eqnarray*}
+		U(x) &=& 1 - x^2 + x^3 + \int_{0}^{x} [(x - t) U(t) + (x - t)V(t)]dt\sps
+		V(x) &=& 1 - x^3 - \frac{1}{10} x^5 +\int_{0}^{x} [(x - t) U(t) - (x - t)V(t)]dt
+	\end{eqnarray*}
+	Notice that the kernels $K_1(x - t) = K_2(x - t) = x - t$. Taking Laplace transform of both sides of each equation gives;
+	\begin{eqnarray*}
+		U(s) &=& \mathcal{L}[u(x)] = \mathcal{L}[1 - x^2 + x^3] + \mathcal{L}[(x - t) * u(x) + (x - t) * v(x)]\sps
+			V(s) &=& \mathcal{L}[v(x)] = \mathcal{L}\left[1 - x^3 - \frac{1}{10}x^5\right] + \mathcal{L}[(x - t) * u(x) - (x - t) * v(x)]
+	\end{eqnarray*}	
+	This in turn gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s} - \frac{2}{s^3} + \frac{6}{s^4} + \frac{1}{s^2}U(s) + \frac{1}{s^2}V(s),\sps
+		%%%%%
+		V(s) &=& \frac{1}{s} - \frac{6}{s^4} - \frac{12}{s^6} + \frac{1}{s^2} U(s) - \frac{1}{s^2}V(s)
+	\end{eqnarray*}
+	Solving this system of equations of equations for $U(s)$ and $V(s)$ gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s} + \frac{3!}{s^4},\sps
+		V(s) &=& \frac{1}{s} - \frac{3!}{s^4}
+	\end{eqnarray*}
+	By taking the Inverse Laplace transform of the sides of each of the equation above gives the exact solutions given by;
+	\begin{eqnarray*}
+		(u(x), v(x)) = (1 + x^3, 1 - x^3)
+	\end{eqnarray*}
 
-	After a period of intense internal development which lead to an unpreceded depending of mathematics, the last few decades 
+	\example{4.2}
+	\begin{eqnarray*}
+		U(x) &=& 1 - 2x + \sin x + \int_{0}^{x} [U(t) + V(t)]dt\sps
+		%%%
+		V(x) &=& 1 - x^2 - \sin x + \int_{0}^{x} [tU(t) - tV(t)]dt
+	\end{eqnarray*}
+	Taking the Laplace transform of both sides of each equation gives;
+	\begin{eqnarray*}
+		U(s) &=& \mathcal{L}[u(x)] = \mathcal{L}[1 - 2x + \sin x] + \mathcal{L}[u(x) + v(x)]\sps
+		V(s) &=& \mathcal{L}[v(x)] = \mathcal{L}[1 - x^2 - \sin x] + \mathcal{L}[u(x) - v(x)]
+	\end{eqnarray*}	
+	This in turn gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s} - \frac{2}{s^2} + \frac{1}{1 + s^2} + U(s) + V(s)\sps
+		%%%%
+		V(s) &=& \frac{1}{s} - \frac{2}{s^3} - \frac{1}{1 + s^2} + U(s) - V(s)
+	\end{eqnarray*}
+	Solving this system of equations of equations for $U(s)$ and $V(s)$ gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s} + \frac{1}{1 + s^2}\sps
+		%%%%%%
+		V(s) &=& \frac{1}{s} - \frac{1}{1 + s^2}
+	\end{eqnarray*}
+	By taking the Inverse Laplace transform of the sides of each of the equation above gives the exact solutions given by;
+	\begin{eqnarray*}
+		(u(x), v(x)) =(1 + \sin x, 1 - \sin x)
+	\end{eqnarray*}
+	
+	\example{4.3}
+	\begin{eqnarray*}
+		U(x) &=& \cos x - \sin x + \int_{0}^{x} [\cos(x - t)U(t) + \sin(x - t)V(t)]dt\sps
+		V(x) &=&  \sin x - x\sin x +\int_{0}^{x} [\sin(x - t)U(t) - \cos(x - t)V(t)]dt
+	\end{eqnarray*}
+	Taking the Laplace transform of both sides of each equation gives;
+	\begin{eqnarray*}
+		U(s) &=& \mathcal{L}[u(x)] = \mathcal{L}[\cos x - \sin x] + \mathcal{L}[\cos(x - t) * u(x) + \sin(x - t) * v(x)]\sps
+		%
+		V(s) &=& \mathcal{L}[v(x)] = \mathcal{L}[\sin x - x\sin x] + \mathcal{L}[\sin(x - t) * u(x) - \cos(x - t) * v(x)]
+	\end{eqnarray*}
+	This in turn gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{s}{1 + s^2} - \frac{1}{1 + s^2} + \frac{s}{1 + s^2}U(s) + \frac{1}{1 + s^2}V(s)\sps
+		%
+		V(s) &=& \frac{1}{1 + s^2} - \frac{2s}{(1 + s^2)^2} + \frac{1}{1 + s^2}U(s) + \frac{s}{1 + s^2}V(s)	
+	\end{eqnarray*}
+	or equivalently
+	\begin{eqnarray*}
+		(1 - \frac{s}{1+s^2})U(s) - \frac{1}{1+s^2}V(s) &=& \frac{s}{1 + s^2} - \frac{1}{1 + s^2}\sps
+		%
+		(1 - \frac{s}{1+s^2})V(s) - \frac{1}{1+s^2}U(s) &=& \frac{1}{1 + s^2} - \frac{2s}{(1 + s^2)^2}
+	\end{eqnarray*}	
+	Solving this system of equations of equations for $U(s)$ and $V(s)$ gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{s}{1+s^2}\sps
+		%
+		V(s) &=& \frac{1}{1+s^2}
+	\end{eqnarray*}
+	By taking the Inverse Laplace transform of the sides of each of the equation above gives the exact solutions given by;
+	\begin{eqnarray*}
+		(u(x), v(x)) =(\cos x, \sin x)
+	\end{eqnarray*}
+
+	\example{4.4}
+	\begin{eqnarray*}
+		U(x) &=& 2 - e^{-x} +\int_{0}^{x} [(x - t)U(t) + (x - t)V(t)]dt\sps
+		V(x) &=& 2x - e^x + 2e^{-x} + \int_{0}^{x} [(x - t)U(t) - (x - t)V(t)]dt
+	\end{eqnarray*}
+	Taking the Laplace transform of both sides of each equation gives;
+	\begin{eqnarray*}
+		U(s) &=& \mathcal{L}[u(x)] = \mathcal{L}[2 - e^{-x}] + \mathcal{L}[(x - t) * u(x) + (x - t) * v(x)]\sps
+		%%
+		V(s) &=& \mathcal{L}[v(x)] = \mathcal{L}[2x - e^x + 2e^{-x}] + \mathcal{L}[(x - t) * u(x) - (x - t) * v(x)]
+	\end{eqnarray*}
+	This in turn gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{2}{s} - \frac{1}{s + 1} + \frac{1}{s^2}U(s) + \frac{1}{s^2}V(s)\sps
+		%%
+		V(s) &=& \frac{2}{s^2} - \frac{1}{s - 1} + \frac{2}{s + 1} + \frac{1}{s^2}U(s) - \frac{1}{s^2}V(s)
+	\end{eqnarray*}
+	or equivalently
+	\begin{eqnarray*}
+		(1 - \frac{1}{s^2})U(s) - \frac{1}{s^2}V(s) &=& \frac{2}{s} - \frac{1}{s + 1}\sps
+		%%%
+		(1 +\frac{1}{s^2})V(s) - \frac{1}{s^2}U(s) &=& \frac{2}{s^2} - \frac{1}{s - 1} + \frac{2}{s + 1}
+	\end{eqnarray*}
+	Solving this system of equations of equations for U(s) and V(s) gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s - 1}\sps
+		%
+		V(s) &=& \frac{1}{s + 1}
+	\end{eqnarray*}	
+	By taking the Inverse Laplace transform of the sides of each of the equation above gives the exact solutions given by;
+	\begin{eqnarray*}
+		(u(x), v(x)) =(e^x, e^{-x})
+	\end{eqnarray*}
+
+
 
 	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
 	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
@@ -760,7 +958,6 @@
 	
 	The Laplace transform can also be used to solve differential equations and is used extensively in mechanical engineering and electrical engineering. The Laplace transform reduces a linear differential equation to an algebraic equation, which can then be solved by the formal rules of algebra. The original differential equation can then be solved by applying the inverse Laplace transform. English electrical engineer Oliver Heaviside first proposed a similar scheme, although without using the Laplace transform; and the resulting operational calculus is credited as the Heaviside calculus.
  
-	
 	
 	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
 	\chapter*{REFERENCES}
