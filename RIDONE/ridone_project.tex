@@ -26,6 +26,8 @@
 \newcommand{\LT}[1]{\Laplace \left[#1\right]}
 \newcommand{\LTb}[1]{\Laplace \left(#1\right)}
 \newcommand{\InverseLx}[1]{\Laplace^{-1}\left\{ #1 \right\}}
+\newcommand{\InverseLxx}[1]{\Laplace^{-1}_x\left\{ #1 \right\}}
+\newcommand{\InverseLyy}[1]{\Laplace^{-1}_y\left\{ #1 \right\}}
 \newcommand{\ubt}[1]{\textbf{\underline{#1}}}
 \newcommand{\sps}{\\[0.2cm]}
 \newcommand{\spn}[1]{\\[#1cm]}
@@ -55,7 +57,7 @@
 	\clearpage
 	\thispagestyle{empty}
 	\begin{center}
-		\Large \bt{APPLICATION OF LAPLACE TRANSFORM IN SOLVING PARTIAL DIFFERENTIAL EQUATION OF THE SECOND ORDER DERIVATIVE}
+		\Large \bt{APPLICATION OF LAPLACE TRANSFORM IN SOLVING PARTIAL DIFFERENTIAL EQUATIONS OF THE SECOND ORDER DERIVATIVE}
 	\end{center}
 	
 	\hspace{7cm}
@@ -75,15 +77,15 @@
 	\hspace{9cm}
 	
 	\begin{center}
-		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA.
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA. IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
 	\end{center}
 	
 	\hspace{7cm}
-	
-	\begin{center}
-		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
-	\end{center}
-	\hspace{5cm}
+%	
+%	\begin{center}
+%		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+%	\end{center}
+%	\hspace{5cm}
 	\\ \\ 
 	\begin{center}
 		\textbf{NOVEMBER, 2022}
@@ -96,47 +98,51 @@
 	This is to certify that this project was carried out by \textbf{AKINWUNMI, Rilwan Babatunde} with Matriculation Number  17/56EB029 in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
 	\\
 	\\
-	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
-	Dr. O.T. Olootu   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \sps
+	Dr. O. T. Olootu   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
 	Supervisor\\
 	\\
 	\\
 	\\
-	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\sps
 	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
 	Head of Department\\
 	\\
 	\\
 	\\
-	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
-	Prof.  \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\sps
+	Prof. T. O. Oluyo \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
 	External Examiner 
 	
 	\newpage
 	%%DEDICATION%%
 	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
 	\addcontentsline{toc}{chapter}{DEDICATION}
-	I would like to dedicate the project to God, for the grace and faithfulness of God thus far. For His mercies, guidance and protection throughout my years of study.
+	I would like to dedicate the project to God Almighty, for His grace,faithfulness, mercies, guidance and protection throughout my years of study.\\
+	
+	\NI Also, I want to dedicate this project to my late mum for all her sacrifices while on earth, may God continue to rest her soul.
 	
 	
 	\newpage
 	%%ACKNOLEDGMENTS%%
 	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
 	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
-	All praises, adoration and glorification are for Almighty Allah, the most beneficent, the most merciful, and the sustainer of the world. I pray may the peace of Allah and His blessings be upon the Noble Prophet(the last of all prophets), his companions, household and the entire Muslims. I give gratitude to Allah for His mercies and grace bestowed on me over the years vis-a-vis sparing my life from the beginning to the end of my course in the "Better by Far" University.\\
+	All praises, adoration and glorification are for Almighty Allah, the most beneficent, the most merciful, and the sustainer of the world.\\
+		
+	\NI My profound gratitude and appreciation goes to my versatile and persevering supervisor, Dr. O. T. Olootu for his kind-hearted, candid advice, encouragement and useful guidelines towards the success of this work. I pray Almighty God be with him and his family.\\
 	
-	\NI My profound gratitude and appreciation goes to my versatile and persevering supervisor, Prof. O.A. Taiwo for his kind-hearted, and for his candid advice, encouragement and useful guidelines towards the success of this work. I pray Almighty God be with him and his family.\\
+	\NI My appreciation goes to my amiable and relentless Head of Department Prof. K. Rauf and my amiable Level Adviser, Dr. K.A. Bello for their words of encouragement, concern and support.\\
 	
-	\NI I as well acknowledge my level adviser Dr. Idayat F. Usamot for her motherly love, support and help when needed, i am really grateful.\\
-	
-	\NI I also extend my sincere gratitude to all the lecturers in the Department starting from Prof. K. Rauf(HOD), Professors J.A. Gbadeyan, T.O. Opoola, O.M. Bamigbola, M.O. Ibrahim, R.B. Adeniyi, M.S. Dada, A.S. Idowu and Doctors E.O. Titiloye, Mrs. Olubunmi A. Fadipe-Joseph, Mrs. Yidiat O. Aderinto, Mrs. Catherine N. Ejieji, J.U. Abubakar, K.A. Bello, Mrs. G.N. Bakare, B.N. Ahmed, O.T. Olotu, O.A. Uwaheren, O. Odetunde, T.L. Oyekunle, A.A. Yekiti and all other members of staff of the department.
+	\NI I also appreciate the immeasurable effort of my lecturers in the department who have taught and share their knowledge to me: Prof. J. A. Gbadeyan, Prof. T. O. Opoola, Prof. O. M. Bamigbola, Prof. O. A. Taiwo, Prof. M. O. Ibrahim, Prof. R. B. Adeniyi, Prof. M. S. Dada, Prof. A. S. Idowu, Prof. O. A.
+	Fadipe-Joseph, Dr E.O. Titiloye, Dr. Yidiat O. Aderinto, Dr. Catherine N. Ejieji, Dr. B. M. Yisa, Dr J. U. Abubakar, Dr. Gata N. Bakare, Dr T. O. Olotu, Dr. B. M. Ahmed, Dr Idayat F. Usamot, Dr O. A. Uwaheren, Dr O. Odetunde, Dr. Oyekunle, Dr. Ayinla and all other members of staff of the department of mathematics, who contributed greatly to my academic excellence, obtained during my period of study in the department. May God bless them all.\\
 
+	\NI I am highly indebted to my loving and caring family especially my sister, Muhammed Zara, also Oyewole AY(Pizzle), Alhaja M. Oyekoya-Bello, Olatomirin Olabanji, Oyekoya Rilwan, Onayemi Tunde who have tersely contributed immensely toward the successful completion of my studies and academic activities.
 	
 	\newpage
 	%%ABSTRACT%%
 	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
 	\addcontentsline{toc}{chapter}{ABSTRACT}
-	This project dealt with solving partial Differential Equation of the second order derivative by the application of Laplace Substitution method which is based on the Laplace transform. This method has a convenient way to find exact solution in the less computation is compared with Method of Separation of Variables (MSV) and Variational iteration method (VIM). 
+	This project deals with solving Partial Differential Equation of the second order derivative by the application of Laplace Substitution Method which is based on the Laplace transform. This method has a convenient way to finding exact solution in  less computation as compared with Method of Separation of Variables (MSV) and Variational Iteration Method (VIM). 
 	
 	\newpage
 	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
@@ -149,11 +155,10 @@
 	\chapter{GENERAL INTRODUCTION}
 	
 	\section{INTRODUCTION}
-	The Laplace transform is a globally used integral transform with many applications in Physics and Engineering. The Laplace transform method is applicable in the solution of differential equation to that of solving in algebraic problem. It is denoted by $\LFt$ or $\dsp\LFn{f}\{s\} = \LaplaceIntegral$, it is a linear operator of a function $\ft$ with a real argument $t(t\geq 0)$ that transform it to a function $\Fs$ with a complex argument $s$. This transformation is essentially bijective for the majority of practical uses, the respective pairs of $\ft$ and $\Fs$ are matched in tables. The Laplace transform has the useful property that many relationships and operations over the original $\ft$ correspond to simpler relationships and operation over the images $\Fs$.\\
+	The Laplace transform is a globally used integral transform with many applications in Physics and Engineering. The Laplace transform method is applicable in the solution of differential equation to that of solving algebraic problem. It is denoted by $\LFt$ or $\dsp\LFn{f}\{s\} = \LaplaceIntegral$, it is a linear operator of a function $\ft$ with a real argument $t(t\geq 0)$ that transform it to a function $\Fs$ with a complex argument $s$. This transformation is essentially bijective for the majority of practical uses, the respective pairs of $\ft$ and $\Fs$ are matched in tables. The Laplace transform has the useful property that many relationships and operations over the original $\ft$ correspond to simpler relationships and operation over the images $\Fs$.\\
 	
 	\NI It is named after Pierre-Simon Laplace, who introduced the transform in his work in probability theory. \\
-%	The Laplace transform is related to the Fourier transform, but as the Fourier transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moments. In physics and engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are function of complex angular frequency on radians per unit time. Given a simple mathematical or functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on a set of specification.\\
-	
+
 	\NI On the other hand, PDE provide a quantitative description for many central models on physical, biological and social sciences. A \PDe is an equation which involves derivatives of an unknown function with respect to two or more independent variables.\sps
 	For example:
 	\begin{equation}
@@ -184,9 +189,11 @@
 		\item $\dsp \frac{\partial^2 V}{\partial x\partial y} = e^{-2y}\sin x$ ~~with initial condition $Vx(x,0)=0, ~~Vy(0,y) =0$
 		%%%%%%%%%%%%%%%%%%%%%%%%
 		\item $\dsp \frac{\partial^2 V}{\partial y \partial x}= \cos x \cos y$~~ with initial condition $V(x,0)=1+\sin x, ~ Vy(0,y)=-2\cos y$
+		%%%%%%%%%%%%%%%%
+		\item $\dsp\frac{\partial^2 V}{\partial x \partial y} + \frac{\partial V}{\partial x} + V = 4x^2y, V_x(x,0)=1, V(0,y)=1, V(0,y)=y, ~~~\\V_y(0,y)=0$
 	\end{enumerate}
 
-		\section{DEFINITION OF RELEVANT TERMS}
+	\section{DEFINITION OF RELEVANT TERMS}
 	\subsection{Linear Equation}
 	A linear equation is an algebraic equation in which the highest power of the unknown is one. For example;
 	\begin{eqnarray}
@@ -241,12 +248,12 @@
 	\end{eqnarray}
 
 	\section{AIM AND OBJECTIVES OF STUDY}
-	This project aim at the application of Laplace transform in solving partial differential equation of the second order derivative. The objectives of the study were to:
+	This project aim is to demonstrate the application of Laplace transform in solving partial differential equation of the second order derivative. The objectives of the study were to:
 	\begin{enumerate}
 		\renewcommand{\labelenumi}{\roman{enumi}.}
 		\item find the exact solution of the problem stated above;
 		\item determine whether \PDEs can be solved using Laplace substitution method; and
-		\item investigate in the factors affecting the use of Laplace transform in solving differential equations.
+		\item investigate the factors affecting the use of Laplace transform in solving differential equations.
 	\end{enumerate}
 
 	\section{SCOPE OF STUDY}
@@ -260,15 +267,25 @@
 	
 	\NI The study on the application of Laplace transforms in solving Partial Differential Equation of the second order derivative will be of immense benefit to the body of existing literature and knowledge in this field of study and provide the basis for further research.\\
 	
-	\NI The Laplace transform is related to the Fourier transform, but as the Fourier Transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moment. In Physis and Engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are functions of complex angular frequency on radians per unit time. Given a simple Mathematical of functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on set of specification.\\
+	\NI The Laplace transform is related to the Fourier transform, but as the Fourier Transform expresses a function or signal as a series of nodes of vibration (frequencies), the Laplace transform resolves a function into its moment. In Physis and Engineering, it is used for analysis of linear time-invariant systems such as electrical circuits, harmonic oscillations, optical devices and mechanical systems. (Joel, 1999)\\
 	
-	\NI Prominent researchers have worked on Laplace transform and PDE. Kolev et al. (1993) applied Laplace transform for the solution of transient mass and Heat transfer problems in flow system.\\
+	\NI In such analysis, the Laplace transform is often interpreted as a transformation from the time-domain, in which inputs and outputs are function of time to the frequency-domain, where the same inputs and outputs are functions of complex angular frequency on radians per unit time. Given a simple Mathematical of functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system or in synthesizing a new system base on set of specification.\\
 	
-	\NI Adeniyi R.B. (2014) wrote about using the convolution of two functions for finding the inverse of Laplace transform.
-	He J. H. (1998) carried out the study on the approximate solution of non-linear differential equations with convolution product nonlinearities. 
+	\NI Prominent researchers have worked on Laplace transform and PDE.\\
 	
-	\NI Widder D. V. (1946) investigated an introduction of Laplace transform with engineering applications.
-	Memberez et al. (1996) carried out a study on the use of Laplace transform technique for simple kinetic parameters evaluations.    
+	\NI Kolev et al. (1993) applied Laplace transform for the solution of transient mass and Heat transfer problems in flow system.\\
+	
+	\NI Adeniyi R.B. (2014) wrote about using the convolution of two functions for finding the inverse of Laplace transform.\\
+	
+	\NI He J. H. (1998) carried out the study on the approximate solution of non-linear differential equations with convolution product non-linearities. \\
+	
+	\NI Widder D. V. (1946) investigated an introduction of Laplace transform with engineering applications.\\
+	
+	\NI Memberez et al. (1996) carried out a study on the use of Laplace transform technique for simple kinetic parameters evaluations.\\
+	
+	Suji H. et al (2012) Worked on Laplace Substitution Method for solving Partial Differential Equation involving Mixed Partial Derivatives.\\
+	
+	Yehuda P. et al (2005), wrote on the introduction to partial differential equations.    
 	
 	
 	\section{LAPLACE TRANSFORM}
@@ -1399,7 +1416,7 @@
 	\begin{equation*}
 		\frac{\partial}{\partial x}\left(\frac{\partial v}{\partial y}\right) = e^{-2y}\sin x \label{p:4_1_3} 
 	\end{equation*}
-	Substituting $\dfrac{\partial v}{\partial y} = V$ in equation (\ref{p:4_1_3}), we get
+	Substituting $\dfrac{\partial v}{\partial y} = V$ in equation above, we get
 	\begin{equation*}
 		\frac{\partial V}{\partial x}=e^{-2y}\sin x\label{p:4_1_4} 
 	\end{equation*}
@@ -1411,7 +1428,7 @@
 			\dsp V(s,y) = e^{-2y}\frac{1}{s}\left(\frac{1}{s^2+1}\right)
 		\end{array}\label{p:4_1_5} 
 	\end{equation*}
-	Taking the inverse Laplace transform of equation (\ref{p:4_1_5}) with respect to $x$, we get
+	Taking the inverse Laplace transform of equation above with respect to $x$, we get
 	\begin{equation*}
 		\begin{array}{l}
 			\dsp V(x,y) = e^{-2y}(1-\cos x)\sps
@@ -1420,7 +1437,7 @@
 	\end{equation*}
 	This is the partial differential equation of first order in the variables $x$ and $y$.\\
 	
-	\NI Taking Laplace transform of equation  with respect to $y$, we obtain
+	\NI Taking Laplace transform of equation above with respect to $y$, we obtain
 	\begin{equation*}
 		\begin{array}{l}
 			\dsp SV(x,s)-V(x,0) = \Laplace_y\left[e^{-2y}(1-\cos x)\right]\sps
@@ -1429,7 +1446,7 @@
 		\end{array}
 		\label{p:4_1_7} 
 	\end{equation*}
-	Taking inverse Laplace transform of equation (\ref{p:4_1_7}) with resect to $y$, we obtain
+	Taking inverse Laplace transform of equation above with resect to $y$, we obtain
 	\begin{equation*}
 		V(x,y)=\frac{1}{2}(1-\cos x)(1-e^{-2y}) \label{p:4_1_8} 
 	\end{equation*}
@@ -1461,11 +1478,11 @@
 	\begin{equation*}
 		\dfrac{\partial}{\partial x}\left(\frac{\partial v}{\partial y}\right) = \cos x\cos y \label{p:4_2_3}
 	\end{equation*}
-	Substituting $\dfrac{\partial v}{\partial y} = V$ in equation, we get
+	Substituting $\dfrac{\partial v}{\partial y} = V$ in equation above, we get
 	\begin{equation*}
 		\frac{\partial V}{\partial x} = \cos x\cos y \label{p:4_2_4}
 	\end{equation*}
-	Taking Laplace transform of equation  with respect to $x$, we get
+	Taking Laplace transform of equation above with respect to $x$, we get
 	\begin{equation*}
 		\begin{array}{l}
 			SV(s,y) - V(0,y) = \Laplace_x\left[\cos x \cos y\right]\sps
@@ -1473,7 +1490,7 @@
 			\dsp V(s,y) = -\frac{2\cos y}{s} + \cos y \frac{1}{s}\left(\frac{s}{s^2 + 1}\right)
 		\end{array}\label{p:4_2_5}
 	\end{equation*}
-	Taking inverse Laplace transform of equation with respect to $x$, we get
+	Taking inverse Laplace transform of equation above with respect to $x$, we get
 	\begin{equation*}
 		\begin{array}{l}
 			V(x,y) = -2\cos y + \cos y\sin x\sps
@@ -1481,7 +1498,7 @@
 		\end{array}\label{p:4_2_6}
 	\end{equation*}
 	This is the partial differential equation of first order in  the variables $x$ and $y$.\sps
-	Taking Laplace transform of equation with respect to $y$, we obtain
+	Taking Laplace transform of equation above with respect to $y$, we obtain
 	\begin{equation*}
 		\begin{array}{l}
 			\dsp SV(x,s)-V(x,0) = \Laplace_y\left[\cos y(-2+\sin x)\right]\sps
@@ -1489,7 +1506,7 @@
 			\dsp V(x,s) = \frac{1+\sin x}{s} + \frac{1}{s}\left(\frac{s}{s^2+1}\right)(-2+\sin x)
 		\end{array}\label{p:4_2_7} 
 	\end{equation*}
-	Taking the inverse Laplace transform of equation  with respect to $y$, we get
+	Taking the inverse Laplace transform of equation above with respect to $y$, we get
 	\begin{equation*}
 		\begin{array}{l}
 			\dsp V(x,y)= 1+\sin x + \sin y(-2 + \sin x)\sps
@@ -1501,7 +1518,7 @@
 	\section*{Example 4.3}
 	Consider the following partial differential equation with $R_v(x,y) \neq 0$
 	\begin{equation*}
-		\frac{\partial^2 v}{\partial x \partial y} + \frac{\partial v}{\partial x} + u = 6x^2 y\label{eq:p_3_1}
+		\frac{\partial^2 v}{\partial x \partial y} + \frac{\partial v}{\partial x} + v = 4x^2 y\label{eq:p_3_1}
 	\end{equation*}
 	with initial conditions
 	\begin{equation*}
@@ -1509,25 +1526,31 @@
 	\end{equation*}
 	In the above problem, $\dsp R_v(x,y) = \frac{\partial^2 v}{\partial x \partial y} + v(x,y)$. Use the substitution $\dsp \frac{\partial v}{\partial y}= V(x,y)$ in, we get
 	\begin{equation*}
-		\frac{\partial V}{\partial x} + \frac{\partial v}{\partial x} + v = 6x^2 y\label{eq:p_3_3}
+		\frac{\partial V}{\partial x} + \frac{\partial v}{\partial x} + v = 4x^2 y\label{eq:p_3_3}
 	\end{equation*}
 	Taking the Laplace transform of equation with respect to $x$, we get
 	\begin{equation*}
-		sV(s,y) - V(0,y) + sv(s,y) - v(0,y) + \Laplace_x\left[v(x,y)\right]\frac{12y}{s^2} 
+		sV(s,y) - V(0,y) + sv(s,y) - v(0,y) + \Laplace_x\left[v(x,y)\right]\frac{8y}{s^3} 
 	\end{equation*}
 	\begin{equation*}
-		V(s,y) = -v(s,y) - \frac{1}{s}\Laplace_x\left[v(x,y)\right]+ \frac{12y}{s^4}\label{eq:p_3_4}
+		V(s,y) = -v(s,y) - \frac{1}{s}\Laplace_x\left[v(x,y)\right]+ \frac{8y}{s^4}\label{eq:p_3_4}
 	\end{equation*}
-	Taking inverse Laplace transform of equation with respect to $x$, we get 
+	Taking inverse Laplace transform of equation above with respect to $x$, we get 
 	\begin{eqnarray*}
-		V(x,y) = -v(x,y) - \InverseLx{\frac{1}{s}\Laplace_x\left[v(x,y)\right]} + 2yx^3
+		V(x,y) = -v(x,y) - \InverseLx{\frac{1}{s}\Laplace_x\left[v(x,y)\right]} + \frac{4}{3}x^3y
 	\end{eqnarray*}
 	\begin{equation*}
-		\frac{\partial v(x,y)}{\partial x} = - v(x,y) - \InverseLx{\frac{1}{s}\Laplace_x\left[v(x,y)\right]}+2yx^3\label{eq:p_3_5}
+		\frac{\partial v(x,y)}{\partial x} = - v(x,y) - \InverseLx{\frac{1}{s}\Laplace_x\left[v(x,y)\right]}+\frac{4}{3}x^3y\label{eq:p_3_5}
 	\end{equation*}
+	Taking Laplace transform of the above equation with respect to $y$, we get
+	\begin{eqnarray*}
+		SV(x,s) - V(x,0) = \frac{4}{3}x^3\frac{1}{s^2}-\Laplace y\left[ V(x,y) + \InverseLxx{\frac{1}{s}\Laplace_x[V(x,y)]} \right]\sps
+		%%%%%%%%%%%%%%%%%%%%%
+		V(x,s) = \frac{1}{s} + \frac{4}{3}x^3\frac{1}{s^3} - \frac{1}{s}\Laplace_y\left[ V(x,y) + \InverseLxx{\frac{1}{s}\Laplace_x[V(x,y)]}  \right]
+	\end{eqnarray*}
 	Taking inverse Laplace transform of equation  with respect to $y$, we get
 	\begin{equation*}
-		v(x,y) = 1-\Laplace_y^{-1}\left\{\frac{1}{s}\Laplace_y\left[v(x,y) + \InverseLx{\frac{1}{s}\Laplace_x\left[v(x,y)\right]}\right]\right\} + x^3 y^2\label{eq:p_3_6}
+		V(x,y) = 1 + \frac{4}{3}x^2y^2 - \InverseLyy{\frac{1}{s}\Laplace_y[V(x,y) + \InverseLxx{\frac{1}{s}\Laplace_x[V(x,y)]}]}
 	\end{equation*}
 	We cannot solve the equation because our goal $u(x,y)$ is appeared in both sides of equation. Therefore the equation cannot be solved by using LSM because of $R_v(x,y) \neq 0$
 
@@ -1546,24 +1569,25 @@
 	\chapter*{REFERENCES}
 	\addcontentsline{toc}{chapter}{REFERENCES}
 	\begin{description}
-		\item Joel L. Schiff, The Laplace Transform: Theory and Applications, Springer
+		\item Joel L. Schiff (1999). \emph{The Laplace Transform: Theory and Applications}, Springer.
 		
-		\item J. H. He, Approximate solution of nonlinear differential equations with convolution product nonlinearities, Comput. Methods Appl. Mech. Engrg. 167(1998)69-73.
+		\item J. H. He (1998). \emph{Approximate solution of nonlinear differential equations with convolution product nonlinearities}, Comput. Methods Appl. Mech. Engrg. 167,69-73.
 		
-		\item  Kolev. S. D., Linden W. E., 1993, Application of Laplace transforms for the solution of transient mass- and heat- transfer problems in flow systems, International Journal of Heat and Mass Transfer, vol. 36, pp.135-139 5. 
+		\item  Kolev. S. D., \& Linden W. E., (1993). \emph{Application of Laplace transforms for the solution of transient mass- and heat- transfer problems in flow systems}, International Journal of Heat and Mass Transfer, vol. 36, pp.135-139 5. 
 		
-		\item R.B. Adeniyi (2014), Essentials of Basic Ordinary Differential Equations, University of Ilorin Publishing House, Ilorin Kwara State. Pg 200 - Pg 232.
+		\item R.B. Adeniyi (2014). \emph{Essentials of Basic Ordinary Differential Equations}, University of Ilorin Publishing House, Ilorin Kwara State. Pg 200 - Pg 232.
 		
-		\item Richard Jozsa, DAMTP Cambridge, PDEs on bounded domains: Separation of vari-ables, Part II, (2011).
+		\item Richard Jozsa (2011). DAMTP Cambridge, \emph{PDEs on bounded domains: Separation of variables}, Part II.
 		
-		\item T. A. Abassy , M.A.El-Tawil ,H.El-Zoheiry, Solving nonlinear partial differential equations using the modified
-		variational iteration Pade technique ,Journal of Computational and Applied Mathematics 207 (1)(2007)73-91.
+		\item Sujit Handibag, \& B. D. Karande (2012). \emph{Laplace Substitution Method for solving Partial Differential Equations involving Mixed Partial Derivatives}. International Journal of Computational Engineering Research (ijceroline.com) Vol. 2. Issue. 4.
 		
-		\item T. A. Abassy, M.A.El-Tawil ,H.El-Zoheiry, Exact solutions of some nonlinear partial diferential using the
-		variational iteration method linked with Laplace transforms and the Pade technique, Computers and Mathematics
-		with Applications,54 (7-8))(2007)940-954.
-		+2
-		\item Widder D. V., 1946, The Laplace transform, Princeton University Press, USA. 2. Jaeger J. C., 1961, An introduction to the Laplace transformation with engineering applications, Methuen, London. 
+		\item T. A. Abassy , M.A.El-Tawil , \& H.El-Zoheiry (2007). \emph{Solving non-linear partial differential equations using the modified variational iteration Pade technique}. Journal of Computational and Applied Mathematics (207)73-91.
+		
+		\item T. A. Abassy, M.A.El-Tawil, \& H.El-Zoheiry (2007). \emph{Exact solutions of some non-linear partial differential using the variational iteration method linked with Laplace transforms and the Pade technique}, Computers and Mathematics with Applications,54 (7-8))(2007)940-954.
+		
+		\item Widder D. V., (1946). \emph{The Laplace transform}. Princeton University Press, USA. 2. Jaeger J. C., 1961, An introduction to the Laplace transformation with engineering applications, Methuen, London. 
+		
+		\item Yehuda Pinchover, \& Jacob Rubinstein (2005). \emph{An Introduction to Partial Differential Equation}. Cambridge University Press.
 	\end{description}
 
 \end{document}

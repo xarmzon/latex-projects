@@ -284,40 +284,165 @@
 	However, in any practical computation, the summation has to be terminated after some finite number of terms. If the series has been terminated after the $p^{th}$ derivative term then the approximated formula is called the Taylor Series approximation of $y$ of order $p$.
 	
 	\section{Euler's Method}
+	Euler's method assumed our solution is written in the form of a Taylor's series. i.e,
+	\begin{eqnarray}
+		y(x+h) \approx y(x) + hy\sprime(x) + \frac{h^2}{2!}y\dprime(x) + \frac{h^3}{3!}y\tprime(x) + \cdots
+	\end{eqnarray}
+	This gives us a reasonably good approximation if we take plenty terms, and if the value of $h$ is reasonably small. \\
 	
+	\NI For Euler's method we take the first two terms only i.e $\dsp y(x+h) \approx y(x) + h\sprime(x)$\\
+	The last term is just $h$ multiply $\dsp\frac{dy}{dx}$, so we can write Euler's method as follows
+	\begin{eqnarray}
+		y(x+h) \approx y(x) + hf(x,y)
+	\end{eqnarray} 
+
+	\NI In general, Euler's formula is given as 
+	\begin{eqnarray}
+		y_{i+1} = y_i + hf(x_i,y_i)
+	\end{eqnarray}
+	where $y_i$ is the current values, $y_{i+1}$ is the next estimated values, $h$ is the interval between steps and $f(x_i,y_i)$ is the value of the derivative at the current $(x_i,y_i)$ point.
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
 	\chapter{METHODOLOGY}
-	\section{}
+	\section{Introduction}
+	The Adomian Decomposition Method consist of decomposing the unknown function $U(x,y)$ of any equation into a sum of an infinite number of component defined by the decomposition series
+	\begin{eqnarray}
+		U(x,y) = \sum_{n=0}^{\infty} U_n(x,y)
+	\end{eqnarray}
+	where the component $U_n(x,y), n\geq 0$ are to be determined in a recursive manner. The ADM is concern with finding the components $U_0, U_1, U_2,\ldots$ individually.\\
 	
+	\NI The ADM consist of splitting the given equation into linear and non-linear parts, inverting the highest order derivative operator contained in the linear operator on both sides, identifying the initial and/or boundary condition and the terms involving the independent variable alone as initial approximation, decomposing the unknown function into a series whose components are to be determined, decomposing the non-linear function in terms of special polynomials called Adomian polynomials and finding the successive terms of the series solution by recurrent relation using Adomian polynomials. The solution is found as an infinite series in which each term can be easily determined and that converges quickly towards an accurate (exact) solution.
 	
+	\section{Method of Solution of ADM}
+	Consider a differential equation
+	\begin{eqnarray}
+		f(U(t)) = g(t)
+	\end{eqnarray}
+	where $f$ represents a general non-linear ordinary differential operator including both linear and non-linear terms. Thurs, the equation may be written as:
+	\begin{eqnarray}
+		LU + NU + RU = g
+	\end{eqnarray}
+	where $L$ is the linear operator, $N$ represent the non-linear operator and $R$ represent the remaining linear part. Solve for $LU$, we obtained
+	\begin{eqnarray}
+		LU = g - NU - RU
+	\end{eqnarray}
+	Then we defined the inverse operator of $L$ as $L^{-1}$ assuming it exist, we get
+	\begin{eqnarray}
+		L^{-1}LU =L^{-1}g - L^{-1}NU - L^{-1}Ru \label{eq:3_5}
+	\end{eqnarray}
 	
+	\NI The Adomian Decomposition Method represents the $U(x,t)$ as an infinite series of the form
+	\begin{eqnarray}
+		U(x,t) = \sum_{n=0}^{\infty}U_n(x,t)\label{eq:3_6}
+	\end{eqnarray}
+	or equivalently,
+	\begin{eqnarray}
+		U(x,t) = U_0(x,t) + U_1(x,t) + U_2(x,t) + \cdots
+	\end{eqnarray}
+	Also, ADM defines the non-linear term $NU$ by the Adomian polynomials, which can be decomposed by an infinite series of polynomials given by
+	\begin{eqnarray}
+		NU = \sum_{n=0}^{\infty}A_n\label{eq:3_8}
+	\end{eqnarray}
+	where $A_n$ are the Adomian polynomials. Substituting equations \refx{3_6} and \refx{3_8} into equation \refx{3_5}, we get
+	\begin{eqnarray}
+		\sum_{n=0}^{\infty}U(x,t) = \phi_0 + L^{-1}g(x) + L^{-1} R\sum_{n=0}^{\infty}U_n - L^{-1}\sum_{n=0}^{\infty}A_n
+	\end{eqnarray}
+	\begin{eqnarray}
+		\phi_0 = \left\{
+			\begin{array}{l l}
+				U(0) & \text{ if } L \frac{d}{dx}\sps
+				%%%%
+				U(0) + xU\sprime(0) & \text{ if } L \frac{d^2}{dx^2}\sps
+				%%%%%%
+				U(0) + xU\sprime(0) + \frac{x^2}{2!}U\dprime(0) & \text{ if } L \frac{d^3}{dx^3}\sps
+				%%%%
+				\vdots\sps
+				%%%%%
+				U(0) + xU\sprime(0) + \frac{x^2}{2!}U\dprime(0) + \cdots + \frac{x^n}{n!}U^n(0), & \text{ if } L \frac{d^{n+1}}{dx^{n+1}}
+			\end{array}
+		\right.
+	\end{eqnarray}
+	Therefore, the formal recurrence algorithm could be defined as
+	\begin{eqnarray}
+		\left\{
+			\begin{array}{l}
+				U_0 = \phi_0 + L^{-1} g(x),\sps
+				U_1 = - L^{-1}RU_0 - L^{-1}A_0\sps
+				U_2 = - L^{-1} RU_1 - L^{-1}A_1\\
+				\vdots\\
+				U_{n+1} = -L^{-1}RU_n - L^{-1}A_n,~~~ n\geq 0
+			\end{array}
+		\right.
+	\end{eqnarray}
+	where $A_n$ are Adomian polynomials generated for each non-linear term so that $A_0$ depends only on $U_0, A_1$ depends only on $U_0$ and $U_1, A_2$ depends only on $U_0,U_1$ and $U_2$ and etc.
+
+	\section{Adomian Polynomials}
+	The main part of ADM is calculating the Adomian Polynomials. The ADM decomposes the solution of $U$ and the non-linear terms $NU$ into series
+	\begin{eqnarray}
+		U = \sum_{n=0}^{\infty}U_n \hspace{1.2cm} N(U) = \sum_{n=0}^{\infty}A_n
+	\end{eqnarray}
+	where $A_n$ are the Adomian Polynomials.\\
+	
+	\NI To compute $A_n$, we take $NU=f(U)$ as a non-linear function in $U$ where $U=U(x)$ and we consider the Taylor Series expansion of $f(U)$ about the initial function $U_0$.
+	\begin{multline}
+		f(U) = f(U_0) + f\sprime(U_0)(U-U_0) + \frac{1}{2!}f\dprime(U_0)(U-U_0)^2 \sps
+		+ \frac{1}{3!}f\tprime(U_0)(U-U_0)^3 + \cdots
+	\end{multline}
+	But $U=U_0+U_1+U_2+\cdots$. Then,
+	\begin{multline}
+		f(U) = f(U_0) + f\sprime(U_0)(U_1+U_2+U_3+\cdots) + \frac{1}{2!}f\dprime(U_0)(U_1+U_2+U_3+\cdots)^2 \sps
+		+ \frac{1}{3!}f\tprime(U_0)(U_1+U_2+U_3+\cdots)^3 + \cdots
+	\end{multline}
+	by expanding all term we get
+	\begin{multline}
+		f(U) = f(U) + f\sprime(U_0)(U_1) + f\sprime(U_0)(U_2)+ f\sprime(U_0)(U_3) + \cdots \sps
+		%%%%%%%
+		+ \frac{1}{2!}f\dprime(U_0)(U_1)^2 + \frac{2}{2!}f\dprime(U_0)(U_1U_2) + \frac{1}{2!}f\dprime(U_0)(U_1U_3) + \cdots \sps
+		%%%%%%%%
+		+ \frac{1}{3!}f\tprime(U_0)(U_1)^3 + \frac{3}{3!}f\tprime(U_0)(U_1^2U_2) + \frac{1}{3!}f\tprime(U_0)(U_1^2U_3) + \cdots
+	\end{multline}
+	The Adomian Polynomials are constructed in a certain way so that the polynomial $A_1$ consists of all terms in the expansion of order 1, $A_2$ consist of all terms of order 2, and so on.\\
+	
+	\NI In general, $A_n$ consist of all terms of order $n$. Therefore, we have
+	\begin{eqnarray}
+		\begin{split}
+			A_0 &= f(U_0)\sps
+			A_1 &= U_1f\sprime(U_0)\sps
+			A_2 &= U_2f\sprime(U_0)+ \frac{1}{2!}f\dprime(U_0)\sps
+			%%%%%%%%%%
+			A_3 &= U_3f\sprime(U_0) + \frac{2}{2!}U_1U_2f\dprime(U_0)+ \frac{1}{3!}U_1^3f\dprime(U_0)\sps
+			%%%%%%%%%
+			A_4 &= U_4f\sprime(U_0) + \left[\frac{1}{2!}U_2^2 + U_1U_3\right]f\dprime(U_0) + \frac{1}{2!}U_1^2U_2f\tprime(U_0) + \frac{1}{4!}U_1^4f''''(U_0)\sps
+			\vdots
+		\end{split}
+	\end{eqnarray}
+	Hence, $A_n$ was defined via the general formula
+	\begin{eqnarray}
+		A_n(U_0,U_1,\ldots,U_n) = \frac{1}{n!}\frac{d^n}{d\lambda^n}\left[  N\left( \sum_{n=0}^\infty U_n\lambda^n \right)  \right]_{\lambda=0} \hspace{.2cm} n=0,1,2,3,\ldots
+	\end{eqnarray}
+	To fin the $A_n$'s by Adomian general formula, these polynomial will be computed as follows:
+	\begin{eqnarray*}
+		\begin{split}
+			A_0 &= N(U_0)\sps
+			A_1 &= \frac{d}{d\lambda}N(U_0+U_1\lambda)\Big|_{\lambda=0} = N(U_0)U1\sps
+			%%%%%%%%
+			A_2 &= N\sprime(U_0)U_2 + \frac{1}{2!}N\dprime(U_0)U_1^2 - \frac{1}{2!}\frac{d^2}{dx^2}N(U_0+\lambda U_1 + \lambda^2 U_2)\Big|_{\lambda=0}\sps
+			%%%%%%%%%%%%
+			A_3 &= N\sprime(U_0)(U_3) + \frac{2}{2!}N\dprime(U_0)U_1U_2 + \frac{1}{3!}N\tprime(U_0)U_1^3\\  
+			&= \frac{1}{3!}\frac{d^2}{dx^2}N(U_0+\lambda U_1 + \lambda^2U_2 + \lambda^3U_3)\Big|_{\lambda=0}\sps
+			\vdots
+		\end{split}
+	\end{eqnarray*}
+	
+	\example{3.1}
+	The Adomian polynomial of $f(U) = U^5$
+
+
+
+
+
 	
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
