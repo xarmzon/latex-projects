@@ -161,9 +161,8 @@
 		\item \bt{Feasible Solution:} A solution that satisfies the row and column sum restrictions and also the none-negatively restrictions is a feasible solution.
 		\item\bt{Basic Feasible Solution:} A feasible solution of $(m\times n)$ transportation problem is said to be basic feasible solution when the total number of allocations is equal to $(m+n-1)$.
 		\item\bt{Optimal Solution:} A feasible solution is said to be optimal solution when the total transportation cost will be the minimum cost.
+		\item\bt{Degenerate \& Non-degenerate Basic Feasible Solution:} A Basic Feasible Solution to the $m\times n$ transportation problem that contains exactly $m+n-1$ allocation in independent position is called non-degenerate basic feasible solution.
 	\end{enumerate}
-	
-	
 	
 	
 	\section{Types of Transportation Problem}
@@ -286,17 +285,14 @@
 	The project will attempt to resolve the challenge of determining the ideal transportation plan that will reduce the overall cost of transporting products from the major production locations to the many important distributors in Ilorin who are geographically dispersed.
 
 	\section{Aim and Objectives}
-	\subsection{Aim}
-	The Aim of the study is to develop a transportation model of \uwe.
-	\subsection{Objectives}
-	The study intended:
+	The Aim of the study is to develop a transportation model of \uwe. The objectives  were to:
 	\begin{enumerate}
 		\renewcommand{\labelenumi}{(\roman{enumi})}
-		\item To develop a model of distribution of Unilorin Water Enterprise (UWE) products as a \stp.
-		\item To minimize the transportation cost.
-		\item To maximize profit.
+		\item develop a model of distribution of Unilorin Water Enterprise (UWE) products as a \stp.
+		\item minimize the transportation cost.
+		\item maximize the profit.
 	\end{enumerate}
-	
+
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%%%%%%%
 	\chapter{LITERATURE REVIEW}
@@ -765,14 +761,14 @@
 	\NI Table-6
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.37cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{1.5cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.3cm}|}
 		\hline
-		& \tikzmark{bb6}$D_1$ & \tikzmark{aa8}$D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		& \tikzmark{bb6}$D_1$ & \tikzmark{aa8}$D_2$ & $D_3$ & \tikzmark{udee1}$ D_4$ & Capacity & Row Penalty\\\hline
 		\tikzmark{dd2}$S_1$ & 19(5) & 30 & 50 & \tikzmark{dd3}10(2) & 0 & --\\\hline
 		$S_2$ & 70 & 30 & 40 & 60(2) & 7& 40\\\hline
 		\tikzmark{cc12}$S_3$ & \tikzmark{bb7}40 &  \tikzmark{aa9}8(8) & 70 & \tikzmark{cc2}20(10) & 0 & --\\\hhline{|=|=|=|=|=#=|=|}
 		Demand & 0 & 0 & 7 & 0 & & \\\hline
 		Column Penalty & -- & -- & 40 & -- & &\\\hline
 	\end{longtable}
-	\linkVV{aa8}{aa9}{2.5}{3.5}\linkVV{bb6}{bb7}{2.5}{2.7}\linkH{cc12}{cc2}\linkH{dd2}{dd3}
+	\linkVV{aa8}{aa9}{2.5}{3.5}\linkVV{bb6}{bb7}{2.5}{2.7}\linkH{cc12}{cc2}\linkH{dd2}{dd3}\linkVV{udee1}{cc2}{3.}{5.8}
 	{~}\\[-1cm]
 	The maximum penalty, 40, occurs in row $S_2$\\
 	The minimum $C_{ij}$ in this row is $C_{23}=40$\\
@@ -813,7 +809,7 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%%%%%%
 	\chapter{DATA COLLECTION AND ANALYSIS}
 	\section{Data Collection}
-	The table below displays a weekly unbalanced transportation problem data from Unilorin Water Enterprise's storehouses: Factory, Consultancy, Business School, and UITH, each. This problem's demand and supply capacity are provided as 400, 150, 100, 200 and 250, 200, 150, 250 (in packs per week), respectively. The transportation costs (in thousand naira) between factories to warehouses are given per week. 
+	The table below displays a weekly balanced transportation problem data from Unilorin Water Enterprise's storehouses: Factory, Consultancy, Business School, and UITH, each. This problem's demand and supply capacity are provided as 400, 150, 100, 200 and 250, 200, 150, 250 (in packs per week), respectively. The transportation costs in naira between factories to warehouses are given per week. 
 %	\newpage
 %	\begin{longtable}{|>{\arraybackslash}m{3.1cm}|>{\centering\arraybackslash}m{1.1cm}|>{\centering\arraybackslash}m{1.1cm}|>{\centering\arraybackslash}m{1.1cm}|>{\centering\arraybackslash}m{1.1cm}||>{\centering\arraybackslash}m{4cm}|}
 %		\hline
@@ -842,7 +838,7 @@
 	
 	\subsection{METHOD 1: Using North West Corner}
 	TOTAL number of supply constraints: 4\\
-	TOTAL number of demand constraints: 4\\
+	TOTAL number of demand constraints: 4\\[-0.8cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
 		\hline
 		& $W_1$ &$W_2$ & $W_3$ & $W_4$ & Supply\\\hline
@@ -1105,10 +1101,10 @@
 		\tikzmark{af5}$S_1$ & 5(100) & 6(150) & 5(150) & \tikzmark{af6}7 & 0\\
 		\tikzmark{ab13}$S_2$ & 2(150) & 2 & 3 & \tikzmark{ab14}3 & 0\\
 		\tikzmark{ac11}$S_3$ & 5 & 4 & 4 & \tikzmark{ac12}3(100) & 0\\
-		$S_4$  & \tikzmark{ae8}13 & \tikzmark{ah2}12(50) & \tikzmark{ad10}15 & \tikzmark{ag4}12(150) & 0\\\hhline{|=|=|=|=|=#=|}
+		\tikzmark{udee6}$S_4$  & \tikzmark{ae8}13 & \tikzmark{ah2}12(50) & \tikzmark{ad10}15 & \tikzmark{ag4}12(150) & 0\\\hhline{|=|=|=|=|=#=|}
 		Demand & 0 & 0 & 0 & 0 &  \\\hline
 	\end{longtable}
-	\linkH{ab13}{ab14}\linkH{ac11}{ac12}\linkV{ad9}{ad10}\linkV{ae7}{ae8}\linkH{af5}{af6}\linkVV{ag3}{ag4}{3}{6.3}\linkVV{ah1}{ah2}{3}{5.5}
+	\linkH{ab13}{ab14}\linkH{ac11}{ac12}\linkV{ad9}{ad10}\linkV{ae7}{ae8}\linkH{af5}{af6}\linkVV{ag3}{ag4}{3}{6.3}\linkVV{ah1}{ah2}{3}{5.5}\linkH{udee6}{ag4}
 	
 	\NI Initial Feasible solution is\\[-.8cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.7cm}||>{\centering\arraybackslash}m{2.7cm}|}
@@ -1145,11 +1141,11 @@
 		$S_4$  & 13 & 12 & 15 & 12 & 200\\\hhline{|=|=|=|=|=#=|}
 		Demand & 250 & 200 & 150 & 250 &  \\\hline
 	\end{longtable}
-	
+	~~\\[-1.3cm]
 	\NI Table-1\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& $D_1$ & $D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		& $W_1$ & $W_2$ & $W_3$ & $W_4$ & Capacity & Row Penalty\\\hline
 		$S_1$ & 5 & 6 & 5 & 7 & 400 & 0=5-5\\
 		$S_2$ & 2 & 2 & 3 & 3 & 150& 0=2-2\\
 		$S_3$ & 5 & 4 & 4 & 3 & 100& 1=4-3\\
@@ -1167,7 +1163,7 @@
 	\NI Table-2\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& $D_1$ & $D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		& $W_1$ & $W_2$ & $W_3$ & $W_4$ & Capacity & Row Penalty\\\hline
 		$S_1$ & 5 & 6 & 5 & 7 & 400 & 0=5-5\\
 		\tikzmark{bc1}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc2}3 & 0& --\\
 		$S_3$ & 5 & 4 & 4 & 3 & 100& 1=4-3\\
@@ -1186,7 +1182,7 @@
 	\NI Table-3\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& $D_1$ & $D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		& $W_1$ & $W_2$ & $W_3$ & $W_4$ & Capacity & Row Penalty\\\hline
 		$S_1$ & 5 & 6 & 5 & 7 & 400 & 0=5-5\\
 		\tikzmark{bc3}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc4}3 & 0& --\\
 		\tikzmark{bd1}$S_3$ & 5 & 4 & 4 & \tikzmark{bd2}3(100) & 0& --\\
@@ -1205,7 +1201,7 @@
 	\NI Table-4\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& $D_1$ & $D_2$ &\tikzmark{be1} $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		& $W_1$ & $W_2$ &\tikzmark{be1} $W_3$ & $W_4$ & Capacity & Row Penalty\\\hline
 		$S_1$ & 5 & 6 & 5(150) & 7 & 250 & 1=6-5\\
 		\tikzmark{bc5}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc6}3 & 0& --\\
 		\tikzmark{bd3}$S_3$ & 5 & 4 & 4 & \tikzmark{bd4}3(100) & 0& --\\
@@ -1225,7 +1221,7 @@
 	\NI Table-5\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& \tikzmark{bf1}$D_1$ & $D_2$ &\tikzmark{be3} $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		& \tikzmark{bf1}$W_1$ & $W_2$ &\tikzmark{be3} $W_3$ & $W_4$ & Capacity & Row Penalty\\\hline
 		$S_1$ & 5(100) & 6 & 5(150) & 7 & 150 & 1=7-6\\
 		\tikzmark{bc7}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc8}3 & 0& --\\
 		\tikzmark{bd5}$S_3$ & 5 & 4 & 4 & \tikzmark{bd6}3(100) & 0& --\\
@@ -1244,7 +1240,7 @@
 	\NI Table-6\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& \tikzmark{bf3}$D_1$ & $D_2$ &\tikzmark{be5} $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		& \tikzmark{bf3}$W_1$ & $W_2$ &\tikzmark{be5} $W_3$ & $W_4$ & Capacity & Row Penalty\\\hline
 		\tikzmark{bg1}$S_1$ & 5(100) & 6(150) & 5(150) & \tikzmark{bg2}7 & 0 & --\\
 		\tikzmark{bc9}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc10}3 & 0& --\\
 		\tikzmark{bd7}$S_3$ & 5 & 4 & 4 & \tikzmark{bd8}3(100) & 0& --\\
@@ -1264,7 +1260,7 @@
 	\NI Table-7\\[-1cm]
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}||>{\centering\arraybackslash}m{1.47cm}|m{2.27cm}|}
 		\hline
-		& \tikzmark{bf5}$D_1$ & $D_2$ &\tikzmark{be7} $D_3$ & \tikzmark{bh1}$D_4$ & Capacity & Row Penalty\\\hline
+		& \tikzmark{bf5}$W_1$ & $W_2$ &\tikzmark{be7} $W_3$ & \tikzmark{bh1}$W_4$ & Capacity & Row Penalty\\\hline
 		\tikzmark{bg3}$S_1$ & 5(100) & 6(150) & 5(150) & \tikzmark{bg4}7 & 0 & --\\
 		\tikzmark{bc11}$S_2$ & 2(150) & 2 & 3 & \tikzmark{bc12}3 & 0& --\\
 		\tikzmark{bd9}$S_3$ & 5 & 4 & 4 & \tikzmark{bd10}3(100) & 0& --\\
@@ -1284,7 +1280,7 @@
 	\NI Initial feasible solution is
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.4cm}|>{\centering\arraybackslash}m{1.4cm}|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.4cm}||>{\centering\arraybackslash}m{1.47cm}|m{3.7cm}|}
 		\hline
-		& $D_1$ & $D_2$ & $D_3$ & $D_4$ & Capacity & Row Penalty\\\hline
+		& $W_1$ & $W_2$ & $W_3$ & $W_4$ & Capacity & Row Penalty\\\hline
 		$S_1$ & 5(100) & 6(150) & 5(150) & 7  & 400 & 0$|$0$|$0$|$1$|$1$|$--$|$--\\
 		$S_2$ & 2(150) & 2 & 3 & 3 & 150& 0$|$--$|$--$|$--$|$--$|$--$|$--\\
 		$S_3$ & 5 & 4 & 4 & 3(100) & 100 & 1$|$1$|$--$|$--$|$--$|$--$|$--\\
@@ -1330,27 +1326,26 @@
 	\addcontentsline{toc}{chapter}{REFERENCES}
 	
 	\begin{description}
-		\item 	Boah, D. K., Adu, I. K.,\& Eduafo, S. (2015). Optimal transportation schedule for a lumber company in Ghana. International Journal of Computing and Optimization, 2, 47-52.
+		\item ALFRED ASASE THESIS. (n.d.). Retrieved from\\  https://www.coursehero.com/file/66599684/ALFRED-ASASE-THESISdocx/	
 		
-		\item ALFRED ASASE THESIS. (n.d.). https://www.coursehero.com/file/66599684/ALFRED-ASASE-THESISdocx/
+		\item Badra, N. M. (2007). \emph{Sensitivity analysis of transportation problems}. Journal of Applied Sciences Research, 3(8), 668-675.
+				
+		\item Boah, D. K., Adu, I. K.,\& Eduafo, S. (2015). \emph{Optimal transportation schedule for a lumber company in Ghana}. International Journal of Computing and Optimization, 2, 47-52.	
 		
-		\item Badra, N. M. (2007). Sensitivity analysis of transportation problems. Journal of Applied Sciences Research, 3(8), 668-675.
-		
-		\item Chanas, S.,\& Kuchta, D. (1996). A concept of the optimal solution of the transportation problem
-		https://www.ijmttjournal.org international journal of mathematics friends and Technology IJMTT. - Google Zoeken. (n.d.). https://www.google.com/search?q=https://www.ijmttjournal.org+international+journal+of+mathematics+friends+and+Technology+IJMTT.
+		\item Chanas, S.,\& Kuchta, D. (1996). \emph{A concept of the optimal solution of the transportation problem}.
+		https://www.ijmttjournal.org international journal of mathematics friends and Technology IJMTT. - Google Zoeken. (n.d.). Retrieved from\\ https://www.ijmttjournal.org+international+journal+of+mathematics+\\friends+and+Technology+IJMTT.
 
-		\item F. L. Hitchcock, The Distribution of a Product from Several Sources to Numerous Locations, Journal of Mathematics and Physics, 20 (1941), pp. 224- 230.
+		\item Hitchcock F. L. (1941). \emph{The Distribution of a Product from Several Sources to Numerous Locations}, Journal of Mathematics and Physics, 20, pp. 224- 230.
 		
-		\item H., Díaz-Parra, O., Ruiz-Vanoye, J. A., Loranca, B. B., Fuentes-Penna, A., \& Barrera-Cámara, R. A. (2014, March 27). A Survey of Transportation Problems. https://www.hindawi.com/journals/jam/2014/848129/
+%		\item H., Díaz-Parra, O., Ruiz-Vanoye, J. A., Loranca, B. B., Fuentes-Penna, A., \& Barrera-Cámara, R. A. (2014). \emph{A Survey of Transportation Problems}.\\ https://www.hindawi.com/journals/jam/2014/848129/
 		
-		\item 	L. Kantorovich, On the translocation of masses, Academic Science, 37 (1942), pp. 199–201.
+		\item Kantorovich L. (1942). \emph{The translocation of masses}, Academic Science, 37, pp. 199–201.
 		
-		\item Shah, P. N. (n.d.). transportation problem using north-west corner method calculator.https://cbom.atozmath.com/CBOM/Transportation.aspx?q=nwcm
+		\item Shah, P. N. (n.d.). \emph{Transportation problem using north-west corner method calculator}. Retrieved from\\ https://cbom.atozmath.com/CBOM/Transportation.aspx?q=nwcm
 
-		\item 	T. C. Koopman, Optimum Utilization of Transportation System, Proceedings of International Statistics Conference, Washington, D. C, 1947.	
+		\item T. C. Koopman (1947). \emph{Optimum Utilization of Transportation System}, Proceedings of International Statistics Conference, Washington, D. C.	
 		
-		\item University Of Ilorin Water Enterprises - Illorin - Ngads: Nigeria free Classified and Business Directory. https://ngads.com.ng/item/university-of-ilorin-water-enterprises-212514.html
-
+		\item University Of Ilorin Water Enterprises - Illorin - Ngads: Nigeria free Classified and Business Directory. Retrieved from\\ https://ngads.com.ng/item/university-of-ilorin-water-enterprises-212514.html
 	\end{description}
 	
 \end{document}
