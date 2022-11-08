@@ -463,28 +463,150 @@
 	\end{eqnarray*}
 
 
-
-
-	
-	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
-	\chapter{}
+	\chapter{Numerical Examples}
+	\section{Introduction}
+	In this section, three ordinary differential equation of second order is solved using Adomian decomposition method and the error analysis table is presented below each solution.
 	
+	\example{4.1}
+	Considering 
+	\begin{eqnarray*}
+		U\dprime - U = 1
+	\end{eqnarray*}
+	subject to initial conditions
+	\begin{eqnarray*}
+		U(0) = 0,~~~~~~~~~\sprime(0) = 1
+	\end{eqnarray*}
+	with exact solution $e^x - 1$
+	\solution
+	\begin{eqnarray}
+		U\dprime - U = 1
+	\end{eqnarray}
+	can be written in operator form as
+	\begin{eqnarray}
+		LU = 1 + U\label{eq:4_2}
+	\end{eqnarray}
+	where $L$ is the second order differential equation.\\
+	The inverse of $L$ is given as
+	\begin{eqnarray}
+		L^{-1} = \int_0^x\int_0^x(\cdot)dxdx
+	\end{eqnarray}
+	Applying $L^{-1}$ to \refx{4_2} gives
+	\begin{eqnarray}
+		L^{-1}LU = L^{-1} + L^{-1}U
+	\end{eqnarray}
+	Solving and applying the initial conditions, gives
+	\begin{eqnarray}
+		U &=&U(0) + xU\sprime(0) + L^{-1} + L^{-1}(U)\sps
+		U &=& x + \frac{x^2}{2} + L^{-1}(U)\label{eq:4_6}
+	\end{eqnarray}
+	ADM decomposes $U$ to form an infinite series of components
+	\begin{eqnarray}
+		U(x) = \sum_{n=0}^{\infty}U_n\label{eq:4_7}
+	\end{eqnarray}
+	Applying \refx{4_7} to \refx{4_6}
+	\begin{eqnarray}
+		\sum_{n=0}^{\infty} U_n = x + \frac{x^2}{2} + L^{-1}\left( \sum_{n=0}^\infty U_n \right)
+	\end{eqnarray}
+	Using recursive iteration
+	\begin{eqnarray*}
+		U_0 &=& x+ \frac{x^2}{2}s\sps
+		U_{n+1} &=& L^{-1}(U_n)\hspace{1cm} n \geq 0 
+	\end{eqnarray*}
+	when $n=0$
+	\begin{eqnarray*}
+		U_0+1&=& L^{-1}(U_0)\sps
+		U_1 &=& L^{-1}\left(x + \frac{x^2}{2}\right)\sps
+		U_1 &=& \frac{x^3}{6} + \frac{x^4}{24} = \frac{x^3}{3!} + \frac{x^4}{4!}
+	\end{eqnarray*}
+	when $n=1$
+	\begin{eqnarray*}
+		U_{1+1} &=& L^{-1}(U_1)\sps
+		U_2 &=& L^{-1}\left(\frac{x^3}{6} + \frac{x^4}{24}\right)\sps
+		U_2 &=& \frac{x^5}{5!} + \frac{x^6}{6!}
+	\end{eqnarray*}
+	when $n=2$
+	\begin{eqnarray*}
+		U_{2+1} &=& L^{-1}(U_2)\sps
+		U_3 &=& L^{-1}\left(\frac{x^5}{5!} + \frac{x^6}{6!}\right)\sps
+		U_3 &=&\frac{x^7}{7!} + \frac{x^8}{8!}
+	\end{eqnarray*}
+	The solution in series form is given by 
+	\begin{eqnarray*}
+		U(x)&=& x + \frac{x^2}{2}+\frac{x^3}{6} + \frac{x^4}{24} + \frac{x^5}{5!} + \frac{x^6}{6!} + \frac{x^7}{7!} + \frac{x^8}{8!}+ \cdots
+	\end{eqnarray*}
+	which is close to the exact solution $e^x - 1$
+	\newpage
+	\begin{longtable}{|c|c|c|c|}
+		\hline
+		$x$ & Exact Solution & ADM Solution & Absolute Error\\\hline
+		0.00 & 0.000000000 & 0.000000000 & 0.000000000\\
+		0.10 & 0.105170918 & 0.1051709181 & $1.0\times 10^{-10}$\\
+		0.20 & 0.221402758 & 0.2214027556 & $2,4\times 10^{-9}$\\
+		0.30 & 0.349858808 & 0.3498582625 & $4.6\times 10^{-8}$\\
+		0.40 & 0.491824698 & 0.4918243556 & $3.4\times 10^{7}$\\
+		0.50 & 0.648721271 & 0.6487196181 & $1.7\times 10^{-6}$\\
+		0.60 & 0.822118800 & 0.8221128000 & $6.0\times 10^{-6}$\\
+		0.70 & 0.013752707 & 1.0137348180 & $4.6\times 10^{-5}$\\
+		0.80 & 1.225540928 & 1.2254947560 & $1.8\times 10^{-5}$\\
+		0.90 & 1.459603111 & 1.4594963220 & $1.1\times 10^{-4}$\\
+		1.00 & 1.718281828 & 1.7180555560 & $2.3\times 10^{-4}$\\\hline
+		\caption{Table 1}
+	\end{longtable}
+
+	\example{4.2}
+	Considering 
+	\begin{eqnarray}
+		U\dprime = U + x \label{eq:4_9}
+	\end{eqnarray}
+	subject to initial condition $U(0) =1,~~~~ U\sprime()=0$ with exact solution $e^x - x$.
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	\solution
+	Re-writing \refx{4_9} in operator form, gives
+	\begin{eqnarray}
+		LU = x+U\label{eq:4_10}
+	\end{eqnarray}
+	where $L$ is second order differential operator i.e $\dsp\dfrac{d^2}{dx^2}$. \\
+	The inverse of $L$ is given as
+	\begin{eqnarray}
+		L^{-1} = \int_0^x\int_0^x(\cdot)dxdx
+	\end{eqnarray}
+	Applying $L^{-1}$ to \refx{4_10} gives
+	\begin{eqnarray}
+		L^{-1}LU = L^{-1}x + L^{-1}U
+	\end{eqnarray}
+	Solving and applying the initial conditions, gives
+	\begin{eqnarray}
+		U &=&U(0) + xU\sprime(0) + L^{-1}(x) + L^{-1}(U)\sps
+		U &=& 1 + \frac{x^3}{6} + L^{-1}(U)\label{eq:4_14}
+	\end{eqnarray}
+	The decomposition decomposes $U$ into series of infinite term $U_n$ given as
+	\begin{eqnarray}
+		\sum_{n=0}^{\infty}U_n = 1 + \frac{x^3}{6}+ L^{-1}\left(\sum_{n=0}^\infty U_n\right)~~~~~~~ n \geq 0
+	\end{eqnarray}
+	Using the recursive iteration
+	\begin{eqnarray*}
+		U_0 &=& 1 + \frac{x^3}{6}\sps
+		U_{n+1} &=& L^{-1}(U_n)
+	\end{eqnarray*}
+	when $n=0$
+	\begin{eqnarray*}
+		U_{0+1} & =& L^{-1} U_0\sps
+		U_1 &=& L^{-1}\left(x + \frac{x^3}{6}\right)\sps
+		U_1 &=& \frac{x^2}{2} + \frac{x^5}{5!}
+	\end{eqnarray*}
+	when $n=1$
+	\begin{eqnarray*}
+		U_{1+1} & =& L^{-1}U_1\sps
+		U_2 &=& L^{-1}\left(\frac{x^2}{2}+\frac{x^5}{5!}\right)\sps
+		U_2 &=& \frac{x^4}{4!} + \frac{x^7}{7!}
+	\end{eqnarray*}
+	when $n=2$
+	\begin{eqnarray*}
+		U_{2+1} &=& L^{-1}U_2\sps
+		U_3 &=& L^{-1}\left(\frac{x^4}{4!}+ \frac{x^7}{7!}\right)\sps
+		U_3 &=& \frac{x^6}{6!} + \frac{x^9}{9!}
+	\end{eqnarray*}
 
 
 
