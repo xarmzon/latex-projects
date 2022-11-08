@@ -88,7 +88,7 @@
 	\\
 	\\
 	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
-	Prof. A.O. Taiwo   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Prof. A. O. Taiwo   \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
 	Supervisor\\
 	\\
 	\\
@@ -106,22 +106,36 @@
 	\newpage
 	%%ACKNOLEDGMENTS%%
 	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
-	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
-	All praises\\
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS}
+	All glory, honour and adoration to Almighty God for His love, grace, mercies, and provisions throughout my stay in school. Thus far He hath kept me.\\
 	
-	\NI i
+	\NI My sincere appreciation to my supervisor, Prof O. A. Taiwo, for his fatherly care and support toward the completion of this project and for his highly exemplary leadership. I want to acknowledge my Head of Department, Prof K. A. Raufa and my level adviser, Dr. K. A Bello for their love and guidance.
+	
+	\NI I will like to appreciate the efforts of my lecturers across all levels: Prof. J. A. Gbadeyan, Prof. T. O. Opoola, Prof. O. M. Bamigbola, Prof. M. O. Ibrahim, Prof. R. B. Adeniyi, Prof. M. S. Dada, Prof. K. O. Babalola, Prof. A. S. Idowu, Prof. (Mrs) O. A. Fadipe-Joseph, Dr. E. O. Titiloye, Dr. (Mrs) Y. O. Aderinto, Dr (Mrs) C. N. Ejieji, Dr. B. M. Yisa, Dr. J. U. Abubakar, Dr. (Mrs) G. N. Bakare, Dr. (Mrs) I. F. Usamot, Dr. B. M. Ahmed, Dr. O. T. Olootu, Dr. O. A. Uwaheren, Dr. T. L. Oyekunle, Dr. O. Odetunde, Dr. A. Y. Ayinla. The efforts of all the non-academic staff of the department are equally appreciated.\\
+	
+	\NI I, with all love and sincerity, want to appreciate the love and great sacrifice of my parents, Deacon E. O. Elutade and Mrs. D. O. Elutade. You're indeed a blessing to me.\\
+	
+	\NI I appreciate my siblings, Elutade Solomon and Elutade Oluwatoyin for their full support and prayers through the journey. I sincerely appreciate the love and care of my personal person Omotosho Kikelomo. Thanks for believing in me.\\
+	
+	\NI To my friends, Jimoh, Bolemm, Visticks, Troy, Precious, Deborah and Sir White, thanks for all you do.\\
+	
+	\NI I am grateful for Elder P. O. Adeyemi for his love and care.\\
+	
+	\NI My special regards to President Patrick and Tutor Rasta and Tosin. God bless you real big.\\
+	
+	\NI TACSFON Unilorin chapter, the clique, ARC, Alpha Class, Mathematics Students Christian Fellowship (MSCF) family, thanks so much for the love and prayers. May God Almighty bless you all. Amen.
 	
 	\newpage
 	%%DEDICATION%%
 	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
 	\addcontentsline{toc}{chapter}{DEDICATION}
-	I would like to dedicate the project to God, for the grace and faithfulness of God thus far. For His mercies, guidance and protection throughout my years of study.
+	The project work is dedicated to Almighty God, my parent and my siblings.
 	
 	\newpage
 	%%ABSTRACT%%
 	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
 	\addcontentsline{toc}{chapter}{ABSTRACT}
-	In this project, 
+	In this project, we use Adomian decomposition method to find solution to second order ordinary differential equation. With the examples solved and the results obtained, it shows that Adomian decomposition method converges to the exact solution of the problem.
 	
 	\newpage
 	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
@@ -131,7 +145,7 @@
 	\newpage
 	\pagenumbering{arabic}
 	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
-	\chapter{INTRODUCTION TO ADOMIAN DECOMPOSITION METHOD (ADM)}
+	\chapter{Introduction to Adomian Decomposition Method (ADM)}	
 	\section{General Introduction}
 	The Adomian Decomposition Method (ADM) was first established in the 1980's by George Adomian, chairman of Center for Applied Mathematics at the University of Georgia. In the recent years, this method of Adomian Decomposition has be paid attention to in the field of applied mathematics and series solution. In addition, the ADM is widely used to obtain the solution to many types of linear or non-linear ordinary differential equation and integral equations.
 	
@@ -305,7 +319,7 @@
 
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
-	\chapter{METHODOLOGY}
+	\chapter{Methodology}
 	\section{Introduction}
 	The Adomian Decomposition Method consist of decomposing the unknown function $U(x,y)$ of any equation into a sum of an infinite number of component defined by the decomposition series
 	\begin{eqnarray}
@@ -438,7 +452,15 @@
 	
 	\example{3.1}
 	The Adomian polynomial of $f(U) = U^5$
-
+	\begin{eqnarray*}
+		f(U) &=&U^5\sps
+		A_0 &=& U_0^5\sps
+		A_1 &=& N\sprime(U_0)U_1 \implies 5U_0^4U_1\sps
+		A_2 &=& N\sprime(U_0)U_2 + \frac{1}{2!}N\dprime(U_0)U_1^2  = 5U_0^4U_2+10U_0^3U_1^3\sps
+		A_3 &=& N\sprime(U_0)U_3 + \frac{2}{2!}N\dprime(U_0)U_1U_2 + \frac{1}{3!}N\tprime(U_0)U_1^3 = 5U_0^4U_3 + 20U_0^3U_1U_2 \\
+		&&+ 10U_0^3U_1^3\sps
+		\vdots	
+	\end{eqnarray*}
 
 
 
@@ -452,15 +474,46 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
-	\chapter{SUMMARY AND CONCLUSION}
-	\section{Summary}
+	\chapter{Discussion of Results, Conclusion and Recommendation}
+	\section{Discussion of Results}
+	In table 1,2, and 3, we compare the solution obtained by Adomian Decomposition method and the exact solution. It is easy to see that the solution obtained from ADM are very close to the exact values in terms of the absolute errors.\\
 	
+	\NI The solution using Adomian decomposition method converges easily to the exact solution.
 	
 	\section{Conclusion}
+	In this project, considering the error obtained from comparing the ADM and exact solution, the result obtained shows that the ADM and exact solution are in strong agreement with each other. This makes ADM a very powerful and efficient in finding solution for wide class of ordinary differential equation.
 	
+	\section{Recommendation}
+	This project has undergo finding solution to second order ordinary differential equation of second derivatives using Adomian decomposition method. However, the method of Adomian decomposition can also be used to find solutions to ordinary differential equation of other greater than two.\\
 	
+	\NI I hereby recommend that further research on the use of Adomian decomposition method to find solution to ordinary differential equation of higher order.
 
 	
 	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
@@ -468,7 +521,29 @@
 	\addcontentsline{toc}{chapter}{REFERENCES}
 	
 	\begin{description}
-		\item 
+		\item Adomian G. (1986). \emph{Nonlinear stochatic operator equation}. Academic Press, San Diego.
+		
+		\item Hilder brandh F. B. (1974). \emph{Introduction to numerical Analysis}, Tata McGraw-Hill.
+		
+		\item Hossseini M. M. \& Nasabzadeh. H. (2007). \emph{Modified Adomian decomposition method for specific second order differential equation}. Applied mathematics and computation, 186(1),171-123.
+		
+		\item Inc E. L. (1956). \emph{Ordinary differences equations}, Dover publications, New York.
+		
+		\item King A. C, Billingham J., \& Otto S. R (2003), \emph{Differential Equation: linear, nonlinear,ordinary, partial}. Cambridge University Press, Cambridge.
+		
+		\item Mariam B. H. (2014), \emph{Iterative method for numerical solutions of boundary value problems}. Sharjah, United Arab Emirate.
+		
+		\item Oraphine, H., Tiza M. \& Amos P. (2016). \emph{Solving ordinary differential equation using power series}. Journal for innovative research in multidisciplinary field, Volume 2.
+		
+		\item Sasser E. J (2005). \emph{History of ordinary differential equations: The five hundred years}. Dover publications, Cincinnati.
+		
+		\item Simonons G. (1991). \emph{Differential equation with application and historical note}. (2nd ed.), McGraw-Hill, New York. 
+		
+		\item Vahidi A. B. \& Hasanzade M. (2012). \emph{Restared Adomian decomposition method for Bratu-Type problem}. Applied mathematical Science, 10, 479-486.
+		
+		\item Wazwaz A. M. (2011). \emph{Linear and Nonlinear integral equation. Method and application}. Springer, New York, USA.
+		
+		\item Zill D. \& Wright W. (2008). \emph{Differential equation and boundary value problems} (8th ed.). Brooks|Cole, Boston.
 	\end{description}
 	
 \end{document}

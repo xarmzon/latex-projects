@@ -1,0 +1,981 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{longtable}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+
+\newcommand{\Laplace}{\mathcal{L}}
+\newcommand{\ft}{f(t)}
+\newcommand{\ftn}[1]{f(#1)}
+\newcommand{\ftp}[1]{f^{#1}(t)}
+\newcommand{\Fs}{F(s)}
+\newcommand{\Fsp}[1]{F^{#1}(s)}
+\newcommand{\LaplaceIntegral}{\int_{0}^{\infty}e^{-st}\ft\text{dt}}
+
+\newcommand{\ubt}[1]{\textbf{\underline{#1}}}
+\newcommand{\sps}{\\[0.2cm]}
+\newcommand{\spn}[1]{\\[#1cm]}
+\newcommand{\refn}[1]{(\ref{#1})}
+\newcommand{\refx}[1]{\refn{eq:#1}}
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\NI}{\noindent}
+\newcommand{\real}{ \mathbb{R}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\sprime}{'}
+\newcommand{\dprime}{''}
+\newcommand{\tprime}{'''}
+\newcommand{\sbracket}[1]{\left[#1\right]}
+\newcommand{\example}[1]{\section*{\ubt{Example #1:}}{~}\spn{-1.7}}
+\newcommand{\examples}{\subsubsection*{Examples}{~}\spn{-1}}
+\newcommand{\solution}{\subsubsection{\ubt{Solution}}{~}\spn{-1}}
+\newcommand{\eg}{\subsection*{\ubt{Example}}{~}\spn{-1}}
+%\newcommand{\real}{\mathbbm{R}}
+
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+
+%\setlength{\parindent}{1em}
+
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%FRONT COVER%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TITLE PAGE}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\Large \bt{LAPLACE TRANSFORMATION METHOD FOR SOLVING SYSTEM OF VOLTERRA INTEGRAL EQUATIONS}
+	\end{center}
+
+	\hspace{7cm}
+	
+	\begin{center}
+		\textbf{\textit{BY}}
+	\end{center}
+	
+	\hspace{5cm}
+	
+	\begin{center}
+		\large \textbf{ISHOLA, ABDULMUIZ ADESHINA
+			\\
+			17/30GQ029}
+	\end{center}
+	
+	\hspace{9cm}
+	
+	\begin{center}
+		A PROJECT SUBMITTED TO THE DEPARTMENT OF MATHEMATICS, FACULTY OF PHYSICAL SCIENCES, UNIVERSITY OF ILORIN, ILORIN, KWARA STATE, NIGERIA. IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+	\end{center}
+
+	\hspace{7cm}
+	
+%	\begin{center}
+%		IN PARTIAL FULFILLMENT OF REQUIREMENTS FOR THE AWARD OF BACHELOR OF SCIENCE (B. Sc.) DEGREE IN MATHEMATICS.
+%	\end{center}
+%	\hspace{5cm}
+%	\\ \\ 
+	\begin{center}
+		\textbf{NOVEMBER, 2022}
+	\end{center}
+
+	\newpage
+	\pagenumbering{roman}
+	\addcontentsline{toc}{chapter}{CERTIFICATION}
+	\section*{\begin{center}\textbf{\Large CERTIFICATION}   \end{center}}
+	This is to certify that this project was carried out by \textbf{ISHOLA, Abdulmuiz Adeshina} with Matriculation Number  17/30GQ029 in the Department of Mathematics, Faculty of Physical Sciences, University of Ilorin, Ilorin, Nigeria, for the award of Bachelor of Science (B.Sc.) degree in Mathematics.
+	\\
+	\\
+	................................... \qquad \qquad\qquad\qquad\qquad\qquad...................... \\
+	Dr. K.A. Bello~~ \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Date\\
+	Supervisor\\
+	\\
+	\\
+	\\
+	...................................... \qquad\qquad\qquad\qquad\qquad\qquad ......................\\
+	Prof. K. Rauf      \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad     Date\\
+	Head of Department\\
+	\\
+	\\
+	\\
+	..................................... \qquad\qquad\qquad\qquad\qquad\qquad .......................\\
+	Prof. T. O. Oluyo \quad\qquad\qquad\qquad\qquad\qquad\qquad\qquad         Date\\
+	External Examiner 
+	
+	\newpage
+	%%ACKNOLEDGMENTS%%
+	\section*{\begin{center}\textbf{\Large ACKNOWLEDGMENTS}\end{center}}
+	\addcontentsline{toc}{chapter}{ACKNOWLEDGMENTS} 					
+	Firstly, I will give glory to God for his abundant blessings and guidance throughout my stay in school and for giving strength to face all tasks.\\
+	
+	\NI An academic pursuit is a challenging task that requires all encouragement, proper guidance, direction and support. To this end I wish to express my sincere and profound gratitude to my level advisor and supervisor, Dr. K.A Bello, who supervised and carefully guided the eventual write up of this project.\\
+	
+	\NI I also appreciate the immeasurable effort of my lecturers in the departmentwho have taught and share their knowledge to me: Prof. J. A. Gbadeyan, Prof. T. O. Opoola, Prof. O. M. Bamigbola, Prof. O. A. Taiwo, Prof. M. O. Ibrahim, Prof.R.B. Adeniyi, Prof. M. S. Dada, Prof. A. S. Idowu, Prof. O. A.
+	Fadipe-Joseph, Dr E.O. Titiloye, Dr. Yidiat O. Aderinto, Dr. Catherine N. Ejieji, Dr. B. M. Yisa, Dr J. U. Abubakar, Dr. Gata N. Bakare, Dr T. O. Olotu, Dr. B. M. Ahmed, Dr Idayat F. Usamot, Dr O. A. Uwaheren, Dr O. Odetunde, Dr. Oyekunle, Dr. Ayinla and all other members of staff of the department of mathematics, who contributed greatly to my academic excellence, obtained during my period of study in the department. May God bless them all.\\
+	
+	\NI My sincere gratitude to my parents Alhaji M.A Ishola and Alhaja A.M Ishola for their continuous love, moral support, prayer, advice and financial support in all my academic undertakings. May you reap the fruit of your labour (Amin).\\
+	
+	\NI I also want to express my deep and sincere appreciation to my sisters, Muftiat and Mufeedah for their moral support and companionship.\\
+	
+	\NI Further appreciation goes to my friends, Sa’ad Muhammed, Adebayo Muhammed, Adejumo Lekan, Muhammed Teslim, Tajudeen Mustapha, and others whom I’m not opportuned to mention their names, thank you all for your constant advice, encouragement, love and making my stay on campus worthwhile.\\
+	
+	
+	\newpage
+	%%DEDICATION%%
+	\section*{\begin{center}\textbf{\Large DEDICATION}\end{center}}
+	\addcontentsline{toc}{chapter}{DEDICATION}
+	This work is dedicated to the Glory of God for His infinite mercy and guidance over me.\\
+	
+	\NI My ever caring and loving father, Alhaji M.A Ishola for his continuous guidance and support.\\
+	
+	\NI My sweet mother Alhaja A.M Ishola for her care, love, advise and motherly role and to all the people that made this project a great success.
+	
+	\newpage
+	%%ABSTRACT%%
+	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
+	\addcontentsline{toc}{chapter}{ABSTRACT}
+	This project discusses the numerical solution of the system of Volterra integral equations by using Laplace transform method. . The system of equations is solved by using Laplace transformation method to convert the function of real variable $X$ and $T$ into a function of complex variable $S$.
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+	\tableofcontents
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%CHAPTER ONE%%%%%%%%%%%%%%%%%%%
+	\chapter{GENERAL INTRODUCTION}
+	\section{HISTORICAL BACKGROUND}
+	J. Fourier (1768-1830) is the initiator of the theory of integral equations. A term integral equation first suggested by Du Bois-Reymond in 1888. Du Bois-Reymond define an integral equation is understood an equation in which the unknown function occurs under one or more signs of definite integration. Late eighteenth and early ninetieth century Laplace, Fourier, Poisson, Liouville and Abel studies some special type of integral equation. The pioneering systematic investigations goes back to late nineteenth and early twentieth century work of Volterra, Fredholm and Hilbert. In 1887, Volterra published a series of famous papers in which he singled out the notion of a functional and pioneered in the development of a theory of functional in theory of linear integral equation of special type. Fredholm presented the fundamentals of the Fredholm integral equation theory in a paper published in 1903 in the Acta Mathematica. This paper became famous almost overnight and soon took its rightful place among the gems of modern mathematics. Hilbert followed Fredholm’s famous paper with a series of papers in the Nachrichten of the Guttingen Academy. (Subrahamanyam Upadhyay. November 4, 2015) 
+	
+	\section{Integral equation}
+	Integral equation is an equation in which the unknown, say a function of a numerical variable, occurs under an integral. That means a functional equation involving the unknown function under one or more integrals. For example,
+	\begin{eqnarray*}
+		y(x) = f(x) + 5 \int_{0}^{1} e^{t+x} y(t)dt
+	\end{eqnarray*}
+		
+	\section{Volterra Integral equation}
+	Second kind of Linear Volterra integral equation defined by,
+	\begin{eqnarray*}
+		y(x) = f(x) + \lambda\int_{x_0}^{x} K(t,x)y(t)dt
+	\end{eqnarray*}
+	where $f(x), K(t,x)$ are known functions and $y(x)$ is the unknown function and $\lambda$ is a numerical parameter. Second kind of non-linear Volterra integral equation defined by 
+	\begin{eqnarray*}
+		y(x) = f(x) + \lambda\int_{x_0}^{x}K_0(t,x,y(t))dt
+	\end{eqnarray*}
+	where $K_0(t, x, y(t)) = K(t, x)y(t)$. First kind of Linear Volterra integral equation defined by
+	\begin{eqnarray*}
+			f(x) + \lambda\int_{x_0}^{x}K(t,x)y(t)dt= 0
+	\end{eqnarray*}
+	First kind of non - linear Volterra integral equation defined by,
+	\begin{eqnarray*}
+		f(x) + \lambda\int_{x_0}^{x}K_0(t,x)y(t)dt = 0
+	\end{eqnarray*}
+	
+	\section{Fredholm Integral equation}
+	Second kind of Linear Fredholm integral equation defined by,
+	\begin{eqnarray*}
+		y(x) = f(x) + \lambda\int_{x_0}^{x_1} K(t,x)y(t)dt
+	\end{eqnarray*}
+	where $f(x),K(t,x)$ are known functions and $y(x)$ is the unknown function and $\lambda$ is a numerical parameter.	Second kind of non-linear Fredholm integral equation defined by 
+	\begin{eqnarray*}
+		y(x) = f(x) + \lambda\int_{x_0}^{x_1}K_0(t,x,y(t))dt
+	\end{eqnarray*}
+	where $K_0(t, x, y(t)) = K(t, x)y(t)$. First kind of Linear Fredholm integral equation defined by
+	\begin{eqnarray*}
+		f(x) + \lambda\int_{x_0}^{x_1}K(t,x)y(t)dt= 0
+	\end{eqnarray*}
+	First kind of non - linear Fredholm integral equation defined by,
+	\begin{eqnarray*}
+		f(x) + \lambda\int_{x_0}^{x_1}K_0(t,x)y(t)dt= 0
+	\end{eqnarray*}
+	
+	\NI\bt{Remarks} If $f(x) = 0$, then above defined Volterra and Fredholm Integral equations are called homogeneous type otherwise non homogeneous. Main difference between Volterra and Fredholm Integral equations are range of integration in the integral equation.
+	
+	\subsection{Classification of Integral Equations}
+	\par Integral equations are classified according to three different dichotomies:
+	\begin{enumerate}
+		\item Limits of Integration
+			\begin{enumerate}
+				\item \textbf{both fixed}: Fredholm equation
+				\item  \textbf{one variable}: Volterra equation
+			\end{enumerate}
+		\item  Placement of unknown function
+			\begin{enumerate}
+				\item  \textbf{only inside integral}: first kind
+				\item \textbf{both inside and outside integral}: second
+			\end{enumerate}
+		\item Nature of known function $f$
+			\begin{enumerate}
+				\item \textbf{identically zero}: homogeneous
+				\item \textbf{not identically zero}: inhomogeneous
+			\end{enumerate}
+	\end{enumerate}
+
+	\NI Integral equations are important in many applications. Problems in which integral equations are encountered including \textbf{radiative transfer}, and the \textbf{oscillation} of a string, membrane, or axle. Oscillation problems may also be solved as \textbf{differential equations}.
+	
+	\section{The Connection Between Differential and Integral Equations (First-Order)}
+	Consider the differential equation (initial value problem)
+	\begin{equation}
+		y'(x) = f(x,y)\hspace{1cm} y(x_0) = y_0\label{eq:1_1}
+	\end{equation}
+	By integrating $x_0$ to  $x$, we obtain;
+	\begin{eqnarray*}
+		\int_{x_0}^{x} y'(t)dt = \int{x_0}^{x} f(t,y)dt
+	\end{eqnarray*}
+	i.e,
+	\begin{equation}
+		y(x) = y_0 + \int_{x_0}^{x} f(t,y)dt\label{eq:1_2}
+	\end{equation}
+	On the other hand, if equation \refx{1_2} holds, we see that $y(x_0) = y_0$, and $y'(x) = f(x,y)$ which implies that equation \refx{1_1} holds! Thus the problems \refx{1_1} and \refx{1_2} are equivalent.\\
+	
+	\NI In fact, it is possible to formulate many initial and boundary value problems as integral equations and vice versa.
+	
+	\section{The Connection Between Differential and Integral Equations (Second-Order)}
+	Assume that we want to solve the initial value problem
+	\begin{gather}
+		u''(x) + u(x)q(x) = f(x), x>a\\
+		u(a) = u_0,~~~~ u'(a) = u_1\notag
+	\end{gather}
+	%$$,		\textbf{(1.7.1)}\\
+	We integrate the equation from $a$ to $x$ and get
+	\begin{eqnarray*}
+		u'(x) - u_1 = \int_{a}^{x} [f(y) - q(y)u(y)]dy\label{eq:1_3}
+	\end{eqnarray*}
+	and another integration yields
+	\begin{eqnarray*}
+		\int_{a}^{x} u'(s)ds = \int_{a}^{x} u_1ds + \int_{a}^{x}\int_{a}^{x} [f(y) - q(y)u(y)]dyds
+	\end{eqnarray*}
+	we get;
+	\begin{eqnarray*}
+		u(x) - u_0 = u_1(x-a) + \int_{a}^{x} [f(y) - q(y)u(y)](x - y)dy
+	\end{eqnarray*}
+	which we can write as,
+	\begin{eqnarray*}
+		u(x) &=& u_0 + u_1(x-a) + \int_{a}^{x} f(y)(x - y)dy + \int_{a}^{x} q(y)(y - x)u(y)dy\sps
+		&=& F(x) + \int_{a}^{x} k(x,y)u(y)dy
+	\end{eqnarray*}
+	where,
+	\begin{eqnarray*}
+		F(x) = u_0 + u_1(x - a) + \int_{a}^{x} f(y)(x - y)dy
+	\end{eqnarray*}
+	and
+	\begin{eqnarray*}
+			k(x,y) = q(y)(y - x)
+	\end{eqnarray*}
+	
+	\NI This implies that equation \refx{1_3} can be written as \textbf{Volterra equation}
+	\begin{eqnarray}
+		u(x) = F(x) + \int_{a}^{x} k(x,y)u(y)dy
+	\end{eqnarray}
+	
+	
+		
+	%%%%%%%%%%%%%%%%%%%CHAPTER TWO%%%%%%%%%%%%%%%%%%%
+	\chapter{LITERATURE REVIEW}
+	\section{Volterra Integral Equation}
+	In mathematics, the Volterra integral equations are a special type of integral equations. They are divided into two groups referred to as the first and the second kind.\\
+	
+	\NI A linear Volterra equation of the first kind is;
+	\begin{eqnarray*}
+		f(t) = \int_{a}^{t} K(t, s) x(s) ds
+	\end{eqnarray*}
+	where $f$ is a given function and $x$ is an unknown function to be solved for. A linear Volterra equation of the second kind is;
+	\begin{eqnarray*}
+		x(t) = f(t) + \int_{a}^{t} K(t,s) x(s) ds
+	\end{eqnarray*}
+	
+	\NI In operator theory, and in Fredholm theory, the corresponding operators are called Volterra operators. A useful method to solve such equations, the Adomian decomposition method, is due to George Adomian.\\
+	A linear Volterra integral equation is a convolution equation if,
+	\begin{eqnarray*}
+		x(t) = f(t) + \int_{t_{0}}^{t} K(t - s) x(s) ds
+	\end{eqnarray*}
+	The function $K$ in the integral is called the kernel. Such equations can be analyzed and solved by means of Laplace transform techniques.\\
+	
+	\NI The Volterra integral equations were introduced by Vito Volterra and then studied by Traian Lalescu in his 1908 thesis, Sur les équations de Volterra, written under the direction of Émile Picard. In 1911, Lalescu wrote the first book ever on integral equations.\\
+	
+	\NI Volterra integral equations find application in demography, the study of viscoelastic materials, and in actuarial science through the renewal equation.
+
+	\section{Conversion of Volterra equation of the first kind to the second kind}
+	A linear Volterra equation of the first kind can always be reduced to a linear Volterra equation of the second kind, assuming that $K(t,t)\neq{0}$. Taking the derivative of the first kind Volterra equation gives us:
+	\begin{eqnarray*}
+		\frac{df}{dt} = \int_{a}^{t} \frac{\partial K}{\partial t} x(s) ds
+	\end{eqnarray*}
+	Dividing through by $K(t,t)$ yields:
+	\begin{eqnarray*}
+		x(t) = \frac{1}{K(t,t)} \frac{df}{dt} - \int_{a}^{t} \frac{1}{K(t,t} \frac{\partial K}{\partial t} x(s) ds
+	\end{eqnarray*}
+	Defining $\dsp\overline{f}(t) = \frac{1}{K(t,t} \frac{df}{dt}$ and $\dsp\overline{K}(t,s) = -\frac{1}{K(t,t)} \frac{\partial K}{\partial t}$ completes the transformation of the first kind equation into a linear Volterra equation of the second kind.
+
+	\section{Volterra-Fredholm Integral Equations}
+	The Volterra-Fredholm integral equations arise from parabolic boundary value problems, from the mathematical modelling of the spatio-temporal development of an epidemic, and from various physical and biological models. The Volterra-Fredholm integral equations appear in the literature in two forms, namely;
+	\begin{eqnarray}
+		u(x) = f(x) + \lambda_{1} \int_{a}^{x} K_{1}(x,t) u(t) dt + \lambda_{2} \int_{a}^{b} K_{2}(x,t) u(t) dt\label{eq:2_1}
+	\end{eqnarray}
+	and
+	\begin{eqnarray}
+		u(x,t) = f(x,t) + \lambda \int_{0}^{t} \int_{\Omega}F(x,t,\epsilon ,\tau , u(\epsilon ,\tau)) d\epsilon d\tau, (x,t) \in \Omega \times [0,T]\label{eq:2_2}
+	\end{eqnarray}
+	where $f(x,t)$ and $F(x,t,\epsilon , \tau,u(\epsilon , \tau))$ are analytic functions on $D = \Omega \times [0,T]$, and $\Omega$ is a closed subset of $R^n, n =1 ,2,3$. It is interesting to note that equation \refx{2_1} contains disjoint Volterra and Fredholm integral equations, whereas equation \refx{2_2} contains mixed Volterra and Fredholm integral equations. Moreover, the unknown functions $u(x)$ and $u(x,t)$ appear inside and outside the integral signs.\\
+	
+	\NI This is a characteristic feature of a second kind integral equation. If the unknown functions appear only inside the integral signs, the resulting equations are of first kind, but will not be examined in this text. Examples of the two types are given by
+	\begin{eqnarray}
+		u(x) = 6x + 3x^2 + 2 - \int_{0}^{x} xu(t)dt - \int_{0}^{1} tu(t)dt\label{eq:2_3}
+	\end{eqnarray}
+	and
+	\begin{eqnarray}
+		u(x,t) = x + t^3 + \frac{1}{2} t^2 - \frac{1}{2} t - \int_{0}^{t} \int_{0}^{1} (\tau - \epsilon)dEdT\label{eq:2_4}
+	\end{eqnarray}
+	
+	\section{Singular Integral Equations}
+	Volterra integral equations of the first kind 
+	%$\) \textbf{(2.4.1)}\\
+	\begin{eqnarray}
+		f(x) = \lambda \int_{g(x)}^{h(x)} K(x,t)u(t)dt\label{eq:2_5}
+	\end{eqnarray}
+	or of the second kind
+	%$\) \textbf{(2.4.2)}\\
+	\begin{eqnarray}
+		u(x) = f(x) + \int_{g(x)}^{h(x)} K(x,t)u(t)dt\label{eq:2_6}
+	\end{eqnarray}
+	are called singular if one of the limits of integration $g(x), h(x)$ or both are infinite. Moreover, the previous two equations are called singular if the kernel $K(x,t)$ becomes unbounded at one or more points in the interval of integration. In this text we will focus our concern on equations of the form:
+	%\textbf{(2.4.3)}\\
+	\begin{eqnarray}
+		f(x) =\int_{0}^{x} \frac{1}{(x - t)^\alpha} u(t)dt ~~, ~~~~~~0 < \alpha < 1
+	\end{eqnarray}
+	or of the second kind:
+	%\textbf{(2.4.4)}\\
+	\begin{eqnarray}
+		u(x) = f(x) +\int_{0}^{x} \frac{1}{(x - t)^ \alpha} u(t)dt ~~~~,   ~~~~~~~~ 0 < \alpha < 1
+	\end{eqnarray}
+	
+	\NI The last two standard forms are called generalized Abel’s integral equation and weakly singular integral equations respectively. For $\alpha = \frac{1}{2}$ , the equation:
+	%\textbf{(2.4.5)}\\
+	\begin{eqnarray}
+		f(x) =\int_{0}^{x} \frac{1}{\sqrt{x - t}} u(t)dt
+	\end{eqnarray}
+	is called the Abel’s singular integral equation. It is to be noted that the kernelin each equation become infinity at the upper limit $t = x$. Examples of Abel’s integral equation, generalized Abel’s integral equation, and the weakly singular integral equation are given by
+	%\textbf{(2.4.6)}   \textbf{(2.4.7)}\\\\
+	\begin{gather}
+		\sqrt{x} =\int_{0}^{x} \frac{1}{\sqrt{x - t}} u(t)dt\sps
+		x^3 = \int_{0}^{x} \frac{1}{(x - t)^\frac{1}{3}} u(t)dt
+	\end{gather}		
+	and
+	%\textbf{(2.4.8)}\\
+	\begin{eqnarray}
+		u(x) = 1 + \sqrt{x} +\int_{0}^{x} \frac{1}{(x - t)^\frac{1}{3}} u(t)dt
+	\end{eqnarray}
+	respectively.
+
+	\section{Method of Solving Volterra Integral Equations}
+	\subsection{The Adomian Decomposition Method}
+	The Adomian decomposition method (ADM) was introduced and developed by George Adomian in 1970s to 1990s and is well addressed in many references. A considerable amount of research work has been invested recently in applying this method to a wide class of linear and non-linear ordinary differential equations, partial differential equations and integral equations as well. The Adomian decomposition method consists of decomposing the unknown function $u(x)$ of any equation into a sum of an infinite number of components defined by the decomposition series
+	%$$			. . . . . . 1\\
+	\begin{equation}
+		u(x) = \sum_{n=0}^{\infty}  u_n(x)\label{eq:2_13}
+	\end{equation}
+	or equivalently
+	%$$ . . . ,		. . . . . . .2\\
+	\begin{eqnarray}
+		u(x) = u_0(x) + u_1(x) + u_2(x) + \cdots \label{eq:2_14}
+	\end{eqnarray}
+	where the components $u_n(x)$, $n\geq 0$ are to be determined  in a recursive manner. The decomposition method concerns itself with finding the components $u_0, u_1, u_2,\ldots$,  individually.As will be seen through the text, the determination of these components can be achieved in an easy way through a recurrence relation that usually involves simple integrals that can be easily evaluated.\\
+	
+	\NI To establish the recurrence relation, we substitute \refx{2_13} into the Volterra integral equation of the second kind to obtain
+	%\(,	. . . .3\\
+	\begin{eqnarray}
+		\sum_{n=0}^{\infty} U_{n}(x)= f(x) + \lambda \int_{0}^{x} K(x,t) \sum_{n=0}^{\infty} U_{n}(t)dt
+	\end{eqnarray}
+	or equivalently
+	%$\).		. . .  . .4\\
+	\begin{multline}
+		u_0(x) + u_1(x) + u_2(x) + \cdots = f(x) + \lambda \int_{0}^{x} K(x,t) [u_0(t) \\+ u_1(t) + \cdots]dt
+	\end{multline}
+	The zeroth component $u_0(x)$ is identified by all terms that are not included under the integral sign. Consequently, the components $u_j(x), j \geq 1$ of the unknown function $u(x)$ are completely determined by setting the recurrence relation:
+	%	. . . . . .5\\
+	\begin{eqnarray}
+		\begin{split}
+				u_o(x) &= f(x)\sps
+			u_{n+1}(x) &= \lambda\int_{0}^{x} K(x,t) u_n(t) dt,~~~ n \geq 0
+		\end{split}
+	\end{eqnarray}
+	that is equivalent to
+	% . . . . . . 6\\
+	\begin{eqnarray}
+		\begin{split}
+			u_0(x) &= f(x)\sps
+			u_1(x) &=  \lambda\int_{0}^{x} K(x,t) u_0(t) dt\sps
+			u_2(x) &=  \lambda\int_{0}^{x} K(x,t) u_1(t)dt\sps
+			u_3(x) &=  \lambda\int_{0}^{x} K(x,t) u_2(t) dt
+		\end{split}\label{eq:2_18}
+	\end{eqnarray}
+	and so on for the other components.\\
+	
+	\NI In view of equations \refx{2_18}, the components $u_0(x),u_1(x),u_2(x),u_3(x),\ldots$ are completely determined. As a result, the solution $u(x)$ of the Volterra integral equation of the second type in a series form is readily obtained by using the series assumption in equation \refx{2_13}. It is clearly seen that the decomposition method converted the integral equation into an elegant determination of computable components. It was formally shown by many researchers that if an exact solution exists for the problem,then the obtained series converges very rapidly to that solution.The convergence concept of the decomposition series was thoroughly investigated by many researchers to confirm the rapid convergence of the resulting series.\\ 
+	\NI However, for concrete problems, where a closed form solution is not obtainable, a truncated number of terms is usually used for numerical purposes. The more components we use the higher accuracy we obtain. \\
+	
+	\subsection{The Modified Adomian Decomposition Method}
+	As shown before, the Adomian decomposition method provides the solution in an infinite series of components. The components $u_j,j \geq 0$ are easily computed if the inhomogeneous term $f(x)$ in the Volterra integral equation: 
+	%\)			. . . . . . . 7\\
+	\begin{eqnarray}
+		u(x) = f(x) +  \lambda\int_{0}^{x} K(x,t) u(t) dt
+	\end{eqnarray}
+	consists of a polynomial. However, if the function $f(x)$ consists of a combination of two or more of polynomials, trigonometric functions, hyperbolic functions, and others, the evaluation of the components $u_j,j \geq 0$ requires cumbersome work. A reliable modification of the Adomian decomposition method was developed by Wazwaz. The modified decomposition method will facilitate the computational process and further accelerate the convergence of the series solution. The modified decomposition method will be applied, wherever it is appropriate, to all integral equations and differential equations of any order. It is interesting to note that the modified decomposition method depends mainly on splitting the function $f(x)$ into two parts, therefore it cannot be used if the function $f(x)$ consists of only one term.\\
+	
+	\NI To give a clear description of the technique, we recall that the standard Adomian decomposition method admits the use of the recurrence relation:
+	%		. . . . . .8\\
+	\begin{eqnarray}
+		\begin{split}
+			u_o(x) &= f(x)\sps
+			u_{k+1}(x) &= \lambda\int_{0}^{x} K(x,t) u_k(t) dt\sps
+			&k \geq 0
+		\end{split}\label{eq:2_20}
+	\end{eqnarray}
+	where the solution $u(x)$ is expressed by an infinite sum of components defined before by;\\
+	%$$			. . . . . . 9\\
+	\begin{eqnarray}
+		u(x) = \sum_{n=0}^{\infty}  u_n(x)
+	\end{eqnarray}
+	In view of \refx{2_20}, the components $u_n(x),n\geq 0$ can be easily evaluated. The modified decomposition method introduces a slight variation to the recurrence relation \refx{2_20} that will lead to the determination of the components of $u(x)$ in an easier and faster manner. For many cases, the function $f(x)$ can be set as the sum of two partial functions, namely $f_1(x)$ and $f_2(x)$. In other words, we can set
+	%	. . . . . .  .10\\
+	\begin{eqnarray}
+		f(x) = f_1(x) + f_2(x)\label{eq:2_22}
+	\end{eqnarray}
+	In view of \refx{2_22}, we introduce a qualitative change in the formation of the recurrence relation \refx{2_20}. To minimize the size of calculations, we identify the zeroth component $u_0(x)$ by one part of $f(x)$, namely $f_1(x)$ or $f_2(x)$. The other part of f(x) can be added to the component $u_1(x)$ among other terms. In other words, the modified decomposition method introduces the modified recurrence relation: 
+	%. . . . . . .11\\
+	\begin{eqnarray}
+		\begin{split}
+			u_0(x) &= f_1(x)\sps
+			u_1(x) &= f_2(x) + \lambda\int_{0}^{x} K(x,t) u_0(t) dt\sps
+			u_k+1(x) &= \lambda\int_{0}^{x} K(x,t) u_k(t) dt\sps
+			&k \geq 1
+		\end{split}\label{eq:2_23}
+	\end{eqnarray}
+	
+	\NI This shows that the difference between the standard recurrence relation \refx{2_20} and the modified recurrence relation \refx{2_23} rests only in the formation of the first two components $u_0(x) and u_1(x)$ only. The other components $u_j, j \geq 2$ remain the same in the two recurrence relations. Although this variation in the formation of $u_0(x) and u_1(x)$ is slight, however it plays a major role in accelerating the convergence of the solution and in minimizing the size of computational work. Moreover,reducing the number of terms in $f_1(x)$ affects not only the component $u_1(x)$, but also the other components as well. This result was confirmed by several research works. Two important remarks related to the modified method can be made here. First, by proper selection of the functions $f_1(x)$ and $f_2(x)$, the exact solution $u(x)$ may be obtained by using very few iterations, and sometimes by evaluating only two components. The success of this modification depends only on the proper choice of $f_1(x)$ and $f_2(x)$, and this can be made through trials only. A rule that may help for the proper choice of $f_1(x)$ and $f_2(x)$ could not be found yet. Second, if $f(x)$ consists of one term only, the standard decomposition method can be used in this case.
+	It is worth mentioning that the modified decomposition method will be used for Volterra and Fredholm integral equations, linear and non-linear equations.\\
+	
+	\subsection{The Noise Terms Phenomenon:}
+	It was shown before that the modified decomposition method presents a reliable tool for accelerating the computational work.However, a proper selection of $f_1(x)$ and $f_2(x)$ is essential for a successful use of this technique. A useful tool that will accelerate the convergence of the Adomian decomposition method is developed. The new technique depends mainly on the so-called noise terms phenomenon that demonstrates a fast convergence of the solution. The noise terms phenomenon can be used for all differential and integral equations. The noise terms, if existed between the components $u_0(x)$ and $u_1(x)$, will provide the exact solution by using only the first two iterations. In what follows, we outline the main concepts of the noise terms:
+	\begin{enumerate}
+		\item The noise terms are defined as the identical terms with opposite signs that arise in the components $u_0(x)$ and $u_1(x)$. Other noise terms may appear between other components. As stated above, these identical terms with opposite signs may exist for some equations, and may not appear for other equations.
+		
+		\item  By cancelling the noise terms between $u_0(x)$ and $u_1(x)$, even though $u_1(x)$ contains further terms, the remaining non-cancelled terms of $u_0(x)$ may give the exact solution of the integral equation. The appearance of the noise terms between $u_0(x)$ and $u_1(x)$ is not always sufficient to obtain the exact solution by cancelling these noise terms. Therefore, it is necessary to show that the non-cancelled terms of $u_0(x)$ satisfy the given integral equation. On the other hand, if the non-cancelled terms of $u_0(x)$ did not satisfy the given integral equation, or the noise terms did not appear between $u_0(x)$ and $u_1(x)$, then it is necessary to determine more components of $u(x)$ to determine the solution in a series form as presented before.
+		
+		\item It was formally shown that the noise terms appear for specific cases of inhomogeneous differential and integral equations, whereas homogeneous equations do not give rise to noise terms. The conclusion about the self-cancelling noise terms was based on solving several specific differential and integral models. However, a proof for this conclusion was not given.
+	\end{enumerate}
+	
+	\NI A useful summary about the noise terms phenomenon can be drawn as follows:
+	\begin{enumerate}
+		\item The noise terms are defined as the identical terms with opposite signs that may appear in the components $u_0(x)$ and $u_1(x)$ and in the other components as well.
+		
+		\item The noise terms appear only for specific types of inhomogeneous equations whereas noise terms do not appear for homogeneous equations.
+		
+		\item Noise terms may appear if the exact solution of the equation is part of the zeroth component $u_0(x)$.
+		
+		\item \textbf{The Laplace Transform Method:}
+		The Laplace transform method is a powerful technique that can be used for solving initial value problems and integral equations as well. In the convolution theorem for the Laplace transform, it was stated that if the kernel $K(x,t)$ of the integral equation: 
+		\begin{eqnarray*}
+			u(x) = f(x) + \lambda\int_{0}^{x} K(x,t) u(t) dt
+		\end{eqnarray*}
+		depends on the difference $x-t$, then it is called a difference kernel. Examples of the difference kernel are $e^{x-t},\cos(x - t), \sin(x - t)$. The integral equation can thus be expressed as
+		\begin{eqnarray*}
+			u(x) = f(x) + \lambda\int_{0}^{x} K(x - t) u(t) dt
+		\end{eqnarray*}
+		
+		\NI Consider two functions $f_1(x)$ and $f_2(x)$ that possess the conditions needed for the existence of Laplace transform for each. Let the Laplace transforms for the functions $f_1(x)$ and $f_2(x)$ be given by: \\
+		\begin{eqnarray*}
+			\begin{split}
+				\Laplace{f_1(x)} &= F_1(s),\sps
+				\Laplace{f_2(x)} &= F_2(s)\sps
+			\end{split}
+		\end{eqnarray*}	
+		The Laplace convolution product of these two functions is defined by
+		\begin{eqnarray*}
+			(f_1 * f_2)(x) =\int_{0}^{x} f_1(x - t) f_2(t) dt
+		\end{eqnarray*}
+		or
+		\begin{eqnarray*}
+			(f_2 * f_1)(x) =\int_{0}^{x} f_2(x - t) f_1(t) dt
+		\end{eqnarray*}
+		Recall that;
+		\begin{eqnarray*}
+			(f_1 * f_2)(x) = (f_2 * f_1)(x)
+		\end{eqnarray*}
+		We can easily show that the Laplace transform of the convolution product $(f1 * f2)(x)$ is given by
+		\begin{eqnarray*}
+			\Laplace{(f_1 * f_2)(x)} = \Laplace\left\{\int_{0}^{x} f_1(x - t) f_2(t) dt\right\} = F_1(s)F_2(s)
+		\end{eqnarray*}
+	\end{enumerate}
+	
+
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER THREE%%%%%%%%%%%%%%%%%%%
+	\chapter{METHODOLOGY}
+	\section{Laplace Transform}
+	In mathematics, the Laplace transform, named after its inventor Pierre-Simon Laplace, is an integral transform that converts a function of a real variable $t$ (often time) to a function of a complex variable $s$ (complex frequency). The transform has many applications in science and engineering because it is a tool for solving differential equations. In particular, it transforms linear differential equations into algebraic equations and convolution into multiplication. For suitable functions $f$, the Laplace transform is the integral;
+	\begin{eqnarray}
+		\Laplace{f}(s) = \int_{0}^{\infty} f(t) e^{-st} dt
+	\end{eqnarray}
+	The Laplace transform is named after mathematician and astronomer Pierre-Simon Laplace, who used a similar transform in his work on probability theory. Laplace wrote extensively about the use of generating functions in \emph{Essai philosophique sur les probabilités} (1814), and the integral form of the Laplace transform evolved naturally as a result.\\
+	
+	\NI Laplace's use of generating functions was similar to what is now known as the z-transform, and he gave little attention to the continuous variable case which was discussed by Niels Henrik Abel. The theory was further developed in the 19th and early 20th centuries by Mathias Lerch, Oliver Heaviside, and Thomas Bromwich.\\
+	
+	\NI The current widespread use of the transform (mainly in engineering) came about during and soon after World War II, replacing the earlier Heaviside operational calculus. The advantages of the Laplace transform had been emphasized by Gustav Doetsch, to whom the name Laplace Transform is apparently due.\\
+	
+	\NI	From 1744, Leonhard Euler investigated integrals of the form;\\
+	\begin{eqnarray}
+		z =\int X(x) e^{ax} dx
+	\end{eqnarray}
+	and
+	\begin{eqnarray}
+		z =\int X(x)x^A dx
+	\end{eqnarray}
+	as solutions of differential equations, but did not pursue the matter very far. Joseph Louis Lagrange was an admirer of Euler and, in his work on integrating probability density functions, investigated expressions of the form;
+	\begin{eqnarray}
+		\int X(x) e^{-ax} a^x dx
+	\end{eqnarray}
+	which some modern historians have interpreted within modern Laplace transform theory.\\
+	
+	\NI These types of integrals seem first to have attracted Laplace's attention in 1782, where he was following in the spirit of Euler in using the integrals themselves as solutions of equations. However, in 1785, Laplace took the critical step forward when, rather than simply looking for a solution in the form of an integral, he started to apply the transforms in the sense that was later to become popular. He used an integral of the form;
+	\begin{eqnarray}
+		\int x^s \phi (x) dx
+	\end{eqnarray}
+	akin to a Mellin transform, to transform the whole of a difference equation, in order to look for solutions of the transformed equation. He then went on to apply the Laplace transform in the same way and started to derive some of its properties, beginning to appreciate its potential power.\\
+	
+	\NI Laplace also recognised that Joseph Fourier's method of Fourier series for solving the diffusion equation could only apply to a limited region of space, because those solutions were periodic. In 1809, Laplace applied his transform to find solutions that diffused indefinitely in space.\\
+	
+	\NI The Laplace transform of a function $f(t)$, defined for all real numbers $t \geq 0$, is the function $F(s)$, which is a unilateral transform defined by;
+	\begin{eqnarray}
+		F(s) =\int_{0}^{\infty} f(t)e^{-st}dt
+	\end{eqnarray}
+	where s is a complex number frequency parameter
+	\begin{eqnarray}
+		s = \mu + i\omega
+	\end{eqnarray}
+	with real numbers $\mu$ and $\omega$. An alternate notation for the Laplace transform is $\Laplace(f)$ instead of $F$.\\
+	
+	\NI The meaning of the integral depends on types of functions of interest. A necessary condition for existence of the integral is that f must be locally integrable on $[0, \infty)$. For locally integrable functions that decay at infinity or are of exponential type $(|f(t)| \leq Ae^{B|t|})$, the integral can be understood to be a (proper) Lebesgue integral. However, for many applications it is necessary to regard it as a conditionally convergent improper integral at $\infty$. Still more generally, the integral can be understood in a weak sense, and this is dealt with below.\\
+	
+	\NI One can define the Laplace transform of a finite Borel measure $\mu$ by the Lebesgue integral;
+	\begin{eqnarray}
+		(f) = \int_{[0,\infty)} e^{-st} d\nu(t)
+	\end{eqnarray}
+	An important special case is where $\mu$ is a probability measure, for example, the Dirac delta function. In operational calculus, the Laplace transform of a measure is often treated as though the measure came from a probability density function $f$. In that case, to avoid potential confusion, one often writes
+	\begin{eqnarray}
+		(f) =\int_{0^-}^{\infty} f(t)e^{-st}dt
+	\end{eqnarray}
+	where the lower limit of $0^-$ is shorthand notation for
+	\begin{eqnarray}
+		\lim_{\epsilon \to 0^+}\int_{-\epsilon}^{\infty}
+	\end{eqnarray}
+	This limit emphasizes that any point mass located at 0 is entirely captured by the Laplace transform. Although with the Lebesgue integral, it is not necessary to take such a limit, it does appear more naturally in connection with the Laplace–Stieltjes transform.
+
+	\NI The Laplace transform can be used to solve differential equations. Besides being a different and efficient alternative to variation of parameters and undetermined coefficients, the Laplace method is particularly advantageous for input terms that are piecewise-defined, periodic or impulsive.
+
+	\section{Differentiation and the Laplace Transform}
+	In this section, we explore how the Laplace transform interacts with the basic operators of calculus: differentiation and integration. The greatest interest will be in the first identity that we will derive. This relates the transform of a derivative of a function to the transform of the original function, and will allow us to convert many initial-value problems to easily solved algebraic equations. But there are other useful relations involving the Laplace transform and either differentiation or integration. So we’ll look at them, too.
+	
+	\subsection{Transforms of Derivatives}
+	To see how the Laplace transform can convert a differential equation to a simple algebraic equation, let us examine how the transform of a function’s derivative,
+	\begin{eqnarray}
+		\Laplace [f'(t)]|_{s} = \Laplace \left[\frac{df}{dt}\right]\Bigg|_{s} = \int_{0}^{\infty} \frac{df}{dt} e^{-st}dt = \int_{0}^{\infty} e^{-st} \frac{df}{dt} dt
+	\end{eqnarray}
+	is related to the corresponding transform of the original function,
+	\begin{eqnarray}
+		F(s) = \mathcal{L} [f(t)]|_{s} =\int_{0}^{\infty} f(t)e^{-st} dt
+	\end{eqnarray}
+	The last formula above for $\mathcal{L} [f'(t)]$ clearly suggests using integration by parts, and to ensure
+	that this integration by parts is valid, we need to assume $f$ is continuous on $[0,\infty)$ and $f'$ is at least piecewise continuous on $(0,\infty)$. Assuming this,
+	\begin{eqnarray}
+		\mathcal{L} [f'(t)]\Big|_{s} = \int_{0}^{\infty} e^{-st} \frac{df}{dt} dt
+	\end{eqnarray}
+	where, $u = e^{-st}$, and $\dsp dv = \frac{df}{dt} dt$
+	\begin{eqnarray*}
+		&=& uv\Big|_{t = 0}^{\infty} - \int_{0}^{\infty} vdu\sps
+		&=& e^{-st} f(t)\Big|_{t=0}^{\infty} - \int_{0}^{\infty} f(t)[-se^{-st}]dt\sps
+		&=& \lim_{t \to \infty} e^{-st} f(t) - e^{-s(0)}f(0) - \int_{0}^{\infty} f(t)[-se^{-st}]dt\sps
+		&=& \lim_{t \to \infty} e^{-st} f(t) - f(0) + s \int_{0}^{\infty} f(t)e^{-st}dt
+	\end{eqnarray*}
+	Now, if f is of exponential order $s_0$, then
+	\begin{eqnarray*}
+		\lim_{t \to \infty} e^{-st} f(t) = 0~~~~~~		\text{whenever} ~~~~~~ s>s_0
+	\end{eqnarray*}
+	and
+	\begin{equation*}
+		 F(s) = \mathcal{L}[f(t)]\Big|_s= \int_{0}^{\infty} f(t)e^{-st}d ~~~\text{exists for} ~~~~~ s>s_0
+	\end{equation*}
+	
+	\NI Thus, continuing the above computations for $\mathcal{L}[f'(t)]$ with $s>s_0$, we find that
+	\begin{eqnarray*}
+		\mathcal{L}[f'(t)]|_s &=& \lim_{t \to \infty} e^{-st} f(t) - f(0) + s\int_{0}^{\infty} f(t)e^{-st}dt\sps
+		&=& 0 - f(0) + s\mathcal{L}[f(t)]|_s
+	\end{eqnarray*}
+	which is a little more conveniently written as
+	\begin{eqnarray*}
+		\mathcal{L}[f'(t)]\Big|_s = s\mathcal{L}[f(t)]|_s - f(0)
+	\end{eqnarray*}
+	or even as,
+	\begin{eqnarray*}
+		\mathcal{L}[f'(t)]\Big|_s = sF(s) - f(0)
+	\end{eqnarray*}
+	
+	\NI This will be a very useful result, well worth preserving in a theorem. 
+	\begin{theorem}
+		Let $F = \mathcal{L}[f]$ where $f$ is a continuous function of exponential order $s_0$ on $[0, \infty)$. If $f'$ is at least piecewise continuos on $(0, \infty)$, then
+		\begin{eqnarray*}
+			\mathcal{L}[f'(t)]\Big|_s = sF(s) - f(0) \text{ for} s>s_0
+		\end{eqnarray*}
+	\end{theorem}
+	Extending these derivatives to formulas for the the transforms of higher derivatives is easy. First, for convenience, rewrite the equation above as
+	\begin{eqnarray*}
+		\mathcal{L}[g'(t)]\Big|_s = s\mathcal{L}[g(t)]\Big|_s - g(0)
+	\end{eqnarray*}
+	or equivalently as
+	\begin{eqnarray*}
+		\mathcal{L}\left[\frac{dg}{dt}\right]\Bigg|_s = s\mathcal{L}[g(t)]\Big|_s - g(0)
+	\end{eqnarray*}
+	(Keep in mind that this assumes $g$ is a continuous function of exponential order, $g'$ is piecewise continuous and $s$ is larger than the order of $g$). Now we simply apply this equation with $g = f'$, $g = f''$, etc. Assuming all the functions are sufficiently continuous and are of exponential order, we see that
+	\begin{eqnarray*}
+		\mathcal{L}[f''(t)]\Big|_s &=& \mathcal{L}\left[\frac{df'}{dt}\right]\Bigg|_s = s\mathcal{L}[f'(t)]\Big|_s - f'(0)\sps
+		&=& s[sF(s) - f(0)] - f'(0)\sps
+		&=& s^2F(s) - sf(0) - f'(0)
+	\end{eqnarray*}
+	Using this, we then see that\\
+	\begin{eqnarray*}
+		\mathcal{L}\left[f''(t)\right]\Bigg|_s &=& \mathcal{L}[\frac{df''}{dt}]\Big|_s = s\mathcal{L}[f''(t)]\Big|_s - f''(0)\sps
+		&=& s[s^2F(s) - sf(0) - f'(0)] - f"(0)\sps
+		&=& s^3F(s) - s^2f(0) - sf'(0) - f"(0)
+	\end{eqnarray*}
+	
+	\begin{corollary}
+		Let $F = \mathcal{L}[f]$ where $f$ is a continuous function of exponential order $s_0$ on $[0, \infty)$. If $f'$ is at least piecewise continuous on $(0, \infty)$, then
+		\begin{eqnarray*}
+			\mathcal{L}[f'(t)]|_s = sF(s) - f(0)~~~~~ \text{ for } s>s_0
+		\end{eqnarray*}
+		If in addition, $f'$ is a continuous function of exponential order $s_0$, and $f''$ is at least piecewise continuous, then
+		\begin{eqnarray*}
+			\mathcal{L}[f''(t)]|_s = s^2F(s) - sf(0) - f'(0)
+		\end{eqnarray*}
+		More generally, if $f, f', f'',\ldots$ and  $f^{(n-1)}$ are all continuous functions of exponential order $s_0$ on $[0, \infty)$ for some positive integer $n$, and $f^{(n)}$ is at least piecewise continuous on $(0, \infty)$, then, for $s>s_0$,
+		\begin{multline*}
+			\mathcal{L}[f"(t)]|_s = s^n F(s) - s^{n-1} f(0) - s^{n-2}f'(0) - s^{n-3}f"(0) - \cdots \sps- sf^{(n-2)}(0) - f^{(n-1)}(0)
+		\end{multline*}
+	\end{corollary}
+
+
+	\section{Inverse Laplace Transform}
+	Two integrable functions have the same Laplace transform only if they differ on a set of Lebesgue measure zero. This means that, on the range of the transform, there is an inverse transform. In fact, besides integrable functions, the Laplace transform is a one-to-one mapping from one function space into another in many other function spaces as well, although there is usually no easy characterization of the range.\\
+
+	\NI Typical function spaces in which this is true include the spaces of bounded continuous functions, the space $L^\infty (0 , \infty)$, or more generally tempered distributions on $(0 , \infty)$. The Laplace transform is also defined and injective for suitable spaces of tempered distributions.\\
+	
+	\NI In these cases, the image of the Laplace transform lives in a space of analytic functions in the region of convergence. The inverse Laplace transform is given by the following complex integral, which is known by various names (the Bromwich integral, the Fourier–Mellin integral, and Mellin's inverse formula):
+	\begin{eqnarray*}
+		f(t) = \mathcal{L}^{-1} [f(t)] = \frac{1}{2\pi i} \lim_{T \to \infty}\int_{\gamma - iT}^{\gamma + iT} e^{st} F(s) ds
+	\end{eqnarray*}
+
+	\section{Properties of Laplace Transforms}
+	From the definition of the Laplace transform given in the previous subsection, we can easily derive the following properties of the Laplace transforms:
+	
+	\subsection{Constant Multiple:} 
+	$\mathcal{L}[af(x)] = a \mathcal{L}[f(x)]$, $a$ is a constant. For example:
+	\begin{eqnarray*}
+		\mathcal{L}[4e^x] = 4 \mathcal{L}[e^x] = \frac{4}{s - 1}
+	\end{eqnarray*}
+	
+	\subsection{Linearity Property:}
+	$\mathcal{L}[af(x) + bg(x)] = a \mathcal{L}[f(x)] +  b \mathcal{L}[g(x)]$, $a,b$ is a constant. For example:
+	\begin{eqnarray*}
+		\mathcal{L}[4x + 3x^2] = 4 \mathcal{L}[x] + 3 \mathcal{L}[x^2]= \frac{4}{s ^2} + \frac{6}{s^3}
+	\end{eqnarray*}
+		
+	\subsection{Multiplication by:} 
+	$\mathcal{L}[xf(x)] = - \frac{d}{ds} \mathcal{L}[f(x)] = -F'(s)$. For example:
+	\begin{eqnarray*}
+		\mathcal{L}[x\sin x] = - \frac{d}{ds} \mathcal{L}[\sin x] = - \frac{d}{ds} (\frac{1}{s^2 + 1}) = \frac{2s}{(s^2 + 1)^2}
+	\end{eqnarray*}
+
+	\NI To use the Laplace transform $\Laplace$ for solving initial value problems or integral equations, we use the following table of elementary Laplace transforms as shown below:\\
+	\begin{longtable}{| l | c | } \hline 
+		$f(x)$ & $F(s) = \mathcal{L}[f(x)] =$ \(\int_{0}^{\infty} e^ax f(x) dx\)\sps
+		\hline
+		c & $\dsp\frac{c}{s}, s > 0$\sps
+		x & $\dsp\frac{1}{s^2}, s > 0$\sps
+		$x^n$ & $\dsp\frac{n!}{s^{n +1}} = \frac{\Gamma (n + 1)}{s^{n + 1}}, s \geq 0, Re$ $n > -1$\sps
+		$e^ax$ & $\dsp\frac{1}{s - a}, s > a$\sps
+		$\sin ax$ & $\dsp\frac{a}{s^2 + a^2}$\sps
+		$\cos ax$ & $\dsp\frac{s}{s^2 + a^2}$\sps 
+		$\sin^2 ax$ & $\dsp\frac{2a^2}{s(s^2 + 4 a^2)}, Re(s) > |Im(a)|$\\ 
+		$\cos^2 ax$ & $\dsp\frac{s^2 + 2a^2}{s(s^2 + 4 a^2)}, Re(s) > |Im(a)|$\\ 
+		$x\sin ax$ & $\dsp\frac{2as}{(s^2 + a^2)^2}$\sps 
+		$x\cos ax$ & $\dsp\frac{s^2 - a^2}{(s^2 + a^2)^2}$\sps 
+		$\sinh ax$ & $\dsp\frac{a}{s^2 - a^2}, s \geq |a|$\sps
+		$\cosh ax$ & $\dsp\frac{s}{s^2 - a^2}, s \geq |a|$\sps 
+		$\sinh^2 ax$ & $\dsp\frac{2a^2}{s(s^2 - 4 a^2)}, Re(s) > |Im(a)|$\sps
+		$\cosh^2 ax$ & $\dsp\frac{s^2 - 2a^2}{s(s^2 - 4 a^2)}, Re(s) > |Im(a)|$\sps
+		$x\sinh ax$ & $\dsp\frac{2as}{(s^2 - a^2)^2}, s > |a|$\sps
+		$x\cosh ax$ & $\dsp\frac{s^2 + a^2}{(s^2 - a^2)^2}, s > |a|$\sps 
+		$x^n e^ax$ & $\dsp\frac{n!}{(s - a)^{n + 1}}, s > a$, n is a positive integer\sps
+		$e^ax \sin bx$ & $\dsp\frac{b}{(s - a)^2) + b^2}, s > a$\sps
+		$e^ax \cos bx$ & $\dsp\frac{s - a}{(s - a)^2) + b^2}, s > a$\sps
+		$e^ax \sinh bx$ & $\frac{b}{(s - a)^2) - b^2}, s > a$\sps
+		$e^ax \cosh bx$ & $\frac{s - a}{(s - a)^2) - b^2}, s > a$\sps 
+		\hline
+	\end{longtable}
+
+	\subsection{Laplace Transforms of Derivatives:}
+	\begin{eqnarray*}
+		\mathcal{L}[f'(x)] &=& s \mathcal{L}[f(x)] - f(0)\sps
+		\mathcal{L}[f''(x)] &=& s^2 \mathcal{L}[f(x)] - sf(0) - f'(0)\sps
+		\mathcal{L}[f'''(x)] &=& s^3 \mathcal{L}[f(x)] - s^2f(0) - sf'(0) - f''(0)\sps
+		&\vdots\sps
+		\mathcal{L}[f^{(n)} (x)] &=& s^n \mathcal{L}[f(x)] - s^{n - 1} f(0) -... - sf^{(n - 2)}(0) - f^{(n - 1)}(0)
+	\end{eqnarray*}
+
+	\subsection{Inverse Laplace Transforms:}
+	If the Laplace transform of $f(x)$ is $F(s)$, then we say that the inverse Laplace transform of $F(s)$ is $f(x)$. In other words, we write;
+	\begin{eqnarray*}
+		\mathcal{L}^{-1}[F(s)] = f(x)
+	\end{eqnarray*}
+	where $\mathcal{L}^{-1}$ is the operator of the inverse Laplace transform. The linearity property holds also for the inverse Laplace transform. This means that;
+	\begin{eqnarray*}
+		\mathcal{L}^{-1}[aF(s) + bG(s)] &=& a \mathcal{L}^{-1}[F(s)] +  a \mathcal{L}^{-1}[G(s)]\sps
+		&=& af(x) + bg(x)
+	\end{eqnarray*}
+
+
+	\subsection{Evaluating improper integrals}
+	Let
+	\begin{eqnarray*}
+		\mathcal{L}[f(t)] = F(s)
+	\end{eqnarray*}
+	Then,
+	\begin{eqnarray*}
+		\mathcal{L}[\frac{f(t)}{t}] = \int_{0}^{\infty} \frac{f(t)}{t} e^{-st}dt = \int_{s}^{\infty} F(p) dp
+	\end{eqnarray*}
+	In the limit $s \to 0$, one gets
+	\begin{eqnarray*}
+		\int_{0}^{\infty} \frac{f(t)}{t}dt= \int_{0}^{\infty} F(p)dp
+	\end{eqnarray*}
+	provided that the interchange of limits can be justified. This is often possible as a consequence of the final value theorem. Even when the interchange cannot be justified the calculation can be suggestive. For example, with $a \neq 0 \neq b$, proceeding formally one has
+	\begin{eqnarray*}
+		\int_{0}^{\infty} \frac{\cos(at) - \cos(bt)}{t} dt &=& \int_{0}^{\infty} \left(\frac{p}{p^2 + a^2} - \frac{p}{p^2 + b^2}\right) dp\sps
+		%%%%%
+		&=& \left[\frac{1}{2} \ln\frac{p^2 + a^2}{p^2 + b^2}\right]_{0}^{\infty} = \frac{1}{2} \ln\frac{b^2}{a^2} = \ln\left|\frac{b}{a}\right|
+	\end{eqnarray*}
+	
+	\NI The validity of this identity can be proved by other means. It is an example of a Frullani integral. Another example is Dirichlet integral.
+	
+	\subsection{Partial fraction expansion}
+	Consider a linear time-invariant system with transfer function
+	\begin{eqnarray*}
+		H(s) = \frac{1}{(s + \alpha)(s + \beta)}
+	\end{eqnarray*}
+	The impulse response is simply the inverse Laplace transform of this transfer function:
+	\begin{eqnarray*}
+		h(t)=\mathcal {L}^{-1}[H(s)]
+	\end{eqnarray*}
+	To evaluate this inverse transform, we begin by expanding $H(s)$ using the method of partial fraction expansion,
+	\begin{eqnarray*}
+		\frac{1}{(s + \alpha)(s + \beta)} = \frac{P}{s + \alpha} + \frac{R}{s + \beta}
+	\end{eqnarray*}
+	The unknown constants $P$ and $R$ are the residues located at the corresponding poles of the transfer function. Each residue represents the relative contribution of that singularity to the transfer function's overall shape.\\
+	
+	\NI By the residue theorem, the inverse Laplace transform depends only upon the poles and their residues. To find the residue $P$, we multiply both sides of the equation by $s + \alpha$ to get
+	\begin{eqnarray*}
+		\frac{1}{s + \beta} = P + \frac{R(s + \alpha)}{s + \beta}
+	\end{eqnarray*}
+	Then by letting $s =-\alpha$, the contribution from $R$ vanishes and all that is left is 
+	\begin{eqnarray*}
+		P = \frac{1}{s + \beta}\Bigg|_{s=-\alpha} = \frac{1}{\beta - \alpha}
+	\end{eqnarray*}
+	Similarly, the residue $R$ is given by
+	\begin{eqnarray*}
+		R = \frac{1}{s + \alpha}\Bigg|_{s=-\beta} = \frac{1}{\alpha - \beta}
+	\end{eqnarray*}
+	Note that 
+	\begin{eqnarray*}
+		R = \frac{-1}{\beta - \alpha} = -P
+	\end{eqnarray*}
+	and so the substitution of $R$ and $P$ into the expanded expression for $H(s)$ gives
+	\begin{eqnarray*}
+		H(s) = (\frac{1}{\beta - \alpha}) \cdot \left(\frac{1}{s + \alpha} - \frac{1}{s + \beta}\right)
+	\end{eqnarray*}
+	
+	\NI Finally, using the linearity property and the known transform for exponential decay, we can take the inverse Laplace transform of $H(s)$ to obtain
+	\begin{eqnarray*}
+		h(t)=\mathcal {L}^{-1}[H(s)] = \frac{1}{\beta - \alpha} \left( e^{-\alpha t} - e^{-\beta t}\right)
+	\end{eqnarray*}
+	which is the impulse response of the system.
+	
+	\subsection{Convolution}
+	The same result can be achieved using the convolution property as if the system is a series of filters with transfer functions of $\frac{1}{s + b}$ and $\frac{1}{s + b}$. That is, the inverse of
+	\begin{eqnarray*}
+		H(s) = \frac{1}{(s + a)(s + b)} = \frac{1}{s + a} . \frac{1}{s + b}
+	\end{eqnarray*}
+	is
+	\begin{eqnarray*}
+		\mathcal {L}^{-1}[\frac{1}{s + a}] * \mathcal {L}^{-1}[\frac{1}{s + b}] = e^{-at} * e^{-bt} = \int_{0}^{t} e^{-ax} e^{-b(t-x)}dx = \frac{e^{-at} - e^{-bt}}{b - a}
+	\end{eqnarray*}
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{NUMERICAL EXAMPLES}
+	\example{4.1} 
+	\begin{eqnarray*}
+		U(x) &=& 1 - x^2 + x^3 + \int_{0}^{x} [(x - t) U(t) + (x - t)V(t)]dt\sps
+		V(x) &=& 1 - x^3 - \frac{1}{10} x^5 +\int_{0}^{x} [(x - t) U(t) - (x - t)V(t)]dt
+	\end{eqnarray*}
+	Notice that the kernels $K_1(x - t) = K_2(x - t) = x - t$. Taking Laplace transform of both sides of each equation gives;
+	\begin{eqnarray*}
+		U(s) &=& \mathcal{L}[u(x)] = \mathcal{L}[1 - x^2 + x^3] + \mathcal{L}[(x - t) * u(x) + (x - t) * v(x)]\sps
+			V(s) &=& \mathcal{L}[v(x)] = \mathcal{L}\left[1 - x^3 - \frac{1}{10}x^5\right] + \mathcal{L}[(x - t) * u(x) - (x - t) * v(x)]
+	\end{eqnarray*}	
+	This in turn gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s} - \frac{2}{s^3} + \frac{6}{s^4} + \frac{1}{s^2}U(s) + \frac{1}{s^2}V(s),\sps
+		%%%%%
+		V(s) &=& \frac{1}{s} - \frac{6}{s^4} - \frac{12}{s^6} + \frac{1}{s^2} U(s) - \frac{1}{s^2}V(s)
+	\end{eqnarray*}
+	Solving this system of equations of equations for $U(s)$ and $V(s)$ gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s} + \frac{3!}{s^4},\sps
+		V(s) &=& \frac{1}{s} - \frac{3!}{s^4}
+	\end{eqnarray*}
+	By taking the Inverse Laplace transform of the sides of each of the equation above gives the exact solutions given by;
+	\begin{eqnarray*}
+		(u(x), v(x)) = (1 + x^3, 1 - x^3)
+	\end{eqnarray*}
+
+	\example{4.2}
+	\begin{eqnarray*}
+		U(x) &=& 1 - 2x + \sin x + \int_{0}^{x} [U(t) + V(t)]dt\sps
+		%%%
+		V(x) &=& 1 - x^2 - \sin x + \int_{0}^{x} [tU(t) - tV(t)]dt
+	\end{eqnarray*}
+	Taking the Laplace transform of both sides of each equation gives;
+	\begin{eqnarray*}
+		U(s) &=& \mathcal{L}[u(x)] = \mathcal{L}[1 - 2x + \sin x] + \mathcal{L}[u(x) + v(x)]\sps
+		V(s) &=& \mathcal{L}[v(x)] = \mathcal{L}[1 - x^2 - \sin x] + \mathcal{L}[u(x) - v(x)]
+	\end{eqnarray*}	
+	This in turn gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s} - \frac{2}{s^2} + \frac{1}{1 + s^2} + U(s) + V(s)\sps
+		%%%%
+		V(s) &=& \frac{1}{s} - \frac{2}{s^3} - \frac{1}{1 + s^2} + U(s) - V(s)
+	\end{eqnarray*}
+	Solving this system of equations of equations for $U(s)$ and $V(s)$ gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s} + \frac{1}{1 + s^2}\sps
+		%%%%%%
+		V(s) &=& \frac{1}{s} - \frac{1}{1 + s^2}
+	\end{eqnarray*}
+	By taking the Inverse Laplace transform of the sides of each of the equation above gives the exact solutions given by;
+	\begin{eqnarray*}
+		(u(x), v(x)) =(1 + \sin x, 1 - \sin x)
+	\end{eqnarray*}
+	
+	\example{4.3}
+	\begin{eqnarray*}
+		U(x) &=& \cos x - \sin x + \int_{0}^{x} [\cos(x - t)U(t) + \sin(x - t)V(t)]dt\sps
+		V(x) &=&  \sin x - x\sin x +\int_{0}^{x} [\sin(x - t)U(t) - \cos(x - t)V(t)]dt
+	\end{eqnarray*}
+	Taking the Laplace transform of both sides of each equation gives;
+	\begin{eqnarray*}
+		U(s) &=& \mathcal{L}[u(x)] = \mathcal{L}[\cos x - \sin x] + \mathcal{L}[\cos(x - t) * u(x) + \sin(x - t) * v(x)]\sps
+		%
+		V(s) &=& \mathcal{L}[v(x)] = \mathcal{L}[\sin x - x\sin x] + \mathcal{L}[\sin(x - t) * u(x) - \cos(x - t) * v(x)]
+	\end{eqnarray*}
+	This in turn gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{s}{1 + s^2} - \frac{1}{1 + s^2} + \frac{s}{1 + s^2}U(s) + \frac{1}{1 + s^2}V(s)\sps
+		%
+		V(s) &=& \frac{1}{1 + s^2} - \frac{2s}{(1 + s^2)^2} + \frac{1}{1 + s^2}U(s) + \frac{s}{1 + s^2}V(s)	
+	\end{eqnarray*}
+	or equivalently
+	\begin{eqnarray*}
+		(1 - \frac{s}{1+s^2})U(s) - \frac{1}{1+s^2}V(s) &=& \frac{s}{1 + s^2} - \frac{1}{1 + s^2}\sps
+		%
+		(1 - \frac{s}{1+s^2})V(s) - \frac{1}{1+s^2}U(s) &=& \frac{1}{1 + s^2} - \frac{2s}{(1 + s^2)^2}
+	\end{eqnarray*}	
+	Solving this system of equations of equations for $U(s)$ and $V(s)$ gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{s}{1+s^2}\sps
+		%
+		V(s) &=& \frac{1}{1+s^2}
+	\end{eqnarray*}
+	By taking the Inverse Laplace transform of the sides of each of the equation above gives the exact solutions given by;
+	\begin{eqnarray*}
+		(u(x), v(x)) =(\cos x, \sin x)
+	\end{eqnarray*}
+
+	\example{4.4}
+	\begin{eqnarray*}
+		U(x) &=& 2 - e^{-x} +\int_{0}^{x} [(x - t)U(t) + (x - t)V(t)]dt\sps
+		V(x) &=& 2x - e^x + 2e^{-x} + \int_{0}^{x} [(x - t)U(t) - (x - t)V(t)]dt
+	\end{eqnarray*}
+	Taking the Laplace transform of both sides of each equation gives;
+	\begin{eqnarray*}
+		U(s) &=& \mathcal{L}[u(x)] = \mathcal{L}[2 - e^{-x}] + \mathcal{L}[(x - t) * u(x) + (x - t) * v(x)]\sps
+		%%
+		V(s) &=& \mathcal{L}[v(x)] = \mathcal{L}[2x - e^x + 2e^{-x}] + \mathcal{L}[(x - t) * u(x) - (x - t) * v(x)]
+	\end{eqnarray*}
+	This in turn gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{2}{s} - \frac{1}{s + 1} + \frac{1}{s^2}U(s) + \frac{1}{s^2}V(s)\sps
+		%%
+		V(s) &=& \frac{2}{s^2} - \frac{1}{s - 1} + \frac{2}{s + 1} + \frac{1}{s^2}U(s) - \frac{1}{s^2}V(s)
+	\end{eqnarray*}
+	or equivalently
+	\begin{eqnarray*}
+		(1 - \frac{1}{s^2})U(s) - \frac{1}{s^2}V(s) &=& \frac{2}{s} - \frac{1}{s + 1}\sps
+		%%%
+		(1 +\frac{1}{s^2})V(s) - \frac{1}{s^2}U(s) &=& \frac{2}{s^2} - \frac{1}{s - 1} + \frac{2}{s + 1}
+	\end{eqnarray*}
+	Solving this system of equations of equations for U(s) and V(s) gives
+	\begin{eqnarray*}
+		U(s) &=& \frac{1}{s - 1}\sps
+		%
+		V(s) &=& \frac{1}{s + 1}
+	\end{eqnarray*}	
+	By taking the Inverse Laplace transform of the sides of each of the equation above gives the exact solutions given by;
+	\begin{eqnarray*}
+		(u(x), v(x)) =(e^x, e^{-x})
+	\end{eqnarray*}
+
+
+
+	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
+	\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
+	The Laplace transform is used frequently in engineering and physics; the output of a linear time-invariant system can be calculated by convolving its unit impulse response with the input signal. Performing this calculation in Laplace space turns the convolution into a multiplication; the latter being easier to solve because of its algebraic form. The Laplace transform is invertible on a large class of functions. Given a simple mathematical or functional description of an input or output to a system, the Laplace transform provides an alternative functional description that often simplifies the process of analysing the behaviour of the system, or in synthesizing a new system based on a set of specifications.\\
+	
+	The Laplace transform can also be used to solve differential equations and is used extensively in mechanical engineering and electrical engineering. The Laplace transform reduces a linear differential equation to an algebraic equation, which can then be solved by the formal rules of algebra. The original differential equation can then be solved by applying the inverse Laplace transform. English electrical engineer Oliver Heaviside first proposed a similar scheme, although without using the Laplace transform; and the resulting operational calculus is credited as the Heaviside calculus.
+ 
+	
+	%%%%%%%%%%%%%%%%%%%REFERENCE%%%%%%%%%%%%%%%%%%%
+	\chapter*{REFERENCES}
+	\addcontentsline{toc}{chapter}{REFERENCES}
+	
+	\begin{description}
+		\item Sachs, E.W., Strauss, A. K. (2008). \emph{Efficient solution of a partial integro-differential equation in finance}, Applied Numerical Mathematics.58 (11): 1687 - 1703.
+		
+		\item Brunner Hermann (2017). \emph{Volterra Integral Equations: An introduction to Theory and Applications}, Cambridge Monographs on Applied and Computational Mathematics. Cambridge, UK: Cambridge University Press.
+		
+		\item Polyanin, Andrei D.; Manzhirov, Alexander V. (2008).
+		\emph{Handbook of Integral Equations (2nd ed.)}. Boca Raton, FL: Chapman and Hall/CRC.
+		
+		\item Abdul- Majid Wazwaz (1997). \emph{A First Course in Integral Equations}, World Scientific.
+		
+		\item K. Thangavel,P. Balasubramaniam (2005). \emph{Computational Mathematics}
+		
+		\item Subrahamanyam Upadhyay and K. N. Rai (2015). \emph{Integral equation: An introduction}
+	\end{description}
+	
+\end{document}
