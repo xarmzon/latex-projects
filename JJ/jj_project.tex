@@ -594,7 +594,84 @@
 		& \bt{C} & 13 & 14 & 16 & 11\\\cline{2-6}
 		& \bt{D} & 3 & 15 & 13 & 8\\\hline
 	\end{longtable}
-
+	\NI Determine how best the hospital can purchase the four machines.
+	
+	\solution
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\bt{Step \arabic{enumi}:}}
+		\item Prepare row reduced matrix by selecting the minimum values for each row and subtracting it from other elements of the row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|}
+			\hline
+			& \bt{I} & \bt{II} & \bt{III} & \bt{IV}\\\cline{1-5}
+			\bt{A}& 0 & 8 & 7 & 5\\\cline{1-5}
+			\bt{B} & 11 & 0 & 10 & 4\\\cline{1-5}
+			\bt{C} & 2 & 3 & 5 & 9\\\cline{1-5}
+			\bt{D} & 0 & 12 & 10 & 5\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%
+		\item Prepare column reduced matrix by subtracting minimum value of the column from the other values of that column.
+		\newpage
+		\begin{longtable}{|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|}
+			\hline
+			& \bt{I} & \bt{II} & \bt{III} & \bt{IV}\\\cline{1-5}
+			\bt{A}& 0 & 8 & 2 & 5\\\cline{1-5}
+			\bt{B} & 11 & 0 & 5 & 4\\\cline{1-5}
+			\bt{C} & 2 & 3 & 0 & 0\\\cline{1-5}
+			\bt{D} & 0 & 12 & 5 & 5\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%
+		\item Check the row and box the first zero and cross out the other zeros in the column and row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|}
+			\hline
+			& \bt{I} & \bt{II} & \bt{III} & \bt{IV}\\\cline{1-5}
+			\bt{A}&[0] & 8 & 2 & 5\\\cline{1-5}
+			\bt{B} & 11 & [0] & 5 & 4\\\cline{1-5}
+			\bt{C} & 2 & 3 & [0] & $\times$\\\cline{1-5}
+			\bt{D} & $\times$ & 12 & 5 & 5\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%
+		\item Apply the optimal test: if each row and column contain one exactly encircled zero, then the current assignment is optimal. However, if one row or column is without an assignment, then the assignment is not optimal.\\
+		Since each row and column does not contain exactly one encircled zero, then the current is not optimal and we proceed to the next step.
+		\item Tick all unassigned rows. If a ticked row has a zero or more, then tick the corresponding column. If a ticked column has an assignment, then tick the corresponding row.
+		\newpage
+		\begin{longtable}{|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|}
+			\hline
+			& \bt{I} & \bt{II} & \bt{III} & \bt{IV}&\\\cline{1-6}
+			\bt{A}&[0] & 8 & 2 & 5&$\checkmark$\\\cline{1-6}
+			\bt{B} & 11 & [0] & 5 & 4& \\\cline{1-6}
+			\bt{C} & 2 & 3 & [0] & $\times$& \\\cline{1-6}
+			\bt{D} & $\times$ & 12 & 5 & 5& $\checkmark$\\\hline
+			& $\checkmark$& & & &\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%
+		\item Draw a line each through unticked rows. Also, draw a line through the ticked column to form an intersection.
+		\begin{longtable}{|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|}
+			\hline
+			& \bt{I} & \bt{II} & \bt{III} & \bt{IV}&\\\cline{1-6}
+			\bt{A}&\tikzmark{aa1}[0] & 8 & 2 & 5&$\checkmark$\\\cline{1-6}
+			\bt{B} & \tikzmark{bb1}11 & [0] & 5 & \tikzmark{bb2}4& \\\cline{1-6}
+			\bt{C} & \tikzmark{cc1}2 & 3 & [0] & \tikzmark{cc2}0& \\\cline{1-6}
+			\bt{D} & \tikzmark{aa2}0 & 12 & 5 & 5& $\checkmark$\\\hline
+			& $\checkmark$& & & &\\\hline
+		\end{longtable}
+		\linkV{aa1}{aa2}\linkH{bb1}{bb2}\linkH{cc1}{cc2}
+		%%%%%%%%%%%%%
+		\item Determine the smallest cost element not covered by the straight line. Subtract this smallest
+		cost element from all the uncovered elements and add this to all those elements which are lying in
+		the intersection of these straight lines and do not change the remaining element which lie on the
+		straight lines.
+		\newpage
+			\begin{longtable}{|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|}
+			\hline
+			& \bt{I} & \bt{II} & \bt{III} & \bt{IV}\\\cline{1-5}
+			\bt{A}&0 & 6 & 0 & 3\\\cline{1-5}
+			\bt{B} & 13 & 0 & 5 & 4\\\cline{1-5}
+			\bt{C} & 4 & 3 & 0 & 0\\\cline{1-5}
+			\bt{D} & 0 & 10 & 3 & 3\\\hline
+		\end{longtable}
+		%%%%%%%%%%%55
+		\item[\bt{Step 3:}] Check the row and box the first zero and cross out the other zeros in the column and row.
+	\end{enumerate}
 
 
 
