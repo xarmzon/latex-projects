@@ -144,7 +144,10 @@
 	%%ABSTRACT%%
 	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
 	\addcontentsline{toc}{chapter}{ABSTRACT}	
-	\NI This project discusses the 
+	\NI Matching highly skilled people to available position/job is a high-stake task that requires careful consideration 
+	by experienced resource managers. The assignment problem is a special type of the transportation problem, it is 
+	an important subject discussed in real world. In this project work, Hungarian method was used to solve the assignment 
+	problem.
 	
 	\newpage
 	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
@@ -980,10 +983,10 @@
 		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
 			\hline
 			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
-			\bt{A}& 1 &$\checkmark$ &$\checkmark$ &7 &$\checkmark$\\\hline
+			\bt{A}& 1 &$\times$ &$\times$ &7 &$\times$\\\hline
 			\bt{B} &6&17 &[0] &4 &5\\\hline
-			\bt{C} &[0]& 3& 2 &$\checkmark$ &$\checkmark$\\\hline
-			\bt{D} &5 &[0]& $\checkmark$&3 &1\\\hline
+			\bt{C} &[0]& 3& 2 &$\times$ &$\times$\\\hline
+			\bt{D} &5 &[0]& $\times$&3 &1\\\hline
 			\bt{E} & 2 &1 &6 &9 &[0]\\\hline
 		\end{longtable}
 		%%%%%%%
@@ -991,24 +994,70 @@
 		Since each row and column does not contain exactly one encircled zero, then the current is not optimal and we proceed to the next step.
 		
 		\item[\bt{Step 5:}] Tick all unassigned rows. If a ticked row has a zero or more, then tick the corresponding column. If a ticked column has an assignment, then tick the corresponding row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|c|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}&\\\hline
+			\bt{A}& 1 &0 &0 &7 &0&$\checkmark$\\\hline
+			\bt{B} &6&17 &[0] &4 &5&$\checkmark$\\\hline
+			\bt{C} &[0]& 3& 2 &0 &0&\\\hline
+			\bt{D} &5 &[0]& 0&3 &1&$\checkmark$\\\hline
+			\bt{E} & 2 &1 &6 &9 &[0]&$\checkmark$\\\hline
+			& & $\checkmark$&$\checkmark$& &$\checkmark$&\\\hline
+		\end{longtable}
+		%%%%%%%
+		\item[\bt{Step: 6}] Draw a line each through unticked rows. Also, draw a line through the ticked column to
+		form an intersection.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|c|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}&\\\hline
+			\bt{A}& 1 &\tikzmark{q1}0 &\tikzmark{r1}0 &7 &\tikzmark{s1}0&$\checkmark$\\\hline
+			\bt{B} &6&17 &[0] &4 &5&$\checkmark$\\\hline
+			\bt{C} &\tikzmark{p1}[0]& 3& 2 &0 &\tikzmark{p2}0&\\\hline
+			\bt{D} &5 &[0]& 0&3 &1&$\checkmark$\\\hline
+			\bt{E} & 2 &\tikzmark{q2}1 &\tikzmark{r2}6 &9 &\tikzmark{s2}[0]&$\checkmark$\\\hline
+			& & $\checkmark$&$\checkmark$& &$\checkmark$&\\\hline
+		\end{longtable}
+		\linkH{p1}{p2}\linkV{q1}{q2}\linkV{r1}{r2}\linkV{s1}{s2}
+		%%%%%%%
+		\item[\bt{Step 7:}] Determine the smallest cost element not covered by the straight line. Subtract this smallest cost element from all the uncovered elements and add this to all those elements which are lying in the intersection of these straight lines and do not change the remaining element which lie on the
+		straight lines.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 0 &0 &0 &6 &0\\\hline
+			\bt{B} &5&17 &0 &3 &5\\\hline
+			\bt{C} &0& 4& 3 &0&1\\\hline
+			\bt{D} &4 &0&0&2 &1\\\hline
+			\bt{E} & 1 &1 &6 &8 &0\\\hline
+		\end{longtable}
+		%%%%%%%
+		\item[\bt{Step 3:}] Check the row and box the first zero and cross out the other zeros in the column and row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& [0] &$\times$ &$\times$ &6 &$\times$\\\hline
+			\bt{B} &5&17 &[0] &3 &5\\\hline
+			\bt{C} &0& 4& 3 &[0]&1\\\hline
+			\bt{D} &4 &[0]&$\times$&2 &1\\\hline
+			\bt{E} & 1 &1 &6 &8 &[0]\\\hline
+		\end{longtable}
+		%%%%%%%
+		\item[\bt{Step 4:}] Apply the optimal test: if each row and column contain one exactly encircled zero, then the current assignment is optimal. However, if one row or column is without an assignment, then
+		the assignment is not optimal.\\
+		Since each row and column does contain exactly one encircled zero, then the current is optimal
+		and we stop.
+		\newpage
+		\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|c|>{\centering\arraybackslash}m{2.9cm}|}
+			\hline
+			\bt{Graduate Teaching Assistant}& \bt{Courses} & \bt{Time (in hours)}\\\hline
+			\bt{A} & \bt{MAT208} & 11\\\hline
+			\bt{B} & \bt{MAT206} & 7\\\hline
+			\bt{C} & \bt{MAT201} & 13\\\hline
+			\bt{D} & \bt{MAT210} & 10\\\hline
+			\bt{E} & \bt{MAT214} & 10\\\hline
+			\multicolumn{2}{|l|}{\bt{Optimum Course Preparatory Time}} & \bt{51}\\\hline
+		\end{longtable}
 	\end{enumerate}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	%%%%%%%%%%%%%%%%%%%CHAPTER FIVE%%%%%%%%%%%%%%%%%%%
