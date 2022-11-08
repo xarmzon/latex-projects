@@ -144,7 +144,7 @@
 	%%ABSTRACT%%
 	\section*{\begin{center}\textbf{\Large ABSTRACT}\end{center}}
 	\addcontentsline{toc}{chapter}{ABSTRACT}	
-	\NI Thus this project discusses the solutions of Ordinary Differential Equations involving Biological Systems and Engineering Problems; which is to enlightened and help students to know some various applications, examples and usefulness of differential equations in Biological Science and Engineering in general.\\ 
+	\NI This project discusses the 
 	
 	\newpage
 	%%%%%%%%%%%%%%%%%%%TABLE OF CONTENTS%%%%%%%%%%%%%%%%%%%
@@ -678,6 +678,7 @@
 		\item[\bt{Step 4:}]Apply the optimal test: if each row and column contain one exactly encircled zero, then
 		the current assignment is optimal. However, if one row or column is without an assignment, then the assignment is not optimal.\\
 		Since each row and column does contain exactly one encircled zero, then the current is optimal and we stop.
+		\newpage
 		\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.9cm}|}
 			\hline
 			\bt{Manufacturers}& \bt{Machines} & \bt{Cost (in Millions of Dollars)}\\\hline
@@ -690,18 +691,307 @@
 		\end{longtable}
 	\end{enumerate}
 
+	\example{3.4}
+	Assign four trucks 1,2,3 and 4 to vacant spaces A, B, C, D, E, F so that distance travelled is minimized. The matrix below shows the distance.
+	\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|>{\centering\arraybackslash}m{1.15cm}|}
+		\hline
+		\multicolumn{6}{|c|}{\bt{Trucks}}\\\hline
+		\multirow{6}{*}{Vacant Spaces} & & \bt{1} & \bt{2} & \bt{3} & \bt{4}\\\cline{2-6}
+		& \bt{A}& 4 & 7 & 3 & 7\\\cline{2-6}
+		& \bt{B} & 3 & 2 & 5 & 5\\\cline{2-6}
+		& \bt{C} & 4 & 9 & 6 & 9\\\cline{2-6}
+		& \bt{D} & 7 & 5 & 4 & 8\\\cline{2-6}
+		& \bt{E} & 6 & 3 & 5 & 4\\\cline{2-6}
+		& \bt{F} & 6 & 8 &7 & 3\\\cline{1-6}
+	\end{longtable}
+
+	\solution
+	Since the number of columns are less than the number of rows, given the assignment problem is unbalanced. To balance it, there is need to introduce a dummy variable d, with column where all its entries are zero. The revised table is showed below:
+	\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|}
+		\hline
+		\multicolumn{8}{|c|}{\bt{Trucks}}\\\hline
+		\multirow{6}{*}{Vacant Spaces} & & \bt{1} & \bt{2} & \bt{3} & \bt{4} & \bt{5} & \bt{6}\\\cline{2-8}
+		& \bt{A}& 4 & 7 & 3 & 7 & 0 &0 \\\cline{2-8}
+		& \bt{B} & 3 & 2 & 5 & 5  & 0 &0 \\\cline{2-8}
+		& \bt{C} & 4 & 9 & 6 & 9  & 0 &0 \\\cline{2-8}
+		& \bt{D} & 7 & 5 & 4 & 8  & 0 &0 \\\cline{2-8}
+		& \bt{E} & 6 & 3 & 5 & 4  & 0 &0 \\\cline{2-8}
+		& \bt{F} & 6 & 8 &7 & 3  & 0 &0 \\\cline{1-8}
+	\end{longtable}
+	
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\bt{Step \arabic{enumi}:}}
+		\item Prepare row reduced matrix by selecting the minimum values for each row and subtracting it from other elements of the row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|}
+			\hline	
+			& \bt{1} & \bt{2} & \bt{3} & \bt{4} & \bt{5} & \bt{6}\\\hline
+			\bt{A}& 4 & 7 & 3 & 7 & 0 &0 \\\hline
+			\bt{B} & 3 & 2 & 5 & 5  & 0 &0 \\\hline
+			\bt{C} & 4 & 9 & 6 & 9  & 0 &0 \\\hline
+			 \bt{D} & 7 & 5 & 4 & 8  & 0 &0 \\\hline
+			\bt{E} & 6 & 3 & 5 & 4  & 0 &0 \\\hline
+			\bt{F} & 6 & 8 &7 & 3  & 0 &0 \\\hline
+		\end{longtable}
+		%%%%%%%%
+		\item Prepare column reduced matrix by subtracting minimum value of the column from the other values of that column
+		\newpage
+		\begin{longtable}{|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|}
+			\hline	
+			& \bt{1} & \bt{2} & \bt{3} & \bt{4} & \bt{5} & \bt{6}\\\hline
+			\bt{A}& 0 & 5 & 0 & 4 & 0 &0 \\\hline
+			\bt{B} & 4 & 0 & 2 & 2  & 0 &0 \\\hline
+			\bt{C} & 0 & 7 & 3 & 6  & 0 &0 \\\hline
+			\bt{D} & 3 & 3 & 1 & 5  & 0 &0 \\\hline
+			\bt{E} & 2 & 1 & 2 & 1  & 0 &0 \\\hline
+			\bt{F} & 2 & 6 & 4 & 0  & 0 &0 \\\hline
+		\end{longtable}
+		%%%%%%%%
+		\item Check the row and box the first zero and cross out the other zeros in the column and row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1cm}|}
+			\hline	
+			& \bt{1} & \bt{2} & \bt{3} & \bt{4} & \bt{5} & \bt{6}\\\hline
+			\bt{A}& $\times$ & 5 & [0] & 4 & $\times$ &$\times$ \\\hline
+			\bt{B} & 4 & [0] & 2 & 2  & $\times$ &$\times$ \\\hline
+			\bt{C} & [0] & 7 & 3 & 6  & $\times$ &$\times$ \\\hline
+			\bt{D} & 3 & 3 & 1 & 5  & $\times$& $\times$ \\\hline
+			\bt{E} & 2 & 1 & 2 & 1  & [0] &$\times$ \\\hline
+			\bt{F} & 2 & 6 & 4 & [0]  & $\times$ &$\times$ \\\hline
+		\end{longtable}
+		%%%%%%%%
+		\item Apply the optimal test: if each row and column contain one exactly encircled zero, then the current assignment is optimal. However, if one row or column is without an assignment, then the assignment is not optimal.\\
+		Since each row and column does contain exactly one encircled zero, then the current is optimal and we stop.
+		\newpage
+		\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.9cm}|}
+			\hline
+			\bt{Vacant Spaces}& \bt{Trucks} & \bt{Distance (in miles)}\\\hline
+			\bt{A} & \bt{3} & 3\\\hline
+			\bt{B} & \bt{2} & 2\\\hline
+			\bt{C} & \bt{1} & 4\\\hline
+			\bt{D} & \bt{-} & 0\\\hline
+			\bt{E} & \bt{-} & 0\\\hline
+			\bt{F} & \bt{4} & 3\\\hline
+			\multicolumn{2}{|l|}{\bt{Optimum Distance}} & \bt{12}\\\hline
+		\end{longtable}
+	\end{enumerate}
+	
 
 
-
-
-
-
-
-
-
-
-
-
+	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
+	\chapter{DATA PRESENTATION AND RESULT}
+	Five graduates had just been awarded teaching assistantship positions at the department of Mathematics. The department is in need of these graduates to teach the following courses: Real Analysis (MAT 208), Introduction to Complex Analysis (MAT 210), Linear Algebra II (MAT
+	206), Mathematical Method I (MAT 201), Mathematical Packages I (MAT 214). The graduates are each capable of teaching any one of the five different courses. Class preparatory time (in hours) for each topic varies from one graduate to another and is given in the table below. The department has a policy of assigning each graduate teaching assistant (GTA) to only one course. Find the
+	schedule so as to minimize the total course preparatory time for all courses/ graduate teaching assistant.
+	\newpage
+	\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.51cm}|>{\centering\arraybackslash}m{1.51cm}|>{\centering\arraybackslash}m{1.51cm}|>{\centering\arraybackslash}m{1.51cm}|>{\centering\arraybackslash}m{1.51cm}|}
+		\hline
+		\multicolumn{7}{|c|}{\bt{Courses}}\\\hline
+		\multirow{6}{2cm}{Graduate Teaching Assistant} & & \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\cline{2-7}
+		& \bt{A}& 11 &7& 10& 17 &10\\\cline{2-7}
+		& \bt{B} &13 &21 &7 &11 &13\\\cline{2-7}
+		& \bt{C} & 13 &13 &15 &13 &14\\\cline{2-7}
+		& \bt{D} & 18 &10 &13 &16 &14\\\cline{2-7}
+		& \bt{E} & 12 &8 &16 &19 &10\\\cline{1-7}
+	\end{longtable}
+	\solution
+	\begin{enumerate}
+		\renewcommand{\labelenumi}{\bt{Step \arabic{enumi}:}}
+		\item Prepare row reduced matrix by selecting the minimum values for each row and subtracting
+		it from other elements of the row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 4 &0 &3 &10 &3\\\hline
+			\bt{B} &6&14 &0 &4 &6\\\hline
+			\bt{C} &0& 0& 2 &0 &1\\\hline
+			\bt{D} & 8 &0& 3& 6 &4\\\hline
+			\bt{E} & 4 &0 &8 &11 &2\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%%
+		\item Prepare column reduced matrix by subtracting minimum value of the column from the other values of that column
+		\newpage
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 4 &0 &3 &10 &2\\\hline
+			\bt{B} &6&14 &0 &4 &5\\\hline
+			\bt{C} &0& 0& 2 &0 &0\\\hline
+			\bt{D} & 8 &0& 3& 6 &3\\\hline
+			\bt{E} & 4 &0 &8 &11 &1\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%%
+		\item Check the row and box the first zero and cross out the other zeros in the column and row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 4 &[0] &3 &10 &2\\\hline
+			\bt{B} &6&14 &[0] &4 &5\\\hline
+			\bt{C} &[0]& $\times$& 2 &$\times$ &$\times$\\\hline
+			\bt{D} & 8 &$\times$& 3& 6 &3\\\hline
+			\bt{E} & 4 &$\times$ &8 &11 &1\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%%
+		\item Apply the optimal test: if each row and column contain one exactly encircled zero, then the current assignment is optimal. However, if one row or column is without an assignment, then the assignment is not optimal.\\
+		Since each row and column does not contain exactly one encircled zero, then the current is not
+		optimal and we proceed to the next step.
+		\item  Tick all unassigned rows. If a ticked row has a zero or more, then tick the corresponding column. If a ticked column has an assignment, then tick the corresponding row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|c|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}&\\\hline
+			\bt{A}& 4 &[0] &3 &10 &2&$\checkmark$\\\hline
+			\bt{B} &6&14 &[0] &4 &5&\\\hline
+			\bt{C} &[0]& 0& 2 &0 &0&\\\hline
+			\bt{D} & 8 &0& 3& 6 &3&$\checkmark$\\\hline
+			\bt{E} & 4 &0 &8 &11 &1&$\checkmark$\\\hline
+			& & $\checkmark$ & & & &\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%%
+		\item Draw a line each through unticked rows. Also, draw a line through the ticked column to form an intersection.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|c|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}&\\\hline
+			\bt{A}& 4 &\tikzmark{g1}[0] &3 &10 &2&$\checkmark$\\\hline
+			\bt{B} &\tikzmark{e1}6&14 &[0] &4 &\tikzmark{e2}5&\\\hline
+			\bt{C} &\tikzmark{f1}[0]& 0& 2 &0 &\tikzmark{f2}0&\\\hline
+			\bt{D} & 8 &0& 3& 6 &3&$\checkmark$\\\hline
+			\bt{E} & 4 &\tikzmark{g2}0 &8 &11 &1&$\checkmark$\\\hline
+			& & $\checkmark$ & & & &\\\hline
+		\end{longtable}
+		\linkH{e1}{e2}\linkH{f1}{f2}\linkVV{g1}{g2}{2}{1}
+		%%%%%%%%%%%%%%
+		\item Determine the smallest cost element not covered by the straight line. Subtract this smallest cost element from all the uncovered elements and add this to all those elements which are lying in the intersection of these straight lines and do not change the remaining element which lie on the
+		straight lines.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 3 &0 &2 &9 &1\\\hline
+			\bt{B} &6&15 &0 &4 &5\\\hline
+			\bt{C} &0& 1& 2 &0 &0\\\hline
+			\bt{D} & 8 &0& 2& 5 &2\\\hline
+			\bt{E} & 3 &0 &7 &10 &0\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%%
+		\item Repeat steps 3, 4, 5 6 and 7, until an optimum assignment is obtained.
+		\item[\bt{Step 3:}] Check the row and box the first zero and cross out the other zeros in the column and row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 3 &[0] &2 &9 &1\\\hline
+			\bt{B} &6&15 &[0] &4 &5\\\hline
+			\bt{C} &[0]& 1& 2 &$\times$ &$\times$\\\hline
+			\bt{D} & 7 &$\times$& 2& 5 &2\\\hline
+			\bt{E} & 3 &$\times$ &7 &10 &[0]\\\hline
+		\end{longtable}
+		%%%%%%%%%%%%%%
+		\item[\bt{Step 4:}] Apply the optimal test: if each row and column contain one exactly encircled zero, then the current assignment is optimal. However, if one row or column is without an assignment, then the assignment is not optimal.\\
+		Since each row and column does not contain exactly one encircled zero, then the current is not
+		optimal and we proceed to the next step.
+		\item[\bt{Step 5:}]  Tick all unassigned rows. If a ticked row has a zero or more, then tick the corresponding
+		column. If a ticked column has an assignment, then tick the corresponding row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|c|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}&\\\hline
+			\bt{A}& 3 &[0] &2 &9 &1&$\checkmark$\\\hline
+			\bt{B} &6&15 &[0] &4 &5& \\\hline
+			\bt{C} &[0]& 1& 2 &0 &0&\\\hline
+			\bt{D} & 7 &0& 2& 5 &2&$\checkmark$\\\hline
+			\bt{E} & 3 &0 &7 &10 &0&\\\hline
+			 &  &$\checkmark$& & & & \\\hline
+		\end{longtable}
+		\item[\bt{Step 6:}] Draw a line each through unticked rows. Also, draw a line through the ticked column to
+		form an intersection.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|c|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}&\\\hline
+			\bt{A}& 3 &\tikzmark{k1}[0] &2 &9 &1&$\checkmark$\\\hline
+			\bt{B} &\tikzmark{h1}6&15 &[0] &4 &\tikzmark{h2}5& \\\hline
+			\bt{C} &\tikzmark{i1}[0]& 1& 2 &0 &\tikzmark{i2}0&\\\hline
+			\bt{D} & 7 &0& 2& 5 &2&$\checkmark$\\\hline
+			\bt{E} & \tikzmark{j1}3 &\tikzmark{k2}0 &7 &10 &\tikzmark{j2}0&\\\hline
+			&  &$\checkmark$& & & & \\\hline
+		\end{longtable}
+		\linkH{h1}{h2}\linkH{i1}{i2}\linkH{j1}{j2}\linkV{k1}{k2}
+		%%%%%%%%%%%%%%%%%
+		\item[\bt{Step 7:}] Determine the smallest cost element not covered by the straight line. Subtract this smallest cost element from all the uncovered elements and add this to all those elements which are lying in the intersection of these straight lines and do not change the remaining element which lie on the
+		straight lines
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 2 &0 &1 &8 &0\\\hline
+			\bt{B} &6&16 &0 &4 &5\\\hline
+			\bt{C} &0& 2& 2 &0 &0\\\hline
+			\bt{D} &6 &0& 1& 4 &1\\\hline
+			\bt{E} & 3 &1 &7 &10 &0\\\hline
+		\end{longtable}
+		%%%%%%%
+		\item[\bt{Step 3:}]  Check the row and box the first zero and cross out the other zeros in the column and row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 2 &$\times$ &1 &8 &$\times$\\\hline
+			\bt{B} &6&16 &[0] &4 &5\\\hline
+			\bt{C} &[0]& 2& 2 &$\times$ &$\times$\\\hline
+			\bt{D} &6 &[0]& 1& 4 &1\\\hline
+			\bt{E} & 3 &1 &7 &10 &[0]\\\hline
+		\end{longtable}
+		%%%%%%%
+		\item[\bt{Step 4:}]  Apply the optimal test: if each row and column contain one exactly encircled zero, then the current assignment is optimal. However, if one row or column is without an assignment, then
+		the assignment is not optimal.\\
+		Since each row and column does not contain exactly one encircled zero, then the current is not
+		optimal and we proceed to the next step.
+		\item[\bt{Step 5:}] Tick all unassigned rows. If a ticked row has a zero or more, then tick the corresponding column. If a ticked column has an assignment, then tick the corresponding row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|c|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}&\\\hline
+			\bt{A}& 2 &0 &1 &8 &0 & $\checkmark$\\\hline
+			\bt{B} &6&16 &[0] &4 &5&\\\hline
+			\bt{C} &[0]& 2& 2 &0 &0&\\\hline
+			\bt{D} &6 &[0]& 1& 4 &1& $\checkmark$\\\hline
+			\bt{E} & 3 &1 &7 &10 &[0]& $\checkmark$\\\hline
+			& &$\checkmark$& & & $\checkmark$&\\\hline
+		\end{longtable}
+		%%%%%%%
+		\item[\bt{Step 6:}] Draw a line each through unticked rows. Also, draw a line through the ticked column to
+		form an intersection.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|c|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}&\\\hline
+			\bt{A}& 2 &\tikzmark{n1}0 &1 &8 &\tikzmark{o1}0 & $\checkmark$\\\hline
+			\bt{B} &\tikzmark{l1}6&16 &[0] &4 &\tikzmark{l2}5&\\\hline
+			\bt{C} &\tikzmark{m1}[0]& 2& 2 &0 &\tikzmark{m2}0&\\\hline
+			\bt{D} &6 &[0]& 1& 4 &1& $\checkmark$\\\hline
+			\bt{E} & 3 &\tikzmark{n2}1 &7 &10 &\tikzmark{o2}[0]& $\checkmark$\\\hline
+			& &$\checkmark$& & & $\checkmark$&\\\hline
+		\end{longtable}
+		\linkH{l1}{l2}\linkH{m1}{m2}\linkV{n1}{n2}\linkV{o1}{o2}
+		%%%%%%%
+		\item[\bt{Step 7:}] Determine the smallest cost element not covered by the straight line. Subtract this smallest cost element from all the uncovered elements and add this to all those elements which are lying in the intersection of these straight lines and do not change the remaining element which lie on the
+		straight lines.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 1 &0 &0 &7 &0\\\hline
+			\bt{B} &6&17 &0 &4 &5\\\hline
+			\bt{C} &0& 3& 2 &0 &0\\\hline
+			\bt{D} &5 &0& 0&3 &1\\\hline
+			\bt{E} & 2 &1 &6 &9 &0\\\hline
+		\end{longtable}
+		%%%%%%%
+		\item[\bt{Step 3:}] Check the row and box the first zero and cross out the other zeros in the column and row.
+		\begin{longtable}{|>{\centering\arraybackslash}m{.9cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|>{\centering\arraybackslash}m{1.53cm}|}
+			\hline
+			& \bt{MAT208} & \bt{MAT210} & \bt{MAT206} & \bt{MAT201} &\bt{MAT214}\\\hline
+			\bt{A}& 1 &$\checkmark$ &$\checkmark$ &7 &$\checkmark$\\\hline
+			\bt{B} &6&17 &[0] &4 &5\\\hline
+			\bt{C} &[0]& 3& 2 &$\checkmark$ &$\checkmark$\\\hline
+			\bt{D} &5 &[0]& $\checkmark$&3 &1\\\hline
+			\bt{E} & 2 &1 &6 &9 &[0]\\\hline
+		\end{longtable}
+		%%%%%%%
+		\item[\bt{Step 4:}] Apply the optimal test: if each row and column contain one exactly encircled zero, then the current assignment is optimal. However, if one row or column is without an assignment, then the assignment is not optimal.\\
+		Since each row and column does not contain exactly one encircled zero, then the current is not optimal and we proceed to the next step.
+		
+		\item[\bt{Step 5:}] Tick all unassigned rows. If a ticked row has a zero or more, then tick the corresponding column. If a ticked column has an assignment, then tick the corresponding row.
+	\end{enumerate}
 
 
 
