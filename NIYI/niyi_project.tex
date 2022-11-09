@@ -334,7 +334,7 @@
 	
 	
 	\section{The Fluid Equations}
-	Thermo-fluid ancidents directed by governing equations are based on the laws of conservation. To solve fluid dynamics issues, three conservation rules are used, which can be stated in integral or differential form. The conservation laws can be applied to a control value, which is a section of the flow. A control volume is a discrete space volume in which fluid regarding the content of the problem and are expressed based on the principles of conservation of mass, momentum of  energy:
+	Thermo-fluid ancidents directed by governing equations are based on the laws of conservation. To solve fluid dynamics issues, three conservation rules are used, which can be stated in integral or differential form. The conservation laws can be applied to a control value, which is a section of the flow. A control volume is a discrete space volume in which fluid regarding the content of the problem and are expressed based on the principles of conservation of mass, momentum of  energy (Simon et al, 2014):
 	\begin{itemize}[label=--]
 		\item\bt{Conservation of Mass:} Continuity Equation
 		\item\bt{Conservation of Momentum:} Newton's Second Law
@@ -635,7 +635,7 @@
 	\section{Introduction to Non-Dimensionalization}
 	Non-dimensionalization can simply be defined as the partial or full removal of physical dimensions from an equation involving physical quantities by a suitable substitution of variables.
 	
-	\NI I believe that non-dimensionalizing (also known as sealing or normalizing) should be a preliminary step to developing any model. Scaling helps provide better understanding of the physical situation, with the variation in dimension of the parameters involved in the equation. This allows for experiments to be conducted on smaller scale prototypes provided that any physical effects which are not included in the non-dimensionalized equation are unimportant.
+	\NI I believe that non-dimensionalizing (also known as sealing or normalizing) should be a preliminary step to developing any model. Scaling helps provide better understanding of the physical situation, with the variation in dimension of the parameters involved in the equation. This allows for experiments to be conducted on smaller scale prototypes provided that any physical effects which are not included in the non-dimensionalized equation are unimportant. (Isabela, 2015)
 	
 	\section{Units and Dimension}
 	There's a distinction to be made between dimensions and units. A dimension is a non-numerical measure of a physical variable, whereas a unit is a method of assigning a number of measurement to that dimension. For instance, length is a dimension that is measured in feet (ft) or meters (m).
@@ -793,7 +793,7 @@
 	
 	\section{Finite Difference Method}
 	Suppose we are given a table of values $(x_i,y_i), i=0,1,2,\ldots,n$ of a function $y=f(x)$, the values of $x$ being equally spaced, i.e, value of $f(x)$ for some intermediate values of $x$, or to obtain the derivatives of $f(x)$ for some $x$ in the range $x_0 \leq x \leq x_n$.\sps
-	Brook Taylor introduced finite differences in 1715, and George Boole (1860), L.M. Malne-Thomson (1933), and Karoly Jordan have studied them as abstract self-standing mathematical objects(1939). Finite differences can be traced back to just Burgi's (c. 1592) algorithm and work by others, including Isaac Newton. As an alternative to the calculus of infinite simals, the formula calculus of finite differences can be considered.\sps
+	Brook Taylor introduced finite differences in 1715, and George Boole (1860), L.M. Malne-Thomson (1933), and Karoly Jordan have studied them as abstract self-standing mathematical objects(1939). Finite differences can be traced back to just Burgi's (c. 1592) algorithm and work by others, including Isaac Newton. As an alternative to the calculus of infinite simals, the formula calculus of finite differences can be considered. (Butcher, 2003)\sps
 	A mathematical formula of the type
 	\begin{eqnarray}
 		f(x+b)-f(x+a)
@@ -1008,7 +1008,7 @@
 	\end{eqnarray*}
 	Replacing $f(t,y)$ by its interpolant $p$ incurs an error of order $h^s$, and it follows that the $s$-step Adams-Bashforth method has indeed order $s$.\\
 	
-	\NI The Adams-Bashforth methods were designed by John Couch Adams to solve a differential equation modelling capillary action due to Francis Bashforth. Bashforth(1883) published his theory and Adams' numerical method (Goldstine 1977).
+	\NI The Adams-Bashforth methods were designed by John Couch Adams to solve a differential equation modelling capillary action due to Francis Bashforth. Bashforth(1883) published his theory and Adams' numerical method. (Goldstine, 1977)
 	
 	
 	%%%%%%%%%%%%%%%%%%%CHAPTER FOUR%%%%%%%%%%%%%%%%%%%
@@ -1320,6 +1320,8 @@
 		\item Butcher, J. C. (2003). \emph{Numerical methods for ordinary differential equation}, NY: John Wiley and Sons.
 		
 		\item Frank, M. W. (2011). \emph{Fluid mechanics} (7th ed.). New York, NY: McGraw-Hill. (pp 6-8).
+		
+		\item Goldstine, H. H. (1977). \emph{A History of Numerical Analysis: From the 16th Through the 19th Century}. Studies in the History of Mathematics and Physical Sciences, NY, Springer-Verlag New York Inc.
 		
 		\item Ionut, D., Pascal, J., Sidi, M. K. \& Marie, P. (2007). \emph{Fluid Dynamics: Solving the two dimensional Navier-Stokes Equation}, An Introduction to Scientific Computing. NY, Springer.\\
 		https://joi.org/10.1007/978-0-387-49159-2-12.
